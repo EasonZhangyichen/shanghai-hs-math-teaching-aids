@@ -1,0 +1,41 @@
+# 当前状态
+
+更新时间：2026-04-30
+
+## 已有输入
+
+- 根目录包含两份研究文档：
+  - `下面是一份可直接作为产品立项蓝图.docx`
+  - `针对沪教版高中数学的交互式数字化教具聚合平台研发与架构深度研究报告.docx`
+- 已确认采用路线 2：课时知识图谱 + 多引擎微课件平台。
+- 已确认首期建议从必修第二册第 7 章“三角函数”样板包开始。
+
+## 已建立的项目骨架
+
+- `docs/`：长期上下文、计划、架构决策、内容标准。
+- `content/curriculum/`：沪教版课程图谱数据入口。
+- `content/applets/`：HTML 交互课件资产入口。
+- `content/manim/`：Manim 动画资产入口。
+- `apps/`：后续教师端平台与课件播放器。
+- `packages/`：后续共享 SDK、引擎适配和 schema。
+- `scripts/`：后续校验、生成和导出工具。
+
+## 当前尚未完成
+
+- 尚未正式核验沪教版教材全册课时目录。
+- 尚未创建 Web 平台代码。
+- 尚未创建真实 Applet 或 Manim 动画。
+- 尚未搭建元数据校验脚本。
+- 尚未配置远程 GitHub 仓库。
+
+## 继续工作时优先读取
+
+每次新的 Codex 会话应先读取：
+
+1. `docs/00-project-brief.md`
+2. `docs/01-current-state.md`
+3. `docs/02-next-actions.md`
+4. `docs/git-workflow.md`
+5. `docs/content-standards.md`
+6. `content/curriculum/index.yaml`
+

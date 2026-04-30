@@ -1,0 +1,26 @@
+.DS_Store
+
+# Local scratch files
+tmp/
+*.log
+
+# Dependency and build outputs
+node_modules/
+dist/
+build/
+.next/
+coverage/
+
+# Python/Manim scratch outputs
+.venv/
+__pycache__/
+*.pyc
+media/
+*.mp4
+*.mov
+
+# Local environment files
+.env
+.env.*
+!.env.example
+

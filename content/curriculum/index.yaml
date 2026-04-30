@@ -1,0 +1,139 @@
+project:
+  name: "沪教版高中数学数字教具云平台"
+  stage: "高中"
+  subject: "数学"
+  edition: "沪教版"
+  region: "上海"
+  strategy: "课时知识图谱 + 多引擎微课件平台"
+
+volumes:
+  - id: "B1"
+    title: "必修第一册"
+    status: "needs_manual_verification"
+    core_strands:
+      - "集合与逻辑"
+      - "等式与不等式"
+      - "幂、指数与对数"
+      - "函数"
+  - id: "B2"
+    title: "必修第二册"
+    status: "mvp_focus"
+    core_strands:
+      - "三角"
+      - "三角函数"
+      - "平面向量"
+      - "复数"
+  - id: "B3"
+    title: "必修第三册"
+    status: "needs_manual_verification"
+    core_strands:
+      - "空间直线与平面"
+      - "简单几何体"
+      - "概率初步"
+      - "统计"
+  - id: "B4"
+    title: "必修第四册"
+    status: "needs_manual_verification"
+    core_strands:
+      - "数学建模"
+  - id: "XB1"
+    title: "选择性必修第一册"
+    status: "needs_manual_verification"
+    core_strands:
+      - "解析几何"
+      - "圆锥曲线"
+      - "空间向量"
+      - "数列"
+      - "导数"
+  - id: "XB2"
+    title: "选择性必修第二册"
+    status: "needs_manual_verification"
+    core_strands:
+      - "计数原理"
+      - "概率"
+      - "成对数据统计分析"
+      - "数学建模"
+  - id: "XB3"
+    title: "选择性必修第三册"
+    status: "needs_manual_verification"
+    core_strands:
+      - "数学建模"
+
+theme_strands:
+  - id: "function"
+    title: "函数链"
+    examples:
+      - "函数概念"
+      - "指数函数"
+      - "对数函数"
+      - "三角函数"
+      - "数列"
+      - "导数"
+  - id: "trig_vector_complex"
+    title: "三角-向量-复数链"
+    examples:
+      - "弧度制"
+      - "单位圆"
+      - "三角函数图像"
+      - "平面向量"
+      - "复平面"
+  - id: "geometry"
+    title: "几何与代数链"
+    examples:
+      - "立体几何"
+      - "直线与圆"
+      - "圆锥曲线"
+      - "空间向量"
+  - id: "statistics_probability"
+    title: "概率统计链"
+    examples:
+      - "随机事件"
+      - "频率稳定"
+      - "抽样"
+      - "回归"
+      - "条件概率"
+  - id: "modeling"
+    title: "数学建模链"
+    examples:
+      - "变量定义"
+      - "参数估计"
+      - "模型选择"
+      - "仿真验证"
+
+resource_types:
+  applet:
+    description: "可独立运行或嵌入的 HTML 交互课件。"
+    engines:
+      - "native-canvas-svg"
+      - "jsxgraph"
+      - "geogebra"
+      - "cindyjs"
+      - "d3"
+      - "threejs"
+  manim_clip:
+    description: "用于连续推演、证明或概念导入的 Manim 数学动画。"
+  teacher_script:
+    description: "教师课堂操作、暂停提问、板书建议和讲解流程。"
+  student_task:
+    description: "学生观察、猜想、验证、提交和反思任务。"
+  diagnosis:
+    description: "即时反馈、错因标签和补救资源推荐。"
+
+mvp:
+  volume: "B2"
+  chapter: "C07"
+  title: "三角函数"
+  focus_lessons:
+    - id: "SH-HS-MATH-HJ-B2-C07-L01"
+      title: "正弦函数的图像与性质"
+      target_resources:
+        - "单位圆到正弦曲线 Applet"
+        - "正弦函数性质探究 Applet"
+        - "正弦函数来源 Manim Clip"
+    - id: "SH-HS-MATH-HJ-B2-C07-L02"
+      title: "y = A sin(omega x + phi) + k 的图像变换"
+      target_resources:
+        - "三角函数参数变化实验室 Applet"
+        - "图像变换顺序 Manim Clip"
+        - "参数识别诊断任务"
+
