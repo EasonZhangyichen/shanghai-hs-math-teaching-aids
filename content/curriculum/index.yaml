@@ -110,7 +110,7 @@ volumes:
               - type: "manim_clip"
                 proposed_resource_id: "SH-HS-MATH-HJ-B2-C07-L01-M01"
                 title: "正弦曲线的来源"
-                cognitive_action: "连续推演"
+                cognitive_action: "投影"
                 note: "用一段短动画展示圆周运动展开为波形的过程。"
             diagnosis_focus:
               - "能否说明横坐标为什么是角的弧度量。"
@@ -149,7 +149,7 @@ volumes:
               - type: "diagnosis"
                 proposed_resource_id: "SH-HS-MATH-HJ-B2-C07-L02-D01"
                 title: "正弦函数性质诊断"
-                cognitive_action: "辨析"
+                cognitive_action: "比较"
                 note: "围绕周期遗漏、区间端点和对称性误判生成即时反馈。"
             diagnosis_focus:
               - "能否写出完整的一般解形式。"
@@ -225,7 +225,7 @@ volumes:
               - type: "diagnosis"
                 proposed_resource_id: "SH-HS-MATH-HJ-B2-C07-L04-D01"
                 title: "余弦性质误区诊断"
-                cognitive_action: "辨析"
+                cognitive_action: "比较"
                 note: "检测奇偶性、单调区间和关键点一般式的典型混淆。"
             diagnosis_focus:
               - "能否准确写出余弦函数单调区间。"
@@ -269,7 +269,7 @@ volumes:
               - type: "diagnosis"
                 proposed_resource_id: "SH-HS-MATH-HJ-B2-C07-L05-D01"
                 title: "参数识别诊断任务"
-                cognitive_action: "识别"
+                cognitive_action: "比较"
                 note: "给出图像关键点，要求判断 A、omega、phi 的可能取值并解释理由。"
             diagnosis_focus:
               - "能否从周期求出 omega 的绝对值。"
@@ -309,7 +309,7 @@ volumes:
               - type: "manim_clip"
                 proposed_resource_id: "SH-HS-MATH-HJ-B2-C07-L06-M01"
                 title: "为什么正切图像有渐近线"
-                cognitive_action: "连续推演"
+                cognitive_action: "逼近"
                 note: "从终边接近 y 轴时斜率变化解释图像趋向无穷。"
             diagnosis_focus:
               - "能否写出正切函数定义域。"
@@ -347,7 +347,7 @@ volumes:
               - type: "diagnosis"
                 proposed_resource_id: "SH-HS-MATH-HJ-B2-C07-L07-D01"
                 title: "正切函数性质诊断"
-                cognitive_action: "辨析"
+                cognitive_action: "比较"
                 note: "重点检测定义域、单调区间、周期和渐近线的综合判断。"
             diagnosis_focus:
               - "能否把单调性限定在每个连续定义区间。"
