@@ -12,6 +12,16 @@
 
 ## 已建立的项目骨架
 
+- Git 仓库已初始化，默认稳定分支为 `main`，当前日常开发分支为 `develop`。
+- 已创建长期分支：
+  - `release/v0.1-trig-mvp`
+  - `track/curriculum-map`
+  - `track/trig-sample-pack`
+  - `track/applet-sdk`
+  - `track/manim-pipeline`
+  - `track/platform-shell`
+  - `track/review-system`
+  - `track/design-system`
 - `docs/`：长期上下文、计划、架构决策、内容标准。
 - `content/curriculum/`：沪教版课程图谱数据入口。
 - `content/applets/`：HTML 交互课件资产入口。
@@ -38,4 +48,3 @@
 4. `docs/git-workflow.md`
 5. `docs/content-standards.md`
 6. `content/curriculum/index.yaml`
-

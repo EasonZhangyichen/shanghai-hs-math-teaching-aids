@@ -4,8 +4,9 @@
 
 ## P0：项目治理
 
+- [x] 初始化本地 Git 仓库。
+- [x] 创建长期分支：`develop`、`track/curriculum-map`、`track/trig-sample-pack`、`track/applet-sdk`、`track/manim-pipeline`、`track/platform-shell`、`track/review-system`、`track/design-system`。
 - [ ] 创建并保护远程仓库。
-- [ ] 创建长期分支：`develop`、`track/curriculum-map`、`track/trig-sample-pack`、`track/applet-sdk`、`track/manim-pipeline`、`track/platform-shell`。
 - [ ] 建立 PR 模板和审核清单。
 - [ ] 建立内容版本规则与发布 tag 规则。
 
@@ -37,4 +38,3 @@
 - [ ] 搭建课件播放器。
 - [ ] 从 `content/curriculum/index.yaml` 读取课程树。
 - [ ] 以课时页聚合 Applet、Manim、脚本和任务。
-
