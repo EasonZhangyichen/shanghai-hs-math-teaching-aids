@@ -1,6 +1,6 @@
 # 下一步任务
 
-更新时间：2026-04-30
+更新时间：2026-05-01
 
 ## P0：项目治理
 
@@ -10,6 +10,7 @@
 - [x] 建立内容版本规则与发布 tag 规则。
 - [x] 建立 Codex 多线程与 Git 协作指南。
 - [x] 建立分支对话启动提示词。
+- [x] 建立资源工厂工作流和 backlog 自动生成器。
 - [x] 配置本仓库 Git 提交身份。
 - [x] 创建 GitHub 远程仓库并推送初始分支与标签。
 - [ ] 配置 GitHub 分支保护规则。
@@ -35,6 +36,7 @@
 - [x] 将 Applet metadata schema 接入校验脚本。
 - [x] 将 Manim metadata schema 接入校验脚本。
 - [x] 定义 Diagnosis metadata schema 并接入校验脚本。
+- [x] 从课程图谱自动生成资源生产 backlog。
 
 ## P3：三角函数样板包
 
@@ -47,6 +49,7 @@
 - [x] 渲染并复核 `SH-HS-MATH-HJ-B2-C07-L01-M01` 的 `mp4`、`webm` 和 poster。
 - [x] 创建第一个可运行 HTML Applet。
 - [ ] 对“单位圆到正弦曲线”HTML Applet 做数学边界复核和课堂节奏试读。
+- [ ] 从 `content/production/resource-backlog.json` 中选择下一个 MVP item，优先推进 `SH-HS-MATH-HJ-B2-C07-L02-A01` 或 `SH-HS-MATH-HJ-B2-C07-L05-A01`。
 
 ## P4：平台雏形
 
@@ -57,3 +60,12 @@
 - [x] 将样板 Applet 接入教师工作台 iframe，占位预览升级为可运行课件入口。
 - [x] 读取 `content/manim/*/metadata.yaml`，将 Manim `metadata_ready` 和 `video_ready` 状态接入平台资源卡。
 - [ ] 将平台内 iframe 预览沉淀为独立 `apps/player`，补齐播放器级控制、错误提示和状态记录。
+
+## P5：资源工厂
+
+- [x] 生成 `content/production/resource-backlog.json`，覆盖必修第二册第 7 章 15 个资源工作单元。
+- [x] 为每个 backlog item 自动生成推荐分支、下一步动作和新对话 `threadPrompt`。
+- [x] 将 `npm run generate:backlog` 接入 `npm run verify`。
+- [ ] 为 backlog item 增加更细的审核状态和课堂试用状态聚合。
+- [ ] 为单个 backlog item 增加资源包 scaffold 命令，减少手工建目录成本。
+- [ ] 当沪教版全册目录完成后，将 backlog 扩展到全高中课程图谱。

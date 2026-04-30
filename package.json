@@ -8,9 +8,10 @@
     "build": "npm run generate:content && vite build --config apps/web/vite.config.js",
     "preview": "vite preview --config apps/web/vite.config.js --host 127.0.0.1",
     "generate:content": "node apps/web/scripts/generate-content-data.js",
+    "generate:backlog": "node scripts/generate-resource-backlog.js",
     "validate:content": "node scripts/validate-content.js",
-    "test": "node --test apps/web/src/lib/content.test.js scripts/validate-content.test.js",
-    "verify": "npm run validate:content && npm run test && npm run build"
+    "test": "node --test apps/web/src/lib/content.test.js scripts/validate-content.test.js scripts/generate-resource-backlog.test.js",
+    "verify": "npm run validate:content && npm run generate:backlog && npm run test && npm run build"
   },
   "dependencies": {
     "ajv": "^8.20.0",

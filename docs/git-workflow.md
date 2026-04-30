@@ -14,6 +14,7 @@ track/manim-pipeline         Manim 渲染、管理、嵌入流程
 track/platform-shell         教师端平台壳与资源检索
 track/review-system          数学审校、教研审核、版本状态
 track/design-system          UI 规范、课堂大屏模式、组件库
+codex/*                      短期功能分支，例如资源工厂、局部修复、一次性集成任务
 ```
 
 ## 短分支命名
@@ -74,4 +75,3 @@ draft
 - `develop` 接受功能分支和 track 分支的阶段性合并。
 - `track/*` 用于长期主题推进，避免单次 Codex 会话上下文丢失。
 - 每个课件资源必须带 metadata、教师脚本、学生任务和审核记录后才能进入 `stable`。
-

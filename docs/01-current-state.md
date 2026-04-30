@@ -1,6 +1,6 @@
 # 当前状态
 
-更新时间：2026-04-30
+更新时间：2026-05-01
 
 ## 已有输入
 
@@ -43,6 +43,11 @@
   - Manim `video_ready` 资源会检查 `render_plan.phase: rendered`，并确认 `files.output_mp4`、`files.output_webm` 和 `files.poster` 都位于 `dist/final/` 且真实存在。
   - Diagnosis 资源包首期要求 `README.md`、`item-bank.yaml`、`scoring-rubric.md`、`teacher-notes.md` 和 `review.md`，并校验错因标签、题组摘要、反馈策略和评分规则。
   - `npm run verify` 现在会先执行 `npm run validate:content`，再运行测试和平台构建。
+- 已创建首版资源工厂工作流：
+  - `scripts/generate-resource-backlog.js` 会从 `content/curriculum/index.yaml` 的 `digital_entry_points` 和已落地的 Applet / Manim / Diagnosis 资源包生成生产 backlog。
+  - `content/production/resource-backlog.json` 当前列出必修第二册第 7 章 15 个资源工作单元，其中 2 个已实现、13 个待创建；每个 item 都包含推荐分支、下一步动作和可复制到新 Codex 对话的 `threadPrompt`。
+  - `npm run generate:backlog` 已加入脚本，`npm run verify` 现在会先校验内容、生成 backlog，再运行测试和平台构建。
+  - `docs/resource-factory-workflow.md` 记录了课程图谱 -> backlog -> 单资源对话 -> 校验 -> 合并的半自动生产流程。
 
 ## 已建立的项目骨架
 
@@ -68,6 +73,7 @@
 - `content/applets/`：HTML 交互课件资产入口。
 - `content/manim/`：Manim 动画资产入口。
 - `content/diagnosis/`：诊断任务资产入口。
+- `content/production/`：资源生产 backlog 和后续调度数据入口。
 - `apps/web`：教师端平台壳 MVP，当前读取课程图谱和样板资源包生成工作台。
 - `apps/`：后续继续承载独立课件播放器和其他前端入口。
 - `packages/`：后续共享 SDK、引擎适配和 schema。
@@ -82,6 +88,7 @@
 - 已创建第一个可运行 HTML Applet 原型，并已接入平台壳 iframe 预览；尚未完成数学审校和课堂试用。
 - 已创建第一个 Manim 场景脚本并导出可播放 `mp4` / `webm` / poster；尚未完成数学审校或课堂试用。
 - 已将 Applet、Manim 和 Diagnosis metadata JSON Schema 接入首版自动校验脚本。
+- 已建立首版资源生产 backlog，可按单个资源工作单元开启新对话，避免全高中内容挤在一个上下文中。
 - 平台壳已读取 `content/manim/*/metadata.yaml` 并渲染样板 Manim 视频资源卡；尚未沉淀为独立播放器或接入播放器级学习状态记录。
 - 尚未配置 GitHub 分支保护规则。
 
@@ -95,5 +102,7 @@
 4. `docs/git-workflow.md`
 5. `docs/content-standards.md`
 6. `docs/codex-collaboration-guide.md`
-7. `docs/thread-starter-prompts.md`
-8. `content/curriculum/index.yaml`
+7. `docs/resource-factory-workflow.md`
+8. `docs/thread-starter-prompts.md`
+9. `content/curriculum/index.yaml`
+10. `content/production/resource-backlog.json`

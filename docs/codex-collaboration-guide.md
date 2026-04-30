@@ -12,6 +12,7 @@
 4. 同一时间不要让多个对话在同一个工作树里改同一个分支。
 5. 每次完成一小块都提交，提交信息要能看懂。
 6. 每次任务结束都更新 `docs/01-current-state.md` 和 `docs/02-next-actions.md`。
+7. 资源类任务优先从 `content/production/resource-backlog.json` 选择单个 item，不要让一个对话同时生产一批资源。
 
 ## 推荐对话类型
 
@@ -101,6 +102,23 @@ git switch track/manim-pipeline
 git switch track/platform-shell
 ```
 
+### 7. 资源工厂对话
+
+用途：
+
+- 从课程图谱生成资源生产 backlog。
+- 根据 backlog 选择下一个资源工作单元。
+- 给新对话分派单个 Applet、Manim 或 Diagnosis 任务。
+- 复盘资源生产进度，避免上下文窗口里堆积全高中内容。
+
+建议分支：
+
+```bash
+git switch develop
+```
+
+资源工厂本身通常是总控任务；真正创建课件时，再按 backlog item 的 `recommendedTrack` 切到对应 `track/*` 分支。
+
 ## 一个分支能否开多个对话
 
 可以，但要遵守规则：
@@ -149,11 +167,22 @@ docs/02-next-actions.md
 docs/git-workflow.md
 docs/content-standards.md
 docs/codex-collaboration-guide.md
+docs/resource-factory-workflow.md
+docs/thread-starter-prompts.md
 content/curriculum/index.yaml
+content/production/resource-backlog.json
 
 然后运行 git status --short 和 git branch --show-current，告诉我当前状态。
 不要先写代码，先确认应该在哪个分支工作。
 ```
+
+如果你要从资源工厂选择下一个任务，可以发：
+
+```text
+这次作为资源工厂总控。请读取项目锚点文件和 content/production/resource-backlog.json，检查工作区是否干净，然后帮我选择下一个最值得推进的 backlog item。不要先写代码，先说明推荐资源、原因、应该在哪个分支做，以及可以复制给新对话的提示词。
+```
+
+如果你已经选定 backlog item，可以直接复制该 item 的 `threadPrompt` 到新对话。
 
 如果你已经知道要做课程图谱，可以发：
 
@@ -173,13 +202,14 @@ content/curriculum/index.yaml
 1. 总控对话决定下一步任务
 2. 切到对应 track 分支
 3. 读取项目锚点文件
-4. 检查 git status
-5. 做一个小任务
-6. 验证
-7. 更新状态文档
-8. commit
-9. 必要时合并回 develop
-10. 阶段稳定后从 develop 合并到 main 并打 tag
+4. 如果是资源任务，读取 content/production/resource-backlog.json 并锁定一个 item
+5. 检查 git status
+6. 做一个小任务
+7. 运行 npm run generate:backlog 和 npm run verify
+8. 更新状态文档
+9. commit
+10. 必要时合并回 develop
+11. 阶段稳定后从 develop 合并到 main 并打 tag
 ```
 
 ## 你只需要记住的 Git 命令
@@ -274,4 +304,3 @@ git tag -a v0.1.0-trig-mvp -m "First trigonometry MVP"
 - 不要直接复制官方教材、PPT、教案或商业平台资源。
 - 不要长时间不提交，容易丢上下文。
 - 不要在 `main` 上随意做大改动。
-

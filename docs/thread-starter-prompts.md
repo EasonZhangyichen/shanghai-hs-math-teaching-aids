@@ -9,7 +9,7 @@
 ## 通用启动提示词
 
 ```text
-请先读取 docs/00-project-brief.md、docs/01-current-state.md、docs/02-next-actions.md、docs/git-workflow.md、docs/content-standards.md、docs/codex-collaboration-guide.md、docs/thread-starter-prompts.md 和 content/curriculum/index.yaml，然后运行 git status --short 和 git branch --show-current。不要先写代码，先确认应该在哪个分支工作。
+请先读取 docs/00-project-brief.md、docs/01-current-state.md、docs/02-next-actions.md、docs/git-workflow.md、docs/content-standards.md、docs/codex-collaboration-guide.md、docs/resource-factory-workflow.md、docs/thread-starter-prompts.md、content/curriculum/index.yaml 和 content/production/resource-backlog.json，然后运行 git status --short 和 git branch --show-current。不要先写代码，先确认应该在哪个分支工作。
 ```
 
 ## 总控对话
@@ -32,6 +32,33 @@ develop
 ```text
 这次作为项目总控对话。请读取项目锚点文件，检查 git status 和当前分支。不要先写代码，先根据 docs/02-next-actions.md 帮我判断下一步最应该推进什么，并说明应该切到哪个分支。
 ```
+
+## 资源工厂总控
+
+负责分支：
+
+```text
+develop
+```
+
+适合做：
+
+- 查看 `content/production/resource-backlog.json`。
+- 选择下一个最值得推进的资源工作单元。
+- 给新对话分派单个 Applet、Manim 或 Diagnosis 任务。
+- 维护资源生产节奏和上下文边界。
+
+启动提示词：
+
+```text
+这次作为资源工厂总控。请读取项目锚点文件和 content/production/resource-backlog.json，检查 git status 和当前分支。不要先写代码，先根据 backlog 的 priority、status、type 和 nextAction，推荐下一个最值得推进的资源 item，并告诉我应该复制哪段 threadPrompt 到哪个新对话。
+```
+
+验收标准：
+
+- 一次只推荐 1 到 2 个资源工作单元。
+- 说明推荐原因和对应分支。
+- 不把全章资源塞进同一个对话。
 
 ## 课程图谱分支
 
@@ -245,16 +272,19 @@ track/design-system
 
 6. 回到 develop
    合并这些阶段成果，形成 v0.1.0-trig-mvp 的基础。
+
+7. 资源工厂总控
+   从 content/production/resource-backlog.json 选择后续单资源工作单元，持续填充平台。
 ```
 
 ## 一个任务多大合适
 
 每个对话只做一个小目标，例如：
 
+- “只推进 backlog 中的 SH-HS-MATH-HJ-B2-C07-L02-A01。”
 - “只完成必修二第 7 章目录 YAML。”
 - “只设计单位圆到正弦曲线 Applet 的 metadata 和脚本。”
 - “只搭建课程树页面。”
 - “只写 Manim 正弦函数导入 storyboard。”
 
 不要一次要求一个对话“把整个平台做完”。
-
