@@ -1,8 +1,8 @@
 # 单位圆到正弦曲线
 
-资源 ID：`SH-HS-MATH-HJ-B2-C07-L01-A01`  
-版本：`0.1.0`  
-状态：`draft`  
+资源 ID：`SH-HS-MATH-HJ-B2-C07-L01-A01`
+版本：`0.1.0`
+状态：`draft`
 类型：HTML Applet 规格包，暂不包含 HTML 实现
 
 ## 资源定位
