@@ -2,6 +2,7 @@
 
 # Local scratch files
 tmp/
+output/
 *.log
 .playwright-cli/
 
