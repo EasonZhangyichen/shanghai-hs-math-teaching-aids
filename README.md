@@ -21,6 +21,23 @@
 - [分支对话启动提示词](docs/thread-starter-prompts.md)
 - [架构决策记录](docs/adr/0001-route-2-platform-architecture.md)
 
+## 本地运行教师端平台壳
+
+```bash
+npm install
+npm run dev
+```
+
+常用验证命令：
+
+```bash
+npm test
+npm run build
+npm run verify
+```
+
+`npm run generate:content` 会从 `content/curriculum/index.yaml` 和 `content/applets/*/metadata.yaml` 生成 `apps/web/src/data/workspace-data.json`，供教师工作台静态读取。
+
 ## 初始目录
 
 ```text

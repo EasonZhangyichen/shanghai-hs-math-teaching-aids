@@ -2,7 +2,9 @@
 
 # Local scratch files
 tmp/
+output/
 *.log
+.playwright-cli/
 
 # Dependency and build outputs
 node_modules/
@@ -23,4 +25,3 @@ media/
 .env
 .env.*
 !.env.example
-
