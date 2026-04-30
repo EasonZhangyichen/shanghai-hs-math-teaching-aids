@@ -2,14 +2,14 @@
 
 资源 ID：`SH-HS-MATH-HJ-B2-C07-L01-M01`
 当前状态：`draft`
-当前阶段：`scene_draft`
+当前阶段：`video_ready`
 
 ## 自检结论
 
-- 内容为原创分镜和 Manim 场景草稿。
+- 内容为原创分镜和 Manim 场景脚本。
 - 数学主线限定为 `y = sin x` 的生成来源，不展开性质归纳。
 - 当前没有使用外部图片、音频、教材正文、官方课件或商业平台资源。
-- 尚未渲染 mp4/webm，不能进入课堂试用或平台视频播放状态。
+- 已完成首版 1080p30 mp4/webm/poster 导出，可进入平台预览和内部教研复核。
 
 ## 数学审校关注点
 
@@ -31,6 +31,15 @@
 - 16:9 画面中单位圆和函数坐标系的距离是否适合投屏。
 - 中文字幕暂未进入 `scene.py`，后续若加入需确认字体和跨平台渲染。
 
+## 渲染记录
+
+- Manim：`Manim Community v0.20.1 via uvx`。
+- 预览：`uvx manim -ql --media_dir dist scene.py SineOriginScene` 已通过。
+- 课堂视频：`dist/final/SH-HS-MATH-HJ-B2-C07-L01-M01.mp4`，1920x1080，30fps，29.1 秒。
+- Web 预览：`dist/final/SH-HS-MATH-HJ-B2-C07-L01-M01.webm`，1920x1080，30fps，29.1 秒。
+- Poster：`dist/final/SH-HS-MATH-HJ-B2-C07-L01-M01-poster.png`，1920x1080。
+- 为降低环境依赖，`scene.py` 使用 Manim `Text` 标签，不依赖本地 LaTeX。
+
 ## 推进门槛
 
 进入 `math_review` 前必须完成：
@@ -42,7 +51,7 @@
 
 进入 `video_ready` 前必须完成：
 
-1. 导出 `dist/final/SH-HS-MATH-HJ-B2-C07-L01-M01.mp4`。
-2. 转码 `dist/final/SH-HS-MATH-HJ-B2-C07-L01-M01.webm`。
-3. 生成 `dist/final/SH-HS-MATH-HJ-B2-C07-L01-M01-poster.png`。
-4. 更新 `metadata.yaml` 的 `files` 和 `platform_card` 字段。
+1. 已导出 `dist/final/SH-HS-MATH-HJ-B2-C07-L01-M01.mp4`。
+2. 已转码 `dist/final/SH-HS-MATH-HJ-B2-C07-L01-M01.webm`。
+3. 已生成 `dist/final/SH-HS-MATH-HJ-B2-C07-L01-M01-poster.png`。
+4. 已更新 `metadata.yaml` 的 `files` 和 `platform_card` 字段。

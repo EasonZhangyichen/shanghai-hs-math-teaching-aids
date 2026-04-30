@@ -49,9 +49,9 @@ function render() {
   const lesson = workspace.lessonsById[state.lessonId] ?? workspace.lessons[0];
   const selectedResource = getSelectedResource(lesson);
   const packageResource =
-    selectedResource?.availability === "metadata_ready"
+    isImplementedResource(selectedResource)
       ? selectedResource
-      : lesson.resources.find((resource) => resource.availability === "metadata_ready");
+      : lesson.resources.find(isImplementedResource);
 
   root.innerHTML = `
     <div class="app-shell">
@@ -91,7 +91,8 @@ function renderSidebar() {
       <div class="tree-summary" aria-label="内容统计">
         <span>${workspace.summary.volumeCount} 册</span>
         <span>${workspace.summary.lessonCount} 课时</span>
-        <span>${workspace.summary.implementedAppletCount} 个样板包</span>
+        <span>${workspace.summary.implementedAppletCount} 个 Applet</span>
+        <span>${workspace.summary.implementedManimCount ?? 0} 个 Manim</span>
       </div>
       <nav class="curriculum-tree">
         ${workspace.tree.volumes.map(renderVolume).join("")}
@@ -265,21 +266,70 @@ function renderResourceDetail(resource) {
         <span>${escapeHtml(resourceAvailabilityLabel(resource))}</span>
       </div>
     </div>
-    ${renderAppletPlayer(resource)}
+    ${renderResourcePlayer(resource)}
+    ${renderMetadataSummary(resource, metadata)}
+    ${renderMetadataLayout(resource, metadata)}
+  `;
+}
+
+function renderMetadataSummary(resource, metadata) {
+  const summaryItems =
+    resource.resourceType === "manim_clip"
+      ? [
+          ["状态", statusLabel(metadata.status)],
+          ["渲染阶段", metadata.renderPlan?.phase ?? "unknown"],
+          ["平台入口", metadata.platformCard?.availability ?? resource.availability],
+        ]
+      : [
+          ["状态", statusLabel(metadata.status)],
+          ["实现阶段", metadata.implementation?.phase ?? "unknown"],
+          ["HTML src", metadata.implementation?.html_src_status ?? "unknown"],
+        ];
+
+  return `
     <div class="metadata-summary">
-      <div>
-        <span class="field-label">状态</span>
-        <strong>${escapeHtml(statusLabel(metadata.status))}</strong>
-      </div>
-      <div>
-        <span class="field-label">实现阶段</span>
-        <strong>${escapeHtml(metadata.implementation?.phase ?? "unknown")}</strong>
-      </div>
-      <div>
-        <span class="field-label">HTML src</span>
-        <strong>${escapeHtml(metadata.implementation?.html_src_status ?? "unknown")}</strong>
-      </div>
+      ${summaryItems
+        .map(
+          ([label, value]) => `
+            <div>
+              <span class="field-label">${escapeHtml(label)}</span>
+              <strong>${escapeHtml(value)}</strong>
+            </div>
+          `,
+        )
+        .join("")}
     </div>
+  `;
+}
+
+function renderMetadataLayout(resource, metadata) {
+  if (resource.resourceType === "manim_clip") {
+    return `
+      <div class="metadata-layout">
+        <div>
+          <h4>教学问题</h4>
+          <p>${escapeHtml(metadata.pedagogy.primaryTeachingProblem)}</p>
+        </div>
+        <div>
+          <h4>分镜节奏</h4>
+          ${renderBeatList(metadata.narrativeDesign.beats)}
+        </div>
+        <div>
+          <h4>课堂暂停点</h4>
+          ${renderPausePointList(metadata.narrativeDesign.pausePoints)}
+        </div>
+        <div>
+          <h4>场景入口</h4>
+          ${renderCompactList([
+            `scene.py：${resource.package.files.scene}`,
+            `scene class：${metadata.renderPlan?.scene_class ?? "unknown"}`,
+          ])}
+        </div>
+      </div>
+    `;
+  }
+
+  return `
     <div class="metadata-layout">
       <div>
         <h4>教学问题</h4>
@@ -301,12 +351,33 @@ function renderResourceDetail(resource) {
   `;
 }
 
-function renderAppletPlayer(resource) {
+function renderResourcePlayer(resource) {
   if (!resource.player?.isRunnable) {
     return `
       <div class="planned-preview">
-        <p class="planned-title">真实课件预览尚未就绪</p>
-        <p>该资源当前没有可运行的 HTML src 入口，平台保留 metadata 与规划说明。</p>
+        <p class="planned-title">${resource.resourceType === "manim_clip" ? "视频预览尚未就绪" : "真实课件预览尚未就绪"}</p>
+        <p>${resource.resourceType === "manim_clip" ? "该 Manim 资源当前只有 metadata 与分镜信息，平台保留脚本入口和教学设计摘要。" : "该资源当前没有可运行的 HTML src 入口，平台保留 metadata 与规划说明。"}</p>
+      </div>
+    `;
+  }
+
+  if (resource.player.kind === "video") {
+    return `
+      <div class="player-preview" aria-label="Manim 视频预览">
+        <div class="player-preview-header">
+          <div>
+            <p class="detail-kicker">Manim 视频预览</p>
+            <h4>${escapeHtml(resource.player.title)}</h4>
+          </div>
+          <span>${escapeHtml(resource.player.sources[0]?.src ?? "")}</span>
+        </div>
+        <div class="video-frame-shell">
+          <video controls preload="metadata" ${resource.player.poster ? `poster="${escapeHtml(resource.player.poster)}"` : ""}>
+            ${resource.player.sources
+              .map((source) => `<source src="${escapeHtml(source.src)}" type="${escapeHtml(source.type)}" />`)
+              .join("")}
+          </video>
+        </div>
       </div>
     `;
   }
@@ -344,6 +415,23 @@ function renderScriptEntrypoints(resource, lesson) {
         <p class="planned-title">当前课时暂无已落地资源包</p>
         <p>资源入口来自课程图谱，可继续在样板包分支补齐 metadata、教师脚本和学生活动文件。</p>
       </div>
+    `;
+  }
+
+  if (resource.resourceType === "manim_clip") {
+    return `
+      <div class="section-heading">
+        <h3 id="script-title">Manim 分镜与场景入口</h3>
+        <span>${escapeHtml(resource.package.path)}</span>
+      </div>
+      <article class="entry-preview">
+        <p class="entry-path">${escapeHtml(resource.package.storyboard?.path ?? resource.package.files.scene)}</p>
+        <h4>${escapeHtml(resource.package.storyboard?.title ?? resource.title)}</h4>
+        <p>${escapeHtml(resource.package.storyboard?.summary || resource.subtitle || "")}</p>
+        <div class="section-tags">
+          ${(resource.package.storyboard?.sections ?? []).map((section) => `<span>${escapeHtml(section)}</span>`).join("")}
+        </div>
+      </article>
     `;
   }
 
@@ -410,6 +498,41 @@ function renderStepList(steps) {
   `;
 }
 
+function renderBeatList(beats) {
+  if (!beats?.length) {
+    return `<p class="muted">暂无</p>`;
+  }
+
+  return `
+    <ol>
+      ${beats
+        .map(
+          (beat) => `
+            <li>
+              <strong>${escapeHtml(beat.title)}</strong>
+              <span>${escapeHtml(beat.purpose)}</span>
+            </li>
+          `,
+        )
+        .join("")}
+    </ol>
+  `;
+}
+
+function renderPausePointList(pausePoints) {
+  if (!pausePoints?.length) {
+    return `<p class="muted">暂无</p>`;
+  }
+
+  return `
+    <ul>
+      ${pausePoints
+        .map((point) => `<li>${escapeHtml(point.after_beat)}：${escapeHtml(point.teacher_prompt)}</li>`)
+        .join("")}
+    </ul>
+  `;
+}
+
 function renderEmptyState(titleId, message) {
   return `
     <div class="section-heading">
@@ -427,7 +550,7 @@ function handlePlayerLoad(event) {
   }
 
   const resource = findResourceById(iframe.dataset.playerResourceId);
-  if (!resource?.player?.isRunnable || !iframe.contentWindow) {
+  if (!resource?.player?.isRunnable || resource.player.kind !== "iframe" || !iframe.contentWindow) {
     return;
   }
 
@@ -479,7 +602,7 @@ function getSelectedResource(lesson) {
     return selected;
   }
 
-  return lesson.resources.find((resource) => resource.availability === "metadata_ready") ?? lesson.resources[0];
+  return lesson.resources.find(isImplementedResource) ?? lesson.resources[0];
 }
 
 function setLesson(lessonId) {
@@ -519,11 +642,27 @@ function resourceTypeLabel(type) {
 }
 
 function resourceAvailabilityLabel(resource) {
-  if (resource.player?.isRunnable) {
+  if (resource.player?.kind === "iframe") {
     return "可运行预览";
   }
 
-  return resource.availability === "metadata_ready" ? "metadata 已就绪" : "规划中";
+  if (resource.player?.kind === "video") {
+    return "视频已就绪";
+  }
+
+  if (resource.availability === "metadata_ready") {
+    return "metadata 已就绪";
+  }
+
+  if (resource.availability === "video_ready") {
+    return "视频待补档";
+  }
+
+  return "规划中";
+}
+
+function isImplementedResource(resource) {
+  return ["metadata_ready", "video_ready"].includes(resource?.availability);
 }
 
 function statusLabel(status) {

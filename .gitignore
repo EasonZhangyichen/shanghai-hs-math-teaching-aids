@@ -20,6 +20,10 @@ __pycache__/
 media/
 *.mp4
 *.mov
+content/manim/**/dist/**
+!content/manim/**/dist/
+!content/manim/**/dist/final/
+!content/manim/**/dist/final/**
 
 # Local environment files
 .env

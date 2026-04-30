@@ -24,18 +24,19 @@
   - `packages/applet-sdk/docs/status-fields.md` 定义资源生命周期、实现阶段、审核状态和运行态状态变量。
   - `packages/applet-sdk/docs/event-protocol.md` 定义播放器与 Applet 的 `postMessage` 事件协议。
   - `packages/applet-sdk/docs/player-embed-contract.md` 定义 iframe 播放器嵌入契约。
-- 已在 `track/manim-pipeline` 上创建 Manim 流水线第一步草稿：
+- 已在 `track/manim-pipeline` 上创建 Manim 流水线第一步：
   - `packages/manim-pipeline/schemas/manim-clip-metadata.schema.json` 定义 Manim Clip metadata schema 草稿。
   - `packages/manim-pipeline/docs/resource-package.md` 定义 Manim 资源包目录结构、草稿阶段和渲染阶段字段。
   - `packages/manim-pipeline/docs/render-export-and-platform-card.md` 说明如何导出 `mp4` / `webm` / poster，并说明后续如何接入平台资源卡。
-  - `content/manim/SH-HS-MATH-HJ-B2-C07-L01-M01/` 已创建“正弦曲线的来源”资源包草稿，包含 `metadata.yaml`、`README.md`、`storyboard.md`、`scene.py` 和 `review.md`。
-  - 当前 Manim 资源仍为 `draft` / `scene_draft`，尚未渲染视频，也尚未接入平台视频播放器。
+  - `content/manim/SH-HS-MATH-HJ-B2-C07-L01-M01/` 已创建“正弦曲线的来源”资源包，包含 `metadata.yaml`、`README.md`、`storyboard.md`、`scene.py`、`review.md` 和 `dist/final/` 视频产物。
+  - 当前 Manim 资源仍为 `draft` 内容状态，但渲染阶段已到 `video_ready`：已导出 1080p30 `mp4`、`webm` 和 poster，可用于平台预览和内部教研复核。
 - 已在 `track/platform-shell` 上搭建教师端平台壳 MVP：
   - 根目录新增 npm/Vite 工程脚本，`apps/web` 为教师工作台入口。
-  - `apps/web/src/lib/content.js` 可读取 `content/curriculum/index.yaml` 和 `content/applets/*/metadata.yaml`，生成平台需要的课程树、课时资源卡、metadata 预览和脚本入口数据。
+  - `apps/web/src/lib/content.js` 可读取 `content/curriculum/index.yaml`、`content/applets/*/metadata.yaml` 和 `content/manim/*/metadata.yaml`，生成平台需要的课程树、课时资源卡、metadata 预览和脚本入口数据。
   - 平台壳现可识别 `files.src_entry` 且 `implementation.html_src_status: runnable` 的 Applet 资源，并在教师工作台资源详情区提供 iframe 真实课件预览。
+  - 平台壳现可识别 Manim `platform_card.availability: video_ready` 且 `files.output_webm` / `files.output_mp4` 存在的资源，并在教师工作台资源详情区提供 `<video>` 预览。
   - `apps/web/src/data/workspace-data.json` 由 `npm run generate:content` 生成，供前端静态读取。
-  - 页面已包含教材树、课时知识卡、资源卡片、样板 Applet metadata 预览、真实 Applet iframe 预览、教师脚本与学生活动入口；尚未落地的 Manim、Diagnosis 和 proposed 资源继续显示规划中占位。
+  - 页面已包含教材树、课时知识卡、资源卡片、样板 Applet metadata 预览、真实 Applet iframe 预览、样板 Manim 视频预览、教师脚本、学生活动和 Manim 分镜入口；尚未落地的 Diagnosis 和 proposed 资源继续显示规划中占位。
 
 ## 已建立的项目骨架
 
@@ -72,10 +73,10 @@
 - 第 7 章的前置章节节点、第 8 章平面向量和第 9 章复数等后续节点仍是引用占位，尚未展开为完整图谱。
 - 尚未创建独立课件播放器；教师工作台内已完成样板 Applet iframe 预览接入，但尚未沉淀为独立 `apps/player`。
 - 已创建第一个可运行 HTML Applet 原型，并已接入平台壳 iframe 预览；尚未完成数学审校和课堂试用。
-- 已创建第一个 Manim 场景脚本草稿；尚未导出可播放 `mp4` / `webm`，也尚未完成 Manim 预览渲染、数学审校或课堂试用。
+- 已创建第一个 Manim 场景脚本并导出可播放 `mp4` / `webm` / poster；尚未完成数学审校或课堂试用。
 - 尚未将 Applet metadata JSON Schema 接入自动校验脚本。
 - 尚未将 Manim metadata JSON Schema 接入自动校验脚本。
-- 平台壳尚未读取 `content/manim/*/metadata.yaml` 或渲染 Manim 视频资源卡。
+- 平台壳已读取 `content/manim/*/metadata.yaml` 并渲染样板 Manim 视频资源卡；尚未沉淀为独立播放器或接入播放器级学习状态记录。
 - 尚未配置 GitHub 分支保护规则。
 
 ## 继续工作时优先读取

@@ -522,12 +522,26 @@ li {
   background: #ffffff;
 }
 
+.video-frame-shell {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #101820;
+}
+
 .player-frame-shell iframe {
   display: block;
   width: 100%;
   min-height: 720px;
   border: 0;
   aspect-ratio: 16 / 10;
+}
+
+.video-frame-shell video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #101820;
 }
 
 .metadata-summary div {

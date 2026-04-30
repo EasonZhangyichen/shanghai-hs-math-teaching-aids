@@ -11,6 +11,9 @@ content/manim/SH-HS-MATH-HJ-B2-C07-L01-M01/
   storyboard.md
   scene.py
   review.md
+  dist/final/<resource-id>.mp4
+  dist/final/<resource-id>.webm
+  dist/final/<resource-id>-poster.png
 ```
 
 目录规范与导出流程详见：
@@ -38,4 +41,4 @@ content/manim/SH-HS-MATH-HJ-B2-C07-L01-M01/
 
 ## 当前样板
 
-- `SH-HS-MATH-HJ-B2-C07-L01-M01`：正弦曲线的来源，当前为 `scene_draft`，已包含 Manim 场景脚本草稿，尚未导出 `mp4` / `webm`。
+- `SH-HS-MATH-HJ-B2-C07-L01-M01`：正弦曲线的来源，当前为 `video_ready`，已导出 1080p30 `mp4` / `webm` / poster，并可在平台资源卡中预览。

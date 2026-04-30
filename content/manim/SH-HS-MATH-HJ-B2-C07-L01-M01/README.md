@@ -3,7 +3,7 @@
 资源 ID：`SH-HS-MATH-HJ-B2-C07-L01-M01`
 版本：`0.1.0`
 状态：`draft`
-类型：Manim Clip 场景草稿
+类型：Manim Clip 视频资源
 
 ## 资源定位
 
@@ -33,13 +33,14 @@
 
 - `metadata.yaml`：Manim Clip metadata 草稿。
 - `storyboard.md`：五幕分镜和暂停问题。
-- `scene.py`：Manim 场景脚本草稿。
-- `review.md`：草稿阶段审核记录。
+- `scene.py`：Manim 场景脚本。
+- `review.md`：审核记录。
+- `dist/final/SH-HS-MATH-HJ-B2-C07-L01-M01.mp4`：课堂播放视频。
+- `dist/final/SH-HS-MATH-HJ-B2-C07-L01-M01.webm`：平台网页预览视频。
+- `dist/final/SH-HS-MATH-HJ-B2-C07-L01-M01-poster.png`：视频封面。
 
-本包暂不包含：
+本包暂不覆盖：
 
-- 已渲染的 `mp4` / `webm`。
-- 平台视频播放器实际代码改造。
 - 正弦函数性质的系统归纳。
 
 ## 导出与平台接入
@@ -47,13 +48,13 @@
 预览命令：
 
 ```bash
-manim -pql scene.py SineOriginScene
+uvx manim -ql --media_dir dist scene.py SineOriginScene
 ```
 
 高质量 mp4 导出：
 
 ```bash
-manim -r 1920,1080 --fps 30 --format=mp4 --media_dir dist scene.py SineOriginScene
+uvx manim -r 1920,1080 --fps 30 --format=mp4 --media_dir dist scene.py SineOriginScene
 ```
 
 webm 建议从最终 mp4 转码：
@@ -62,4 +63,10 @@ webm 建议从最终 mp4 转码：
 ffmpeg -y -i dist/final/SH-HS-MATH-HJ-B2-C07-L01-M01.mp4 -c:v libvpx-vp9 -b:v 0 -crf 32 -an dist/final/SH-HS-MATH-HJ-B2-C07-L01-M01.webm
 ```
 
-渲染完成后再把 `metadata.yaml` 中的 `render_plan.phase` 改为 `rendered`，补齐 `files.output_mp4`、`files.output_webm` 和 `files.poster`，平台资源卡即可从 metadata 中读取稳定视频入口。
+生成 poster：
+
+```bash
+ffmpeg -y -ss 00:00:03 -i dist/final/SH-HS-MATH-HJ-B2-C07-L01-M01.mp4 -frames:v 1 dist/final/SH-HS-MATH-HJ-B2-C07-L01-M01-poster.png
+```
+
+`metadata.yaml` 已将 `render_plan.phase` 标记为 `rendered`，并补齐 `files.output_mp4`、`files.output_webm` 和 `files.poster`，平台资源卡会从 metadata 中读取稳定视频入口。

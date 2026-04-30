@@ -5,12 +5,15 @@ import YAML from "yaml";
 
 const CURRICULUM_PATH = "content/curriculum/index.yaml";
 const APPLETS_DIR = "content/applets";
+const MANIM_DIR = "content/manim";
 
 export async function loadTeacherWorkspace({ rootDir = process.cwd() } = {}) {
   const curriculum = await readYaml(path.join(rootDir, CURRICULUM_PATH));
   const appletPackages = await loadAppletPackages(rootDir);
-  const appletsById = new Map(appletPackages.map((resource) => [resource.id, resource]));
-  const appletsByLesson = groupBy(appletPackages, (resource) => resource.lessonId);
+  const manimPackages = await loadManimPackages(rootDir);
+  const resourcePackages = [...appletPackages, ...manimPackages];
+  const resourcesById = new Map(resourcePackages.map((resource) => [resource.id, resource]));
+  const resourcesByLesson = groupBy(resourcePackages, (resource) => resource.lessonId);
 
   const lessonsById = {};
   const lessons = [];
@@ -31,8 +34,8 @@ export async function loadTeacherWorkspace({ rootDir = process.cwd() } = {}) {
               volume,
               chapter,
               section,
-              appletsById,
-              appletsByLesson,
+              resourcesById,
+              resourcesByLesson,
             });
             lessonsById[teacherLesson.id] = teacherLesson;
             lessons.push(teacherLesson);
@@ -78,6 +81,7 @@ export async function loadTeacherWorkspace({ rootDir = process.cwd() } = {}) {
   });
 
   const implementedAppletCount = appletPackages.length;
+  const implementedManimCount = manimPackages.length;
   const plannedResourceCount = lessons
     .flatMap((lesson) => lesson.resources)
     .filter((resource) => resource.availability === "proposed").length;
@@ -86,6 +90,7 @@ export async function loadTeacherWorkspace({ rootDir = process.cwd() } = {}) {
     sources: {
       curriculum: CURRICULUM_PATH,
       applets: appletPackages.map((resource) => resource.package.path),
+      manim: manimPackages.map((resource) => resource.package.path),
     },
     project: curriculum.project,
     tree: { volumes },
@@ -98,6 +103,7 @@ export async function loadTeacherWorkspace({ rootDir = process.cwd() } = {}) {
       chapterCount,
       lessonCount: lessons.length,
       implementedAppletCount,
+      implementedManimCount,
       plannedResourceCount,
     },
   };
@@ -164,11 +170,80 @@ async function loadAppletPackages(rootDir) {
   return packages.filter(Boolean).sort((left, right) => left.id.localeCompare(right.id));
 }
 
-function buildLesson({ lesson, volume, chapter, section, appletsById, appletsByLesson }) {
+async function loadManimPackages(rootDir) {
+  const manimRoot = path.join(rootDir, MANIM_DIR);
+
+  if (!(await exists(manimRoot))) {
+    return [];
+  }
+
+  const entries = await readdir(manimRoot, { withFileTypes: true });
+  const directories = entries.filter((entry) => entry.isDirectory());
+
+  const packages = await Promise.all(
+    directories.map(async (entry) => {
+      const packageDir = path.join(manimRoot, entry.name);
+      const metadataPath = path.join(packageDir, "metadata.yaml");
+
+      if (!(await exists(metadataPath))) {
+        return null;
+      }
+
+      const metadata = await readYaml(metadataPath);
+      const packagePath = toRepoPath(rootDir, packageDir);
+      const storyboard = await readMarkdownEntry({
+        rootDir,
+        filePath: path.join(packageDir, metadata.files?.storyboard ?? "storyboard.md"),
+        kind: "storyboard",
+      });
+      const outputMp4 = metadata.files?.output_mp4
+        ? path.join(packageDir, metadata.files.output_mp4)
+        : null;
+      const outputWebm = metadata.files?.output_webm
+        ? path.join(packageDir, metadata.files.output_webm)
+        : null;
+      const poster = metadata.files?.poster ? path.join(packageDir, metadata.files.poster) : null;
+
+      return {
+        id: metadata.id,
+        lessonId: metadata.curriculum?.lesson_id,
+        resourceType: metadata.resource_type,
+        title: metadata.title,
+        subtitle: metadata.subtitle,
+        status: metadata.status,
+        version: metadata.version,
+        metadata,
+        package: {
+          path: packagePath,
+          files: {
+            metadata: toRepoPath(rootDir, metadataPath),
+            readme: toRepoPath(rootDir, path.join(packageDir, metadata.files?.readme ?? "README.md")),
+            storyboard: storyboard?.path ?? null,
+            scene: toRepoPath(rootDir, path.join(packageDir, metadata.files?.scene ?? "scene.py")),
+            reviewRecord: toRepoPath(rootDir, path.join(packageDir, metadata.files?.review_record ?? "review.md")),
+            outputMp4: outputMp4 ? toRepoPath(rootDir, outputMp4) : null,
+            outputWebm: outputWebm ? toRepoPath(rootDir, outputWebm) : null,
+            poster: poster ? toRepoPath(rootDir, poster) : null,
+          },
+          media: {
+            hasOutputMp4: outputMp4 ? await exists(outputMp4) : false,
+            hasOutputWebm: outputWebm ? await exists(outputWebm) : false,
+            hasPoster: poster ? await exists(poster) : false,
+          },
+          storyboard,
+        },
+      };
+    }),
+  );
+
+  return packages.filter(Boolean).sort((left, right) => left.id.localeCompare(right.id));
+}
+
+function buildLesson({ lesson, volume, chapter, section, resourcesById, resourcesByLesson }) {
   const resources = buildResourceCards({
     lesson,
-    appletsById,
-    lessonApplets: appletsByLesson.get(lesson.id) ?? [],
+    resourcesById,
+    lessonPackages: resourcesByLesson.get(lesson.id) ?? [],
   });
 
   return {
@@ -202,12 +277,12 @@ function buildLesson({ lesson, volume, chapter, section, appletsById, appletsByL
   };
 }
 
-function buildResourceCards({ lesson, appletsById, lessonApplets }) {
+function buildResourceCards({ lesson, resourcesById, lessonPackages }) {
   const cards = ensureArray(lesson.digital_entry_points).map((entry) => {
-    const packageResource = appletsById.get(entry.proposed_resource_id);
+    const packageResource = resourcesById.get(entry.proposed_resource_id);
 
     if (packageResource) {
-      return buildImplementedAppletCard(entry, packageResource);
+      return buildImplementedResourceCard(entry, packageResource);
     }
 
     return {
@@ -226,14 +301,16 @@ function buildResourceCards({ lesson, appletsById, lessonApplets }) {
   });
 
   const proposedIds = new Set(cards.map((card) => card.id));
-  const unlistedAppletCards = lessonApplets
+  const unlistedPackageCards = lessonPackages
     .filter((resource) => !proposedIds.has(resource.id))
-    .map((resource) => buildImplementedAppletCard(null, resource));
+    .map((resource) => buildImplementedResourceCard(null, resource));
 
-  return [...cards, ...unlistedAppletCards];
+  return [...cards, ...unlistedPackageCards];
 }
 
-function buildImplementedAppletCard(entry, packageResource) {
+function buildImplementedResourceCard(entry, packageResource) {
+  const metadataAvailability = packageResource.metadata.platform_card?.availability;
+
   return {
     id: packageResource.id,
     resourceType: packageResource.resourceType,
@@ -241,16 +318,20 @@ function buildImplementedAppletCard(entry, packageResource) {
     subtitle: packageResource.subtitle,
     cognitiveAction: packageResource.metadata.pedagogy?.cognitive_action ?? entry?.cognitive_action ?? null,
     note: entry?.note ?? packageResource.metadata.pedagogy?.primary_teaching_problem ?? "",
-    availability: "metadata_ready",
+    availability: metadataAvailability ?? "metadata_ready",
     status: packageResource.status,
     version: packageResource.version,
     metadataPreview: buildMetadataPreview(packageResource.metadata),
-    player: buildAppletPlayer(packageResource),
+    player: buildResourcePlayer(packageResource),
     package: packageResource.package,
   };
 }
 
-function buildAppletPlayer(packageResource) {
+function buildResourcePlayer(packageResource) {
+  if (packageResource.resourceType === "manim_clip") {
+    return buildManimPlayer(packageResource);
+  }
+
   const srcEntry = packageResource.package.files.srcEntry;
   const htmlSrcStatus = packageResource.metadata.implementation?.html_src_status;
 
@@ -259,10 +340,37 @@ function buildAppletPlayer(packageResource) {
   }
 
   return {
+    kind: "iframe",
     isRunnable: true,
     src: srcEntry,
     title: packageResource.title,
     sandbox: "allow-scripts allow-same-origin",
+  };
+}
+
+function buildManimPlayer(packageResource) {
+  const availability = packageResource.metadata.platform_card?.availability;
+  const hasVideo = packageResource.package.media.hasOutputWebm || packageResource.package.media.hasOutputMp4;
+
+  if (availability !== "video_ready" || !hasVideo) {
+    return null;
+  }
+
+  const sources = [
+    packageResource.package.media.hasOutputWebm && packageResource.package.files.outputWebm
+      ? { src: packageResource.package.files.outputWebm, type: "video/webm" }
+      : null,
+    packageResource.package.media.hasOutputMp4 && packageResource.package.files.outputMp4
+      ? { src: packageResource.package.files.outputMp4, type: "video/mp4" }
+      : null,
+  ].filter(Boolean);
+
+  return {
+    kind: "video",
+    isRunnable: true,
+    title: packageResource.title,
+    poster: packageResource.package.media.hasPoster ? packageResource.package.files.poster : null,
+    sources,
   };
 }
 
@@ -286,6 +394,11 @@ function buildMetadataPreview(metadata) {
     },
     mathematicalScope: metadata.mathematical_scope,
     representations: ensureArray(metadata.representations),
+    narrativeDesign: {
+      targetDurationSeconds: metadata.narrative_design?.target_duration_seconds,
+      beats: ensureArray(metadata.narrative_design?.beats),
+      pausePoints: ensureArray(metadata.narrative_design?.pause_points),
+    },
     interactionDesign: {
       primaryControl: metadata.interaction_design?.primary_control,
       teacherControls: ensureArray(metadata.interaction_design?.teacher_controls),
@@ -293,6 +406,9 @@ function buildMetadataPreview(metadata) {
       stagedReveal: ensureArray(metadata.interaction_design?.staged_reveal),
     },
     dataContract: metadata.data_contract,
+    renderPlan: metadata.render_plan,
+    platformCard: metadata.platform_card,
+    files: metadata.files,
     feedbackAndDiagnosis: metadata.feedback_and_diagnosis,
     visualSemantics: metadata.visual_semantics,
     implementation: metadata.implementation,
