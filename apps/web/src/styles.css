@@ -448,6 +448,84 @@ li {
   margin-bottom: 16px;
 }
 
+.resource-detail-header,
+.player-preview {
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.resource-detail-header,
+.player-preview-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.resource-detail-header h4,
+.player-preview-header h4 {
+  margin: 0;
+  color: var(--ink);
+  font-size: 1rem;
+}
+
+.resource-detail-header p,
+.player-preview-header p {
+  margin: 0;
+  color: #3f4852;
+}
+
+.detail-kicker {
+  color: var(--muted) !important;
+  font-size: 0.74rem;
+  font-weight: 800;
+}
+
+.detail-status {
+  flex: 0 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 7px;
+}
+
+.detail-status span,
+.player-preview-header > span {
+  padding: 6px 8px;
+  border-radius: 8px;
+  color: #344054;
+  background: #edf1f5;
+  font-size: 0.74rem;
+  font-weight: 750;
+}
+
+.player-preview {
+  display: grid;
+  gap: 12px;
+}
+
+.player-preview-header > span {
+  max-width: 280px;
+  overflow-wrap: anywhere;
+  font-weight: 600;
+}
+
+.player-frame-shell {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.player-frame-shell iframe {
+  display: block;
+  width: 100%;
+  min-height: 520px;
+  border: 0;
+  aspect-ratio: 16 / 10;
+}
+
 .metadata-summary div {
   min-height: 68px;
   display: grid;
@@ -583,13 +661,16 @@ li {
 
   .topbar,
   .lesson-header,
-  .section-heading {
+  .section-heading,
+  .resource-detail-header,
+  .player-preview-header {
     align-items: flex-start;
     flex-direction: column;
   }
 
   .source-strip,
-  .lesson-meta {
+  .lesson-meta,
+  .detail-status {
     justify-content: flex-start;
   }
 
@@ -601,5 +682,9 @@ li {
 
   .lesson-header h2 {
     font-size: 1.55rem;
+  }
+
+  .player-frame-shell iframe {
+    min-height: 620px;
   }
 }

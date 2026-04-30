@@ -521,6 +521,12 @@
               "review_status": "self_checked_draft"
             }
           },
+          "player": {
+            "isRunnable": true,
+            "src": "content/applets/SH-HS-MATH-HJ-B2-C07-L01-A01/src/index.html",
+            "title": "单位圆到正弦曲线",
+            "sandbox": "allow-scripts allow-same-origin"
+          },
           "package": {
             "path": "content/applets/SH-HS-MATH-HJ-B2-C07-L01-A01",
             "files": {
@@ -571,6 +577,7 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "player": null,
           "package": null
         }
       ]
@@ -651,6 +658,7 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "player": null,
           "package": null
         },
         {
@@ -663,6 +671,7 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "player": null,
           "package": null
         }
       ]
@@ -742,6 +751,7 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "player": null,
           "package": null
         },
         {
@@ -754,6 +764,7 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "player": null,
           "package": null
         }
       ]
@@ -833,6 +844,7 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "player": null,
           "package": null
         },
         {
@@ -845,6 +857,7 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "player": null,
           "package": null
         }
       ]
@@ -934,6 +947,7 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "player": null,
           "package": null
         },
         {
@@ -946,6 +960,7 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "player": null,
           "package": null
         },
         {
@@ -958,6 +973,7 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "player": null,
           "package": null
         }
       ]
@@ -1037,6 +1053,7 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "player": null,
           "package": null
         },
         {
@@ -1049,6 +1066,7 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "player": null,
           "package": null
         }
       ]
@@ -1128,6 +1146,7 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "player": null,
           "package": null
         },
         {
@@ -1140,6 +1159,7 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "player": null,
           "package": null
         }
       ]
@@ -1469,6 +1489,12 @@
               "review_status": "self_checked_draft"
             }
           },
+          "player": {
+            "isRunnable": true,
+            "src": "content/applets/SH-HS-MATH-HJ-B2-C07-L01-A01/src/index.html",
+            "title": "单位圆到正弦曲线",
+            "sandbox": "allow-scripts allow-same-origin"
+          },
           "package": {
             "path": "content/applets/SH-HS-MATH-HJ-B2-C07-L01-A01",
             "files": {
@@ -1519,6 +1545,7 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "player": null,
           "package": null
         }
       ]
@@ -1599,6 +1626,7 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "player": null,
           "package": null
         },
         {
@@ -1611,6 +1639,7 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "player": null,
           "package": null
         }
       ]
@@ -1690,6 +1719,7 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "player": null,
           "package": null
         },
         {
@@ -1702,6 +1732,7 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "player": null,
           "package": null
         }
       ]
@@ -1781,6 +1812,7 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "player": null,
           "package": null
         },
         {
@@ -1793,6 +1825,7 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "player": null,
           "package": null
         }
       ]
@@ -1882,6 +1915,7 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "player": null,
           "package": null
         },
         {
@@ -1894,6 +1928,7 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "player": null,
           "package": null
         },
         {
@@ -1906,6 +1941,7 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "player": null,
           "package": null
         }
       ]
@@ -1985,6 +2021,7 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "player": null,
           "package": null
         },
         {
@@ -1997,6 +2034,7 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "player": null,
           "package": null
         }
       ]
@@ -2076,6 +2114,7 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "player": null,
           "package": null
         },
         {
@@ -2088,6 +2127,7 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "player": null,
           "package": null
         }
       ]

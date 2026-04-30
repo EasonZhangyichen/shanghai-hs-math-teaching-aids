@@ -33,6 +33,12 @@ test("links the sample applet package to lesson L01 with script and activity ent
   assert.equal(applet.metadataPreview.implementation.phase, "runnable_prototype");
   assert.equal(applet.metadataPreview.implementation.html_src_status, "runnable");
   assert.equal(applet.package.files.srcEntry, "content/applets/SH-HS-MATH-HJ-B2-C07-L01-A01/src/index.html");
+  assert.deepEqual(applet.player, {
+    isRunnable: true,
+    src: "content/applets/SH-HS-MATH-HJ-B2-C07-L01-A01/src/index.html",
+    title: "单位圆到正弦曲线",
+    sandbox: "allow-scripts allow-same-origin",
+  });
   assert.equal(applet.package.teacherScript.title, "教师脚本：单位圆到正弦曲线");
   assert.equal(applet.package.studentTask.title, "学生活动：从单位圆生成正弦曲线");
 });
@@ -59,5 +65,6 @@ test("keeps proposed lesson resources visible even when no playable applet exist
     ["applet", "manim_clip", "diagnosis"],
   );
   assert.ok(lesson.resources.every((resource) => resource.availability === "proposed"));
+  assert.ok(lesson.resources.every((resource) => resource.player === null));
   assert.ok(workspace.summary.plannedResourceCount >= 10);
 });
