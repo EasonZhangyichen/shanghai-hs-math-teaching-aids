@@ -1,0 +1,170 @@
+schema_version: "0.1.0"
+id: "SH-HS-MATH-HJ-B2-C07-L01-M01"
+version: "0.1.0"
+status: "draft"
+resource_type: "manim_clip"
+title: "正弦曲线的来源"
+subtitle: "从单位圆旋转到 y = sin x 的连续生成动画"
+
+curriculum:
+  region: "上海"
+  stage: "高中"
+  subject: "数学"
+  edition: "沪教版"
+  volume_id: "B2"
+  volume_title: "必修第二册"
+  chapter_id: "SH-HS-MATH-HJ-B2-C07"
+  chapter_title: "三角函数"
+  section_id: "SH-HS-MATH-HJ-B2-C07-S01"
+  section_title: "正弦函数的图像与性质"
+  lesson_id: "SH-HS-MATH-HJ-B2-C07-L01"
+  textbook_ref: "7.1.1"
+  lesson_title: "正弦函数的图像"
+
+pedagogy:
+  cognitive_action: "投影"
+  estimated_classroom_minutes: 4
+  primary_teaching_problem: "学生容易把正弦曲线当成需要记忆的静态形状，不能解释它如何由单位圆动点的纵坐标连续生成。"
+  learning_goals:
+    - "看见单位圆动点 P 的纵坐标如何成为 sin x 的函数值。"
+    - "说明图像点 Q 的横坐标是角 x 的弧度量，纵坐标是 sin x。"
+    - "用一周旋转解释正弦曲线的关键点和周期重复来源。"
+  prerequisites:
+    - "弧度制和终边相同角"
+    - "单位圆中的正弦定义"
+    - "函数图像上的点坐标表示"
+  successors:
+    - "SH-HS-MATH-HJ-B2-C07-L01-A01"
+    - "SH-HS-MATH-HJ-B2-C07-L02"
+    - "SH-HS-MATH-HJ-B2-C07-L05"
+  core_competencies:
+    - "直观想象"
+    - "数学抽象"
+    - "数学建模"
+  classroom_use: "新授课导入 60 到 90 秒播放一次，随后暂停到 Applet 让学生拖动验证；也可在学生混淆横坐标来源时回放。"
+
+mathematical_scope:
+  function: "y = sin x"
+  independent_variable: "角 x 的弧度量"
+  dependent_variable: "单位圆动点 P 的纵坐标"
+  theta_range: "0 <= x <= 2pi，结尾提示 x 与 x + 2pi 的终边重合"
+  key_angles:
+    - x: "0"
+      sin_x: "0"
+      graph_point: "(0, 0)"
+    - x: "pi/2"
+      sin_x: "1"
+      graph_point: "(pi/2, 1)"
+    - x: "pi"
+      sin_x: "0"
+      graph_point: "(pi, 0)"
+    - x: "3pi/2"
+      sin_x: "-1"
+      graph_point: "(3pi/2, -1)"
+    - x: "2pi"
+      sin_x: "0"
+      graph_point: "(2pi, 0)"
+  out_of_scope:
+    - "正弦函数单调区间的完整归纳"
+    - "正弦函数奇偶性和对称性的系统证明"
+    - "余弦、正切或参数函数图像"
+
+representations:
+  - id: "unit_circle"
+    role: "显示角 x、终边和动点 P。"
+  - id: "vertical_projection"
+    role: "突出 P 的纵坐标就是 sin x。"
+  - id: "graph_point"
+    role: "显示 Q = (x, sin x) 与 P 同步移动。"
+  - id: "sine_trace"
+    role: "保留 Q 的运动轨迹，形成正弦曲线。"
+  - id: "period_hint"
+    role: "用终边重合提示 2pi 周期。"
+
+narrative_design:
+  target_duration_seconds: 75
+  beats:
+    - id: "recall_unit_circle"
+      title: "回到单位圆"
+      purpose: "让学生先确认 sin x 是单位圆动点 P 的纵坐标。"
+      visuals:
+        - "单位圆、坐标轴、角 x、动点 P。"
+        - "P = (cos x, sin x) 标签。"
+      estimated_seconds: 12
+    - id: "extract_height"
+      title: "抽取纵坐标"
+      purpose: "把 P 的高度用投影线单独抽出来，建立 sin x 的数值来源。"
+      visuals:
+        - "从 P 到 y 轴或水平参考线的投影。"
+        - "sin x 高度随旋转上升、下降。"
+      estimated_seconds: 14
+    - id: "place_graph_point"
+      title: "放到函数图像"
+      purpose: "把同一个 x 放在右侧横轴上，形成 Q = (x, sin x)。"
+      visuals:
+        - "右侧坐标系。"
+        - "从单位圆高度连接到图像点 Q。"
+      estimated_seconds: 16
+    - id: "trace_one_period"
+      title: "描出一周轨迹"
+      purpose: "让 Q 的连续运动留下 0 到 2pi 的正弦曲线。"
+      visuals:
+        - "Q 的轨迹逐渐生成。"
+        - "关键角处短暂停顿。"
+      estimated_seconds: 25
+    - id: "hint_periodicity"
+      title: "提示周期重复"
+      purpose: "用终边重合解释曲线为什么继续重复，而不是只展示结论。"
+      visuals:
+        - "x 与 x + 2pi 终边重合。"
+        - "同一高度对应相同正弦值。"
+      estimated_seconds: 8
+  pause_points:
+    - after_beat: "place_graph_point"
+      teacher_prompt: "Q 的横坐标为什么写成 x，而不是单位圆上 P 的横坐标 cos x？"
+    - after_beat: "trace_one_period"
+      teacher_prompt: "如果动点再转一周，图像会怎样重复？理由来自哪里？"
+
+visual_semantics:
+  angle_arc: "表示角 x 的弧度量。"
+  moving_point: "表示单位圆上的动点 P。"
+  vertical_height: "表示 P 的纵坐标 sin x。"
+  graph_point: "表示函数图像上的点 Q = (x, sin x)。"
+  generated_trace: "表示 Q 随 x 连续变化形成的正弦曲线。"
+  rule: "颜色只用于区分数学对象和对应关系，不作装饰。"
+
+render_plan:
+  phase: "scene_draft"
+  manim_version: "Manim Community 0.19.x target; not pinned in repo yet"
+  scene_class: "SineOriginScene"
+  aspect_ratio: "16:9"
+  resolution: "1920x1080"
+  fps: 30
+  background: "light classroom background"
+  output_formats:
+    - "mp4"
+    - "webm"
+  commands:
+    preview: "manim -pql scene.py SineOriginScene"
+    mp4: "manim -r 1920,1080 --fps 30 --format=mp4 --media_dir dist scene.py SineOriginScene"
+    webm: "ffmpeg -y -i dist/final/SH-HS-MATH-HJ-B2-C07-L01-M01.mp4 -c:v libvpx-vp9 -b:v 0 -crf 32 -an dist/final/SH-HS-MATH-HJ-B2-C07-L01-M01.webm"
+  notes:
+    - "当前 scene.py 是脚本草稿，进入 render_ready 前需教师确认分镜节奏和关键暂停点。"
+    - "渲染后再填写 files.output_mp4、files.output_webm 和 files.poster。"
+
+files:
+  readme: "README.md"
+  storyboard: "storyboard.md"
+  scene: "scene.py"
+  review_record: "review.md"
+
+platform_card:
+  availability: "metadata_ready"
+  preview_behavior: "metadata_placeholder"
+  embed_strategy: "渲染前显示 metadata 与 storyboard 摘要；渲染后读取 files.output_webm 和 files.output_mp4，用 video 标签接入资源卡。"
+  paired_resources:
+    - "SH-HS-MATH-HJ-B2-C07-L01-A01"
+
+compliance:
+  copyright_note: "本资源包为原创 Manim 场景脚本与教学分镜，不复制教材正文、官方课件、教案或商业平台资源。"
+  review_status: "self_checked_draft"
