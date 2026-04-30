@@ -26,20 +26,24 @@
 ## P2：课件规范
 
 - [x] 定义 Applet metadata schema。
-- [ ] 定义 Manim clip metadata schema。
+- [x] 定义 Manim clip metadata schema 草稿。
 - [x] 定义 Applet 资源包目录结构。
+- [x] 定义 Manim 资源包目录结构与导出接入说明草稿。
 - [x] 定义 Applet 状态字段、事件协议和播放器嵌入契约。
 - [ ] 定义课时页聚合资源包目录结构。
 - [ ] 定义 Manim 与 Diagnosis 的数学审校、教研审核字段。
 - [ ] 将 Applet metadata schema 接入校验脚本。
+- [ ] 将 Manim metadata schema 接入校验脚本。
 
 ## P3：三角函数样板包
 
 - [x] 设计“单位圆到正弦曲线”交互脚本。
 - [x] 创建 `SH-HS-MATH-HJ-B2-C07-L01-A01` 的 metadata、教师脚本、学生任务和审核草稿。
+- [x] 创建 `SH-HS-MATH-HJ-B2-C07-L01-M01` 的 Manim metadata、分镜、场景脚本草稿和审核记录。
 - [ ] 设计“正弦函数图像与性质”交互脚本。
 - [ ] 设计“图像变换实验室”交互脚本。
-- [ ] 设计两个 Manim 场景脚本。
+- [ ] 设计第二个 Manim 场景脚本：`SH-HS-MATH-HJ-B2-C07-L05-M01`“图像变换顺序解释”。
+- [ ] 渲染并复核 `SH-HS-MATH-HJ-B2-C07-L01-M01` 的 `mp4`、`webm` 和 poster。
 - [x] 创建第一个可运行 HTML Applet。
 - [ ] 对“单位圆到正弦曲线”HTML Applet 做数学边界复核和课堂节奏试读。
 
@@ -50,4 +54,5 @@
 - [x] 从 `content/curriculum/index.yaml` 读取课程树。
 - [x] 以课时页聚合 Applet、Manim、脚本和任务。
 - [x] 将样板 Applet 接入教师工作台 iframe，占位预览升级为可运行课件入口。
+- [ ] 读取 `content/manim/*/metadata.yaml`，将 Manim `metadata_ready` 和 `video_ready` 状态接入平台资源卡。
 - [ ] 将平台内 iframe 预览沉淀为独立 `apps/player`，补齐播放器级控制、错误提示和状态记录。

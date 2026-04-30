@@ -1,0 +1,514 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/EasonZhangyichen/shanghai-hs-math-teaching-aids/packages/manim-pipeline/schemas/manim-clip-metadata.schema.json",
+  "title": "Shanghai High School Math Manim Clip Metadata",
+  "description": "Draft metadata contract for Manim clip resource packages in the Shanghai high school math teaching aids project.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "id",
+    "version",
+    "status",
+    "resource_type",
+    "title",
+    "curriculum",
+    "pedagogy",
+    "mathematical_scope",
+    "representations",
+    "narrative_design",
+    "visual_semantics",
+    "render_plan",
+    "files",
+    "platform_card",
+    "compliance"
+  ],
+  "properties": {
+    "schema_version": {
+      "$ref": "#/$defs/semver"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^SH-HS-MATH-HJ-(?:B[0-9]+|XB[0-9]+)-C[0-9]{2}-L[0-9]{2}-M[0-9]{2}$"
+    },
+    "version": {
+      "$ref": "#/$defs/semver"
+    },
+    "status": {
+      "$ref": "#/$defs/resourceStatus"
+    },
+    "resource_type": {
+      "const": "manim_clip"
+    },
+    "title": {
+      "$ref": "#/$defs/nonEmptyString"
+    },
+    "subtitle": {
+      "$ref": "#/$defs/nonEmptyString"
+    },
+    "curriculum": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "region",
+        "stage",
+        "subject",
+        "edition",
+        "volume_id",
+        "volume_title",
+        "chapter_id",
+        "chapter_title",
+        "section_id",
+        "section_title",
+        "lesson_id",
+        "textbook_ref",
+        "lesson_title"
+      ],
+      "properties": {
+        "region": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "stage": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "subject": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "edition": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "volume_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "volume_title": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "chapter_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "chapter_title": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "section_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "section_title": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "lesson_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "textbook_ref": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "lesson_title": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      }
+    },
+    "pedagogy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "cognitive_action",
+        "estimated_classroom_minutes",
+        "primary_teaching_problem",
+        "learning_goals",
+        "prerequisites",
+        "successors",
+        "core_competencies",
+        "classroom_use"
+      ],
+      "properties": {
+        "cognitive_action": {
+          "$ref": "#/$defs/cognitiveAction"
+        },
+        "estimated_classroom_minutes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 90
+        },
+        "primary_teaching_problem": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "learning_goals": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "prerequisites": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "successors": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "core_competencies": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "classroom_use": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      }
+    },
+    "mathematical_scope": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "$ref": "#/$defs/metadataValue"
+      },
+      "properties": {
+        "function": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "independent_variable": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "dependent_variable": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "theta_range": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "key_angles": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/$defs/metadataValue"
+            }
+          }
+        },
+        "out_of_scope": {
+          "$ref": "#/$defs/stringArray"
+        }
+      }
+    },
+    "representations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "role"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "#/$defs/snakeCaseId"
+          },
+          "role": {
+            "$ref": "#/$defs/nonEmptyString"
+          }
+        }
+      }
+    },
+    "narrative_design": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "target_duration_seconds",
+        "beats",
+        "pause_points"
+      ],
+      "properties": {
+        "target_duration_seconds": {
+          "type": "integer",
+          "minimum": 10,
+          "maximum": 180
+        },
+        "beats": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "title",
+              "purpose",
+              "visuals"
+            ],
+            "properties": {
+              "id": {
+                "$ref": "#/$defs/snakeCaseId"
+              },
+              "title": {
+                "$ref": "#/$defs/nonEmptyString"
+              },
+              "purpose": {
+                "$ref": "#/$defs/nonEmptyString"
+              },
+              "visuals": {
+                "$ref": "#/$defs/stringArray"
+              },
+              "estimated_seconds": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 60
+              }
+            }
+          }
+        },
+        "pause_points": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "after_beat",
+              "teacher_prompt"
+            ],
+            "properties": {
+              "after_beat": {
+                "$ref": "#/$defs/snakeCaseId"
+              },
+              "teacher_prompt": {
+                "$ref": "#/$defs/nonEmptyString"
+              }
+            }
+          }
+        }
+      }
+    },
+    "visual_semantics": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "$ref": "#/$defs/metadataValue"
+      }
+    },
+    "render_plan": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "phase",
+        "scene_class",
+        "aspect_ratio",
+        "resolution",
+        "fps",
+        "output_formats",
+        "commands"
+      ],
+      "properties": {
+        "phase": {
+          "enum": [
+            "content_spec_only",
+            "scene_draft",
+            "render_ready",
+            "rendered"
+          ]
+        },
+        "manim_version": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "scene_class": {
+          "$ref": "#/$defs/pascalCaseId"
+        },
+        "aspect_ratio": {
+          "enum": [
+            "16:9",
+            "4:3",
+            "1:1"
+          ]
+        },
+        "resolution": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "fps": {
+          "type": "integer",
+          "minimum": 12,
+          "maximum": 60
+        },
+        "background": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "output_formats": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "enum": [
+              "mp4",
+              "webm"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "commands": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "preview",
+            "mp4",
+            "webm"
+          ],
+          "properties": {
+            "preview": {
+              "$ref": "#/$defs/nonEmptyString"
+            },
+            "mp4": {
+              "$ref": "#/$defs/nonEmptyString"
+            },
+            "webm": {
+              "$ref": "#/$defs/nonEmptyString"
+            }
+          }
+        },
+        "notes": {
+          "$ref": "#/$defs/stringArray"
+        }
+      }
+    },
+    "files": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "readme",
+        "storyboard",
+        "scene",
+        "review_record"
+      ],
+      "properties": {
+        "readme": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "storyboard": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "scene": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "review_record": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "poster": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "output_mp4": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "output_webm": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      }
+    },
+    "platform_card": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "availability",
+        "preview_behavior",
+        "embed_strategy",
+        "paired_resources"
+      ],
+      "properties": {
+        "availability": {
+          "enum": [
+            "metadata_ready",
+            "video_ready"
+          ]
+        },
+        "preview_behavior": {
+          "enum": [
+            "metadata_placeholder",
+            "video_player"
+          ]
+        },
+        "embed_strategy": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "paired_resources": {
+          "$ref": "#/$defs/stringArray"
+        }
+      }
+    },
+    "compliance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "copyright_note",
+        "review_status"
+      ],
+      "properties": {
+        "copyright_note": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "review_status": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "semver": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$"
+    },
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "stringArray": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/nonEmptyString"
+      }
+    },
+    "snakeCaseId": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(?:_[a-z0-9]+)*$"
+    },
+    "pascalCaseId": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Za-z0-9]*$"
+    },
+    "resourceStatus": {
+      "enum": [
+        "draft",
+        "math_review",
+        "pedagogy_review",
+        "classroom_trial",
+        "stable",
+        "deprecated"
+      ]
+    },
+    "cognitiveAction": {
+      "enum": [
+        "比较",
+        "分解",
+        "变换",
+        "逼近",
+        "累积",
+        "缩放",
+        "投影",
+        "模拟"
+      ]
+    },
+    "metadataValue": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "integer"
+        },
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/metadataValue"
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/metadataValue"
+          }
+        }
+      ]
+    }
+  }
+}
