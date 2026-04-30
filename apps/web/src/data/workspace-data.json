@@ -2,7 +2,8 @@
   "sources": {
     "curriculum": "content/curriculum/index.yaml",
     "applets": [
-      "content/applets/SH-HS-MATH-HJ-B2-C07-L01-A01"
+      "content/applets/SH-HS-MATH-HJ-B2-C07-L01-A01",
+      "content/applets/SH-HS-MATH-HJ-B2-C07-L02-A01"
     ],
     "manim": [
       "content/manim/SH-HS-MATH-HJ-B2-C07-L01-M01"
@@ -73,7 +74,7 @@
                     "title": "正弦函数的性质",
                     "status": "draft",
                     "resourceCount": 2,
-                    "hasImplementedApplet": false
+                    "hasImplementedApplet": true
                   }
                 ]
               },
@@ -943,14 +944,378 @@
           "id": "SH-HS-MATH-HJ-B2-C07-L02-A01",
           "resourceType": "applet",
           "title": "正弦函数性质探究",
+          "subtitle": "比较周期段、单调段、对称元素和关键点，归纳 y = sin x 的性质",
           "cognitiveAction": "比较",
           "note": "显示或隐藏周期段、单调段、对称元素和关键点，支持教师分步揭示。",
-          "availability": "proposed",
-          "status": "planned",
-          "version": null,
-          "metadataPreview": null,
-          "player": null,
-          "package": null
+          "availability": "metadata_ready",
+          "status": "draft",
+          "version": "0.1.0",
+          "metadataPreview": {
+            "id": "SH-HS-MATH-HJ-B2-C07-L02-A01",
+            "version": "0.1.0",
+            "status": "draft",
+            "resourceType": "applet",
+            "title": "正弦函数性质探究",
+            "subtitle": "比较周期段、单调段、对称元素和关键点，归纳 y = sin x 的性质",
+            "curriculum": {
+              "region": "上海",
+              "stage": "高中",
+              "subject": "数学",
+              "edition": "沪教版",
+              "volume_id": "B2",
+              "volume_title": "必修第二册",
+              "chapter_id": "SH-HS-MATH-HJ-B2-C07",
+              "chapter_title": "三角函数",
+              "section_id": "SH-HS-MATH-HJ-B2-C07-S01",
+              "section_title": "正弦函数的图像与性质",
+              "lesson_id": "SH-HS-MATH-HJ-B2-C07-L02",
+              "textbook_ref": "7.1.2",
+              "lesson_title": "正弦函数的性质"
+            },
+            "pedagogy": {
+              "cognitiveAction": "比较",
+              "estimatedClassroomMinutes": 20,
+              "primaryTeachingProblem": "学生会背正弦函数性质，但常把单调区间端点、对称轴、对称中心、零点和最值点的一般形式混在一起。",
+              "learningGoals": [
+                "从图像比较 x 与 x + 2pi 的函数值，解释正弦函数的周期性。",
+                "比较相邻上升段和下降段，写出完整的单调区间一般形式。",
+                "区分正弦图像的对称轴 x = pi/2 + kpi 与对称中心 (kpi, 0)。",
+                "用 k 属于整数的形式表达零点、最大值点和最小值点。"
+              ],
+              "prerequisites": [
+                "正弦函数图像的生成过程",
+                "函数定义域、值域、单调性和奇偶性的语言表达",
+                "诱导公式和终边相同角"
+              ],
+              "successors": [
+                "SH-HS-MATH-HJ-B2-C07-L03",
+                "SH-HS-MATH-HJ-B2-C07-L05",
+                "SH-HS-MATH-HJ-XB1-DERIV-K01"
+              ],
+              "coreCompetencies": [
+                "逻辑推理",
+                "数学运算",
+                "直观想象"
+              ]
+            },
+            "mathematicalScope": {
+              "function": "y = sin x",
+              "independent_variable": "角 x 的弧度量",
+              "dependent_variable": "sin x",
+              "domain": "R",
+              "range": "[-1, 1]",
+              "fundamental_period": "2pi",
+              "default_x_range": "-2pi <= x <= 4pi",
+              "monotonicity": {
+                "increasing": "[-pi/2 + 2kpi, pi/2 + 2kpi], k in Z",
+                "decreasing": "[pi/2 + 2kpi, 3pi/2 + 2kpi], k in Z"
+              },
+              "symmetry": {
+                "odd_function": "sin(-x) = -sin x",
+                "axes": "x = pi/2 + kpi, k in Z",
+                "centers": "(kpi, 0), k in Z"
+              },
+              "key_points": {
+                "zeros": "x = kpi, k in Z",
+                "maximum_points": "(pi/2 + 2kpi, 1), k in Z",
+                "minimum_points": "(3pi/2 + 2kpi, -1), k in Z"
+              },
+              "out_of_scope": [
+                "余弦函数性质的系统归纳",
+                "正切函数图像与性质",
+                "y = A sin(omega x + phi) 的参数变换",
+                "用导数证明正弦函数单调性"
+              ]
+            },
+            "representations": [
+              {
+                "id": "sine_graph",
+                "role": "显示 -2pi 到 4pi 上的正弦曲线和当前动点。"
+              },
+              {
+                "id": "period_comparison",
+                "role": "比较 x 与 x + 2pi 或 x - 2pi 的同高点。"
+              },
+              {
+                "id": "monotonic_segments",
+                "role": "突出一个周期内的上升段和下降段。"
+              },
+              {
+                "id": "symmetry_elements",
+                "role": "同时标示对称轴和对称中心，避免二者混淆。"
+              },
+              {
+                "id": "key_point_table",
+                "role": "列出零点、最大值点、最小值点及其一般形式。"
+              },
+              {
+                "id": "property_statement",
+                "role": "在教师揭示时给出性质归纳句。"
+              }
+            ],
+            "narrativeDesign": {
+              "beats": [],
+              "pausePoints": []
+            },
+            "interactionDesign": {
+              "primaryControl": "拖动图像上的动点或用 x 滑块改变当前观察位置，并比较同一图像中不同性质层。",
+              "teacherControls": [
+                "播放/暂停动点沿正弦曲线移动",
+                "重置到 x = 0",
+                "显示或隐藏周期比较点",
+                "显示或隐藏单调区间",
+                "显示或隐藏对称轴和对称中心",
+                "显示或隐藏零点、最值点和性质表",
+                "选择 k = -1、0、1 对应的周期段",
+                "分步揭示性质归纳"
+              ],
+              "studentControls": [
+                "拖动动点比较同高点、上升段和下降段",
+                "切换性质层后填写一般式",
+                "先判断当前点所在性质，再查看反馈"
+              ],
+              "stagedReveal": [
+                {
+                  "step": "graph_only",
+                  "description": "只显示正弦曲线、坐标轴和当前动点。"
+                },
+                {
+                  "step": "period_compare",
+                  "description": "显示相隔 2pi 的同高点，比较周期段。"
+                },
+                {
+                  "step": "monotonic_compare",
+                  "description": "显示选定 k 下的上升段和下降段，比较端点。"
+                },
+                {
+                  "step": "symmetry_compare",
+                  "description": "显示对称轴和对称中心，并突出二者不同的几何动作。"
+                },
+                {
+                  "step": "key_points_generalization",
+                  "description": "显示零点、最大值点、最小值点，归纳带 k 的一般形式。"
+                },
+                {
+                  "step": "property_summary",
+                  "description": "显示定义域、值域、周期性、奇偶性、单调性和关键点结论。"
+                }
+              ]
+            },
+            "dataContract": {
+              "state_variables": [
+                {
+                  "name": "x_value",
+                  "unit": "radian",
+                  "value_type": "number",
+                  "default": 0,
+                  "description": "当前观察点的横坐标 x。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "sine_value",
+                  "unit": "unitless",
+                  "value_type": "number",
+                  "default": 0,
+                  "description": "当前观察点对应的 sin x。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "period_shift_k",
+                  "unit": "integer",
+                  "value_type": "number",
+                  "default": 0,
+                  "description": "当前用于突出单调区间和周期段的整数 k。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "period_compare_visible",
+                  "value_type": "boolean",
+                  "default": false,
+                  "description": "是否显示相隔 2pi 的周期比较点。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "monotonic_segments_visible",
+                  "value_type": "boolean",
+                  "default": false,
+                  "description": "是否显示选定周期中的单调区间。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "symmetry_visible",
+                  "value_type": "boolean",
+                  "default": false,
+                  "description": "是否显示对称轴和对称中心。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "key_points_visible",
+                  "value_type": "boolean",
+                  "default": false,
+                  "description": "是否显示零点、最值点和性质表。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "summary_visible",
+                  "value_type": "boolean",
+                  "default": false,
+                  "description": "是否显示性质归纳。",
+                  "persistence": "snapshot"
+                }
+              ],
+              "events": [
+                {
+                  "name": "x_changed",
+                  "direction": "applet_to_player",
+                  "description": "当前观察点移动。",
+                  "payload": [
+                    "x_value",
+                    "sine_value"
+                  ]
+                },
+                {
+                  "name": "period_shift_changed",
+                  "direction": "applet_to_player",
+                  "description": "教师切换用于比较的周期段。",
+                  "payload": [
+                    "period_shift_k"
+                  ]
+                },
+                {
+                  "name": "layer_toggled",
+                  "direction": "applet_to_player",
+                  "description": "教师显示或隐藏某一性质层。",
+                  "payload": [
+                    "period_compare_visible",
+                    "monotonic_segments_visible",
+                    "symmetry_visible",
+                    "key_points_visible",
+                    "summary_visible"
+                  ]
+                },
+                {
+                  "name": "checkpoint_reached",
+                  "direction": "applet_to_player",
+                  "description": "当前点接近零点、最大值点或最小值点。",
+                  "payload": [
+                    "x_value",
+                    "sine_value"
+                  ]
+                }
+              ]
+            },
+            "files": {
+              "readme": "README.md",
+              "teacher_script": "teacher-script.md",
+              "student_task": "student-task.md",
+              "review_record": "review.md",
+              "src_entry": "src/index.html"
+            },
+            "feedbackAndDiagnosis": {
+              "success_evidence": [
+                "学生能说明周期性来自图像相隔 2pi 的同高点，并写出 sin(x + 2kpi) = sin x。",
+                "学生能写出完整的单调递增区间和递减区间，并保留 2kpi。",
+                "学生能把对称轴 x = pi/2 + kpi 和对称中心 (kpi, 0) 分开表达。",
+                "学生能用 k 属于整数的形式写出零点和最值点。"
+              ],
+              "common_error_tags": [
+                {
+                  "id": "period_omission",
+                  "label": "只写一个周期，遗漏加 2kpi 的一般形式"
+                },
+                {
+                  "id": "monotonic_endpoint_confusion",
+                  "label": "单调区间端点或上升下降方向混淆"
+                },
+                {
+                  "id": "axis_center_mixup",
+                  "label": "把对称轴和对称中心混为同一种对象"
+                },
+                {
+                  "id": "extrema_zero_formula_omission",
+                  "label": "最值点或零点只写特殊值，遗漏整数 k"
+                }
+              ],
+              "feedback_principles": [
+                "反馈优先要求学生比较两个图像对象，而不是直接背结论。",
+                "单调性反馈必须回到相邻端点和方向。",
+                "对称性反馈必须同时指出镜面对称和中心对称的几何差异。",
+                "一般式反馈必须检查 k 属于整数和周期步长是否正确。"
+              ]
+            },
+            "visualSemantics": {
+              "sine_curve": "正弦函数 y = sin x 的图像。",
+              "current_point": "当前观察点 (x, sin x)。",
+              "period_twin": "与当前点相隔 2pi 且函数值相同的周期比较点。",
+              "increasing_segment": "选定 k 下的递增区间。",
+              "decreasing_segment": "选定 k 下的递减区间。",
+              "symmetry_axis": "正弦图像的竖直对称轴。",
+              "symmetry_center": "正弦图像的中心对称点。",
+              "key_points": "零点、最大值点和最小值点。",
+              "rule": "颜色只用于区分数学对象和性质层，不作装饰。"
+            },
+            "implementation": {
+              "phase": "runnable_prototype",
+              "html_src_status": "runnable",
+              "planned_engine": "native-canvas-svg",
+              "create_src_in_later_task": false,
+              "classroom_device_targets": [
+                "教师电脑浏览器",
+                "教室大屏",
+                "触控屏或触控板"
+              ]
+            },
+            "compliance": {
+              "copyright_note": "本资源包为原创教学脚本与交互实现，不复制教材正文、官方课件、教案或商业平台资源。",
+              "review_status": "self_checked_draft"
+            }
+          },
+          "player": {
+            "kind": "iframe",
+            "isRunnable": true,
+            "src": "content/applets/SH-HS-MATH-HJ-B2-C07-L02-A01/src/index.html",
+            "title": "正弦函数性质探究",
+            "sandbox": "allow-scripts allow-same-origin"
+          },
+          "package": {
+            "path": "content/applets/SH-HS-MATH-HJ-B2-C07-L02-A01",
+            "files": {
+              "metadata": "content/applets/SH-HS-MATH-HJ-B2-C07-L02-A01/metadata.yaml",
+              "readme": "content/applets/SH-HS-MATH-HJ-B2-C07-L02-A01/README.md",
+              "teacherScript": "content/applets/SH-HS-MATH-HJ-B2-C07-L02-A01/teacher-script.md",
+              "studentTask": "content/applets/SH-HS-MATH-HJ-B2-C07-L02-A01/student-task.md",
+              "reviewRecord": "content/applets/SH-HS-MATH-HJ-B2-C07-L02-A01/review.md",
+              "srcEntry": "content/applets/SH-HS-MATH-HJ-B2-C07-L02-A01/src/index.html"
+            },
+            "teacherScript": {
+              "kind": "teacher_script",
+              "path": "content/applets/SH-HS-MATH-HJ-B2-C07-L02-A01/teacher-script.md",
+              "title": "教师脚本：正弦函数性质探究",
+              "summary": "适用课时：必修第二册 7.1.2“正弦函数的性质” 建议时长：20 分钟 资源状态：`draft`",
+              "sections": [
+                "教学目标",
+                "课前准备",
+                "课堂流程",
+                "常见误区与处理",
+                "本节不展开"
+              ]
+            },
+            "studentTask": {
+              "kind": "student_task",
+              "path": "content/applets/SH-HS-MATH-HJ-B2-C07-L02-A01/student-task.md",
+              "title": "学生活动：比较正弦函数性质",
+              "summary": "适用资源：`SH-HS-MATH-HJ-B2-C07-L02-A01` 完成方式：课堂观察记录、小组讨论、个人短答",
+              "sections": [
+                "活动目标",
+                "任务一：周期比较",
+                "任务二：单调区间端点",
+                "任务三：对称元素分类",
+                "任务四：关键点一般式",
+                "任务五：快速诊断",
+                "提交要求"
+              ]
+            }
+          }
         },
         {
           "id": "SH-HS-MATH-HJ-B2-C07-L02-D01",
@@ -2199,14 +2564,378 @@
           "id": "SH-HS-MATH-HJ-B2-C07-L02-A01",
           "resourceType": "applet",
           "title": "正弦函数性质探究",
+          "subtitle": "比较周期段、单调段、对称元素和关键点，归纳 y = sin x 的性质",
           "cognitiveAction": "比较",
           "note": "显示或隐藏周期段、单调段、对称元素和关键点，支持教师分步揭示。",
-          "availability": "proposed",
-          "status": "planned",
-          "version": null,
-          "metadataPreview": null,
-          "player": null,
-          "package": null
+          "availability": "metadata_ready",
+          "status": "draft",
+          "version": "0.1.0",
+          "metadataPreview": {
+            "id": "SH-HS-MATH-HJ-B2-C07-L02-A01",
+            "version": "0.1.0",
+            "status": "draft",
+            "resourceType": "applet",
+            "title": "正弦函数性质探究",
+            "subtitle": "比较周期段、单调段、对称元素和关键点，归纳 y = sin x 的性质",
+            "curriculum": {
+              "region": "上海",
+              "stage": "高中",
+              "subject": "数学",
+              "edition": "沪教版",
+              "volume_id": "B2",
+              "volume_title": "必修第二册",
+              "chapter_id": "SH-HS-MATH-HJ-B2-C07",
+              "chapter_title": "三角函数",
+              "section_id": "SH-HS-MATH-HJ-B2-C07-S01",
+              "section_title": "正弦函数的图像与性质",
+              "lesson_id": "SH-HS-MATH-HJ-B2-C07-L02",
+              "textbook_ref": "7.1.2",
+              "lesson_title": "正弦函数的性质"
+            },
+            "pedagogy": {
+              "cognitiveAction": "比较",
+              "estimatedClassroomMinutes": 20,
+              "primaryTeachingProblem": "学生会背正弦函数性质，但常把单调区间端点、对称轴、对称中心、零点和最值点的一般形式混在一起。",
+              "learningGoals": [
+                "从图像比较 x 与 x + 2pi 的函数值，解释正弦函数的周期性。",
+                "比较相邻上升段和下降段，写出完整的单调区间一般形式。",
+                "区分正弦图像的对称轴 x = pi/2 + kpi 与对称中心 (kpi, 0)。",
+                "用 k 属于整数的形式表达零点、最大值点和最小值点。"
+              ],
+              "prerequisites": [
+                "正弦函数图像的生成过程",
+                "函数定义域、值域、单调性和奇偶性的语言表达",
+                "诱导公式和终边相同角"
+              ],
+              "successors": [
+                "SH-HS-MATH-HJ-B2-C07-L03",
+                "SH-HS-MATH-HJ-B2-C07-L05",
+                "SH-HS-MATH-HJ-XB1-DERIV-K01"
+              ],
+              "coreCompetencies": [
+                "逻辑推理",
+                "数学运算",
+                "直观想象"
+              ]
+            },
+            "mathematicalScope": {
+              "function": "y = sin x",
+              "independent_variable": "角 x 的弧度量",
+              "dependent_variable": "sin x",
+              "domain": "R",
+              "range": "[-1, 1]",
+              "fundamental_period": "2pi",
+              "default_x_range": "-2pi <= x <= 4pi",
+              "monotonicity": {
+                "increasing": "[-pi/2 + 2kpi, pi/2 + 2kpi], k in Z",
+                "decreasing": "[pi/2 + 2kpi, 3pi/2 + 2kpi], k in Z"
+              },
+              "symmetry": {
+                "odd_function": "sin(-x) = -sin x",
+                "axes": "x = pi/2 + kpi, k in Z",
+                "centers": "(kpi, 0), k in Z"
+              },
+              "key_points": {
+                "zeros": "x = kpi, k in Z",
+                "maximum_points": "(pi/2 + 2kpi, 1), k in Z",
+                "minimum_points": "(3pi/2 + 2kpi, -1), k in Z"
+              },
+              "out_of_scope": [
+                "余弦函数性质的系统归纳",
+                "正切函数图像与性质",
+                "y = A sin(omega x + phi) 的参数变换",
+                "用导数证明正弦函数单调性"
+              ]
+            },
+            "representations": [
+              {
+                "id": "sine_graph",
+                "role": "显示 -2pi 到 4pi 上的正弦曲线和当前动点。"
+              },
+              {
+                "id": "period_comparison",
+                "role": "比较 x 与 x + 2pi 或 x - 2pi 的同高点。"
+              },
+              {
+                "id": "monotonic_segments",
+                "role": "突出一个周期内的上升段和下降段。"
+              },
+              {
+                "id": "symmetry_elements",
+                "role": "同时标示对称轴和对称中心，避免二者混淆。"
+              },
+              {
+                "id": "key_point_table",
+                "role": "列出零点、最大值点、最小值点及其一般形式。"
+              },
+              {
+                "id": "property_statement",
+                "role": "在教师揭示时给出性质归纳句。"
+              }
+            ],
+            "narrativeDesign": {
+              "beats": [],
+              "pausePoints": []
+            },
+            "interactionDesign": {
+              "primaryControl": "拖动图像上的动点或用 x 滑块改变当前观察位置，并比较同一图像中不同性质层。",
+              "teacherControls": [
+                "播放/暂停动点沿正弦曲线移动",
+                "重置到 x = 0",
+                "显示或隐藏周期比较点",
+                "显示或隐藏单调区间",
+                "显示或隐藏对称轴和对称中心",
+                "显示或隐藏零点、最值点和性质表",
+                "选择 k = -1、0、1 对应的周期段",
+                "分步揭示性质归纳"
+              ],
+              "studentControls": [
+                "拖动动点比较同高点、上升段和下降段",
+                "切换性质层后填写一般式",
+                "先判断当前点所在性质，再查看反馈"
+              ],
+              "stagedReveal": [
+                {
+                  "step": "graph_only",
+                  "description": "只显示正弦曲线、坐标轴和当前动点。"
+                },
+                {
+                  "step": "period_compare",
+                  "description": "显示相隔 2pi 的同高点，比较周期段。"
+                },
+                {
+                  "step": "monotonic_compare",
+                  "description": "显示选定 k 下的上升段和下降段，比较端点。"
+                },
+                {
+                  "step": "symmetry_compare",
+                  "description": "显示对称轴和对称中心，并突出二者不同的几何动作。"
+                },
+                {
+                  "step": "key_points_generalization",
+                  "description": "显示零点、最大值点、最小值点，归纳带 k 的一般形式。"
+                },
+                {
+                  "step": "property_summary",
+                  "description": "显示定义域、值域、周期性、奇偶性、单调性和关键点结论。"
+                }
+              ]
+            },
+            "dataContract": {
+              "state_variables": [
+                {
+                  "name": "x_value",
+                  "unit": "radian",
+                  "value_type": "number",
+                  "default": 0,
+                  "description": "当前观察点的横坐标 x。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "sine_value",
+                  "unit": "unitless",
+                  "value_type": "number",
+                  "default": 0,
+                  "description": "当前观察点对应的 sin x。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "period_shift_k",
+                  "unit": "integer",
+                  "value_type": "number",
+                  "default": 0,
+                  "description": "当前用于突出单调区间和周期段的整数 k。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "period_compare_visible",
+                  "value_type": "boolean",
+                  "default": false,
+                  "description": "是否显示相隔 2pi 的周期比较点。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "monotonic_segments_visible",
+                  "value_type": "boolean",
+                  "default": false,
+                  "description": "是否显示选定周期中的单调区间。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "symmetry_visible",
+                  "value_type": "boolean",
+                  "default": false,
+                  "description": "是否显示对称轴和对称中心。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "key_points_visible",
+                  "value_type": "boolean",
+                  "default": false,
+                  "description": "是否显示零点、最值点和性质表。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "summary_visible",
+                  "value_type": "boolean",
+                  "default": false,
+                  "description": "是否显示性质归纳。",
+                  "persistence": "snapshot"
+                }
+              ],
+              "events": [
+                {
+                  "name": "x_changed",
+                  "direction": "applet_to_player",
+                  "description": "当前观察点移动。",
+                  "payload": [
+                    "x_value",
+                    "sine_value"
+                  ]
+                },
+                {
+                  "name": "period_shift_changed",
+                  "direction": "applet_to_player",
+                  "description": "教师切换用于比较的周期段。",
+                  "payload": [
+                    "period_shift_k"
+                  ]
+                },
+                {
+                  "name": "layer_toggled",
+                  "direction": "applet_to_player",
+                  "description": "教师显示或隐藏某一性质层。",
+                  "payload": [
+                    "period_compare_visible",
+                    "monotonic_segments_visible",
+                    "symmetry_visible",
+                    "key_points_visible",
+                    "summary_visible"
+                  ]
+                },
+                {
+                  "name": "checkpoint_reached",
+                  "direction": "applet_to_player",
+                  "description": "当前点接近零点、最大值点或最小值点。",
+                  "payload": [
+                    "x_value",
+                    "sine_value"
+                  ]
+                }
+              ]
+            },
+            "files": {
+              "readme": "README.md",
+              "teacher_script": "teacher-script.md",
+              "student_task": "student-task.md",
+              "review_record": "review.md",
+              "src_entry": "src/index.html"
+            },
+            "feedbackAndDiagnosis": {
+              "success_evidence": [
+                "学生能说明周期性来自图像相隔 2pi 的同高点，并写出 sin(x + 2kpi) = sin x。",
+                "学生能写出完整的单调递增区间和递减区间，并保留 2kpi。",
+                "学生能把对称轴 x = pi/2 + kpi 和对称中心 (kpi, 0) 分开表达。",
+                "学生能用 k 属于整数的形式写出零点和最值点。"
+              ],
+              "common_error_tags": [
+                {
+                  "id": "period_omission",
+                  "label": "只写一个周期，遗漏加 2kpi 的一般形式"
+                },
+                {
+                  "id": "monotonic_endpoint_confusion",
+                  "label": "单调区间端点或上升下降方向混淆"
+                },
+                {
+                  "id": "axis_center_mixup",
+                  "label": "把对称轴和对称中心混为同一种对象"
+                },
+                {
+                  "id": "extrema_zero_formula_omission",
+                  "label": "最值点或零点只写特殊值，遗漏整数 k"
+                }
+              ],
+              "feedback_principles": [
+                "反馈优先要求学生比较两个图像对象，而不是直接背结论。",
+                "单调性反馈必须回到相邻端点和方向。",
+                "对称性反馈必须同时指出镜面对称和中心对称的几何差异。",
+                "一般式反馈必须检查 k 属于整数和周期步长是否正确。"
+              ]
+            },
+            "visualSemantics": {
+              "sine_curve": "正弦函数 y = sin x 的图像。",
+              "current_point": "当前观察点 (x, sin x)。",
+              "period_twin": "与当前点相隔 2pi 且函数值相同的周期比较点。",
+              "increasing_segment": "选定 k 下的递增区间。",
+              "decreasing_segment": "选定 k 下的递减区间。",
+              "symmetry_axis": "正弦图像的竖直对称轴。",
+              "symmetry_center": "正弦图像的中心对称点。",
+              "key_points": "零点、最大值点和最小值点。",
+              "rule": "颜色只用于区分数学对象和性质层，不作装饰。"
+            },
+            "implementation": {
+              "phase": "runnable_prototype",
+              "html_src_status": "runnable",
+              "planned_engine": "native-canvas-svg",
+              "create_src_in_later_task": false,
+              "classroom_device_targets": [
+                "教师电脑浏览器",
+                "教室大屏",
+                "触控屏或触控板"
+              ]
+            },
+            "compliance": {
+              "copyright_note": "本资源包为原创教学脚本与交互实现，不复制教材正文、官方课件、教案或商业平台资源。",
+              "review_status": "self_checked_draft"
+            }
+          },
+          "player": {
+            "kind": "iframe",
+            "isRunnable": true,
+            "src": "content/applets/SH-HS-MATH-HJ-B2-C07-L02-A01/src/index.html",
+            "title": "正弦函数性质探究",
+            "sandbox": "allow-scripts allow-same-origin"
+          },
+          "package": {
+            "path": "content/applets/SH-HS-MATH-HJ-B2-C07-L02-A01",
+            "files": {
+              "metadata": "content/applets/SH-HS-MATH-HJ-B2-C07-L02-A01/metadata.yaml",
+              "readme": "content/applets/SH-HS-MATH-HJ-B2-C07-L02-A01/README.md",
+              "teacherScript": "content/applets/SH-HS-MATH-HJ-B2-C07-L02-A01/teacher-script.md",
+              "studentTask": "content/applets/SH-HS-MATH-HJ-B2-C07-L02-A01/student-task.md",
+              "reviewRecord": "content/applets/SH-HS-MATH-HJ-B2-C07-L02-A01/review.md",
+              "srcEntry": "content/applets/SH-HS-MATH-HJ-B2-C07-L02-A01/src/index.html"
+            },
+            "teacherScript": {
+              "kind": "teacher_script",
+              "path": "content/applets/SH-HS-MATH-HJ-B2-C07-L02-A01/teacher-script.md",
+              "title": "教师脚本：正弦函数性质探究",
+              "summary": "适用课时：必修第二册 7.1.2“正弦函数的性质” 建议时长：20 分钟 资源状态：`draft`",
+              "sections": [
+                "教学目标",
+                "课前准备",
+                "课堂流程",
+                "常见误区与处理",
+                "本节不展开"
+              ]
+            },
+            "studentTask": {
+              "kind": "student_task",
+              "path": "content/applets/SH-HS-MATH-HJ-B2-C07-L02-A01/student-task.md",
+              "title": "学生活动：比较正弦函数性质",
+              "summary": "适用资源：`SH-HS-MATH-HJ-B2-C07-L02-A01` 完成方式：课堂观察记录、小组讨论、个人短答",
+              "sections": [
+                "活动目标",
+                "任务一：周期比较",
+                "任务二：单调区间端点",
+                "任务三：对称元素分类",
+                "任务四：关键点一般式",
+                "任务五：快速诊断",
+                "提交要求"
+              ]
+            }
+          }
         },
         {
           "id": "SH-HS-MATH-HJ-B2-C07-L02-D01",
@@ -2773,8 +3502,8 @@
     "volumeCount": 7,
     "chapterCount": 1,
     "lessonCount": 7,
-    "implementedAppletCount": 1,
+    "implementedAppletCount": 2,
     "implementedManimCount": 1,
-    "plannedResourceCount": 13
+    "plannedResourceCount": 12
   }
 }

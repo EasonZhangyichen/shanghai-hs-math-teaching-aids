@@ -1,0 +1,1234 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231f6f8b'/%3E%3Ctext x='9' y='41' font-size='20' font-family='serif' font-weight='700' fill='white'%3Esin%3C/text%3E%3C/svg%3E"
+    />
+    <title>正弦函数性质探究</title>
+    <style>
+      :root {
+        color: #18232f;
+        background: #f5f7f8;
+        font-family:
+          "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", system-ui, -apple-system,
+          BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        --surface: #ffffff;
+        --surface-soft: #f8fafb;
+        --ink: #18232f;
+        --muted: #607083;
+        --border: #d6e0e8;
+        --curve: #1f6f8b;
+        --period: #6b7f2a;
+        --increase: #0f8a6b;
+        --decrease: #b84b3a;
+        --axis: #315fbd;
+        --center: #a66300;
+        --key: #803c82;
+        --shadow: 0 18px 42px rgba(22, 32, 44, 0.1);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-width: 320px;
+        min-height: 100vh;
+        color: var(--ink);
+        background: var(--surface);
+      }
+
+      button,
+      input {
+        font: inherit;
+      }
+
+      .applet-shell {
+        min-height: 100vh;
+        display: grid;
+        grid-template-rows: auto minmax(0, 1fr);
+        background:
+          linear-gradient(90deg, rgba(31, 111, 139, 0.05) 0 1px, transparent 1px 100%),
+          linear-gradient(0deg, rgba(24, 35, 47, 0.035) 0 1px, transparent 1px 100%),
+          #f5f7f8;
+        background-size: 28px 28px;
+      }
+
+      .topbar {
+        display: flex;
+        justify-content: space-between;
+        gap: 18px;
+        padding: 15px 22px;
+        border-bottom: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.94);
+      }
+
+      .title-group {
+        min-width: 0;
+      }
+
+      .eyebrow,
+      .state-readout span,
+      .panel-note,
+      .formula-note {
+        color: var(--muted);
+        font-size: 0.78rem;
+      }
+
+      .eyebrow {
+        margin: 0 0 4px;
+        font-weight: 700;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 1.5rem;
+        line-height: 1.15;
+        letter-spacing: 0;
+      }
+
+      .state-readout {
+        flex: 0 0 auto;
+        display: grid;
+        grid-template-columns: repeat(3, auto);
+        gap: 8px;
+        align-content: start;
+      }
+
+      .state-readout span {
+        min-width: 94px;
+        padding: 7px 9px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: #fbfdfe;
+        text-align: center;
+      }
+
+      .state-readout strong {
+        display: block;
+        color: var(--ink);
+        font-size: 0.98rem;
+      }
+
+      .workspace {
+        min-height: 0;
+        display: grid;
+        grid-template-columns: minmax(420px, 1fr) 330px;
+        gap: 16px;
+        padding: 16px;
+      }
+
+      .visual-panel,
+      .control-panel {
+        min-width: 0;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.96);
+        box-shadow: var(--shadow);
+      }
+
+      .visual-panel {
+        align-self: start;
+        overflow: hidden;
+      }
+
+      svg {
+        display: block;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1200 / 560;
+        touch-action: none;
+        user-select: none;
+      }
+
+      .control-panel {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding: 16px;
+        overflow: auto;
+      }
+
+      .panel-section {
+        display: grid;
+        gap: 10px;
+      }
+
+      .section-title {
+        margin: 0;
+        color: var(--ink);
+        font-size: 0.96rem;
+        font-weight: 800;
+      }
+
+      .button-row,
+      .stage-grid,
+      .toggle-grid,
+      .k-grid {
+        display: grid;
+        gap: 8px;
+      }
+
+      .button-row {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .stage-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .toggle-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .k-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .control-button,
+      .stage-button,
+      .toggle-button,
+      .k-button {
+        min-height: 40px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        color: var(--ink);
+        background: #ffffff;
+        cursor: pointer;
+      }
+
+      .control-button:hover,
+      .stage-button:hover,
+      .toggle-button:hover,
+      .k-button:hover {
+        border-color: #8db7c8;
+        background: #eef7fa;
+      }
+
+      .control-button.is-primary,
+      .stage-button.is-active,
+      .toggle-button[aria-pressed="true"],
+      .k-button.is-active {
+        border-color: var(--curve);
+        color: #ffffff;
+        background: var(--curve);
+      }
+
+      .slider-wrap {
+        display: grid;
+        gap: 8px;
+      }
+
+      .slider-label {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        color: var(--muted);
+        font-size: 0.82rem;
+      }
+
+      input[type="range"] {
+        width: 100%;
+        accent-color: var(--curve);
+      }
+
+      .formula-card {
+        display: grid;
+        gap: 8px;
+        padding: 12px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: var(--surface-soft);
+      }
+
+      .feedback {
+        margin: 0;
+        font-weight: 750;
+      }
+
+      .formula-list {
+        display: grid;
+        gap: 6px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .formula-list li {
+        padding: 7px 8px;
+        border-left: 4px solid var(--border);
+        background: #ffffff;
+      }
+
+      .formula-list li.is-active {
+        border-left-color: var(--curve);
+      }
+
+      .formula-list code {
+        font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+        font-size: 0.86rem;
+      }
+
+      .grid-line {
+        stroke: #dfe7ee;
+        stroke-width: 1;
+      }
+
+      .axis-line {
+        stroke: #465564;
+        stroke-width: 1.6;
+      }
+
+      .tick-label,
+      .graph-label {
+        fill: #4b5a68;
+        font-size: 15px;
+      }
+
+      .graph-label {
+        font-weight: 700;
+      }
+
+      .sine-curve {
+        fill: none;
+        stroke: var(--curve);
+        stroke-width: 4;
+        stroke-linecap: round;
+      }
+
+      .segment-increase {
+        fill: none;
+        stroke: var(--increase);
+        stroke-width: 8;
+        stroke-linecap: round;
+      }
+
+      .segment-decrease {
+        fill: none;
+        stroke: var(--decrease);
+        stroke-width: 8;
+        stroke-linecap: round;
+      }
+
+      .period-band {
+        fill: rgba(107, 127, 42, 0.08);
+      }
+
+      .period-band-alt {
+        fill: rgba(31, 111, 139, 0.07);
+      }
+
+      .interval-band-increase {
+        fill: rgba(15, 138, 107, 0.1);
+      }
+
+      .interval-band-decrease {
+        fill: rgba(184, 75, 58, 0.1);
+      }
+
+      .period-guide {
+        stroke: var(--period);
+        stroke-width: 2;
+        stroke-dasharray: 8 6;
+      }
+
+      .symmetry-axis {
+        stroke: var(--axis);
+        stroke-width: 2;
+        stroke-dasharray: 7 7;
+      }
+
+      .center-marker {
+        fill: #fff7e8;
+        stroke: var(--center);
+        stroke-width: 3;
+      }
+
+      .key-zero {
+        fill: #ffffff;
+        stroke: var(--key);
+        stroke-width: 3;
+      }
+
+      .key-max {
+        fill: #eef9f5;
+        stroke: var(--increase);
+        stroke-width: 3;
+      }
+
+      .key-min {
+        fill: #fff1ee;
+        stroke: var(--decrease);
+        stroke-width: 3;
+      }
+
+      .current-line {
+        stroke: #1a2630;
+        stroke-width: 1.5;
+        stroke-dasharray: 5 5;
+      }
+
+      .current-point {
+        fill: #ffffff;
+        stroke: #1a2630;
+        stroke-width: 4;
+      }
+
+      .period-point {
+        fill: #ffffff;
+        stroke: var(--period);
+        stroke-width: 4;
+      }
+
+      .point-label {
+        fill: #1f2933;
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      @media (max-width: 860px) {
+        .topbar,
+        .workspace {
+          display: block;
+        }
+
+        .topbar {
+          padding: 14px 16px;
+        }
+
+        .state-readout {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          margin-top: 12px;
+        }
+
+        .workspace {
+          padding: 12px;
+        }
+
+        .control-panel {
+          margin-top: 12px;
+          max-height: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="applet-shell">
+      <header class="topbar">
+        <div class="title-group">
+          <p class="eyebrow">SH-HS-MATH-HJ-B2-C07-L02-A01</p>
+          <h1>正弦函数性质探究</h1>
+        </div>
+        <div class="state-readout" aria-live="polite">
+          <span>x<strong id="xReadout">0</strong></span>
+          <span>sin x<strong id="yReadout">0</strong></span>
+          <span>相位<strong id="phaseReadout">0</strong></span>
+        </div>
+      </header>
+
+      <section class="workspace">
+        <section class="visual-panel" aria-label="正弦函数性质图像">
+          <svg id="graph" viewBox="0 0 1200 560" role="img" aria-labelledby="graphTitle graphDesc">
+            <title id="graphTitle">正弦函数性质图像</title>
+            <desc id="graphDesc">显示 y = sin x 的周期、单调性、对称性和关键点。</desc>
+            <g id="bandsLayer"></g>
+            <g id="gridLayer"></g>
+            <g id="segmentsLayer"></g>
+            <g id="curveLayer"></g>
+            <g id="symmetryLayer"></g>
+            <g id="keyLayer"></g>
+            <g id="periodLayer"></g>
+            <g id="currentLayer"></g>
+          </svg>
+        </section>
+
+        <aside class="control-panel">
+          <section class="panel-section">
+            <p class="section-title">课堂控制</p>
+            <div class="button-row">
+              <button class="control-button is-primary" id="playButton" type="button">播放</button>
+              <button class="control-button" id="resetButton" type="button">重置</button>
+            </div>
+            <div class="slider-wrap">
+              <label class="slider-label" for="xSlider">
+                <span>x</span>
+                <span id="sliderLabel">0</span>
+              </label>
+              <input id="xSlider" type="range" min="-6.28318" max="12.56637" step="any" value="0" />
+            </div>
+          </section>
+
+          <section class="panel-section">
+            <p class="section-title">分步揭示</p>
+            <div class="stage-grid">
+              <button class="stage-button is-active" type="button" data-stage="graph">图像</button>
+              <button class="stage-button" type="button" data-stage="period">周期</button>
+              <button class="stage-button" type="button" data-stage="monotonic">单调</button>
+              <button class="stage-button" type="button" data-stage="symmetry">对称</button>
+              <button class="stage-button" type="button" data-stage="keypoints">关键点</button>
+              <button class="stage-button" type="button" data-stage="summary">归纳</button>
+            </div>
+          </section>
+
+          <section class="panel-section">
+            <p class="section-title">性质层</p>
+            <div class="toggle-grid">
+              <button class="toggle-button" type="button" data-toggle="periodCompareVisible" aria-pressed="false">
+                周期
+              </button>
+              <button class="toggle-button" type="button" data-toggle="monotonicSegmentsVisible" aria-pressed="false">
+                单调
+              </button>
+              <button class="toggle-button" type="button" data-toggle="symmetryVisible" aria-pressed="false">
+                对称
+              </button>
+              <button class="toggle-button" type="button" data-toggle="keyPointsVisible" aria-pressed="false">
+                关键点
+              </button>
+            </div>
+          </section>
+
+          <section class="panel-section">
+            <p class="section-title">周期段 k</p>
+            <div class="k-grid">
+              <button class="k-button" type="button" data-k="-1">-1</button>
+              <button class="k-button is-active" type="button" data-k="0">0</button>
+              <button class="k-button" type="button" data-k="1">1</button>
+            </div>
+          </section>
+
+          <section class="formula-card">
+            <p class="feedback" id="feedbackText">当前点在原点，既是零点，也是对称中心。</p>
+            <ul class="formula-list" id="formulaList"></ul>
+            <p class="formula-note">k in Z</p>
+          </section>
+        </aside>
+      </section>
+    </main>
+
+    <script>
+      const SDK = "sh-hs-math-applet-sdk";
+      const SDK_VERSION = "0.1.0";
+      const RESOURCE_ID = "SH-HS-MATH-HJ-B2-C07-L02-A01";
+      const PI = Math.PI;
+      const TAU = Math.PI * 2;
+      const graphBox = {
+        x0: 74,
+        y0: 44,
+        width: 900,
+        height: 450,
+        xMin: -TAU,
+        xMax: TAU * 2,
+        yMin: -1.25,
+        yMax: 1.25,
+      };
+      const layers = {
+        bands: document.querySelector("#bandsLayer"),
+        grid: document.querySelector("#gridLayer"),
+        segments: document.querySelector("#segmentsLayer"),
+        curve: document.querySelector("#curveLayer"),
+        symmetry: document.querySelector("#symmetryLayer"),
+        key: document.querySelector("#keyLayer"),
+        period: document.querySelector("#periodLayer"),
+        current: document.querySelector("#currentLayer"),
+      };
+      const svg = document.querySelector("#graph");
+      const xSlider = document.querySelector("#xSlider");
+      const xReadout = document.querySelector("#xReadout");
+      const yReadout = document.querySelector("#yReadout");
+      const phaseReadout = document.querySelector("#phaseReadout");
+      const sliderLabel = document.querySelector("#sliderLabel");
+      const feedbackText = document.querySelector("#feedbackText");
+      const formulaList = document.querySelector("#formulaList");
+      const playButton = document.querySelector("#playButton");
+      const resetButton = document.querySelector("#resetButton");
+      let seq = 0;
+      let instanceId = "standalone";
+      let rafId = null;
+      let dragging = false;
+      let lastCheckpoint = "";
+      const state = {
+        xValue: 0,
+        periodShiftK: 0,
+        playing: false,
+        periodCompareVisible: false,
+        monotonicSegmentsVisible: false,
+        symmetryVisible: false,
+        keyPointsVisible: false,
+        summaryVisible: false,
+        activeStage: "graph",
+      };
+
+      function sx(x) {
+        return graphBox.x0 + ((x - graphBox.xMin) / (graphBox.xMax - graphBox.xMin)) * graphBox.width;
+      }
+
+      function sy(y) {
+        return graphBox.y0 + ((graphBox.yMax - y) / (graphBox.yMax - graphBox.yMin)) * graphBox.height;
+      }
+
+      function invSx(pixelX) {
+        return graphBox.xMin + ((pixelX - graphBox.x0) / graphBox.width) * (graphBox.xMax - graphBox.xMin);
+      }
+
+      function clamp(value, min, max) {
+        return Math.min(max, Math.max(min, value));
+      }
+
+      function mod(value, base) {
+        return ((value % base) + base) % base;
+      }
+
+      function formatPi(value) {
+        if (Math.abs(value) < 1e-7) {
+          return "0";
+        }
+        const halfUnits = Math.round(value / (PI / 2));
+        if (Math.abs(value - halfUnits * (PI / 2)) > 1e-5) {
+          return value.toFixed(2);
+        }
+        const sign = halfUnits < 0 ? "-" : "";
+        const n = Math.abs(halfUnits);
+        if (n === 1) {
+          return `${sign}π/2`;
+        }
+        if (n === 2) {
+          return `${sign}π`;
+        }
+        if (n % 2 === 0) {
+          return `${sign}${n / 2}π`;
+        }
+        return `${sign}${n}π/2`;
+      }
+
+      function createSvgElement(tag, attrs = {}) {
+        const element = document.createElementNS("http://www.w3.org/2000/svg", tag);
+        Object.entries(attrs).forEach(([key, value]) => element.setAttribute(key, value));
+        return element;
+      }
+
+      function addLine(parent, x1, y1, x2, y2, className) {
+        parent.appendChild(createSvgElement("line", { x1, y1, x2, y2, class: className }));
+      }
+
+      function addText(parent, x, y, text, className = "tick-label", anchor = "middle") {
+        const element = createSvgElement("text", { x, y, class: className, "text-anchor": anchor });
+        element.textContent = text;
+        parent.appendChild(element);
+        return element;
+      }
+
+      function addCircle(parent, cx, cy, r, className) {
+        parent.appendChild(createSvgElement("circle", { cx, cy, r, class: className }));
+      }
+
+      function makePath(fromX, toX, samples = 160) {
+        const start = clamp(fromX, graphBox.xMin, graphBox.xMax);
+        const end = clamp(toX, graphBox.xMin, graphBox.xMax);
+        if (end <= start) {
+          return "";
+        }
+        const points = [];
+        for (let index = 0; index <= samples; index += 1) {
+          const t = index / samples;
+          const x = start + (end - start) * t;
+          points.push(`${index === 0 ? "M" : "L"} ${sx(x).toFixed(2)} ${sy(Math.sin(x)).toFixed(2)}`);
+        }
+        return points.join(" ");
+      }
+
+      function clearLayers() {
+        Object.values(layers).forEach((layer) => {
+          layer.replaceChildren();
+        });
+      }
+
+      function drawAxes() {
+        const left = graphBox.x0;
+        const right = graphBox.x0 + graphBox.width;
+        const top = graphBox.y0;
+        const bottom = graphBox.y0 + graphBox.height;
+        for (let y = -1; y <= 1; y += 0.5) {
+          addLine(layers.grid, left, sy(y), right, sy(y), "grid-line");
+        }
+        for (let half = -4; half <= 8; half += 1) {
+          const x = half * (PI / 2);
+          addLine(layers.grid, sx(x), top, sx(x), bottom, "grid-line");
+          if (half % 1 === 0) {
+            addText(layers.grid, sx(x), sy(0) + 24, formatPi(x), "tick-label");
+          }
+        }
+        addLine(layers.grid, left, sy(0), right, sy(0), "axis-line");
+        addLine(layers.grid, sx(0), top, sx(0), bottom, "axis-line");
+        [-1, 0, 1].forEach((y) => {
+          addText(layers.grid, left - 18, sy(y) + 5, String(y), "tick-label", "end");
+        });
+        addText(layers.grid, right + 16, sy(0) + 5, "x", "graph-label", "start");
+        addText(layers.grid, sx(0) - 10, top - 12, "y", "graph-label", "end");
+      }
+
+      function drawCurve() {
+        layers.curve.appendChild(createSvgElement("path", { d: makePath(graphBox.xMin, graphBox.xMax, 720), class: "sine-curve" }));
+      }
+
+      function drawPeriodBands() {
+        if (!state.periodCompareVisible && !state.summaryVisible) {
+          return;
+        }
+        const ranges = [
+          [-TAU, 0, "周期 -1"],
+          [0, TAU, "周期 0"],
+          [TAU, TAU * 2, "周期 1"],
+        ];
+        ranges.forEach(([start, end, label], index) => {
+          layers.bands.appendChild(
+            createSvgElement("rect", {
+              x: sx(start),
+              y: graphBox.y0,
+              width: sx(end) - sx(start),
+              height: graphBox.height,
+              class: index % 2 === 0 ? "period-band" : "period-band-alt",
+            }),
+          );
+          addText(layers.bands, (sx(start) + sx(end)) / 2, graphBox.y0 + 23, label, "tick-label");
+        });
+      }
+
+      function drawPeriodComparison() {
+        if (!state.periodCompareVisible && !state.summaryVisible) {
+          return;
+        }
+        const x = state.xValue;
+        const twin = x + TAU <= graphBox.xMax ? x + TAU : x - TAU;
+        const y = Math.sin(x);
+        addLine(layers.period, sx(x), sy(y), sx(twin), sy(y), "period-guide");
+        addLine(layers.period, sx(x), sy(0), sx(x), sy(y), "period-guide");
+        addLine(layers.period, sx(twin), sy(0), sx(twin), sy(y), "period-guide");
+        addCircle(layers.period, sx(twin), sy(y), 9, "period-point");
+        addText(layers.period, sx(twin) + 12, sy(y) - 12, "同高点", "point-label", "start");
+      }
+
+      function drawMonotonicSegments() {
+        if (!state.monotonicSegmentsVisible && !state.summaryVisible) {
+          return;
+        }
+        const k = state.periodShiftK;
+        const incStart = -PI / 2 + TAU * k;
+        const incEnd = PI / 2 + TAU * k;
+        const decStart = PI / 2 + TAU * k;
+        const decEnd = (3 * PI) / 2 + TAU * k;
+        drawIntervalBand(incStart, incEnd, "interval-band-increase");
+        drawIntervalBand(decStart, decEnd, "interval-band-decrease");
+        layers.segments.appendChild(createSvgElement("path", { d: makePath(incStart, incEnd, 120), class: "segment-increase" }));
+        layers.segments.appendChild(createSvgElement("path", { d: makePath(decStart, decEnd, 120), class: "segment-decrease" }));
+        addText(layers.segments, sx(clamp((incStart + incEnd) / 2, graphBox.xMin, graphBox.xMax)), sy(1.12), "递增", "point-label");
+        addText(layers.segments, sx(clamp((decStart + decEnd) / 2, graphBox.xMin, graphBox.xMax)), sy(-1.12), "递减", "point-label");
+      }
+
+      function drawIntervalBand(start, end, className) {
+        const visibleStart = clamp(start, graphBox.xMin, graphBox.xMax);
+        const visibleEnd = clamp(end, graphBox.xMin, graphBox.xMax);
+        if (visibleEnd <= visibleStart) {
+          return;
+        }
+        layers.bands.appendChild(
+          createSvgElement("rect", {
+            x: sx(visibleStart),
+            y: graphBox.y0,
+            width: sx(visibleEnd) - sx(visibleStart),
+            height: graphBox.height,
+            class: className,
+          }),
+        );
+      }
+
+      function drawSymmetry() {
+        if (!state.symmetryVisible && !state.summaryVisible) {
+          return;
+        }
+        for (let k = -3; k <= 4; k += 1) {
+          const axis = PI / 2 + k * PI;
+          if (axis >= graphBox.xMin && axis <= graphBox.xMax) {
+            addLine(layers.symmetry, sx(axis), graphBox.y0, sx(axis), graphBox.y0 + graphBox.height, "symmetry-axis");
+          }
+          const center = k * PI;
+          if (center >= graphBox.xMin && center <= graphBox.xMax) {
+            const size = 12;
+            layers.symmetry.appendChild(
+              createSvgElement("rect", {
+                x: sx(center) - size / 2,
+                y: sy(0) - size / 2,
+                width: size,
+                height: size,
+                transform: `rotate(45 ${sx(center)} ${sy(0)})`,
+                class: "center-marker",
+              }),
+            );
+          }
+        }
+        addText(layers.symmetry, sx(PI / 2), graphBox.y0 + 42, "对称轴", "point-label");
+        addText(layers.symmetry, sx(0) + 18, sy(0) - 20, "对称中心", "point-label", "start");
+      }
+
+      function drawKeyPoints() {
+        if (!state.keyPointsVisible && !state.summaryVisible) {
+          return;
+        }
+        for (let k = -2; k <= 4; k += 1) {
+          const zeroX = k * PI;
+          if (zeroX >= graphBox.xMin && zeroX <= graphBox.xMax) {
+            addCircle(layers.key, sx(zeroX), sy(0), 7, "key-zero");
+          }
+        }
+        for (let k = -2; k <= 2; k += 1) {
+          const maxX = PI / 2 + k * TAU;
+          if (maxX >= graphBox.xMin && maxX <= graphBox.xMax) {
+            addCircle(layers.key, sx(maxX), sy(1), 8, "key-max");
+            addText(layers.key, sx(maxX), sy(1) - 14, "max", "point-label");
+          }
+          const minX = (3 * PI) / 2 + k * TAU;
+          if (minX >= graphBox.xMin && minX <= graphBox.xMax) {
+            addCircle(layers.key, sx(minX), sy(-1), 8, "key-min");
+            addText(layers.key, sx(minX), sy(-1) + 24, "min", "point-label");
+          }
+        }
+      }
+
+      function drawCurrentPoint() {
+        const x = state.xValue;
+        const y = Math.sin(x);
+        addLine(layers.current, sx(x), sy(0), sx(x), sy(y), "current-line");
+        addCircle(layers.current, sx(x), sy(y), 10, "current-point");
+        addText(layers.current, sx(x) + 12, sy(y) - 13, "P", "point-label", "start");
+      }
+
+      function selectedIntervals() {
+        const k = state.periodShiftK;
+        return {
+          incStart: -PI / 2 + TAU * k,
+          incEnd: PI / 2 + TAU * k,
+          decStart: PI / 2 + TAU * k,
+          decEnd: (3 * PI) / 2 + TAU * k,
+        };
+      }
+
+      function describeCurrentPoint() {
+        const x = state.xValue;
+        const y = Math.sin(x);
+        const nearZero = distanceToLattice(x, PI) < 0.04;
+        const nearMax = distanceToLattice(x - PI / 2, TAU) < 0.04;
+        const nearMin = distanceToLattice(x - (3 * PI) / 2, TAU) < 0.04;
+        const normalized = mod(x + PI / 2, TAU) - PI / 2;
+        const direction = normalized <= PI / 2 ? "递增区间" : "递减区间";
+        if (nearMax) {
+          return "当前点接近最大值点，横坐标可写成 π/2 + 2kπ。";
+        }
+        if (nearMin) {
+          return "当前点接近最小值点，横坐标可写成 3π/2 + 2kπ。";
+        }
+        if (nearZero) {
+          return "当前点接近零点，也是一个对称中心，横坐标可写成 kπ。";
+        }
+        return `当前 sin x = ${y.toFixed(3)}，所在局部方向可判为${direction}。`;
+      }
+
+      function distanceToLattice(value, step) {
+        return Math.abs(value - Math.round(value / step) * step);
+      }
+
+      function updateFormulaList() {
+        const { incStart, incEnd, decStart, decEnd } = selectedIntervals();
+        const items = [
+          {
+            active: state.periodCompareVisible || state.summaryVisible,
+            html: "<code>sin(x + 2kπ) = sin x</code>",
+          },
+          {
+            active: state.monotonicSegmentsVisible || state.summaryVisible,
+            html: `<code>递增 [${formatPi(incStart)}, ${formatPi(incEnd)}]</code>`,
+          },
+          {
+            active: state.monotonicSegmentsVisible || state.summaryVisible,
+            html: `<code>递减 [${formatPi(decStart)}, ${formatPi(decEnd)}]</code>`,
+          },
+          {
+            active: state.symmetryVisible || state.summaryVisible,
+            html: "<code>对称轴 x = π/2 + kπ；中心 (kπ, 0)</code>",
+          },
+          {
+            active: state.keyPointsVisible || state.summaryVisible,
+            html: "<code>零点 kπ；最大 π/2 + 2kπ；最小 3π/2 + 2kπ</code>",
+          },
+        ];
+        formulaList.replaceChildren();
+        items.forEach((item) => {
+          const li = document.createElement("li");
+          li.className = item.active ? "is-active" : "";
+          li.innerHTML = item.html;
+          formulaList.appendChild(li);
+        });
+      }
+
+      function updateReadouts() {
+        const y = Math.sin(state.xValue);
+        xReadout.textContent = formatPi(state.xValue);
+        yReadout.textContent = Math.abs(y) < 1e-9 ? "0" : y.toFixed(3);
+        phaseReadout.textContent = formatPi(mod(state.xValue, TAU));
+        sliderLabel.textContent = formatPi(state.xValue);
+        xSlider.value = String(state.xValue);
+        feedbackText.textContent = describeCurrentPoint();
+        playButton.textContent = state.playing ? "暂停" : "播放";
+        playButton.classList.toggle("is-primary", !state.playing);
+        document.querySelectorAll(".toggle-button").forEach((button) => {
+          const key = button.dataset.toggle;
+          button.setAttribute("aria-pressed", String(Boolean(state[key])));
+        });
+        document.querySelectorAll(".stage-button").forEach((button) => {
+          button.classList.toggle("is-active", button.dataset.stage === state.activeStage);
+        });
+        document.querySelectorAll(".k-button").forEach((button) => {
+          button.classList.toggle("is-active", Number(button.dataset.k) === state.periodShiftK);
+        });
+        updateFormulaList();
+      }
+
+      function render() {
+        clearLayers();
+        drawPeriodBands();
+        drawAxes();
+        drawMonotonicSegments();
+        drawCurve();
+        drawSymmetry();
+        drawKeyPoints();
+        drawPeriodComparison();
+        drawCurrentPoint();
+        updateReadouts();
+        maybeEmitCheckpoint();
+      }
+
+      function setX(value, source = "control") {
+        const next = clamp(value, graphBox.xMin, graphBox.xMax);
+        const previous = state.xValue;
+        state.xValue = next;
+        render();
+        emitStateChanged("x_changed", { x_value: next, sine_value: Math.sin(next) });
+        if (Math.abs(previous - next) > 0.001) {
+          emitInteraction("x_changed", source);
+        }
+      }
+
+      function setStage(stage) {
+        state.activeStage = stage;
+        state.periodCompareVisible = ["period", "summary"].includes(stage);
+        state.monotonicSegmentsVisible = ["monotonic", "summary"].includes(stage);
+        state.symmetryVisible = ["symmetry", "summary"].includes(stage);
+        state.keyPointsVisible = ["keypoints", "summary"].includes(stage);
+        state.summaryVisible = stage === "summary";
+        render();
+        emitStateChanged("layer_toggled", layerPatch());
+        emitInteraction(`stage_${stage}`, "teacher");
+      }
+
+      function layerPatch() {
+        return {
+          period_compare_visible: state.periodCompareVisible,
+          monotonic_segments_visible: state.monotonicSegmentsVisible,
+          symmetry_visible: state.symmetryVisible,
+          key_points_visible: state.keyPointsVisible,
+          summary_visible: state.summaryVisible,
+        };
+      }
+
+      function toggleLayer(key) {
+        state[key] = !state[key];
+        state.activeStage = "custom";
+        render();
+        emitStateChanged("layer_toggled", layerPatch());
+        emitInteraction(`toggle_${key}`, "teacher");
+      }
+
+      function setPeriodShift(k) {
+        state.periodShiftK = k;
+        render();
+        emitStateChanged("period_shift_changed", { period_shift_k: k });
+        emitInteraction("period_shift_changed", "teacher");
+      }
+
+      function resetApplet() {
+        state.xValue = 0;
+        state.periodShiftK = 0;
+        state.playing = false;
+        setStage("graph");
+        stopPlaying();
+        emitInteraction("reset", "teacher");
+      }
+
+      function startPlaying() {
+        if (state.playing) {
+          return;
+        }
+        state.playing = true;
+        let previousTime = performance.now();
+        const step = (time) => {
+          if (!state.playing) {
+            return;
+          }
+          const delta = (time - previousTime) / 1000;
+          previousTime = time;
+          let next = state.xValue + delta * 0.9;
+          if (next > graphBox.xMax) {
+            next = graphBox.xMin;
+          }
+          setX(next, "playback");
+          rafId = requestAnimationFrame(step);
+        };
+        rafId = requestAnimationFrame(step);
+        render();
+        emitInteraction("play", "teacher");
+      }
+
+      function stopPlaying() {
+        state.playing = false;
+        if (rafId !== null) {
+          cancelAnimationFrame(rafId);
+          rafId = null;
+        }
+        render();
+      }
+
+      function togglePlay() {
+        if (state.playing) {
+          stopPlaying();
+          emitInteraction("pause", "teacher");
+        } else {
+          startPlaying();
+        }
+      }
+
+      function maybeEmitCheckpoint() {
+        const x = state.xValue;
+        let checkpoint = "";
+        if (distanceToLattice(x - PI / 2, TAU) < 0.035) {
+          checkpoint = "maximum_point";
+        } else if (distanceToLattice(x - (3 * PI) / 2, TAU) < 0.035) {
+          checkpoint = "minimum_point";
+        } else if (distanceToLattice(x, PI) < 0.035) {
+          checkpoint = "zero_or_symmetry_center";
+        }
+        if (checkpoint && checkpoint !== lastCheckpoint) {
+          lastCheckpoint = checkpoint;
+          postEnvelope("applet:checkpoint", {
+            checkpoint,
+            state: snapshot(),
+            evidence: describeCurrentPoint(),
+          });
+        }
+        if (!checkpoint) {
+          lastCheckpoint = "";
+        }
+      }
+
+      function snapshot() {
+        return {
+          x_value: state.xValue,
+          sine_value: Math.sin(state.xValue),
+          period_shift_k: state.periodShiftK,
+          period_compare_visible: state.periodCompareVisible,
+          monotonic_segments_visible: state.monotonicSegmentsVisible,
+          symmetry_visible: state.symmetryVisible,
+          key_points_visible: state.keyPointsVisible,
+          summary_visible: state.summaryVisible,
+        };
+      }
+
+      function applySnapshot(nextState = {}) {
+        if (typeof nextState.x_value === "number") {
+          state.xValue = clamp(nextState.x_value, graphBox.xMin, graphBox.xMax);
+        }
+        if (typeof nextState.period_shift_k === "number") {
+          state.periodShiftK = clamp(Math.round(nextState.period_shift_k), -1, 1);
+        }
+        [
+          ["period_compare_visible", "periodCompareVisible"],
+          ["monotonic_segments_visible", "monotonicSegmentsVisible"],
+          ["symmetry_visible", "symmetryVisible"],
+          ["key_points_visible", "keyPointsVisible"],
+          ["summary_visible", "summaryVisible"],
+        ].forEach(([externalKey, internalKey]) => {
+          if (typeof nextState[externalKey] === "boolean") {
+            state[internalKey] = nextState[externalKey];
+          }
+        });
+        state.activeStage = "custom";
+        render();
+      }
+
+      function emitStateChanged(domainEvent, patch) {
+        postEnvelope("applet:stateChanged", {
+          state: snapshot(),
+          patch,
+          domainEvent,
+        });
+      }
+
+      function emitInteraction(action, source) {
+        postEnvelope("applet:interaction", {
+          action,
+          source,
+          state: snapshot(),
+        });
+      }
+
+      function postEnvelope(type, payload) {
+        window.parent.postMessage(
+          {
+            sdk: SDK,
+            sdkVersion: SDK_VERSION,
+            resourceId: RESOURCE_ID,
+            instanceId,
+            type,
+            seq: ++seq,
+            timestamp: new Date().toISOString(),
+            payload,
+          },
+          "*",
+        );
+      }
+
+      function handlePlayerMessage(event) {
+        const message = event.data;
+        if (!message || message.sdk !== SDK || typeof message.type !== "string") {
+          return;
+        }
+        if (message.instanceId) {
+          instanceId = message.instanceId;
+        }
+        const payload = message.payload ?? {};
+        if (message.type === "player:init") {
+          applySnapshot(payload.initialState ?? {});
+          postReady();
+        }
+        if (message.type === "player:setState") {
+          applySnapshot(payload.state ?? {});
+          emitInteraction("set_state", "player");
+        }
+        if (message.type === "player:command") {
+          handleCommand(payload.command, payload.args ?? {});
+        }
+        if (message.type === "player:requestState") {
+          emitStateChanged("x_changed", { x_value: state.xValue, sine_value: Math.sin(state.xValue) });
+        }
+      }
+
+      function handleCommand(command, args) {
+        if (command === "play") {
+          startPlaying();
+        }
+        if (command === "pause") {
+          stopPlaying();
+        }
+        if (command === "reset") {
+          resetApplet();
+        }
+        if (command === "reveal" && typeof args.layer === "string") {
+          const key = `${args.layer}Visible`;
+          if (key in state) {
+            state[key] = true;
+            render();
+          }
+        }
+        if (command === "hide" && typeof args.layer === "string") {
+          const key = `${args.layer}Visible`;
+          if (key in state) {
+            state[key] = false;
+            render();
+          }
+        }
+      }
+
+      function postReady() {
+        postEnvelope("applet:ready", {
+          supportedSdkVersion: SDK_VERSION,
+          capabilities: ["drag_point", "playback", "layer_toggle", "state_snapshot"],
+          initialState: snapshot(),
+        });
+      }
+
+      function pointerToSvg(event) {
+        const matrix = svg.getScreenCTM();
+        if (!matrix) {
+          return null;
+        }
+        const point = svg.createSVGPoint();
+        point.x = event.clientX;
+        point.y = event.clientY;
+        return point.matrixTransform(matrix.inverse());
+      }
+
+      function updateFromPointer(event) {
+        const point = pointerToSvg(event);
+        if (!point) {
+          return;
+        }
+        if (
+          point.x < graphBox.x0 ||
+          point.x > graphBox.x0 + graphBox.width ||
+          point.y < graphBox.y0 ||
+          point.y > graphBox.y0 + graphBox.height
+        ) {
+          return;
+        }
+        setX(invSx(point.x), "drag");
+      }
+
+      svg.addEventListener("pointerdown", (event) => {
+        dragging = true;
+        svg.setPointerCapture(event.pointerId);
+        stopPlaying();
+        updateFromPointer(event);
+      });
+
+      svg.addEventListener("pointermove", (event) => {
+        if (dragging) {
+          updateFromPointer(event);
+        }
+      });
+
+      svg.addEventListener("pointerup", (event) => {
+        dragging = false;
+        svg.releasePointerCapture(event.pointerId);
+      });
+
+      xSlider.addEventListener("input", (event) => {
+        stopPlaying();
+        setX(Number(event.target.value), "slider");
+      });
+
+      playButton.addEventListener("click", togglePlay);
+      resetButton.addEventListener("click", resetApplet);
+
+      document.querySelectorAll(".stage-button").forEach((button) => {
+        button.addEventListener("click", () => setStage(button.dataset.stage));
+      });
+
+      document.querySelectorAll(".toggle-button").forEach((button) => {
+        button.addEventListener("click", () => toggleLayer(button.dataset.toggle));
+      });
+
+      document.querySelectorAll(".k-button").forEach((button) => {
+        button.addEventListener("click", () => setPeriodShift(Number(button.dataset.k)));
+      });
+
+      window.addEventListener("message", handlePlayerMessage);
+
+      render();
+      postReady();
+    </script>
+  </body>
+</html>
