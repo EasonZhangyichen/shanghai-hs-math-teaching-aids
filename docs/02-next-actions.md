@@ -7,8 +7,8 @@
 - [x] 初始化本地 Git 仓库。
 - [x] 创建长期分支：`develop`、`track/curriculum-map`、`track/trig-sample-pack`、`track/applet-sdk`、`track/manim-pipeline`、`track/platform-shell`、`track/review-system`、`track/design-system`。
 - [x] 建立 PR 模板和审核清单。
+- [x] 建立内容版本规则与发布 tag 规则。
 - [ ] 创建并保护远程仓库。
-- [ ] 建立内容版本规则与发布 tag 规则。
 
 ## P1：课程图谱
 
