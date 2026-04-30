@@ -49,4 +49,5 @@
 - [ ] 搭建课件播放器。
 - [x] 从 `content/curriculum/index.yaml` 读取课程树。
 - [x] 以课时页聚合 Applet、Manim、脚本和任务。
-- [ ] 将样板 Applet 接入真实播放器 iframe，占位预览升级为可运行课件入口。
+- [x] 将样板 Applet 接入教师工作台 iframe，占位预览升级为可运行课件入口。
+- [ ] 将平台内 iframe 预览沉淀为独立 `apps/player`，补齐播放器级控制、错误提示和状态记录。

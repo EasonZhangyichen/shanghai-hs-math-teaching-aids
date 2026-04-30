@@ -9,6 +9,8 @@ const state = {
   scriptMode: "teacher",
 };
 
+let playerSeq = 0;
+
 root.addEventListener("click", (event) => {
   const lessonButton = event.target.closest("[data-lesson-id]");
   if (lessonButton) {
@@ -29,6 +31,8 @@ root.addEventListener("click", (event) => {
     render();
   }
 });
+
+root.addEventListener("load", handlePlayerLoad, true);
 
 window.addEventListener("hashchange", () => {
   const lessonId = getLessonIdFromHash();
@@ -62,8 +66,8 @@ function render() {
           <section class="section-block resources-block" aria-labelledby="resources-title">
             ${renderResources(lesson, selectedResource)}
           </section>
-          <section class="section-block metadata-block" aria-labelledby="metadata-title">
-            ${renderMetadataPreview(selectedResource)}
+          <section class="section-block metadata-block ${selectedResource?.player?.isRunnable ? "has-player" : ""}" aria-labelledby="metadata-title">
+            ${renderResourceDetail(selectedResource)}
           </section>
           <section class="section-block script-block" aria-labelledby="script-title">
             ${renderScriptEntrypoints(packageResource, lesson)}
@@ -219,21 +223,21 @@ function renderResourceCard(resource, selectedResource) {
       <span class="resource-note">${escapeHtml(resource.note)}</span>
       <span class="resource-footer">
         <span>${escapeHtml(resource.cognitiveAction ?? "待定")}</span>
-        <span>${escapeHtml(resource.availability === "metadata_ready" ? "metadata 已就绪" : "规划中")}</span>
+        <span>${escapeHtml(resourceAvailabilityLabel(resource))}</span>
       </span>
     </button>
   `;
 }
 
-function renderMetadataPreview(resource) {
+function renderResourceDetail(resource) {
   if (!resource) {
-    return renderEmptyState("metadata-title", "请选择一个资源入口查看 metadata。");
+    return renderEmptyState("metadata-title", "请选择一个资源入口查看详情。");
   }
 
   if (!resource.metadataPreview) {
     return `
       <div class="section-heading">
-        <h3 id="metadata-title">样板 Applet metadata 预览</h3>
+        <h3 id="metadata-title">资源详情</h3>
         <span>${escapeHtml(resourceTypeLabel(resource.resourceType))}</span>
       </div>
       <div class="planned-preview">
@@ -247,9 +251,21 @@ function renderMetadataPreview(resource) {
   const metadata = resource.metadataPreview;
   return `
     <div class="section-heading">
-      <h3 id="metadata-title">样板 Applet metadata 预览</h3>
+      <h3 id="metadata-title">资源详情</h3>
       <span>${escapeHtml(metadata.id)}@${escapeHtml(metadata.version)}</span>
     </div>
+    <div class="resource-detail-header">
+      <div>
+        <p class="detail-kicker">${escapeHtml(resourceTypeLabel(resource.resourceType))}</p>
+        <h4>${escapeHtml(resource.title)}</h4>
+        ${resource.subtitle ? `<p>${escapeHtml(resource.subtitle)}</p>` : ""}
+      </div>
+      <div class="detail-status">
+        <span>${escapeHtml(statusLabel(resource.status))}</span>
+        <span>${escapeHtml(resourceAvailabilityLabel(resource))}</span>
+      </div>
+    </div>
+    ${renderAppletPlayer(resource)}
     <div class="metadata-summary">
       <div>
         <span class="field-label">状态</span>
@@ -280,6 +296,38 @@ function renderMetadataPreview(resource) {
       <div>
         <h4>运行态字段</h4>
         ${renderCompactList((metadata.dataContract?.state_variables ?? []).map((item) => `${item.name}：${item.description}`))}
+      </div>
+    </div>
+  `;
+}
+
+function renderAppletPlayer(resource) {
+  if (!resource.player?.isRunnable) {
+    return `
+      <div class="planned-preview">
+        <p class="planned-title">真实课件预览尚未就绪</p>
+        <p>该资源当前没有可运行的 HTML src 入口，平台保留 metadata 与规划说明。</p>
+      </div>
+    `;
+  }
+
+  return `
+    <div class="player-preview" aria-label="真实课件预览">
+      <div class="player-preview-header">
+        <div>
+          <p class="detail-kicker">真实课件预览</p>
+          <h4>${escapeHtml(resource.player.title)}</h4>
+        </div>
+        <span>${escapeHtml(resource.player.src)}</span>
+      </div>
+      <div class="player-frame-shell">
+        <iframe
+          title="${escapeHtml(resource.player.title)}"
+          src="${escapeHtml(resource.player.src)}"
+          sandbox="${escapeHtml(resource.player.sandbox)}"
+          allow="fullscreen"
+          data-player-resource-id="${escapeHtml(resource.id)}"
+        ></iframe>
       </div>
     </div>
   `;
@@ -365,11 +413,60 @@ function renderStepList(steps) {
 function renderEmptyState(titleId, message) {
   return `
     <div class="section-heading">
-      <h3 id="${escapeHtml(titleId)}">样板 Applet metadata 预览</h3>
+      <h3 id="${escapeHtml(titleId)}">资源详情</h3>
       <span>未选择</span>
     </div>
     <p class="muted">${escapeHtml(message)}</p>
   `;
+}
+
+function handlePlayerLoad(event) {
+  const iframe = event.target;
+  if (!(iframe instanceof HTMLIFrameElement) || !iframe.dataset.playerResourceId) {
+    return;
+  }
+
+  const resource = findResourceById(iframe.dataset.playerResourceId);
+  if (!resource?.player?.isRunnable || !iframe.contentWindow) {
+    return;
+  }
+
+  iframe.contentWindow.postMessage(
+    buildPlayerMessage(resource, {
+      metadata: resource.metadataPreview,
+      mode: "preview",
+      initialState: {},
+      display: {
+        width: Math.round(iframe.clientWidth),
+        height: Math.round(iframe.clientHeight),
+        devicePixelRatio: window.devicePixelRatio || 1,
+      },
+      capabilities: {
+        statePersistence: false,
+        fullscreen: true,
+        print: false,
+      },
+    }),
+    window.location.origin,
+  );
+}
+
+function buildPlayerMessage(resource, payload) {
+  playerSeq += 1;
+  return {
+    sdk: "sh-hs-math-applet-sdk",
+    sdkVersion: "0.1.0",
+    resourceId: resource.id,
+    instanceId: `workspace-preview-${resource.id}`,
+    type: "player:init",
+    seq: playerSeq,
+    timestamp: new Date().toISOString(),
+    payload,
+  };
+}
+
+function findResourceById(resourceId) {
+  return workspace.lessons.flatMap((lesson) => lesson.resources).find((resource) => resource.id === resourceId);
 }
 
 function getSelectedResource(lesson) {
@@ -419,6 +516,14 @@ function resourceTypeLabel(type) {
       diagnosis: "诊断任务",
     }[type] ?? type
   );
+}
+
+function resourceAvailabilityLabel(resource) {
+  if (resource.player?.isRunnable) {
+    return "可运行预览";
+  }
+
+  return resource.availability === "metadata_ready" ? "metadata 已就绪" : "规划中";
 }
 
 function statusLabel(status) {

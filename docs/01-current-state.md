@@ -27,8 +27,9 @@
 - 已在 `track/platform-shell` 上搭建教师端平台壳 MVP：
   - 根目录新增 npm/Vite 工程脚本，`apps/web` 为教师工作台入口。
   - `apps/web/src/lib/content.js` 可读取 `content/curriculum/index.yaml` 和 `content/applets/*/metadata.yaml`，生成平台需要的课程树、课时资源卡、metadata 预览和脚本入口数据。
+  - 平台壳现可识别 `files.src_entry` 且 `implementation.html_src_status: runnable` 的 Applet 资源，并在教师工作台资源详情区提供 iframe 真实课件预览。
   - `apps/web/src/data/workspace-data.json` 由 `npm run generate:content` 生成，供前端静态读取。
-  - 页面已包含教材树、课时知识卡、资源卡片、样板 Applet metadata 预览、教师脚本与学生活动入口；真实 Applet 交互暂不实现。
+  - 页面已包含教材树、课时知识卡、资源卡片、样板 Applet metadata 预览、真实 Applet iframe 预览、教师脚本与学生活动入口；尚未落地的 Manim、Diagnosis 和 proposed 资源继续显示规划中占位。
 
 ## 已建立的项目骨架
 
@@ -63,8 +64,8 @@
 - 尚未正式核验沪教版教材全册课时目录。
 - 必修第二册第 7 章目录已完成首版结构化整理，但尚未完成纸质教材人工终核。
 - 第 7 章的前置章节节点、第 8 章平面向量和第 9 章复数等后续节点仍是引用占位，尚未展开为完整图谱。
-- 尚未创建独立课件播放器和平台内真实 Applet iframe 运行态。
-- 已创建第一个可运行 HTML Applet 原型，但尚未完成播放器接入、数学审校和课堂试用。
+- 尚未创建独立课件播放器；教师工作台内已完成样板 Applet iframe 预览接入，但尚未沉淀为独立 `apps/player`。
+- 已创建第一个可运行 HTML Applet 原型，并已接入平台壳 iframe 预览；尚未完成数学审校和课堂试用。
 - 尚未创建可运行 Manim 动画。
 - 尚未将 Applet metadata JSON Schema 接入自动校验脚本。
 - 尚未配置 GitHub 分支保护规则。

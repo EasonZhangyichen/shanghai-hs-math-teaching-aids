@@ -220,6 +220,7 @@ function buildResourceCards({ lesson, appletsById, lessonApplets }) {
       status: "planned",
       version: null,
       metadataPreview: null,
+      player: null,
       package: null,
     };
   });
@@ -244,7 +245,24 @@ function buildImplementedAppletCard(entry, packageResource) {
     status: packageResource.status,
     version: packageResource.version,
     metadataPreview: buildMetadataPreview(packageResource.metadata),
+    player: buildAppletPlayer(packageResource),
     package: packageResource.package,
+  };
+}
+
+function buildAppletPlayer(packageResource) {
+  const srcEntry = packageResource.package.files.srcEntry;
+  const htmlSrcStatus = packageResource.metadata.implementation?.html_src_status;
+
+  if (packageResource.resourceType !== "applet" || !srcEntry || htmlSrcStatus !== "runnable") {
+    return null;
+  }
+
+  return {
+    isRunnable: true,
+    src: srcEntry,
+    title: packageResource.title,
+    sandbox: "allow-scripts allow-same-origin",
   };
 }
 
