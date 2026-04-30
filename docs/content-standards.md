@@ -85,6 +85,7 @@ content/diagnosis/<resource-id>/
 
 ```bash
 npm run validate:content
+npm run generate:backlog
 ```
 
 该命令会检查：
@@ -95,6 +96,7 @@ npm run validate:content
 - 已落地资源是否能与课程图谱中的 `digital_entry_points[].proposed_resource_id` 对齐。
 - metadata 中声明的 README、脚本、任务、分镜、场景脚本、题组、评分规则、教师说明、审核记录等文件是否真实存在。
 - Manim `video_ready` 资源是否存在 `dist/final/` 下的 `mp4`、`webm` 和 poster。
+- `content/production/resource-backlog.json` 是否能从课程图谱和已落地资源包重新生成。
 
 完整项目验证使用：
 
