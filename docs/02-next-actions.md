@@ -44,7 +44,8 @@
 
 ## P4：平台雏形
 
-- [ ] 搭建教师端平台壳。
+- [x] 搭建教师端平台壳。
 - [ ] 搭建课件播放器。
-- [ ] 从 `content/curriculum/index.yaml` 读取课程树。
-- [ ] 以课时页聚合 Applet、Manim、脚本和任务。
+- [x] 从 `content/curriculum/index.yaml` 读取课程树。
+- [x] 以课时页聚合 Applet、Manim、脚本和任务。
+- [ ] 将样板 Applet 接入真实播放器 iframe，占位预览升级为可运行课件入口。

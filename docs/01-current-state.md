@@ -23,7 +23,11 @@
   - `packages/applet-sdk/docs/status-fields.md` 定义资源生命周期、实现阶段、审核状态和运行态状态变量。
   - `packages/applet-sdk/docs/event-protocol.md` 定义播放器与 Applet 的 `postMessage` 事件协议。
   - `packages/applet-sdk/docs/player-embed-contract.md` 定义 iframe 播放器嵌入契约。
-  - 当前只包含文档与 schema，尚未搭建 Web 平台或播放器实现。
+- 已在 `track/platform-shell` 上搭建教师端平台壳 MVP：
+  - 根目录新增 npm/Vite 工程脚本，`apps/web` 为教师工作台入口。
+  - `apps/web/src/lib/content.js` 可读取 `content/curriculum/index.yaml` 和 `content/applets/*/metadata.yaml`，生成平台需要的课程树、课时资源卡、metadata 预览和脚本入口数据。
+  - `apps/web/src/data/workspace-data.json` 由 `npm run generate:content` 生成，供前端静态读取。
+  - 页面已包含教材树、课时知识卡、资源卡片、样板 Applet metadata 预览、教师脚本与学生活动入口；真实 Applet 交互暂不实现。
 
 ## 已建立的项目骨架
 
@@ -48,7 +52,8 @@
 - `content/curriculum/`：沪教版课程图谱数据入口。
 - `content/applets/`：HTML 交互课件资产入口。
 - `content/manim/`：Manim 动画资产入口。
-- `apps/`：后续教师端平台与课件播放器。
+- `apps/web`：教师端平台壳 MVP，当前读取课程图谱和样板资源包生成工作台。
+- `apps/`：后续继续承载独立课件播放器和其他前端入口。
 - `packages/`：后续共享 SDK、引擎适配和 schema。
 - `scripts/`：后续校验、生成和导出工具。
 
@@ -57,7 +62,7 @@
 - 尚未正式核验沪教版教材全册课时目录。
 - 必修第二册第 7 章目录已完成首版结构化整理，但尚未完成纸质教材人工终核。
 - 第 7 章的前置章节节点、第 8 章平面向量和第 9 章复数等后续节点仍是引用占位，尚未展开为完整图谱。
-- 尚未创建 Web 平台代码。
+- 尚未创建独立课件播放器和真实 Applet iframe 运行态。
 - 尚未创建可运行 HTML Applet 或 Manim 动画。
 - 尚未将 Applet metadata JSON Schema 接入自动校验脚本。
 - 尚未配置 GitHub 分支保护规则。
