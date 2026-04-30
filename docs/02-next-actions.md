@@ -25,10 +25,13 @@
 
 ## P2：课件规范
 
-- [ ] 定义 Applet metadata schema。
+- [x] 定义 Applet metadata schema。
 - [ ] 定义 Manim clip metadata schema。
-- [ ] 定义课时资源包目录结构。
-- [ ] 定义数学审校与教研审核字段。
+- [x] 定义 Applet 资源包目录结构。
+- [x] 定义 Applet 状态字段、事件协议和播放器嵌入契约。
+- [ ] 定义课时页聚合资源包目录结构。
+- [ ] 定义 Manim 与 Diagnosis 的数学审校、教研审核字段。
+- [ ] 将 Applet metadata schema 接入校验脚本。
 
 ## P3：三角函数样板包
 
