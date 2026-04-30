@@ -34,7 +34,7 @@
 - [ ] 定义 Manim 与 Diagnosis 的数学审校、教研审核字段。
 - [x] 将 Applet metadata schema 接入校验脚本。
 - [x] 将 Manim metadata schema 接入校验脚本。
-- [ ] 定义 Diagnosis metadata schema 并接入校验脚本。
+- [x] 定义 Diagnosis metadata schema 并接入校验脚本。
 
 ## P3：三角函数样板包
 
