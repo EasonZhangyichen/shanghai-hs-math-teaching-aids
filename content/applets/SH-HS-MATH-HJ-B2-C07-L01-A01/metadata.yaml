@@ -1,0 +1,176 @@
+id: "SH-HS-MATH-HJ-B2-C07-L01-A01"
+version: "0.1.0"
+status: "draft"
+resource_type: "applet"
+title: "单位圆到正弦曲线"
+subtitle: "从单位圆动点的纵坐标生成 y = sin x 的函数图像"
+
+curriculum:
+  region: "上海"
+  stage: "高中"
+  subject: "数学"
+  edition: "沪教版"
+  volume_id: "B2"
+  volume_title: "必修第二册"
+  chapter_id: "SH-HS-MATH-HJ-B2-C07"
+  chapter_title: "三角函数"
+  section_id: "SH-HS-MATH-HJ-B2-C07-S01"
+  section_title: "正弦函数的图像与性质"
+  lesson_id: "SH-HS-MATH-HJ-B2-C07-L01"
+  textbook_ref: "7.1.1"
+  lesson_title: "正弦函数的图像"
+
+pedagogy:
+  cognitive_action: "投影"
+  estimated_classroom_minutes: 18
+  primary_teaching_problem: "学生知道单位圆中的正弦值，却难以解释正弦曲线为什么以角的弧度量为横坐标、以单位圆动点纵坐标为纵坐标。"
+  learning_goals:
+    - "把单位圆上动点 P 的纵坐标与 sin theta 的函数值对应起来。"
+    - "说明正弦图像上点 Q 的坐标应写成 (theta, sin theta)，其中 theta 是弧度量。"
+    - "通过一周旋转识别 0、pi/2、pi、3pi/2、2pi 处的关键点。"
+    - "从终边相同角解释正弦曲线的周期重复。"
+  prerequisites:
+    - "弧度制和终边相同角"
+    - "单位圆中的正弦定义"
+    - "函数图像描点与坐标表示"
+  successors:
+    - "SH-HS-MATH-HJ-B2-C07-L02"
+    - "SH-HS-MATH-HJ-B2-C07-L03"
+    - "SH-HS-MATH-HJ-B2-C07-L05"
+  core_competencies:
+    - "直观想象"
+    - "数学抽象"
+    - "数学建模"
+
+mathematical_scope:
+  function: "y = sin x"
+  independent_variable: "角 x 的弧度量"
+  dependent_variable: "单位圆动点的纵坐标"
+  default_theta_range: "0 <= theta <= 2pi"
+  extension_theta_range: "-2pi <= theta <= 4pi"
+  key_angles:
+    - theta: "0"
+      sine: "0"
+      unit_circle_position: "(1, 0)"
+    - theta: "pi/2"
+      sine: "1"
+      unit_circle_position: "(0, 1)"
+    - theta: "pi"
+      sine: "0"
+      unit_circle_position: "(-1, 0)"
+    - theta: "3pi/2"
+      sine: "-1"
+      unit_circle_position: "(0, -1)"
+    - theta: "2pi"
+      sine: "0"
+      unit_circle_position: "(1, 0)"
+  out_of_scope:
+    - "正弦函数单调区间、奇偶性和对称性的系统归纳"
+    - "余弦函数图像"
+    - "y = A sin(omega x + phi) 的参数变换"
+
+representations:
+  - id: "unit_circle"
+    role: "显示角 theta、动点 P 和 P 的纵坐标。"
+  - id: "projection"
+    role: "把 P 的纵坐标投影为正弦函数值。"
+  - id: "sine_graph"
+    role: "显示图像点 Q = (theta, sin theta) 和随 theta 变化生成的轨迹。"
+  - id: "key_value_table"
+    role: "在教师打开时记录关键角、单位圆位置和图像点。"
+
+interaction_design:
+  primary_control: "拖动单位圆上的动点 P，或用 theta 滑块精确控制角度。"
+  teacher_controls:
+    - "播放/暂停匀速旋转"
+    - "重置到 theta = 0"
+    - "显示或隐藏角弧与弧度标签"
+    - "显示或隐藏投影线"
+    - "显示或隐藏已生成轨迹"
+    - "显示或隐藏关键点和关键值表"
+    - "切换一周视图与周期延拓视图"
+  student_controls:
+    - "拖动动点观察纵坐标变化"
+    - "在关键角处停留并填写观察表"
+    - "先预测图像点位置，再显示轨迹验证"
+  staged_reveal:
+    - step: "circle_only"
+      description: "只显示单位圆、坐标轴、动点 P 和角 theta。"
+    - step: "projection_to_value"
+      description: "显示 P 到 y 轴方向的投影，强调 sin theta 是纵坐标。"
+    - step: "graph_point"
+      description: "在右侧坐标系显示 Q = (theta, sin theta)。"
+    - step: "trace_generation"
+      description: "随拖动保留 Q 的轨迹，生成 0 到 2pi 的正弦曲线。"
+    - step: "period_extension"
+      description: "显示 theta 与 theta + 2pi 的同一纵坐标来源，解释周期重复。"
+
+data_contract:
+  state_variables:
+    - name: "theta"
+      unit: "radian"
+      description: "当前角的弧度量。"
+    - name: "point_p"
+      description: "单位圆动点坐标 (cos theta, sin theta)。"
+    - name: "sine_value"
+      description: "point_p 的纵坐标 sin theta。"
+    - name: "point_q"
+      description: "函数图像上的点 (theta, sin theta)。"
+    - name: "trace_visible"
+      description: "是否显示已生成的正弦曲线轨迹。"
+  events:
+    - name: "theta_changed"
+      payload: ["theta", "sine_value", "point_p", "point_q"]
+    - name: "key_angle_reached"
+      payload: ["theta", "sine_value"]
+    - name: "period_extension_toggled"
+      payload: ["enabled"]
+
+feedback_and_diagnosis:
+  success_evidence:
+    - "学生能用自己的话说明横坐标 x 表示转过角的弧度量。"
+    - "学生能从单位圆位置判断 sin x 的正负和大小。"
+    - "学生能解释为什么 x 与 x + 2pi 对应相同的正弦值。"
+  common_error_tags:
+    - id: "confuse_circle_x_with_graph_x"
+      label: "把图像横坐标误认为单位圆上点的横坐标"
+    - id: "degree_radian_break"
+      label: "不能把转角、弧度量和横轴刻度联系起来"
+    - id: "static_curve_memory"
+      label: "只记住曲线形状，不能解释生成过程"
+    - id: "period_without_reason"
+      label: "会背 2pi 周期，但说不出单位圆来源"
+  feedback_principles:
+    - "反馈优先追问坐标来源，不直接给结论。"
+    - "错误反馈要回到同一个 theta 下 P 和 Q 的对应关系。"
+    - "周期反馈要同时显示 theta 与 theta + 2pi 的终边重合。"
+
+visual_semantics:
+  angle_arc: "表示角 theta 的弧度量。"
+  moving_point: "表示单位圆上的动点 P。"
+  projection_line: "表示从 P 的纵坐标到 sin theta 的投影关系。"
+  graph_point: "表示正弦图像上的点 Q = (theta, sin theta)。"
+  generated_trace: "表示随 theta 变化形成的正弦曲线。"
+  rule: "颜色只用于区分数学对象和对应关系，不作装饰。"
+
+implementation:
+  phase: "content_spec_only"
+  html_src_status: "not_started"
+  planned_engine: "native-canvas-svg"
+  create_src_in_later_task: true
+  required_future_files:
+    - "src/index.html"
+  classroom_device_targets:
+    - "教师电脑浏览器"
+    - "教室大屏"
+    - "触控屏或触控板"
+
+files:
+  readme: "README.md"
+  teacher_script: "teacher-script.md"
+  student_task: "student-task.md"
+  review_record: "review.md"
+
+compliance:
+  copyright_note: "本资源包为原创教学脚本与交互规格，不复制教材正文、官方课件、教案或商业平台资源。"
+  review_status: "self_checked_draft"
