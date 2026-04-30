@@ -13,6 +13,8 @@
 ## 已建立的项目骨架
 
 - Git 仓库已初始化，默认稳定分支为 `main`，当前日常开发分支为 `develop`。
+- 本仓库 Git 提交身份已配置为 `EasonZhangyichen <easonzhangyc1008@gmail.com>`。
+- 当前尚未配置 GitHub 远程仓库。
 - 已创建长期分支：
   - `release/v0.1-trig-mvp`
   - `track/curriculum-map`
@@ -47,4 +49,5 @@
 3. `docs/02-next-actions.md`
 4. `docs/git-workflow.md`
 5. `docs/content-standards.md`
-6. `content/curriculum/index.yaml`
+6. `docs/codex-collaboration-guide.md`
+7. `content/curriculum/index.yaml`

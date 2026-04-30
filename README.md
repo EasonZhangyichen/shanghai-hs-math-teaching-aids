@@ -17,6 +17,7 @@
 - [下一步任务](docs/02-next-actions.md)
 - [Git 工作流](docs/git-workflow.md)
 - [内容标准](docs/content-standards.md)
+- [Codex 协作指南](docs/codex-collaboration-guide.md)
 - [架构决策记录](docs/adr/0001-route-2-platform-architecture.md)
 
 ## 初始目录
@@ -33,4 +34,3 @@ content/manim               Manim 场景源码与导出索引
 docs                        产品、教研、架构、计划、决策文档
 scripts                     校验、生成目录、导出离线包等工具
 ```
-
