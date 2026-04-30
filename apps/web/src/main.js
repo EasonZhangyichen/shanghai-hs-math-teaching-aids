@@ -66,7 +66,7 @@ function render() {
           <section class="section-block resources-block" aria-labelledby="resources-title">
             ${renderResources(lesson, selectedResource)}
           </section>
-          <section class="section-block metadata-block" aria-labelledby="metadata-title">
+          <section class="section-block metadata-block ${selectedResource?.player?.isRunnable ? "has-player" : ""}" aria-labelledby="metadata-title">
             ${renderResourceDetail(selectedResource)}
           </section>
           <section class="section-block script-block" aria-labelledby="script-title">

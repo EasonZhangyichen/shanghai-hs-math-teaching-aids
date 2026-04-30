@@ -327,6 +327,10 @@ button {
   align-self: start;
 }
 
+.metadata-block.has-player {
+  grid-column: 1 / -1;
+}
+
 .section-heading {
   display: flex;
   justify-content: space-between;
@@ -521,7 +525,7 @@ li {
 .player-frame-shell iframe {
   display: block;
   width: 100%;
-  min-height: 520px;
+  min-height: 720px;
   border: 0;
   aspect-ratio: 16 / 10;
 }
