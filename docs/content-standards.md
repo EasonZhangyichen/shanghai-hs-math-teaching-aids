@@ -67,6 +67,29 @@ content/manim/<resource-id>/
   review.md
 ```
 
+## 自动校验
+
+新增或修改课程图谱、Applet 资源包、Manim 资源包后必须运行：
+
+```bash
+npm run validate:content
+```
+
+该命令会检查：
+
+- Applet / Manim metadata 是否符合对应 JSON Schema。
+- 资源目录名是否与 `metadata.id` 一致。
+- `metadata.curriculum.lesson_id` 是否存在于 `content/curriculum/index.yaml`。
+- 已落地资源是否能与课程图谱中的 `digital_entry_points[].proposed_resource_id` 对齐。
+- metadata 中声明的 README、脚本、任务、分镜、场景脚本、审核记录等文件是否真实存在。
+- Manim `video_ready` 资源是否存在 `dist/final/` 下的 `mp4`、`webm` 和 poster。
+
+完整项目验证使用：
+
+```bash
+npm run verify
+```
+
 ## 审核维度
 
 - 数学准确性：定义域、边界条件、特殊情况、符号全部正确。
@@ -75,4 +98,3 @@ content/manim/<resource-id>/
 - 认知负荷：页面不过载，信息分步出现。
 - 课堂可用性：大屏清晰，触控友好，低配置设备可运行。
 - 版权合规：不复制教材正文、官方 PPT、教案或商业平台资源。
-

@@ -32,8 +32,9 @@
 - [x] 定义 Applet 状态字段、事件协议和播放器嵌入契约。
 - [ ] 定义课时页聚合资源包目录结构。
 - [ ] 定义 Manim 与 Diagnosis 的数学审校、教研审核字段。
-- [ ] 将 Applet metadata schema 接入校验脚本。
-- [ ] 将 Manim metadata schema 接入校验脚本。
+- [x] 将 Applet metadata schema 接入校验脚本。
+- [x] 将 Manim metadata schema 接入校验脚本。
+- [ ] 定义 Diagnosis metadata schema 并接入校验脚本。
 
 ## P3：三角函数样板包
 
