@@ -17,6 +17,13 @@
 - 已在 `track/trig-sample-pack` 上为 `SH-HS-MATH-HJ-B2-C07-L01-A01` 创建“单位圆到正弦曲线”资源包草稿：
   - 已包含 `metadata.yaml`、`README.md`、`teacher-script.md`、`student-task.md`、`review.md`。
   - 当前是内容规格与教学脚本草稿，暂不包含 HTML `src/` 实现。
+- 已在 `track/applet-sdk` 上创建 Applet SDK v0.1 契约草稿：
+  - `packages/applet-sdk/schemas/applet-metadata.schema.json` 定义 Applet metadata schema。
+  - `packages/applet-sdk/docs/resource-package.md` 定义 Applet 资源包目录规范。
+  - `packages/applet-sdk/docs/status-fields.md` 定义资源生命周期、实现阶段、审核状态和运行态状态变量。
+  - `packages/applet-sdk/docs/event-protocol.md` 定义播放器与 Applet 的 `postMessage` 事件协议。
+  - `packages/applet-sdk/docs/player-embed-contract.md` 定义 iframe 播放器嵌入契约。
+  - 当前只包含文档与 schema，尚未搭建 Web 平台或播放器实现。
 
 ## 已建立的项目骨架
 
@@ -52,7 +59,7 @@
 - 第 7 章的前置章节节点、第 8 章平面向量和第 9 章复数等后续节点仍是引用占位，尚未展开为完整图谱。
 - 尚未创建 Web 平台代码。
 - 尚未创建可运行 HTML Applet 或 Manim 动画。
-- 尚未搭建元数据校验脚本。
+- 尚未将 Applet metadata JSON Schema 接入自动校验脚本。
 - 尚未配置 GitHub 分支保护规则。
 
 ## 继续工作时优先读取
