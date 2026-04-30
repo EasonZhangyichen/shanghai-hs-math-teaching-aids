@@ -50,4 +50,5 @@
 4. `docs/git-workflow.md`
 5. `docs/content-standards.md`
 6. `docs/codex-collaboration-guide.md`
-7. `content/curriculum/index.yaml`
+7. `docs/thread-starter-prompts.md`
+8. `content/curriculum/index.yaml`

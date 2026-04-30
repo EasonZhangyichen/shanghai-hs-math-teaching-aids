@@ -18,6 +18,7 @@
 - [Git 工作流](docs/git-workflow.md)
 - [内容标准](docs/content-standards.md)
 - [Codex 协作指南](docs/codex-collaboration-guide.md)
+- [分支对话启动提示词](docs/thread-starter-prompts.md)
 - [架构决策记录](docs/adr/0001-route-2-platform-architecture.md)
 
 ## 初始目录
