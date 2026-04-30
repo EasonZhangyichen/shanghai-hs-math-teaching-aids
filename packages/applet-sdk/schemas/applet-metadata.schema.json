@@ -121,7 +121,7 @@
       ],
       "properties": {
         "cognitive_action": {
-          "$ref": "#/$defs/nonEmptyString"
+          "$ref": "#/$defs/cognitiveAction"
         },
         "estimated_classroom_minutes": {
           "type": "integer",
@@ -497,6 +497,18 @@
         "classroom_trial",
         "stable",
         "deprecated"
+      ]
+    },
+    "cognitiveAction": {
+      "enum": [
+        "比较",
+        "分解",
+        "变换",
+        "逼近",
+        "累积",
+        "缩放",
+        "投影",
+        "模拟"
       ]
     },
     "snakeCaseId": {
