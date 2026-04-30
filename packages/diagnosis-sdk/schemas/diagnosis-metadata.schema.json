@@ -1,0 +1,384 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/EasonZhangyichen/shanghai-hs-math-teaching-aids/packages/diagnosis-sdk/schemas/diagnosis-metadata.schema.json",
+  "title": "Shanghai High School Math Diagnosis Metadata",
+  "description": "Metadata contract for diagnostic task resource packages in the Shanghai high school math teaching aids project.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "id",
+    "version",
+    "status",
+    "resource_type",
+    "title",
+    "curriculum",
+    "pedagogy",
+    "diagnosis_design",
+    "scoring",
+    "platform_card",
+    "files",
+    "compliance"
+  ],
+  "properties": {
+    "schema_version": {
+      "$ref": "#/$defs/semver"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^SH-HS-MATH-HJ-(?:B[0-9]+|XB[0-9]+)-C[0-9]{2}-L[0-9]{2}-D[0-9]{2}$"
+    },
+    "version": {
+      "$ref": "#/$defs/semver"
+    },
+    "status": {
+      "$ref": "#/$defs/resourceStatus"
+    },
+    "resource_type": {
+      "const": "diagnosis"
+    },
+    "title": {
+      "$ref": "#/$defs/nonEmptyString"
+    },
+    "subtitle": {
+      "$ref": "#/$defs/nonEmptyString"
+    },
+    "curriculum": {
+      "$ref": "#/$defs/curriculum"
+    },
+    "pedagogy": {
+      "$ref": "#/$defs/pedagogy"
+    },
+    "diagnosis_design": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "diagnostic_focus",
+        "misconception_tags",
+        "item_summary",
+        "feedback_strategy"
+      ],
+      "properties": {
+        "diagnostic_focus": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "misconception_tags": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "title",
+              "description"
+            ],
+            "properties": {
+              "id": {
+                "$ref": "#/$defs/snakeCaseId"
+              },
+              "title": {
+                "$ref": "#/$defs/nonEmptyString"
+              },
+              "description": {
+                "$ref": "#/$defs/nonEmptyString"
+              }
+            }
+          }
+        },
+        "item_summary": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "total_items",
+            "question_types",
+            "estimated_minutes"
+          ],
+          "properties": {
+            "total_items": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 30
+            },
+            "question_types": {
+              "$ref": "#/$defs/stringArray"
+            },
+            "estimated_minutes": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 45
+            }
+          }
+        },
+        "feedback_strategy": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "immediate_feedback",
+            "teacher_dashboard_notes"
+          ],
+          "properties": {
+            "immediate_feedback": {
+              "$ref": "#/$defs/nonEmptyString"
+            },
+            "teacher_dashboard_notes": {
+              "$ref": "#/$defs/nonEmptyString"
+            },
+            "remediation_links": {
+              "$ref": "#/$defs/stringArray"
+            }
+          }
+        }
+      }
+    },
+    "scoring": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mastery_threshold",
+        "grading_mode",
+        "retry_policy"
+      ],
+      "properties": {
+        "mastery_threshold": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "grading_mode": {
+          "enum": [
+            "tagged_misconception",
+            "rubric_score",
+            "mixed"
+          ]
+        },
+        "retry_policy": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      }
+    },
+    "platform_card": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "availability",
+        "preview_behavior",
+        "embed_strategy"
+      ],
+      "properties": {
+        "availability": {
+          "enum": [
+            "metadata_ready",
+            "item_bank_ready",
+            "interactive_ready"
+          ]
+        },
+        "preview_behavior": {
+          "enum": [
+            "metadata_placeholder",
+            "item_bank_preview",
+            "diagnosis_player"
+          ]
+        },
+        "embed_strategy": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      }
+    },
+    "files": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "readme",
+        "item_bank",
+        "scoring_rubric",
+        "teacher_notes",
+        "review_record"
+      ],
+      "properties": {
+        "readme": {
+          "$ref": "#/$defs/filePath"
+        },
+        "item_bank": {
+          "$ref": "#/$defs/filePath"
+        },
+        "scoring_rubric": {
+          "$ref": "#/$defs/filePath"
+        },
+        "teacher_notes": {
+          "$ref": "#/$defs/filePath"
+        },
+        "review_record": {
+          "$ref": "#/$defs/filePath"
+        }
+      }
+    },
+    "compliance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "copyright_note",
+        "review_status"
+      ],
+      "properties": {
+        "copyright_note": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "review_status": {
+          "$ref": "#/$defs/reviewStatus"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "semver": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$"
+    },
+    "resourceStatus": {
+      "enum": [
+        "draft",
+        "math_review",
+        "pedagogy_review",
+        "classroom_trial",
+        "stable",
+        "deprecated"
+      ]
+    },
+    "reviewStatus": {
+      "enum": [
+        "self_checked_draft",
+        "math_review_pending",
+        "math_review_passed",
+        "pedagogy_review_pending",
+        "pedagogy_review_passed",
+        "classroom_trial_ready",
+        "stable_approved"
+      ]
+    },
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "stringArray": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/nonEmptyString"
+      }
+    },
+    "snakeCaseId": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*$"
+    },
+    "filePath": {
+      "type": "string",
+      "minLength": 1,
+      "not": {
+        "pattern": "^(?:/|\\.\\.)"
+      }
+    },
+    "curriculum": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "region",
+        "stage",
+        "subject",
+        "edition",
+        "volume_id",
+        "volume_title",
+        "chapter_id",
+        "chapter_title",
+        "section_id",
+        "section_title",
+        "lesson_id",
+        "textbook_ref",
+        "lesson_title"
+      ],
+      "properties": {
+        "region": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "stage": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "subject": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "edition": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "volume_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "volume_title": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "chapter_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "chapter_title": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "section_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "section_title": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "lesson_id": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "textbook_ref": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "lesson_title": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      }
+    },
+    "pedagogy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "cognitive_action",
+        "estimated_classroom_minutes",
+        "primary_teaching_problem",
+        "learning_goals",
+        "prerequisites",
+        "successors",
+        "core_competencies",
+        "classroom_use"
+      ],
+      "properties": {
+        "cognitive_action": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "estimated_classroom_minutes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 90
+        },
+        "primary_teaching_problem": {
+          "$ref": "#/$defs/nonEmptyString"
+        },
+        "learning_goals": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "prerequisites": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "successors": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "core_competencies": {
+          "$ref": "#/$defs/stringArray"
+        },
+        "classroom_use": {
+          "$ref": "#/$defs/nonEmptyString"
+        }
+      }
+    }
+  }
+}

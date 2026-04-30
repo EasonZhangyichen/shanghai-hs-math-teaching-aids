@@ -10,12 +10,15 @@ import YAML from "yaml";
 const CURRICULUM_PATH = "content/curriculum/index.yaml";
 const APPLETS_DIR = "content/applets";
 const MANIM_DIR = "content/manim";
+const DIAGNOSIS_DIR = "content/diagnosis";
 const APPLET_SCHEMA_PATH = "packages/applet-sdk/schemas/applet-metadata.schema.json";
 const MANIM_SCHEMA_PATH = "packages/manim-pipeline/schemas/manim-clip-metadata.schema.json";
+const DIAGNOSIS_SCHEMA_PATH = "packages/diagnosis-sdk/schemas/diagnosis-metadata.schema.json";
 
 const RESOURCE_PATTERNS = {
   applet: /^SH-HS-MATH-HJ-(?:B[0-9]+|XB[0-9]+)-C[0-9]{2}-L[0-9]{2}-A[0-9]{2}$/,
   manim_clip: /^SH-HS-MATH-HJ-(?:B[0-9]+|XB[0-9]+)-C[0-9]{2}-L[0-9]{2}-M[0-9]{2}$/,
+  diagnosis: /^SH-HS-MATH-HJ-(?:B[0-9]+|XB[0-9]+)-C[0-9]{2}-L[0-9]{2}-D[0-9]{2}$/,
 };
 
 export async function validateContent({ rootDir = process.cwd() } = {}) {
@@ -39,8 +42,14 @@ export async function validateContent({ rootDir = process.cwd() } = {}) {
     expectedType: "manim_clip",
     errors,
   });
+  const diagnoses = await loadResourceDirectories({
+    rootDir,
+    relativeDir: DIAGNOSIS_DIR,
+    expectedType: "diagnosis",
+    errors,
+  });
 
-  for (const resource of [...applets, ...manimClips]) {
+  for (const resource of [...applets, ...manimClips, ...diagnoses]) {
     await validateResourcePackage({
       resource,
       curriculumIndex,
@@ -67,7 +76,8 @@ export async function validateContent({ rootDir = process.cwd() } = {}) {
       digitalEntryPoints: curriculumIndex.resourceEntries.size,
       applets: applets.length,
       manimClips: manimClips.length,
-      implementedResources: applets.length + manimClips.length,
+      diagnoses: diagnoses.length,
+      implementedResources: applets.length + manimClips.length + diagnoses.length,
     },
   };
 }
@@ -198,16 +208,22 @@ async function validateResourcePackage({ resource, curriculumIndex, schemaValida
   if (expectedType === "manim_clip") {
     await validateManimPackage({ resource, rootDir, errors });
   }
+
+  if (expectedType === "diagnosis") {
+    await validateDiagnosisPackage({ resource, rootDir, errors });
+  }
 }
 
 async function loadSchemaValidators(rootDir) {
   const ajv = new Ajv2020({ allErrors: true, strict: false });
   const appletSchema = JSON.parse(await readFile(path.join(rootDir, APPLET_SCHEMA_PATH), "utf8"));
   const manimSchema = JSON.parse(await readFile(path.join(rootDir, MANIM_SCHEMA_PATH), "utf8"));
+  const diagnosisSchema = JSON.parse(await readFile(path.join(rootDir, DIAGNOSIS_SCHEMA_PATH), "utf8"));
 
   return {
     applet: ajv.compile(appletSchema),
     manim_clip: ajv.compile(manimSchema),
+    diagnosis: ajv.compile(diagnosisSchema),
   };
 }
 
@@ -303,6 +319,24 @@ async function validateManimPackage({ resource, rootDir, errors }) {
   }
 }
 
+async function validateDiagnosisPackage({ resource, rootDir, errors }) {
+  const { metadata } = resource;
+  const label = metadata.id;
+
+  await validateDeclaredFile({ resource, rootDir, field: "readme", fallback: "README.md", errors });
+  await validateDeclaredFile({ resource, rootDir, field: "item_bank", fallback: "item-bank.yaml", errors });
+  await validateDeclaredFile({ resource, rootDir, field: "scoring_rubric", fallback: "scoring-rubric.md", errors });
+  await validateDeclaredFile({ resource, rootDir, field: "teacher_notes", fallback: "teacher-notes.md", errors });
+  await validateDeclaredFile({ resource, rootDir, field: "review_record", fallback: "review.md", errors });
+
+  if (
+    metadata.platform_card?.availability === "interactive_ready" &&
+    metadata.platform_card?.preview_behavior !== "diagnosis_player"
+  ) {
+    errors.push(`${label} platform_card.preview_behavior should be diagnosis_player when availability is interactive_ready`);
+  }
+}
+
 async function validateDeclaredFile({ resource, rootDir, field, fallback, errors }) {
   const { metadata, packageDir } = resource;
   const label = metadata.id;
@@ -371,7 +405,7 @@ async function runCli() {
   }
 
   console.log(
-    `Content validation passed: ${result.counts.lessons} lessons, ${result.counts.applets} applet(s), ${result.counts.manimClips} Manim clip(s).`,
+    `Content validation passed: ${result.counts.lessons} lessons, ${result.counts.applets} applet(s), ${result.counts.manimClips} Manim clip(s), ${result.counts.diagnoses} diagnosis package(s).`,
   );
 }
 
