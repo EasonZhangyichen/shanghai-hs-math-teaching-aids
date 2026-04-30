@@ -37,6 +37,11 @@
   - 平台壳现可识别 Manim `platform_card.availability: video_ready` 且 `files.output_webm` / `files.output_mp4` 存在的资源，并在教师工作台资源详情区提供 `<video>` 预览。
   - `apps/web/src/data/workspace-data.json` 由 `npm run generate:content` 生成，供前端静态读取。
   - 页面已包含教材树、课时知识卡、资源卡片、样板 Applet metadata 预览、真实 Applet iframe 预览、样板 Manim 视频预览、教师脚本、学生活动和 Manim 分镜入口；尚未落地的 Diagnosis 和 proposed 资源继续显示规划中占位。
+- 已创建首版内容校验闸门：
+  - `scripts/validate-content.js` 会读取课程图谱、Applet metadata 和 Manim metadata。
+  - 已接入 Applet / Manim JSON Schema 校验，并额外检查资源 ID 命名、目录名一致性、课时归属、课程图谱 `proposed_resource_id` 对齐、声明文件存在性。
+  - Manim `video_ready` 资源会检查 `render_plan.phase: rendered`，并确认 `files.output_mp4`、`files.output_webm` 和 `files.poster` 都位于 `dist/final/` 且真实存在。
+  - `npm run verify` 现在会先执行 `npm run validate:content`，再运行测试和平台构建。
 
 ## 已建立的项目骨架
 
@@ -64,7 +69,7 @@
 - `apps/web`：教师端平台壳 MVP，当前读取课程图谱和样板资源包生成工作台。
 - `apps/`：后续继续承载独立课件播放器和其他前端入口。
 - `packages/`：后续共享 SDK、引擎适配和 schema。
-- `scripts/`：后续校验、生成和导出工具。
+- `scripts/`：内容校验、生成和导出工具。
 
 ## 当前尚未完成
 
@@ -74,8 +79,7 @@
 - 尚未创建独立课件播放器；教师工作台内已完成样板 Applet iframe 预览接入，但尚未沉淀为独立 `apps/player`。
 - 已创建第一个可运行 HTML Applet 原型，并已接入平台壳 iframe 预览；尚未完成数学审校和课堂试用。
 - 已创建第一个 Manim 场景脚本并导出可播放 `mp4` / `webm` / poster；尚未完成数学审校或课堂试用。
-- 尚未将 Applet metadata JSON Schema 接入自动校验脚本。
-- 尚未将 Manim metadata JSON Schema 接入自动校验脚本。
+- 已将 Applet 和 Manim metadata JSON Schema 接入首版自动校验脚本；尚未为 Diagnosis 资源定义 schema 或校验逻辑。
 - 平台壳已读取 `content/manim/*/metadata.yaml` 并渲染样板 Manim 视频资源卡；尚未沉淀为独立播放器或接入播放器级学习状态记录。
 - 尚未配置 GitHub 分支保护规则。
 
