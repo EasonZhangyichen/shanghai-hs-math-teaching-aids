@@ -43,7 +43,7 @@
 - [ ] 设计“正弦函数图像与性质”交互脚本。
 - [ ] 设计“图像变换实验室”交互脚本。
 - [ ] 设计第二个 Manim 场景脚本：`SH-HS-MATH-HJ-B2-C07-L05-M01`“图像变换顺序解释”。
-- [ ] 渲染并复核 `SH-HS-MATH-HJ-B2-C07-L01-M01` 的 `mp4`、`webm` 和 poster。
+- [x] 渲染并复核 `SH-HS-MATH-HJ-B2-C07-L01-M01` 的 `mp4`、`webm` 和 poster。
 - [x] 创建第一个可运行 HTML Applet。
 - [ ] 对“单位圆到正弦曲线”HTML Applet 做数学边界复核和课堂节奏试读。
 
@@ -54,5 +54,5 @@
 - [x] 从 `content/curriculum/index.yaml` 读取课程树。
 - [x] 以课时页聚合 Applet、Manim、脚本和任务。
 - [x] 将样板 Applet 接入教师工作台 iframe，占位预览升级为可运行课件入口。
-- [ ] 读取 `content/manim/*/metadata.yaml`，将 Manim `metadata_ready` 和 `video_ready` 状态接入平台资源卡。
+- [x] 读取 `content/manim/*/metadata.yaml`，将 Manim `metadata_ready` 和 `video_ready` 状态接入平台资源卡。
 - [ ] 将平台内 iframe 预览沉淀为独立 `apps/player`，补齐播放器级控制、错误提示和状态记录。

@@ -13,6 +13,7 @@ test("loads the B2 trigonometry curriculum tree for the teacher workspace", asyn
 
   assert.equal(workspace.project.name, "沪教版高中数学数字教具云平台");
   assert.equal(workspace.summary.lessonCount, 7);
+  assert.equal(workspace.summary.implementedManimCount, 1);
 
   const b2 = workspace.tree.volumes.find((volume) => volume.id === "B2");
   assert.ok(b2, "B2 volume should be present");
@@ -34,6 +35,7 @@ test("links the sample applet package to lesson L01 with script and activity ent
   assert.equal(applet.metadataPreview.implementation.html_src_status, "runnable");
   assert.equal(applet.package.files.srcEntry, "content/applets/SH-HS-MATH-HJ-B2-C07-L01-A01/src/index.html");
   assert.deepEqual(applet.player, {
+    kind: "iframe",
     isRunnable: true,
     src: "content/applets/SH-HS-MATH-HJ-B2-C07-L01-A01/src/index.html",
     title: "单位圆到正弦曲线",
@@ -41,6 +43,36 @@ test("links the sample applet package to lesson L01 with script and activity ent
   });
   assert.equal(applet.package.teacherScript.title, "教师脚本：单位圆到正弦曲线");
   assert.equal(applet.package.studentTask.title, "学生活动：从单位圆生成正弦曲线");
+});
+
+test("links the rendered Manim clip to lesson L01 with stable video entries", async () => {
+  const workspace = await loadTeacherWorkspace({ rootDir: repoRoot });
+  const lesson = workspace.lessonsById["SH-HS-MATH-HJ-B2-C07-L01"];
+  const manim = lesson.resources.find((resource) => resource.id === "SH-HS-MATH-HJ-B2-C07-L01-M01");
+
+  assert.ok(manim, "sample Manim clip should be attached to lesson L01");
+  assert.equal(manim.availability, "video_ready");
+  assert.equal(manim.metadataPreview.renderPlan.phase, "rendered");
+  assert.equal(manim.package.storyboard.title, "分镜：正弦曲线的来源");
+  assert.equal(manim.package.media.hasOutputMp4, true);
+  assert.equal(manim.package.media.hasOutputWebm, true);
+  assert.equal(manim.package.media.hasPoster, true);
+  assert.deepEqual(manim.player, {
+    kind: "video",
+    isRunnable: true,
+    title: "正弦曲线的来源",
+    poster: "content/manim/SH-HS-MATH-HJ-B2-C07-L01-M01/dist/final/SH-HS-MATH-HJ-B2-C07-L01-M01-poster.png",
+    sources: [
+      {
+        src: "content/manim/SH-HS-MATH-HJ-B2-C07-L01-M01/dist/final/SH-HS-MATH-HJ-B2-C07-L01-M01.webm",
+        type: "video/webm",
+      },
+      {
+        src: "content/manim/SH-HS-MATH-HJ-B2-C07-L01-M01/dist/final/SH-HS-MATH-HJ-B2-C07-L01-M01.mp4",
+        type: "video/mp4",
+      },
+    ],
+  });
 });
 
 test("sample applet exposes a runnable SDK-compatible HTML entry", async () => {

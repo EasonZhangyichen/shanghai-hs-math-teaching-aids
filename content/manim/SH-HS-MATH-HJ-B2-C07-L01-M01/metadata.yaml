@@ -134,8 +134,8 @@ visual_semantics:
   rule: "颜色只用于区分数学对象和对应关系，不作装饰。"
 
 render_plan:
-  phase: "scene_draft"
-  manim_version: "Manim Community 0.19.x target; not pinned in repo yet"
+  phase: "rendered"
+  manim_version: "Manim Community v0.20.1 via uvx"
   scene_class: "SineOriginScene"
   aspect_ratio: "16:9"
   resolution: "1920x1080"
@@ -145,23 +145,26 @@ render_plan:
     - "mp4"
     - "webm"
   commands:
-    preview: "manim -pql scene.py SineOriginScene"
-    mp4: "manim -r 1920,1080 --fps 30 --format=mp4 --media_dir dist scene.py SineOriginScene"
+    preview: "uvx manim -ql --media_dir dist scene.py SineOriginScene"
+    mp4: "uvx manim -r 1920,1080 --fps 30 --format=mp4 --media_dir dist scene.py SineOriginScene"
     webm: "ffmpeg -y -i dist/final/SH-HS-MATH-HJ-B2-C07-L01-M01.mp4 -c:v libvpx-vp9 -b:v 0 -crf 32 -an dist/final/SH-HS-MATH-HJ-B2-C07-L01-M01.webm"
   notes:
-    - "当前 scene.py 是脚本草稿，进入 render_ready 前需教师确认分镜节奏和关键暂停点。"
-    - "渲染后再填写 files.output_mp4、files.output_webm 和 files.poster。"
+    - "已完成首版 1080p30 渲染，当前视频可用于平台预览和内部教研复核。"
+    - "进入 stable 前仍需教师确认分镜节奏、暂停点和课堂讲解口径。"
 
 files:
   readme: "README.md"
   storyboard: "storyboard.md"
   scene: "scene.py"
   review_record: "review.md"
+  output_mp4: "dist/final/SH-HS-MATH-HJ-B2-C07-L01-M01.mp4"
+  output_webm: "dist/final/SH-HS-MATH-HJ-B2-C07-L01-M01.webm"
+  poster: "dist/final/SH-HS-MATH-HJ-B2-C07-L01-M01-poster.png"
 
 platform_card:
-  availability: "metadata_ready"
-  preview_behavior: "metadata_placeholder"
-  embed_strategy: "渲染前显示 metadata 与 storyboard 摘要；渲染后读取 files.output_webm 和 files.output_mp4，用 video 标签接入资源卡。"
+  availability: "video_ready"
+  preview_behavior: "video_player"
+  embed_strategy: "读取 files.output_webm、files.output_mp4 和 poster，用 video 标签接入资源卡；若视频文件缺失则回退显示 metadata 与 storyboard 摘要。"
   paired_resources:
     - "SH-HS-MATH-HJ-B2-C07-L01-A01"
 

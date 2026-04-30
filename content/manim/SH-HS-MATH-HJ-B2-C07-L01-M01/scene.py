@@ -1,8 +1,7 @@
-"""Draft Manim scene for SH-HS-MATH-HJ-B2-C07-L01-M01.
+"""Manim scene for SH-HS-MATH-HJ-B2-C07-L01-M01.
 
-The scene is intentionally a first-pass source draft. It establishes the
-mathematical objects and timing spine before final visual tuning, narration,
-and render QA.
+The scene uses Manim Text labels instead of MathTex so the render pipeline does
+not require a local LaTeX distribution for short classroom formula captions.
 """
 
 from math import cos, sin
@@ -43,12 +42,12 @@ class SineOriginScene(Scene):
             stroke_width=4,
         )
 
-        title = MathTex(r"Q=(x,\sin x)", font_size=40, color="#2f3437")
+        title = Text("Q = (x, sin x)", font_size=38, color="#2f3437")
         title.to_edge(UP, buff=0.45)
 
-        x_label = MathTex(r"x", font_size=28).next_to(graph_axes.x_axis, RIGHT)
-        y_label = MathTex(r"y", font_size=28).next_to(graph_axes.y_axis, UP)
-        sine_label = MathTex(r"y=\sin x", font_size=34, color="#2f80ed")
+        x_label = Text("x", font_size=28, color="#2f3437").next_to(graph_axes.x_axis, RIGHT)
+        y_label = Text("y", font_size=28, color="#2f3437").next_to(graph_axes.y_axis, UP)
+        sine_label = Text("y = sin x", font_size=32, color="#2f80ed")
         sine_label.next_to(graph_axes, UP, buff=0.35)
 
         point_p = always_redraw(
@@ -98,10 +97,10 @@ class SineOriginScene(Scene):
         )
 
         p_label = always_redraw(
-            lambda: MathTex(r"P", font_size=28, color="#e24a4a").next_to(point_p, UR, buff=0.08)
+            lambda: Text("P", font_size=26, color="#e24a4a").next_to(point_p, UR, buff=0.08)
         )
         q_label = always_redraw(
-            lambda: MathTex(r"Q", font_size=28, color="#e24a4a").next_to(point_q, UR, buff=0.08)
+            lambda: Text("Q", font_size=26, color="#e24a4a").next_to(point_q, UR, buff=0.08)
         )
 
         sine_curve = graph_axes.plot(
@@ -125,9 +124,9 @@ class SineOriginScene(Scene):
             ]
         )
 
-        period_hint = MathTex(
-            r"\sin(x+2\pi)=\sin x",
-            font_size=38,
+        period_hint = Text(
+            "sin(x + 2pi) = sin x",
+            font_size=34,
             color="#2f3437",
         ).next_to(graph_axes, DOWN, buff=0.45)
 

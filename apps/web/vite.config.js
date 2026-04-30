@@ -8,12 +8,13 @@ import { defineConfig } from "vite";
 const webRoot = fileURLToPath(new URL(".", import.meta.url));
 const repoRoot = path.resolve(webRoot, "../..");
 const appletsRoot = path.join(repoRoot, "content/applets");
+const manimRoot = path.join(repoRoot, "content/manim");
 const webOutDir = path.join(repoRoot, "dist/apps/web");
 
 export default defineConfig({
   root: webRoot,
   base: "./",
-  plugins: [appletContentPlugin()],
+  plugins: [contentPackagesPlugin()],
   server: {
     port: 5173,
   },
@@ -23,22 +24,23 @@ export default defineConfig({
   },
 });
 
-function appletContentPlugin() {
+function contentPackagesPlugin() {
   return {
-    name: "teacher-workspace-applet-content",
+    name: "teacher-workspace-content-packages",
     configureServer(server) {
       server.middlewares.use(async (request, response, next) => {
         const requestPath = decodeURIComponent((request.url ?? "").split("?")[0]);
+        const contentRoot = getServedContentRoot(requestPath);
 
-        if (!requestPath.startsWith("/content/applets/")) {
+        if (!contentRoot) {
           next();
           return;
         }
 
-        const relativePath = requestPath.slice("/content/applets/".length);
-        const filePath = path.resolve(appletsRoot, relativePath);
+        const relativePath = requestPath.slice(contentRoot.urlPrefix.length);
+        const filePath = path.resolve(contentRoot.fileRoot, relativePath);
 
-        if (!filePath.startsWith(`${appletsRoot}${path.sep}`)) {
+        if (!filePath.startsWith(`${contentRoot.fileRoot}${path.sep}`)) {
           response.statusCode = 403;
           response.end("Forbidden");
           return;
@@ -61,8 +63,34 @@ function appletContentPlugin() {
     },
     async closeBundle() {
       await cp(appletsRoot, path.join(webOutDir, "content/applets"), { recursive: true });
+      await cp(manimRoot, path.join(webOutDir, "content/manim"), {
+        recursive: true,
+        filter: (source) => shouldCopyManimPath(source),
+      });
     },
   };
+}
+
+function getServedContentRoot(requestPath) {
+  if (requestPath.startsWith("/content/applets/")) {
+    return { urlPrefix: "/content/applets/", fileRoot: appletsRoot };
+  }
+
+  if (requestPath.startsWith("/content/manim/")) {
+    return { urlPrefix: "/content/manim/", fileRoot: manimRoot };
+  }
+
+  return null;
+}
+
+function shouldCopyManimPath(source) {
+  const relativePath = path.relative(manimRoot, source).split(path.sep).join("/");
+
+  if (!relativePath) {
+    return true;
+  }
+
+  return !/(^|\/)dist\/(Tex|texts|videos)(\/|$)/.test(relativePath);
 }
 
 function contentType(filePath) {
@@ -74,7 +102,10 @@ function contentType(filePath) {
       ".html": "text/html; charset=utf-8",
       ".js": "text/javascript; charset=utf-8",
       ".json": "application/json; charset=utf-8",
+      ".mp4": "video/mp4",
+      ".png": "image/png",
       ".svg": "image/svg+xml",
+      ".webm": "video/webm",
     }[extension] ?? "application/octet-stream"
   );
 }
