@@ -14,7 +14,12 @@
 
 - Git 仓库已初始化，默认稳定分支为 `main`，当前日常开发分支为 `develop`。
 - 本仓库 Git 提交身份已配置为 `EasonZhangyichen <easonzhangyc1008@gmail.com>`。
-- 当前尚未配置 GitHub 远程仓库。
+- GitHub 远程仓库已配置并完成初始推送：
+  - `origin`: `https://github.com/EasonZhangyichen/shanghai-hs-math-teaching-aids.git`
+  - 远程默认分支：`main`
+  - 可见性：public
+  - 已推送分支：`main`、`develop`、`release/v0.1-trig-mvp`、全部 `track/*` 分支
+  - 已推送标签：`v0.0.0-bootstrap`
 - 已创建长期分支：
   - `release/v0.1-trig-mvp`
   - `track/curriculum-map`
@@ -38,7 +43,7 @@
 - 尚未创建 Web 平台代码。
 - 尚未创建真实 Applet 或 Manim 动画。
 - 尚未搭建元数据校验脚本。
-- 尚未配置远程 GitHub 仓库。
+- 尚未配置 GitHub 分支保护规则。
 
 ## 继续工作时优先读取
 
