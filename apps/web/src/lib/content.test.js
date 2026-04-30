@@ -1,4 +1,6 @@
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
+import path from "node:path";
 import { test } from "node:test";
 import { fileURLToPath } from "node:url";
 
@@ -28,9 +30,23 @@ test("links the sample applet package to lesson L01 with script and activity ent
   assert.ok(applet, "sample applet card should be attached to lesson L01");
   assert.equal(applet.availability, "metadata_ready");
   assert.equal(applet.status, "draft");
-  assert.equal(applet.metadataPreview.implementation.phase, "content_spec_only");
+  assert.equal(applet.metadataPreview.implementation.phase, "runnable_prototype");
+  assert.equal(applet.metadataPreview.implementation.html_src_status, "runnable");
+  assert.equal(applet.package.files.srcEntry, "content/applets/SH-HS-MATH-HJ-B2-C07-L01-A01/src/index.html");
   assert.equal(applet.package.teacherScript.title, "教师脚本：单位圆到正弦曲线");
   assert.equal(applet.package.studentTask.title, "学生活动：从单位圆生成正弦曲线");
+});
+
+test("sample applet exposes a runnable SDK-compatible HTML entry", async () => {
+  const entryPath = path.join(repoRoot, "content/applets/SH-HS-MATH-HJ-B2-C07-L01-A01/src/index.html");
+  const html = await readFile(entryPath, "utf8");
+
+  assert.match(html, /SH-HS-MATH-HJ-B2-C07-L01-A01/);
+  assert.match(html, /sh-hs-math-applet-sdk/);
+  assert.match(html, /applet:ready/);
+  assert.match(html, /applet:stateChanged/);
+  assert.match(html, /player:init/);
+  assert.match(html, /theta_changed/);
 });
 
 test("keeps proposed lesson resources visible even when no playable applet exists yet", async () => {

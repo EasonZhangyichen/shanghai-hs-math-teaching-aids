@@ -16,7 +16,8 @@
   - 章节目录目前基于公开教材目录与课程资源目录交叉核对，仍需教师用纸质教材最终确认课时划分和课时数。
 - 已在 `track/trig-sample-pack` 上为 `SH-HS-MATH-HJ-B2-C07-L01-A01` 创建“单位圆到正弦曲线”资源包草稿：
   - 已包含 `metadata.yaml`、`README.md`、`teacher-script.md`、`student-task.md`、`review.md`。
-  - 当前是内容规格与教学脚本草稿，暂不包含 HTML `src/` 实现。
+  - 已新增 `src/index.html` 可运行原型，支持单位圆动点拖拽、`theta` 滑块、播放/暂停、重置、投影线、轨迹、关键点和周期延拓。
+  - 当前仍为 `draft`，尚未进入数学审校或课堂试用。
 - 已在 `track/applet-sdk` 上创建 Applet SDK v0.1 契约草稿：
   - `packages/applet-sdk/schemas/applet-metadata.schema.json` 定义 Applet metadata schema。
   - `packages/applet-sdk/docs/resource-package.md` 定义 Applet 资源包目录规范。
@@ -62,8 +63,9 @@
 - 尚未正式核验沪教版教材全册课时目录。
 - 必修第二册第 7 章目录已完成首版结构化整理，但尚未完成纸质教材人工终核。
 - 第 7 章的前置章节节点、第 8 章平面向量和第 9 章复数等后续节点仍是引用占位，尚未展开为完整图谱。
-- 尚未创建独立课件播放器和真实 Applet iframe 运行态。
-- 尚未创建可运行 HTML Applet 或 Manim 动画。
+- 尚未创建独立课件播放器和平台内真实 Applet iframe 运行态。
+- 已创建第一个可运行 HTML Applet 原型，但尚未完成播放器接入、数学审校和课堂试用。
+- 尚未创建可运行 Manim 动画。
 - 尚未将 Applet metadata JSON Schema 接入自动校验脚本。
 - 尚未配置 GitHub 分支保护规则。
 

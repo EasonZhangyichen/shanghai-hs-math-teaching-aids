@@ -1,0 +1,1260 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23087f73'/%3E%3Ctext x='14' y='42' font-size='24' font-family='Arial' font-weight='700' fill='white'%3Esin%3C/text%3E%3C/svg%3E" />
+    <title>单位圆到正弦曲线</title>
+    <style>
+      :root {
+        color: #1f2933;
+        background: #f4f7f9;
+        font-family:
+          "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        --surface: #ffffff;
+        --ink: #1f2933;
+        --muted: #64748b;
+        --border: #d5dee7;
+        --teal: #087f73;
+        --teal-soft: #e2f4f1;
+        --blue: #2563eb;
+        --amber: #b45309;
+        --rose: #be123c;
+        --grid: #d8e1ea;
+        --shadow: 0 20px 48px rgba(23, 31, 43, 0.1);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-width: 320px;
+        min-height: 100vh;
+        color: var(--ink);
+        background: var(--surface);
+      }
+
+      button,
+      input {
+        font: inherit;
+      }
+
+      .applet-shell {
+        min-height: 100vh;
+        display: grid;
+        grid-template-rows: auto minmax(0, 1fr);
+        background:
+          linear-gradient(90deg, rgba(8, 127, 115, 0.06) 0 1px, transparent 1px 100%),
+          linear-gradient(0deg, rgba(37, 99, 235, 0.04) 0 1px, transparent 1px 100%), #f6f9fb;
+        background-size: 28px 28px;
+      }
+
+      .topbar {
+        display: flex;
+        justify-content: space-between;
+        gap: 18px;
+        padding: 16px 22px;
+        border-bottom: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.92);
+      }
+
+      .title-group {
+        min-width: 0;
+      }
+
+      .eyebrow,
+      .state-readout span,
+      .panel-note {
+        color: var(--muted);
+        font-size: 0.78rem;
+      }
+
+      .eyebrow {
+        margin: 0 0 4px;
+        font-weight: 700;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(1.3rem, 2.6vw, 2.05rem);
+        line-height: 1.15;
+        letter-spacing: 0;
+      }
+
+      .state-readout {
+        flex: 0 0 auto;
+        display: grid;
+        grid-template-columns: repeat(3, auto);
+        gap: 8px;
+        align-content: start;
+      }
+
+      .state-readout span {
+        min-width: 92px;
+        padding: 7px 9px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: #fbfdfe;
+        text-align: center;
+      }
+
+      .state-readout strong {
+        display: block;
+        color: var(--ink);
+        font-size: 0.96rem;
+      }
+
+      .workspace {
+        min-height: 0;
+        display: grid;
+        grid-template-columns: minmax(360px, 1fr) 320px;
+        gap: 16px;
+        padding: 16px;
+      }
+
+      .visual-panel,
+      .control-panel {
+        min-width: 0;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.95);
+        box-shadow: var(--shadow);
+      }
+
+      .visual-panel {
+        align-self: start;
+        overflow: hidden;
+      }
+
+      svg {
+        display: block;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1200 / 540;
+        touch-action: none;
+        user-select: none;
+      }
+
+      .control-panel {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        padding: 16px;
+        overflow: auto;
+      }
+
+      .panel-section {
+        display: grid;
+        gap: 10px;
+      }
+
+      .section-title {
+        margin: 0;
+        color: var(--ink);
+        font-size: 0.98rem;
+        font-weight: 800;
+      }
+
+      .button-row,
+      .stage-grid,
+      .toggle-grid {
+        display: grid;
+        gap: 8px;
+      }
+
+      .button-row {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .stage-grid {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+      }
+
+      .toggle-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .control-button,
+      .stage-button,
+      .toggle-button {
+        min-height: 40px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        color: var(--ink);
+        background: #ffffff;
+        cursor: pointer;
+      }
+
+      .control-button:hover,
+      .stage-button:hover,
+      .toggle-button:hover {
+        border-color: #7bbfb8;
+        background: #f0faf8;
+      }
+
+      .control-button.is-primary,
+      .stage-button.is-active,
+      .toggle-button[aria-pressed="true"] {
+        border-color: var(--teal);
+        color: #ffffff;
+        background: var(--teal);
+      }
+
+      .slider-wrap {
+        display: grid;
+        gap: 8px;
+      }
+
+      .slider-label {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        color: var(--muted);
+        font-size: 0.82rem;
+      }
+
+      input[type="range"] {
+        width: 100%;
+        accent-color: var(--teal);
+      }
+
+      .formula-card,
+      .key-table {
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: #fbfdfe;
+      }
+
+      .formula-card {
+        display: grid;
+        gap: 5px;
+        padding: 12px;
+      }
+
+      .formula-card strong {
+        color: var(--teal);
+      }
+
+      .key-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        overflow: hidden;
+        font-size: 0.8rem;
+      }
+
+      .key-table th,
+      .key-table td {
+        padding: 7px 8px;
+        border-bottom: 1px solid var(--border);
+        text-align: left;
+      }
+
+      .key-table tr:last-child td {
+        border-bottom: 0;
+      }
+
+      .key-table th {
+        color: var(--muted);
+        background: #f1f6f8;
+        font-weight: 700;
+      }
+
+      .axis {
+        stroke: #52616f;
+        stroke-width: 2;
+      }
+
+      .grid-line {
+        stroke: var(--grid);
+        stroke-width: 1;
+      }
+
+      .unit-circle {
+        fill: #ffffff;
+        stroke: #1f6f78;
+        stroke-width: 3;
+      }
+
+      .angle-ray {
+        stroke: var(--blue);
+        stroke-width: 4;
+        stroke-linecap: round;
+      }
+
+      .angle-arc {
+        fill: none;
+        stroke: var(--amber);
+        stroke-width: 4;
+        stroke-linecap: round;
+      }
+
+      .projection-line {
+        stroke: var(--amber);
+        stroke-width: 3;
+        stroke-dasharray: 8 8;
+      }
+
+      .mapping-line {
+        stroke: rgba(8, 127, 115, 0.48);
+        stroke-width: 2;
+        stroke-dasharray: 5 8;
+      }
+
+      .sine-curve {
+        fill: none;
+        stroke: #a8b4c1;
+        stroke-width: 2;
+      }
+
+      .trace-curve {
+        fill: none;
+        stroke: var(--teal);
+        stroke-width: 5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .point-p,
+      .point-q {
+        stroke: #ffffff;
+        stroke-width: 4;
+      }
+
+      .point-p {
+        fill: var(--blue);
+      }
+
+      .point-q {
+        fill: var(--rose);
+      }
+
+      .key-dot {
+        fill: #ffffff;
+        stroke: var(--amber);
+        stroke-width: 3;
+      }
+
+      .svg-label {
+        fill: #1f2933;
+        font-size: 17px;
+        font-weight: 700;
+      }
+
+      .svg-label.muted {
+        fill: #617286;
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .drag-target {
+        fill: transparent;
+        cursor: grab;
+      }
+
+      .drag-target:active {
+        cursor: grabbing;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      @media (max-width: 980px) {
+        .workspace {
+          grid-template-columns: 1fr;
+        }
+
+        .state-readout {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          width: 100%;
+        }
+
+        .topbar {
+          flex-direction: column;
+        }
+
+        svg {
+          min-width: 760px;
+        }
+
+        .visual-panel {
+          overflow: auto;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .topbar,
+        .workspace {
+          padding: 12px;
+        }
+
+        .state-readout,
+        .button-row {
+          grid-template-columns: 1fr;
+        }
+
+        .stage-grid {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        svg {
+          min-width: 720px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="applet-shell">
+      <header class="topbar">
+        <div class="title-group">
+          <p class="eyebrow">SH-HS-MATH-HJ-B2-C07-L01-A01</p>
+          <h1>单位圆到正弦曲线</h1>
+        </div>
+        <div class="state-readout" aria-label="当前数学状态">
+          <span>theta <strong id="theta-readout">0</strong></span>
+          <span>sin theta <strong id="sine-readout">0</strong></span>
+          <span>Q <strong id="pointq-readout">(0, 0)</strong></span>
+        </div>
+      </header>
+
+      <main class="workspace">
+        <section class="visual-panel" aria-label="单位圆和正弦图像">
+          <svg id="scene" viewBox="0 90 1200 540" role="img" aria-labelledby="scene-title scene-desc">
+            <title id="scene-title">单位圆动点 P 到正弦图像点 Q 的映射</title>
+            <desc id="scene-desc">左侧为单位圆，右侧为 y = sin x 的图像坐标系。</desc>
+            <defs>
+              <marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+                <path d="M0,0 L8,4.5 L0,9 Z" fill="#52616f"></path>
+              </marker>
+            </defs>
+
+            <g id="circle-layer">
+              <line class="axis" x1="100" y1="350" x2="450" y2="350" marker-end="url(#arrow)"></line>
+              <line class="axis" x1="275" y1="525" x2="275" y2="175" marker-end="url(#arrow)"></line>
+              <circle class="unit-circle" cx="275" cy="350" r="145"></circle>
+              <text class="svg-label muted" x="438" y="374">cos theta</text>
+              <text class="svg-label muted" x="292" y="190">sin theta</text>
+              <path id="angle-arc" class="angle-arc" d=""></path>
+              <line id="angle-ray" class="angle-ray" x1="275" y1="350" x2="420" y2="350"></line>
+              <g id="projection-group">
+                <line id="projection-line" class="projection-line" x1="275" y1="350" x2="420" y2="350"></line>
+                <circle id="projection-dot" class="key-dot" cx="275" cy="350" r="6"></circle>
+                <text id="projection-label" class="svg-label muted" x="200" y="344">sin theta</text>
+              </g>
+              <g id="circle-key-layer"></g>
+              <circle id="point-p" class="point-p" cx="420" cy="350" r="11"></circle>
+              <text id="point-p-label" class="svg-label" x="432" y="338">P</text>
+              <circle id="drag-target" class="drag-target" cx="275" cy="350" r="175"></circle>
+            </g>
+
+            <g id="graph-layer">
+              <rect x="520" y="170" width="580" height="360" rx="8" fill="#ffffff" stroke="#d5dee7"></rect>
+              <g id="graph-grid"></g>
+              <line class="axis" x1="555" y1="350" x2="1075" y2="350" marker-end="url(#arrow)"></line>
+              <line class="axis" x1="555" y1="500" x2="555" y2="200" marker-end="url(#arrow)"></line>
+              <text class="svg-label muted" x="1050" y="382">x</text>
+              <text class="svg-label muted" x="575" y="218">y</text>
+              <path id="full-curve" class="sine-curve" d=""></path>
+              <path id="trace-curve" class="trace-curve" d=""></path>
+              <g id="graph-key-layer"></g>
+              <g id="graph-point-group">
+                <line id="mapping-line" class="mapping-line" x1="420" y1="350" x2="555" y2="350"></line>
+                <circle id="point-q" class="point-q" cx="555" cy="350" r="10"></circle>
+                <text id="point-q-label" class="svg-label" x="568" y="340">Q(theta, sin theta)</text>
+              </g>
+            </g>
+          </svg>
+        </section>
+
+        <aside class="control-panel" aria-label="课堂控制">
+          <section class="panel-section">
+            <h2 class="section-title">课堂节奏</h2>
+            <div class="button-row">
+              <button id="play-button" class="control-button is-primary" type="button">播放</button>
+              <button id="reset-button" class="control-button" type="button">重置</button>
+            </div>
+          </section>
+
+          <section class="panel-section">
+            <h2 class="section-title">theta 控制</h2>
+            <label class="slider-wrap">
+              <span class="slider-label">
+                <span id="range-start">0</span>
+                <span id="range-end">2pi</span>
+              </span>
+              <input id="theta-slider" type="range" min="0" max="6.28318530718" value="0" step="any" />
+            </label>
+          </section>
+
+          <section class="panel-section">
+            <h2 class="section-title">分步揭示</h2>
+            <div class="stage-grid" id="stage-grid">
+              <button class="stage-button is-active" type="button" data-stage="1">1</button>
+              <button class="stage-button" type="button" data-stage="2">2</button>
+              <button class="stage-button" type="button" data-stage="3">3</button>
+              <button class="stage-button" type="button" data-stage="4">4</button>
+              <button class="stage-button" type="button" data-stage="5">5</button>
+            </div>
+            <p id="stage-note" class="panel-note">只显示单位圆、角 theta、动点 P。</p>
+          </section>
+
+          <section class="panel-section">
+            <h2 class="section-title">显示对象</h2>
+            <div class="toggle-grid">
+              <button id="projection-toggle" class="toggle-button" type="button" aria-pressed="false">投影线</button>
+              <button id="trace-toggle" class="toggle-button" type="button" aria-pressed="false">生成轨迹</button>
+              <button id="key-toggle" class="toggle-button" type="button" aria-pressed="false">关键点</button>
+              <button id="period-toggle" class="toggle-button" type="button" aria-pressed="false">周期延拓</button>
+            </div>
+          </section>
+
+          <section class="panel-section">
+            <h2 class="section-title">对应关系</h2>
+            <div class="formula-card">
+              <span>P = (cos theta, sin theta)</span>
+              <span>Q = (theta, sin theta)</span>
+              <strong>横坐标来自角的弧度量，纵坐标来自单位圆动点。</strong>
+            </div>
+          </section>
+
+          <section class="panel-section" id="key-table-section">
+            <h2 class="section-title">关键角</h2>
+            <table class="key-table">
+              <thead>
+                <tr>
+                  <th>theta</th>
+                  <th>sin theta</th>
+                  <th>P</th>
+                </tr>
+              </thead>
+              <tbody id="key-table-body"></tbody>
+            </table>
+          </section>
+        </aside>
+      </main>
+    </div>
+
+    <script>
+      const SDK = "sh-hs-math-applet-sdk";
+      const SDK_VERSION = "0.1.0";
+      const RESOURCE_ID = "SH-HS-MATH-HJ-B2-C07-L01-A01";
+      const TWO_PI = Math.PI * 2;
+      const HALF_PI = Math.PI / 2;
+
+      const geom = {
+        circle: { cx: 275, cy: 350, r: 145 },
+        graph: { x: 555, y: 350, width: 520, yScale: 130 },
+      };
+
+      const stageNotes = {
+        1: "只显示单位圆、角 theta、动点 P。",
+        2: "显示 P 到纵轴的投影，强调 sin theta 是纵坐标。",
+        3: "显示图像点 Q = (theta, sin theta)。",
+        4: "保留 Q 的轨迹，生成 0 到 2pi 的正弦曲线。",
+        5: "打开周期延拓，比较终边相同角的正弦值。",
+      };
+
+      const keyAngles = [
+        { theta: 0, label: "0", sineLabel: "0", pointLabel: "(1, 0)" },
+        { theta: HALF_PI, label: "pi/2", sineLabel: "1", pointLabel: "(0, 1)" },
+        { theta: Math.PI, label: "pi", sineLabel: "0", pointLabel: "(-1, 0)" },
+        { theta: Math.PI * 1.5, label: "3pi/2", sineLabel: "-1", pointLabel: "(0, -1)" },
+        { theta: TWO_PI, label: "2pi", sineLabel: "0", pointLabel: "(1, 0)" },
+      ];
+
+      const state = {
+        theta: 0,
+        playing: false,
+        projectionVisible: false,
+        graphPointVisible: false,
+        traceVisible: false,
+        keyPointsVisible: false,
+        periodExtension: false,
+        stage: 1,
+        mode: "classroom",
+      };
+
+      let seq = 0;
+      let parentOrigin = "*";
+      let rafId = null;
+      let lastFrameTime = null;
+      let lastCheckpoint = null;
+
+      const els = {
+        scene: document.querySelector("#scene"),
+        thetaReadout: document.querySelector("#theta-readout"),
+        sineReadout: document.querySelector("#sine-readout"),
+        pointQReadout: document.querySelector("#pointq-readout"),
+        playButton: document.querySelector("#play-button"),
+        resetButton: document.querySelector("#reset-button"),
+        thetaSlider: document.querySelector("#theta-slider"),
+        rangeStart: document.querySelector("#range-start"),
+        rangeEnd: document.querySelector("#range-end"),
+        stageGrid: document.querySelector("#stage-grid"),
+        stageNote: document.querySelector("#stage-note"),
+        projectionToggle: document.querySelector("#projection-toggle"),
+        traceToggle: document.querySelector("#trace-toggle"),
+        keyToggle: document.querySelector("#key-toggle"),
+        periodToggle: document.querySelector("#period-toggle"),
+        keyTableSection: document.querySelector("#key-table-section"),
+        keyTableBody: document.querySelector("#key-table-body"),
+        angleArc: document.querySelector("#angle-arc"),
+        angleRay: document.querySelector("#angle-ray"),
+        projectionGroup: document.querySelector("#projection-group"),
+        projectionLine: document.querySelector("#projection-line"),
+        projectionDot: document.querySelector("#projection-dot"),
+        projectionLabel: document.querySelector("#projection-label"),
+        pointP: document.querySelector("#point-p"),
+        pointPLabel: document.querySelector("#point-p-label"),
+        dragTarget: document.querySelector("#drag-target"),
+        graphGrid: document.querySelector("#graph-grid"),
+        fullCurve: document.querySelector("#full-curve"),
+        traceCurve: document.querySelector("#trace-curve"),
+        graphPointGroup: document.querySelector("#graph-point-group"),
+        mappingLine: document.querySelector("#mapping-line"),
+        pointQ: document.querySelector("#point-q"),
+        pointQLabel: document.querySelector("#point-q-label"),
+        circleKeyLayer: document.querySelector("#circle-key-layer"),
+        graphKeyLayer: document.querySelector("#graph-key-layer"),
+      };
+
+      initialize();
+
+      function initialize() {
+        renderStaticLayers();
+        bindEvents();
+        render();
+        sendReady();
+      }
+
+      function bindEvents() {
+        els.playButton.addEventListener("click", () => {
+          setPlaying(!state.playing, "button");
+        });
+
+        els.resetButton.addEventListener("click", () => {
+          setTheta(range().min, "reset");
+          setPlaying(false, "reset");
+        });
+
+        els.thetaSlider.addEventListener("input", (event) => {
+          setTheta(Number(event.target.value), "slider");
+        });
+
+        els.stageGrid.addEventListener("click", (event) => {
+          const button = event.target.closest("[data-stage]");
+          if (!button) {
+            return;
+          }
+          setStage(Number(button.dataset.stage));
+        });
+
+        els.projectionToggle.addEventListener("click", () => {
+          updateDisplay({ projectionVisible: !state.projectionVisible }, "projection_toggled");
+        });
+        els.traceToggle.addEventListener("click", () => {
+          updateDisplay({ traceVisible: !state.traceVisible }, "trace_toggled");
+        });
+        els.keyToggle.addEventListener("click", () => {
+          updateDisplay({ keyPointsVisible: !state.keyPointsVisible }, "key_points_toggled");
+        });
+        els.periodToggle.addEventListener("click", () => {
+          togglePeriodExtension(!state.periodExtension);
+        });
+
+        els.dragTarget.addEventListener("pointerdown", (event) => {
+          els.dragTarget.setPointerCapture(event.pointerId);
+          setTheta(thetaFromPointer(event), "drag");
+          setPlaying(false, "drag");
+        });
+        els.dragTarget.addEventListener("pointermove", (event) => {
+          if (event.buttons !== 1) {
+            return;
+          }
+          setTheta(thetaFromPointer(event), "drag");
+        });
+
+        window.addEventListener("message", handlePlayerMessage);
+        window.addEventListener("resize", () => render());
+      }
+
+      function handlePlayerMessage(event) {
+        const message = event.data;
+        if (!message || message.sdk !== SDK) {
+          return;
+        }
+
+        parentOrigin = event.origin || "*";
+
+        if (message.resourceId && message.resourceId !== RESOURCE_ID) {
+          sendError("metadata_mismatch", "resourceId does not match this applet.", true);
+          return;
+        }
+
+        if (message.sdkVersion && message.sdkVersion !== SDK_VERSION) {
+          sendError("unsupported_sdk_version", "SDK version is not supported by this applet.", true);
+          return;
+        }
+
+        const payload = message.payload ?? {};
+
+        if (message.type === "player:init") {
+          state.mode = payload.mode ?? state.mode;
+          applyIncomingState(payload.initialState ?? {});
+          sendReady();
+          return;
+        }
+
+        if (message.type === "player:setState") {
+          applyIncomingState(payload.state ?? {});
+          sendStateChanged("theta_changed", fullState(), payload.reason ?? "player:setState");
+          return;
+        }
+
+        if (message.type === "player:command") {
+          handleCommand(payload.command, payload.args ?? {});
+          return;
+        }
+
+        if (message.type === "player:setMode") {
+          state.mode = payload.mode ?? state.mode;
+          sendStateChanged("theta_changed", { mode: state.mode }, "player:setMode");
+          return;
+        }
+
+        if (message.type === "player:resize") {
+          render();
+          return;
+        }
+
+        if (message.type === "player:requestState") {
+          sendStateChanged("theta_changed", fullState(), payload.reason ?? "player:requestState");
+        }
+      }
+
+      function handleCommand(command, args) {
+        if (command === "play") {
+          setPlaying(true, "player:command");
+          return;
+        }
+        if (command === "pause") {
+          setPlaying(false, "player:command");
+          return;
+        }
+        if (command === "reset") {
+          setTheta(range().min, "player:command");
+          setPlaying(false, "player:command");
+          return;
+        }
+        if (command === "reveal") {
+          setStage(Number(args.step ?? state.stage + 1));
+          return;
+        }
+        if (command === "hide") {
+          updateDisplay({ [displayTarget(args.target)]: false }, "display_toggled");
+          return;
+        }
+        if (command === "toggle") {
+          const key = displayTarget(args.target);
+          if (!key) {
+            return;
+          }
+          if (key === "periodExtension") {
+            togglePeriodExtension(args.enabled ?? !state.periodExtension);
+            return;
+          }
+          updateDisplay({ [key]: args.enabled ?? !state[key] }, "display_toggled");
+        }
+      }
+
+      function displayTarget(target) {
+        const map = {
+          projection_line: "projectionVisible",
+          projection: "projectionVisible",
+          trace_visible: "traceVisible",
+          generated_trace: "traceVisible",
+          key_points: "keyPointsVisible",
+          key_value_table: "keyPointsVisible",
+          period_extension: "periodExtension",
+          graph_point: "graphPointVisible",
+        };
+        return map[target] ?? null;
+      }
+
+      function setStage(stage) {
+        const nextStage = Math.min(5, Math.max(1, Number.isFinite(stage) ? stage : 1));
+        state.stage = nextStage;
+        state.projectionVisible = nextStage >= 2;
+        state.graphPointVisible = nextStage >= 3;
+        state.traceVisible = nextStage >= 4;
+        state.keyPointsVisible = nextStage >= 5;
+
+        if (nextStage >= 5) {
+          state.periodExtension = true;
+        } else if (state.periodExtension && nextStage < 5) {
+          state.periodExtension = false;
+          state.theta = clamp(state.theta, 0, TWO_PI);
+        }
+
+        render();
+        sendStateChanged(nextStage >= 5 ? "period_extension_toggled" : "theta_changed", fullState(), "stage");
+      }
+
+      function updateDisplay(patch, source) {
+        Object.assign(state, patch);
+        if (patch.periodExtension !== undefined) {
+          togglePeriodExtension(patch.periodExtension);
+          return;
+        }
+        render();
+        sendStateChanged("theta_changed", fullState(), source);
+      }
+
+      function togglePeriodExtension(enabled) {
+        state.periodExtension = Boolean(enabled);
+        if (!state.periodExtension) {
+          state.theta = clamp(state.theta, 0, TWO_PI);
+        }
+        if (state.periodExtension && state.stage < 5) {
+          state.stage = 5;
+          state.projectionVisible = true;
+          state.graphPointVisible = true;
+          state.traceVisible = true;
+          state.keyPointsVisible = true;
+        }
+        render();
+        sendStateChanged("period_extension_toggled", fullState(), "period_toggle");
+      }
+
+      function setPlaying(playing, source) {
+        state.playing = Boolean(playing);
+        els.playButton.textContent = state.playing ? "暂停" : "播放";
+        els.playButton.classList.toggle("is-primary", !state.playing);
+        if (state.playing) {
+          lastFrameTime = null;
+          rafId = requestAnimationFrame(tick);
+        } else if (rafId) {
+          cancelAnimationFrame(rafId);
+          rafId = null;
+        }
+        sendInteraction(state.playing ? "play" : "pause", source);
+      }
+
+      function tick(time) {
+        if (!state.playing) {
+          return;
+        }
+        if (lastFrameTime === null) {
+          lastFrameTime = time;
+        }
+        const delta = Math.min(0.08, (time - lastFrameTime) / 1000);
+        lastFrameTime = time;
+        const bounds = range();
+        const nextTheta = state.theta + delta * 0.78;
+        state.theta = nextTheta > bounds.max ? bounds.min : nextTheta;
+        render();
+        sendThetaChanged("play");
+        rafId = requestAnimationFrame(tick);
+      }
+
+      function setTheta(theta, source) {
+        const bounds = range();
+        const nextTheta = clamp(theta, bounds.min, bounds.max);
+        state.theta = source === "play" ? nextTheta : snapTheta(nextTheta, bounds);
+        render();
+        sendThetaChanged(source);
+      }
+
+      function sendThetaChanged(source) {
+        const checkpoint = currentKeyAngle();
+        if (checkpoint && checkpoint.label !== lastCheckpoint) {
+          lastCheckpoint = checkpoint.label;
+          sendStateChanged("key_angle_reached", {
+            theta: state.theta,
+            sine_value: round(Math.sin(state.theta)),
+          }, source);
+          sendCheckpoint(checkpoint);
+          return;
+        }
+        if (!checkpoint) {
+          lastCheckpoint = null;
+        }
+        sendStateChanged("theta_changed", {
+          theta: round(state.theta),
+          sine_value: round(Math.sin(state.theta)),
+          point_p: pointPState(),
+          point_q: pointQState(),
+        }, source);
+      }
+
+      function render() {
+        const sine = Math.sin(state.theta);
+        const circlePoint = circleToScreen(state.theta);
+        const graphPoint = graphToScreen(state.theta, sine);
+        const projectionY = circlePoint.y;
+
+        updateSlider();
+        renderStaticLayers();
+
+        els.thetaReadout.textContent = formatPi(state.theta);
+        els.sineReadout.textContent = round(sine).toFixed(3).replace(/\.?0+$/, "");
+        els.pointQReadout.textContent = `(${formatPi(state.theta)}, ${round(sine)})`;
+
+        els.angleRay.setAttribute("x2", circlePoint.x);
+        els.angleRay.setAttribute("y2", circlePoint.y);
+        els.angleArc.setAttribute("d", arcPath(state.theta));
+        els.pointP.setAttribute("cx", circlePoint.x);
+        els.pointP.setAttribute("cy", circlePoint.y);
+        els.pointPLabel.setAttribute("x", circlePoint.x + 13);
+        els.pointPLabel.setAttribute("y", circlePoint.y - 12);
+
+        setLine(els.projectionLine, circlePoint.x, projectionY, geom.circle.cx, projectionY);
+        els.projectionDot.setAttribute("cy", projectionY);
+        els.projectionLabel.setAttribute("y", projectionY - 8);
+        els.projectionGroup.classList.toggle("hidden", !state.projectionVisible);
+
+        els.graphPointGroup.classList.toggle("hidden", !state.graphPointVisible);
+        setLine(els.mappingLine, circlePoint.x, circlePoint.y, graphPoint.x, graphPoint.y);
+        els.pointQ.setAttribute("cx", graphPoint.x);
+        els.pointQ.setAttribute("cy", graphPoint.y);
+        els.pointQLabel.setAttribute("x", Math.min(graphPoint.x + 14, 925));
+        els.pointQLabel.setAttribute("y", graphPoint.y - 12);
+
+        els.traceCurve.setAttribute("d", state.traceVisible ? sinePath(range().min, state.theta) : "");
+        els.circleKeyLayer.classList.toggle("hidden", !state.keyPointsVisible);
+        els.graphKeyLayer.classList.toggle("hidden", !state.keyPointsVisible);
+        els.keyTableSection.classList.toggle("hidden", !state.keyPointsVisible);
+
+        els.projectionToggle.setAttribute("aria-pressed", String(state.projectionVisible));
+        els.traceToggle.setAttribute("aria-pressed", String(state.traceVisible));
+        els.keyToggle.setAttribute("aria-pressed", String(state.keyPointsVisible));
+        els.periodToggle.setAttribute("aria-pressed", String(state.periodExtension));
+
+        document.querySelectorAll("[data-stage]").forEach((button) => {
+          button.classList.toggle("is-active", Number(button.dataset.stage) === state.stage);
+        });
+        els.stageNote.textContent = stageNotes[state.stage];
+      }
+
+      function renderStaticLayers() {
+        const bounds = range();
+        els.fullCurve.setAttribute("d", sinePath(bounds.min, bounds.max));
+        renderGrid(bounds);
+        renderKeyMarkers(bounds);
+        renderKeyTable();
+      }
+
+      function renderGrid(bounds) {
+        const yTicks = [-1, 0, 1];
+        const xTicks = [];
+        const start = Math.ceil(bounds.min / HALF_PI) * HALF_PI;
+        for (let theta = start; theta <= bounds.max + 0.0001; theta += HALF_PI) {
+          xTicks.push(theta);
+        }
+
+        els.graphGrid.innerHTML = [
+          ...yTicks.map((value) => {
+            const y = geom.graph.y - value * geom.graph.yScale;
+            return `<line class="grid-line" x1="555" y1="${y}" x2="1075" y2="${y}"></line>
+              <text class="svg-label muted" x="525" y="${y + 5}">${value}</text>`;
+          }),
+          ...xTicks.map((theta) => {
+            const x = graphToScreen(theta, 0).x;
+            return `<line class="grid-line" x1="${x}" y1="210" x2="${x}" y2="500"></line>
+              <text class="svg-label muted" x="${x - 15}" y="522">${formatPi(theta)}</text>`;
+          }),
+        ].join("");
+      }
+
+      function renderKeyMarkers(bounds) {
+        const circleMarkers = keyAngles
+          .map(({ theta, label }) => {
+            const point = circleToScreen(theta);
+            return `<circle class="key-dot" cx="${point.x}" cy="${point.y}" r="6"></circle>
+              <text class="svg-label muted" x="${point.x + 9}" y="${point.y + 5}">${label}</text>`;
+          })
+          .join("");
+
+        const graphMarkers = [];
+        for (let theta = Math.ceil(bounds.min / HALF_PI) * HALF_PI; theta <= bounds.max + 0.0001; theta += HALF_PI) {
+          const point = graphToScreen(theta, Math.sin(theta));
+          graphMarkers.push(`<circle class="key-dot" cx="${point.x}" cy="${point.y}" r="6"></circle>`);
+        }
+
+        els.circleKeyLayer.innerHTML = circleMarkers;
+        els.graphKeyLayer.innerHTML = graphMarkers.join("");
+      }
+
+      function renderKeyTable() {
+        els.keyTableBody.innerHTML = keyAngles
+          .map(
+            (item) => `<tr>
+              <td>${item.label}</td>
+              <td>${item.sineLabel}</td>
+              <td>${item.pointLabel}</td>
+            </tr>`,
+          )
+          .join("");
+      }
+
+      function updateSlider() {
+        const bounds = range();
+        els.thetaSlider.min = String(bounds.min);
+        els.thetaSlider.max = String(bounds.max);
+        els.thetaSlider.value = String(state.theta);
+        els.rangeStart.textContent = formatPi(bounds.min);
+        els.rangeEnd.textContent = formatPi(bounds.max);
+      }
+
+      function range() {
+        return state.periodExtension
+          ? { min: -TWO_PI, max: Math.PI * 4 }
+          : { min: 0, max: TWO_PI };
+      }
+
+      function graphToScreen(theta, sineValue) {
+        const bounds = range();
+        const normalized = (theta - bounds.min) / (bounds.max - bounds.min);
+        return {
+          x: geom.graph.x + normalized * geom.graph.width,
+          y: geom.graph.y - sineValue * geom.graph.yScale,
+        };
+      }
+
+      function circleToScreen(theta) {
+        return {
+          x: geom.circle.cx + Math.cos(theta) * geom.circle.r,
+          y: geom.circle.cy - Math.sin(theta) * geom.circle.r,
+        };
+      }
+
+      function thetaFromPointer(event) {
+        const point = svgPoint(event);
+        let theta = Math.atan2(geom.circle.cy - point.y, point.x - geom.circle.cx);
+        if (!state.periodExtension && theta < 0) {
+          theta += TWO_PI;
+        }
+        if (state.periodExtension) {
+          const currentTurns = Math.round((state.theta - theta) / TWO_PI);
+          theta += currentTurns * TWO_PI;
+          theta = clamp(theta, -TWO_PI, Math.PI * 4);
+        }
+        return theta;
+      }
+
+      function svgPoint(event) {
+        const point = els.scene.createSVGPoint();
+        point.x = event.clientX;
+        point.y = event.clientY;
+        return point.matrixTransform(els.scene.getScreenCTM().inverse());
+      }
+
+      function sinePath(fromTheta, toTheta) {
+        if (Math.abs(toTheta - fromTheta) < 0.001) {
+          const point = graphToScreen(toTheta, Math.sin(toTheta));
+          return `M ${point.x} ${point.y}`;
+        }
+        const steps = Math.max(48, Math.ceil(Math.abs(toTheta - fromTheta) / TWO_PI * 180));
+        const points = [];
+        const direction = toTheta >= fromTheta ? 1 : -1;
+        const start = direction === 1 ? fromTheta : toTheta;
+        const end = direction === 1 ? toTheta : fromTheta;
+
+        for (let index = 0; index <= steps; index += 1) {
+          const theta = start + ((end - start) * index) / steps;
+          const point = graphToScreen(theta, Math.sin(theta));
+          points.push(`${index === 0 ? "M" : "L"} ${point.x.toFixed(2)} ${point.y.toFixed(2)}`);
+        }
+        return points.join(" ");
+      }
+
+      function arcPath(theta) {
+        const radius = 48;
+        const normalized = normalizeTheta(theta);
+        const endX = geom.circle.cx + Math.cos(normalized) * radius;
+        const endY = geom.circle.cy - Math.sin(normalized) * radius;
+        const largeArc = normalized > Math.PI ? 1 : 0;
+        return `M ${geom.circle.cx + radius} ${geom.circle.cy} A ${radius} ${radius} 0 ${largeArc} 0 ${endX} ${endY}`;
+      }
+
+      function normalizeTheta(theta) {
+        const normalized = theta % TWO_PI;
+        return normalized < 0 ? normalized + TWO_PI : normalized;
+      }
+
+      function snapTheta(theta, bounds) {
+        const firstTick = Math.ceil(bounds.min / HALF_PI) * HALF_PI;
+        for (let tick = firstTick; tick <= bounds.max + 0.0001; tick += HALF_PI) {
+          if (Math.abs(theta - tick) < 0.018) {
+            return tick;
+          }
+        }
+        return theta;
+      }
+
+      function formatPi(value) {
+        const rounded = Math.round(value / HALF_PI);
+        if (Math.abs(value - rounded * HALF_PI) > 0.02) {
+          return round(value).toString();
+        }
+        if (rounded === 0) {
+          return "0";
+        }
+        const sign = rounded < 0 ? "-" : "";
+        const abs = Math.abs(rounded);
+        if (abs === 1) {
+          return `${sign}pi/2`;
+        }
+        if (abs === 2) {
+          return `${sign}pi`;
+        }
+        if (abs % 2 === 0) {
+          return `${sign}${abs / 2}pi`;
+        }
+        return `${sign}${abs}pi/2`;
+      }
+
+      function currentKeyAngle() {
+        if (Math.abs(state.theta - TWO_PI) < 0.012) {
+          return keyAngles.find((item) => item.theta === TWO_PI);
+        }
+        const normalized = normalizeTheta(state.theta);
+        return keyAngles.find((item) => Math.abs(normalized - item.theta) < 0.012);
+      }
+
+      function applyIncomingState(nextState) {
+        if (Number.isFinite(nextState.theta)) {
+          state.theta = nextState.theta;
+        }
+        if (typeof nextState.trace_visible === "boolean") {
+          state.traceVisible = nextState.trace_visible;
+        }
+        if (typeof nextState.projection_visible === "boolean") {
+          state.projectionVisible = nextState.projection_visible;
+        }
+        if (typeof nextState.key_points_visible === "boolean") {
+          state.keyPointsVisible = nextState.key_points_visible;
+        }
+        if (typeof nextState.period_extension === "boolean") {
+          state.periodExtension = nextState.period_extension;
+        }
+        if (typeof nextState.graph_point_visible === "boolean") {
+          state.graphPointVisible = nextState.graph_point_visible;
+        }
+        state.theta = clamp(state.theta, range().min, range().max);
+        render();
+      }
+
+      function fullState() {
+        return {
+          theta: round(state.theta),
+          point_p: pointPState(),
+          sine_value: round(Math.sin(state.theta)),
+          point_q: pointQState(),
+          trace_visible: state.traceVisible,
+          projection_visible: state.projectionVisible,
+          graph_point_visible: state.graphPointVisible,
+          key_points_visible: state.keyPointsVisible,
+          period_extension: state.periodExtension,
+          stage: state.stage,
+          playing: state.playing,
+          mode: state.mode,
+        };
+      }
+
+      function pointPState() {
+        return [round(Math.cos(state.theta)), round(Math.sin(state.theta))];
+      }
+
+      function pointQState() {
+        return [round(state.theta), round(Math.sin(state.theta))];
+      }
+
+      function sendReady() {
+        sendEnvelope("applet:ready", {
+          supportedSdkVersion: SDK_VERSION,
+          capabilities: {
+            directManipulation: true,
+            playPause: true,
+            stateRestore: true,
+            stagedReveal: true,
+          },
+          initialState: fullState(),
+        });
+      }
+
+      function sendStateChanged(domainEvent, patch, source) {
+        sendEnvelope("applet:stateChanged", {
+          domainEvent,
+          patch,
+          source,
+          state: fullState(),
+        });
+      }
+
+      function sendInteraction(action, source) {
+        sendEnvelope("applet:interaction", {
+          action,
+          source,
+          state: fullState(),
+        });
+      }
+
+      function sendCheckpoint(checkpoint) {
+        sendEnvelope("applet:checkpoint", {
+          checkpoint: "key_angle_reached",
+          evidence: {
+            theta_label: checkpoint.label,
+            sine_value: checkpoint.sineLabel,
+          },
+          state: fullState(),
+        });
+      }
+
+      function sendError(code, message, recoverable) {
+        sendEnvelope("applet:error", { code, message, recoverable });
+      }
+
+      function sendEnvelope(type, payload) {
+        if (window.parent === window) {
+          return;
+        }
+        const targetOrigin = parentOrigin && parentOrigin !== "null" ? parentOrigin : "*";
+        window.parent.postMessage(
+          {
+            sdk: SDK,
+            sdkVersion: SDK_VERSION,
+            resourceId: RESOURCE_ID,
+            instanceId: "standalone-preview",
+            type,
+            seq: ++seq,
+            timestamp: new Date().toISOString(),
+            payload,
+          },
+          targetOrigin,
+        );
+      }
+
+      function setLine(element, x1, y1, x2, y2) {
+        element.setAttribute("x1", x1);
+        element.setAttribute("y1", y1);
+        element.setAttribute("x2", x2);
+        element.setAttribute("y2", y2);
+      }
+
+      function clamp(value, min, max) {
+        return Math.min(max, Math.max(min, value));
+      }
+
+      function round(value) {
+        return Math.round(value * 10000) / 10000;
+      }
+    </script>
+  </body>
+</html>

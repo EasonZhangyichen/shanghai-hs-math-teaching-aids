@@ -154,12 +154,10 @@ visual_semantics:
   rule: "颜色只用于区分数学对象和对应关系，不作装饰。"
 
 implementation:
-  phase: "content_spec_only"
-  html_src_status: "not_started"
+  phase: "runnable_prototype"
+  html_src_status: "runnable"
   planned_engine: "native-canvas-svg"
-  create_src_in_later_task: true
-  required_future_files:
-    - "src/index.html"
+  create_src_in_later_task: false
   classroom_device_targets:
     - "教师电脑浏览器"
     - "教室大屏"
@@ -170,6 +168,7 @@ files:
   teacher_script: "teacher-script.md"
   student_task: "student-task.md"
   review_record: "review.md"
+  src_entry: "src/index.html"
 
 compliance:
   copyright_note: "本资源包为原创教学脚本与交互规格，不复制教材正文、官方课件、教案或商业平台资源。"
