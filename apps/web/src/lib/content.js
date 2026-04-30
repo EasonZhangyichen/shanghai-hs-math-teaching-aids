@@ -152,6 +152,7 @@ async function loadAppletPackages(rootDir) {
             teacherScript: teacherScript?.path ?? null,
             studentTask: studentTask?.path ?? null,
             reviewRecord: toRepoPath(rootDir, path.join(packageDir, metadata.files?.review_record ?? "review.md")),
+            srcEntry: metadata.files?.src_entry ? toRepoPath(rootDir, path.join(packageDir, metadata.files.src_entry)) : null,
           },
           teacherScript,
           studentTask,

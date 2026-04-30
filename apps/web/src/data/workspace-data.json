@@ -506,13 +506,10 @@
               "rule": "颜色只用于区分数学对象和对应关系，不作装饰。"
             },
             "implementation": {
-              "phase": "content_spec_only",
-              "html_src_status": "not_started",
+              "phase": "runnable_prototype",
+              "html_src_status": "runnable",
               "planned_engine": "native-canvas-svg",
-              "create_src_in_later_task": true,
-              "required_future_files": [
-                "src/index.html"
-              ],
+              "create_src_in_later_task": false,
               "classroom_device_targets": [
                 "教师电脑浏览器",
                 "教室大屏",
@@ -531,7 +528,8 @@
               "readme": "content/applets/SH-HS-MATH-HJ-B2-C07-L01-A01/README.md",
               "teacherScript": "content/applets/SH-HS-MATH-HJ-B2-C07-L01-A01/teacher-script.md",
               "studentTask": "content/applets/SH-HS-MATH-HJ-B2-C07-L01-A01/student-task.md",
-              "reviewRecord": "content/applets/SH-HS-MATH-HJ-B2-C07-L01-A01/review.md"
+              "reviewRecord": "content/applets/SH-HS-MATH-HJ-B2-C07-L01-A01/review.md",
+              "srcEntry": "content/applets/SH-HS-MATH-HJ-B2-C07-L01-A01/src/index.html"
             },
             "teacherScript": {
               "kind": "teacher_script",
@@ -1456,13 +1454,10 @@
               "rule": "颜色只用于区分数学对象和对应关系，不作装饰。"
             },
             "implementation": {
-              "phase": "content_spec_only",
-              "html_src_status": "not_started",
+              "phase": "runnable_prototype",
+              "html_src_status": "runnable",
               "planned_engine": "native-canvas-svg",
-              "create_src_in_later_task": true,
-              "required_future_files": [
-                "src/index.html"
-              ],
+              "create_src_in_later_task": false,
               "classroom_device_targets": [
                 "教师电脑浏览器",
                 "教室大屏",
@@ -1481,7 +1476,8 @@
               "readme": "content/applets/SH-HS-MATH-HJ-B2-C07-L01-A01/README.md",
               "teacherScript": "content/applets/SH-HS-MATH-HJ-B2-C07-L01-A01/teacher-script.md",
               "studentTask": "content/applets/SH-HS-MATH-HJ-B2-C07-L01-A01/student-task.md",
-              "reviewRecord": "content/applets/SH-HS-MATH-HJ-B2-C07-L01-A01/review.md"
+              "reviewRecord": "content/applets/SH-HS-MATH-HJ-B2-C07-L01-A01/review.md",
+              "srcEntry": "content/applets/SH-HS-MATH-HJ-B2-C07-L01-A01/src/index.html"
             },
             "teacherScript": {
               "kind": "teacher_script",
