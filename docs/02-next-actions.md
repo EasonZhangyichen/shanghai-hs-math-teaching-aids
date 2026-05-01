@@ -50,14 +50,14 @@
 - [x] 创建 `SH-HS-MATH-HJ-B2-C07-L05-D01`“参数识别诊断任务”Diagnosis 资源包，包含 metadata、题组、评分规则、教师说明和审核记录。
 - [x] 渲染并复核 `SH-HS-MATH-HJ-B2-C07-L01-M01` 的 `mp4`、`webm` 和 poster。
 - [x] 创建三个可运行 HTML Applet 原型。
-- [ ] 渲染并复核 `SH-HS-MATH-HJ-B2-C07-L05-M01` 的 `mp4`、`webm` 和 poster。
+- [x] 渲染并复核 `SH-HS-MATH-HJ-B2-C07-L05-M01` 的 `mp4`、`webm` 和 poster。
 - [ ] 对“单位圆到正弦曲线”HTML Applet 做数学边界复核和课堂节奏试读。
 - [ ] 对“正弦函数性质探究”HTML Applet 做数学边界复核、课堂节奏试读和浏览器交互验证。
 - [ ] 对“三角函数参数变化实验室”HTML Applet 做数学边界复核、课堂节奏试读和浏览器交互验证。
 - [ ] 对 `SH-HS-MATH-HJ-B2-C07-L05-M01`“图像变换顺序解释”做数学审校、分镜节奏复核和课堂播放口径确认。
 - [ ] 对 `SH-HS-MATH-HJ-B2-C07-L02-D01`“正弦函数性质诊断”做数学审校、题目试做和课堂节奏试读。
 - [ ] 对 `SH-HS-MATH-HJ-B2-C07-L05-D01`“参数识别诊断任务”做数学审校、题目试做和课堂节奏试读。
-- [ ] 从 `content/production/resource-backlog.json` 中选择下一个 MVP item，优先渲染复核 `SH-HS-MATH-HJ-B2-C07-L05-M01` 或推进已实现资源的审校试读。
+- [ ] 从 `content/production/resource-backlog.json` 中选择下一个 MVP item，优先推进已实现资源的数学审校、课堂试读或第 7 章剩余 planned item。
 
 ## P4：平台雏形
 
