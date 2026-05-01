@@ -1,0 +1,104 @@
+schema_version: "0.1.0"
+id: "SH-HS-MATH-HJ-B2-C07-L05-D01"
+version: "0.1.0"
+status: "draft"
+resource_type: "diagnosis"
+title: "参数识别诊断任务"
+subtitle: "围绕 A、omega、phi 的图像读数和错因分流"
+
+curriculum:
+  region: "上海"
+  stage: "高中"
+  subject: "数学"
+  edition: "沪教版"
+  volume_id: "B2"
+  volume_title: "必修第二册"
+  chapter_id: "SH-HS-MATH-HJ-B2-C07"
+  chapter_title: "三角函数"
+  section_id: "SH-HS-MATH-HJ-B2-C07-S03"
+  section_title: "函数 y = A sin(omega x + phi) 的图像"
+  lesson_id: "SH-HS-MATH-HJ-B2-C07-L05"
+  textbook_ref: "7.3"
+  lesson_title: "函数 y = A sin(omega x + phi) 的图像"
+
+pedagogy:
+  cognitive_action: "比较"
+  estimated_classroom_minutes: 8
+  primary_teaching_problem: "学生能分别说出振幅、周期和平移的结论，但从一张图像反推解析式时，常把周期与 omega、phi 与实际平移量、A 的负号与横向变化混在一起。"
+  learning_goals:
+    - "根据图像最大值和最小值判断振幅 |A|，并在必要时处理 A 的负号。"
+    - "根据相邻关键点间距读出周期 T，并用 omega = 2pi / T 求 omega。"
+    - "通过 omega x + phi = omega(x + phi / omega) 解释实际相位平移量。"
+    - "用一个关键点验证候选解析式，而不是只凭单个参数猜测。"
+  prerequisites:
+    - "正弦函数图像与关键点"
+    - "函数图像平移、伸缩和翻折"
+    - "y = A sin(omega x + phi) 的变换顺序"
+  successors:
+    - "SH-HS-MATH-HJ-B2-C07-L06"
+    - "SH-HS-MATH-HJ-B2-C08-K01"
+    - "SH-HS-MATH-HJ-XB1-DERIV-K01"
+  core_competencies:
+    - "直观想象"
+    - "数学抽象"
+    - "数学运算"
+    - "逻辑推理"
+  classroom_use: "建议放在参数变化 Applet 操作之后 6 到 8 分钟完成；教师用错因标签决定是回到单参数滑块、变换顺序动画，还是集中讲评图像读数。"
+
+diagnosis_design:
+  diagnostic_focus:
+    - "能否从图像周期求出 omega，而不是把周期本身当作 omega。"
+    - "能否解释相位平移方向和距离，尤其是 phi 需要除以 omega。"
+    - "能否在 A 为负时正确处理关于 x 轴的翻折。"
+    - "能否用关键点检验候选解析式，避免只看一个参数。"
+  misconception_tags:
+    - id: "period_to_omega_inversion"
+      title: "周期与 omega 互换"
+      description: "把周期 T 当成 omega，或忘记 omega = 2pi / T。"
+    - id: "phase_shift_scale_omission"
+      title: "平移量未除以 omega"
+      description: "把 phi 直接看成实际平移量，忽略 omega(x + phi / omega)。"
+    - id: "phase_shift_sign_error"
+      title: "相位平移方向错误"
+      description: "把 x + a 与 x - a 的平移方向说反。"
+    - id: "amplitude_reflection_mixup"
+      title: "振幅和翻折混淆"
+      description: "只看 |A|，忽略 A < 0 引起的关于 x 轴翻折，或把负号误判为横向移动。"
+    - id: "parameter_interference"
+      title: "多参数相互干扰"
+      description: "只根据一个读数选择解析式，未用振幅、周期、平移和关键点共同验证。"
+  item_summary:
+    total_items: 6
+    question_types:
+      - "single_choice"
+      - "multiple_select"
+      - "short_explanation"
+      - "error_analysis"
+    estimated_minutes: 8
+  feedback_strategy:
+    immediate_feedback: "每题返回命中的参数错因标签，并给出一个回看动作：周期读数、括号改写、A 的翻折或关键点代入。"
+    teacher_dashboard_notes: "若 period_to_omega_inversion 集中出现，先回到周期标尺；若 phase_shift_scale_omission 或 phase_shift_sign_error 集中出现，回放 L05-M01 的公式改写；若 amplitude_reflection_mixup 集中出现，回到 Applet 固定 omega、phi 只调 A。"
+    remediation_links:
+      - "content/applets/SH-HS-MATH-HJ-B2-C07-L05-A01"
+      - "content/manim/SH-HS-MATH-HJ-B2-C07-L05-M01"
+
+scoring:
+  mastery_threshold: 0.75
+  grading_mode: "mixed"
+  retry_policy: "课堂内允许一次订正；订正时必须写出至少一个参数读数理由，首次错因标签保留给教师看板。"
+
+platform_card:
+  availability: "item_bank_ready"
+  preview_behavior: "item_bank_preview"
+  embed_strategy: "首期显示诊断目标、错因标签、题组摘要和评分规则；后续接入诊断播放器后按参数错因返回即时反馈。"
+
+files:
+  readme: "README.md"
+  item_bank: "item-bank.yaml"
+  scoring_rubric: "scoring-rubric.md"
+  teacher_notes: "teacher-notes.md"
+  review_record: "review.md"
+
+compliance:
+  copyright_note: "本诊断包为原创题组与反馈设计，不复制教材正文、官方课件、教案或商业题库。"
+  review_status: "self_checked_draft"
