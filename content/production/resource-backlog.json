@@ -16,8 +16,8 @@
   },
   "summary": {
     "total": 15,
-    "implemented": 5,
-    "planned": 10,
+    "implemented": 6,
+    "planned": 9,
     "byType": {
       "applet": {
         "total": 8,
@@ -26,8 +26,8 @@
       },
       "manim_clip": {
         "total": 3,
-        "implemented": 1,
-        "planned": 2
+        "implemented": 2,
+        "planned": 1
       },
       "diagnosis": {
         "total": 4,
@@ -319,8 +319,8 @@
     {
       "id": "SH-HS-MATH-HJ-B2-C07-L05-M01",
       "type": "manim_clip",
-      "status": "planned",
-      "availability": "planned",
+      "status": "implemented",
+      "availability": "metadata_ready",
       "title": "图像变换顺序解释",
       "proposedTitle": "图像变换顺序解释",
       "lessonId": "SH-HS-MATH-HJ-B2-C07-L05",
@@ -341,11 +341,11 @@
       "note": "把横向伸缩、平移和纵向伸缩拆成可暂停的连续变换。",
       "priority": "mvp",
       "priorityReason": "MVP focus lesson",
-      "packagePath": null,
-      "metadataPath": null,
+      "packagePath": "content/manim/SH-HS-MATH-HJ-B2-C07-L05-M01",
+      "metadataPath": "content/manim/SH-HS-MATH-HJ-B2-C07-L05-M01/metadata.yaml",
       "recommendedTrack": "track/manim-pipeline",
-      "nextAction": "创建 Manim 资源包，先写 metadata、storyboard、scene.py 和 review，再渲染 mp4/webm/poster。",
-      "threadPrompt": "请先读取项目锚点文件和 content/production/resource-backlog.json，然后切到 track/manim-pipeline。这次只创建并推进 SH-HS-MATH-HJ-B2-C07-L05-M01（Manim Clip），对应课时 SH-HS-MATH-HJ-B2-C07-L05「函数 y = A sin(omega x + phi) 的图像」。先确认教学痛点、认知动作、文件规范和验收标准，再动手；完成后运行 npm run generate:backlog 和 npm run verify，更新 docs/01-current-state.md 与 docs/02-next-actions.md，并提交。"
+      "nextAction": "核对 metadata、资源文件和审核记录，补齐缺口后运行内容校验。",
+      "threadPrompt": "请先读取项目锚点文件和 content/production/resource-backlog.json，然后切到 track/manim-pipeline。这次只复核并推进 SH-HS-MATH-HJ-B2-C07-L05-M01（Manim Clip），对应课时 SH-HS-MATH-HJ-B2-C07-L05「函数 y = A sin(omega x + phi) 的图像」。先确认教学痛点、认知动作、文件规范和验收标准，再动手；完成后运行 npm run generate:backlog 和 npm run verify，更新 docs/01-current-state.md 与 docs/02-next-actions.md，并提交。"
     },
     {
       "id": "SH-HS-MATH-HJ-B2-C07-L05-D01",

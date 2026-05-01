@@ -14,10 +14,10 @@ test("generates a deterministic backlog from curriculum entry points and impleme
 
   assert.equal(backlog.source.curriculum, "content/curriculum/index.yaml");
   assert.equal(backlog.summary.total, 15);
-  assert.equal(backlog.summary.implemented, 5);
-  assert.equal(backlog.summary.planned, 10);
+  assert.equal(backlog.summary.implemented, 6);
+  assert.equal(backlog.summary.planned, 9);
   assert.deepEqual(backlog.summary.byType.applet, { total: 8, implemented: 3, planned: 5 });
-  assert.deepEqual(backlog.summary.byType.manim_clip, { total: 3, implemented: 1, planned: 2 });
+  assert.deepEqual(backlog.summary.byType.manim_clip, { total: 3, implemented: 2, planned: 1 });
   assert.deepEqual(backlog.summary.byType.diagnosis, { total: 4, implemented: 1, planned: 3 });
 
   const sineApplet = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B2-C07-L01-A01");
@@ -58,6 +58,16 @@ test("generates a deterministic backlog from curriculum entry points and impleme
   assert.equal(parameterLabApplet.metadataPath, "content/applets/SH-HS-MATH-HJ-B2-C07-L05-A01/metadata.yaml");
   assert.equal(parameterLabApplet.recommendedTrack, "track/trig-sample-pack");
   assert.equal(parameterLabApplet.priority, "mvp");
+
+  const transformOrderManim = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B2-C07-L05-M01");
+  assert.equal(transformOrderManim.status, "implemented");
+  assert.equal(transformOrderManim.availability, "metadata_ready");
+  assert.equal(transformOrderManim.type, "manim_clip");
+  assert.equal(transformOrderManim.packagePath, "content/manim/SH-HS-MATH-HJ-B2-C07-L05-M01");
+  assert.equal(transformOrderManim.metadataPath, "content/manim/SH-HS-MATH-HJ-B2-C07-L05-M01/metadata.yaml");
+  assert.equal(transformOrderManim.recommendedTrack, "track/manim-pipeline");
+  assert.equal(transformOrderManim.priority, "mvp");
+  assert.match(transformOrderManim.nextAction, /metadata|资源文件|审核记录/);
 });
 
 test("writes the backlog as stable pretty JSON", async () => {
@@ -71,7 +81,7 @@ test("writes the backlog as stable pretty JSON", async () => {
     const written = JSON.parse(await readFile(outputPath, "utf8"));
 
     assert.equal(written.summary.total, 15);
-    assert.equal(written.summary.implemented, 5);
+    assert.equal(written.summary.implemented, 6);
     assert.equal(written.items[0].id, "SH-HS-MATH-HJ-B2-C07-L01-A01");
     assert.ok(
       JSON.stringify(written, null, 2).includes(
