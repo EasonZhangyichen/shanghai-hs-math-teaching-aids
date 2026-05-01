@@ -1,0 +1,1180 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%232e5d8a'/%3E%3Ctext x='10' y='41' font-size='19' font-family='serif' font-weight='700' fill='white'%3EA%CF%89%3C/text%3E%3C/svg%3E"
+    />
+    <title>三角函数参数变化实验室</title>
+    <style>
+      :root {
+        color: #1b2733;
+        background: #f5f7f8;
+        font-family:
+          "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", system-ui, -apple-system,
+          BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        --surface: #ffffff;
+        --surface-soft: #f8fafb;
+        --ink: #1b2733;
+        --muted: #5f7082;
+        --border: #d5dfe8;
+        --curve: #2e5d8a;
+        --base: #8094a8;
+        --middle: #3c8a6b;
+        --point: #c06024;
+        --key: #7f4aa0;
+        --band: rgba(46, 93, 138, 0.1);
+        --warning: #a84d32;
+        --shadow: 0 18px 42px rgba(22, 32, 44, 0.1);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-width: 320px;
+        min-height: 100vh;
+        color: var(--ink);
+        background: var(--surface);
+      }
+
+      button,
+      input {
+        font: inherit;
+      }
+
+      .applet-shell {
+        min-height: 100vh;
+        display: grid;
+        grid-template-rows: auto minmax(0, 1fr);
+        background:
+          linear-gradient(90deg, rgba(46, 93, 138, 0.05) 0 1px, transparent 1px 100%),
+          linear-gradient(0deg, rgba(27, 39, 51, 0.035) 0 1px, transparent 1px 100%),
+          #f5f7f8;
+        background-size: 28px 28px;
+      }
+
+      .topbar {
+        display: flex;
+        justify-content: space-between;
+        gap: 18px;
+        padding: 15px 22px;
+        border-bottom: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.94);
+      }
+
+      .title-group {
+        min-width: 0;
+      }
+
+      .eyebrow,
+      .state-readout span,
+      .panel-note,
+      .formula-note,
+      .legend {
+        color: var(--muted);
+        font-size: 0.78rem;
+      }
+
+      .eyebrow {
+        margin: 0 0 4px;
+        font-weight: 700;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 1.45rem;
+        line-height: 1.15;
+        letter-spacing: 0;
+      }
+
+      .state-readout {
+        flex: 0 0 auto;
+        display: grid;
+        grid-template-columns: repeat(4, auto);
+        gap: 8px;
+        align-content: start;
+      }
+
+      .state-readout span {
+        min-width: 88px;
+        padding: 7px 9px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: #fbfdfe;
+        text-align: center;
+      }
+
+      .state-readout strong {
+        display: block;
+        color: var(--ink);
+        font-size: 0.96rem;
+      }
+
+      .workspace {
+        min-height: 0;
+        display: grid;
+        grid-template-columns: minmax(430px, 1fr) 350px;
+        gap: 16px;
+        padding: 16px;
+      }
+
+      .visual-panel,
+      .control-panel {
+        min-width: 0;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.96);
+        box-shadow: var(--shadow);
+      }
+
+      .visual-panel {
+        align-self: start;
+        overflow: hidden;
+      }
+
+      .formula-strip {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 12px;
+        padding: 13px 16px;
+        border-bottom: 1px solid var(--border);
+        background: #fbfdfe;
+      }
+
+      .formula-main {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 1.28rem;
+        font-weight: 700;
+      }
+
+      .formula-note {
+        align-self: center;
+        text-align: right;
+      }
+
+      svg {
+        display: block;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1200 / 580;
+        touch-action: none;
+        user-select: none;
+      }
+
+      .control-panel {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding: 16px;
+        overflow: auto;
+      }
+
+      .panel-section {
+        display: grid;
+        gap: 10px;
+      }
+
+      .section-title {
+        margin: 0;
+        color: var(--ink);
+        font-size: 0.96rem;
+        font-weight: 800;
+      }
+
+      .button-row,
+      .mode-grid,
+      .toggle-grid {
+        display: grid;
+        gap: 8px;
+      }
+
+      .button-row {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .mode-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .toggle-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .control-button,
+      .mode-button,
+      .toggle-button {
+        min-height: 40px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        color: var(--ink);
+        background: #ffffff;
+        cursor: pointer;
+      }
+
+      .control-button:hover,
+      .mode-button:hover,
+      .toggle-button:hover {
+        border-color: #8baeca;
+        background: #eef6fb;
+      }
+
+      .control-button.is-primary,
+      .mode-button.is-active,
+      .toggle-button[aria-pressed="true"] {
+        border-color: var(--curve);
+        color: #ffffff;
+        background: var(--curve);
+      }
+
+      .sequence-button.is-active {
+        border-color: var(--middle);
+        color: #ffffff;
+        background: var(--middle);
+      }
+
+      .slider-block {
+        display: grid;
+        gap: 6px;
+        padding: 10px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: #ffffff;
+      }
+
+      .slider-block.is-focus {
+        border-color: var(--curve);
+        background: #f1f7fb;
+      }
+
+      .slider-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        font-size: 0.9rem;
+        font-weight: 800;
+      }
+
+      .slider-head output {
+        color: var(--curve);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 1rem;
+      }
+
+      input[type="range"] {
+        width: 100%;
+        accent-color: var(--curve);
+      }
+
+      .summary-list,
+      .checkpoint-list {
+        display: grid;
+        gap: 8px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .summary-list li,
+      .checkpoint-list li {
+        padding: 8px 10px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: var(--surface-soft);
+        font-size: 0.9rem;
+      }
+
+      .summary-list strong,
+      .checkpoint-list strong {
+        color: var(--curve);
+      }
+
+      .legend {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 10px 16px 14px;
+        border-top: 1px solid var(--border);
+        background: #fbfdfe;
+      }
+
+      .legend span {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+      }
+
+      .swatch {
+        width: 18px;
+        height: 4px;
+        border-radius: 999px;
+        background: var(--curve);
+      }
+
+      .swatch.base {
+        background: var(--base);
+      }
+
+      .swatch.middle {
+        background: var(--middle);
+      }
+
+      .swatch.point {
+        background: var(--point);
+      }
+
+      .graph-axis {
+        stroke: #7a8998;
+        stroke-width: 1.2;
+      }
+
+      .grid-line {
+        stroke: #dce5ed;
+        stroke-width: 1;
+      }
+
+      .tick-label {
+        fill: #5f7082;
+        font-size: 15px;
+      }
+
+      .curve-base {
+        fill: none;
+        stroke: var(--base);
+        stroke-width: 3;
+        stroke-dasharray: 8 8;
+      }
+
+      .curve-middle {
+        fill: none;
+        stroke: var(--middle);
+        stroke-width: 3;
+        stroke-dasharray: 10 5;
+      }
+
+      .curve-final {
+        fill: none;
+        stroke: var(--curve);
+        stroke-width: 4;
+      }
+
+      .amplitude-band {
+        fill: var(--band);
+      }
+
+      .phase-marker {
+        stroke: var(--warning);
+        stroke-width: 2;
+        stroke-dasharray: 6 6;
+      }
+
+      .key-zero {
+        fill: #ffffff;
+        stroke: var(--key);
+        stroke-width: 2.5;
+      }
+
+      .key-extreme {
+        fill: var(--key);
+        stroke: #ffffff;
+        stroke-width: 2;
+      }
+
+      .current-point {
+        fill: var(--point);
+        stroke: #ffffff;
+        stroke-width: 3;
+        cursor: grab;
+      }
+
+      .current-point:active {
+        cursor: grabbing;
+      }
+
+      .callout {
+        fill: rgba(255, 255, 255, 0.92);
+        stroke: var(--border);
+      }
+
+      .callout-text {
+        fill: var(--ink);
+        font-size: 15px;
+        font-weight: 700;
+      }
+
+      .is-hidden {
+        display: none;
+      }
+
+      @media (max-width: 920px) {
+        .topbar,
+        .formula-strip {
+          grid-template-columns: 1fr;
+        }
+
+        .topbar {
+          display: grid;
+        }
+
+        .state-readout {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .workspace {
+          grid-template-columns: 1fr;
+        }
+
+        .control-panel {
+          max-height: none;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .workspace {
+          padding: 10px;
+        }
+
+        .topbar {
+          padding: 13px 14px;
+        }
+
+        h1 {
+          font-size: 1.2rem;
+        }
+
+        .state-readout,
+        .mode-grid,
+        .toggle-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="applet-shell">
+      <header class="topbar">
+        <div class="title-group">
+          <p class="eyebrow">SH-HS-MATH-HJ-B2-C07-L05-A01</p>
+          <h1>三角函数参数变化实验室</h1>
+        </div>
+        <div class="state-readout" aria-live="polite">
+          <span>振幅<strong id="amplitudeReadout">1</strong></span>
+          <span>周期<strong id="periodReadout">2π</strong></span>
+          <span>平移<strong id="shiftReadout">0</strong></span>
+          <span>当前 y<strong id="pointReadout">0</strong></span>
+        </div>
+      </header>
+
+      <section class="workspace">
+        <section class="visual-panel" aria-label="参数函数图像">
+          <div class="formula-strip">
+            <p class="formula-main" id="formulaReadout">y = sin x</p>
+            <p class="formula-note" id="phaseReadout">相位：x</p>
+          </div>
+          <svg id="graph" viewBox="0 0 1200 580" role="img" aria-label="参数函数图像实验区">
+            <g id="gridLayer"></g>
+            <rect id="bandLayer" class="amplitude-band" x="0" y="0" width="0" height="0" />
+            <line id="phaseMarker" class="phase-marker" x1="0" y1="0" x2="0" y2="0" />
+            <path id="baseCurve" class="curve-base"></path>
+            <path id="middleCurve" class="curve-middle"></path>
+            <path id="finalCurve" class="curve-final"></path>
+            <g id="keyPointLayer"></g>
+            <g id="pointLayer">
+              <line id="pointGuideX" class="grid-line"></line>
+              <line id="pointGuideY" class="grid-line"></line>
+              <circle id="currentPoint" class="current-point" r="9"></circle>
+              <rect id="pointCallout" class="callout" rx="8" width="172" height="44"></rect>
+              <text id="pointLabel" class="callout-text"></text>
+            </g>
+          </svg>
+          <div class="legend">
+            <span><i class="swatch base"></i>基本曲线</span>
+            <span><i class="swatch middle"></i>中间曲线</span>
+            <span><i class="swatch"></i>最终图像</span>
+            <span><i class="swatch point"></i>观察点</span>
+          </div>
+        </section>
+
+        <aside class="control-panel" aria-label="参数控制">
+          <section class="panel-section">
+            <p class="section-title">播放与重置</p>
+            <div class="button-row">
+              <button class="control-button is-primary" id="playButton" type="button">播放</button>
+              <button class="control-button" id="resetButton" type="button">重置</button>
+            </div>
+            <p class="panel-note">拖动图像上的橙色点，或用下方 x 滑块观察当前相位。</p>
+          </section>
+
+          <section class="panel-section">
+            <p class="section-title">单参数观察</p>
+            <div class="mode-grid" id="focusModeGroup">
+              <button class="mode-button is-active" data-focus="free" type="button">自由</button>
+              <button class="mode-button" data-focus="a" type="button">A</button>
+              <button class="mode-button" data-focus="omega" type="button">ω</button>
+              <button class="mode-button" data-focus="phi" type="button">φ</button>
+            </div>
+          </section>
+
+          <section class="panel-section">
+            <p class="section-title">参数滑块</p>
+            <label class="slider-block" id="blockA">
+              <span class="slider-head">A <output id="aOutput">1</output></span>
+              <input id="aSlider" type="range" min="-2" max="2" step="0.25" value="1" />
+            </label>
+            <label class="slider-block" id="blockOmega">
+              <span class="slider-head">omega <output id="omegaOutput">1</output></span>
+              <input id="omegaSlider" type="range" min="0.5" max="3" step="0.25" value="1" />
+            </label>
+            <label class="slider-block" id="blockPhi">
+              <span class="slider-head">phi <output id="phiOutput">0</output></span>
+              <input id="phiSlider" type="range" min="-1" max="1" step="0.25" value="0" />
+            </label>
+            <label class="slider-block">
+              <span class="slider-head">观察点 x <output id="xOutput">0</output></span>
+              <input id="xSlider" type="range" min="-6.28318" max="6.28318" step="0.02" value="0" />
+            </label>
+          </section>
+
+          <section class="panel-section">
+            <p class="section-title">变换顺序</p>
+            <div class="button-row" id="sequenceGroup">
+              <button class="control-button sequence-button is-active" data-sequence="scale_then_shift" type="button">
+                伸缩后平移
+              </button>
+              <button class="control-button sequence-button" data-sequence="shift_then_scale" type="button">
+                平移后伸缩
+              </button>
+            </div>
+            <p class="panel-note" id="sequenceNote">先得到 y = sin(omega x)，再平移到最终图像。</p>
+          </section>
+
+          <section class="panel-section">
+            <p class="section-title">图层</p>
+            <div class="toggle-grid">
+              <button class="toggle-button" id="toggleBase" type="button" aria-pressed="true">基本曲线</button>
+              <button class="toggle-button" id="toggleMiddle" type="button" aria-pressed="true">中间曲线</button>
+              <button class="toggle-button" id="toggleKeys" type="button" aria-pressed="true">关键点</button>
+              <button class="toggle-button" id="toggleSummary" type="button" aria-pressed="false">归纳</button>
+            </div>
+          </section>
+
+          <section class="panel-section">
+            <p class="section-title">参数归纳</p>
+            <ul class="summary-list">
+              <li><strong>A</strong>：振幅为 <span id="summaryA">1</span>，负值表示关于 x 轴翻折。</li>
+              <li><strong>omega</strong>：周期 <span id="summaryOmega">2π</span>，omega 越大周期越短。</li>
+              <li><strong>phi</strong>：平移量 <span id="summaryPhi">0</span>，必须除以 omega。</li>
+            </ul>
+          </section>
+
+          <section class="panel-section" id="summaryPanel">
+            <p class="section-title">课堂收束</p>
+            <ul class="checkpoint-list">
+              <li>先看 <strong>|A|</strong> 判断振幅和翻折。</li>
+              <li>再用 <strong>T = 2π / omega</strong> 判断横向伸缩。</li>
+              <li>最后用 <strong>x = -phi / omega</strong> 判断相位平移。</li>
+            </ul>
+          </section>
+        </aside>
+      </section>
+    </main>
+
+    <script>
+      const RESOURCE_ID = "SH-HS-MATH-HJ-B2-C07-L05-A01";
+      const SVG_WIDTH = 1200;
+      const SVG_HEIGHT = 580;
+      const PADDING = { left: 72, right: 36, top: 36, bottom: 58 };
+      const X_MIN = -2 * Math.PI;
+      const X_MAX = 2 * Math.PI;
+      const Y_MIN = -2.4;
+      const Y_MAX = 2.4;
+
+      const state = {
+        a: 1,
+        omega: 1,
+        phiPi: 0,
+        currentX: 0,
+        focusMode: "free",
+        sequenceMode: "scale_then_shift",
+        baseVisible: true,
+        middleVisible: true,
+        keyPointsVisible: true,
+        summaryVisible: false,
+        playing: false,
+      };
+
+      const elements = {
+        graph: document.getElementById("graph"),
+        gridLayer: document.getElementById("gridLayer"),
+        bandLayer: document.getElementById("bandLayer"),
+        phaseMarker: document.getElementById("phaseMarker"),
+        baseCurve: document.getElementById("baseCurve"),
+        middleCurve: document.getElementById("middleCurve"),
+        finalCurve: document.getElementById("finalCurve"),
+        keyPointLayer: document.getElementById("keyPointLayer"),
+        currentPoint: document.getElementById("currentPoint"),
+        pointGuideX: document.getElementById("pointGuideX"),
+        pointGuideY: document.getElementById("pointGuideY"),
+        pointCallout: document.getElementById("pointCallout"),
+        pointLabel: document.getElementById("pointLabel"),
+        formulaReadout: document.getElementById("formulaReadout"),
+        phaseReadout: document.getElementById("phaseReadout"),
+        amplitudeReadout: document.getElementById("amplitudeReadout"),
+        periodReadout: document.getElementById("periodReadout"),
+        shiftReadout: document.getElementById("shiftReadout"),
+        pointReadout: document.getElementById("pointReadout"),
+        aSlider: document.getElementById("aSlider"),
+        omegaSlider: document.getElementById("omegaSlider"),
+        phiSlider: document.getElementById("phiSlider"),
+        xSlider: document.getElementById("xSlider"),
+        aOutput: document.getElementById("aOutput"),
+        omegaOutput: document.getElementById("omegaOutput"),
+        phiOutput: document.getElementById("phiOutput"),
+        xOutput: document.getElementById("xOutput"),
+        blockA: document.getElementById("blockA"),
+        blockOmega: document.getElementById("blockOmega"),
+        blockPhi: document.getElementById("blockPhi"),
+        playButton: document.getElementById("playButton"),
+        resetButton: document.getElementById("resetButton"),
+        sequenceNote: document.getElementById("sequenceNote"),
+        summaryA: document.getElementById("summaryA"),
+        summaryOmega: document.getElementById("summaryOmega"),
+        summaryPhi: document.getElementById("summaryPhi"),
+        summaryPanel: document.getElementById("summaryPanel"),
+        toggleBase: document.getElementById("toggleBase"),
+        toggleMiddle: document.getElementById("toggleMiddle"),
+        toggleKeys: document.getElementById("toggleKeys"),
+        toggleSummary: document.getElementById("toggleSummary"),
+      };
+
+      function xToSvg(x) {
+        const graphWidth = SVG_WIDTH - PADDING.left - PADDING.right;
+        return PADDING.left + ((x - X_MIN) / (X_MAX - X_MIN)) * graphWidth;
+      }
+
+      function yToSvg(y) {
+        const graphHeight = SVG_HEIGHT - PADDING.top - PADDING.bottom;
+        return PADDING.top + ((Y_MAX - y) / (Y_MAX - Y_MIN)) * graphHeight;
+      }
+
+      function svgToX(svgX) {
+        const graphWidth = SVG_WIDTH - PADDING.left - PADDING.right;
+        const ratio = Math.max(0, Math.min(1, (svgX - PADDING.left) / graphWidth));
+        return X_MIN + ratio * (X_MAX - X_MIN);
+      }
+
+      function phi() {
+        return state.phiPi * Math.PI;
+      }
+
+      function finalY(x) {
+        return state.a * Math.sin(state.omega * x + phi());
+      }
+
+      function middleY(x) {
+        if (state.sequenceMode === "scale_then_shift") {
+          return Math.sin(state.omega * x + phi());
+        }
+        return Math.sin(state.omega * x + phi());
+      }
+
+      function phaseShift() {
+        return -phi() / state.omega;
+      }
+
+      function period() {
+        return (2 * Math.PI) / state.omega;
+      }
+
+      function createSvgElement(tag, attrs = {}) {
+        const element = document.createElementNS("http://www.w3.org/2000/svg", tag);
+        Object.entries(attrs).forEach(([key, value]) => element.setAttribute(key, value));
+        return element;
+      }
+
+      function drawGrid() {
+        elements.gridLayer.innerHTML = "";
+        const xTicks = [-2, -1.5, -1, -0.5, 0, 0.5, 1, 1.5, 2];
+        const yTicks = [-2, -1, 0, 1, 2];
+
+        yTicks.forEach((value) => {
+          const y = yToSvg(value);
+          elements.gridLayer.appendChild(createSvgElement("line", {
+            x1: PADDING.left,
+            x2: SVG_WIDTH - PADDING.right,
+            y1: y,
+            y2: y,
+            class: value === 0 ? "graph-axis" : "grid-line",
+          }));
+          const label = createSvgElement("text", {
+            x: PADDING.left - 14,
+            y: y + 5,
+            class: "tick-label",
+            "text-anchor": "end",
+          });
+          label.textContent = value.toString();
+          elements.gridLayer.appendChild(label);
+        });
+
+        xTicks.forEach((multiple) => {
+          const xValue = multiple * Math.PI;
+          const x = xToSvg(xValue);
+          elements.gridLayer.appendChild(createSvgElement("line", {
+            x1: x,
+            x2: x,
+            y1: PADDING.top,
+            y2: SVG_HEIGHT - PADDING.bottom,
+            class: multiple === 0 ? "graph-axis" : "grid-line",
+          }));
+          const label = createSvgElement("text", {
+            x,
+            y: SVG_HEIGHT - PADDING.bottom + 30,
+            class: "tick-label",
+            "text-anchor": "middle",
+          });
+          label.textContent = formatPiMultiple(multiple);
+          elements.gridLayer.appendChild(label);
+        });
+      }
+
+      function pathFor(fn) {
+        const steps = 420;
+        const commands = [];
+        for (let index = 0; index <= steps; index += 1) {
+          const x = X_MIN + ((X_MAX - X_MIN) * index) / steps;
+          const y = Math.max(Y_MIN, Math.min(Y_MAX, fn(x)));
+          commands.push(`${index === 0 ? "M" : "L"} ${xToSvg(x).toFixed(2)} ${yToSvg(y).toFixed(2)}`);
+        }
+        return commands.join(" ");
+      }
+
+      function drawCurves() {
+        elements.baseCurve.setAttribute("d", pathFor((x) => Math.sin(x)));
+        elements.middleCurve.setAttribute("d", pathFor(middleY));
+        elements.finalCurve.setAttribute("d", pathFor(finalY));
+
+        elements.baseCurve.classList.toggle("is-hidden", !state.baseVisible);
+        elements.middleCurve.classList.toggle("is-hidden", !state.middleVisible);
+
+        const amplitude = Math.abs(state.a);
+        const yTop = yToSvg(amplitude);
+        const yBottom = yToSvg(-amplitude);
+        elements.bandLayer.setAttribute("x", PADDING.left);
+        elements.bandLayer.setAttribute("y", yTop);
+        elements.bandLayer.setAttribute("width", SVG_WIDTH - PADDING.left - PADDING.right);
+        elements.bandLayer.setAttribute("height", Math.max(0, yBottom - yTop));
+
+        const shiftX = xToSvg(phaseShift());
+        elements.phaseMarker.setAttribute("x1", shiftX);
+        elements.phaseMarker.setAttribute("x2", shiftX);
+        elements.phaseMarker.setAttribute("y1", PADDING.top);
+        elements.phaseMarker.setAttribute("y2", SVG_HEIGHT - PADDING.bottom);
+      }
+
+      function drawKeyPoints() {
+        elements.keyPointLayer.innerHTML = "";
+        elements.keyPointLayer.classList.toggle("is-hidden", !state.keyPointsVisible);
+        if (!state.keyPointsVisible) {
+          return;
+        }
+
+        for (let k = -8; k <= 8; k += 1) {
+          const zeroX = (k * Math.PI - phi()) / state.omega;
+          if (zeroX >= X_MIN && zeroX <= X_MAX) {
+            elements.keyPointLayer.appendChild(createSvgElement("circle", {
+              cx: xToSvg(zeroX),
+              cy: yToSvg(0),
+              r: 6,
+              class: "key-zero",
+            }));
+          }
+
+          const extremumX = (Math.PI / 2 + k * Math.PI - phi()) / state.omega;
+          if (extremumX >= X_MIN && extremumX <= X_MAX) {
+            elements.keyPointLayer.appendChild(createSvgElement("circle", {
+              cx: xToSvg(extremumX),
+              cy: yToSvg(finalY(extremumX)),
+              r: 6,
+              class: "key-extreme",
+            }));
+          }
+        }
+      }
+
+      function drawPoint() {
+        const x = state.currentX;
+        const y = finalY(x);
+        const sx = xToSvg(x);
+        const sy = yToSvg(y);
+        elements.currentPoint.setAttribute("cx", sx);
+        elements.currentPoint.setAttribute("cy", sy);
+        elements.pointGuideX.setAttribute("x1", sx);
+        elements.pointGuideX.setAttribute("x2", sx);
+        elements.pointGuideX.setAttribute("y1", sy);
+        elements.pointGuideX.setAttribute("y2", yToSvg(0));
+        elements.pointGuideY.setAttribute("x1", xToSvg(0));
+        elements.pointGuideY.setAttribute("x2", sx);
+        elements.pointGuideY.setAttribute("y1", sy);
+        elements.pointGuideY.setAttribute("y2", sy);
+
+        const calloutX = Math.min(SVG_WIDTH - 220, Math.max(PADDING.left + 8, sx + 16));
+        const calloutY = Math.max(PADDING.top + 8, sy - 58);
+        elements.pointCallout.setAttribute("x", calloutX);
+        elements.pointCallout.setAttribute("y", calloutY);
+        elements.pointLabel.setAttribute("x", calloutX + 12);
+        elements.pointLabel.setAttribute("y", calloutY + 27);
+        elements.pointLabel.textContent = `x=${formatPiValue(x)}, y=${formatNumber(y)}`;
+      }
+
+      function updateReadouts() {
+        const phiValue = phi();
+        const shift = phaseShift();
+        const y = finalY(state.currentX);
+        elements.aOutput.textContent = formatNumber(state.a);
+        elements.omegaOutput.textContent = formatNumber(state.omega);
+        elements.phiOutput.textContent = formatPiValue(phiValue);
+        elements.xOutput.textContent = formatPiValue(state.currentX);
+
+        elements.amplitudeReadout.textContent = formatNumber(Math.abs(state.a));
+        elements.periodReadout.textContent = formatPiValue(period());
+        elements.shiftReadout.textContent = formatPiValue(shift);
+        elements.pointReadout.textContent = formatNumber(y);
+        elements.formulaReadout.textContent =
+          `y = ${formatCoefficient(state.a)}sin(${formatOmega(state.omega)}x${formatPhiTerm(phiValue)})`;
+        elements.phaseReadout.textContent =
+          `相位：${formatOmega(state.omega)}x${formatPhiTerm(phiValue)}，平移 ${formatPiValue(shift)}`;
+        elements.summaryA.textContent = formatNumber(Math.abs(state.a));
+        elements.summaryOmega.textContent = formatPiValue(period());
+        elements.summaryPhi.textContent = formatPiValue(shift);
+        elements.sequenceNote.textContent =
+          state.sequenceMode === "scale_then_shift"
+            ? "先得到 y = sin(omega x)，再按 -phi / omega 平移到最终图像。"
+            : "先得到 y = sin(x + phi)，再做横向伸缩；最终曲线相同，中间曲线不同。";
+        elements.summaryPanel.classList.toggle("is-hidden", !state.summaryVisible);
+      }
+
+      function updateControls() {
+        elements.aSlider.value = state.a;
+        elements.omegaSlider.value = state.omega;
+        elements.phiSlider.value = state.phiPi;
+        elements.xSlider.value = state.currentX;
+        elements.playButton.textContent = state.playing ? "暂停" : "播放";
+        elements.playButton.classList.toggle("is-primary", !state.playing);
+        elements.blockA.classList.toggle("is-focus", state.focusMode === "a");
+        elements.blockOmega.classList.toggle("is-focus", state.focusMode === "omega");
+        elements.blockPhi.classList.toggle("is-focus", state.focusMode === "phi");
+
+        document.querySelectorAll("[data-focus]").forEach((button) => {
+          button.classList.toggle("is-active", button.dataset.focus === state.focusMode);
+        });
+        document.querySelectorAll("[data-sequence]").forEach((button) => {
+          button.classList.toggle("is-active", button.dataset.sequence === state.sequenceMode);
+        });
+
+        syncToggle(elements.toggleBase, state.baseVisible);
+        syncToggle(elements.toggleMiddle, state.middleVisible);
+        syncToggle(elements.toggleKeys, state.keyPointsVisible);
+        syncToggle(elements.toggleSummary, state.summaryVisible);
+      }
+
+      function syncToggle(button, pressed) {
+        button.setAttribute("aria-pressed", String(pressed));
+      }
+
+      function render(emit = true) {
+        drawCurves();
+        drawKeyPoints();
+        drawPoint();
+        updateReadouts();
+        updateControls();
+        if (emit) {
+          emitStateChanged();
+        }
+      }
+
+      function resetState() {
+        Object.assign(state, {
+          a: 1,
+          omega: 1,
+          phiPi: 0,
+          currentX: 0,
+          focusMode: "free",
+          sequenceMode: "scale_then_shift",
+          baseVisible: true,
+          middleVisible: true,
+          keyPointsVisible: true,
+          summaryVisible: false,
+          playing: false,
+        });
+        render();
+        emitInteraction("reset");
+      }
+
+      function setFocusMode(mode) {
+        state.focusMode = mode;
+        if (mode === "a") {
+          state.omega = 1;
+          state.phiPi = 0;
+        } else if (mode === "omega") {
+          state.a = 1;
+          state.phiPi = 0;
+        } else if (mode === "phi") {
+          state.a = 1;
+          state.omega = 1;
+        }
+        render();
+        emitInteraction("focus_mode_changed");
+      }
+
+      function setCurrentX(value) {
+        state.currentX = Math.max(X_MIN, Math.min(X_MAX, value));
+      }
+
+      function sliderChanged() {
+        state.a = sanitizeA(Number(elements.aSlider.value));
+        state.omega = Number(elements.omegaSlider.value);
+        state.phiPi = Number(elements.phiSlider.value);
+        setCurrentX(Number(elements.xSlider.value));
+        render();
+        emitInteraction("parameters_changed");
+      }
+
+      function sanitizeA(value) {
+        if (Math.abs(value) < 0.001) {
+          return value < 0 ? -0.25 : 0.25;
+        }
+        return value;
+      }
+
+      function toggleLayer(key) {
+        state[key] = !state[key];
+        render();
+        emitInteraction("layer_toggled");
+      }
+
+      function graphPointFromEvent(event) {
+        const rect = elements.graph.getBoundingClientRect();
+        const svgX = ((event.clientX - rect.left) / rect.width) * SVG_WIDTH;
+        return svgToX(svgX);
+      }
+
+      let dragging = false;
+
+      elements.currentPoint.addEventListener("pointerdown", (event) => {
+        dragging = true;
+        elements.currentPoint.setPointerCapture(event.pointerId);
+      });
+
+      elements.graph.addEventListener("pointermove", (event) => {
+        if (!dragging) {
+          return;
+        }
+        setCurrentX(graphPointFromEvent(event));
+        render();
+        emitInteraction("current_point_changed");
+      });
+
+      elements.graph.addEventListener("pointerup", (event) => {
+        dragging = false;
+        try {
+          elements.currentPoint.releasePointerCapture(event.pointerId);
+        } catch {
+          // Pointer may already be released by the browser.
+        }
+      });
+
+      [elements.aSlider, elements.omegaSlider, elements.phiSlider, elements.xSlider].forEach((slider) => {
+        slider.addEventListener("input", sliderChanged);
+      });
+
+      document.getElementById("focusModeGroup").addEventListener("click", (event) => {
+        const button = event.target.closest("[data-focus]");
+        if (button) {
+          setFocusMode(button.dataset.focus);
+        }
+      });
+
+      document.getElementById("sequenceGroup").addEventListener("click", (event) => {
+        const button = event.target.closest("[data-sequence]");
+        if (button) {
+          state.sequenceMode = button.dataset.sequence;
+          render();
+          emitInteraction("sequence_mode_changed");
+        }
+      });
+
+      elements.playButton.addEventListener("click", () => {
+        state.playing = !state.playing;
+        updateControls();
+        emitInteraction(state.playing ? "play" : "pause");
+      });
+
+      elements.resetButton.addEventListener("click", resetState);
+      elements.toggleBase.addEventListener("click", () => toggleLayer("baseVisible"));
+      elements.toggleMiddle.addEventListener("click", () => toggleLayer("middleVisible"));
+      elements.toggleKeys.addEventListener("click", () => toggleLayer("keyPointsVisible"));
+      elements.toggleSummary.addEventListener("click", () => toggleLayer("summaryVisible"));
+
+      let lastFrameTime = performance.now();
+      function tick(now) {
+        if (state.playing) {
+          const delta = (now - lastFrameTime) / 1000;
+          setCurrentX(state.currentX + delta * 0.85);
+          if (state.currentX >= X_MAX) {
+            state.currentX = X_MIN;
+          }
+          render(false);
+        }
+        lastFrameTime = now;
+        requestAnimationFrame(tick);
+      }
+
+      function formatNumber(value) {
+        const rounded = Math.round(value * 100) / 100;
+        if (Object.is(rounded, -0)) {
+          return "0";
+        }
+        return String(rounded);
+      }
+
+      function formatCoefficient(value) {
+        if (value === 1) {
+          return "";
+        }
+        if (value === -1) {
+          return "-";
+        }
+        return `${formatNumber(value)} `;
+      }
+
+      function formatOmega(value) {
+        if (value === 1) {
+          return "";
+        }
+        return `${formatNumber(value)}`;
+      }
+
+      function formatPhiTerm(value) {
+        if (Math.abs(value) < 0.0001) {
+          return "";
+        }
+        return value > 0 ? ` + ${formatPiValue(value)}` : ` - ${formatPiValue(Math.abs(value))}`;
+      }
+
+      function formatPiMultiple(multiple) {
+        if (multiple === 0) {
+          return "0";
+        }
+        if (multiple === 1) {
+          return "π";
+        }
+        if (multiple === -1) {
+          return "-π";
+        }
+        if (multiple === 0.5) {
+          return "π/2";
+        }
+        if (multiple === -0.5) {
+          return "-π/2";
+        }
+        return `${formatNumber(multiple)}π`;
+      }
+
+      function formatPiValue(value) {
+        if (Math.abs(value) < 0.0001) {
+          return "0";
+        }
+        const multiple = value / Math.PI;
+        const common = [
+          [-2, "-2π"],
+          [-1.5, "-3π/2"],
+          [-1, "-π"],
+          [-0.75, "-3π/4"],
+          [-0.5, "-π/2"],
+          [-0.25, "-π/4"],
+          [0.25, "π/4"],
+          [0.5, "π/2"],
+          [0.75, "3π/4"],
+          [1, "π"],
+          [1.5, "3π/2"],
+          [2, "2π"],
+        ];
+        const match = common.find(([raw]) => Math.abs(multiple - raw) < 0.015);
+        if (match) {
+          return match[1];
+        }
+        return `${formatNumber(multiple)}π`;
+      }
+
+      function emitMessage(type, payload = {}) {
+        window.parent?.postMessage(
+          {
+            source: "shanghai-hs-math-applet",
+            resourceId: RESOURCE_ID,
+            type,
+            payload,
+          },
+          "*",
+        );
+      }
+
+      function getSnapshot() {
+        return {
+          amplitude_a: state.a,
+          omega: state.omega,
+          phi: phi(),
+          phase_shift: phaseShift(),
+          current_x: state.currentX,
+          current_y: finalY(state.currentX),
+          focus_mode: state.focusMode,
+          sequence_mode: state.sequenceMode,
+          base_curve_visible: state.baseVisible,
+          intermediate_curve_visible: state.middleVisible,
+          key_points_visible: state.keyPointsVisible,
+          summary_visible: state.summaryVisible,
+        };
+      }
+
+      function emitStateChanged() {
+        emitMessage("applet:stateChanged", getSnapshot());
+      }
+
+      function emitInteraction(action) {
+        emitMessage("applet:interaction", { action, ...getSnapshot() });
+      }
+
+      window.addEventListener("message", (event) => {
+        if (event.data?.type !== "player:init") {
+          return;
+        }
+        const incoming = event.data.payload?.state;
+        if (incoming) {
+          state.a = typeof incoming.amplitude_a === "number" ? incoming.amplitude_a : state.a;
+          state.omega = typeof incoming.omega === "number" ? incoming.omega : state.omega;
+          state.phiPi = typeof incoming.phi === "number" ? incoming.phi / Math.PI : state.phiPi;
+          state.currentX = typeof incoming.current_x === "number" ? incoming.current_x : state.currentX;
+          state.focusMode = incoming.focus_mode ?? state.focusMode;
+          state.sequenceMode = incoming.sequence_mode ?? state.sequenceMode;
+          state.baseVisible = incoming.base_curve_visible ?? state.baseVisible;
+          state.middleVisible = incoming.intermediate_curve_visible ?? state.middleVisible;
+          state.keyPointsVisible = incoming.key_points_visible ?? state.keyPointsVisible;
+          state.summaryVisible = incoming.summary_visible ?? state.summaryVisible;
+        }
+        render();
+      });
+
+      drawGrid();
+      render(false);
+      emitMessage("applet:ready", getSnapshot());
+      requestAnimationFrame(tick);
+    </script>
+  </body>
+</html>
