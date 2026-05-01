@@ -13,7 +13,7 @@ test("loads the B2 trigonometry curriculum tree for the teacher workspace", asyn
 
   assert.equal(workspace.project.name, "沪教版高中数学数字教具云平台");
   assert.equal(workspace.summary.lessonCount, 7);
-  assert.equal(workspace.summary.implementedManimCount, 1);
+  assert.equal(workspace.summary.implementedManimCount, 2);
 
   const b2 = workspace.tree.volumes.find((volume) => volume.id === "B2");
   assert.ok(b2, "B2 volume should be present");
@@ -87,16 +87,36 @@ test("sample applet exposes a runnable SDK-compatible HTML entry", async () => {
   assert.match(html, /theta_changed/);
 });
 
-test("keeps proposed lesson resources visible even when no playable applet exists yet", async () => {
+test("links the parameter lab applet and transform-order Manim draft to lesson L05", async () => {
   const workspace = await loadTeacherWorkspace({ rootDir: repoRoot });
   const lesson = workspace.lessonsById["SH-HS-MATH-HJ-B2-C07-L05"];
+  const applet = lesson.resources.find((resource) => resource.id === "SH-HS-MATH-HJ-B2-C07-L05-A01");
+  const manim = lesson.resources.find((resource) => resource.id === "SH-HS-MATH-HJ-B2-C07-L05-M01");
+  const diagnosis = lesson.resources.find((resource) => resource.id === "SH-HS-MATH-HJ-B2-C07-L05-D01");
 
   assert.equal(lesson.resources.length, 3);
   assert.deepEqual(
     lesson.resources.map((resource) => resource.resourceType),
     ["applet", "manim_clip", "diagnosis"],
   );
-  assert.ok(lesson.resources.every((resource) => resource.availability === "proposed"));
-  assert.ok(lesson.resources.every((resource) => resource.player === null));
-  assert.ok(workspace.summary.plannedResourceCount >= 10);
+  assert.equal(applet.availability, "metadata_ready");
+  assert.equal(applet.metadataPreview.implementation.phase, "runnable_prototype");
+  assert.equal(applet.package.files.srcEntry, "content/applets/SH-HS-MATH-HJ-B2-C07-L05-A01/src/index.html");
+  assert.deepEqual(applet.player, {
+    kind: "iframe",
+    isRunnable: true,
+    src: "content/applets/SH-HS-MATH-HJ-B2-C07-L05-A01/src/index.html",
+    title: "三角函数参数变化实验室",
+    sandbox: "allow-scripts allow-same-origin",
+  });
+  assert.equal(manim.availability, "metadata_ready");
+  assert.equal(manim.metadataPreview.renderPlan.phase, "scene_draft");
+  assert.equal(manim.package.storyboard.title, "分镜：图像变换顺序解释");
+  assert.equal(manim.package.media.hasOutputMp4, false);
+  assert.equal(manim.package.media.hasOutputWebm, false);
+  assert.equal(manim.package.media.hasPoster, false);
+  assert.equal(manim.player, null);
+  assert.equal(diagnosis.availability, "proposed");
+  assert.equal(diagnosis.player, null);
+  assert.ok(workspace.summary.plannedResourceCount >= 9);
 });
