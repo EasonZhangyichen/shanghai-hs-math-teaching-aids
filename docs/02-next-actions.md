@@ -43,13 +43,14 @@
 - [x] 设计“单位圆到正弦曲线”交互脚本。
 - [x] 创建 `SH-HS-MATH-HJ-B2-C07-L01-A01` 的 metadata、教师脚本、学生任务和审核草稿。
 - [x] 创建 `SH-HS-MATH-HJ-B2-C07-L01-M01` 的 Manim metadata、分镜、场景脚本草稿和审核记录。
-- [ ] 设计“正弦函数图像与性质”交互脚本。
+- [x] 设计并创建 `SH-HS-MATH-HJ-B2-C07-L02-A01`“正弦函数性质探究”Applet 资源包。
 - [ ] 设计“图像变换实验室”交互脚本。
 - [ ] 设计第二个 Manim 场景脚本：`SH-HS-MATH-HJ-B2-C07-L05-M01`“图像变换顺序解释”。
 - [x] 渲染并复核 `SH-HS-MATH-HJ-B2-C07-L01-M01` 的 `mp4`、`webm` 和 poster。
-- [x] 创建第一个可运行 HTML Applet。
+- [x] 创建两个可运行 HTML Applet 原型。
 - [ ] 对“单位圆到正弦曲线”HTML Applet 做数学边界复核和课堂节奏试读。
-- [ ] 从 `content/production/resource-backlog.json` 中选择下一个 MVP item，优先推进 `SH-HS-MATH-HJ-B2-C07-L02-A01` 或 `SH-HS-MATH-HJ-B2-C07-L05-A01`。
+- [ ] 对“正弦函数性质探究”HTML Applet 做数学边界复核、课堂节奏试读和浏览器交互验证。
+- [ ] 从 `content/production/resource-backlog.json` 中选择下一个 MVP item，优先推进 `SH-HS-MATH-HJ-B2-C07-L02-D01` 或 `SH-HS-MATH-HJ-B2-C07-L05-A01`。
 
 ## P4：平台雏形
 
@@ -63,7 +64,7 @@
 
 ## P5：资源工厂
 
-- [x] 生成 `content/production/resource-backlog.json`，覆盖必修第二册第 7 章 15 个资源工作单元。
+- [x] 生成 `content/production/resource-backlog.json`，覆盖必修第二册第 7 章 15 个资源工作单元；当前 3 个已实现、12 个待创建。
 - [x] 为每个 backlog item 自动生成推荐分支、下一步动作和新对话 `threadPrompt`。
 - [x] 将 `npm run generate:backlog` 接入 `npm run verify`。
 - [ ] 为 backlog item 增加更细的审核状态和课堂试用状态聚合。

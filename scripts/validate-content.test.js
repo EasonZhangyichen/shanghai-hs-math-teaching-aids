@@ -14,9 +14,10 @@ test("validates the current curriculum and resource packages", async () => {
 
   assert.deepEqual(result.errors, []);
   assert.equal(result.counts.lessons, 7);
-  assert.equal(result.counts.applets, 1);
+  assert.equal(result.counts.applets, 2);
   assert.equal(result.counts.manimClips, 1);
   assert.ok(result.resources.some((resource) => resource.id === "SH-HS-MATH-HJ-B2-C07-L01-A01"));
+  assert.ok(result.resources.some((resource) => resource.id === "SH-HS-MATH-HJ-B2-C07-L02-A01"));
   assert.ok(result.resources.some((resource) => resource.id === "SH-HS-MATH-HJ-B2-C07-L01-M01"));
 });
 

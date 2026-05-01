@@ -16,13 +16,13 @@
   },
   "summary": {
     "total": 15,
-    "implemented": 2,
-    "planned": 13,
+    "implemented": 3,
+    "planned": 12,
     "byType": {
       "applet": {
         "total": 8,
-        "implemented": 1,
-        "planned": 7
+        "implemented": 2,
+        "planned": 6
       },
       "manim_clip": {
         "total": 3,
@@ -102,8 +102,8 @@
     {
       "id": "SH-HS-MATH-HJ-B2-C07-L02-A01",
       "type": "applet",
-      "status": "planned",
-      "availability": "planned",
+      "status": "implemented",
+      "availability": "metadata_ready",
       "title": "正弦函数性质探究",
       "proposedTitle": "正弦函数性质探究",
       "lessonId": "SH-HS-MATH-HJ-B2-C07-L02",
@@ -124,11 +124,11 @@
       "note": "显示或隐藏周期段、单调段、对称元素和关键点，支持教师分步揭示。",
       "priority": "mvp",
       "priorityReason": "MVP focus lesson",
-      "packagePath": null,
-      "metadataPath": null,
+      "packagePath": "content/applets/SH-HS-MATH-HJ-B2-C07-L02-A01",
+      "metadataPath": "content/applets/SH-HS-MATH-HJ-B2-C07-L02-A01/metadata.yaml",
       "recommendedTrack": "track/trig-sample-pack",
-      "nextAction": "创建 Applet 资源包，先写 metadata、教师脚本、学生任务和 review，再实现最小可运行 HTML 原型。",
-      "threadPrompt": "请先读取项目锚点文件和 content/production/resource-backlog.json，然后切到 track/trig-sample-pack。这次只创建并推进 SH-HS-MATH-HJ-B2-C07-L02-A01（Applet），对应课时 SH-HS-MATH-HJ-B2-C07-L02「正弦函数的性质」。先确认教学痛点、认知动作、文件规范和验收标准，再动手；完成后运行 npm run generate:backlog 和 npm run verify，更新 docs/01-current-state.md 与 docs/02-next-actions.md，并提交。"
+      "nextAction": "完成数学边界复核、课堂节奏试读和浏览器交互验证，再决定是否进入 math_review。",
+      "threadPrompt": "请先读取项目锚点文件和 content/production/resource-backlog.json，然后切到 track/trig-sample-pack。这次只复核并推进 SH-HS-MATH-HJ-B2-C07-L02-A01（Applet），对应课时 SH-HS-MATH-HJ-B2-C07-L02「正弦函数的性质」。先确认教学痛点、认知动作、文件规范和验收标准，再动手；完成后运行 npm run generate:backlog 和 npm run verify，更新 docs/01-current-state.md 与 docs/02-next-actions.md，并提交。"
     },
     {
       "id": "SH-HS-MATH-HJ-B2-C07-L02-D01",
