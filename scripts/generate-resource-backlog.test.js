@@ -61,13 +61,13 @@ test("generates a deterministic backlog from curriculum entry points and impleme
 
   const transformOrderManim = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B2-C07-L05-M01");
   assert.equal(transformOrderManim.status, "implemented");
-  assert.equal(transformOrderManim.availability, "metadata_ready");
+  assert.equal(transformOrderManim.availability, "video_ready");
   assert.equal(transformOrderManim.type, "manim_clip");
   assert.equal(transformOrderManim.packagePath, "content/manim/SH-HS-MATH-HJ-B2-C07-L05-M01");
   assert.equal(transformOrderManim.metadataPath, "content/manim/SH-HS-MATH-HJ-B2-C07-L05-M01/metadata.yaml");
   assert.equal(transformOrderManim.recommendedTrack, "track/manim-pipeline");
   assert.equal(transformOrderManim.priority, "mvp");
-  assert.match(transformOrderManim.nextAction, /metadata|资源文件|审核记录/);
+  assert.match(transformOrderManim.nextAction, /审校|分镜/);
 
   const parameterDiagnosis = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B2-C07-L05-D01");
   assert.equal(parameterDiagnosis.status, "implemented");

@@ -2,15 +2,15 @@
 
 资源 ID：`SH-HS-MATH-HJ-B2-C07-L05-M01`
 当前状态：`draft`
-当前阶段：`metadata_ready`
+当前阶段：`video_ready`
 
 ## 自检结论
 
-- 内容为原创分镜和 Manim 场景脚本草稿。
+- 内容为原创分镜和 Manim 场景脚本。
 - 数学主线限定为 `y = A sin(omega x + phi)` 的变换顺序解释。
 - 样例采用 `y = -1.5 sin(2x + pi/2)`，用于同时呈现周期压缩、相位平移、纵向放大和翻折。
 - 当前没有使用外部图片、音频、教材正文、官方课件或商业平台资源。
-- 当前未提交 `dist/final/` 视频产物，因此平台只显示 metadata/storyboard 占位。
+- 已完成首版 1080p30 mp4/webm/poster 导出，可进入平台预览和内部教研复核。
 
 ## 数学审校关注点
 
@@ -21,7 +21,7 @@
 
 ## 教学审校关注点
 
-- 60 到 90 秒节奏是否适合放在 `SH-HS-MATH-HJ-B2-C07-L05-A01` Applet 之前。
+- 约 1 分钟节奏是否适合放在 `SH-HS-MATH-HJ-B2-C07-L05-A01` Applet 之前。
 - 在公式改写后是否需要强制暂停，让学生先说出为什么左移 `pi/4`。
 - 对参数识别的收束是否足够简洁，避免抢占后续 Diagnosis 的任务。
 
@@ -33,10 +33,12 @@
 
 ## 渲染记录
 
-- 当前阶段：`scene_draft`。
-- 目标 Manim：`Manim Community v0.20.x`。
-- 预览命令：`uvx manim -ql --media_dir dist scene.py TransformOrderScene`。
-- 本次提交未运行视频渲染，也未生成 `mp4`、`webm` 或 poster。
+- Manim：`Manim Community v0.20.1 via uvx`。
+- 预览：`uvx manim -ql --media_dir dist scene.py TransformOrderScene` 已通过。
+- 课堂视频：`dist/final/SH-HS-MATH-HJ-B2-C07-L05-M01.mp4`，1920x1080，30fps，53.5 秒。
+- Web 预览：`dist/final/SH-HS-MATH-HJ-B2-C07-L05-M01.webm`，1920x1080，30fps，53.5 秒。
+- Poster：`dist/final/SH-HS-MATH-HJ-B2-C07-L05-M01-poster.png`，1920x1080。
+- 为降低环境依赖，`scene.py` 使用 Manim `Text` 标签，不依赖本地 LaTeX。
 
 ## 推进门槛
 

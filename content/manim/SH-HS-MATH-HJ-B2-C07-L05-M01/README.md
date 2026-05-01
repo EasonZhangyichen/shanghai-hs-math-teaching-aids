@@ -3,7 +3,7 @@
 资源 ID：`SH-HS-MATH-HJ-B2-C07-L05-M01`
 版本：`0.1.0`
 状态：`draft`
-类型：Manim Clip 视频资源草稿
+类型：Manim Clip 视频资源
 
 ## 资源定位
 
@@ -32,14 +32,16 @@ y = sin x
 
 本包已包含：
 
-- `metadata.yaml`：Manim Clip metadata 草稿。
+- `metadata.yaml`：Manim Clip metadata。
 - `storyboard.md`：六幕分镜、暂停点和教师追问。
-- `scene.py`：可继续渲染打磨的 Manim 场景脚本草稿。
+- `scene.py`：Manim 场景脚本。
 - `review.md`：审核记录和推进门槛。
+- `dist/final/SH-HS-MATH-HJ-B2-C07-L05-M01.mp4`：课堂播放视频。
+- `dist/final/SH-HS-MATH-HJ-B2-C07-L05-M01.webm`：平台网页预览视频。
+- `dist/final/SH-HS-MATH-HJ-B2-C07-L05-M01-poster.png`：视频封面。
 
 本包暂不包含：
 
-- `dist/final/` 视频产物。
 - 竖直平移 `k`。
 - `omega < 0` 的等价变形讨论。
 - 任意图像反求参数的完整算法。
@@ -64,4 +66,10 @@ webm 建议从最终 mp4 转码：
 ffmpeg -y -i dist/final/SH-HS-MATH-HJ-B2-C07-L05-M01.mp4 -c:v libvpx-vp9 -b:v 0 -crf 32 -an dist/final/SH-HS-MATH-HJ-B2-C07-L05-M01.webm
 ```
 
-当前 `metadata.yaml` 标记为 `render_plan.phase: scene_draft` 和 `platform_card.availability: metadata_ready`，平台只展示资源摘要。渲染完成后再补齐 `files.output_mp4`、`files.output_webm`、`files.poster`，并升级为 `video_ready`。
+生成 poster：
+
+```bash
+ffmpeg -y -ss 00:00:12 -i dist/final/SH-HS-MATH-HJ-B2-C07-L05-M01.mp4 -frames:v 1 -update 1 dist/final/SH-HS-MATH-HJ-B2-C07-L05-M01-poster.png
+```
+
+当前 `metadata.yaml` 已标记为 `render_plan.phase: rendered` 和 `platform_card.availability: video_ready`，平台资源卡会从 metadata 中读取稳定视频入口。

@@ -2025,7 +2025,7 @@
           "subtitle": "把 y = A sin(omega x + phi) 拆成横向伸缩、相位平移和纵向伸缩",
           "cognitiveAction": "分解",
           "note": "把横向伸缩、平移和纵向伸缩拆成可暂停的连续变换。",
-          "availability": "metadata_ready",
+          "availability": "video_ready",
           "status": "draft",
           "version": "0.1.0",
           "metadataPreview": {
@@ -2126,7 +2126,7 @@
               }
             ],
             "narrativeDesign": {
-              "targetDurationSeconds": 80,
+              "targetDurationSeconds": 55,
               "beats": [
                 {
                   "id": "name_the_problem",
@@ -2136,7 +2136,7 @@
                     "同时显示 y = sin x 与目标 y = -1.5 sin(2x + pi/2)。",
                     "把 2x + pi/2 高亮为输入变换区域。"
                   ],
-                  "estimated_seconds": 10
+                  "estimated_seconds": 7
                 },
                 {
                   "id": "factor_phase_shift",
@@ -2146,7 +2146,7 @@
                     "公式从 2x + pi/2 变为 2(x + pi/4)。",
                     "平移箭头标注 left pi/4，而不是 left pi/2。"
                   ],
-                  "estimated_seconds": 14
+                  "estimated_seconds": 10
                 },
                 {
                   "id": "compress_period",
@@ -2156,7 +2156,7 @@
                     "基础正弦曲线横向压缩。",
                     "关键点间距缩短，一周期标注为 pi。"
                   ],
-                  "estimated_seconds": 16
+                  "estimated_seconds": 12
                 },
                 {
                   "id": "shift_phase",
@@ -2166,7 +2166,7 @@
                     "曲线沿 x 轴向左移动。",
                     "虚线显示平移前后同一关键点的位置。"
                   ],
-                  "estimated_seconds": 14
+                  "estimated_seconds": 10
                 },
                 {
                   "id": "apply_amplitude",
@@ -2176,7 +2176,7 @@
                     "曲线振幅变为 1.5。",
                     "负号导致曲线相对 x 轴上下翻折。"
                   ],
-                  "estimated_seconds": 16
+                  "estimated_seconds": 11
                 },
                 {
                   "id": "read_parameters_back",
@@ -2186,7 +2186,7 @@
                     "右侧读数面板显示 amplitude = 1.5, period = pi, shift = left pi/4。",
                     "提示接到 Applet 中自行调参验证。"
                   ],
-                  "estimated_seconds": 10
+                  "estimated_seconds": 5
                 }
               ],
               "pausePoints": [
@@ -2210,8 +2210,8 @@
               "stagedReveal": []
             },
             "renderPlan": {
-              "phase": "scene_draft",
-              "manim_version": "Manim Community v0.20.x target",
+              "phase": "rendered",
+              "manim_version": "Manim Community v0.20.1 via uvx",
               "scene_class": "TransformOrderScene",
               "aspect_ratio": "16:9",
               "resolution": "1920x1080",
@@ -2227,14 +2227,14 @@
                 "webm": "ffmpeg -y -i dist/final/SH-HS-MATH-HJ-B2-C07-L05-M01.mp4 -c:v libvpx-vp9 -b:v 0 -crf 32 -an dist/final/SH-HS-MATH-HJ-B2-C07-L05-M01.webm"
               },
               "notes": [
-                "本次只提交 scene_draft，不提交 dist/final 视频产物。",
-                "进入 render_ready 前需教师确认分镜节奏和相位平移讲法。"
+                "已完成首版 1080p30 渲染，视频时长约 53.5 秒，可用于平台预览和内部教研复核。",
+                "进入 stable 前仍需教师确认分镜节奏和相位平移讲法。"
               ]
             },
             "platformCard": {
-              "availability": "metadata_ready",
-              "preview_behavior": "metadata_placeholder",
-              "embed_strategy": "平台先显示 metadata 与 storyboard 摘要；渲染完成并补齐 dist/final 后再升级为 video_player。",
+              "availability": "video_ready",
+              "preview_behavior": "video_player",
+              "embed_strategy": "读取 files.output_webm、files.output_mp4 和 poster，用 video 标签接入资源卡；若视频文件缺失则回退显示 metadata 与 storyboard 摘要。",
               "paired_resources": [
                 "SH-HS-MATH-HJ-B2-C07-L05-A01",
                 "SH-HS-MATH-HJ-B2-C07-L05-D01"
@@ -2244,7 +2244,10 @@
               "readme": "README.md",
               "storyboard": "storyboard.md",
               "scene": "scene.py",
-              "review_record": "review.md"
+              "review_record": "review.md",
+              "output_mp4": "dist/final/SH-HS-MATH-HJ-B2-C07-L05-M01.mp4",
+              "output_webm": "dist/final/SH-HS-MATH-HJ-B2-C07-L05-M01.webm",
+              "poster": "dist/final/SH-HS-MATH-HJ-B2-C07-L05-M01-poster.png"
             },
             "visualSemantics": {
               "base_curve": "蓝色表示 y = sin x 的基准图像。",
@@ -2259,7 +2262,22 @@
               "review_status": "self_checked_draft"
             }
           },
-          "player": null,
+          "player": {
+            "kind": "video",
+            "isRunnable": true,
+            "title": "图像变换顺序解释",
+            "poster": "content/manim/SH-HS-MATH-HJ-B2-C07-L05-M01/dist/final/SH-HS-MATH-HJ-B2-C07-L05-M01-poster.png",
+            "sources": [
+              {
+                "src": "content/manim/SH-HS-MATH-HJ-B2-C07-L05-M01/dist/final/SH-HS-MATH-HJ-B2-C07-L05-M01.webm",
+                "type": "video/webm"
+              },
+              {
+                "src": "content/manim/SH-HS-MATH-HJ-B2-C07-L05-M01/dist/final/SH-HS-MATH-HJ-B2-C07-L05-M01.mp4",
+                "type": "video/mp4"
+              }
+            ]
+          },
           "package": {
             "path": "content/manim/SH-HS-MATH-HJ-B2-C07-L05-M01",
             "files": {
@@ -2268,14 +2286,14 @@
               "storyboard": "content/manim/SH-HS-MATH-HJ-B2-C07-L05-M01/storyboard.md",
               "scene": "content/manim/SH-HS-MATH-HJ-B2-C07-L05-M01/scene.py",
               "reviewRecord": "content/manim/SH-HS-MATH-HJ-B2-C07-L05-M01/review.md",
-              "outputMp4": null,
-              "outputWebm": null,
-              "poster": null
+              "outputMp4": "content/manim/SH-HS-MATH-HJ-B2-C07-L05-M01/dist/final/SH-HS-MATH-HJ-B2-C07-L05-M01.mp4",
+              "outputWebm": "content/manim/SH-HS-MATH-HJ-B2-C07-L05-M01/dist/final/SH-HS-MATH-HJ-B2-C07-L05-M01.webm",
+              "poster": "content/manim/SH-HS-MATH-HJ-B2-C07-L05-M01/dist/final/SH-HS-MATH-HJ-B2-C07-L05-M01-poster.png"
             },
             "media": {
-              "hasOutputMp4": false,
-              "hasOutputWebm": false,
-              "hasPoster": false
+              "hasOutputMp4": true,
+              "hasOutputWebm": true,
+              "hasPoster": true
             },
             "storyboard": {
               "kind": "storyboard",
@@ -4319,7 +4337,7 @@
           "subtitle": "把 y = A sin(omega x + phi) 拆成横向伸缩、相位平移和纵向伸缩",
           "cognitiveAction": "分解",
           "note": "把横向伸缩、平移和纵向伸缩拆成可暂停的连续变换。",
-          "availability": "metadata_ready",
+          "availability": "video_ready",
           "status": "draft",
           "version": "0.1.0",
           "metadataPreview": {
@@ -4420,7 +4438,7 @@
               }
             ],
             "narrativeDesign": {
-              "targetDurationSeconds": 80,
+              "targetDurationSeconds": 55,
               "beats": [
                 {
                   "id": "name_the_problem",
@@ -4430,7 +4448,7 @@
                     "同时显示 y = sin x 与目标 y = -1.5 sin(2x + pi/2)。",
                     "把 2x + pi/2 高亮为输入变换区域。"
                   ],
-                  "estimated_seconds": 10
+                  "estimated_seconds": 7
                 },
                 {
                   "id": "factor_phase_shift",
@@ -4440,7 +4458,7 @@
                     "公式从 2x + pi/2 变为 2(x + pi/4)。",
                     "平移箭头标注 left pi/4，而不是 left pi/2。"
                   ],
-                  "estimated_seconds": 14
+                  "estimated_seconds": 10
                 },
                 {
                   "id": "compress_period",
@@ -4450,7 +4468,7 @@
                     "基础正弦曲线横向压缩。",
                     "关键点间距缩短，一周期标注为 pi。"
                   ],
-                  "estimated_seconds": 16
+                  "estimated_seconds": 12
                 },
                 {
                   "id": "shift_phase",
@@ -4460,7 +4478,7 @@
                     "曲线沿 x 轴向左移动。",
                     "虚线显示平移前后同一关键点的位置。"
                   ],
-                  "estimated_seconds": 14
+                  "estimated_seconds": 10
                 },
                 {
                   "id": "apply_amplitude",
@@ -4470,7 +4488,7 @@
                     "曲线振幅变为 1.5。",
                     "负号导致曲线相对 x 轴上下翻折。"
                   ],
-                  "estimated_seconds": 16
+                  "estimated_seconds": 11
                 },
                 {
                   "id": "read_parameters_back",
@@ -4480,7 +4498,7 @@
                     "右侧读数面板显示 amplitude = 1.5, period = pi, shift = left pi/4。",
                     "提示接到 Applet 中自行调参验证。"
                   ],
-                  "estimated_seconds": 10
+                  "estimated_seconds": 5
                 }
               ],
               "pausePoints": [
@@ -4504,8 +4522,8 @@
               "stagedReveal": []
             },
             "renderPlan": {
-              "phase": "scene_draft",
-              "manim_version": "Manim Community v0.20.x target",
+              "phase": "rendered",
+              "manim_version": "Manim Community v0.20.1 via uvx",
               "scene_class": "TransformOrderScene",
               "aspect_ratio": "16:9",
               "resolution": "1920x1080",
@@ -4521,14 +4539,14 @@
                 "webm": "ffmpeg -y -i dist/final/SH-HS-MATH-HJ-B2-C07-L05-M01.mp4 -c:v libvpx-vp9 -b:v 0 -crf 32 -an dist/final/SH-HS-MATH-HJ-B2-C07-L05-M01.webm"
               },
               "notes": [
-                "本次只提交 scene_draft，不提交 dist/final 视频产物。",
-                "进入 render_ready 前需教师确认分镜节奏和相位平移讲法。"
+                "已完成首版 1080p30 渲染，视频时长约 53.5 秒，可用于平台预览和内部教研复核。",
+                "进入 stable 前仍需教师确认分镜节奏和相位平移讲法。"
               ]
             },
             "platformCard": {
-              "availability": "metadata_ready",
-              "preview_behavior": "metadata_placeholder",
-              "embed_strategy": "平台先显示 metadata 与 storyboard 摘要；渲染完成并补齐 dist/final 后再升级为 video_player。",
+              "availability": "video_ready",
+              "preview_behavior": "video_player",
+              "embed_strategy": "读取 files.output_webm、files.output_mp4 和 poster，用 video 标签接入资源卡；若视频文件缺失则回退显示 metadata 与 storyboard 摘要。",
               "paired_resources": [
                 "SH-HS-MATH-HJ-B2-C07-L05-A01",
                 "SH-HS-MATH-HJ-B2-C07-L05-D01"
@@ -4538,7 +4556,10 @@
               "readme": "README.md",
               "storyboard": "storyboard.md",
               "scene": "scene.py",
-              "review_record": "review.md"
+              "review_record": "review.md",
+              "output_mp4": "dist/final/SH-HS-MATH-HJ-B2-C07-L05-M01.mp4",
+              "output_webm": "dist/final/SH-HS-MATH-HJ-B2-C07-L05-M01.webm",
+              "poster": "dist/final/SH-HS-MATH-HJ-B2-C07-L05-M01-poster.png"
             },
             "visualSemantics": {
               "base_curve": "蓝色表示 y = sin x 的基准图像。",
@@ -4553,7 +4574,22 @@
               "review_status": "self_checked_draft"
             }
           },
-          "player": null,
+          "player": {
+            "kind": "video",
+            "isRunnable": true,
+            "title": "图像变换顺序解释",
+            "poster": "content/manim/SH-HS-MATH-HJ-B2-C07-L05-M01/dist/final/SH-HS-MATH-HJ-B2-C07-L05-M01-poster.png",
+            "sources": [
+              {
+                "src": "content/manim/SH-HS-MATH-HJ-B2-C07-L05-M01/dist/final/SH-HS-MATH-HJ-B2-C07-L05-M01.webm",
+                "type": "video/webm"
+              },
+              {
+                "src": "content/manim/SH-HS-MATH-HJ-B2-C07-L05-M01/dist/final/SH-HS-MATH-HJ-B2-C07-L05-M01.mp4",
+                "type": "video/mp4"
+              }
+            ]
+          },
           "package": {
             "path": "content/manim/SH-HS-MATH-HJ-B2-C07-L05-M01",
             "files": {
@@ -4562,14 +4598,14 @@
               "storyboard": "content/manim/SH-HS-MATH-HJ-B2-C07-L05-M01/storyboard.md",
               "scene": "content/manim/SH-HS-MATH-HJ-B2-C07-L05-M01/scene.py",
               "reviewRecord": "content/manim/SH-HS-MATH-HJ-B2-C07-L05-M01/review.md",
-              "outputMp4": null,
-              "outputWebm": null,
-              "poster": null
+              "outputMp4": "content/manim/SH-HS-MATH-HJ-B2-C07-L05-M01/dist/final/SH-HS-MATH-HJ-B2-C07-L05-M01.mp4",
+              "outputWebm": "content/manim/SH-HS-MATH-HJ-B2-C07-L05-M01/dist/final/SH-HS-MATH-HJ-B2-C07-L05-M01.webm",
+              "poster": "content/manim/SH-HS-MATH-HJ-B2-C07-L05-M01/dist/final/SH-HS-MATH-HJ-B2-C07-L05-M01-poster.png"
             },
             "media": {
-              "hasOutputMp4": false,
-              "hasOutputWebm": false,
-              "hasPoster": false
+              "hasOutputMp4": true,
+              "hasOutputWebm": true,
+              "hasPoster": true
             },
             "storyboard": {
               "kind": "storyboard",

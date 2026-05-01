@@ -87,7 +87,7 @@ test("sample applet exposes a runnable SDK-compatible HTML entry", async () => {
   assert.match(html, /theta_changed/);
 });
 
-test("links the parameter lab applet and transform-order Manim draft to lesson L05", async () => {
+test("links the parameter lab applet and rendered transform-order Manim to lesson L05", async () => {
   const workspace = await loadTeacherWorkspace({ rootDir: repoRoot });
   const lesson = workspace.lessonsById["SH-HS-MATH-HJ-B2-C07-L05"];
   const applet = lesson.resources.find((resource) => resource.id === "SH-HS-MATH-HJ-B2-C07-L05-A01");
@@ -109,13 +109,28 @@ test("links the parameter lab applet and transform-order Manim draft to lesson L
     title: "三角函数参数变化实验室",
     sandbox: "allow-scripts allow-same-origin",
   });
-  assert.equal(manim.availability, "metadata_ready");
-  assert.equal(manim.metadataPreview.renderPlan.phase, "scene_draft");
+  assert.equal(manim.availability, "video_ready");
+  assert.equal(manim.metadataPreview.renderPlan.phase, "rendered");
   assert.equal(manim.package.storyboard.title, "分镜：图像变换顺序解释");
-  assert.equal(manim.package.media.hasOutputMp4, false);
-  assert.equal(manim.package.media.hasOutputWebm, false);
-  assert.equal(manim.package.media.hasPoster, false);
-  assert.equal(manim.player, null);
+  assert.equal(manim.package.media.hasOutputMp4, true);
+  assert.equal(manim.package.media.hasOutputWebm, true);
+  assert.equal(manim.package.media.hasPoster, true);
+  assert.deepEqual(manim.player, {
+    kind: "video",
+    isRunnable: true,
+    title: "图像变换顺序解释",
+    poster: "content/manim/SH-HS-MATH-HJ-B2-C07-L05-M01/dist/final/SH-HS-MATH-HJ-B2-C07-L05-M01-poster.png",
+    sources: [
+      {
+        src: "content/manim/SH-HS-MATH-HJ-B2-C07-L05-M01/dist/final/SH-HS-MATH-HJ-B2-C07-L05-M01.webm",
+        type: "video/webm",
+      },
+      {
+        src: "content/manim/SH-HS-MATH-HJ-B2-C07-L05-M01/dist/final/SH-HS-MATH-HJ-B2-C07-L05-M01.mp4",
+        type: "video/mp4",
+      },
+    ],
+  });
   assert.equal(diagnosis.availability, "proposed");
   assert.equal(diagnosis.player, null);
   assert.ok(workspace.summary.plannedResourceCount >= 9);
