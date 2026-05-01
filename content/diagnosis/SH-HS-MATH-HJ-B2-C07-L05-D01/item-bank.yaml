@@ -1,0 +1,162 @@
+schema_version: "0.1.0"
+resource_id: "SH-HS-MATH-HJ-B2-C07-L05-D01"
+title: "参数识别诊断题组"
+estimated_minutes: 8
+total_score: 10
+mastery_threshold: 0.75
+misconception_tags:
+  - "period_to_omega_inversion"
+  - "phase_shift_scale_omission"
+  - "phase_shift_sign_error"
+  - "amplitude_reflection_mixup"
+  - "parameter_interference"
+
+items:
+  - id: "D01-Q01"
+    type: "single_choice"
+    score: 1
+    title: "由周期求 omega"
+    diagnostic_focus: "能否从图像周期求出 omega。"
+    prompt: "某正弦型函数图像的相邻两个最高点横坐标相差 pi。若写成 y = A sin(omega x + phi)，且 omega > 0，则 omega 应为多少？"
+    choices:
+      - id: "A"
+        text: "2"
+        is_correct: true
+        feedback: "相邻最高点距离就是周期 T = pi，所以 omega = 2pi / T = 2。"
+      - id: "B"
+        text: "pi"
+        is_correct: false
+        misconception_tags: ["period_to_omega_inversion"]
+        feedback: "pi 是周期 T，不是 omega；omega 要用 2pi 除以周期。"
+      - id: "C"
+        text: "1/2"
+        is_correct: false
+        misconception_tags: ["period_to_omega_inversion"]
+        feedback: "这里把 omega 与周期的关系倒过来了；周期变短，omega 应变大。"
+      - id: "D"
+        text: "2pi"
+        is_correct: false
+        misconception_tags: ["parameter_interference"]
+        feedback: "2pi 是基础正弦函数周期，不是本图像的 omega。"
+    answer: ["A"]
+    feedback_on_correct: "能用 T = 2pi / omega 反推出 omega。"
+
+  - id: "D01-Q02"
+    type: "single_choice"
+    score: 1
+    title: "括号改写和平移量"
+    diagnostic_focus: "能否区分 phi 与实际平移量。"
+    prompt: "函数 y = 3 sin(2x + pi/2) 可以看作 y = 3 sin 2x 怎样平移得到？"
+    choices:
+      - id: "A"
+        text: "向左平移 pi/4"
+        is_correct: true
+        feedback: "2x + pi/2 = 2(x + pi/4)，所以相对 y = 3 sin 2x 向左平移 pi/4。"
+      - id: "B"
+        text: "向左平移 pi/2"
+        is_correct: false
+        misconception_tags: ["phase_shift_scale_omission"]
+        feedback: "pi/2 是 phi，不是实际平移量；还要除以 omega = 2。"
+      - id: "C"
+        text: "向右平移 pi/4"
+        is_correct: false
+        misconception_tags: ["phase_shift_sign_error"]
+        feedback: "x + pi/4 对应向左平移 pi/4，不是向右。"
+      - id: "D"
+        text: "不发生平移，只发生周期变化"
+        is_correct: false
+        misconception_tags: ["parameter_interference"]
+        feedback: "omega 改变周期，phi 仍然带来相位平移。"
+    answer: ["A"]
+    feedback_on_correct: "能先改写括号，再判断平移方向和距离。"
+
+  - id: "D01-Q03"
+    type: "multiple_select"
+    score: 2
+    title: "从关键读数识别参数"
+    diagnostic_focus: "能否同时读取振幅、周期和 A 的符号。"
+    prompt: "某图像最高点为 1.5，最低点为 -1.5，相邻最低点横坐标相差 pi，且 x = 0 处取得最低点。若写成 y = A sin(2x + pi/2)，下列说法正确的是哪些？"
+    choices:
+      - id: "A"
+        text: "|A| = 1.5"
+        is_correct: true
+        feedback: "最高点和最低点关于 0 对称，振幅为 1.5。"
+      - id: "B"
+        text: "omega = 2"
+        is_correct: true
+        feedback: "相邻最低点距离为 pi，因此周期 T = pi，omega = 2。"
+      - id: "C"
+        text: "A 应取负值"
+        is_correct: true
+        feedback: "当 x = 0 时，sin(pi/2) = 1；图像却在最低点，所以 A 为负。"
+      - id: "D"
+        text: "phi = pi/2 表示图像实际左移 pi/2"
+        is_correct: false
+        misconception_tags: ["phase_shift_scale_omission"]
+        feedback: "实际平移量是 phi / omega = pi/4，不是 pi/2。"
+    answer: ["A", "B", "C"]
+    scoring_note: "全选且不多选得 2 分；漏选一个正确项得 1 分；选择 D 时记录 phase_shift_scale_omission。"
+    feedback_on_correct: "能把振幅、周期和关键点符号合起来判断参数。"
+
+  - id: "D01-Q04"
+    type: "short_explanation"
+    score: 2
+    title: "纠正平移量说法"
+    diagnostic_focus: "能否解释实际相位平移量和方向。"
+    prompt: "有同学说：y = 2 sin(3x + pi/3) 是把 y = 2 sin 3x 向左平移 pi/3 得到的。请判断这句话是否正确，并说明理由。"
+    expected_response:
+      - "这句话不正确。"
+      - "3x + pi/3 = 3(x + pi/9)。"
+      - "相对 y = 2 sin 3x，实际是向左平移 pi/9。"
+      - "phi 不能直接当作平移量，必须除以 omega。"
+    misconception_tags_when_incomplete:
+      - "phase_shift_scale_omission"
+      - "phase_shift_sign_error"
+      - "parameter_interference"
+    feedback_on_correct: "能用括号改写解释平移，而不是只记 phi 的符号。"
+
+  - id: "D01-Q05"
+    type: "error_analysis"
+    score: 2
+    title: "A 的负号和图像翻折"
+    diagnostic_focus: "能否根据关键点判断 A 的符号。"
+    prompt: "某图像振幅为 2，周期为 pi，经过原点，且在 x = 0 右侧先下降。学生写成 y = 2 sin 2x。请指出问题并给出一个符合描述的解析式。"
+    expected_response:
+      - "y = 2 sin 2x 在 x = 0 右侧先上升，不符合题意。"
+      - "周期 pi 对应 omega = 2。"
+      - "振幅为 2，所以 |A| = 2。"
+      - "因为过原点后先下降，可取 y = -2 sin 2x。"
+    misconception_tags_when_incomplete:
+      - "amplitude_reflection_mixup"
+      - "period_to_omega_inversion"
+      - "parameter_interference"
+    feedback_on_correct: "能用过原点后的变化方向判断 A 的符号。"
+
+  - id: "D01-Q06"
+    type: "single_choice"
+    score: 2
+    title: "综合选择解析式"
+    diagnostic_focus: "能否用振幅、周期和关键点共同检验候选式。"
+    prompt: "某正弦型函数的振幅为 2，周期为 pi，且 x = 0 时取得最大值 2。下列哪一个解析式符合这些信息？"
+    choices:
+      - id: "A"
+        text: "y = 2 sin(2x + pi/2)"
+        is_correct: true
+        feedback: "振幅为 2，周期为 pi；x = 0 时 sin(pi/2) = 1，所以 y = 2。"
+      - id: "B"
+        text: "y = 2 sin(2x - pi/2)"
+        is_correct: false
+        misconception_tags: ["phase_shift_sign_error", "parameter_interference"]
+        feedback: "x = 0 时 sin(-pi/2) = -1，函数值为 -2，不是最大值 2。"
+      - id: "C"
+        text: "y = 2 sin(x + pi/2)"
+        is_correct: false
+        misconception_tags: ["period_to_omega_inversion"]
+        feedback: "这个函数周期为 2pi，不符合题目给出的周期 pi。"
+      - id: "D"
+        text: "y = 1/2 sin(2x + pi/2)"
+        is_correct: false
+        misconception_tags: ["amplitude_reflection_mixup"]
+        feedback: "这个函数振幅为 1/2，不符合振幅为 2。"
+    answer: ["A"]
+    feedback_on_correct: "能用三个读数共同排除干扰选项。"

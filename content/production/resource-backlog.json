@@ -16,8 +16,8 @@
   },
   "summary": {
     "total": 15,
-    "implemented": 6,
-    "planned": 9,
+    "implemented": 7,
+    "planned": 8,
     "byType": {
       "applet": {
         "total": 8,
@@ -31,8 +31,8 @@
       },
       "diagnosis": {
         "total": 4,
-        "implemented": 1,
-        "planned": 3
+        "implemented": 2,
+        "planned": 2
       }
     }
   },
@@ -350,8 +350,8 @@
     {
       "id": "SH-HS-MATH-HJ-B2-C07-L05-D01",
       "type": "diagnosis",
-      "status": "planned",
-      "availability": "planned",
+      "status": "implemented",
+      "availability": "item_bank_ready",
       "title": "参数识别诊断任务",
       "proposedTitle": "参数识别诊断任务",
       "lessonId": "SH-HS-MATH-HJ-B2-C07-L05",
@@ -372,11 +372,11 @@
       "note": "给出图像关键点，要求判断 A、omega、phi 的可能取值并解释理由。",
       "priority": "mvp",
       "priorityReason": "MVP focus lesson",
-      "packagePath": null,
-      "metadataPath": null,
+      "packagePath": "content/diagnosis/SH-HS-MATH-HJ-B2-C07-L05-D01",
+      "metadataPath": "content/diagnosis/SH-HS-MATH-HJ-B2-C07-L05-D01/metadata.yaml",
       "recommendedTrack": "track/review-system",
-      "nextAction": "创建 Diagnosis 资源包，先写 metadata、item-bank、scoring-rubric、teacher-notes 和 review。",
-      "threadPrompt": "请先读取项目锚点文件和 content/production/resource-backlog.json，然后切到 track/review-system。这次只创建并推进 SH-HS-MATH-HJ-B2-C07-L05-D01（Diagnosis），对应课时 SH-HS-MATH-HJ-B2-C07-L05「函数 y = A sin(omega x + phi) 的图像」。先确认教学痛点、认知动作、文件规范和验收标准，再动手；完成后运行 npm run generate:backlog 和 npm run verify，更新 docs/01-current-state.md 与 docs/02-next-actions.md，并提交。"
+      "nextAction": "核对 metadata、资源文件和审核记录，补齐缺口后运行内容校验。",
+      "threadPrompt": "请先读取项目锚点文件和 content/production/resource-backlog.json，然后切到 track/review-system。这次只复核并推进 SH-HS-MATH-HJ-B2-C07-L05-D01（Diagnosis），对应课时 SH-HS-MATH-HJ-B2-C07-L05「函数 y = A sin(omega x + phi) 的图像」。先确认教学痛点、认知动作、文件规范和验收标准，再动手；完成后运行 npm run generate:backlog 和 npm run verify，更新 docs/01-current-state.md 与 docs/02-next-actions.md，并提交。"
     },
     {
       "id": "SH-HS-MATH-HJ-B2-C07-L06-A01",
