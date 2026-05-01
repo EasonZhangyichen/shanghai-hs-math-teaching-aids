@@ -16,11 +16,13 @@ test("validates the current curriculum and resource packages", async () => {
   assert.equal(result.counts.lessons, 7);
   assert.equal(result.counts.applets, 3);
   assert.equal(result.counts.manimClips, 2);
+  assert.equal(result.counts.diagnoses, 2);
   assert.ok(result.resources.some((resource) => resource.id === "SH-HS-MATH-HJ-B2-C07-L01-A01"));
   assert.ok(result.resources.some((resource) => resource.id === "SH-HS-MATH-HJ-B2-C07-L02-A01"));
   assert.ok(result.resources.some((resource) => resource.id === "SH-HS-MATH-HJ-B2-C07-L05-A01"));
   assert.ok(result.resources.some((resource) => resource.id === "SH-HS-MATH-HJ-B2-C07-L01-M01"));
   assert.ok(result.resources.some((resource) => resource.id === "SH-HS-MATH-HJ-B2-C07-L05-M01"));
+  assert.ok(result.resources.some((resource) => resource.id === "SH-HS-MATH-HJ-B2-C07-L05-D01"));
 });
 
 test("reports missing rendered Manim media when a package is video_ready", async () => {
