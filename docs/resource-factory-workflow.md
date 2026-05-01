@@ -14,7 +14,7 @@
 content/curriculum/index.yaml
   -> npm run generate:backlog
   -> content/production/resource-backlog.json
-  -> 选择一个 backlog item
+  -> 选择一个 backlog item / 批量 scaffold planned item
   -> 开新对话/切对应 track 分支
   -> 创建或复核资源包
   -> npm run verify
@@ -32,7 +32,31 @@ content/curriculum/index.yaml
 - 推荐工作的 `track/*` 分支。
 - 可直接复制到新对话里的 `threadPrompt`。
 
-当前首版覆盖必修第二册第 7 章三角函数：15 个资源工作单元，其中 2 个已实现，13 个待创建。
+当前首版覆盖必修第二册第 7 章三角函数：15 个资源工作单元，其中 5 个已实现，10 个待创建。
+
+## scaffold 命令
+
+当需要批量铺资源骨架时，先使用 scaffold 命令生成目录和必备文件，再按单个资源进入内容设计与审核。
+
+首版 scaffold 支持 Diagnosis 资源包：
+
+```bash
+npm run scaffold:backlog -- --type diagnosis --limit 3
+```
+
+默认是 dry-run，只显示会创建哪些资源包，不写入文件。确认后加 `--write`：
+
+```bash
+npm run scaffold:backlog -- --type diagnosis --limit 3 --write
+```
+
+也可以指定单个资源：
+
+```bash
+npm run scaffold:backlog -- --id SH-HS-MATH-HJ-B2-C07-L04-D01 --write
+```
+
+scaffold 只负责创建可校验的草稿骨架，不代表题组、数学表达或课堂节奏已经完成。已存在的资源包会被跳过，不会覆盖。
 
 ## 分支分派规则
 
@@ -67,6 +91,7 @@ npm run verify
 可以自动化：
 
 - 从课程图谱生成资源 backlog。
+- 从 backlog 批量生成 planned Diagnosis 的资源包骨架。
 - 判断资源包是否已落地。
 - 检查 metadata、文件存在性、资源 ID、课时归属。
 - 给每个资源生成启动提示词。

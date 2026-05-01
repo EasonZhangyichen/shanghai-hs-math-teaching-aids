@@ -9,8 +9,9 @@
     "preview": "vite preview --config apps/web/vite.config.js --host 127.0.0.1",
     "generate:content": "node apps/web/scripts/generate-content-data.js",
     "generate:backlog": "node scripts/generate-resource-backlog.js",
+    "scaffold:backlog": "node scripts/scaffold-resource-packages.js",
     "validate:content": "node scripts/validate-content.js",
-    "test": "node --test apps/web/src/lib/content.test.js scripts/validate-content.test.js scripts/generate-resource-backlog.test.js",
+    "test": "node --test apps/web/src/lib/content.test.js scripts/validate-content.test.js scripts/generate-resource-backlog.test.js scripts/scaffold-resource-packages.test.js",
     "verify": "npm run validate:content && npm run generate:backlog && npm run test && npm run build"
   },
   "dependencies": {

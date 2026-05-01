@@ -1,0 +1,102 @@
+schema_version: "0.1.0"
+id: "SH-HS-MATH-HJ-B2-C07-L02-D01"
+version: "0.1.0"
+status: "draft"
+resource_type: "diagnosis"
+title: "正弦函数性质诊断"
+subtitle: "围绕周期、单调区间、对称性和关键点一般式的课堂即时诊断"
+
+curriculum:
+  region: "上海"
+  stage: "高中"
+  subject: "数学"
+  edition: "沪教版"
+  volume_id: "B2"
+  volume_title: "必修第二册"
+  chapter_id: "SH-HS-MATH-HJ-B2-C07"
+  chapter_title: "三角函数"
+  section_id: "SH-HS-MATH-HJ-B2-C07-S01"
+  section_title: "正弦函数的图像与性质"
+  lesson_id: "SH-HS-MATH-HJ-B2-C07-L02"
+  textbook_ref: "7.1.2"
+  lesson_title: "正弦函数的性质"
+
+pedagogy:
+  cognitive_action: "比较"
+  estimated_classroom_minutes: 8
+  primary_teaching_problem: "学生会背正弦函数的周期、值域、单调性和对称性结论，但在端点、一般式和几何对象比较中容易暴露概念混淆。"
+  learning_goals:
+    - "写出零点、最值点和单调区间的完整一般式，并注明 k 属于整数。"
+    - "用图像端点解释递增区间和递减区间，而不是只凭局部观察判断。"
+    - "区分正弦图像的对称轴和对称中心。"
+    - "根据错因标签选择回看 Applet 图层或教师回讲路径。"
+  prerequisites:
+    - "正弦函数图像"
+    - "函数单调性、奇偶性和周期性的语言表达"
+    - "诱导公式与特殊角正弦值"
+  successors:
+    - "SH-HS-MATH-HJ-B2-C07-L03"
+    - "SH-HS-MATH-HJ-B2-C07-L05"
+    - "SH-HS-MATH-HJ-XB1-DERIV-K01"
+  core_competencies:
+    - "逻辑推理"
+    - "数学运算"
+    - "直观想象"
+  classroom_use: "新授课后 6 到 8 分钟即时诊断；也可在作业讲评前用于错因分流，决定是否回到正弦性质 Applet 的周期、单调、对称或关键点图层。"
+
+diagnosis_design:
+  diagnostic_focus:
+    - "能否写出完整的一般解形式。"
+    - "能否区分单调区间和局部观察区间。"
+    - "能否区分对称轴与对称中心的几何含义。"
+    - "能否把一个周期内的关键点推广到所有周期。"
+  misconception_tags:
+    - id: "period_omission"
+      title: "周期遗漏"
+      description: "只写一个周期内的区间或点，遗漏加 2kpi 或 k 属于整数的完整表达。"
+    - id: "monotonic_endpoint_confusion"
+      title: "单调端点混淆"
+      description: "把递增、递减区间端点写反，或把相邻半周期的方向混用。"
+    - id: "axis_center_mixup"
+      title: "对称轴与对称中心混淆"
+      description: "把竖直对称轴和中心对称点当成同一种对象，或把关键点坐标误写为对称元素。"
+    - id: "extrema_zero_formula_omission"
+      title: "零点最值一般式遗漏"
+      description: "只写特殊零点或最值点，或把最大值点、最小值点和零点的表达式混用。"
+    - id: "local_interval_overgeneralization"
+      title: "局部区间过度概括"
+      description: "从局部上升、下降或端点函数值直接推出整段单调性，缺少对转折点的比较。"
+  item_summary:
+    total_items: 6
+    question_types:
+      - "single_choice"
+      - "multiple_select"
+      - "short_explanation"
+      - "error_analysis"
+    estimated_minutes: 8
+  feedback_strategy:
+    immediate_feedback: "每题按命中的错因标签给出一句图像回看提示和一个追问，避免只显示对错。"
+    teacher_dashboard_notes: "统计各错因标签命中人数；若周期遗漏超过三分之一，先回到周期比较图层；若单调端点或局部概括集中出现，回到单调区间端点；若对称混淆集中出现，回到对称轴和对称中心对照。"
+    remediation_links:
+      - "content/applets/SH-HS-MATH-HJ-B2-C07-L02-A01"
+
+scoring:
+  mastery_threshold: 0.75
+  grading_mode: "mixed"
+  retry_policy: "课堂内允许一次订正；保留首次错因标签，订正后只更新掌握状态，不覆盖原始诊断记录。"
+
+platform_card:
+  availability: "item_bank_ready"
+  preview_behavior: "item_bank_preview"
+  embed_strategy: "首期显示诊断目标、错因标签、题组摘要和评分规则；后续接入诊断播放器后按错因标签返回即时反馈。"
+
+files:
+  readme: "README.md"
+  item_bank: "item-bank.yaml"
+  scoring_rubric: "scoring-rubric.md"
+  teacher_notes: "teacher-notes.md"
+  review_record: "review.md"
+
+compliance:
+  copyright_note: "本诊断包为原创题组与反馈设计，不复制教材正文、官方课件、教案或商业题库。"
+  review_status: "self_checked_draft"
