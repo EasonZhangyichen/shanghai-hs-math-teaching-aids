@@ -69,6 +69,7 @@
 - [x] 生成 `content/production/resource-backlog.json`，覆盖必修第二册第 7 章 15 个资源工作单元；当前 4 个已实现、11 个待创建。
 - [x] 为每个 backlog item 自动生成推荐分支、下一步动作和新对话 `threadPrompt`。
 - [x] 将 `npm run generate:backlog` 接入 `npm run verify`。
+- [x] 为 Diagnosis planned item 增加首版资源包 scaffold 命令，支持 dry-run、按数量或 ID 生成并避免覆盖已有资源包。
 - [ ] 为 backlog item 增加更细的审核状态和课堂试用状态聚合。
-- [ ] 为单个 backlog item 增加资源包 scaffold 命令，减少手工建目录成本。
+- [ ] 将资源包 scaffold 扩展到 Applet 与 Manim，并按 schema 生成对应必备文件。
 - [ ] 当沪教版全册目录完成后，将 backlog 扩展到全高中课程图谱。
