@@ -28,6 +28,11 @@
   - 资源聚焦“比较”这一认知动作，围绕周期遗漏、单调区间端点混淆、对称轴/中心混淆、零点和最值点一般式遗漏设计 6 题即时诊断。
   - `platform_card.availability` 当前为 `item_bank_ready`，可先用于题组摘要和错因标签预览；后续诊断播放器接入后再升级到 `interactive_ready`。
   - 当前仍为 `draft` / `self_checked_draft`，尚未进入数学审校、教研试读或课堂试用。
+- 已在 `track/trig-sample-pack` 上为 `SH-HS-MATH-HJ-B2-C07-L05-A01` 创建“三角函数参数变化实验室”资源包草稿：
+  - 已包含 `metadata.yaml`、`README.md`、`teacher-script.md`、`student-task.md`、`review.md`。
+  - 已新增 `src/index.html` 可运行原型，支持调节 `A`、`omega`、`phi`，单参数观察、变换顺序切换、关键点追踪、观察点拖动和参数归纳。
+  - 资源聚焦“变换”这一认知动作，对应 7.3“函数 y = A sin(omega x + phi) 的图像”的三个痛点：横向伸缩和平移方向混淆、多参数认知负荷、从图像反推参数干扰。
+  - 当前仍为 `draft`，尚未进入数学审校、课堂节奏试读或更完整的浏览器交互复核。
 - 已在 `track/applet-sdk` 上创建 Applet SDK v0.1 契约草稿：
   - `packages/applet-sdk/schemas/applet-metadata.schema.json` 定义 Applet metadata schema。
   - `packages/applet-sdk/docs/resource-package.md` 定义 Applet 资源包目录规范。
@@ -55,7 +60,7 @@
   - `npm run verify` 现在会先执行 `npm run validate:content`，再运行测试和平台构建。
 - 已创建首版资源工厂工作流：
   - `scripts/generate-resource-backlog.js` 会从 `content/curriculum/index.yaml` 的 `digital_entry_points` 和已落地的 Applet / Manim / Diagnosis 资源包生成生产 backlog。
-  - `content/production/resource-backlog.json` 当前列出必修第二册第 7 章 15 个资源工作单元，其中 4 个已实现、11 个待创建；Applet 为 2 个已实现、6 个待创建；Manim 为 1 个已实现、2 个待创建；Diagnosis 为 1 个已实现、3 个待创建；每个 item 都包含推荐分支、下一步动作和可复制到新 Codex 对话的 `threadPrompt`。
+  - `content/production/resource-backlog.json` 当前列出必修第二册第 7 章 15 个资源工作单元，其中 5 个已实现、10 个待创建；Applet 为 3 个已实现、5 个待创建；Manim 为 1 个已实现、2 个待创建；Diagnosis 为 1 个已实现、3 个待创建；每个 item 都包含推荐分支、下一步动作和可复制到新 Codex 对话的 `threadPrompt`。
   - `scripts/scaffold-resource-packages.js` 提供首版批量资源骨架生成能力：当前支持 Diagnosis planned item 的 dry-run、按数量或 ID 生成、避免覆盖已有资源包。
   - `npm run generate:backlog` 已加入脚本，`npm run verify` 现在会先校验内容、生成 backlog，再运行测试和平台构建。
   - `docs/resource-factory-workflow.md` 记录了课程图谱 -> backlog -> 单资源对话 -> 校验 -> 合并的半自动生产流程。
@@ -96,7 +101,7 @@
 - 必修第二册第 7 章目录已完成首版结构化整理，但尚未完成纸质教材人工终核。
 - 第 7 章的前置章节节点、第 8 章平面向量和第 9 章复数等后续节点仍是引用占位，尚未展开为完整图谱。
 - 尚未创建独立课件播放器；教师工作台内已完成样板 Applet iframe 预览接入，但尚未沉淀为独立 `apps/player`。
-- 已创建两个可运行 HTML Applet 原型，并已接入平台壳 iframe 预览；尚未完成数学审校、课堂节奏试读和浏览器交互复核。
+- 已创建三个可运行 HTML Applet 原型，并已接入平台壳 iframe 预览；尚未完成数学审校、课堂节奏试读和浏览器交互复核。
 - 已创建第一个 Manim 场景脚本并导出可播放 `mp4` / `webm` / poster；尚未完成数学审校或课堂试用。
 - 已将 Applet、Manim 和 Diagnosis metadata JSON Schema 接入首版自动校验脚本。
 - 已建立首版资源生产 backlog，可按单个资源工作单元开启新对话，避免全高中内容挤在一个上下文中；首个 Diagnosis 资源包已落地为 `item_bank_ready`，并已补充 Diagnosis scaffold 命令以减少后续手工建目录成本。
