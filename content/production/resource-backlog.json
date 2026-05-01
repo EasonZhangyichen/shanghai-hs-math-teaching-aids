@@ -16,8 +16,8 @@
   },
   "summary": {
     "total": 15,
-    "implemented": 3,
-    "planned": 12,
+    "implemented": 4,
+    "planned": 11,
     "byType": {
       "applet": {
         "total": 8,
@@ -31,8 +31,8 @@
       },
       "diagnosis": {
         "total": 4,
-        "implemented": 0,
-        "planned": 4
+        "implemented": 1,
+        "planned": 3
       }
     }
   },
@@ -133,8 +133,8 @@
     {
       "id": "SH-HS-MATH-HJ-B2-C07-L02-D01",
       "type": "diagnosis",
-      "status": "planned",
-      "availability": "planned",
+      "status": "implemented",
+      "availability": "item_bank_ready",
       "title": "正弦函数性质诊断",
       "proposedTitle": "正弦函数性质诊断",
       "lessonId": "SH-HS-MATH-HJ-B2-C07-L02",
@@ -155,11 +155,11 @@
       "note": "围绕周期遗漏、区间端点和对称性误判生成即时反馈。",
       "priority": "mvp",
       "priorityReason": "MVP focus lesson",
-      "packagePath": null,
-      "metadataPath": null,
+      "packagePath": "content/diagnosis/SH-HS-MATH-HJ-B2-C07-L02-D01",
+      "metadataPath": "content/diagnosis/SH-HS-MATH-HJ-B2-C07-L02-D01/metadata.yaml",
       "recommendedTrack": "track/review-system",
-      "nextAction": "创建 Diagnosis 资源包，先写 metadata、item-bank、scoring-rubric、teacher-notes 和 review。",
-      "threadPrompt": "请先读取项目锚点文件和 content/production/resource-backlog.json，然后切到 track/review-system。这次只创建并推进 SH-HS-MATH-HJ-B2-C07-L02-D01（Diagnosis），对应课时 SH-HS-MATH-HJ-B2-C07-L02「正弦函数的性质」。先确认教学痛点、认知动作、文件规范和验收标准，再动手；完成后运行 npm run generate:backlog 和 npm run verify，更新 docs/01-current-state.md 与 docs/02-next-actions.md，并提交。"
+      "nextAction": "核对 metadata、资源文件和审核记录，补齐缺口后运行内容校验。",
+      "threadPrompt": "请先读取项目锚点文件和 content/production/resource-backlog.json，然后切到 track/review-system。这次只复核并推进 SH-HS-MATH-HJ-B2-C07-L02-D01（Diagnosis），对应课时 SH-HS-MATH-HJ-B2-C07-L02「正弦函数的性质」。先确认教学痛点、认知动作、文件规范和验收标准，再动手；完成后运行 npm run generate:backlog 和 npm run verify，更新 docs/01-current-state.md 与 docs/02-next-actions.md，并提交。"
     },
     {
       "id": "SH-HS-MATH-HJ-B2-C07-L03-A01",

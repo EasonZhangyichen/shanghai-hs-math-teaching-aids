@@ -14,11 +14,11 @@ test("generates a deterministic backlog from curriculum entry points and impleme
 
   assert.equal(backlog.source.curriculum, "content/curriculum/index.yaml");
   assert.equal(backlog.summary.total, 15);
-  assert.equal(backlog.summary.implemented, 3);
-  assert.equal(backlog.summary.planned, 12);
+  assert.equal(backlog.summary.implemented, 4);
+  assert.equal(backlog.summary.planned, 11);
   assert.deepEqual(backlog.summary.byType.applet, { total: 8, implemented: 2, planned: 6 });
   assert.deepEqual(backlog.summary.byType.manim_clip, { total: 3, implemented: 1, planned: 2 });
-  assert.deepEqual(backlog.summary.byType.diagnosis, { total: 4, implemented: 0, planned: 4 });
+  assert.deepEqual(backlog.summary.byType.diagnosis, { total: 4, implemented: 1, planned: 3 });
 
   const sineApplet = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B2-C07-L01-A01");
   assert.equal(sineApplet.status, "implemented");
@@ -41,9 +41,11 @@ test("generates a deterministic backlog from curriculum entry points and impleme
   assert.match(sinePropertiesApplet.nextAction, /审校|试读/);
 
   const sineDiagnosis = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B2-C07-L02-D01");
-  assert.equal(sineDiagnosis.status, "planned");
+  assert.equal(sineDiagnosis.status, "implemented");
+  assert.equal(sineDiagnosis.availability, "item_bank_ready");
   assert.equal(sineDiagnosis.type, "diagnosis");
-  assert.equal(sineDiagnosis.packagePath, null);
+  assert.equal(sineDiagnosis.packagePath, "content/diagnosis/SH-HS-MATH-HJ-B2-C07-L02-D01");
+  assert.equal(sineDiagnosis.metadataPath, "content/diagnosis/SH-HS-MATH-HJ-B2-C07-L02-D01/metadata.yaml");
   assert.equal(sineDiagnosis.recommendedTrack, "track/review-system");
   assert.equal(sineDiagnosis.priority, "mvp");
   assert.match(sineDiagnosis.threadPrompt, /SH-HS-MATH-HJ-B2-C07-L02-D01/);
@@ -60,7 +62,7 @@ test("writes the backlog as stable pretty JSON", async () => {
     const written = JSON.parse(await readFile(outputPath, "utf8"));
 
     assert.equal(written.summary.total, 15);
-    assert.equal(written.summary.implemented, 3);
+    assert.equal(written.summary.implemented, 4);
     assert.equal(written.items[0].id, "SH-HS-MATH-HJ-B2-C07-L01-A01");
     assert.ok(
       JSON.stringify(written, null, 2).includes(
