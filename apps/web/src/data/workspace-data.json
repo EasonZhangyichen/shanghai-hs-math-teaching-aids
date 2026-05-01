@@ -7,7 +7,8 @@
       "content/applets/SH-HS-MATH-HJ-B2-C07-L05-A01"
     ],
     "manim": [
-      "content/manim/SH-HS-MATH-HJ-B2-C07-L01-M01"
+      "content/manim/SH-HS-MATH-HJ-B2-C07-L01-M01",
+      "content/manim/SH-HS-MATH-HJ-B2-C07-L05-M01"
     ]
   },
   "project": {
@@ -2021,14 +2022,278 @@
           "id": "SH-HS-MATH-HJ-B2-C07-L05-M01",
           "resourceType": "manim_clip",
           "title": "图像变换顺序解释",
+          "subtitle": "把 y = A sin(omega x + phi) 拆成横向伸缩、相位平移和纵向伸缩",
           "cognitiveAction": "分解",
           "note": "把横向伸缩、平移和纵向伸缩拆成可暂停的连续变换。",
-          "availability": "proposed",
-          "status": "planned",
-          "version": null,
-          "metadataPreview": null,
+          "availability": "metadata_ready",
+          "status": "draft",
+          "version": "0.1.0",
+          "metadataPreview": {
+            "id": "SH-HS-MATH-HJ-B2-C07-L05-M01",
+            "version": "0.1.0",
+            "status": "draft",
+            "resourceType": "manim_clip",
+            "title": "图像变换顺序解释",
+            "subtitle": "把 y = A sin(omega x + phi) 拆成横向伸缩、相位平移和纵向伸缩",
+            "curriculum": {
+              "region": "上海",
+              "stage": "高中",
+              "subject": "数学",
+              "edition": "沪教版",
+              "volume_id": "B2",
+              "volume_title": "必修第二册",
+              "chapter_id": "SH-HS-MATH-HJ-B2-C07",
+              "chapter_title": "三角函数",
+              "section_id": "SH-HS-MATH-HJ-B2-C07-S03",
+              "section_title": "函数 y = A sin(omega x + phi) 的图像",
+              "lesson_id": "SH-HS-MATH-HJ-B2-C07-L05",
+              "textbook_ref": "7.3",
+              "lesson_title": "函数 y = A sin(omega x + phi) 的图像"
+            },
+            "pedagogy": {
+              "cognitiveAction": "分解",
+              "estimatedClassroomMinutes": 5,
+              "primaryTeachingProblem": "学生容易把 omega x + phi 中的平移量看成 phi，忽略 omega 对输入轴的共同作用，导致横向伸缩、相位平移和振幅变化相互干扰。",
+              "learningGoals": [
+                "把 omega x + phi 改写为 omega(x + phi / omega)，解释相位平移量来自 -phi / omega。",
+                "区分输入变换和输出变换：omega 与 phi 作用在横轴方向，A 作用在纵轴方向。",
+                "用一个样例图像读出振幅、周期和相位平移，并说明每一步变换的数学理由。"
+              ],
+              "prerequisites": [
+                "正弦函数图像与关键点",
+                "函数图像的平移、伸缩和翻折",
+                "周期与角度的弧度表示"
+              ],
+              "successors": [
+                "SH-HS-MATH-HJ-B2-C07-L05-A01",
+                "SH-HS-MATH-HJ-B2-C07-L05-D01",
+                "SH-HS-MATH-HJ-B2-C07-L06"
+              ],
+              "coreCompetencies": [
+                "直观想象",
+                "数学抽象",
+                "数学运算"
+              ]
+            },
+            "mathematicalScope": {
+              "function": "y = A sin(omega x + phi)",
+              "sample_function": "y = -1.5 sin(2x + pi/2)",
+              "equivalent_form": "y = -1.5 sin(2(x + pi/4))",
+              "independent_variable": "x",
+              "dependent_variable": "y",
+              "parameter_constraints": "omega > 0 的首版课堂样例；A 可为负以展示关于 x 轴翻折。",
+              "target_transform_sequence": [
+                "从 y = sin x 出发。",
+                "omega = 2 使周期从 2pi 变为 pi。",
+                "phi = pi/2 与 omega 共同决定向左平移 pi/4。",
+                "A = -1.5 先纵向放大到 1.5 倍，再关于 x 轴翻折。"
+              ],
+              "key_readouts": {
+                "amplitude": "1.5",
+                "period": "pi",
+                "phase_shift": "left pi/4"
+              },
+              "out_of_scope": [
+                "竖直平移 k 的图像影响",
+                "omega < 0 时的等价化简",
+                "从任意图像唯一反求所有参数的完整算法"
+              ]
+            },
+            "representations": [
+              {
+                "id": "base_curve",
+                "role": "显示 y = sin x 的原始图像和关键点。"
+              },
+              {
+                "id": "inside_factorization",
+                "role": "把 2x + pi/2 改写为 2(x + pi/4)，突出平移量。"
+              },
+              {
+                "id": "horizontal_scale",
+                "role": "显示 omega 改变周期和关键点间距。"
+              },
+              {
+                "id": "phase_shift",
+                "role": "显示向左 pi/4 的相位平移。"
+              },
+              {
+                "id": "amplitude_reflection",
+                "role": "显示 A 的纵向伸缩和负号翻折。"
+              },
+              {
+                "id": "readout_panel",
+                "role": "归纳振幅、周期和相位平移三个读数。"
+              }
+            ],
+            "narrativeDesign": {
+              "targetDurationSeconds": 80,
+              "beats": [
+                {
+                  "id": "name_the_problem",
+                  "title": "先拆括号里的输入",
+                  "purpose": "提醒学生不要把 phi 直接当作平移量。",
+                  "visuals": [
+                    "同时显示 y = sin x 与目标 y = -1.5 sin(2x + pi/2)。",
+                    "把 2x + pi/2 高亮为输入变换区域。"
+                  ],
+                  "estimated_seconds": 10
+                },
+                {
+                  "id": "factor_phase_shift",
+                  "title": "把 2x + pi/2 改写",
+                  "purpose": "用 2(x + pi/4) 说明平移量是 -phi / omega。",
+                  "visuals": [
+                    "公式从 2x + pi/2 变为 2(x + pi/4)。",
+                    "平移箭头标注 left pi/4，而不是 left pi/2。"
+                  ],
+                  "estimated_seconds": 14
+                },
+                {
+                  "id": "compress_period",
+                  "title": "先看 omega 的横向伸缩",
+                  "purpose": "让学生看见周期由 2pi 变为 pi。",
+                  "visuals": [
+                    "基础正弦曲线横向压缩。",
+                    "关键点间距缩短，一周期标注为 pi。"
+                  ],
+                  "estimated_seconds": 16
+                },
+                {
+                  "id": "shift_phase",
+                  "title": "再看相位平移",
+                  "purpose": "把压缩后的曲线整体向左平移 pi/4。",
+                  "visuals": [
+                    "曲线沿 x 轴向左移动。",
+                    "虚线显示平移前后同一关键点的位置。"
+                  ],
+                  "estimated_seconds": 14
+                },
+                {
+                  "id": "apply_amplitude",
+                  "title": "最后看 A 的纵向作用",
+                  "purpose": "展示 A = -1.5 同时带来纵向放大和关于 x 轴翻折。",
+                  "visuals": [
+                    "曲线振幅变为 1.5。",
+                    "负号导致曲线相对 x 轴上下翻折。"
+                  ],
+                  "estimated_seconds": 16
+                },
+                {
+                  "id": "read_parameters_back",
+                  "title": "从图像读回参数",
+                  "purpose": "收束到参数识别：振幅、周期、平移量分别来自哪里。",
+                  "visuals": [
+                    "右侧读数面板显示 amplitude = 1.5, period = pi, shift = left pi/4。",
+                    "提示接到 Applet 中自行调参验证。"
+                  ],
+                  "estimated_seconds": 10
+                }
+              ],
+              "pausePoints": [
+                {
+                  "after_beat": "factor_phase_shift",
+                  "teacher_prompt": "为什么这里向左移动 pi/4，而不是 pi/2？"
+                },
+                {
+                  "after_beat": "shift_phase",
+                  "teacher_prompt": "如果先压缩再平移，关键点的位置和直接看括号有什么一致之处？"
+                },
+                {
+                  "after_beat": "apply_amplitude",
+                  "teacher_prompt": "A 的负号改变的是横向位置，还是纵向方向？"
+                }
+              ]
+            },
+            "interactionDesign": {
+              "teacherControls": [],
+              "studentControls": [],
+              "stagedReveal": []
+            },
+            "renderPlan": {
+              "phase": "scene_draft",
+              "manim_version": "Manim Community v0.20.x target",
+              "scene_class": "TransformOrderScene",
+              "aspect_ratio": "16:9",
+              "resolution": "1920x1080",
+              "fps": 30,
+              "background": "light classroom background",
+              "output_formats": [
+                "mp4",
+                "webm"
+              ],
+              "commands": {
+                "preview": "uvx manim -ql --media_dir dist scene.py TransformOrderScene",
+                "mp4": "uvx manim -r 1920,1080 --fps 30 --format=mp4 --media_dir dist scene.py TransformOrderScene",
+                "webm": "ffmpeg -y -i dist/final/SH-HS-MATH-HJ-B2-C07-L05-M01.mp4 -c:v libvpx-vp9 -b:v 0 -crf 32 -an dist/final/SH-HS-MATH-HJ-B2-C07-L05-M01.webm"
+              },
+              "notes": [
+                "本次只提交 scene_draft，不提交 dist/final 视频产物。",
+                "进入 render_ready 前需教师确认分镜节奏和相位平移讲法。"
+              ]
+            },
+            "platformCard": {
+              "availability": "metadata_ready",
+              "preview_behavior": "metadata_placeholder",
+              "embed_strategy": "平台先显示 metadata 与 storyboard 摘要；渲染完成并补齐 dist/final 后再升级为 video_player。",
+              "paired_resources": [
+                "SH-HS-MATH-HJ-B2-C07-L05-A01",
+                "SH-HS-MATH-HJ-B2-C07-L05-D01"
+              ]
+            },
+            "files": {
+              "readme": "README.md",
+              "storyboard": "storyboard.md",
+              "scene": "scene.py",
+              "review_record": "review.md"
+            },
+            "visualSemantics": {
+              "base_curve": "蓝色表示 y = sin x 的基准图像。",
+              "transformed_curve": "红色表示当前已经完成的变换结果。",
+              "guide_lines": "灰色虚线只用于标记周期、平移量和振幅读数。",
+              "input_block": "公式中的 omega x + phi 用同一种强调色，表示它们共同作用在输入 x 上。",
+              "output_block": "公式前的 A 单独强调，表示它作用在输出 y 上。",
+              "rule": "颜色只表达数学对象和变换步骤，不作为装饰。"
+            },
+            "compliance": {
+              "copyright_note": "本资源包为原创 Manim 分镜和场景脚本草稿，不复制教材正文、官方课件、教案或商业平台资源。",
+              "review_status": "self_checked_draft"
+            }
+          },
           "player": null,
-          "package": null
+          "package": {
+            "path": "content/manim/SH-HS-MATH-HJ-B2-C07-L05-M01",
+            "files": {
+              "metadata": "content/manim/SH-HS-MATH-HJ-B2-C07-L05-M01/metadata.yaml",
+              "readme": "content/manim/SH-HS-MATH-HJ-B2-C07-L05-M01/README.md",
+              "storyboard": "content/manim/SH-HS-MATH-HJ-B2-C07-L05-M01/storyboard.md",
+              "scene": "content/manim/SH-HS-MATH-HJ-B2-C07-L05-M01/scene.py",
+              "reviewRecord": "content/manim/SH-HS-MATH-HJ-B2-C07-L05-M01/review.md",
+              "outputMp4": null,
+              "outputWebm": null,
+              "poster": null
+            },
+            "media": {
+              "hasOutputMp4": false,
+              "hasOutputWebm": false,
+              "hasPoster": false
+            },
+            "storyboard": {
+              "kind": "storyboard",
+              "path": "content/manim/SH-HS-MATH-HJ-B2-C07-L05-M01/storyboard.md",
+              "title": "分镜：图像变换顺序解释",
+              "summary": "",
+              "sections": [
+                "核心叙事",
+                "第 1 幕：先拆输入",
+                "第 2 幕：改写括号",
+                "第 3 幕：横向压缩",
+                "第 4 幕：相位平移",
+                "第 5 幕：纵向放大和翻折",
+                "第 6 幕：读回参数",
+                "与 Applet 的衔接"
+              ]
+            }
+          }
         },
         {
           "id": "SH-HS-MATH-HJ-B2-C07-L05-D01",
@@ -4051,14 +4316,278 @@
           "id": "SH-HS-MATH-HJ-B2-C07-L05-M01",
           "resourceType": "manim_clip",
           "title": "图像变换顺序解释",
+          "subtitle": "把 y = A sin(omega x + phi) 拆成横向伸缩、相位平移和纵向伸缩",
           "cognitiveAction": "分解",
           "note": "把横向伸缩、平移和纵向伸缩拆成可暂停的连续变换。",
-          "availability": "proposed",
-          "status": "planned",
-          "version": null,
-          "metadataPreview": null,
+          "availability": "metadata_ready",
+          "status": "draft",
+          "version": "0.1.0",
+          "metadataPreview": {
+            "id": "SH-HS-MATH-HJ-B2-C07-L05-M01",
+            "version": "0.1.0",
+            "status": "draft",
+            "resourceType": "manim_clip",
+            "title": "图像变换顺序解释",
+            "subtitle": "把 y = A sin(omega x + phi) 拆成横向伸缩、相位平移和纵向伸缩",
+            "curriculum": {
+              "region": "上海",
+              "stage": "高中",
+              "subject": "数学",
+              "edition": "沪教版",
+              "volume_id": "B2",
+              "volume_title": "必修第二册",
+              "chapter_id": "SH-HS-MATH-HJ-B2-C07",
+              "chapter_title": "三角函数",
+              "section_id": "SH-HS-MATH-HJ-B2-C07-S03",
+              "section_title": "函数 y = A sin(omega x + phi) 的图像",
+              "lesson_id": "SH-HS-MATH-HJ-B2-C07-L05",
+              "textbook_ref": "7.3",
+              "lesson_title": "函数 y = A sin(omega x + phi) 的图像"
+            },
+            "pedagogy": {
+              "cognitiveAction": "分解",
+              "estimatedClassroomMinutes": 5,
+              "primaryTeachingProblem": "学生容易把 omega x + phi 中的平移量看成 phi，忽略 omega 对输入轴的共同作用，导致横向伸缩、相位平移和振幅变化相互干扰。",
+              "learningGoals": [
+                "把 omega x + phi 改写为 omega(x + phi / omega)，解释相位平移量来自 -phi / omega。",
+                "区分输入变换和输出变换：omega 与 phi 作用在横轴方向，A 作用在纵轴方向。",
+                "用一个样例图像读出振幅、周期和相位平移，并说明每一步变换的数学理由。"
+              ],
+              "prerequisites": [
+                "正弦函数图像与关键点",
+                "函数图像的平移、伸缩和翻折",
+                "周期与角度的弧度表示"
+              ],
+              "successors": [
+                "SH-HS-MATH-HJ-B2-C07-L05-A01",
+                "SH-HS-MATH-HJ-B2-C07-L05-D01",
+                "SH-HS-MATH-HJ-B2-C07-L06"
+              ],
+              "coreCompetencies": [
+                "直观想象",
+                "数学抽象",
+                "数学运算"
+              ]
+            },
+            "mathematicalScope": {
+              "function": "y = A sin(omega x + phi)",
+              "sample_function": "y = -1.5 sin(2x + pi/2)",
+              "equivalent_form": "y = -1.5 sin(2(x + pi/4))",
+              "independent_variable": "x",
+              "dependent_variable": "y",
+              "parameter_constraints": "omega > 0 的首版课堂样例；A 可为负以展示关于 x 轴翻折。",
+              "target_transform_sequence": [
+                "从 y = sin x 出发。",
+                "omega = 2 使周期从 2pi 变为 pi。",
+                "phi = pi/2 与 omega 共同决定向左平移 pi/4。",
+                "A = -1.5 先纵向放大到 1.5 倍，再关于 x 轴翻折。"
+              ],
+              "key_readouts": {
+                "amplitude": "1.5",
+                "period": "pi",
+                "phase_shift": "left pi/4"
+              },
+              "out_of_scope": [
+                "竖直平移 k 的图像影响",
+                "omega < 0 时的等价化简",
+                "从任意图像唯一反求所有参数的完整算法"
+              ]
+            },
+            "representations": [
+              {
+                "id": "base_curve",
+                "role": "显示 y = sin x 的原始图像和关键点。"
+              },
+              {
+                "id": "inside_factorization",
+                "role": "把 2x + pi/2 改写为 2(x + pi/4)，突出平移量。"
+              },
+              {
+                "id": "horizontal_scale",
+                "role": "显示 omega 改变周期和关键点间距。"
+              },
+              {
+                "id": "phase_shift",
+                "role": "显示向左 pi/4 的相位平移。"
+              },
+              {
+                "id": "amplitude_reflection",
+                "role": "显示 A 的纵向伸缩和负号翻折。"
+              },
+              {
+                "id": "readout_panel",
+                "role": "归纳振幅、周期和相位平移三个读数。"
+              }
+            ],
+            "narrativeDesign": {
+              "targetDurationSeconds": 80,
+              "beats": [
+                {
+                  "id": "name_the_problem",
+                  "title": "先拆括号里的输入",
+                  "purpose": "提醒学生不要把 phi 直接当作平移量。",
+                  "visuals": [
+                    "同时显示 y = sin x 与目标 y = -1.5 sin(2x + pi/2)。",
+                    "把 2x + pi/2 高亮为输入变换区域。"
+                  ],
+                  "estimated_seconds": 10
+                },
+                {
+                  "id": "factor_phase_shift",
+                  "title": "把 2x + pi/2 改写",
+                  "purpose": "用 2(x + pi/4) 说明平移量是 -phi / omega。",
+                  "visuals": [
+                    "公式从 2x + pi/2 变为 2(x + pi/4)。",
+                    "平移箭头标注 left pi/4，而不是 left pi/2。"
+                  ],
+                  "estimated_seconds": 14
+                },
+                {
+                  "id": "compress_period",
+                  "title": "先看 omega 的横向伸缩",
+                  "purpose": "让学生看见周期由 2pi 变为 pi。",
+                  "visuals": [
+                    "基础正弦曲线横向压缩。",
+                    "关键点间距缩短，一周期标注为 pi。"
+                  ],
+                  "estimated_seconds": 16
+                },
+                {
+                  "id": "shift_phase",
+                  "title": "再看相位平移",
+                  "purpose": "把压缩后的曲线整体向左平移 pi/4。",
+                  "visuals": [
+                    "曲线沿 x 轴向左移动。",
+                    "虚线显示平移前后同一关键点的位置。"
+                  ],
+                  "estimated_seconds": 14
+                },
+                {
+                  "id": "apply_amplitude",
+                  "title": "最后看 A 的纵向作用",
+                  "purpose": "展示 A = -1.5 同时带来纵向放大和关于 x 轴翻折。",
+                  "visuals": [
+                    "曲线振幅变为 1.5。",
+                    "负号导致曲线相对 x 轴上下翻折。"
+                  ],
+                  "estimated_seconds": 16
+                },
+                {
+                  "id": "read_parameters_back",
+                  "title": "从图像读回参数",
+                  "purpose": "收束到参数识别：振幅、周期、平移量分别来自哪里。",
+                  "visuals": [
+                    "右侧读数面板显示 amplitude = 1.5, period = pi, shift = left pi/4。",
+                    "提示接到 Applet 中自行调参验证。"
+                  ],
+                  "estimated_seconds": 10
+                }
+              ],
+              "pausePoints": [
+                {
+                  "after_beat": "factor_phase_shift",
+                  "teacher_prompt": "为什么这里向左移动 pi/4，而不是 pi/2？"
+                },
+                {
+                  "after_beat": "shift_phase",
+                  "teacher_prompt": "如果先压缩再平移，关键点的位置和直接看括号有什么一致之处？"
+                },
+                {
+                  "after_beat": "apply_amplitude",
+                  "teacher_prompt": "A 的负号改变的是横向位置，还是纵向方向？"
+                }
+              ]
+            },
+            "interactionDesign": {
+              "teacherControls": [],
+              "studentControls": [],
+              "stagedReveal": []
+            },
+            "renderPlan": {
+              "phase": "scene_draft",
+              "manim_version": "Manim Community v0.20.x target",
+              "scene_class": "TransformOrderScene",
+              "aspect_ratio": "16:9",
+              "resolution": "1920x1080",
+              "fps": 30,
+              "background": "light classroom background",
+              "output_formats": [
+                "mp4",
+                "webm"
+              ],
+              "commands": {
+                "preview": "uvx manim -ql --media_dir dist scene.py TransformOrderScene",
+                "mp4": "uvx manim -r 1920,1080 --fps 30 --format=mp4 --media_dir dist scene.py TransformOrderScene",
+                "webm": "ffmpeg -y -i dist/final/SH-HS-MATH-HJ-B2-C07-L05-M01.mp4 -c:v libvpx-vp9 -b:v 0 -crf 32 -an dist/final/SH-HS-MATH-HJ-B2-C07-L05-M01.webm"
+              },
+              "notes": [
+                "本次只提交 scene_draft，不提交 dist/final 视频产物。",
+                "进入 render_ready 前需教师确认分镜节奏和相位平移讲法。"
+              ]
+            },
+            "platformCard": {
+              "availability": "metadata_ready",
+              "preview_behavior": "metadata_placeholder",
+              "embed_strategy": "平台先显示 metadata 与 storyboard 摘要；渲染完成并补齐 dist/final 后再升级为 video_player。",
+              "paired_resources": [
+                "SH-HS-MATH-HJ-B2-C07-L05-A01",
+                "SH-HS-MATH-HJ-B2-C07-L05-D01"
+              ]
+            },
+            "files": {
+              "readme": "README.md",
+              "storyboard": "storyboard.md",
+              "scene": "scene.py",
+              "review_record": "review.md"
+            },
+            "visualSemantics": {
+              "base_curve": "蓝色表示 y = sin x 的基准图像。",
+              "transformed_curve": "红色表示当前已经完成的变换结果。",
+              "guide_lines": "灰色虚线只用于标记周期、平移量和振幅读数。",
+              "input_block": "公式中的 omega x + phi 用同一种强调色，表示它们共同作用在输入 x 上。",
+              "output_block": "公式前的 A 单独强调，表示它作用在输出 y 上。",
+              "rule": "颜色只表达数学对象和变换步骤，不作为装饰。"
+            },
+            "compliance": {
+              "copyright_note": "本资源包为原创 Manim 分镜和场景脚本草稿，不复制教材正文、官方课件、教案或商业平台资源。",
+              "review_status": "self_checked_draft"
+            }
+          },
           "player": null,
-          "package": null
+          "package": {
+            "path": "content/manim/SH-HS-MATH-HJ-B2-C07-L05-M01",
+            "files": {
+              "metadata": "content/manim/SH-HS-MATH-HJ-B2-C07-L05-M01/metadata.yaml",
+              "readme": "content/manim/SH-HS-MATH-HJ-B2-C07-L05-M01/README.md",
+              "storyboard": "content/manim/SH-HS-MATH-HJ-B2-C07-L05-M01/storyboard.md",
+              "scene": "content/manim/SH-HS-MATH-HJ-B2-C07-L05-M01/scene.py",
+              "reviewRecord": "content/manim/SH-HS-MATH-HJ-B2-C07-L05-M01/review.md",
+              "outputMp4": null,
+              "outputWebm": null,
+              "poster": null
+            },
+            "media": {
+              "hasOutputMp4": false,
+              "hasOutputWebm": false,
+              "hasPoster": false
+            },
+            "storyboard": {
+              "kind": "storyboard",
+              "path": "content/manim/SH-HS-MATH-HJ-B2-C07-L05-M01/storyboard.md",
+              "title": "分镜：图像变换顺序解释",
+              "summary": "",
+              "sections": [
+                "核心叙事",
+                "第 1 幕：先拆输入",
+                "第 2 幕：改写括号",
+                "第 3 幕：横向压缩",
+                "第 4 幕：相位平移",
+                "第 5 幕：纵向放大和翻折",
+                "第 6 幕：读回参数",
+                "与 Applet 的衔接"
+              ]
+            }
+          }
         },
         {
           "id": "SH-HS-MATH-HJ-B2-C07-L05-D01",
@@ -4324,7 +4853,7 @@
     "chapterCount": 1,
     "lessonCount": 7,
     "implementedAppletCount": 3,
-    "implementedManimCount": 1,
-    "plannedResourceCount": 11
+    "implementedManimCount": 2,
+    "plannedResourceCount": 10
   }
 }
