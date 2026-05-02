@@ -14,9 +14,9 @@ test("generates a deterministic backlog from curriculum entry points and impleme
 
   assert.equal(backlog.source.curriculum, "content/curriculum/index.yaml");
   assert.equal(backlog.summary.total, 15);
-  assert.equal(backlog.summary.implemented, 7);
-  assert.equal(backlog.summary.planned, 8);
-  assert.deepEqual(backlog.summary.byType.applet, { total: 8, implemented: 3, planned: 5 });
+  assert.equal(backlog.summary.implemented, 8);
+  assert.equal(backlog.summary.planned, 7);
+  assert.deepEqual(backlog.summary.byType.applet, { total: 8, implemented: 4, planned: 4 });
   assert.deepEqual(backlog.summary.byType.manim_clip, { total: 3, implemented: 2, planned: 1 });
   assert.deepEqual(backlog.summary.byType.diagnosis, { total: 4, implemented: 2, planned: 2 });
 
@@ -49,6 +49,16 @@ test("generates a deterministic backlog from curriculum entry points and impleme
   assert.equal(sineDiagnosis.recommendedTrack, "track/review-system");
   assert.equal(sineDiagnosis.priority, "mvp");
   assert.match(sineDiagnosis.threadPrompt, /SH-HS-MATH-HJ-B2-C07-L02-D01/);
+
+  const cosineApplet = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B2-C07-L03-A01");
+  assert.equal(cosineApplet.status, "implemented");
+  assert.equal(cosineApplet.availability, "metadata_ready");
+  assert.equal(cosineApplet.type, "applet");
+  assert.equal(cosineApplet.packagePath, "content/applets/SH-HS-MATH-HJ-B2-C07-L03-A01");
+  assert.equal(cosineApplet.metadataPath, "content/applets/SH-HS-MATH-HJ-B2-C07-L03-A01/metadata.yaml");
+  assert.equal(cosineApplet.recommendedTrack, "track/trig-sample-pack");
+  assert.equal(cosineApplet.priority, "chapter_backlog");
+  assert.match(cosineApplet.nextAction, /审校|试读/);
 
   const parameterLabApplet = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B2-C07-L05-A01");
   assert.equal(parameterLabApplet.status, "implemented");
@@ -91,7 +101,7 @@ test("writes the backlog as stable pretty JSON", async () => {
     const written = JSON.parse(await readFile(outputPath, "utf8"));
 
     assert.equal(written.summary.total, 15);
-    assert.equal(written.summary.implemented, 7);
+    assert.equal(written.summary.implemented, 8);
     assert.equal(written.items[0].id, "SH-HS-MATH-HJ-B2-C07-L01-A01");
     assert.ok(
       JSON.stringify(written, null, 2).includes(

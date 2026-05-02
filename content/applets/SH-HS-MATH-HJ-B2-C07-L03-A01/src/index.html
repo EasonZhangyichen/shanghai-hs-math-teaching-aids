@@ -1,0 +1,1087 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>单位圆到余弦曲线</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #1d2733;
+        --muted: #667180;
+        --line: #d9e1ea;
+        --panel: #ffffff;
+        --canvas: #f7fafc;
+        --cosine: #155e75;
+        --cosine-soft: #d7f2f7;
+        --sine: #9a3412;
+        --sine-soft: #ffedd5;
+        --point: #c2410c;
+        --angle: #7c3aed;
+        --axis: #485565;
+        --ok: #166534;
+        --shadow: 0 18px 40px rgba(32, 48, 67, 0.12);
+        font-family:
+          "Inter", "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial,
+          sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: #eef4f8;
+        color: var(--ink);
+      }
+
+      .applet-shell {
+        min-height: 100vh;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        gap: 14px;
+        padding: 18px;
+      }
+
+      header {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 18px;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 26px;
+        line-height: 1.2;
+      }
+
+      .subtitle {
+        margin: 6px 0 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .badge-row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 8px;
+      }
+
+      .badge {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.82);
+        padding: 7px 10px;
+        font-size: 13px;
+        color: #334155;
+        white-space: nowrap;
+      }
+
+      main {
+        display: grid;
+        grid-template-columns: minmax(310px, 0.74fr) minmax(460px, 1.26fr);
+        gap: 14px;
+        min-height: 0;
+      }
+
+      .panel {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        box-shadow: var(--shadow);
+        min-width: 0;
+      }
+
+      .circle-panel,
+      .graph-panel {
+        display: grid;
+        grid-template-rows: auto 1fr;
+        overflow: hidden;
+      }
+
+      .panel-title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 12px 14px;
+        border-bottom: 1px solid var(--line);
+        background: #fbfdff;
+      }
+
+      .panel-title h2 {
+        margin: 0;
+        font-size: 16px;
+        line-height: 1.25;
+      }
+
+      .math-readout {
+        font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+        font-size: 13px;
+        color: var(--cosine);
+        white-space: nowrap;
+      }
+
+      .canvas-wrap {
+        min-height: 0;
+        background: var(--canvas);
+        position: relative;
+      }
+
+      svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+        min-height: 360px;
+        touch-action: none;
+        user-select: none;
+      }
+
+      .controls {
+        display: grid;
+        grid-template-columns: minmax(260px, 1fr) minmax(360px, 1.2fr);
+        gap: 14px;
+      }
+
+      .control-panel {
+        padding: 14px;
+      }
+
+      .control-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .slider-row {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        gap: 10px;
+        align-items: center;
+        margin-bottom: 12px;
+      }
+
+      label {
+        color: #334155;
+        font-size: 14px;
+        font-weight: 650;
+      }
+
+      input[type="range"] {
+        width: 100%;
+        accent-color: var(--cosine);
+      }
+
+      button {
+        min-height: 36px;
+        border: 1px solid #cbd5e1;
+        border-radius: 8px;
+        background: #ffffff;
+        color: #1f2937;
+        padding: 7px 11px;
+        font: inherit;
+        font-size: 14px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        border-color: #94a3b8;
+        background: #f8fafc;
+      }
+
+      button.primary {
+        background: var(--cosine);
+        border-color: var(--cosine);
+        color: #ffffff;
+      }
+
+      button.active {
+        border-color: var(--cosine);
+        background: var(--cosine-soft);
+        color: #164e63;
+      }
+
+      .status-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .status-card {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 10px;
+        background: #fbfdff;
+        min-width: 0;
+      }
+
+      .status-label {
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .status-value {
+        margin-top: 4px;
+        font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+        font-size: 16px;
+        color: var(--ink);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .prompt {
+        margin-top: 12px;
+        border-left: 4px solid var(--cosine);
+        background: #ecfeff;
+        padding: 10px 12px;
+        color: #164e63;
+        line-height: 1.5;
+        font-size: 14px;
+      }
+
+      .axis {
+        stroke: var(--axis);
+        stroke-width: 1.4;
+      }
+
+      .grid-line {
+        stroke: #dbe4ee;
+        stroke-width: 1;
+      }
+
+      .tick-label,
+      .small-label {
+        fill: #536170;
+        font-size: 12px;
+      }
+
+      .formula-label {
+        fill: #1d2733;
+        font-size: 14px;
+        font-weight: 650;
+      }
+
+      .cosine-curve {
+        fill: none;
+        stroke: var(--cosine);
+        stroke-width: 3.2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .sine-curve {
+        fill: none;
+        stroke: var(--sine);
+        stroke-width: 2.2;
+        stroke-dasharray: 7 7;
+        opacity: 0.72;
+      }
+
+      .projection {
+        stroke: var(--cosine);
+        stroke-width: 2.4;
+        stroke-dasharray: 5 5;
+      }
+
+      .projection-band {
+        stroke: var(--cosine);
+        stroke-width: 5;
+        stroke-linecap: round;
+        opacity: 0.28;
+      }
+
+      .angle-arc {
+        fill: none;
+        stroke: var(--angle);
+        stroke-width: 3;
+      }
+
+      .moving-point {
+        fill: var(--point);
+        stroke: #ffffff;
+        stroke-width: 3;
+      }
+
+      .graph-point {
+        fill: var(--cosine);
+        stroke: #ffffff;
+        stroke-width: 3;
+      }
+
+      .sine-point {
+        fill: var(--sine);
+        stroke: #ffffff;
+        stroke-width: 2.5;
+        opacity: 0.86;
+      }
+
+      .key-point {
+        fill: #ffffff;
+        stroke: var(--cosine);
+        stroke-width: 2.2;
+      }
+
+      .period-point {
+        fill: #ffffff;
+        stroke: var(--ok);
+        stroke-width: 2.2;
+      }
+
+      @media (max-width: 920px) {
+        .applet-shell {
+          padding: 12px;
+        }
+
+        header,
+        .badge-row {
+          justify-content: flex-start;
+        }
+
+        header,
+        main,
+        .controls {
+          grid-template-columns: 1fr;
+          display: grid;
+        }
+
+        .status-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        svg {
+          min-height: 330px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      class="applet-shell sh-hs-math-applet-sdk"
+      data-resource-id="SH-HS-MATH-HJ-B2-C07-L03-A01"
+    >
+      <header>
+        <div>
+          <h1>单位圆到余弦曲线</h1>
+          <p class="subtitle">拖动单位圆动点，观察 P 的横坐标如何成为 Q = (θ, cos θ)。</p>
+        </div>
+        <div class="badge-row" aria-label="资源信息">
+          <span class="badge">7.2.1 余弦函数的图像</span>
+          <span class="badge">认知动作：投影</span>
+          <span class="badge">状态：draft</span>
+        </div>
+      </header>
+
+      <main>
+        <section class="panel circle-panel" aria-labelledby="circle-title">
+          <div class="panel-title">
+            <h2 id="circle-title">单位圆：读横坐标</h2>
+            <span class="math-readout" id="pointReadout">P = (1.000, 0.000)</span>
+          </div>
+          <div class="canvas-wrap">
+            <svg id="circleSvg" viewBox="0 0 420 360" role="img" aria-label="单位圆上的余弦投影"></svg>
+          </div>
+        </section>
+
+        <section class="panel graph-panel" aria-labelledby="graph-title">
+          <div class="panel-title">
+            <h2 id="graph-title">函数图像：生成 y = cos x</h2>
+            <span class="math-readout" id="graphReadout">Q = (0, 1)</span>
+          </div>
+          <div class="canvas-wrap">
+            <svg id="graphSvg" viewBox="0 0 700 360" role="img" aria-label="余弦函数图像"></svg>
+          </div>
+        </section>
+      </main>
+
+      <section class="controls">
+        <div class="panel control-panel">
+          <div class="slider-row">
+            <label for="thetaSlider">θ</label>
+            <input
+              id="thetaSlider"
+              type="range"
+              min="0"
+              max="6.283185307179586"
+              step="0.001"
+              value="0"
+            />
+            <span class="math-readout" id="thetaReadout">0</span>
+          </div>
+          <div class="control-row" aria-label="播放控制">
+            <button class="primary" id="playButton" type="button">播放</button>
+            <button id="resetButton" type="button">重置</button>
+            <button class="active" id="projectionButton" type="button">投影线</button>
+            <button class="active" id="traceButton" type="button">轨迹</button>
+            <button class="active" id="keyButton" type="button">关键点</button>
+            <button id="sineButton" type="button">正弦参照</button>
+            <button id="periodButton" type="button">周期延拓</button>
+          </div>
+          <div class="prompt" id="teachingPrompt">
+            先让学生说清楚：cos θ 是单位圆动点 P 的横坐标，再把它放到函数图像的纵坐标位置。
+          </div>
+        </div>
+
+        <div class="panel control-panel">
+          <div class="status-grid" aria-label="当前状态">
+            <div class="status-card">
+              <div class="status-label">当前角</div>
+              <div class="status-value" id="thetaStatus">0</div>
+            </div>
+            <div class="status-card">
+              <div class="status-label">cos θ</div>
+              <div class="status-value" id="cosStatus">1.000</div>
+            </div>
+            <div class="status-card">
+              <div class="status-label">sin θ 参照</div>
+              <div class="status-value" id="sinStatus">0.000</div>
+            </div>
+            <div class="status-card">
+              <div class="status-label">关键点判断</div>
+              <div class="status-value" id="checkpointStatus">θ = 0</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script>
+      (() => {
+        const RESOURCE_ID = "SH-HS-MATH-HJ-B2-C07-L03-A01";
+        const TWO_PI = Math.PI * 2;
+        const SVG_NS = "http://www.w3.org/2000/svg";
+        const SDK_MESSAGE_TYPES = [
+          "applet:ready",
+          "applet:stateChanged",
+          "applet:interaction",
+          "applet:checkpoint",
+          "player:init",
+        ];
+
+        const state = {
+          theta: 0,
+          playing: false,
+          projectionVisible: true,
+          traceVisible: true,
+          keyPointsVisible: true,
+          sineReferenceVisible: false,
+          periodExtensionVisible: false,
+        };
+
+        const circleSvg = document.getElementById("circleSvg");
+        const graphSvg = document.getElementById("graphSvg");
+        const thetaSlider = document.getElementById("thetaSlider");
+        const playButton = document.getElementById("playButton");
+        const resetButton = document.getElementById("resetButton");
+        const projectionButton = document.getElementById("projectionButton");
+        const traceButton = document.getElementById("traceButton");
+        const keyButton = document.getElementById("keyButton");
+        const sineButton = document.getElementById("sineButton");
+        const periodButton = document.getElementById("periodButton");
+        const thetaReadout = document.getElementById("thetaReadout");
+        const pointReadout = document.getElementById("pointReadout");
+        const graphReadout = document.getElementById("graphReadout");
+        const thetaStatus = document.getElementById("thetaStatus");
+        const cosStatus = document.getElementById("cosStatus");
+        const sinStatus = document.getElementById("sinStatus");
+        const checkpointStatus = document.getElementById("checkpointStatus");
+        const teachingPrompt = document.getElementById("teachingPrompt");
+
+        const circle = { cx: 190, cy: 176, r: 105 };
+        const graph = {
+          left: 60,
+          right: 676,
+          top: 28,
+          bottom: 306,
+          yMin: -1.2,
+          yMax: 1.2,
+        };
+
+        const keyAngles = [
+          { value: 0, label: "0", cos: 1 },
+          { value: Math.PI / 2, label: "π/2", cos: 0 },
+          { value: Math.PI, label: "π", cos: -1 },
+          { value: (3 * Math.PI) / 2, label: "3π/2", cos: 0 },
+          { value: TWO_PI, label: "2π", cos: 1 },
+        ];
+
+        let animationFrame = null;
+        let lastTime = 0;
+        let lastCheckpoint = "";
+
+        function svgElement(name, attrs = {}, text = "") {
+          const node = document.createElementNS(SVG_NS, name);
+          for (const [key, value] of Object.entries(attrs)) {
+            node.setAttribute(key, value);
+          }
+          if (text) {
+            node.textContent = text;
+          }
+          return node;
+        }
+
+        function add(parent, name, attrs = {}, text = "") {
+          const node = svgElement(name, attrs, text);
+          parent.appendChild(node);
+          return node;
+        }
+
+        function normalizeTheta(theta) {
+          const normalized = theta % TWO_PI;
+          return normalized < 0 ? normalized + TWO_PI : normalized;
+        }
+
+        function round(value, digits = 3) {
+          return Number.parseFloat(value.toFixed(digits)).toFixed(digits);
+        }
+
+        function formatTheta(theta) {
+          const candidates = [
+            { value: 0, label: "0" },
+            { value: Math.PI / 2, label: "π/2" },
+            { value: Math.PI, label: "π" },
+            { value: (3 * Math.PI) / 2, label: "3π/2" },
+            { value: TWO_PI, label: "2π" },
+          ];
+          const match = candidates.find((item) => Math.abs(theta - item.value) < 0.015);
+          return match ? match.label : `${round(theta, 2)}`;
+        }
+
+        function unitToCircle(point) {
+          return {
+            x: circle.cx + circle.r * point.x,
+            y: circle.cy - circle.r * point.y,
+          };
+        }
+
+        function graphBounds() {
+          return state.periodExtensionVisible
+            ? { xMin: -TWO_PI, xMax: 4 * Math.PI }
+            : { xMin: 0, xMax: TWO_PI };
+        }
+
+        function graphX(x) {
+          const bounds = graphBounds();
+          return graph.left + ((x - bounds.xMin) / (bounds.xMax - bounds.xMin)) * (graph.right - graph.left);
+        }
+
+        function graphY(y) {
+          return graph.bottom - ((y - graph.yMin) / (graph.yMax - graph.yMin)) * (graph.bottom - graph.top);
+        }
+
+        function curvePath(fn) {
+          const bounds = graphBounds();
+          const samples = 180;
+          let d = "";
+          for (let i = 0; i <= samples; i += 1) {
+            const x = bounds.xMin + ((bounds.xMax - bounds.xMin) * i) / samples;
+            const px = graphX(x);
+            const py = graphY(fn(x));
+            d += `${i === 0 ? "M" : "L"} ${px.toFixed(2)} ${py.toFixed(2)} `;
+          }
+          return d.trim();
+        }
+
+        function drawCircle() {
+          circleSvg.replaceChildren();
+
+          add(circleSvg, "rect", { x: 0, y: 0, width: 420, height: 360, fill: "#f7fafc" });
+          add(circleSvg, "line", { x1: 44, y1: circle.cy, x2: 340, y2: circle.cy, class: "axis" });
+          add(circleSvg, "line", { x1: circle.cx, y1: 38, x2: circle.cx, y2: 315, class: "axis" });
+          add(circleSvg, "circle", {
+            cx: circle.cx,
+            cy: circle.cy,
+            r: circle.r,
+            fill: "#ffffff",
+            stroke: "#9fb0c2",
+            "stroke-width": 2,
+          });
+          add(circleSvg, "text", { x: 330, y: circle.cy - 10, class: "small-label" }, "x");
+          add(circleSvg, "text", { x: circle.cx + 10, y: 48, class: "small-label" }, "y");
+          add(circleSvg, "text", { x: circle.cx + circle.r + 8, y: circle.cy + 18, class: "small-label" }, "1");
+          add(circleSvg, "text", { x: circle.cx - circle.r - 18, y: circle.cy + 18, class: "small-label" }, "-1");
+
+          const point = { x: Math.cos(state.theta), y: Math.sin(state.theta) };
+          const pixel = unitToCircle(point);
+          const foot = unitToCircle({ x: point.x, y: 0 });
+
+          add(circleSvg, "path", {
+            d: describeAngleArc(state.theta),
+            class: "angle-arc",
+          });
+          add(circleSvg, "text", { x: circle.cx + 42, y: circle.cy - 18, class: "formula-label", fill: "#7c3aed" }, "θ");
+
+          if (state.projectionVisible) {
+            add(circleSvg, "line", {
+              x1: pixel.x,
+              y1: pixel.y,
+              x2: foot.x,
+              y2: foot.y,
+              class: "projection",
+            });
+            add(circleSvg, "line", {
+              x1: circle.cx,
+              y1: circle.cy + 18,
+              x2: foot.x,
+              y2: circle.cy + 18,
+              class: "projection-band",
+            });
+            add(circleSvg, "text", {
+              x: (circle.cx + foot.x) / 2 - 18,
+              y: circle.cy + 42,
+              class: "formula-label",
+              fill: "#155e75",
+            }, "cos θ");
+          }
+
+          add(circleSvg, "line", {
+            x1: circle.cx,
+            y1: circle.cy,
+            x2: pixel.x,
+            y2: pixel.y,
+            stroke: "#7c3aed",
+            "stroke-width": 2,
+          });
+          add(circleSvg, "circle", { cx: pixel.x, cy: pixel.y, r: 8, class: "moving-point" });
+          add(circleSvg, "circle", { cx: foot.x, cy: foot.y, r: 4.8, fill: "#155e75" });
+          add(circleSvg, "text", { x: pixel.x + 12, y: pixel.y - 10, class: "formula-label" }, "P");
+
+          if (state.sineReferenceVisible) {
+            const sineFoot = unitToCircle({ x: 0, y: point.y });
+            add(circleSvg, "line", {
+              x1: pixel.x,
+              y1: pixel.y,
+              x2: sineFoot.x,
+              y2: sineFoot.y,
+              stroke: "#9a3412",
+              "stroke-width": 2,
+              "stroke-dasharray": "5 5",
+              opacity: 0.72,
+            });
+            add(circleSvg, "text", {
+              x: circle.cx - 70,
+              y: sineFoot.y - 8,
+              class: "small-label",
+              fill: "#9a3412",
+            }, "sin θ 参照");
+          }
+
+          if (state.keyPointsVisible) {
+            for (const key of keyAngles.slice(0, 4)) {
+              const keyPoint = unitToCircle({ x: Math.cos(key.value), y: Math.sin(key.value) });
+              add(circleSvg, "circle", { cx: keyPoint.x, cy: keyPoint.y, r: 4, fill: "#ffffff", stroke: "#155e75", "stroke-width": 1.8 });
+              add(circleSvg, "text", { x: keyPoint.x + 7, y: keyPoint.y - 7, class: "small-label" }, key.label);
+            }
+          }
+        }
+
+        function describeAngleArc(theta) {
+          const radius = 42;
+          const start = { x: circle.cx + radius, y: circle.cy };
+          const end = {
+            x: circle.cx + radius * Math.cos(theta),
+            y: circle.cy - radius * Math.sin(theta),
+          };
+          const largeArc = theta > Math.PI ? 1 : 0;
+          return `M ${start.x} ${start.y} A ${radius} ${radius} 0 ${largeArc} 0 ${end.x} ${end.y}`;
+        }
+
+        function drawGraph() {
+          graphSvg.replaceChildren();
+          add(graphSvg, "rect", { x: 0, y: 0, width: 700, height: 360, fill: "#f7fafc" });
+
+          drawGraphGrid();
+
+          if (state.traceVisible) {
+            add(graphSvg, "path", { d: curvePath(Math.cos), class: "cosine-curve" });
+          }
+
+          if (state.sineReferenceVisible) {
+            add(graphSvg, "path", { d: curvePath(Math.sin), class: "sine-curve" });
+            add(graphSvg, "text", { x: graph.right - 122, y: graph.top + 22, class: "small-label", fill: "#9a3412" }, "y = sin x 参照");
+          }
+
+          if (state.keyPointsVisible) {
+            drawKeyPoints();
+          }
+
+          const theta = state.theta;
+          drawCurrentPoint(theta, false);
+
+          if (state.periodExtensionVisible) {
+            drawPeriodPoint(theta + TWO_PI);
+            drawPeriodPoint(theta - TWO_PI);
+          }
+        }
+
+        function drawGraphGrid() {
+          const bounds = graphBounds();
+          const ticks = state.periodExtensionVisible
+            ? [
+                [-TWO_PI, "-2π"],
+                [-Math.PI, "-π"],
+                [0, "0"],
+                [Math.PI, "π"],
+                [TWO_PI, "2π"],
+                [3 * Math.PI, "3π"],
+                [4 * Math.PI, "4π"],
+              ]
+            : [
+                [0, "0"],
+                [Math.PI / 2, "π/2"],
+                [Math.PI, "π"],
+                [(3 * Math.PI) / 2, "3π/2"],
+                [TWO_PI, "2π"],
+              ];
+
+          for (const y of [-1, 0, 1]) {
+            add(graphSvg, "line", {
+              x1: graph.left,
+              y1: graphY(y),
+              x2: graph.right,
+              y2: graphY(y),
+              class: y === 0 ? "axis" : "grid-line",
+            });
+            add(graphSvg, "text", { x: graph.left - 34, y: graphY(y) + 4, class: "tick-label" }, String(y));
+          }
+
+          for (const [x, label] of ticks) {
+            if (x < bounds.xMin - 0.001 || x > bounds.xMax + 0.001) continue;
+            add(graphSvg, "line", {
+              x1: graphX(x),
+              y1: graph.top,
+              x2: graphX(x),
+              y2: graph.bottom,
+              class: x === 0 ? "axis" : "grid-line",
+            });
+            add(graphSvg, "text", { x: graphX(x) - 12, y: graph.bottom + 24, class: "tick-label" }, label);
+          }
+
+          add(graphSvg, "line", { x1: graph.left, y1: graph.bottom, x2: graph.right, y2: graph.bottom, class: "axis" });
+          add(graphSvg, "text", { x: graph.right - 16, y: graph.bottom + 40, class: "small-label" }, "x");
+          add(graphSvg, "text", { x: graph.left - 44, y: graph.top + 8, class: "small-label" }, "y");
+          add(graphSvg, "text", { x: graph.left + 12, y: graph.top + 22, class: "formula-label", fill: "#155e75" }, "y = cos x");
+        }
+
+        function drawKeyPoints() {
+          const bounds = graphBounds();
+          const baseValues = state.periodExtensionVisible
+            ? [-TWO_PI, -Math.PI, 0, Math.PI / 2, Math.PI, (3 * Math.PI) / 2, TWO_PI, (5 * Math.PI) / 2, 3 * Math.PI, (7 * Math.PI) / 2, 4 * Math.PI]
+            : [0, Math.PI / 2, Math.PI, (3 * Math.PI) / 2, TWO_PI];
+
+          for (const x of baseValues) {
+            if (x < bounds.xMin - 0.001 || x > bounds.xMax + 0.001) continue;
+            const y = Math.cos(x);
+            add(graphSvg, "circle", { cx: graphX(x), cy: graphY(y), r: 5, class: "key-point" });
+          }
+        }
+
+        function drawCurrentPoint(theta, muted) {
+          const y = Math.cos(theta);
+          add(graphSvg, "line", {
+            x1: graphX(theta),
+            y1: graphY(0),
+            x2: graphX(theta),
+            y2: graphY(y),
+            class: "projection",
+            opacity: muted ? 0.45 : 1,
+          });
+          add(graphSvg, "line", {
+            x1: graph.left,
+            y1: graphY(y),
+            x2: graphX(theta),
+            y2: graphY(y),
+            stroke: "#155e75",
+            "stroke-width": 1.8,
+            "stroke-dasharray": "4 5",
+            opacity: muted ? 0.45 : 0.82,
+          });
+          add(graphSvg, "circle", {
+            cx: graphX(theta),
+            cy: graphY(y),
+            r: muted ? 5 : 8,
+            class: muted ? "period-point" : "graph-point",
+          });
+          add(graphSvg, "text", {
+            x: graphX(theta) + 10,
+            y: graphY(y) - 12,
+            class: "formula-label",
+            fill: muted ? "#166534" : "#155e75",
+          }, muted ? "θ ± 2π" : "Q");
+
+          if (state.sineReferenceVisible && !muted) {
+            add(graphSvg, "circle", {
+              cx: graphX(theta),
+              cy: graphY(Math.sin(theta)),
+              r: 6,
+              class: "sine-point",
+            });
+          }
+        }
+
+        function drawPeriodPoint(theta) {
+          const bounds = graphBounds();
+          if (theta < bounds.xMin || theta > bounds.xMax) return;
+          drawCurrentPoint(theta, true);
+        }
+
+        function updateReadouts() {
+          const theta = state.theta;
+          const cos = Math.cos(theta);
+          const sin = Math.sin(theta);
+          const formattedTheta = formatTheta(theta);
+          const checkpoint = currentCheckpoint(theta);
+
+          thetaSlider.value = String(theta);
+          thetaReadout.textContent = formattedTheta;
+          pointReadout.textContent = `P = (${round(cos)}, ${round(sin)})`;
+          graphReadout.textContent = `Q = (${formattedTheta}, ${round(cos)})`;
+          thetaStatus.textContent = formattedTheta;
+          cosStatus.textContent = round(cos);
+          sinStatus.textContent = round(sin);
+          checkpointStatus.textContent = checkpoint.label;
+          teachingPrompt.textContent = checkpoint.prompt;
+
+          playButton.textContent = state.playing ? "暂停" : "播放";
+          projectionButton.classList.toggle("active", state.projectionVisible);
+          traceButton.classList.toggle("active", state.traceVisible);
+          keyButton.classList.toggle("active", state.keyPointsVisible);
+          sineButton.classList.toggle("active", state.sineReferenceVisible);
+          periodButton.classList.toggle("active", state.periodExtensionVisible);
+        }
+
+        function currentCheckpoint(theta) {
+          const match = keyAngles.find((item) => Math.abs(theta - item.value) < 0.04);
+          if (!match) {
+            return {
+              label: "观察中",
+              prompt: "追问：此刻图像点 Q 的纵坐标，为什么来自单位圆动点 P 的横坐标？",
+            };
+          }
+
+          const prompts = {
+            "0": "θ = 0 时，P 在 (1, 0)，所以余弦图像从最大值 1 开始。",
+            "π/2": "θ = π/2 时，P 的横坐标为 0，余弦图像过 x 轴。",
+            "π": "θ = π 时，P 在 (-1, 0)，余弦值到达 -1。",
+            "3π/2": "θ = 3π/2 时，P 的横坐标回到 0，余弦图像再次过 x 轴。",
+            "2π": "θ = 2π 时，P 回到 (1, 0)，解释一个周期后余弦值重复。",
+          };
+
+          return {
+            label: `θ = ${match.label}`,
+            prompt: prompts[match.label],
+          };
+        }
+
+        function emit(kind, payload = {}) {
+          const type = `applet:${kind}`;
+          if (!SDK_MESSAGE_TYPES.includes(type)) {
+            return;
+          }
+          window.parent.postMessage(
+            {
+              type,
+              source: "sh-hs-math-applet-sdk",
+              resourceId: RESOURCE_ID,
+              payload,
+            },
+            "*",
+          );
+        }
+
+        function snapshot() {
+          const theta = state.theta;
+          const cos = Math.cos(theta);
+          const sin = Math.sin(theta);
+          return {
+            theta,
+            cosine_value: cos,
+            sine_reference_value: sin,
+            point_p: { x: cos, y: sin },
+            point_q: { x: theta, y: cos },
+            projection_visible: state.projectionVisible,
+            trace_visible: state.traceVisible,
+            sine_reference_visible: state.sineReferenceVisible,
+            period_extension_visible: state.periodExtensionVisible,
+          };
+        }
+
+        function render(shouldEmit = true) {
+          drawCircle();
+          drawGraph();
+          updateReadouts();
+
+          if (shouldEmit) {
+            emit("stateChanged", {
+              event: "theta_changed",
+              state: snapshot(),
+            });
+            maybeEmitCheckpoint();
+          }
+        }
+
+        function maybeEmitCheckpoint() {
+          const checkpoint = currentCheckpoint(state.theta);
+          if (!checkpoint.label.startsWith("θ = ")) {
+            lastCheckpoint = "";
+            return;
+          }
+          if (checkpoint.label === lastCheckpoint) return;
+          lastCheckpoint = checkpoint.label;
+          emit("checkpoint", {
+            event: "key_angle_reached",
+            theta: state.theta,
+            cosine_value: Math.cos(state.theta),
+            label: checkpoint.label,
+          });
+        }
+
+        function setTheta(theta, reason = "manual") {
+          state.theta = normalizeTheta(theta);
+          render(true);
+          emit("interaction", {
+            event: "theta_changed",
+            reason,
+            theta: state.theta,
+            cosine_value: Math.cos(state.theta),
+            sine_reference_value: Math.sin(state.theta),
+          });
+        }
+
+        function toggleLayer(key) {
+          state[key] = !state[key];
+          render(true);
+          emit("interaction", {
+            event: key === "periodExtensionVisible" ? "period_extension_toggled" : "layer_toggled",
+            state: snapshot(),
+          });
+        }
+
+        function startPlayback() {
+          if (state.playing) return;
+          state.playing = true;
+          lastTime = performance.now();
+          playButton.textContent = "暂停";
+          animationFrame = requestAnimationFrame(tick);
+        }
+
+        function stopPlayback() {
+          state.playing = false;
+          playButton.textContent = "播放";
+          if (animationFrame) {
+            cancelAnimationFrame(animationFrame);
+            animationFrame = null;
+          }
+        }
+
+        function tick(time) {
+          if (!state.playing) return;
+          const elapsed = (time - lastTime) / 1000;
+          lastTime = time;
+          state.theta = normalizeTheta(state.theta + elapsed * 0.55);
+          render(true);
+          animationFrame = requestAnimationFrame(tick);
+        }
+
+        function attachCircleDrag() {
+          let dragging = false;
+
+          function pointerToTheta(event) {
+            const rect = circleSvg.getBoundingClientRect();
+            const x = ((event.clientX - rect.left) / rect.width) * 420;
+            const y = ((event.clientY - rect.top) / rect.height) * 360;
+            const ux = (x - circle.cx) / circle.r;
+            const uy = -(y - circle.cy) / circle.r;
+            return normalizeTheta(Math.atan2(uy, ux));
+          }
+
+          circleSvg.addEventListener("pointerdown", (event) => {
+            dragging = true;
+            circleSvg.setPointerCapture(event.pointerId);
+            stopPlayback();
+            setTheta(pointerToTheta(event), "drag");
+          });
+
+          circleSvg.addEventListener("pointermove", (event) => {
+            if (!dragging) return;
+            setTheta(pointerToTheta(event), "drag");
+          });
+
+          circleSvg.addEventListener("pointerup", (event) => {
+            dragging = false;
+            circleSvg.releasePointerCapture(event.pointerId);
+          });
+
+          circleSvg.addEventListener("pointercancel", () => {
+            dragging = false;
+          });
+        }
+
+        thetaSlider.addEventListener("input", (event) => {
+          stopPlayback();
+          setTheta(Number(event.target.value), "slider");
+        });
+
+        playButton.addEventListener("click", () => {
+          if (state.playing) {
+            stopPlayback();
+          } else {
+            startPlayback();
+          }
+          emit("interaction", { event: "playback_toggled", playing: state.playing });
+        });
+
+        resetButton.addEventListener("click", () => {
+          stopPlayback();
+          state.theta = 0;
+          lastCheckpoint = "";
+          render(true);
+          emit("interaction", { event: "reset", state: snapshot() });
+        });
+
+        projectionButton.addEventListener("click", () => toggleLayer("projectionVisible"));
+        traceButton.addEventListener("click", () => toggleLayer("traceVisible"));
+        keyButton.addEventListener("click", () => toggleLayer("keyPointsVisible"));
+        sineButton.addEventListener("click", () => toggleLayer("sineReferenceVisible"));
+        periodButton.addEventListener("click", () => toggleLayer("periodExtensionVisible"));
+
+        window.addEventListener("message", (event) => {
+          const message = event.data ?? {};
+          if (message.type !== "player:init") return;
+          const nextState = message.payload?.state ?? {};
+          if (Number.isFinite(nextState.theta)) {
+            state.theta = normalizeTheta(nextState.theta);
+          }
+          for (const [incoming, local] of [
+            ["projection_visible", "projectionVisible"],
+            ["trace_visible", "traceVisible"],
+            ["sine_reference_visible", "sineReferenceVisible"],
+            ["period_extension_visible", "periodExtensionVisible"],
+          ]) {
+            if (typeof nextState[incoming] === "boolean") {
+              state[local] = nextState[incoming];
+            }
+          }
+          render(true);
+        });
+
+        attachCircleDrag();
+        render(false);
+        emit("ready", {
+          state: snapshot(),
+          supportedEvents: [
+            "theta_changed",
+            "key_angle_reached",
+            "layer_toggled",
+            "period_extension_toggled",
+          ],
+        });
+      })();
+    </script>
+  </body>
+</html>
