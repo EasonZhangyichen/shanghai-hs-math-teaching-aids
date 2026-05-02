@@ -75,6 +75,29 @@ test("links the rendered Manim clip to lesson L01 with stable video entries", as
   });
 });
 
+test("links the cosine unit-circle applet to lesson L03", async () => {
+  const workspace = await loadTeacherWorkspace({ rootDir: repoRoot });
+  const lesson = workspace.lessonsById["SH-HS-MATH-HJ-B2-C07-L03"];
+  const applet = lesson.resources.find((resource) => resource.id === "SH-HS-MATH-HJ-B2-C07-L03-A01");
+
+  assert.equal(lesson.title, "余弦函数的图像");
+  assert.ok(applet, "cosine applet card should be attached to lesson L03");
+  assert.equal(applet.availability, "metadata_ready");
+  assert.equal(applet.status, "draft");
+  assert.equal(applet.metadataPreview.implementation.phase, "runnable_prototype");
+  assert.equal(applet.metadataPreview.implementation.html_src_status, "runnable");
+  assert.equal(applet.package.files.srcEntry, "content/applets/SH-HS-MATH-HJ-B2-C07-L03-A01/src/index.html");
+  assert.deepEqual(applet.player, {
+    kind: "iframe",
+    isRunnable: true,
+    src: "content/applets/SH-HS-MATH-HJ-B2-C07-L03-A01/src/index.html",
+    title: "单位圆到余弦曲线",
+    sandbox: "allow-scripts allow-same-origin",
+  });
+  assert.equal(applet.package.teacherScript.title, "教师脚本：单位圆到余弦曲线");
+  assert.equal(applet.package.studentTask.title, "学生活动：从单位圆生成余弦曲线");
+});
+
 test("sample applet exposes a runnable SDK-compatible HTML entry", async () => {
   const entryPath = path.join(repoRoot, "content/applets/SH-HS-MATH-HJ-B2-C07-L01-A01/src/index.html");
   const html = await readFile(entryPath, "utf8");
@@ -85,6 +108,19 @@ test("sample applet exposes a runnable SDK-compatible HTML entry", async () => {
   assert.match(html, /applet:stateChanged/);
   assert.match(html, /player:init/);
   assert.match(html, /theta_changed/);
+});
+
+test("cosine applet exposes a runnable SDK-compatible HTML entry", async () => {
+  const entryPath = path.join(repoRoot, "content/applets/SH-HS-MATH-HJ-B2-C07-L03-A01/src/index.html");
+  const html = await readFile(entryPath, "utf8");
+
+  assert.match(html, /SH-HS-MATH-HJ-B2-C07-L03-A01/);
+  assert.match(html, /sh-hs-math-applet-sdk/);
+  assert.match(html, /applet:ready/);
+  assert.match(html, /applet:stateChanged/);
+  assert.match(html, /player:init/);
+  assert.match(html, /theta_changed/);
+  assert.match(html, /cosine_value/);
 });
 
 test("links the parameter lab applet and rendered transform-order Manim to lesson L05", async () => {

@@ -1,0 +1,234 @@
+id: "SH-HS-MATH-HJ-B2-C07-L03-A01"
+version: "0.1.0"
+status: "draft"
+resource_type: "applet"
+title: "单位圆到余弦曲线"
+subtitle: "从单位圆动点的横坐标生成 y = cos x 的函数图像"
+
+curriculum:
+  region: "上海"
+  stage: "高中"
+  subject: "数学"
+  edition: "沪教版"
+  volume_id: "B2"
+  volume_title: "必修第二册"
+  chapter_id: "SH-HS-MATH-HJ-B2-C07"
+  chapter_title: "三角函数"
+  section_id: "SH-HS-MATH-HJ-B2-C07-S02"
+  section_title: "余弦函数的图像与性质"
+  lesson_id: "SH-HS-MATH-HJ-B2-C07-L03"
+  textbook_ref: "7.2.1"
+  lesson_title: "余弦函数的图像"
+
+pedagogy:
+  cognitive_action: "投影"
+  estimated_classroom_minutes: 18
+  primary_teaching_problem: "学生容易把余弦曲线机械看作正弦曲线平移，不能先说明 y = cos x 的函数值来自单位圆动点的横坐标。"
+  learning_goals:
+    - "把单位圆上动点 P 的横坐标与 cos theta 的函数值对应起来。"
+    - "说明余弦图像上点 Q 的坐标应写成 (theta, cos theta)，其中 theta 是角的弧度量。"
+    - "通过一周旋转识别 0、pi/2、pi、3pi/2、2pi 处的余弦关键点顺序。"
+    - "借助可切换的正弦参照，解释 cos x 与 sin x 的相位关系但不替代横坐标来源。"
+  prerequisites:
+    - "弧度制和终边相同角"
+    - "单位圆中的余弦定义"
+    - "正弦函数图像的生成过程"
+    - "函数图像描点与坐标表示"
+  successors:
+    - "SH-HS-MATH-HJ-B2-C07-L04"
+    - "SH-HS-MATH-HJ-B2-C07-L05"
+    - "SH-HS-MATH-HJ-B2-C08-K01"
+  core_competencies:
+    - "直观想象"
+    - "数学抽象"
+
+mathematical_scope:
+  function: "y = cos x"
+  independent_variable: "角 x 的弧度量"
+  dependent_variable: "单位圆动点的横坐标"
+  default_theta_range: "0 <= theta <= 2pi"
+  extension_theta_range: "-2pi <= theta <= 4pi"
+  key_angles:
+    - theta: "0"
+      cosine: "1"
+      sine: "0"
+      unit_circle_position: "(1, 0)"
+    - theta: "pi/2"
+      cosine: "0"
+      sine: "1"
+      unit_circle_position: "(0, 1)"
+    - theta: "pi"
+      cosine: "-1"
+      sine: "0"
+      unit_circle_position: "(-1, 0)"
+    - theta: "3pi/2"
+      cosine: "0"
+      sine: "-1"
+      unit_circle_position: "(0, -1)"
+    - theta: "2pi"
+      cosine: "1"
+      sine: "0"
+      unit_circle_position: "(1, 0)"
+  relation_to_sine: "cos x = sin(x + pi/2)"
+  out_of_scope:
+    - "余弦函数单调区间、奇偶性和对称性的系统归纳"
+    - "正弦与余弦性质的完整比较"
+    - "y = A sin(omega x + phi) 的参数变换"
+    - "用诱导公式证明余弦性质"
+
+representations:
+  - id: "unit_circle"
+    role: "显示角 theta、动点 P 和 P 的横坐标。"
+  - id: "horizontal_projection"
+    role: "把 P 的横坐标投影为余弦函数值。"
+  - id: "cosine_graph"
+    role: "显示图像点 Q = (theta, cos theta) 和随 theta 变化生成的轨迹。"
+  - id: "sine_reference"
+    role: "教师打开时显示同一 theta 下的 sin theta 参照，帮助区分横坐标与纵坐标来源。"
+  - id: "key_value_table"
+    role: "记录关键角、单位圆位置、cos theta 与图像点。"
+
+interaction_design:
+  primary_control: "拖动单位圆上的动点 P，或用 theta 滑块精确控制角度。"
+  teacher_controls:
+    - "播放/暂停匀速旋转"
+    - "重置到 theta = 0"
+    - "显示或隐藏角弧与弧度标签"
+    - "显示或隐藏横向投影线"
+    - "显示或隐藏已生成余弦轨迹"
+    - "显示或隐藏关键点和关键值表"
+    - "显示或隐藏正弦参照曲线"
+    - "切换一周视图与周期延拓视图"
+  student_controls:
+    - "拖动动点观察横坐标变化"
+    - "在关键角处停留并填写观察表"
+    - "先预测余弦图像点位置，再显示轨迹验证"
+  staged_reveal:
+    - step: "circle_only"
+      description: "只显示单位圆、坐标轴、动点 P 和角 theta。"
+    - step: "horizontal_projection"
+      description: "显示 P 到 x 轴方向的投影，强调 cos theta 是横坐标。"
+    - step: "graph_point"
+      description: "在右侧坐标系显示 Q = (theta, cos theta)。"
+    - step: "trace_generation"
+      description: "随拖动保留 Q 的轨迹，生成 0 到 2pi 的余弦曲线。"
+    - step: "sine_reference"
+      description: "打开正弦参照，比较同一 theta 下横坐标投影和纵坐标投影的区别。"
+    - step: "period_extension"
+      description: "显示 theta 与 theta + 2pi 的同一横坐标来源，解释周期重复。"
+
+data_contract:
+  state_variables:
+    - name: "theta"
+      unit: "radian"
+      value_type: "number"
+      default: 0
+      description: "当前角的弧度量。"
+      persistence: "snapshot"
+    - name: "point_p"
+      value_type: "point2d"
+      description: "单位圆动点坐标 (cos theta, sin theta)。"
+      persistence: "snapshot"
+    - name: "cosine_value"
+      unit: "unitless"
+      value_type: "number"
+      default: 1
+      description: "point_p 的横坐标 cos theta。"
+      persistence: "snapshot"
+    - name: "sine_reference_value"
+      unit: "unitless"
+      value_type: "number"
+      default: 0
+      description: "同一 theta 下的 sin theta，用于参照而非本资源主线。"
+      persistence: "snapshot"
+    - name: "point_q"
+      value_type: "point2d"
+      description: "函数图像上的点 (theta, cos theta)。"
+      persistence: "snapshot"
+    - name: "projection_visible"
+      value_type: "boolean"
+      default: true
+      description: "是否显示横向投影线。"
+      persistence: "snapshot"
+    - name: "trace_visible"
+      value_type: "boolean"
+      default: true
+      description: "是否显示已生成的余弦曲线轨迹。"
+      persistence: "snapshot"
+    - name: "sine_reference_visible"
+      value_type: "boolean"
+      default: false
+      description: "是否显示正弦参照曲线和参照点。"
+      persistence: "snapshot"
+    - name: "period_extension_visible"
+      value_type: "boolean"
+      default: false
+      description: "是否显示周期延拓视图。"
+      persistence: "snapshot"
+  events:
+    - name: "theta_changed"
+      direction: "applet_to_player"
+      description: "当前角发生变化。"
+      payload: ["theta", "cosine_value", "sine_reference_value", "point_p", "point_q"]
+    - name: "key_angle_reached"
+      direction: "applet_to_player"
+      description: "当前角接近余弦关键角。"
+      payload: ["theta", "cosine_value"]
+    - name: "layer_toggled"
+      direction: "applet_to_player"
+      description: "教师显示或隐藏某一图层。"
+      payload: ["projection_visible", "trace_visible", "sine_reference_visible", "period_extension_visible"]
+    - name: "period_extension_toggled"
+      direction: "applet_to_player"
+      description: "教师切换周期延拓视图。"
+      payload: ["period_extension_visible"]
+
+feedback_and_diagnosis:
+  success_evidence:
+    - "学生能用自己的话说明余弦函数值来自单位圆动点的横坐标。"
+    - "学生能写出余弦图像上点 Q = (theta, cos theta)，并说明 theta 是弧度量。"
+    - "学生能按 1、0、-1、0、1 的顺序说出五个关键角处的余弦值。"
+    - "学生能说明 cos x 与 sin x 的相位关系，同时不把余弦来源简化为背平移。"
+  common_error_tags:
+    - id: "sine_cosine_projection_mixup"
+      label: "把余弦值误认为单位圆动点的纵坐标"
+    - id: "key_point_order_mixup"
+      label: "把余弦图像关键点顺序和正弦图像混用"
+    - id: "phase_shift_only_memory"
+      label: "只记住余弦是正弦平移，不能解释横坐标来源"
+    - id: "graph_x_circle_x_confusion"
+      label: "把函数图像横坐标 theta 与单位圆点横坐标 cos theta 混淆"
+  feedback_principles:
+    - "反馈优先追问 cos theta 对应单位圆上的哪个坐标。"
+    - "关键点错误要回到同一个 theta 下的点 P 和点 Q。"
+    - "相位参照只用于解释关系，不替代单位圆横坐标投影。"
+
+visual_semantics:
+  angle_arc: "表示角 theta 的弧度量。"
+  moving_point: "表示单位圆上的动点 P。"
+  projection_line: "表示从 P 的横坐标到 cos theta 的投影关系。"
+  graph_point: "表示余弦图像上的点 Q = (theta, cos theta)。"
+  generated_trace: "表示随 theta 变化形成的余弦曲线。"
+  sine_reference: "表示同一 theta 下的正弦参照，颜色弱于余弦主线。"
+  rule: "颜色只用于区分数学对象和对应关系，不作装饰。"
+
+implementation:
+  phase: "runnable_prototype"
+  html_src_status: "runnable"
+  planned_engine: "native-canvas-svg"
+  create_src_in_later_task: false
+  classroom_device_targets:
+    - "教师电脑浏览器"
+    - "教室大屏"
+    - "触控屏或触控板"
+
+files:
+  readme: "README.md"
+  teacher_script: "teacher-script.md"
+  student_task: "student-task.md"
+  review_record: "review.md"
+  src_entry: "src/index.html"
+
+compliance:
+  copyright_note: "本资源包为原创教学脚本与交互实现，不复制教材正文、官方课件、教案或商业平台资源。"
+  review_status: "self_checked_draft"
