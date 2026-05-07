@@ -94,6 +94,7 @@ function renderSidebar() {
         <span>${workspace.summary.lessonCount} 课时</span>
         <span>${workspace.summary.implementedAppletCount} 个 Applet</span>
         <span>${workspace.summary.implementedManimCount ?? 0} 个 Manim</span>
+        <span>${workspace.summary.implementedDiagnosisCount ?? 0} 个诊断</span>
       </div>
       <nav class="curriculum-tree">
         ${workspace.tree.volumes.map(renderVolume).join("")}
@@ -275,7 +276,13 @@ function renderResourceDetail(resource) {
 
 function renderMetadataSummary(resource, metadata) {
   const summaryItems =
-    resource.resourceType === "manim_clip"
+    resource.resourceType === "diagnosis"
+      ? [
+          ["状态", statusLabel(metadata.status)],
+          ["题组状态", metadata.platformCard?.availability ?? resource.availability],
+          ["题量", `${metadata.diagnosisDesign?.itemSummary?.totalItems ?? resource.package?.itemBank?.itemCount ?? 0} 题`],
+        ]
+      : resource.resourceType === "manim_clip"
       ? [
           ["状态", statusLabel(metadata.status)],
           ["渲染阶段", metadata.renderPlan?.phase ?? "unknown"],
@@ -333,6 +340,37 @@ function renderMetadataLayout(resource, metadata) {
     `;
   }
 
+  if (resource.resourceType === "diagnosis") {
+    return `
+      <div class="metadata-layout">
+        <div>
+          <h4>诊断目标</h4>
+          ${renderCompactList(metadata.diagnosisDesign.diagnosticFocus)}
+        </div>
+        <div>
+          <h4>错因标签</h4>
+          ${renderMisconceptionTags(metadata.diagnosisDesign.misconceptionTags)}
+        </div>
+        <div>
+          <h4>题组摘要</h4>
+          ${renderCompactList(
+            [
+              `题量：${metadata.diagnosisDesign.itemSummary?.totalItems ?? resource.package?.itemBank?.itemCount ?? 0} 题`,
+              `题型：${(metadata.diagnosisDesign.itemSummary?.questionTypes ?? []).join(" / ") || "待补充"}`,
+              `建议用时：${metadata.diagnosisDesign.itemSummary?.estimatedMinutes ?? resource.package?.itemBank?.estimatedMinutes ?? "-"} 分钟`,
+              `总分：${resource.package?.itemBank?.totalScore ?? "-"} 分`,
+            ],
+            { math: false },
+          )}
+        </div>
+        <div>
+          <h4>反馈策略</h4>
+          ${renderFeedbackStrategy(metadata.diagnosisDesign.feedbackStrategy)}
+        </div>
+      </div>
+    `;
+  }
+
   return `
     <div class="metadata-layout">
       <div>
@@ -355,8 +393,48 @@ function renderMetadataLayout(resource, metadata) {
   `;
 }
 
+function renderMisconceptionTags(tags) {
+  if (!tags?.length) {
+    return `<p class="muted">暂无</p>`;
+  }
+
+  return `
+    <ul>
+      ${tags
+        .map((tag) => `<li><strong>${renderMathText(tag.title ?? tag.id)}</strong>：${renderMathText(tag.description ?? "")}</li>`)
+        .join("")}
+    </ul>
+  `;
+}
+
+function renderFeedbackStrategy(strategy) {
+  if (!strategy) {
+    return `<p class="muted">暂无</p>`;
+  }
+
+  return renderCompactList([
+    strategy.immediate_feedback ? `即时反馈：${strategy.immediate_feedback}` : null,
+    strategy.teacher_dashboard_notes ? `教师看板：${strategy.teacher_dashboard_notes}` : null,
+    ...(strategy.remediation_links ?? []).map((link) => `补救入口：${link}`),
+  ].filter(Boolean));
+}
+
 function renderResourcePlayer(resource) {
   if (!resource.player?.isRunnable) {
+    if (resource.resourceType === "diagnosis") {
+      const itemSummary = resource.metadataPreview?.diagnosisDesign?.itemSummary;
+      const itemBank = resource.package?.itemBank;
+      return `
+        <div class="planned-preview diagnosis-preview">
+          <p class="planned-title">诊断题组已接入</p>
+          <p>${renderMathText(
+            `当前题组包含 ${itemSummary?.totalItems ?? itemBank?.itemCount ?? 0} 题，建议课堂 ${itemSummary?.estimatedMinutes ?? itemBank?.estimatedMinutes ?? "-"} 分钟完成；后续可升级为学生作答播放器。`,
+          )}</p>
+          <p class="entry-path">${escapeHtml(resource.package?.files?.itemBank ?? "")}</p>
+        </div>
+      `;
+    }
+
     return `
       <div class="planned-preview">
         <p class="planned-title">${resource.resourceType === "manim_clip" ? "视频预览尚未就绪" : "真实课件预览尚未就绪"}</p>
@@ -434,6 +512,24 @@ function renderScriptEntrypoints(resource, lesson) {
         <p>${renderMathText(resource.package.storyboard?.summary || resource.subtitle || "")}</p>
         <div class="section-tags">
           ${(resource.package.storyboard?.sections ?? []).map((section) => `<span>${renderMathText(section)}</span>`).join("")}
+        </div>
+      </article>
+    `;
+  }
+
+  if (resource.resourceType === "diagnosis") {
+    return `
+      <div class="section-heading">
+        <h3 id="script-title">诊断题组与教师说明</h3>
+        <span>${escapeHtml(resource.package.path)}</span>
+      </div>
+      <article class="entry-preview">
+        <p class="entry-path">${escapeHtml(resource.package.files.itemBank)}</p>
+        <h4>${renderMathText(resource.package.itemBank?.title ?? resource.title)}</h4>
+        <p>${renderMathText(resource.package.teacherNotes?.summary || resource.subtitle || "")}</p>
+        <div class="section-tags">
+          ${(resource.package.teacherNotes?.sections ?? []).map((section) => `<span>${renderMathText(section)}</span>`).join("")}
+          ${(resource.package.scoringRubric?.sections ?? []).map((section) => `<span>${renderMathText(section)}</span>`).join("")}
         </div>
       </article>
     `;
@@ -660,6 +756,14 @@ function resourceAvailabilityLabel(resource) {
     return "metadata 已就绪";
   }
 
+  if (resource.availability === "item_bank_ready") {
+    return "题组已就绪";
+  }
+
+  if (resource.availability === "interactive_ready") {
+    return "互动诊断可用";
+  }
+
   if (resource.availability === "video_ready") {
     return "视频待补档";
   }
@@ -668,7 +772,7 @@ function resourceAvailabilityLabel(resource) {
 }
 
 function isImplementedResource(resource) {
-  return ["metadata_ready", "video_ready"].includes(resource?.availability);
+  return ["metadata_ready", "video_ready", "item_bank_ready", "interactive_ready"].includes(resource?.availability);
 }
 
 function statusLabel(status) {

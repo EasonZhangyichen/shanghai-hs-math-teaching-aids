@@ -9,7 +9,26 @@ import YAML from "yaml";
 import { generateResourceBacklog } from "./generate-resource-backlog.js";
 
 const RESOURCE_DIRS = {
+  applet: "content/applets",
+  manim_clip: "content/manim",
   diagnosis: "content/diagnosis",
+};
+
+const REQUIRED_APPLET_FILES = {
+  readme: "README.md",
+  metadata: "metadata.yaml",
+  teacherScript: "teacher-script.md",
+  studentTask: "student-task.md",
+  review: "review.md",
+  srcEntry: "src/index.html",
+};
+
+const REQUIRED_MANIM_FILES = {
+  readme: "README.md",
+  metadata: "metadata.yaml",
+  storyboard: "storyboard.md",
+  scene: "scene.py",
+  review: "review.md",
 };
 
 const REQUIRED_DIAGNOSIS_FILES = {
@@ -47,7 +66,7 @@ export async function scaffoldResourcePackages({
       continue;
     }
 
-    if (item.type !== "diagnosis") {
+    if (!RESOURCE_DIRS[item.type]) {
       result.skipped.push({
         id: item.id,
         reason: "unsupported_type",
@@ -56,7 +75,7 @@ export async function scaffoldResourcePackages({
       continue;
     }
 
-    const packagePath = path.posix.join(RESOURCE_DIRS.diagnosis, item.id);
+    const packagePath = path.posix.join(RESOURCE_DIRS[item.type], item.id);
     const packageDir = path.join(rootDir, packagePath);
 
     if (await exists(packageDir)) {
@@ -68,7 +87,7 @@ export async function scaffoldResourcePackages({
       continue;
     }
 
-    const files = buildDiagnosisFiles(item);
+    const files = buildResourceFiles(item);
     const createdRecord = {
       id: item.id,
       type: item.type,
@@ -79,9 +98,11 @@ export async function scaffoldResourcePackages({
     if (write) {
       await mkdir(packageDir, { recursive: true });
       await Promise.all(
-        Object.entries(files).map(([fileName, contents]) =>
-          writeFile(path.join(packageDir, fileName), contents, "utf8"),
-        ),
+        Object.entries(files).map(async ([fileName, contents]) => {
+          const outputPath = path.join(packageDir, fileName);
+          await mkdir(path.dirname(outputPath), { recursive: true });
+          await writeFile(outputPath, contents, "utf8");
+        }),
       );
     }
 
@@ -109,6 +130,455 @@ function selectItems({ items, requestedIds, type, limit }) {
   }
 
   return selected;
+}
+
+function buildResourceFiles(item) {
+  if (item.type === "applet") {
+    return buildAppletFiles(item);
+  }
+
+  if (item.type === "manim_clip") {
+    return buildManimFiles(item);
+  }
+
+  if (item.type === "diagnosis") {
+    return buildDiagnosisFiles(item);
+  }
+
+  return {};
+}
+
+function buildCommonCurriculum(item) {
+  return {
+    region: "上海",
+    stage: "高中",
+    subject: "数学",
+    edition: "沪教版",
+    volume_id: item.volumeId,
+    volume_title: item.volumeTitle,
+    chapter_id: item.chapterId,
+    chapter_title: item.chapterTitle,
+    section_id: item.sectionId,
+    section_title: item.sectionTitle,
+    lesson_id: item.lessonId,
+    textbook_ref: item.textbookRef,
+    lesson_title: item.lessonTitle,
+  };
+}
+
+function buildCommonPedagogy(item, estimatedMinutes = 12) {
+  return {
+    cognitive_action: item.cognitiveAction,
+    estimated_classroom_minutes: estimatedMinutes,
+    primary_teaching_problem: item.teachingPainPoints[0] ?? item.note,
+    learning_goals: [
+      `围绕${item.lessonTitle}建立可观察、可解释的数学表征。`,
+      `用“${item.cognitiveAction}”方式处理关键变量、边界条件和典型错因。`,
+      "把交互观察转化为可板书、可追问、可迁移的课堂结论。",
+    ],
+    prerequisites: [`${item.lessonTitle}相关先修知识`],
+    successors: ["后续课时学习与综合应用"],
+    core_competencies: ["直观想象", "逻辑推理", "数学运算"],
+    classroom_use: `建议在「${item.lessonTitle}」课堂中作为新知建构或重点突破环节使用。`,
+  };
+}
+
+function buildAppletFiles(item) {
+  const metadata = buildAppletMetadata(item);
+
+  return {
+    [REQUIRED_APPLET_FILES.readme]: buildAppletReadme(item),
+    [REQUIRED_APPLET_FILES.metadata]: `${YAML.stringify(metadata)}\n`,
+    [REQUIRED_APPLET_FILES.teacherScript]: buildAppletTeacherScript(item),
+    [REQUIRED_APPLET_FILES.studentTask]: buildAppletStudentTask(item),
+    [REQUIRED_APPLET_FILES.review]: buildAppletReview(item),
+    [REQUIRED_APPLET_FILES.srcEntry]: buildAppletHtml(item),
+  };
+}
+
+function buildAppletMetadata(item) {
+  return {
+    schema_version: "0.1.0",
+    id: item.id,
+    version: "0.1.0",
+    status: "draft",
+    resource_type: "applet",
+    title: item.title,
+    subtitle: `围绕${item.lessonTitle}的交互式数字教具骨架`,
+    curriculum: buildCommonCurriculum(item),
+    pedagogy: buildCommonPedagogy(item, 12),
+    mathematical_scope: {
+      focus: item.note,
+      lesson: item.lessonTitle,
+      out_of_scope: ["本 scaffold 只定义首版交互骨架，数学细节需在资源生产对话中补齐。"],
+    },
+    representations: [
+      {
+        id: "interactive_canvas",
+        role: "承载可拖拽、可观察、可复现的核心数学表征。",
+      },
+      {
+        id: "teacher_readout",
+        role: "为教师提供课堂追问所需的关键状态读数。",
+      },
+    ],
+    interaction_design: {
+      primary_control: "预留一个核心滑块或拖拽控制，后续按知识点定制。",
+      teacher_controls: ["重置", "分步显示", "重点标注"],
+      student_controls: ["拖动观察", "记录猜想", "对照结论"],
+      staged_reveal: [
+        {
+          step: "observe",
+          description: "先让学生观察变量变化和图像响应。",
+        },
+        {
+          step: "explain",
+          description: "再引导学生用符号语言解释观察结果。",
+        },
+      ],
+    },
+    data_contract: {
+      state_variables: [
+        {
+          name: "current_value",
+          value_type: "number",
+          default: 0,
+          description: "首版 scaffold 的占位状态变量，后续替换为真实数学变量。",
+          persistence: "snapshot",
+        },
+      ],
+      events: [
+        {
+          name: "state_changed",
+          direction: "applet_to_player",
+          description: "交互状态变化时通知平台播放器。",
+          payload: ["current_value"],
+          required_for_player: true,
+        },
+      ],
+    },
+    feedback_and_diagnosis: {
+      success_evidence: ["学生能说清楚观察变量、图像变化和数学结论之间的对应关系。"],
+      common_error_tags: [
+        {
+          id: "representation_gap",
+          label: "表征对应断裂",
+        },
+      ],
+      feedback_principles: ["反馈先指向可视化证据，再回到符号表达。"],
+    },
+    visual_semantics: {
+      primary_color: "teal",
+      emphasis_rule: "当前变量用高对比色标注，历史轨迹和辅助线降低透明度。",
+    },
+    implementation: {
+      phase: "content_spec_only",
+      html_src_status: "scaffolded",
+      planned_engine: "native-canvas-svg",
+      create_src_in_later_task: false,
+      classroom_device_targets: ["desktop", "tablet", "projector"],
+    },
+    files: {
+      readme: REQUIRED_APPLET_FILES.readme,
+      teacher_script: REQUIRED_APPLET_FILES.teacherScript,
+      student_task: REQUIRED_APPLET_FILES.studentTask,
+      review_record: REQUIRED_APPLET_FILES.review,
+      src_entry: REQUIRED_APPLET_FILES.srcEntry,
+    },
+    compliance: {
+      copyright_note: "本 scaffold 仅生成原创资源骨架，不复制教材正文、官方课件、教案或商业题库。",
+      review_status: "self_checked_draft",
+    },
+  };
+}
+
+function buildAppletReadme(item) {
+  return `# ${item.title}
+
+资源 ID：\`${item.id}\`
+
+对应课时：\`${item.lessonId}\`「${item.lessonTitle}」
+
+本目录由资源 scaffold 命令生成，用于承载 ${item.lessonTitle} 的 Applet 草稿。生成后应由资源生产对话补齐数学模型、交互状态、教师脚本和浏览器验证记录。
+
+## 教学痛点
+
+${item.teachingPainPoints.map((painPoint) => `- ${painPoint}`).join("\n")}
+
+## 初始设计意图
+
+${item.note}
+`;
+}
+
+function buildAppletTeacherScript(item) {
+  return `# 教师脚本：${item.title}
+
+## 使用时机
+
+建议在「${item.lessonTitle}」课堂中用于${item.cognitiveAction}型观察与追问。
+
+## 追问方向
+
+${item.teachingPainPoints.map((painPoint) => `- ${painPoint}`).join("\n")}
+
+## 待补充
+
+- 明确核心变量和初始状态。
+- 补齐分步揭示顺序。
+- 设计学生记录表述和板书落点。
+`;
+}
+
+function buildAppletStudentTask(item) {
+  return `# 学生活动：${item.title}
+
+## 任务
+
+围绕「${item.lessonTitle}」完成一次观察、猜想和解释。
+
+## 记录
+
+- 我改变了什么变量？
+- 图像或几何对象发生了什么变化？
+- 这个变化能写成什么数学结论？
+`;
+}
+
+function buildAppletReview(item) {
+  return `# 审核记录
+
+资源 ID：\`${item.id}\`
+
+当前状态：\`draft\`
+
+## Scaffold 自检
+
+- 已对齐课时 \`${item.lessonId}\`「${item.lessonTitle}」。
+- 已生成 Applet 必备文件和 HTML 占位入口。
+- 当前 HTML 只用于占位，不代表交互课件已经完成。
+
+## 待补充
+
+- 数学模型和边界条件。
+- 可运行交互、响应式布局和浏览器验证截图。
+- 数学审校与课堂试用记录。
+`;
+}
+
+function buildAppletHtml(item) {
+  return `<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>${item.title}</title>
+    <style>
+      body {
+        margin: 0;
+        min-height: 100svh;
+        display: grid;
+        place-items: center;
+        background: #f6faf8;
+        color: #17231f;
+        font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+      }
+
+      main {
+        width: min(720px, calc(100vw - 32px));
+        padding: 24px;
+        border: 1px solid #d7e0dc;
+        border-radius: 8px;
+        background: #ffffff;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p>sh-hs-math-applet-sdk</p>
+      <h1>${item.title}</h1>
+      <p>${item.note}</p>
+      <p>资源 ID：${item.id}</p>
+    </main>
+    <script>
+      const RESOURCE_ID = "${item.id}";
+      window.parent?.postMessage({ type: "applet:ready", resourceId: RESOURCE_ID, payload: { current_value: 0 } }, "*");
+    </script>
+  </body>
+</html>
+`;
+}
+
+function buildManimFiles(item) {
+  const metadata = buildManimMetadata(item);
+
+  return {
+    [REQUIRED_MANIM_FILES.readme]: buildManimReadme(item),
+    [REQUIRED_MANIM_FILES.metadata]: `${YAML.stringify(metadata)}\n`,
+    [REQUIRED_MANIM_FILES.storyboard]: buildManimStoryboard(item),
+    [REQUIRED_MANIM_FILES.scene]: buildManimScene(item),
+    [REQUIRED_MANIM_FILES.review]: buildManimReview(item),
+  };
+}
+
+function buildManimMetadata(item) {
+  const sceneClass = buildSceneClassName(item.id);
+
+  return {
+    schema_version: "0.1.0",
+    id: item.id,
+    version: "0.1.0",
+    status: "draft",
+    resource_type: "manim_clip",
+    title: item.title,
+    subtitle: `围绕${item.lessonTitle}的 Manim 数学可视化骨架`,
+    curriculum: buildCommonCurriculum(item),
+    pedagogy: buildCommonPedagogy(item, 6),
+    mathematical_scope: {
+      focus: item.note,
+      lesson: item.lessonTitle,
+      out_of_scope: ["本 scaffold 只定义分镜和场景骨架，具体动画需在资源生产对话中补齐。"],
+    },
+    representations: [
+      {
+        id: "animated_diagram",
+        role: "用短动画展示静态板书难以呈现的变化过程。",
+      },
+    ],
+    narrative_design: {
+      target_duration_seconds: 60,
+      beats: [
+        {
+          id: "setup",
+          title: "提出观察对象",
+          purpose: item.note,
+          duration_seconds: 15,
+        },
+        {
+          id: "transform",
+          title: "展示关键变化",
+          purpose: `突出${item.lessonTitle}中的核心关系。`,
+          duration_seconds: 30,
+        },
+        {
+          id: "conclude",
+          title: "回到数学表达",
+          purpose: "把可视化过程收束为课堂结论。",
+          duration_seconds: 15,
+        },
+      ],
+      pause_points: [
+        {
+          after_beat: "transform",
+          teacher_prompt: "刚才的变化对应哪个数学条件或性质？",
+        },
+      ],
+    },
+    visual_semantics: {
+      background: "light",
+      emphasis_rule: "关键对象高亮，辅助对象降低透明度。",
+    },
+    render_plan: {
+      phase: "scene_draft",
+      scene_class: sceneClass,
+      aspect_ratio: "16:9",
+      resolution: "1920x1080",
+      fps: 30,
+      background: "white",
+      output_formats: ["mp4", "webm"],
+      commands: {
+        preview: `manim -pql scene.py ${sceneClass}`,
+        mp4: `manim -qh scene.py ${sceneClass}`,
+        webm: `manim -qh --format=webm scene.py ${sceneClass}`,
+      },
+      notes: ["首版场景为 scaffold，占位动画需由资源生产对话补齐。"],
+    },
+    files: {
+      readme: REQUIRED_MANIM_FILES.readme,
+      storyboard: REQUIRED_MANIM_FILES.storyboard,
+      scene: REQUIRED_MANIM_FILES.scene,
+      review_record: REQUIRED_MANIM_FILES.review,
+    },
+    platform_card: {
+      availability: "metadata_ready",
+      preview_behavior: "metadata_placeholder",
+      embed_strategy: "先展示分镜和渲染计划；视频渲染通过后升级为 video_ready。",
+      paired_resources: [item.id],
+    },
+    compliance: {
+      copyright_note: "本 scaffold 仅生成原创资源骨架，不复制教材正文、官方课件、教案或商业题库。",
+      review_status: "self_checked_draft",
+    },
+  };
+}
+
+function buildManimReadme(item) {
+  return `# ${item.title}
+
+资源 ID：\`${item.id}\`
+
+对应课时：\`${item.lessonId}\`「${item.lessonTitle}」
+
+本目录由资源 scaffold 命令生成，用于承载 ${item.lessonTitle} 的 Manim 草稿。
+`;
+}
+
+function buildManimStoryboard(item) {
+  return `# 分镜：${item.title}
+
+## setup
+
+提出观察对象：${item.note}
+
+## transform
+
+展示关键变化，突出学生容易断裂或混淆的表征。
+
+## conclude
+
+把动画过程收束成课堂可板书的数学表达。
+`;
+}
+
+function buildManimScene(item) {
+  const sceneClass = buildSceneClassName(item.id);
+
+  return `from manim import *
+
+
+class ${sceneClass}(Scene):
+    def construct(self):
+        title = Text("${item.title}", font_size=38)
+        subtitle = Text("${item.lessonTitle}", font_size=26).next_to(title, DOWN)
+        self.play(Write(title), FadeIn(subtitle, shift=DOWN))
+        self.wait(1)
+        self.play(FadeOut(title), FadeOut(subtitle))
+`;
+}
+
+function buildManimReview(item) {
+  return `# 审核记录
+
+资源 ID：\`${item.id}\`
+
+当前状态：\`draft\`
+
+## Scaffold 自检
+
+- 已对齐课时 \`${item.lessonId}\`「${item.lessonTitle}」。
+- 已生成 Manim 必备文件和 scene.py 占位场景。
+- 当前场景只用于占位，不代表动画已经完成。
+
+## 待补充
+
+- 精确分镜、数学符号、动画节奏和暂停点。
+- 本地渲染 mp4/webm/poster。
+- 数学审校与课堂播放验证。
+`;
+}
+
+function buildSceneClassName(resourceId) {
+  return `${resourceId.replace(/[^A-Za-z0-9]/g, "")}Scene`;
 }
 
 function buildDiagnosisFiles(item) {

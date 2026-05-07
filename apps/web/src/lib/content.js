@@ -6,12 +6,14 @@ import YAML from "yaml";
 const CURRICULUM_PATH = "content/curriculum/index.yaml";
 const APPLETS_DIR = "content/applets";
 const MANIM_DIR = "content/manim";
+const DIAGNOSIS_DIR = "content/diagnosis";
 
 export async function loadTeacherWorkspace({ rootDir = process.cwd() } = {}) {
   const curriculum = await readYaml(path.join(rootDir, CURRICULUM_PATH));
   const appletPackages = await loadAppletPackages(rootDir);
   const manimPackages = await loadManimPackages(rootDir);
-  const resourcePackages = [...appletPackages, ...manimPackages];
+  const diagnosisPackages = await loadDiagnosisPackages(rootDir);
+  const resourcePackages = [...appletPackages, ...manimPackages, ...diagnosisPackages];
   const resourcesById = new Map(resourcePackages.map((resource) => [resource.id, resource]));
   const resourcesByLesson = groupBy(resourcePackages, (resource) => resource.lessonId);
 
@@ -46,7 +48,7 @@ export async function loadTeacherWorkspace({ rootDir = process.cwd() } = {}) {
               status: teacherLesson.status,
               resourceCount: teacherLesson.resources.length,
               hasImplementedApplet: teacherLesson.resources.some(
-                (resource) => resource.availability === "metadata_ready",
+                isImplementedResource,
               ),
             };
           });
@@ -82,6 +84,7 @@ export async function loadTeacherWorkspace({ rootDir = process.cwd() } = {}) {
 
   const implementedAppletCount = appletPackages.length;
   const implementedManimCount = manimPackages.length;
+  const implementedDiagnosisCount = diagnosisPackages.length;
   const plannedResourceCount = lessons
     .flatMap((lesson) => lesson.resources)
     .filter((resource) => resource.availability === "proposed").length;
@@ -91,6 +94,7 @@ export async function loadTeacherWorkspace({ rootDir = process.cwd() } = {}) {
       curriculum: CURRICULUM_PATH,
       applets: appletPackages.map((resource) => resource.package.path),
       manim: manimPackages.map((resource) => resource.package.path),
+      diagnosis: diagnosisPackages.map((resource) => resource.package.path),
     },
     project: curriculum.project,
     tree: { volumes },
@@ -104,9 +108,14 @@ export async function loadTeacherWorkspace({ rootDir = process.cwd() } = {}) {
       lessonCount: lessons.length,
       implementedAppletCount,
       implementedManimCount,
+      implementedDiagnosisCount,
       plannedResourceCount,
     },
   };
+}
+
+function isImplementedResource(resource) {
+  return ["metadata_ready", "video_ready", "item_bank_ready", "interactive_ready"].includes(resource?.availability);
 }
 
 async function loadAppletPackages(rootDir) {
@@ -239,6 +248,78 @@ async function loadManimPackages(rootDir) {
   return packages.filter(Boolean).sort((left, right) => left.id.localeCompare(right.id));
 }
 
+async function loadDiagnosisPackages(rootDir) {
+  const diagnosisRoot = path.join(rootDir, DIAGNOSIS_DIR);
+
+  if (!(await exists(diagnosisRoot))) {
+    return [];
+  }
+
+  const entries = await readdir(diagnosisRoot, { withFileTypes: true });
+  const directories = entries.filter((entry) => entry.isDirectory());
+
+  const packages = await Promise.all(
+    directories.map(async (entry) => {
+      const packageDir = path.join(diagnosisRoot, entry.name);
+      const metadataPath = path.join(packageDir, "metadata.yaml");
+
+      if (!(await exists(metadataPath))) {
+        return null;
+      }
+
+      const metadata = await readYaml(metadataPath);
+      const packagePath = toRepoPath(rootDir, packageDir);
+      const itemBankPath = path.join(packageDir, metadata.files?.item_bank ?? "item-bank.yaml");
+      const itemBank = (await exists(itemBankPath)) ? await readYaml(itemBankPath) : null;
+      const teacherNotes = await readMarkdownEntry({
+        rootDir,
+        filePath: path.join(packageDir, metadata.files?.teacher_notes ?? "teacher-notes.md"),
+        kind: "teacher_notes",
+      });
+      const scoringRubric = await readMarkdownEntry({
+        rootDir,
+        filePath: path.join(packageDir, metadata.files?.scoring_rubric ?? "scoring-rubric.md"),
+        kind: "scoring_rubric",
+      });
+
+      return {
+        id: metadata.id,
+        lessonId: metadata.curriculum?.lesson_id,
+        resourceType: metadata.resource_type,
+        title: metadata.title,
+        subtitle: metadata.subtitle,
+        status: metadata.status,
+        version: metadata.version,
+        metadata,
+        package: {
+          path: packagePath,
+          files: {
+            metadata: toRepoPath(rootDir, metadataPath),
+            readme: toRepoPath(rootDir, path.join(packageDir, metadata.files?.readme ?? "README.md")),
+            itemBank: toRepoPath(rootDir, itemBankPath),
+            scoringRubric: scoringRubric?.path ?? null,
+            teacherNotes: teacherNotes?.path ?? null,
+            reviewRecord: toRepoPath(rootDir, path.join(packageDir, metadata.files?.review_record ?? "review.md")),
+          },
+          itemBank: itemBank
+            ? {
+                title: itemBank.title,
+                itemCount: ensureArray(itemBank.items).length,
+                totalScore: itemBank.total_score ?? 0,
+                estimatedMinutes: itemBank.estimated_minutes ?? metadata.pedagogy?.estimated_classroom_minutes ?? null,
+                misconceptionTags: ensureArray(itemBank.misconception_tags),
+              }
+            : null,
+          teacherNotes,
+          scoringRubric,
+        },
+      };
+    }),
+  );
+
+  return packages.filter(Boolean).sort((left, right) => left.id.localeCompare(right.id));
+}
+
 function buildLesson({ lesson, volume, chapter, section, resourcesById, resourcesByLesson }) {
   const resources = buildResourceCards({
     lesson,
@@ -328,6 +409,10 @@ function buildImplementedResourceCard(entry, packageResource) {
 }
 
 function buildResourcePlayer(packageResource) {
+  if (packageResource.resourceType === "diagnosis") {
+    return null;
+  }
+
   if (packageResource.resourceType === "manim_clip") {
     return buildManimPlayer(packageResource);
   }
@@ -407,6 +492,19 @@ function buildMetadataPreview(metadata) {
     },
     dataContract: metadata.data_contract,
     renderPlan: metadata.render_plan,
+    diagnosisDesign: {
+      diagnosticFocus: ensureArray(metadata.diagnosis_design?.diagnostic_focus),
+      misconceptionTags: ensureArray(metadata.diagnosis_design?.misconception_tags),
+      itemSummary: metadata.diagnosis_design?.item_summary
+        ? {
+            totalItems: metadata.diagnosis_design.item_summary.total_items,
+            questionTypes: ensureArray(metadata.diagnosis_design.item_summary.question_types),
+            estimatedMinutes: metadata.diagnosis_design.item_summary.estimated_minutes,
+          }
+        : null,
+      feedbackStrategy: metadata.diagnosis_design?.feedback_strategy,
+    },
+    scoring: metadata.scoring,
     platformCard: metadata.platform_card,
     files: metadata.files,
     feedbackAndDiagnosis: metadata.feedback_and_diagnosis,

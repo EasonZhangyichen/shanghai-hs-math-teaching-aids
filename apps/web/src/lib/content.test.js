@@ -14,6 +14,7 @@ test("loads the B2 trigonometry curriculum tree for the teacher workspace", asyn
   assert.equal(workspace.project.name, "沪教版高中数学数字教具云平台");
   assert.equal(workspace.summary.lessonCount, 7);
   assert.equal(workspace.summary.implementedManimCount, 3);
+  assert.equal(workspace.summary.implementedDiagnosisCount, 4);
 
   const b2 = workspace.tree.volumes.find((volume) => volume.id === "B2");
   assert.ok(b2, "B2 volume should be present");
@@ -219,9 +220,11 @@ test("links the parameter lab applet and rendered transform-order Manim to lesso
       },
     ],
   });
-  assert.equal(diagnosis.availability, "proposed");
+  assert.equal(diagnosis.availability, "item_bank_ready");
+  assert.equal(diagnosis.metadataPreview.diagnosisDesign.itemSummary.totalItems, 6);
+  assert.equal(diagnosis.package.files.itemBank, "content/diagnosis/SH-HS-MATH-HJ-B2-C07-L05-D01/item-bank.yaml");
   assert.equal(diagnosis.player, null);
-  assert.equal(workspace.summary.plannedResourceCount, 4);
+  assert.equal(workspace.summary.plannedResourceCount, 0);
 });
 
 test("links the tangent graph applet and rendered asymptote Manim to lesson L06", async () => {
@@ -294,6 +297,8 @@ test("links the tangent properties applet to lesson L07", async () => {
     title: "正切性质分段观察",
     sandbox: "allow-scripts allow-same-origin",
   });
-  assert.equal(diagnosis.availability, "proposed");
+  assert.equal(diagnosis.availability, "item_bank_ready");
+  assert.equal(diagnosis.metadataPreview.diagnosisDesign.itemSummary.totalItems, 6);
+  assert.equal(diagnosis.package.files.itemBank, "content/diagnosis/SH-HS-MATH-HJ-B2-C07-L07-D01/item-bank.yaml");
   assert.equal(diagnosis.player, null);
 });

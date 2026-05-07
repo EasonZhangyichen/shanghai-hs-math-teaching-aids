@@ -95,6 +95,69 @@ test("writes a diagnosis scaffold with required package files", async () => {
   }
 });
 
+test("writes an applet scaffold with metadata, scripts, review, and HTML placeholder", async () => {
+  const tempRoot = await makeTempProject();
+  const resourceId = "SH-HS-MATH-HJ-B2-C07-L01-A01";
+  const packageDir = path.join(tempRoot, "content/applets", resourceId);
+
+  try {
+    const result = await scaffoldResourcePackages({
+      rootDir: tempRoot,
+      ids: [resourceId],
+      write: true,
+    });
+
+    assert.equal(result.write, true);
+    assert.deepEqual(result.created.map((item) => item.id), [resourceId]);
+
+    const files = await readdir(packageDir);
+    assert.deepEqual(files.sort(), ["README.md", "metadata.yaml", "review.md", "src", "student-task.md", "teacher-script.md"]);
+
+    const metadata = YAML.parse(await readFile(path.join(packageDir, "metadata.yaml"), "utf8"));
+    assert.equal(metadata.id, resourceId);
+    assert.equal(metadata.resource_type, "applet");
+    assert.equal(metadata.implementation.html_src_status, "scaffolded");
+    assert.equal(metadata.files.src_entry, "src/index.html");
+
+    const html = await readFile(path.join(packageDir, "src/index.html"), "utf8");
+    assert.match(html, /SH-HS-MATH-HJ-B2-C07-L01-A01/);
+    assert.match(html, /sh-hs-math-applet-sdk/);
+  } finally {
+    await rm(tempRoot, { recursive: true, force: true });
+  }
+});
+
+test("writes a Manim scaffold with storyboard, scene, and metadata", async () => {
+  const tempRoot = await makeTempProject();
+  const resourceId = "SH-HS-MATH-HJ-B2-C07-L01-M01";
+  const packageDir = path.join(tempRoot, "content/manim", resourceId);
+
+  try {
+    const result = await scaffoldResourcePackages({
+      rootDir: tempRoot,
+      ids: [resourceId],
+      write: true,
+    });
+
+    assert.equal(result.write, true);
+    assert.deepEqual(result.created.map((item) => item.id), [resourceId]);
+
+    const files = await readdir(packageDir);
+    assert.deepEqual(files.sort(), ["README.md", "metadata.yaml", "review.md", "scene.py", "storyboard.md"]);
+
+    const metadata = YAML.parse(await readFile(path.join(packageDir, "metadata.yaml"), "utf8"));
+    assert.equal(metadata.id, resourceId);
+    assert.equal(metadata.resource_type, "manim_clip");
+    assert.equal(metadata.render_plan.phase, "scene_draft");
+    assert.equal(metadata.platform_card.availability, "metadata_ready");
+
+    const scene = await readFile(path.join(packageDir, "scene.py"), "utf8");
+    assert.match(scene, /class SHHSMATHHJB2C07L01M01Scene/);
+  } finally {
+    await rm(tempRoot, { recursive: true, force: true });
+  }
+});
+
 test("skips existing resource packages instead of overwriting them", async () => {
   const tempRoot = await makeTempProject();
   const resourceId = "SH-HS-MATH-HJ-B2-C07-L02-D01";

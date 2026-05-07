@@ -33,7 +33,7 @@
 
       body {
         margin: 0;
-        min-height: 100vh;
+        min-height: 100svh;
         background:
           linear-gradient(180deg, rgba(223, 242, 223, 0.42), rgba(251, 250, 245, 0) 260px),
           var(--paper);
@@ -47,11 +47,11 @@
       }
 
       .applet {
-        min-height: 100vh;
-        padding: 22px;
+        min-height: 100svh;
+        padding: 14px;
         display: grid;
-        grid-template-columns: minmax(620px, 1fr) 340px;
-        gap: 18px;
+        grid-template-columns: minmax(0, 1fr) 320px;
+        gap: 14px;
       }
 
       .stage,
@@ -64,10 +64,10 @@
 
       .stage {
         min-width: 0;
-        padding: 18px;
+        padding: 14px;
         display: grid;
-        grid-template-rows: auto minmax(360px, 1fr) auto;
-        gap: 14px;
+        grid-template-rows: auto auto auto;
+        gap: 12px;
       }
 
       header {
@@ -79,7 +79,7 @@
 
       h1 {
         margin: 0;
-        font-size: 28px;
+        font-size: 24px;
         line-height: 1.18;
         letter-spacing: 0;
       }
@@ -88,8 +88,8 @@
         margin: 8px 0 0;
         color: var(--muted);
         max-width: 820px;
-        line-height: 1.65;
-        font-size: 15px;
+        line-height: 1.5;
+        font-size: 14px;
       }
 
       .status-pill {
@@ -105,7 +105,8 @@
       }
 
       .graph-wrap {
-        min-height: 420px;
+        height: clamp(330px, 56svh, 430px);
+        min-height: 0;
         border: 1px solid var(--line);
         border-radius: 8px;
         background: #fffefa;
@@ -117,7 +118,7 @@
         display: block;
         width: 100%;
         height: 100%;
-        min-height: 420px;
+        min-height: 0;
         touch-action: none;
       }
 
@@ -199,8 +200,8 @@
 
       .range-row {
         display: grid;
-        grid-template-columns: 86px minmax(180px, 1fr) 138px;
-        gap: 12px;
+        grid-template-columns: 78px minmax(160px, 1fr) 120px;
+        gap: 10px;
         align-items: center;
       }
 
@@ -258,7 +259,7 @@
       }
 
       .side-panel {
-        padding: 16px;
+        padding: 14px;
         display: grid;
         align-content: start;
         gap: 14px;
@@ -290,8 +291,8 @@
         background: #f6f7f2;
         border: 1px solid var(--line);
         border-radius: 7px;
-        padding: 10px;
-        min-height: 70px;
+        padding: 8px 10px;
+        min-height: 62px;
       }
 
       .metric-label {
@@ -303,7 +304,7 @@
       .metric-value {
         display: block;
         margin-top: 5px;
-        font-size: 17px;
+        font-size: 16px;
         line-height: 1.25;
         font-weight: 900;
         font-variant-numeric: tabular-nums;
@@ -340,6 +341,31 @@
 
       .summary-box.visible {
         display: block;
+      }
+
+      .svg-math-foreign {
+        overflow: visible;
+        pointer-events: none;
+      }
+
+      .svg-math-label {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #58665f;
+        font-size: 13px;
+        font-weight: 700;
+        line-height: 1;
+        white-space: nowrap;
+      }
+
+      .svg-math-label .math-frac,
+      .metric-value .math-frac,
+      .readout .math-frac,
+      .formula-list .math-frac {
+        font-size: 0.9em;
       }
 
       @media (max-width: 980px) {
@@ -535,11 +561,52 @@
         },
       };
 
-      function createSvg(tag, attrs = {}) {
-        const node = document.createElementNS(NS, tag);
-        Object.entries(attrs).forEach(([key, value]) => node.setAttribute(key, value));
-        return node;
-      }
+	      function createSvg(tag, attrs = {}) {
+	        const node = document.createElementNS(NS, tag);
+	        Object.entries(attrs).forEach(([key, value]) => node.setAttribute(key, value));
+	        return node;
+	      }
+
+	      function normalizeMathText(value) {
+	        return window.SHMathTextNormalizer?.formatMathText?.(value) ?? String(value ?? "");
+	      }
+
+	      function setMathText(element, value) {
+	        if (window.SHMathTextNormalizer?.setMathHTML && element instanceof HTMLElement) {
+	          window.SHMathTextNormalizer.setMathHTML(element, value);
+	        } else {
+	          element.textContent = normalizeMathText(value);
+	        }
+	      }
+
+	      function appendSvgMathLabel(parent, attrs, value) {
+	        const formatted = normalizeMathText(value);
+	        if (!/-?\d*π\/\d+/.test(formatted)) {
+	          const label = createSvg("text", attrs);
+	          label.textContent = formatted;
+	          parent.appendChild(label);
+	          return label;
+	        }
+
+	        const width = attrs.width ?? 62;
+	        const height = attrs.height ?? 30;
+	        const anchor = attrs["text-anchor"] ?? "start";
+	        const xOffset = anchor === "middle" ? -width / 2 : anchor === "end" ? -width : 0;
+	        const foreignObject = createSvg("foreignObject", {
+	          x: Number(attrs.x) + xOffset,
+	          y: Number(attrs.y) - height / 2,
+	          width,
+	          height,
+	          class: "svg-math-foreign",
+	        });
+	        const label = document.createElement("div");
+	        label.className = "svg-math-label";
+	        label.style.justifyContent = anchor === "end" ? "flex-end" : anchor === "start" ? "flex-start" : "center";
+	        setMathText(label, formatted);
+	        foreignObject.appendChild(label);
+	        parent.appendChild(foreignObject);
+	        return foreignObject;
+	      }
 
       function clear(node) {
         while (node.firstChild) node.removeChild(node.firstChild);
@@ -631,17 +698,17 @@
 
         xTicks.forEach((x) => {
           const sx = xToSvg(x);
-          elements.gridLayer.appendChild(
-            createSvg("line", { x1: sx, y1: plot.top, x2: sx, y2: plot.top + plot.height, class: "grid" }),
-          );
-          const label = createSvg("text", {
-            x: sx,
-            y: plot.top + plot.height + 28,
-            class: "tick-label",
-            "text-anchor": "middle",
-          });
-          label.textContent = formatPiValue(x);
-          elements.axisLayer.appendChild(label);
+	          elements.gridLayer.appendChild(
+	            createSvg("line", { x1: sx, y1: plot.top, x2: sx, y2: plot.top + plot.height, class: "grid" }),
+	          );
+	          appendSvgMathLabel(elements.axisLayer, {
+	            x: sx,
+	            y: plot.top + plot.height + 28,
+	            class: "tick-label",
+	            "text-anchor": "middle",
+	            width: 64,
+	            height: 30,
+	          }, formatPiValue(x));
         });
 
         elements.axisLayer.appendChild(
@@ -757,15 +824,14 @@
           );
         }
 
-        const intervalText = createSvg("text", {
-          x: xToSvg((intervalBounds(state.selectedK).left + intervalBounds(state.selectedK).right) / 2),
-          y: plot.top + 22,
-          class: "point-label",
-          "text-anchor": "middle",
-          fill: "#0f766e",
-        });
-        intervalText.textContent = selectedIntervalLabel();
-        elements.labelLayer.appendChild(intervalText);
+	        appendSvgMathLabel(elements.labelLayer, {
+	          x: xToSvg((intervalBounds(state.selectedK).left + intervalBounds(state.selectedK).right) / 2),
+	          y: plot.top + 22,
+	          class: "point-label",
+	          "text-anchor": "middle",
+	          width: 130,
+	          height: 32,
+	        }, selectedIntervalLabel());
       }
 
       function setFocus(mode) {
@@ -810,14 +876,14 @@
       function updateReadouts() {
         const tan = Math.tan(state.currentX);
         const copy = focusCopy[state.focusMode];
-        elements.xSlider.value = String(state.currentX);
-        elements.xReadout.textContent = `x = ${formatPiValue(state.currentX)}`;
-        elements.focusPill.textContent = `焦点：${copy.label}`;
-        elements.metricX.textContent = formatPiValue(state.currentX);
-        elements.metricTan.textContent = formatTan(tan);
-        elements.metricInterval.textContent = selectedIntervalLabel();
-        elements.metricCompare.textContent = copy.compare;
-        elements.promptText.textContent = copy.prompt;
+	        elements.xSlider.value = String(state.currentX);
+	        setMathText(elements.xReadout, `x = ${formatPiValue(state.currentX)}`);
+	        setMathText(elements.focusPill, `焦点：${copy.label}`);
+	        setMathText(elements.metricX, formatPiValue(state.currentX));
+	        elements.metricTan.textContent = formatTan(tan);
+	        setMathText(elements.metricInterval, selectedIntervalLabel());
+	        setMathText(elements.metricCompare, copy.compare);
+	        setMathText(elements.promptText, copy.prompt);
         elements.summaryBox.classList.toggle("visible", state.summaryVisible);
       }
 
@@ -935,7 +1001,8 @@
         emit("ready");
       });
 
-      drawGrid();
+	      window.SHMathTextNormalizer?.normalizeRichTree?.(elements.summaryBox);
+	      drawGrid();
       syncButtons();
       render();
       emit("ready");

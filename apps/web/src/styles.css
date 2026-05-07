@@ -381,6 +381,28 @@ li {
   color: #3f4852;
 }
 
+.math-frac {
+  display: inline-grid;
+  grid-template-rows: auto auto;
+  align-items: center;
+  justify-items: center;
+  margin: 0 0.04em;
+  vertical-align: -0.36em;
+  color: inherit;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.math-frac > span:first-child {
+  min-width: 1.1em;
+  padding: 0 0.08em 0.07em;
+  border-bottom: 1px solid currentColor;
+}
+
+.math-frac > span:last-child {
+  padding: 0.06em 0.08em 0;
+}
+
 .muted {
   color: var(--muted);
 }
@@ -532,9 +554,9 @@ li {
 .player-frame-shell iframe {
   display: block;
   width: 100%;
-  min-height: 720px;
+  height: clamp(560px, 72vh, 760px);
+  min-height: 560px;
   border: 0;
-  aspect-ratio: 16 / 10;
 }
 
 .video-frame-shell video {
@@ -703,6 +725,7 @@ li {
   }
 
   .player-frame-shell iframe {
+    height: 620px;
     min-height: 620px;
   }
 }

@@ -35,7 +35,29 @@ export function formatMathText(value) {
 }
 
 export function renderMathText(value) {
-  return escapeHtml(formatMathText(value));
+  return renderMathMarkup(formatMathText(value));
+}
+
+function renderMathMarkup(text) {
+  const fractionPattern = /(-?)(\d*)π\/(\d+)/g;
+  let output = "";
+  let cursor = 0;
+
+  for (const match of text.matchAll(fractionPattern)) {
+    const [token, sign, coefficient, denominator] = match;
+    const index = match.index ?? 0;
+    const numerator = `${coefficient || ""}π`;
+
+    output += escapeHtml(text.slice(cursor, index));
+    output += escapeHtml(sign);
+    output += `<span class="math-frac" aria-label="${escapeHtml(token.replace(/^-/, ""))}"><span>${escapeHtml(
+      numerator,
+    )}</span><span>${escapeHtml(denominator)}</span></span>`;
+    cursor = index + token.length;
+  }
+
+  output += escapeHtml(text.slice(cursor));
+  return output;
 }
 
 export function escapeHtml(value) {

@@ -22,4 +22,19 @@ describe("formatMathText", () => {
   it("escapes html after formatting math text for UI rendering", () => {
     assert.equal(renderMathText("<theta> & pi"), "&lt;θ&gt; &amp; π");
   });
+
+  it("renders simple pi fractions as vertical inline math markup", () => {
+    assert.equal(
+      renderMathText("x != pi/2 + kpi，区间 (-pi/2, pi/2)"),
+      [
+        "x ≠ ",
+        '<span class="math-frac" aria-label="π/2"><span>π</span><span>2</span></span>',
+        " + kπ，区间 (-",
+        '<span class="math-frac" aria-label="π/2"><span>π</span><span>2</span></span>',
+        ", ",
+        '<span class="math-frac" aria-label="π/2"><span>π</span><span>2</span></span>',
+        ")",
+      ].join(""),
+    );
+  });
 });
