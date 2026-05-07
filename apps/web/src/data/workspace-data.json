@@ -233,7 +233,7 @@
                     "textbookRef": "8.3.1",
                     "title": "向量基本定理",
                     "status": "draft",
-                    "resourceCount": 2,
+                    "resourceCount": 0,
                     "hasImplementedApplet": false
                   },
                   {
@@ -241,7 +241,7 @@
                     "textbookRef": "8.3.2",
                     "title": "向量的正交分解与坐标表示",
                     "status": "draft",
-                    "resourceCount": 1,
+                    "resourceCount": 0,
                     "hasImplementedApplet": false
                   },
                   {
@@ -249,7 +249,7 @@
                     "textbookRef": "8.3.3",
                     "title": "向量线性运算的坐标表示",
                     "status": "draft",
-                    "resourceCount": 2,
+                    "resourceCount": 0,
                     "hasImplementedApplet": false
                   },
                   {
@@ -257,7 +257,7 @@
                     "textbookRef": "8.3.4",
                     "title": "向量数量积与夹角的坐标表示",
                     "status": "draft",
-                    "resourceCount": 2,
+                    "resourceCount": 0,
                     "hasImplementedApplet": false
                   }
                 ]
@@ -272,7 +272,7 @@
                     "textbookRef": "8.4",
                     "title": "向量的应用",
                     "status": "draft",
-                    "resourceCount": 3,
+                    "resourceCount": 2,
                     "hasImplementedApplet": false
                   }
                 ]
@@ -5737,9 +5737,9 @@
         {
           "type": "diagnosis",
           "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L02-D01",
-          "title": "向量加减法方向诊断",
+          "title": "加减法方向四类短诊断",
           "cognitive_action": "比较",
-          "note": "围绕首尾相接、相反向量、闭合路径和端点顺序设计即时反馈。"
+          "note": "只覆盖首尾相接、相反向量、闭合路径、端点顺序四类错因，用即时反馈提示方向来源；不做构造演示。"
         }
       ],
       "diagnosisFocus": [
@@ -5768,9 +5768,9 @@
         {
           "id": "SH-HS-MATH-HJ-B2-C08-L02-D01",
           "resourceType": "diagnosis",
-          "title": "向量加减法方向诊断",
+          "title": "加减法方向四类短诊断",
           "cognitiveAction": "比较",
-          "note": "围绕首尾相接、相反向量、闭合路径和端点顺序设计即时反馈。",
+          "note": "只覆盖首尾相接、相反向量、闭合路径、端点顺序四类错因，用即时反馈提示方向来源；不做构造演示。",
           "availability": "proposed",
           "status": "planned",
           "version": null,
@@ -5904,9 +5904,9 @@
         {
           "type": "manim_clip",
           "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L04-M01",
-          "title": "从垂足到投影",
+          "title": "投影有向长度导入动画",
           "cognitive_action": "投影",
-          "note": "用短动画把作垂线、读有向长度和引出 a cos theta 的过程连续化。"
+          "note": "30-45 秒短动画，只串联作垂线、读有向投影、解释 a cos theta 的正负，不替代后续交互探索。"
         }
       ],
       "diagnosisFocus": [
@@ -5935,9 +5935,9 @@
         {
           "id": "SH-HS-MATH-HJ-B2-C08-L04-M01",
           "resourceType": "manim_clip",
-          "title": "从垂足到投影",
+          "title": "投影有向长度导入动画",
           "cognitiveAction": "投影",
-          "note": "用短动画把作垂线、读有向长度和引出 a cos theta 的过程连续化。",
+          "note": "30-45 秒短动画，只串联作垂线、读有向投影、解释 a cos theta 的正负，不替代后续交互探索。",
           "availability": "proposed",
           "status": "planned",
           "version": null,
@@ -6081,22 +6081,7 @@
         "唯一表示的条件依赖不共线，常被弱化成代数结论。",
         "从几何分解过渡到坐标表示时，两个系数的含义容易丢失。"
       ],
-      "digitalEntryPoints": [
-        {
-          "type": "applet",
-          "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L06-A01",
-          "title": "基底分解探索板",
-          "cognitive_action": "分解",
-          "note": "拖动两条基向量和目标向量，实时显示线性组合系数、平行四边形分解和不共线条件。"
-        },
-        {
-          "type": "manim_clip",
-          "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L06-M01",
-          "title": "向量基本定理分解动画",
-          "cognitive_action": "分解",
-          "note": "用连续构造说明为什么两个不共线方向可以唯一定位目标向量。"
-        }
-      ],
+      "digitalEntryPoints": [],
       "diagnosisFocus": [
         "能否判断给定两个向量是否可以作为基底。",
         "能否解释线性组合系数的几何意义。"
@@ -6106,34 +6091,7 @@
         "逻辑推理",
         "直观想象"
       ],
-      "resources": [
-        {
-          "id": "SH-HS-MATH-HJ-B2-C08-L06-A01",
-          "resourceType": "applet",
-          "title": "基底分解探索板",
-          "cognitiveAction": "分解",
-          "note": "拖动两条基向量和目标向量，实时显示线性组合系数、平行四边形分解和不共线条件。",
-          "availability": "proposed",
-          "status": "planned",
-          "version": null,
-          "metadataPreview": null,
-          "player": null,
-          "package": null
-        },
-        {
-          "id": "SH-HS-MATH-HJ-B2-C08-L06-M01",
-          "resourceType": "manim_clip",
-          "title": "向量基本定理分解动画",
-          "cognitiveAction": "分解",
-          "note": "用连续构造说明为什么两个不共线方向可以唯一定位目标向量。",
-          "availability": "proposed",
-          "status": "planned",
-          "version": null,
-          "metadataPreview": null,
-          "player": null,
-          "package": null
-        }
-      ]
+      "resources": []
     },
     {
       "id": "SH-HS-MATH-HJ-B2-C08-L07",
@@ -6174,15 +6132,7 @@
         "正交分解中的正负方向与坐标轴方向对应不稳定。",
         "同一向量平移后坐标不变的理由不直观。"
       ],
-      "digitalEntryPoints": [
-        {
-          "type": "applet",
-          "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L07-A01",
-          "title": "正交分解与坐标投影板",
-          "cognitive_action": "投影",
-          "note": "拖动向量并显示水平、竖直分量和坐标，支持平移向量验证坐标不变。"
-        }
-      ],
+      "digitalEntryPoints": [],
       "diagnosisFocus": [
         "能否从起点和终点坐标求向量坐标。",
         "能否区分点坐标和向量坐标。"
@@ -6192,21 +6142,7 @@
         "数学抽象",
         "数学运算"
       ],
-      "resources": [
-        {
-          "id": "SH-HS-MATH-HJ-B2-C08-L07-A01",
-          "resourceType": "applet",
-          "title": "正交分解与坐标投影板",
-          "cognitiveAction": "投影",
-          "note": "拖动向量并显示水平、竖直分量和坐标，支持平移向量验证坐标不变。",
-          "availability": "proposed",
-          "status": "planned",
-          "version": null,
-          "metadataPreview": null,
-          "player": null,
-          "package": null
-        }
-      ]
+      "resources": []
     },
     {
       "id": "SH-HS-MATH-HJ-B2-C08-L08",
@@ -6247,22 +6183,7 @@
         "向量减法、终点减起点和端点顺序之间容易混乱。",
         "用坐标判定平行时，比例关系和零分量边界处理不稳。"
       ],
-      "digitalEntryPoints": [
-        {
-          "type": "applet",
-          "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L08-A01",
-          "title": "坐标线性运算联动表",
-          "cognitive_action": "比较",
-          "note": "同步显示图形拖拽、坐标表格和运算式，支持加、减、数乘和平行判定切换。"
-        },
-        {
-          "type": "diagnosis",
-          "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L08-D01",
-          "title": "坐标运算符号诊断",
-          "cognitive_action": "比较",
-          "note": "检测端点顺序、分量符号、数乘倍数和平行比例关系中的常见错误。"
-        }
-      ],
+      "digitalEntryPoints": [],
       "diagnosisFocus": [
         "能否正确处理向量坐标中的终点减起点。",
         "能否用坐标比例关系判断平行并说明边界情况。"
@@ -6272,34 +6193,7 @@
         "逻辑推理",
         "直观想象"
       ],
-      "resources": [
-        {
-          "id": "SH-HS-MATH-HJ-B2-C08-L08-A01",
-          "resourceType": "applet",
-          "title": "坐标线性运算联动表",
-          "cognitiveAction": "比较",
-          "note": "同步显示图形拖拽、坐标表格和运算式，支持加、减、数乘和平行判定切换。",
-          "availability": "proposed",
-          "status": "planned",
-          "version": null,
-          "metadataPreview": null,
-          "player": null,
-          "package": null
-        },
-        {
-          "id": "SH-HS-MATH-HJ-B2-C08-L08-D01",
-          "resourceType": "diagnosis",
-          "title": "坐标运算符号诊断",
-          "cognitiveAction": "比较",
-          "note": "检测端点顺序、分量符号、数乘倍数和平行比例关系中的常见错误。",
-          "availability": "proposed",
-          "status": "planned",
-          "version": null,
-          "metadataPreview": null,
-          "player": null,
-          "package": null
-        }
-      ]
+      "resources": []
     },
     {
       "id": "SH-HS-MATH-HJ-B2-C08-L09",
@@ -6340,22 +6234,7 @@
         "求夹角时漏除向量长度或忽略零向量，导致公式适用条件错误。",
         "垂直、投影、夹角和长度问题之间的公式选择容易混淆。"
       ],
-      "digitalEntryPoints": [
-        {
-          "type": "applet",
-          "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L09-A01",
-          "title": "数量积与夹角坐标计算器",
-          "cognitive_action": "比较",
-          "note": "拖动坐标向量，联动显示点乘、长度、夹角余弦、垂直判定和投影值。"
-        },
-        {
-          "type": "diagnosis",
-          "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L09-D01",
-          "title": "夹角坐标误区诊断",
-          "cognitive_action": "比较",
-          "note": "围绕点乘公式、长度归一化、零向量条件和垂直判定设计即时反馈。"
-        }
-      ],
+      "digitalEntryPoints": [],
       "diagnosisFocus": [
         "能否用坐标公式求数量积和夹角余弦。",
         "能否判断公式在零向量情况下是否适用。"
@@ -6365,34 +6244,7 @@
         "逻辑推理",
         "直观想象"
       ],
-      "resources": [
-        {
-          "id": "SH-HS-MATH-HJ-B2-C08-L09-A01",
-          "resourceType": "applet",
-          "title": "数量积与夹角坐标计算器",
-          "cognitiveAction": "比较",
-          "note": "拖动坐标向量，联动显示点乘、长度、夹角余弦、垂直判定和投影值。",
-          "availability": "proposed",
-          "status": "planned",
-          "version": null,
-          "metadataPreview": null,
-          "player": null,
-          "package": null
-        },
-        {
-          "id": "SH-HS-MATH-HJ-B2-C08-L09-D01",
-          "resourceType": "diagnosis",
-          "title": "夹角坐标误区诊断",
-          "cognitiveAction": "比较",
-          "note": "围绕点乘公式、长度归一化、零向量条件和垂直判定设计即时反馈。",
-          "availability": "proposed",
-          "status": "planned",
-          "version": null,
-          "metadataPreview": null,
-          "player": null,
-          "package": null
-        }
-      ]
+      "resources": []
     },
     {
       "id": "SH-HS-MATH-HJ-B2-C08-L10",
@@ -6438,23 +6290,16 @@
         {
           "type": "applet",
           "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L10-A01",
-          "title": "向量法几何问题工作台",
+          "title": "向量法路径比较板",
           "cognitive_action": "分解",
-          "note": "在典型三角形和四边形情境中切换基底法、坐标法和数量积法，展示条件到向量关系的转化路径。"
-        },
-        {
-          "type": "manim_clip",
-          "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L10-M01",
-          "title": "从几何关系到向量方程",
-          "cognitive_action": "分解",
-          "note": "用短动画展示把平行、垂直和中点条件翻译成向量等式的思路。"
+          "note": "限定 1-2 个典型几何问题，只比较基底法、坐标法、数量积法的第一步建模路径，不做通用解题器。"
         },
         {
           "type": "diagnosis",
           "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L10-D01",
-          "title": "向量应用路径选择诊断",
+          "title": "向量应用第一步诊断",
           "cognitive_action": "比较",
-          "note": "给出不同几何条件，要求选择基底法、坐标法或数量积法并说明理由。"
+          "note": "围绕几何条件选择基底法、坐标法或数量积法的第一步理由给反馈，不批改完整证明过程。"
         }
       ],
       "diagnosisFocus": [
@@ -6471,22 +6316,9 @@
         {
           "id": "SH-HS-MATH-HJ-B2-C08-L10-A01",
           "resourceType": "applet",
-          "title": "向量法几何问题工作台",
+          "title": "向量法路径比较板",
           "cognitiveAction": "分解",
-          "note": "在典型三角形和四边形情境中切换基底法、坐标法和数量积法，展示条件到向量关系的转化路径。",
-          "availability": "proposed",
-          "status": "planned",
-          "version": null,
-          "metadataPreview": null,
-          "player": null,
-          "package": null
-        },
-        {
-          "id": "SH-HS-MATH-HJ-B2-C08-L10-M01",
-          "resourceType": "manim_clip",
-          "title": "从几何关系到向量方程",
-          "cognitiveAction": "分解",
-          "note": "用短动画展示把平行、垂直和中点条件翻译成向量等式的思路。",
+          "note": "限定 1-2 个典型几何问题，只比较基底法、坐标法、数量积法的第一步建模路径，不做通用解题器。",
           "availability": "proposed",
           "status": "planned",
           "version": null,
@@ -6497,9 +6329,9 @@
         {
           "id": "SH-HS-MATH-HJ-B2-C08-L10-D01",
           "resourceType": "diagnosis",
-          "title": "向量应用路径选择诊断",
+          "title": "向量应用第一步诊断",
           "cognitiveAction": "比较",
-          "note": "给出不同几何条件，要求选择基底法、坐标法或数量积法并说明理由。",
+          "note": "围绕几何条件选择基底法、坐标法或数量积法的第一步理由给反馈，不批改完整证明过程。",
           "availability": "proposed",
           "status": "planned",
           "version": null,
@@ -11908,9 +11740,9 @@
         {
           "type": "diagnosis",
           "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L02-D01",
-          "title": "向量加减法方向诊断",
+          "title": "加减法方向四类短诊断",
           "cognitive_action": "比较",
-          "note": "围绕首尾相接、相反向量、闭合路径和端点顺序设计即时反馈。"
+          "note": "只覆盖首尾相接、相反向量、闭合路径、端点顺序四类错因，用即时反馈提示方向来源；不做构造演示。"
         }
       ],
       "diagnosisFocus": [
@@ -11939,9 +11771,9 @@
         {
           "id": "SH-HS-MATH-HJ-B2-C08-L02-D01",
           "resourceType": "diagnosis",
-          "title": "向量加减法方向诊断",
+          "title": "加减法方向四类短诊断",
           "cognitiveAction": "比较",
-          "note": "围绕首尾相接、相反向量、闭合路径和端点顺序设计即时反馈。",
+          "note": "只覆盖首尾相接、相反向量、闭合路径、端点顺序四类错因，用即时反馈提示方向来源；不做构造演示。",
           "availability": "proposed",
           "status": "planned",
           "version": null,
@@ -12075,9 +11907,9 @@
         {
           "type": "manim_clip",
           "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L04-M01",
-          "title": "从垂足到投影",
+          "title": "投影有向长度导入动画",
           "cognitive_action": "投影",
-          "note": "用短动画把作垂线、读有向长度和引出 a cos theta 的过程连续化。"
+          "note": "30-45 秒短动画，只串联作垂线、读有向投影、解释 a cos theta 的正负，不替代后续交互探索。"
         }
       ],
       "diagnosisFocus": [
@@ -12106,9 +11938,9 @@
         {
           "id": "SH-HS-MATH-HJ-B2-C08-L04-M01",
           "resourceType": "manim_clip",
-          "title": "从垂足到投影",
+          "title": "投影有向长度导入动画",
           "cognitiveAction": "投影",
-          "note": "用短动画把作垂线、读有向长度和引出 a cos theta 的过程连续化。",
+          "note": "30-45 秒短动画，只串联作垂线、读有向投影、解释 a cos theta 的正负，不替代后续交互探索。",
           "availability": "proposed",
           "status": "planned",
           "version": null,
@@ -12252,22 +12084,7 @@
         "唯一表示的条件依赖不共线，常被弱化成代数结论。",
         "从几何分解过渡到坐标表示时，两个系数的含义容易丢失。"
       ],
-      "digitalEntryPoints": [
-        {
-          "type": "applet",
-          "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L06-A01",
-          "title": "基底分解探索板",
-          "cognitive_action": "分解",
-          "note": "拖动两条基向量和目标向量，实时显示线性组合系数、平行四边形分解和不共线条件。"
-        },
-        {
-          "type": "manim_clip",
-          "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L06-M01",
-          "title": "向量基本定理分解动画",
-          "cognitive_action": "分解",
-          "note": "用连续构造说明为什么两个不共线方向可以唯一定位目标向量。"
-        }
-      ],
+      "digitalEntryPoints": [],
       "diagnosisFocus": [
         "能否判断给定两个向量是否可以作为基底。",
         "能否解释线性组合系数的几何意义。"
@@ -12277,34 +12094,7 @@
         "逻辑推理",
         "直观想象"
       ],
-      "resources": [
-        {
-          "id": "SH-HS-MATH-HJ-B2-C08-L06-A01",
-          "resourceType": "applet",
-          "title": "基底分解探索板",
-          "cognitiveAction": "分解",
-          "note": "拖动两条基向量和目标向量，实时显示线性组合系数、平行四边形分解和不共线条件。",
-          "availability": "proposed",
-          "status": "planned",
-          "version": null,
-          "metadataPreview": null,
-          "player": null,
-          "package": null
-        },
-        {
-          "id": "SH-HS-MATH-HJ-B2-C08-L06-M01",
-          "resourceType": "manim_clip",
-          "title": "向量基本定理分解动画",
-          "cognitiveAction": "分解",
-          "note": "用连续构造说明为什么两个不共线方向可以唯一定位目标向量。",
-          "availability": "proposed",
-          "status": "planned",
-          "version": null,
-          "metadataPreview": null,
-          "player": null,
-          "package": null
-        }
-      ]
+      "resources": []
     },
     "SH-HS-MATH-HJ-B2-C08-L07": {
       "id": "SH-HS-MATH-HJ-B2-C08-L07",
@@ -12345,15 +12135,7 @@
         "正交分解中的正负方向与坐标轴方向对应不稳定。",
         "同一向量平移后坐标不变的理由不直观。"
       ],
-      "digitalEntryPoints": [
-        {
-          "type": "applet",
-          "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L07-A01",
-          "title": "正交分解与坐标投影板",
-          "cognitive_action": "投影",
-          "note": "拖动向量并显示水平、竖直分量和坐标，支持平移向量验证坐标不变。"
-        }
-      ],
+      "digitalEntryPoints": [],
       "diagnosisFocus": [
         "能否从起点和终点坐标求向量坐标。",
         "能否区分点坐标和向量坐标。"
@@ -12363,21 +12145,7 @@
         "数学抽象",
         "数学运算"
       ],
-      "resources": [
-        {
-          "id": "SH-HS-MATH-HJ-B2-C08-L07-A01",
-          "resourceType": "applet",
-          "title": "正交分解与坐标投影板",
-          "cognitiveAction": "投影",
-          "note": "拖动向量并显示水平、竖直分量和坐标，支持平移向量验证坐标不变。",
-          "availability": "proposed",
-          "status": "planned",
-          "version": null,
-          "metadataPreview": null,
-          "player": null,
-          "package": null
-        }
-      ]
+      "resources": []
     },
     "SH-HS-MATH-HJ-B2-C08-L08": {
       "id": "SH-HS-MATH-HJ-B2-C08-L08",
@@ -12418,22 +12186,7 @@
         "向量减法、终点减起点和端点顺序之间容易混乱。",
         "用坐标判定平行时，比例关系和零分量边界处理不稳。"
       ],
-      "digitalEntryPoints": [
-        {
-          "type": "applet",
-          "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L08-A01",
-          "title": "坐标线性运算联动表",
-          "cognitive_action": "比较",
-          "note": "同步显示图形拖拽、坐标表格和运算式，支持加、减、数乘和平行判定切换。"
-        },
-        {
-          "type": "diagnosis",
-          "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L08-D01",
-          "title": "坐标运算符号诊断",
-          "cognitive_action": "比较",
-          "note": "检测端点顺序、分量符号、数乘倍数和平行比例关系中的常见错误。"
-        }
-      ],
+      "digitalEntryPoints": [],
       "diagnosisFocus": [
         "能否正确处理向量坐标中的终点减起点。",
         "能否用坐标比例关系判断平行并说明边界情况。"
@@ -12443,34 +12196,7 @@
         "逻辑推理",
         "直观想象"
       ],
-      "resources": [
-        {
-          "id": "SH-HS-MATH-HJ-B2-C08-L08-A01",
-          "resourceType": "applet",
-          "title": "坐标线性运算联动表",
-          "cognitiveAction": "比较",
-          "note": "同步显示图形拖拽、坐标表格和运算式，支持加、减、数乘和平行判定切换。",
-          "availability": "proposed",
-          "status": "planned",
-          "version": null,
-          "metadataPreview": null,
-          "player": null,
-          "package": null
-        },
-        {
-          "id": "SH-HS-MATH-HJ-B2-C08-L08-D01",
-          "resourceType": "diagnosis",
-          "title": "坐标运算符号诊断",
-          "cognitiveAction": "比较",
-          "note": "检测端点顺序、分量符号、数乘倍数和平行比例关系中的常见错误。",
-          "availability": "proposed",
-          "status": "planned",
-          "version": null,
-          "metadataPreview": null,
-          "player": null,
-          "package": null
-        }
-      ]
+      "resources": []
     },
     "SH-HS-MATH-HJ-B2-C08-L09": {
       "id": "SH-HS-MATH-HJ-B2-C08-L09",
@@ -12511,22 +12237,7 @@
         "求夹角时漏除向量长度或忽略零向量，导致公式适用条件错误。",
         "垂直、投影、夹角和长度问题之间的公式选择容易混淆。"
       ],
-      "digitalEntryPoints": [
-        {
-          "type": "applet",
-          "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L09-A01",
-          "title": "数量积与夹角坐标计算器",
-          "cognitive_action": "比较",
-          "note": "拖动坐标向量，联动显示点乘、长度、夹角余弦、垂直判定和投影值。"
-        },
-        {
-          "type": "diagnosis",
-          "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L09-D01",
-          "title": "夹角坐标误区诊断",
-          "cognitive_action": "比较",
-          "note": "围绕点乘公式、长度归一化、零向量条件和垂直判定设计即时反馈。"
-        }
-      ],
+      "digitalEntryPoints": [],
       "diagnosisFocus": [
         "能否用坐标公式求数量积和夹角余弦。",
         "能否判断公式在零向量情况下是否适用。"
@@ -12536,34 +12247,7 @@
         "逻辑推理",
         "直观想象"
       ],
-      "resources": [
-        {
-          "id": "SH-HS-MATH-HJ-B2-C08-L09-A01",
-          "resourceType": "applet",
-          "title": "数量积与夹角坐标计算器",
-          "cognitiveAction": "比较",
-          "note": "拖动坐标向量，联动显示点乘、长度、夹角余弦、垂直判定和投影值。",
-          "availability": "proposed",
-          "status": "planned",
-          "version": null,
-          "metadataPreview": null,
-          "player": null,
-          "package": null
-        },
-        {
-          "id": "SH-HS-MATH-HJ-B2-C08-L09-D01",
-          "resourceType": "diagnosis",
-          "title": "夹角坐标误区诊断",
-          "cognitiveAction": "比较",
-          "note": "围绕点乘公式、长度归一化、零向量条件和垂直判定设计即时反馈。",
-          "availability": "proposed",
-          "status": "planned",
-          "version": null,
-          "metadataPreview": null,
-          "player": null,
-          "package": null
-        }
-      ]
+      "resources": []
     },
     "SH-HS-MATH-HJ-B2-C08-L10": {
       "id": "SH-HS-MATH-HJ-B2-C08-L10",
@@ -12609,23 +12293,16 @@
         {
           "type": "applet",
           "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L10-A01",
-          "title": "向量法几何问题工作台",
+          "title": "向量法路径比较板",
           "cognitive_action": "分解",
-          "note": "在典型三角形和四边形情境中切换基底法、坐标法和数量积法，展示条件到向量关系的转化路径。"
-        },
-        {
-          "type": "manim_clip",
-          "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L10-M01",
-          "title": "从几何关系到向量方程",
-          "cognitive_action": "分解",
-          "note": "用短动画展示把平行、垂直和中点条件翻译成向量等式的思路。"
+          "note": "限定 1-2 个典型几何问题，只比较基底法、坐标法、数量积法的第一步建模路径，不做通用解题器。"
         },
         {
           "type": "diagnosis",
           "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L10-D01",
-          "title": "向量应用路径选择诊断",
+          "title": "向量应用第一步诊断",
           "cognitive_action": "比较",
-          "note": "给出不同几何条件，要求选择基底法、坐标法或数量积法并说明理由。"
+          "note": "围绕几何条件选择基底法、坐标法或数量积法的第一步理由给反馈，不批改完整证明过程。"
         }
       ],
       "diagnosisFocus": [
@@ -12642,22 +12319,9 @@
         {
           "id": "SH-HS-MATH-HJ-B2-C08-L10-A01",
           "resourceType": "applet",
-          "title": "向量法几何问题工作台",
+          "title": "向量法路径比较板",
           "cognitiveAction": "分解",
-          "note": "在典型三角形和四边形情境中切换基底法、坐标法和数量积法，展示条件到向量关系的转化路径。",
-          "availability": "proposed",
-          "status": "planned",
-          "version": null,
-          "metadataPreview": null,
-          "player": null,
-          "package": null
-        },
-        {
-          "id": "SH-HS-MATH-HJ-B2-C08-L10-M01",
-          "resourceType": "manim_clip",
-          "title": "从几何关系到向量方程",
-          "cognitiveAction": "分解",
-          "note": "用短动画展示把平行、垂直和中点条件翻译成向量等式的思路。",
+          "note": "限定 1-2 个典型几何问题，只比较基底法、坐标法、数量积法的第一步建模路径，不做通用解题器。",
           "availability": "proposed",
           "status": "planned",
           "version": null,
@@ -12668,9 +12332,9 @@
         {
           "id": "SH-HS-MATH-HJ-B2-C08-L10-D01",
           "resourceType": "diagnosis",
-          "title": "向量应用路径选择诊断",
+          "title": "向量应用第一步诊断",
           "cognitiveAction": "比较",
-          "note": "给出不同几何条件，要求选择基底法、坐标法或数量积法并说明理由。",
+          "note": "围绕几何条件选择基底法、坐标法或数量积法的第一步理由给反馈，不批改完整证明过程。",
           "availability": "proposed",
           "status": "planned",
           "version": null,
@@ -12745,6 +12409,6 @@
     "implementedAppletCount": 8,
     "implementedManimCount": 3,
     "implementedDiagnosisCount": 4,
-    "plannedResourceCount": 18
+    "plannedResourceCount": 10
   }
 }

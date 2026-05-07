@@ -26,9 +26,10 @@
 - [x] 标注必修第二册第 8 章的先修知识、后续知识、教学痛点、数字化形式。
 - [x] 记录必修第二册第 8 章 dolearning.net 来源核对结果，明确 8.3 三课时分组与当前四小节拆分的待确认差异。
 - [x] 对必修第二册第 8 章的 18 个 planned resource 做数字化必要性筛选，标出强烈保留、收窄、降级和暂缓条目。
+- [x] 根据数字化必要性筛选修订第 8 章 `digital_entry_points`，让 production backlog 只保留 10 个必要性明确或已收窄的候选资源。
 - [ ] 人工终核必修第二册第 8 章的课时划分、课时数和标题表述。
 - [ ] 用纸质教材或已登录 dolearning 左侧目录专项确认必修第二册第 8 章 8.3“向量的坐标表示”应按三课时还是四小节进入课程图谱。
-- [ ] 根据 `docs/source-audits/b2-c08-digital-necessity-review.md` 修订第 8 章 `digital_entry_points`，删除或降级不需要独立 Applet / Manim / Diagnosis 的条目，并收窄过宽资源标题与 note。
+- [ ] 在 8.3 目录终核后，根据 `docs/source-audits/b2-c08-digital-necessity-review.md` 决定是否恢复或重排暂缓的 8.3 资源候选。
 - [ ] 展开第 7 章前置章节和第 9 章复数等承接节点。
 
 ## P2：课件规范

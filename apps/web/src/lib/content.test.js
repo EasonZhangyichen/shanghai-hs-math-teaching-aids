@@ -227,7 +227,7 @@ test("links the parameter lab applet and rendered transform-order Manim to lesso
   assert.equal(diagnosis.metadataPreview.diagnosisDesign.itemSummary.totalItems, 6);
   assert.equal(diagnosis.package.files.itemBank, "content/diagnosis/SH-HS-MATH-HJ-B2-C07-L05-D01/item-bank.yaml");
   assert.equal(diagnosis.player, null);
-  assert.equal(workspace.summary.plannedResourceCount, 18);
+  assert.equal(workspace.summary.plannedResourceCount, 10);
 });
 
 test("links the tangent graph applet and rendered asymptote Manim to lesson L06", async () => {
