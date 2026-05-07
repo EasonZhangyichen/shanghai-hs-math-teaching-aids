@@ -19,7 +19,7 @@
   - 课时节点：`SH-HS-MATH-HJ-B2-C08-L01` 至 `SH-HS-MATH-HJ-B2-C08-L10`。
   - 已标注每个课时的核心知识、先修、后续、教学痛点、数字化切入点、诊断焦点和核心素养。
   - 已新增 `docs/source-audits/b2-c08-dolearning-audit.md` 记录来源核对：dolearning.net 备课目录当前需要登录态，公开 secondary cross-check 支持 8.1 至 8.4 主干和当前 8.3 四小节拆分，但用户提供的 dolearning 截图线索显示 8.3 可能按“向量的坐标表示（1）（2）（3）”三课时组织；仍需纸质教材或已登录 dolearning 左侧目录最终确认。
-  - 第 8 章的 `digital_entry_points` 仍需单独做数字化必要性筛选；不是每个课时都必须制作 Applet 或 Manim，只有能明显加深理解、记忆、运用或诊断的资源才进入生产。
+  - 已新增 `docs/source-audits/b2-c08-digital-necessity-review.md` 评估第 8 章 18 个 planned resource 的数字化必要性：6 个强烈保留、4 个可保留但需收窄、3 个建议降级为教师脚本/纸笔任务/普通诊断、5 个暂缓等待教材或 dolearning 终核；本轮未改动课程图谱 YAML。
 - 已在 `track/trig-sample-pack` 上为 `SH-HS-MATH-HJ-B2-C07-L01-A01` 创建“单位圆到正弦曲线”资源包草稿：
   - 已包含 `metadata.yaml`、`README.md`、`teacher-script.md`、`student-task.md`、`review.md`。
   - 已新增 `src/index.html` 可运行原型，支持单位圆动点拖拽、`theta` 滑块、播放/暂停、重置、投影线、轨迹、关键点和周期延拓。
@@ -155,7 +155,7 @@
 
 - 尚未正式核验沪教版教材全册课时目录。
 - 必修第二册第 7 章目录已完成首版结构化整理，但尚未完成纸质教材人工终核。
-- 必修第二册第 8 章“平面向量”已完成首版结构化整理和一轮 dolearning 来源核对记录，但尚未完成纸质教材/已登录 dolearning 终核；尤其需要确认 8.3 是教材四小节拆分，还是 dolearning 三课时分组。第 8 章尚未创建对应资源包，也尚未完成数字化必要性筛选。
+- 必修第二册第 8 章“平面向量”已完成首版结构化整理、dolearning 来源核对记录和 planned resource 数字化必要性筛选，但尚未完成纸质教材/已登录 dolearning 终核；尤其需要确认 8.3 是教材四小节拆分，还是 dolearning 三课时分组。第 8 章尚未创建对应资源包，且不应在必要性筛选和目录终核处理前直接 scaffold 全量 18 个 planned item。
 - 第 7 章的前置章节节点和第 9 章复数等后续节点仍是引用占位，尚未展开为完整图谱。
 - 尚未创建独立课件播放器；教师工作台内已完成样板 Applet iframe 预览接入，但尚未沉淀为独立 `apps/player`。
 - 已创建八个可运行 HTML Applet 原型，并已接入平台壳 iframe 预览；尚未完成数学审校、课堂节奏试读和浏览器交互复核。
