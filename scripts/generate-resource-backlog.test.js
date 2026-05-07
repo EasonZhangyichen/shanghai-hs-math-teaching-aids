@@ -14,9 +14,9 @@ test("generates a deterministic backlog from curriculum entry points and impleme
 
   assert.equal(backlog.source.curriculum, "content/curriculum/index.yaml");
   assert.equal(backlog.summary.total, 25);
-  assert.equal(backlog.summary.implemented, 18);
-  assert.equal(backlog.summary.planned, 7);
-  assert.deepEqual(backlog.summary.byType.applet, { total: 14, implemented: 11, planned: 3 });
+  assert.equal(backlog.summary.implemented, 21);
+  assert.equal(backlog.summary.planned, 4);
+  assert.deepEqual(backlog.summary.byType.applet, { total: 14, implemented: 14, planned: 0 });
   assert.deepEqual(backlog.summary.byType.manim_clip, { total: 4, implemented: 3, planned: 1 });
   assert.deepEqual(backlog.summary.byType.diagnosis, { total: 7, implemented: 4, planned: 3 });
 
@@ -208,6 +208,33 @@ test("generates a deterministic backlog from curriculum entry points and impleme
   assert.equal(vectorScalarApplet.packagePath, "content/applets/SH-HS-MATH-HJ-B2-C08-L03-A01");
   assert.equal(vectorScalarApplet.metadataPath, "content/applets/SH-HS-MATH-HJ-B2-C08-L03-A01/metadata.yaml");
 
+  const vectorProjectionApplet = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B2-C08-L04-A01");
+  assert.equal(vectorProjectionApplet.status, "implemented");
+  assert.equal(vectorProjectionApplet.availability, "metadata_ready");
+  assert.equal(vectorProjectionApplet.packagePath, "content/applets/SH-HS-MATH-HJ-B2-C08-L04-A01");
+  assert.equal(
+    vectorProjectionApplet.metadataPath,
+    "content/applets/SH-HS-MATH-HJ-B2-C08-L04-A01/metadata.yaml",
+  );
+
+  const vectorDotProductApplet = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B2-C08-L05-A01");
+  assert.equal(vectorDotProductApplet.status, "implemented");
+  assert.equal(vectorDotProductApplet.availability, "metadata_ready");
+  assert.equal(vectorDotProductApplet.packagePath, "content/applets/SH-HS-MATH-HJ-B2-C08-L05-A01");
+  assert.equal(
+    vectorDotProductApplet.metadataPath,
+    "content/applets/SH-HS-MATH-HJ-B2-C08-L05-A01/metadata.yaml",
+  );
+
+  const vectorApplicationApplet = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B2-C08-L10-A01");
+  assert.equal(vectorApplicationApplet.status, "implemented");
+  assert.equal(vectorApplicationApplet.availability, "metadata_ready");
+  assert.equal(vectorApplicationApplet.packagePath, "content/applets/SH-HS-MATH-HJ-B2-C08-L10-A01");
+  assert.equal(
+    vectorApplicationApplet.metadataPath,
+    "content/applets/SH-HS-MATH-HJ-B2-C08-L10-A01/metadata.yaml",
+  );
+
   const vectorProjectionManim = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B2-C08-L04-M01");
   assert.equal(vectorProjectionManim.status, "planned");
   assert.equal(vectorProjectionManim.type, "manim_clip");
@@ -235,8 +262,8 @@ test("writes the backlog as stable pretty JSON", async () => {
     const written = JSON.parse(await readFile(outputPath, "utf8"));
 
     assert.equal(written.summary.total, 25);
-    assert.equal(written.summary.implemented, 18);
-    assert.equal(written.summary.planned, 7);
+    assert.equal(written.summary.implemented, 21);
+    assert.equal(written.summary.planned, 4);
     assert.equal(written.items[0].id, "SH-HS-MATH-HJ-B2-C07-L01-A01");
     assert.ok(
       JSON.stringify(written, null, 2).includes(

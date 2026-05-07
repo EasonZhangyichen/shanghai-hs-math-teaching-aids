@@ -16,13 +16,13 @@
   },
   "summary": {
     "total": 25,
-    "implemented": 18,
-    "planned": 7,
+    "implemented": 21,
+    "planned": 4,
     "byType": {
       "applet": {
         "total": 14,
-        "implemented": 11,
-        "planned": 3
+        "implemented": 14,
+        "planned": 0
       },
       "manim_clip": {
         "total": 4,
@@ -629,8 +629,8 @@
     {
       "id": "SH-HS-MATH-HJ-B2-C08-L04-A01",
       "type": "applet",
-      "status": "planned",
-      "availability": "planned",
+      "status": "implemented",
+      "availability": "metadata_ready",
       "title": "投影长度与夹角实验室",
       "proposedTitle": "投影长度与夹角实验室",
       "lessonId": "SH-HS-MATH-HJ-B2-C08-L04",
@@ -651,11 +651,11 @@
       "note": "拖动两个向量改变夹角，联动显示垂足、有向投影长度、cos 值和正负变化。",
       "priority": "chapter_backlog",
       "priorityReason": "投影连接三角比和数量积，是从第 7 章过渡到向量运算的关键节点。",
-      "packagePath": null,
-      "metadataPath": null,
+      "packagePath": "content/applets/SH-HS-MATH-HJ-B2-C08-L04-A01",
+      "metadataPath": "content/applets/SH-HS-MATH-HJ-B2-C08-L04-A01/metadata.yaml",
       "recommendedTrack": "track/trig-sample-pack",
-      "nextAction": "创建 Applet 资源包，先写 metadata、教师脚本、学生任务和 review，再实现最小可运行 HTML 原型。",
-      "threadPrompt": "请先读取项目锚点文件和 content/production/resource-backlog.json，然后切到 track/trig-sample-pack。这次只创建并推进 SH-HS-MATH-HJ-B2-C08-L04-A01（Applet），对应课时 SH-HS-MATH-HJ-B2-C08-L04「向量的投影」。先确认教学痛点、认知动作、文件规范和验收标准，再动手；完成后运行 npm run generate:backlog 和 npm run verify，更新 docs/01-current-state.md 与 docs/02-next-actions.md，并提交。"
+      "nextAction": "完成数学边界复核、课堂节奏试读和浏览器交互验证，再决定是否进入 math_review。",
+      "threadPrompt": "请先读取项目锚点文件和 content/production/resource-backlog.json，然后切到 track/trig-sample-pack。这次只复核并推进 SH-HS-MATH-HJ-B2-C08-L04-A01（Applet），对应课时 SH-HS-MATH-HJ-B2-C08-L04「向量的投影」。先确认教学痛点、认知动作、文件规范和验收标准，再动手；完成后运行 npm run generate:backlog 和 npm run verify，更新 docs/01-current-state.md 与 docs/02-next-actions.md，并提交。"
     },
     {
       "id": "SH-HS-MATH-HJ-B2-C08-L04-M01",
@@ -691,8 +691,8 @@
     {
       "id": "SH-HS-MATH-HJ-B2-C08-L05-A01",
       "type": "applet",
-      "status": "planned",
-      "availability": "planned",
+      "status": "implemented",
+      "availability": "metadata_ready",
       "title": "数量积动态解释器",
       "proposedTitle": "数量积动态解释器",
       "lessonId": "SH-HS-MATH-HJ-B2-C08-L05",
@@ -713,11 +713,11 @@
       "note": "同步展示两个向量、夹角、投影和数量积数值，突出正、零、负三种区域。",
       "priority": "chapter_backlog",
       "priorityReason": null,
-      "packagePath": null,
-      "metadataPath": null,
+      "packagePath": "content/applets/SH-HS-MATH-HJ-B2-C08-L05-A01",
+      "metadataPath": "content/applets/SH-HS-MATH-HJ-B2-C08-L05-A01/metadata.yaml",
       "recommendedTrack": "track/trig-sample-pack",
-      "nextAction": "创建 Applet 资源包，先写 metadata、教师脚本、学生任务和 review，再实现最小可运行 HTML 原型。",
-      "threadPrompt": "请先读取项目锚点文件和 content/production/resource-backlog.json，然后切到 track/trig-sample-pack。这次只创建并推进 SH-HS-MATH-HJ-B2-C08-L05-A01（Applet），对应课时 SH-HS-MATH-HJ-B2-C08-L05「向量的数量积的定义与运算律」。先确认教学痛点、认知动作、文件规范和验收标准，再动手；完成后运行 npm run generate:backlog 和 npm run verify，更新 docs/01-current-state.md 与 docs/02-next-actions.md，并提交。"
+      "nextAction": "完成数学边界复核、课堂节奏试读和浏览器交互验证，再决定是否进入 math_review。",
+      "threadPrompt": "请先读取项目锚点文件和 content/production/resource-backlog.json，然后切到 track/trig-sample-pack。这次只复核并推进 SH-HS-MATH-HJ-B2-C08-L05-A01（Applet），对应课时 SH-HS-MATH-HJ-B2-C08-L05「向量的数量积的定义与运算律」。先确认教学痛点、认知动作、文件规范和验收标准，再动手；完成后运行 npm run generate:backlog 和 npm run verify，更新 docs/01-current-state.md 与 docs/02-next-actions.md，并提交。"
     },
     {
       "id": "SH-HS-MATH-HJ-B2-C08-L05-D01",
@@ -753,8 +753,8 @@
     {
       "id": "SH-HS-MATH-HJ-B2-C08-L10-A01",
       "type": "applet",
-      "status": "planned",
-      "availability": "planned",
+      "status": "implemented",
+      "availability": "metadata_ready",
       "title": "向量法路径比较板",
       "proposedTitle": "向量法路径比较板",
       "lessonId": "SH-HS-MATH-HJ-B2-C08-L10",
@@ -775,11 +775,11 @@
       "note": "限定 1-2 个典型几何问题，只比较基底法、坐标法、数量积法的第一步建模路径，不做通用解题器。",
       "priority": "follow_up",
       "priorityReason": "向量应用适合在资源工厂中拆成多个典型问题包逐步推进。",
-      "packagePath": null,
-      "metadataPath": null,
+      "packagePath": "content/applets/SH-HS-MATH-HJ-B2-C08-L10-A01",
+      "metadataPath": "content/applets/SH-HS-MATH-HJ-B2-C08-L10-A01/metadata.yaml",
       "recommendedTrack": "track/trig-sample-pack",
-      "nextAction": "创建 Applet 资源包，先写 metadata、教师脚本、学生任务和 review，再实现最小可运行 HTML 原型。",
-      "threadPrompt": "请先读取项目锚点文件和 content/production/resource-backlog.json，然后切到 track/trig-sample-pack。这次只创建并推进 SH-HS-MATH-HJ-B2-C08-L10-A01（Applet），对应课时 SH-HS-MATH-HJ-B2-C08-L10「向量的应用」。先确认教学痛点、认知动作、文件规范和验收标准，再动手；完成后运行 npm run generate:backlog 和 npm run verify，更新 docs/01-current-state.md 与 docs/02-next-actions.md，并提交。"
+      "nextAction": "完成数学边界复核、课堂节奏试读和浏览器交互验证，再决定是否进入 math_review。",
+      "threadPrompt": "请先读取项目锚点文件和 content/production/resource-backlog.json，然后切到 track/trig-sample-pack。这次只复核并推进 SH-HS-MATH-HJ-B2-C08-L10-A01（Applet），对应课时 SH-HS-MATH-HJ-B2-C08-L10「向量的应用」。先确认教学痛点、认知动作、文件规范和验收标准，再动手；完成后运行 npm run generate:backlog 和 npm run verify，更新 docs/01-current-state.md 与 docs/02-next-actions.md，并提交。"
     },
     {
       "id": "SH-HS-MATH-HJ-B2-C08-L10-D01",
