@@ -1,0 +1,231 @@
+id: "SH-HS-MATH-HJ-B2-C07-L06-A01"
+version: "0.1.0"
+status: "draft"
+resource_type: "applet"
+title: "正切函数图像生成器"
+subtitle: "联动单位圆斜率、渐近线和 y = tan x 的分段逼近"
+
+curriculum:
+  region: "上海"
+  stage: "高中"
+  subject: "数学"
+  edition: "沪教版"
+  volume_id: "B2"
+  volume_title: "必修第二册"
+  chapter_id: "SH-HS-MATH-HJ-B2-C07"
+  chapter_title: "三角函数"
+  section_id: "SH-HS-MATH-HJ-B2-C07-S04"
+  section_title: "正切函数的图像与性质"
+  lesson_id: "SH-HS-MATH-HJ-B2-C07-L06"
+  textbook_ref: "7.4.1"
+  lesson_title: "正切函数的图像"
+
+pedagogy:
+  cognitive_action: "逼近"
+  estimated_classroom_minutes: 20
+  primary_teaching_problem: "学生容易把正切图像画成连续曲线，不能把渐近线与 cos x = 0 的定义域限制联系起来，也容易被正弦、余弦的 2pi 周期干扰。"
+  learning_goals:
+    - "用单位圆终边斜率和 sin x / cos x 解释 tan x 的函数值来源。"
+    - "说明 x = pi/2 + kpi 处 cos x = 0，因此 tan x 无定义并形成渐近线。"
+    - "观察 x 从渐近线左右逼近时 tan x 分别趋向正无穷或负无穷。"
+    - "通过相邻分支对照说明正切函数周期为 pi。"
+  prerequisites:
+    - "任意角的正切定义"
+    - "正弦、余弦函数图像与零点"
+    - "函数定义域和间断点意识"
+  successors:
+    - "SH-HS-MATH-HJ-B2-C07-L07"
+    - "SH-HS-MATH-HJ-B2-C07-L06-M01"
+    - "SH-HS-MATH-HJ-XB1-DERIV-K01"
+  core_competencies:
+    - "直观想象"
+    - "数学抽象"
+    - "逻辑推理"
+
+mathematical_scope:
+  function: "y = tan x = sin x / cos x"
+  independent_variable: "角 x 的弧度量"
+  dependent_variable: "终边斜率或正切值"
+  default_x_range: "-3pi/2 < x < 3pi/2, excluding x = pi/2 + kpi"
+  visible_y_range: "-4 <= y <= 4"
+  domain: "x != pi/2 + kpi, k in Z"
+  period: "pi"
+  asymptotes: "x = pi/2 + kpi"
+  anchor_interval: "(-pi/2, pi/2)"
+  key_points:
+    - angle: "-pi/4"
+      value: "-1"
+      note: "左侧分支中的常用描点"
+    - angle: "0"
+      value: "0"
+      note: "主值区间中心点"
+    - angle: "pi/4"
+      value: "1"
+      note: "右侧分支中的常用描点"
+  out_of_scope:
+    - "正切函数单调性的完整一般式证明"
+    - "y = A tan(omega x + phi) 的参数变换"
+    - "用导数严格证明渐近线两侧的极限"
+    - "反三角函数或切线方程的拓展讨论"
+
+representations:
+  - id: "unit_circle"
+    role: "显示单位圆终边、坐标投影和斜率线，解释 tan x 的几何来源。"
+  - id: "tan_graph"
+    role: "显示 y = tan x 在多个分支上的图像，并在渐近线处断开。"
+  - id: "asymptote_markers"
+    role: "标出 x = pi/2 + kpi，强调 cos x = 0 与无定义位置。"
+  - id: "approach_probe"
+    role: "用可移动观察角展示趋近渐近线时函数值快速增大或减小。"
+  - id: "period_compare"
+    role: "显示 x 与 x + pi 的两个观察点，帮助确认周期为 pi。"
+  - id: "summary_panel"
+    role: "分步归纳定义域、渐近线、主值区间和周期。"
+
+interaction_design:
+  primary_control: "拖动角度滑块或单位圆终边，联动观察单位圆斜率、正切图像点、渐近线距离和周期对照。"
+  teacher_controls:
+    - "播放或暂停观察角在可见区间内移动"
+    - "重置到 x = pi/4"
+    - "切换观察焦点：主值区间、渐近线逼近、周期对照"
+    - "显示或隐藏单位圆、渐近线、周期对照和结论面板"
+    - "在接近渐近线时显示 cos x 的绝对值和当前趋向语言"
+  student_controls:
+    - "先预测靠近 pi/2 左右两侧时 tan x 的变化方向，再拖动验证"
+    - "比较 x 与 x + pi 的函数值，解释为什么周期是 pi"
+    - "记录哪些 x 不能取，并把原因写成 cos x = 0"
+  staged_reveal:
+    - step: "unit_circle_slope"
+      description: "先显示单位圆终边、坐标和斜率线，建立 tan x 的来源。"
+    - step: "principal_branch"
+      description: "只看 (-pi/2, pi/2) 内的主分支，描出 -pi/4、0、pi/4。"
+    - step: "asymptote_approach"
+      description: "打开渐近线和距离读数，观察左右逼近时的趋势。"
+    - step: "period_compare"
+      description: "显示 x 与 x + pi 的点位对照，确认相邻分支重复。"
+    - step: "summary"
+      description: "归纳定义域、渐近线和周期，避免画成连续曲线。"
+
+data_contract:
+  state_variables:
+    - name: "current_x"
+      unit: "radian"
+      value_type: "number"
+      default: 0.7853981633974483
+      description: "当前观察角 x。"
+      persistence: "snapshot"
+    - name: "current_tan"
+      value_type: "number"
+      default: 1
+      description: "当前 tan x 的函数值，接近渐近线时按可视范围截断显示。"
+      persistence: "snapshot"
+    - name: "cos_value"
+      value_type: "number"
+      default: 0.7071067811865476
+      description: "当前 cos x，用于解释正切无定义位置。"
+      persistence: "snapshot"
+    - name: "nearest_asymptote"
+      unit: "radian"
+      value_type: "number"
+      default: 1.5707963267948966
+      description: "距离当前角最近的渐近线 x = pi/2 + kpi。"
+      persistence: "snapshot"
+    - name: "distance_to_asymptote"
+      unit: "radian"
+      value_type: "number"
+      default: 0.7853981633974483
+      description: "当前角到最近渐近线的水平距离。"
+      persistence: "snapshot"
+    - name: "focus_mode"
+      value_type: "string"
+      default: "principal"
+      description: "观察焦点：principal、approach 或 period。"
+      persistence: "snapshot"
+    - name: "unit_circle_visible"
+      value_type: "boolean"
+      default: true
+      description: "是否显示单位圆斜率表征。"
+      persistence: "snapshot"
+    - name: "asymptotes_visible"
+      value_type: "boolean"
+      default: true
+      description: "是否显示渐近线。"
+      persistence: "snapshot"
+    - name: "period_compare_visible"
+      value_type: "boolean"
+      default: false
+      description: "是否显示 x 与 x + pi 的周期对照点。"
+      persistence: "snapshot"
+    - name: "summary_visible"
+      value_type: "boolean"
+      default: false
+      description: "是否显示课堂归纳面板。"
+      persistence: "snapshot"
+  events:
+    - name: "current_angle_changed"
+      direction: "applet_to_player"
+      description: "当前观察角发生变化。"
+      payload: ["current_x", "current_tan", "cos_value", "nearest_asymptote", "distance_to_asymptote"]
+    - name: "focus_mode_changed"
+      direction: "applet_to_player"
+      description: "教师切换观察焦点。"
+      payload: ["focus_mode"]
+    - name: "layer_toggled"
+      direction: "applet_to_player"
+      description: "教师显示或隐藏图层。"
+      payload: ["unit_circle_visible", "asymptotes_visible", "period_compare_visible", "summary_visible"]
+    - name: "asymptote_approached"
+      direction: "applet_to_player"
+      description: "观察角进入渐近线附近的提醒区。"
+      payload: ["current_x", "current_tan", "nearest_asymptote", "distance_to_asymptote"]
+
+feedback_and_diagnosis:
+  success_evidence:
+    - "学生能写出 tan x 的定义域为 x != pi/2 + kpi。"
+    - "学生能说明渐近线来自 cos x = 0，而不是图像人为断开。"
+    - "学生能描述靠近同一条渐近线左右两侧时函数值趋向相反方向。"
+    - "学生能用 tan(x + pi) = tan x 解释周期为 pi。"
+  common_error_tags:
+    - id: "domain_gap_ignored"
+      label: "忽略定义域断点，把图像画成连续曲线"
+    - id: "asymptote_source_unclear"
+      label: "不能把渐近线位置与 cos x = 0 联系起来"
+    - id: "period_confused_with_sine"
+      label: "把正切周期误写为 2pi"
+    - id: "one_sided_trend_reversed"
+      label: "渐近线两侧趋向方向判断反了"
+  feedback_principles:
+    - "反馈必须先回到 tan x = sin x / cos x 的定义。"
+    - "出现连续曲线错误时，优先追问哪些 x 不能取。"
+    - "讨论渐近线时同时显示 cos x 的大小和正切值变化。"
+    - "讨论周期时用 x 与 x + pi 的同值对照，而不是只背结论。"
+
+visual_semantics:
+  unit_circle: "墨绿色表示单位圆和终边，强调角的来源。"
+  slope_line: "橙色表示终边斜率线和当前 tan x 值。"
+  tan_curve: "深蓝色分段曲线表示 y = tan x。"
+  asymptote: "红色虚线表示 x = pi/2 + kpi 的渐近线。"
+  period_compare: "紫色点表示 x + pi 的周期对照点。"
+  undefined_zone: "淡红背景表示渐近线附近的无定义风险区。"
+  rule: "颜色只用于区分数学对象、趋势和风险，不作装饰。"
+
+implementation:
+  phase: "runnable_prototype"
+  html_src_status: "runnable"
+  planned_engine: "native-canvas-svg"
+  create_src_in_later_task: false
+  classroom_device_targets:
+    - "教师电脑浏览器"
+    - "教室大屏"
+    - "触控屏或触控板"
+
+files:
+  readme: "README.md"
+  teacher_script: "teacher-script.md"
+  student_task: "student-task.md"
+  review_record: "review.md"
+  src_entry: "src/index.html"
+
+compliance:
+  copyright_note: "本资源包为原创教学脚本与交互实现，不复制教材正文、官方课件、教案或商业平台资源。"
+  review_status: "self_checked_draft"
