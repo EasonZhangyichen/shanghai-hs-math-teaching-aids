@@ -48,6 +48,7 @@
 - [x] 设计并创建 `SH-HS-MATH-HJ-B2-C07-L03-A01`“单位圆到余弦曲线”Applet 资源包。
 - [x] 设计并创建 `SH-HS-MATH-HJ-B2-C07-L03-A02`“正弦与余弦相位对照”Applet 资源包。
 - [x] 设计并创建 `SH-HS-MATH-HJ-B2-C07-L04-A01`“正弦余弦性质对照板”Applet 资源包。
+- [x] 创建 `SH-HS-MATH-HJ-B2-C07-L04-D01`“余弦性质误区诊断”Diagnosis 资源包，包含 metadata、题组、评分规则、教师说明和审核记录。
 - [x] 设计并创建 `SH-HS-MATH-HJ-B2-C07-L05-A01`“三角函数参数变化实验室”Applet 资源包。
 - [x] 设计第二个 Manim 场景脚本：`SH-HS-MATH-HJ-B2-C07-L05-M01`“图像变换顺序解释”。
 - [x] 创建 `SH-HS-MATH-HJ-B2-C07-L05-D01`“参数识别诊断任务”Diagnosis 资源包，包含 metadata、题组、评分规则、教师说明和审核记录。
@@ -62,6 +63,7 @@
 - [ ] 对“三角函数参数变化实验室”HTML Applet 做数学边界复核、课堂节奏试读和浏览器交互验证。
 - [ ] 对 `SH-HS-MATH-HJ-B2-C07-L05-M01`“图像变换顺序解释”做数学审校、分镜节奏复核和课堂播放口径确认。
 - [ ] 对 `SH-HS-MATH-HJ-B2-C07-L02-D01`“正弦函数性质诊断”做数学审校、题目试做和课堂节奏试读。
+- [ ] 对 `SH-HS-MATH-HJ-B2-C07-L04-D01`“余弦性质误区诊断”做数学审校、题目试做和课堂节奏试读。
 - [ ] 对 `SH-HS-MATH-HJ-B2-C07-L05-D01`“参数识别诊断任务”做数学审校、题目试做和课堂节奏试读。
 - [ ] 从 `content/production/resource-backlog.json` 中选择下一个 MVP item，优先推进已实现资源的数学审校、课堂试读或第 7 章剩余 planned item。
 
@@ -77,7 +79,7 @@
 
 ## P5：资源工厂
 
-- [x] 生成 `content/production/resource-backlog.json`，覆盖必修第二册第 7 章 15 个资源工作单元；当前 10 个已实现、5 个待创建。
+- [x] 生成 `content/production/resource-backlog.json`，覆盖必修第二册第 7 章 15 个资源工作单元；当前 11 个已实现、4 个待创建。
 - [x] 为每个 backlog item 自动生成推荐分支、下一步动作和新对话 `threadPrompt`。
 - [x] 将 `npm run generate:backlog` 接入 `npm run verify`。
 - [x] 为 Diagnosis planned item 增加首版资源包 scaffold 命令，支持 dry-run、按数量或 ID 生成并避免覆盖已有资源包。
