@@ -16,13 +16,13 @@
   },
   "summary": {
     "total": 15,
-    "implemented": 8,
-    "planned": 7,
+    "implemented": 9,
+    "planned": 6,
     "byType": {
       "applet": {
         "total": 8,
-        "implemented": 4,
-        "planned": 4
+        "implemented": 5,
+        "planned": 3
       },
       "manim_clip": {
         "total": 3,
@@ -195,8 +195,8 @@
     {
       "id": "SH-HS-MATH-HJ-B2-C07-L03-A02",
       "type": "applet",
-      "status": "planned",
-      "availability": "planned",
+      "status": "implemented",
+      "availability": "metadata_ready",
       "title": "正弦与余弦相位对照",
       "proposedTitle": "正弦与余弦相位对照",
       "lessonId": "SH-HS-MATH-HJ-B2-C07-L03",
@@ -217,11 +217,11 @@
       "note": "用同步游标展示 sin 与 cos 在同一角度下的坐标来源和图像位置。",
       "priority": "chapter_backlog",
       "priorityReason": null,
-      "packagePath": null,
-      "metadataPath": null,
+      "packagePath": "content/applets/SH-HS-MATH-HJ-B2-C07-L03-A02",
+      "metadataPath": "content/applets/SH-HS-MATH-HJ-B2-C07-L03-A02/metadata.yaml",
       "recommendedTrack": "track/trig-sample-pack",
-      "nextAction": "创建 Applet 资源包，先写 metadata、教师脚本、学生任务和 review，再实现最小可运行 HTML 原型。",
-      "threadPrompt": "请先读取项目锚点文件和 content/production/resource-backlog.json，然后切到 track/trig-sample-pack。这次只创建并推进 SH-HS-MATH-HJ-B2-C07-L03-A02（Applet），对应课时 SH-HS-MATH-HJ-B2-C07-L03「余弦函数的图像」。先确认教学痛点、认知动作、文件规范和验收标准，再动手；完成后运行 npm run generate:backlog 和 npm run verify，更新 docs/01-current-state.md 与 docs/02-next-actions.md，并提交。"
+      "nextAction": "完成数学边界复核、课堂节奏试读和浏览器交互验证，再决定是否进入 math_review。",
+      "threadPrompt": "请先读取项目锚点文件和 content/production/resource-backlog.json，然后切到 track/trig-sample-pack。这次只复核并推进 SH-HS-MATH-HJ-B2-C07-L03-A02（Applet），对应课时 SH-HS-MATH-HJ-B2-C07-L03「余弦函数的图像」。先确认教学痛点、认知动作、文件规范和验收标准，再动手；完成后运行 npm run generate:backlog 和 npm run verify，更新 docs/01-current-state.md 与 docs/02-next-actions.md，并提交。"
     },
     {
       "id": "SH-HS-MATH-HJ-B2-C07-L04-A01",

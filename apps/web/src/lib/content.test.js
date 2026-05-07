@@ -79,6 +79,7 @@ test("links the cosine unit-circle applet to lesson L03", async () => {
   const workspace = await loadTeacherWorkspace({ rootDir: repoRoot });
   const lesson = workspace.lessonsById["SH-HS-MATH-HJ-B2-C07-L03"];
   const applet = lesson.resources.find((resource) => resource.id === "SH-HS-MATH-HJ-B2-C07-L03-A01");
+  const phaseCompareApplet = lesson.resources.find((resource) => resource.id === "SH-HS-MATH-HJ-B2-C07-L03-A02");
 
   assert.equal(lesson.title, "余弦函数的图像");
   assert.ok(applet, "cosine applet card should be attached to lesson L03");
@@ -96,6 +97,21 @@ test("links the cosine unit-circle applet to lesson L03", async () => {
   });
   assert.equal(applet.package.teacherScript.title, "教师脚本：单位圆到余弦曲线");
   assert.equal(applet.package.studentTask.title, "学生活动：从单位圆生成余弦曲线");
+  assert.ok(phaseCompareApplet, "phase comparison applet card should be attached to lesson L03");
+  assert.equal(phaseCompareApplet.availability, "metadata_ready");
+  assert.equal(phaseCompareApplet.status, "draft");
+  assert.equal(phaseCompareApplet.metadataPreview.implementation.phase, "runnable_prototype");
+  assert.equal(
+    phaseCompareApplet.package.files.srcEntry,
+    "content/applets/SH-HS-MATH-HJ-B2-C07-L03-A02/src/index.html",
+  );
+  assert.deepEqual(phaseCompareApplet.player, {
+    kind: "iframe",
+    isRunnable: true,
+    src: "content/applets/SH-HS-MATH-HJ-B2-C07-L03-A02/src/index.html",
+    title: "正弦与余弦相位对照",
+    sandbox: "allow-scripts allow-same-origin",
+  });
 });
 
 test("sample applet exposes a runnable SDK-compatible HTML entry", async () => {
@@ -169,5 +185,5 @@ test("links the parameter lab applet and rendered transform-order Manim to lesso
   });
   assert.equal(diagnosis.availability, "proposed");
   assert.equal(diagnosis.player, null);
-  assert.ok(workspace.summary.plannedResourceCount >= 9);
+  assert.ok(workspace.summary.plannedResourceCount >= 8);
 });
