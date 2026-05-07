@@ -1,0 +1,232 @@
+id: "SH-HS-MATH-HJ-B2-C07-L03-A02"
+version: "0.1.0"
+status: "draft"
+resource_type: "applet"
+title: "正弦与余弦相位对照"
+subtitle: "用同一角度的单位圆坐标和函数图像位置比较 sin x 与 cos x"
+
+curriculum:
+  region: "上海"
+  stage: "高中"
+  subject: "数学"
+  edition: "沪教版"
+  volume_id: "B2"
+  volume_title: "必修第二册"
+  chapter_id: "SH-HS-MATH-HJ-B2-C07"
+  chapter_title: "三角函数"
+  section_id: "SH-HS-MATH-HJ-B2-C07-S02"
+  section_title: "余弦函数的图像与性质"
+  lesson_id: "SH-HS-MATH-HJ-B2-C07-L03"
+  textbook_ref: "7.2.1"
+  lesson_title: "余弦函数的图像"
+
+pedagogy:
+  cognitive_action: "比较"
+  estimated_classroom_minutes: 16
+  primary_teaching_problem: "学生知道余弦曲线与正弦曲线存在平移关系，但常把平移方向、关键点顺序和单位圆坐标来源混在一起。"
+  learning_goals:
+    - "在同一角 x 下区分 sin x 来自单位圆动点纵坐标，cos x 来自单位圆动点横坐标。"
+    - "用同步游标比较 y = sin x 与 y = cos x 在关键角处的函数值顺序。"
+    - "从图像位置解释 cos x = sin(x + pi/2)，并用 x = 0 的值检查平移方向。"
+    - "说明相位关系是两条曲线之间的关系，不替代余弦函数的单位圆来源。"
+  prerequisites:
+    - "单位圆中的正弦、余弦定义"
+    - "正弦函数图像"
+    - "余弦函数图像的生成过程"
+    - "函数图像平移的基本直觉"
+  successors:
+    - "SH-HS-MATH-HJ-B2-C07-L04"
+    - "SH-HS-MATH-HJ-B2-C07-L05"
+    - "SH-HS-MATH-HJ-B2-C08-K01"
+  core_competencies:
+    - "直观想象"
+    - "数学抽象"
+
+mathematical_scope:
+  functions: "y = sin x and y = cos x"
+  independent_variable: "角 x 的弧度量"
+  dependent_variable: "函数值 y"
+  default_x_range: "0 <= x <= 2pi"
+  comparison_range: "-pi/2 <= x <= 2pi"
+  key_angles:
+    - x: "0"
+      sine: "0"
+      cosine: "1"
+      phase_check: "cos 0 = sin(pi/2)"
+    - x: "pi/2"
+      sine: "1"
+      cosine: "0"
+      phase_check: "cos(pi/2) = sin(pi)"
+    - x: "pi"
+      sine: "0"
+      cosine: "-1"
+      phase_check: "cos pi = sin(3pi/2)"
+    - x: "3pi/2"
+      sine: "-1"
+      cosine: "0"
+      phase_check: "cos(3pi/2) = sin(2pi)"
+    - x: "2pi"
+      sine: "0"
+      cosine: "1"
+      phase_check: "cos(2pi) = sin(5pi/2)"
+  relation: "cos x = sin(x + pi/2)"
+  out_of_scope:
+    - "余弦函数性质的完整系统归纳"
+    - "参数函数 y = A sin(omega x + phi) 的一般变换"
+    - "用诱导公式进行严格代数证明"
+    - "正切函数图像和性质"
+
+representations:
+  - id: "unit_circle"
+    role: "显示同一角 x 下动点 P = (cos x, sin x)。"
+  - id: "paired_graphs"
+    role: "在同一坐标系中显示 y = sin x 和 y = cos x。"
+  - id: "synchronized_cursor"
+    role: "用同一条竖直游标读取两条曲线在同一 x 处的值。"
+  - id: "phase_marker"
+    role: "显示 sin 曲线上 x + pi/2 处与 cos x 对应的参照点。"
+  - id: "comparison_table"
+    role: "记录关键角处 sin x、cos x 和相位检查式。"
+
+interaction_design:
+  primary_control: "拖动单位圆动点或调节 x 滑块，同步比较 sin x、cos x 和 sin(x + pi/2)。"
+  teacher_controls:
+    - "播放/暂停同一角 x 的变化"
+    - "重置到 x = 0"
+    - "显示或隐藏单位圆坐标投影"
+    - "显示或隐藏相位参照点 sin(x + pi/2)"
+    - "显示或隐藏关键角表"
+    - "显示或隐藏平移结论"
+    - "在关键角之间跳转"
+  student_controls:
+    - "拖动动点观察同一角的横纵坐标"
+    - "移动同步游标填写关键角比较表"
+    - "先预测 cos x 对应 sin 曲线上的哪个位置，再显示相位参照验证"
+  staged_reveal:
+    - step: "same_angle_coordinates"
+      description: "先只比较同一角 x 下单位圆的横坐标和纵坐标。"
+    - step: "paired_graph_values"
+      description: "显示两条曲线和同步游标，比较同一 x 的两个函数值。"
+    - step: "key_angle_table"
+      description: "停在关键角，记录 sin x 与 cos x 的值序列。"
+    - step: "phase_reference"
+      description: "显示 sin(x + pi/2) 参照点，验证 cos x 与正弦曲线的相位关系。"
+    - step: "phase_summary"
+      description: "揭示 cos x = sin(x + pi/2)，并用 x = 0 检查方向。"
+
+data_contract:
+  state_variables:
+    - name: "x"
+      unit: "radian"
+      value_type: "number"
+      default: 0
+      description: "当前比较角的弧度量。"
+      persistence: "snapshot"
+    - name: "sine_value"
+      unit: "unitless"
+      value_type: "number"
+      default: 0
+      description: "同一角 x 下的 sin x。"
+      persistence: "snapshot"
+    - name: "cosine_value"
+      unit: "unitless"
+      value_type: "number"
+      default: 1
+      description: "同一角 x 下的 cos x。"
+      persistence: "snapshot"
+    - name: "phase_x"
+      unit: "radian"
+      value_type: "number"
+      default: 1.5708
+      description: "与 cos x 对应的正弦参照角 x + pi/2。"
+      persistence: "snapshot"
+    - name: "unit_point"
+      value_type: "point2d"
+      description: "单位圆动点 P = (cos x, sin x)。"
+      persistence: "snapshot"
+    - name: "projection_visible"
+      value_type: "boolean"
+      default: true
+      description: "是否显示单位圆横纵坐标投影。"
+      persistence: "snapshot"
+    - name: "phase_reference_visible"
+      value_type: "boolean"
+      default: false
+      description: "是否显示 sin(x + pi/2) 相位参照点。"
+      persistence: "snapshot"
+    - name: "key_table_visible"
+      value_type: "boolean"
+      default: true
+      description: "是否显示关键角比较表。"
+      persistence: "snapshot"
+    - name: "summary_visible"
+      value_type: "boolean"
+      default: false
+      description: "是否显示相位关系结论。"
+      persistence: "snapshot"
+  events:
+    - name: "x_changed"
+      direction: "applet_to_player"
+      description: "当前比较角发生变化。"
+      payload: ["x", "sine_value", "cosine_value", "phase_x", "unit_point"]
+    - name: "key_angle_reached"
+      direction: "applet_to_player"
+      description: "当前角接近关键角。"
+      payload: ["x", "sine_value", "cosine_value"]
+    - name: "layer_toggled"
+      direction: "applet_to_player"
+      description: "教师显示或隐藏某一图层。"
+      payload: ["projection_visible", "phase_reference_visible", "key_table_visible", "summary_visible"]
+    - name: "phase_reference_checked"
+      direction: "applet_to_player"
+      description: "学生或教师显示相位参照后验证 cos x = sin(x + pi/2)。"
+      payload: ["x", "cosine_value", "phase_x"]
+
+feedback_and_diagnosis:
+  success_evidence:
+    - "学生能指出同一角 x 下 sin x 取纵坐标，cos x 取横坐标。"
+    - "学生能按关键角分别读出 sin x 与 cos x 的值序列。"
+    - "学生能用 x = 0 处 cos 0 = 1、sin(pi/2) = 1 检查 cos x = sin(x + pi/2) 的方向。"
+    - "学生能说明相位关系不等于忘记余弦的横坐标来源。"
+  common_error_tags:
+    - id: "same_angle_value_mixup"
+      label: "把同一角下的正弦值和余弦值混用"
+    - id: "phase_direction_confusion"
+      label: "把 cos x 与 sin(x - pi/2) 误作同一关系"
+    - id: "key_point_order_mixup"
+      label: "把余弦关键点顺序套成正弦关键点顺序"
+    - id: "phase_shift_only_memory"
+      label: "只记平移关系，不能说清单位圆坐标来源"
+  feedback_principles:
+    - "先回到同一角 x 的单位圆坐标，再看函数图像。"
+    - "相位方向错误时用 x = 0 的函数值做快速检验。"
+    - "关键点顺序错误时用同步游标逐个读值，不直接给结论。"
+
+visual_semantics:
+  sine_curve: "表示 y = sin x，使用暖色。"
+  cosine_curve: "表示 y = cos x，使用冷色。"
+  same_angle_cursor: "表示同一角 x 在两条曲线上的读值位置。"
+  phase_reference: "表示正弦曲线上 x + pi/2 处与 cos x 对应的参照点。"
+  unit_point: "表示单位圆上同一角 x 的动点 P。"
+  rule: "颜色只用于区分正弦、余弦和相位参照，不作为装饰。"
+
+implementation:
+  phase: "runnable_prototype"
+  html_src_status: "runnable"
+  planned_engine: "native-canvas-svg"
+  create_src_in_later_task: false
+  classroom_device_targets:
+    - "教师电脑浏览器"
+    - "教室大屏"
+    - "触控屏或触控板"
+
+files:
+  readme: "README.md"
+  teacher_script: "teacher-script.md"
+  student_task: "student-task.md"
+  review_record: "review.md"
+  src_entry: "src/index.html"
+
+compliance:
+  copyright_note: "本资源包为原创教学脚本与交互实现，不复制教材正文、官方课件、教案或商业平台资源。"
+  review_status: "self_checked_draft"
