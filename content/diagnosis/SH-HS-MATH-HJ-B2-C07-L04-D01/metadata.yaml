@@ -1,0 +1,107 @@
+schema_version: "0.1.0"
+id: "SH-HS-MATH-HJ-B2-C07-L04-D01"
+version: "0.1.0"
+status: "draft"
+resource_type: "diagnosis"
+title: "余弦性质误区诊断"
+subtitle: "围绕奇偶性、单调区间和关键点一般式的课堂即时诊断"
+
+curriculum:
+  region: "上海"
+  stage: "高中"
+  subject: "数学"
+  edition: "沪教版"
+  volume_id: "B2"
+  volume_title: "必修第二册"
+  chapter_id: "SH-HS-MATH-HJ-B2-C07"
+  chapter_title: "三角函数"
+  section_id: "SH-HS-MATH-HJ-B2-C07-S02"
+  section_title: "余弦函数的图像与性质"
+  lesson_id: "SH-HS-MATH-HJ-B2-C07-L04"
+  textbook_ref: "7.2.2"
+  lesson_title: "余弦函数的性质"
+
+pedagogy:
+  cognitive_action: "比较"
+  estimated_classroom_minutes: 8
+  primary_teaching_problem: "学生容易把正弦函数的奇偶性、单调区间和关键点位置直接迁移到余弦函数，导致余弦性质的一般式、对称元素和单位圆解释相互脱节。"
+  learning_goals:
+    - "判断 y = cos x 的偶函数性质，并能用单位圆横坐标解释 cos(-x) = cos x。"
+    - "写出余弦函数最大值点、最小值点、零点和单调区间的完整一般式，并注明 k 属于整数。"
+    - "区分余弦图像的对称轴、对称中心和关键点坐标。"
+    - "根据错因标签选择回看正弦余弦性质对照板中的奇偶、单调、关键点或单位圆图层。"
+  prerequisites:
+    - "余弦函数图像"
+    - "正弦函数性质"
+    - "函数奇偶性、周期性和单调性的语言表达"
+    - "单位圆上横坐标与余弦值的对应关系"
+  successors:
+    - "SH-HS-MATH-HJ-B2-C07-L05"
+    - "SH-HS-MATH-HJ-B2-C08-K01"
+    - "SH-HS-MATH-HJ-XB1-DERIV-K01"
+  core_competencies:
+    - "逻辑推理"
+    - "数学运算"
+    - "直观想象"
+  classroom_use: "新授课后 6 到 8 分钟即时诊断；也可在正弦余弦性质对照复习后使用，教师根据错因标签决定回到奇偶性、单调区间、关键点一般式或单位圆解释。"
+
+diagnosis_design:
+  diagnostic_focus:
+    - "能否准确判断 y = cos x 是偶函数，而不是套用正弦函数的奇函数结论。"
+    - "能否写出最大值点、最小值点、零点和单调区间的完整一般式。"
+    - "能否区分余弦图像的对称轴与对称中心。"
+    - "能否把单位圆中的横坐标变化与图像上的单调、奇偶和关键点联系起来。"
+  misconception_tags:
+    - id: "sine_transfer_error"
+      title: "正弦性质误迁移"
+      description: "把正弦函数的奇偶性、最大值点或单调区间直接套到余弦函数。"
+    - id: "period_omission"
+      title: "周期遗漏"
+      description: "只写一个周期内的点或区间，遗漏加 2kpi 或 k 属于整数的完整表达。"
+    - id: "monotonic_interval_reversal"
+      title: "单调区间方向混淆"
+      description: "把余弦的递增、递减半周期端点写反，或把包含转折点的区间当作单调区间。"
+    - id: "parity_symmetry_mixup"
+      title: "奇偶性和对称元素混淆"
+      description: "把偶函数、y 轴对称、竖直对称轴和中心对称点混为同一类对象。"
+    - id: "zero_extrema_formula_mixup"
+      title: "零点最值一般式混用"
+      description: "把零点、最大值点和最小值点的横坐标公式互相替代。"
+    - id: "unit_circle_graph_gap"
+      title: "单位圆图像转换断裂"
+      description: "不能用单位圆横坐标解释余弦图像的奇偶性、单调变化或关键点位置。"
+  item_summary:
+    total_items: 6
+    question_types:
+      - "single_choice"
+      - "multiple_select"
+      - "short_explanation"
+      - "error_analysis"
+    estimated_minutes: 8
+  feedback_strategy:
+    immediate_feedback: "每题按命中的错因标签返回一句图像或单位圆回看提示，并要求学生补写一个完整一般式或一句比较理由。"
+    teacher_dashboard_notes: "若 sine_transfer_error 集中出现，先回到正弦余弦性质对照；若 period_omission 或 zero_extrema_formula_mixup 集中出现，回看关键点一般式；若 unit_circle_graph_gap 集中出现，回到单位圆横坐标投影。"
+    remediation_links:
+      - "content/applets/SH-HS-MATH-HJ-B2-C07-L04-A01"
+      - "content/applets/SH-HS-MATH-HJ-B2-C07-L03-A01"
+
+scoring:
+  mastery_threshold: 0.75
+  grading_mode: "mixed"
+  retry_policy: "课堂内允许一次订正；保留首次错因标签，订正后只更新掌握状态，不覆盖原始诊断记录。"
+
+platform_card:
+  availability: "item_bank_ready"
+  preview_behavior: "item_bank_preview"
+  embed_strategy: "首期显示诊断目标、错因标签、题组摘要和评分规则；后续接入诊断播放器后按错因标签返回即时反馈。"
+
+files:
+  readme: "README.md"
+  item_bank: "item-bank.yaml"
+  scoring_rubric: "scoring-rubric.md"
+  teacher_notes: "teacher-notes.md"
+  review_record: "review.md"
+
+compliance:
+  copyright_note: "本诊断包为原创题组与反馈设计，不复制教材正文、官方课件、教案或商业题库。"
+  review_status: "self_checked_draft"

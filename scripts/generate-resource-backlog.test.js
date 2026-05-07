@@ -14,11 +14,11 @@ test("generates a deterministic backlog from curriculum entry points and impleme
 
   assert.equal(backlog.source.curriculum, "content/curriculum/index.yaml");
   assert.equal(backlog.summary.total, 15);
-  assert.equal(backlog.summary.implemented, 10);
-  assert.equal(backlog.summary.planned, 5);
+  assert.equal(backlog.summary.implemented, 11);
+  assert.equal(backlog.summary.planned, 4);
   assert.deepEqual(backlog.summary.byType.applet, { total: 8, implemented: 6, planned: 2 });
   assert.deepEqual(backlog.summary.byType.manim_clip, { total: 3, implemented: 2, planned: 1 });
-  assert.deepEqual(backlog.summary.byType.diagnosis, { total: 4, implemented: 2, planned: 2 });
+  assert.deepEqual(backlog.summary.byType.diagnosis, { total: 4, implemented: 3, planned: 1 });
 
   const sineApplet = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B2-C07-L01-A01");
   assert.equal(sineApplet.status, "implemented");
@@ -80,6 +80,24 @@ test("generates a deterministic backlog from curriculum entry points and impleme
   assert.equal(cosinePropertiesApplet.priority, "chapter_backlog");
   assert.match(cosinePropertiesApplet.nextAction, /审校|试读/);
 
+  const cosinePropertiesDiagnosis = backlog.items.find(
+    (item) => item.id === "SH-HS-MATH-HJ-B2-C07-L04-D01",
+  );
+  assert.equal(cosinePropertiesDiagnosis.status, "implemented");
+  assert.equal(cosinePropertiesDiagnosis.availability, "item_bank_ready");
+  assert.equal(cosinePropertiesDiagnosis.type, "diagnosis");
+  assert.equal(
+    cosinePropertiesDiagnosis.packagePath,
+    "content/diagnosis/SH-HS-MATH-HJ-B2-C07-L04-D01",
+  );
+  assert.equal(
+    cosinePropertiesDiagnosis.metadataPath,
+    "content/diagnosis/SH-HS-MATH-HJ-B2-C07-L04-D01/metadata.yaml",
+  );
+  assert.equal(cosinePropertiesDiagnosis.recommendedTrack, "track/review-system");
+  assert.equal(cosinePropertiesDiagnosis.priority, "chapter_backlog");
+  assert.match(cosinePropertiesDiagnosis.threadPrompt, /SH-HS-MATH-HJ-B2-C07-L04-D01/);
+
   const parameterLabApplet = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B2-C07-L05-A01");
   assert.equal(parameterLabApplet.status, "implemented");
   assert.equal(parameterLabApplet.availability, "metadata_ready");
@@ -121,7 +139,7 @@ test("writes the backlog as stable pretty JSON", async () => {
     const written = JSON.parse(await readFile(outputPath, "utf8"));
 
     assert.equal(written.summary.total, 15);
-    assert.equal(written.summary.implemented, 10);
+    assert.equal(written.summary.implemented, 11);
     assert.equal(written.items[0].id, "SH-HS-MATH-HJ-B2-C07-L01-A01");
     assert.ok(
       JSON.stringify(written, null, 2).includes(
