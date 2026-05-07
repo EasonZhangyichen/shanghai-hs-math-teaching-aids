@@ -59,6 +59,7 @@
 - [x] 渲染并复核 `SH-HS-MATH-HJ-B2-C07-L01-M01` 的 `mp4`、`webm` 和 poster。
 - [x] 创建八个可运行 HTML Applet 原型。
 - [x] 渲染并复核 `SH-HS-MATH-HJ-B2-C07-L05-M01` 的 `mp4`、`webm` 和 poster。
+- [x] 统一平台和课件中的 π 分数、θ 等数学符号展示，并修正正切相关课件在平台播放器首屏中的尺寸问题。
 - [ ] 对“单位圆到正弦曲线”HTML Applet 做数学边界复核和课堂节奏试读。
 - [ ] 对“正弦函数性质探究”HTML Applet 做数学边界复核、课堂节奏试读和浏览器交互验证。
 - [ ] 对“单位圆到余弦曲线”HTML Applet 做数学边界复核、课堂节奏试读和浏览器交互验证。
@@ -91,6 +92,8 @@
 - [x] 为每个 backlog item 自动生成推荐分支、下一步动作和新对话 `threadPrompt`。
 - [x] 将 `npm run generate:backlog` 接入 `npm run verify`。
 - [x] 为 Diagnosis planned item 增加首版资源包 scaffold 命令，支持 dry-run、按数量或 ID 生成并避免覆盖已有资源包。
+- [x] 将资源包 scaffold 扩展到 Applet、Manim Clip 与 Diagnosis，并按 schema 生成对应必备文件。
 - [ ] 为 backlog item 增加更细的审核状态和课堂试用状态聚合。
-- [ ] 将资源包 scaffold 扩展到 Applet 与 Manim，并按 schema 生成对应必备文件。
+- [ ] 增加 backlog 批量生产计划导出能力：按章节、类型、优先级和数量输出同一分支上的资源清单与 threadPrompt。
+- [ ] 为已实现资源增加审校工单维度，将 `math_review`、`classroom_trial`、`browser_review` 与资源状态分开聚合。
 - [ ] 当沪教版全册目录完成后，将 backlog 扩展到全高中课程图谱。

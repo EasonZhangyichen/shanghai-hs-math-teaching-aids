@@ -1,6 +1,6 @@
 # 资源工厂工作流
 
-更新时间：2026-05-01
+更新时间：2026-05-07
 
 ## 为什么需要它
 
@@ -14,9 +14,10 @@
 content/curriculum/index.yaml
   -> npm run generate:backlog
   -> content/production/resource-backlog.json
-  -> 选择一个 backlog item / 批量 scaffold planned item
-  -> 开新对话/切对应 track 分支
-  -> 创建或复核资源包
+  -> 选择一个 backlog item / 筛选同类型 planned item
+  -> 批量 scaffold 资源骨架，或开新对话复核已实现资源
+  -> 切对应 track 分支
+  -> 创建、精修或审核资源包
   -> npm run verify
   -> 合并回 develop
 ```
@@ -38,16 +39,26 @@ content/curriculum/index.yaml
 
 当需要批量铺资源骨架时，先使用 scaffold 命令生成目录和必备文件，再按单个资源进入内容设计与审核。
 
-首版 scaffold 支持 Diagnosis 资源包：
+当前 scaffold 支持三类资源包：
+
+```text
+applet      -> content/applets
+manim_clip  -> content/manim
+diagnosis   -> content/diagnosis
+```
+
+先 dry-run 查看将会创建的资源：
 
 ```bash
+npm run scaffold:backlog -- --type applet --limit 3
+npm run scaffold:backlog -- --type manim_clip --limit 3
 npm run scaffold:backlog -- --type diagnosis --limit 3
 ```
 
 默认是 dry-run，只显示会创建哪些资源包，不写入文件。确认后加 `--write`：
 
 ```bash
-npm run scaffold:backlog -- --type diagnosis --limit 3 --write
+npm run scaffold:backlog -- --type applet --limit 3 --write
 ```
 
 也可以指定单个资源：
@@ -57,6 +68,8 @@ npm run scaffold:backlog -- --id SH-HS-MATH-HJ-B2-C07-L04-D01 --write
 ```
 
 scaffold 只负责创建可校验的草稿骨架，不代表题组、数学表达或课堂节奏已经完成。已存在的资源包会被跳过，不会覆盖。
+
+当前必修第二册第 7 章已经没有 `planned` item，所以 scaffold 命令会主要用于下一章、下一册或全册课程图谱扩展之后。对已实现资源，下一步不是重复 scaffold，而是进入数学审校、课堂试读、浏览器复核和状态升级。
 
 ## 分支分派规则
 
@@ -75,8 +88,8 @@ curriculum   -> track/curriculum-map
 
 1. 在总控对话查看 `content/production/resource-backlog.json`。
 2. 选择一个 `status: "planned"` 或需要复核的 `implemented` item。
-3. 复制该 item 的 `threadPrompt` 到新对话。
-4. 新对话只处理这个资源或这一个审核动作。
+3. 如果是批量铺骨架，只选择同一 `type`、同一 `recommendedTrack` 的 planned item，一次建议 3 到 10 个。
+4. 如果是内容精修、数学审校或课堂试读，复制该 item 的 `threadPrompt` 到新对话；新对话只处理这个资源或这一个审核动作。
 5. 完成后运行：
 
 ```bash
@@ -86,12 +99,14 @@ npm run verify
 
 6. 提交并把分支合并回 `develop`。
 
+原则：骨架可以批量生成，优质课件不应批量草率完成。一个对话可以批量创建同类型目录，但真正的交互设计、Manim 分镜、诊断题质量和数学审校仍建议按单资源或小批量推进。
+
 ## 自动化边界
 
 可以自动化：
 
 - 从课程图谱生成资源 backlog。
-- 从 backlog 批量生成 planned Diagnosis 的资源包骨架。
+- 从 backlog 批量生成 planned Applet / Manim Clip / Diagnosis 的资源包骨架。
 - 判断资源包是否已落地。
 - 检查 metadata、文件存在性、资源 ID、课时归属。
 - 给每个资源生成启动提示词。
@@ -108,4 +123,7 @@ npm run verify
 
 ## 当前阶段判断
 
-我们已经跑通了“样板 Applet + Manim + 平台预览 + 校验闸门”。从 2026-05-01 起，项目进入资源工厂雏形阶段：后续不再靠一次次人工列计划，而是从 backlog 中取单个工作单元，持续填充平台资源库。
+我们已经跑通了“课程图谱 -> Applet / Manim / Diagnosis 资源包 -> 平台预览 -> 内容校验 -> backlog -> scaffold”的闭环。第 7 章三角函数样板资源已阶段性完成，下一阶段有两条主线：
+
+- 质量线：围绕第 7 章已有 15 个资源推进数学审校、课堂节奏试读、浏览器复核和状态升级。
+- 扩展线：先扩展新的课程图谱，再用 scaffold 批量生成 planned 资源骨架，随后按资源工厂节奏逐个精修。

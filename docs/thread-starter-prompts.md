@@ -60,6 +60,36 @@ develop
 - 说明推荐原因和对应分支。
 - 不把全章资源塞进同一个对话。
 
+## 批量资源骨架生成
+
+负责分支：
+
+```text
+按资源类型选择对应 track 分支：
+applet -> track/trig-sample-pack
+manim_clip -> track/manim-pipeline
+diagnosis -> track/review-system
+```
+
+适合做：
+
+- 从 backlog 中筛选同一类型、同一推荐分支的 `planned` item。
+- 用 scaffold 一次生成 3 到 10 个资源包骨架。
+- 只铺目录、metadata 和必备文件，不在同一个对话中深入实现多个完整课件。
+
+启动提示词：
+
+```text
+这次只做批量资源骨架生成。请读取项目锚点文件和 content/production/resource-backlog.json，检查 git status 和当前分支。先筛选同一 type、同一 recommendedTrack 的 status=planned items，并说明应切到哪个 track 分支。先运行 npm run scaffold:backlog 的 dry-run 预览，不要直接写入；确认清单合理后再加 --write。只生成资源骨架，不深入设计多个完整课件。完成后运行 npm run generate:backlog 和 npm run verify，更新状态文档并提交。
+```
+
+验收标准：
+
+- 不跨资源类型批量写入。
+- 不覆盖已有资源包。
+- 每个生成的资源包都能通过 schema 与内容文件校验。
+- 完成后 backlog 中对应 item 从 `planned` 变为 `implemented`。
+
 ## 课程图谱分支
 
 负责分支：
@@ -275,6 +305,9 @@ track/design-system
 
 7. 资源工厂总控
    从 content/production/resource-backlog.json 选择后续单资源工作单元，持续填充平台。
+
+8. 批量资源骨架生成
+   课程图谱扩展后，用 scaffold 批量铺同类型资源骨架，再分派单资源精修对话。
 ```
 
 ## 一个任务多大合适
@@ -286,5 +319,6 @@ track/design-system
 - “只设计单位圆到正弦曲线 Applet 的 metadata 和脚本。”
 - “只搭建课程树页面。”
 - “只写 Manim 正弦函数导入 storyboard。”
+- “只批量生成 5 个同类型 planned Applet 骨架，不深入实现内容。”
 
 不要一次要求一个对话“把整个平台做完”。
