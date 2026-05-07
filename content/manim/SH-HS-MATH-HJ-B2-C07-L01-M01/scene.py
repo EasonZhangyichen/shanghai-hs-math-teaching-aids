@@ -125,7 +125,7 @@ class SineOriginScene(Scene):
         )
 
         period_hint = Text(
-            "sin(x + 2pi) = sin x",
+            "sin(x + 2π) = sin x",
             font_size=34,
             color="#2f3437",
         ).next_to(graph_axes, DOWN, buff=0.45)

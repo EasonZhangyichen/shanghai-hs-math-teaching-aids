@@ -94,7 +94,7 @@ class TangentAsymptoteScene(Scene):
         self.wait(2.0)
 
         undefined = VGroup(
-            Text("at x = pi/2:", font_size=25, color=ink),
+            Text("at x = π/2:", font_size=25, color=ink),
             Text("cos x = 0", font_size=25, color=cos_color),
             Text("tan x is undefined", font_size=25, color=tangent_color),
         ).arrange(DOWN, aligned_edge=LEFT, buff=0.12)
@@ -111,7 +111,7 @@ class TangentAsymptoteScene(Scene):
             stroke_width=4,
             max_tip_length_to_length_ratio=0.18,
         )
-        right_side_label = Text("right side -> -infinity", font_size=21, color=asymptote_color)
+        right_side_label = Text("right side → -∞", font_size=21, color=asymptote_color)
         right_side_label.next_to(right_side_arrow, RIGHT, buff=0.05)
 
         self.play(FadeIn(undefined), FadeIn(no_bridge), run_time=2.0)
@@ -125,20 +125,36 @@ class TangentAsymptoteScene(Scene):
             FadeIn(graph_group["period_label"]),
             run_time=2.4,
         )
-        period_note = Text("tan(x + pi) = tan x", font_size=26, color=period_color)
+        period_note = Text("tan(x + π) = tan x", font_size=26, color=period_color)
         period_note.next_to(graph_group["period_arrow"], DOWN, buff=0.12)
         self.play(Write(period_note), run_time=1.5)
         self.wait(2.5)
 
         rules = VGroup(
             Text("Graphing rules", font_size=27, color=ink),
-            Text("domain: x != pi/2 + k pi", font_size=23, color=ink),
-            Text("asymptotes: x = pi/2 + k pi", font_size=23, color=ink),
-            Text("period: pi", font_size=23, color=ink),
+            Text("domain: x ≠ π/2 + kπ", font_size=23, color=ink),
+            Text("asymptotes: x = π/2 + kπ", font_size=23, color=ink),
+            Text("period: π", font_size=23, color=ink),
         ).arrange(DOWN, aligned_edge=LEFT, buff=0.14)
-        rules.to_corner(DR, buff=0.45).shift(UP * 0.25)
+        rules.to_edge(LEFT, buff=0.85).shift(DOWN * 1.1)
 
-        self.play(FadeOut(undefined), FadeOut(no_bridge), FadeIn(rules), run_time=2.0)
+        self.play(
+            FadeOut(unit_group["static"]),
+            FadeOut(ray),
+            FadeOut(moving_dot),
+            FadeOut(cos_segment),
+            FadeOut(sin_segment),
+            FadeOut(graph_dot),
+            FadeOut(value_label),
+            FadeOut(shrink_note),
+            FadeOut(climb_note),
+            FadeOut(undefined),
+            FadeOut(no_bridge),
+            FadeOut(right_side_arrow),
+            FadeOut(right_side_label),
+            FadeIn(rules),
+            run_time=2.0,
+        )
         self.wait(4.0)
 
     def _build_unit_circle(self, *, ink, axis_color, guide, ray_color, sin_color, cos_color):
@@ -198,7 +214,7 @@ class TangentAsymptoteScene(Scene):
             dash_length=0.1,
             stroke_width=3,
         )
-        asymptote_label = Text("x = pi/2", font_size=21, color=asymptote_color)
+        asymptote_label = Text("x = π/2", font_size=21, color=asymptote_color)
         asymptote_label.next_to(right_asymptote, UP, buff=0.04)
 
         period_arrow = DoubleArrow(
@@ -209,7 +225,7 @@ class TangentAsymptoteScene(Scene):
             stroke_width=4,
             max_tip_length_to_length_ratio=0.12,
         )
-        period_label = Text("pi", font_size=23, color=period_color)
+        period_label = Text("π", font_size=23, color=period_color)
         period_label.next_to(period_arrow, UP, buff=0.08)
 
         static = VGroup(axes, label, center_curve, left_asymptote, right_asymptote, asymptote_label)
