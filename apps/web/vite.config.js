@@ -9,6 +9,7 @@ const webRoot = fileURLToPath(new URL(".", import.meta.url));
 const repoRoot = path.resolve(webRoot, "../..");
 const appletsRoot = path.join(repoRoot, "content/applets");
 const manimRoot = path.join(repoRoot, "content/manim");
+const sharedContentRoot = path.join(repoRoot, "content/shared");
 const webOutDir = path.join(repoRoot, "dist/apps/web");
 
 export default defineConfig({
@@ -63,6 +64,7 @@ function contentPackagesPlugin() {
     },
     async closeBundle() {
       await cp(appletsRoot, path.join(webOutDir, "content/applets"), { recursive: true });
+      await cp(sharedContentRoot, path.join(webOutDir, "content/shared"), { recursive: true });
       await cp(manimRoot, path.join(webOutDir, "content/manim"), {
         recursive: true,
         filter: (source) => shouldCopyManimPath(source),
@@ -78,6 +80,10 @@ function getServedContentRoot(requestPath) {
 
   if (requestPath.startsWith("/content/manim/")) {
     return { urlPrefix: "/content/manim/", fileRoot: manimRoot };
+  }
+
+  if (requestPath.startsWith("/content/shared/")) {
+    return { urlPrefix: "/content/shared/", fileRoot: sharedContentRoot };
   }
 
   return null;

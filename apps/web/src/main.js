@@ -1,4 +1,5 @@
 import workspace from "./data/workspace-data.json";
+import { escapeHtml, renderMathText } from "./lib/math-text.js";
 import "./styles.css";
 
 const root = document.querySelector("#app");
@@ -106,7 +107,7 @@ function renderVolume(volume) {
   return `
     <section class="tree-volume">
       <div class="tree-volume-title">
-        <span>${escapeHtml(volume.title)}</span>
+        <span>${renderMathText(volume.title)}</span>
         <span class="status-dot ${volume.status === "mvp_focus" ? "is-active" : ""}">${escapeHtml(
           statusLabel(volume.status),
         )}</span>
@@ -117,7 +118,7 @@ function renderVolume(volume) {
               .map(
                 (chapter) => `
                   <div class="tree-chapter">
-                    <div class="tree-chapter-title">第 ${escapeHtml(chapter.number)} 章 ${escapeHtml(
+                    <div class="tree-chapter-title">第 ${escapeHtml(chapter.number)} 章 ${renderMathText(
                       chapter.title,
                     )}</div>
                     ${chapter.sections.map(renderSection).join("")}
@@ -134,7 +135,7 @@ function renderVolume(volume) {
 function renderSection(section) {
   return `
     <div class="tree-section">
-      <div class="tree-section-title">${escapeHtml(section.textbookLabel)} ${escapeHtml(section.title)}</div>
+      <div class="tree-section-title">${escapeHtml(section.textbookLabel)} ${renderMathText(section.title)}</div>
       <div class="tree-lessons">
         ${section.lessons
           .map(
@@ -142,7 +143,7 @@ function renderSection(section) {
               <button class="tree-lesson ${lesson.id === state.lessonId ? "is-selected" : ""}" data-lesson-id="${escapeHtml(
                 lesson.id,
               )}">
-                <span>${escapeHtml(lesson.textbookRef)} ${escapeHtml(lesson.title)}</span>
+                <span>${escapeHtml(lesson.textbookRef)} ${renderMathText(lesson.title)}</span>
                 <span class="lesson-resource-count">${lesson.resourceCount}</span>
               </button>
             `,
@@ -157,7 +158,7 @@ function renderTopbar(lesson) {
   return `
     <header class="topbar">
       <div>
-        <h1>${escapeHtml(workspace.project.name)}</h1>
+        <h1>${renderMathText(workspace.project.name)}</h1>
       </div>
       <div class="source-strip" aria-label="数据来源">
         <span>课程图谱：${escapeHtml(workspace.sources.curriculum)}</span>
@@ -171,10 +172,10 @@ function renderLessonHeader(lesson) {
   return `
     <section class="lesson-header" aria-labelledby="lesson-title">
       <div>
-        <p class="lesson-path">${escapeHtml(lesson.volume.title)} / 第 ${escapeHtml(
+        <p class="lesson-path">${renderMathText(lesson.volume.title)} / 第 ${escapeHtml(
           lesson.chapter.number,
         )} 章 / ${escapeHtml(lesson.section.textbookLabel)}</p>
-        <h2 id="lesson-title">${escapeHtml(lesson.textbookRef)} ${escapeHtml(lesson.title)}</h2>
+        <h2 id="lesson-title">${escapeHtml(lesson.textbookRef)} ${renderMathText(lesson.title)}</h2>
       </div>
       <div class="lesson-meta">
         <span>${escapeHtml(statusLabel(lesson.status))}</span>
@@ -189,7 +190,7 @@ function renderKnowledgeCard(lesson) {
   return `
     <div class="section-heading">
       <h3 id="knowledge-title">课时知识卡</h3>
-      <span>${escapeHtml(lesson.coreCompetencies.join(" / "))}</span>
+      <span>${renderMathText(lesson.coreCompetencies.join(" / "))}</span>
     </div>
     <div class="knowledge-grid">
       ${renderInfoGroup("核心知识", lesson.coreKnowledge)}
@@ -220,10 +221,10 @@ function renderResourceCard(resource, selectedResource) {
       <span class="resource-type ${escapeHtml(resource.resourceType)}">${escapeHtml(
         resourceTypeLabel(resource.resourceType),
       )}</span>
-      <strong>${escapeHtml(resource.title)}</strong>
-      <span class="resource-note">${escapeHtml(resource.note)}</span>
+      <strong>${renderMathText(resource.title)}</strong>
+      <span class="resource-note">${renderMathText(resource.note)}</span>
       <span class="resource-footer">
-        <span>${escapeHtml(resource.cognitiveAction ?? "待定")}</span>
+        <span>${renderMathText(resource.cognitiveAction ?? "待定")}</span>
         <span>${escapeHtml(resourceAvailabilityLabel(resource))}</span>
       </span>
     </button>
@@ -242,8 +243,8 @@ function renderResourceDetail(resource) {
         <span>${escapeHtml(resourceTypeLabel(resource.resourceType))}</span>
       </div>
       <div class="planned-preview">
-        <p class="planned-title">${escapeHtml(resource.title)}</p>
-        <p>${escapeHtml(resource.note)}</p>
+        <p class="planned-title">${renderMathText(resource.title)}</p>
+        <p>${renderMathText(resource.note)}</p>
         <p class="muted">该资源目前只有课程图谱中的规划入口，尚未创建资源包 metadata。</p>
       </div>
     `;
@@ -258,8 +259,8 @@ function renderResourceDetail(resource) {
     <div class="resource-detail-header">
       <div>
         <p class="detail-kicker">${escapeHtml(resourceTypeLabel(resource.resourceType))}</p>
-        <h4>${escapeHtml(resource.title)}</h4>
-        ${resource.subtitle ? `<p>${escapeHtml(resource.subtitle)}</p>` : ""}
+        <h4>${renderMathText(resource.title)}</h4>
+        ${resource.subtitle ? `<p>${renderMathText(resource.subtitle)}</p>` : ""}
       </div>
       <div class="detail-status">
         <span>${escapeHtml(statusLabel(resource.status))}</span>
@@ -308,7 +309,7 @@ function renderMetadataLayout(resource, metadata) {
       <div class="metadata-layout">
         <div>
           <h4>教学问题</h4>
-          <p>${escapeHtml(metadata.pedagogy.primaryTeachingProblem)}</p>
+          <p>${renderMathText(metadata.pedagogy.primaryTeachingProblem)}</p>
         </div>
         <div>
           <h4>分镜节奏</h4>
@@ -320,10 +321,13 @@ function renderMetadataLayout(resource, metadata) {
         </div>
         <div>
           <h4>场景入口</h4>
-          ${renderCompactList([
-            `scene.py：${resource.package.files.scene}`,
-            `scene class：${metadata.renderPlan?.scene_class ?? "unknown"}`,
-          ])}
+          ${renderCompactList(
+            [
+              `scene.py：${resource.package.files.scene}`,
+              `scene class：${metadata.renderPlan?.scene_class ?? "unknown"}`,
+            ],
+            { math: false },
+          )}
         </div>
       </div>
     `;
@@ -333,7 +337,7 @@ function renderMetadataLayout(resource, metadata) {
     <div class="metadata-layout">
       <div>
         <h4>教学问题</h4>
-        <p>${escapeHtml(metadata.pedagogy.primaryTeachingProblem)}</p>
+        <p>${renderMathText(metadata.pedagogy.primaryTeachingProblem)}</p>
       </div>
       <div>
         <h4>课堂控制</h4>
@@ -367,7 +371,7 @@ function renderResourcePlayer(resource) {
         <div class="player-preview-header">
           <div>
             <p class="detail-kicker">Manim 视频预览</p>
-            <h4>${escapeHtml(resource.player.title)}</h4>
+            <h4>${renderMathText(resource.player.title)}</h4>
           </div>
           <span>${escapeHtml(resource.player.sources[0]?.src ?? "")}</span>
         </div>
@@ -387,7 +391,7 @@ function renderResourcePlayer(resource) {
       <div class="player-preview-header">
         <div>
           <p class="detail-kicker">真实课件预览</p>
-          <h4>${escapeHtml(resource.player.title)}</h4>
+          <h4>${renderMathText(resource.player.title)}</h4>
         </div>
         <span>${escapeHtml(resource.player.src)}</span>
       </div>
@@ -409,7 +413,7 @@ function renderScriptEntrypoints(resource, lesson) {
     return `
       <div class="section-heading">
         <h3 id="script-title">教师脚本与学生活动入口</h3>
-        <span>${escapeHtml(lesson.title)}</span>
+        <span>${renderMathText(lesson.title)}</span>
       </div>
       <div class="planned-preview">
         <p class="planned-title">当前课时暂无已落地资源包</p>
@@ -426,10 +430,10 @@ function renderScriptEntrypoints(resource, lesson) {
       </div>
       <article class="entry-preview">
         <p class="entry-path">${escapeHtml(resource.package.storyboard?.path ?? resource.package.files.scene)}</p>
-        <h4>${escapeHtml(resource.package.storyboard?.title ?? resource.title)}</h4>
-        <p>${escapeHtml(resource.package.storyboard?.summary || resource.subtitle || "")}</p>
+        <h4>${renderMathText(resource.package.storyboard?.title ?? resource.title)}</h4>
+        <p>${renderMathText(resource.package.storyboard?.summary || resource.subtitle || "")}</p>
         <div class="section-tags">
-          ${(resource.package.storyboard?.sections ?? []).map((section) => `<span>${escapeHtml(section)}</span>`).join("")}
+          ${(resource.package.storyboard?.sections ?? []).map((section) => `<span>${renderMathText(section)}</span>`).join("")}
         </div>
       </article>
     `;
@@ -447,10 +451,10 @@ function renderScriptEntrypoints(resource, lesson) {
     </div>
     <article class="entry-preview">
       <p class="entry-path">${escapeHtml(entry.path)}</p>
-      <h4>${escapeHtml(entry.title)}</h4>
-      <p>${escapeHtml(entry.summary)}</p>
+      <h4>${renderMathText(entry.title)}</h4>
+      <p>${renderMathText(entry.summary)}</p>
       <div class="section-tags">
-        ${entry.sections.map((section) => `<span>${escapeHtml(section)}</span>`).join("")}
+        ${entry.sections.map((section) => `<span>${renderMathText(section)}</span>`).join("")}
       </div>
     </article>
   `;
@@ -459,20 +463,22 @@ function renderScriptEntrypoints(resource, lesson) {
 function renderInfoGroup(title, items) {
   return `
     <section class="info-group">
-      <h4>${escapeHtml(title)}</h4>
+      <h4>${renderMathText(title)}</h4>
       ${renderCompactList(items)}
     </section>
   `;
 }
 
-function renderCompactList(items) {
+function renderCompactList(items, options = {}) {
   if (!items?.length) {
     return `<p class="muted">暂无</p>`;
   }
 
+  const renderItem = options.math === false ? escapeHtml : renderMathText;
+
   return `
     <ul>
-      ${items.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}
+      ${items.map((item) => `<li>${renderItem(item)}</li>`).join("")}
     </ul>
   `;
 }
@@ -488,8 +494,8 @@ function renderStepList(steps) {
         .map(
           (step) => `
             <li>
-              <strong>${escapeHtml(step.step)}</strong>
-              <span>${escapeHtml(step.description)}</span>
+              <strong>${renderMathText(step.step)}</strong>
+              <span>${renderMathText(step.description)}</span>
             </li>
           `,
         )
@@ -509,8 +515,8 @@ function renderBeatList(beats) {
         .map(
           (beat) => `
             <li>
-              <strong>${escapeHtml(beat.title)}</strong>
-              <span>${escapeHtml(beat.purpose)}</span>
+              <strong>${renderMathText(beat.title)}</strong>
+              <span>${renderMathText(beat.purpose)}</span>
             </li>
           `,
         )
@@ -527,7 +533,7 @@ function renderPausePointList(pausePoints) {
   return `
     <ul>
       ${pausePoints
-        .map((point) => `<li>${escapeHtml(point.after_beat)}：${escapeHtml(point.teacher_prompt)}</li>`)
+        .map((point) => `<li>${escapeHtml(point.after_beat)}：${renderMathText(point.teacher_prompt)}</li>`)
         .join("")}
     </ul>
   `;
@@ -539,7 +545,7 @@ function renderEmptyState(titleId, message) {
       <h3 id="${escapeHtml(titleId)}">资源详情</h3>
       <span>未选择</span>
     </div>
-    <p class="muted">${escapeHtml(message)}</p>
+    <p class="muted">${renderMathText(message)}</p>
   `;
 }
 
@@ -674,17 +680,4 @@ function statusLabel(status) {
       needs_manual_verification: "待核验",
     }[status] ?? status
   );
-}
-
-function escapeHtml(value) {
-  return String(value ?? "").replace(/[&<>"']/g, (character) => {
-    const entities = {
-      "&": "&amp;",
-      "<": "&lt;",
-      ">": "&gt;",
-      '"': "&quot;",
-      "'": "&#039;",
-    };
-    return entities[character];
-  });
 }
