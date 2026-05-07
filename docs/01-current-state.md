@@ -14,6 +14,11 @@
   - 课时节点：`SH-HS-MATH-HJ-B2-C07-L01` 至 `SH-HS-MATH-HJ-B2-C07-L07`。
   - 已标注每个课时的先修、后续、教学痛点、数字化切入点、诊断焦点和核心素养。
   - 章节目录目前基于公开教材目录与课程资源目录交叉核对，仍需教师用纸质教材最终确认课时划分和课时数。
+- 已在 `track/curriculum-map` 上为必修第二册第 8 章“平面向量”建立首版结构化课程图谱：
+  - 章节主干：8.1 向量的概念和线性运算、8.2 向量的数量积、8.3 向量的坐标表示、8.4 向量的应用。
+  - 课时节点：`SH-HS-MATH-HJ-B2-C08-L01` 至 `SH-HS-MATH-HJ-B2-C08-L10`。
+  - 已标注每个课时的核心知识、先修、后续、教学痛点、数字化切入点、诊断焦点和核心素养。
+  - 章节目录基于公开电子课本目录与基础教育精品课传课目录交叉核对，仍需教师用纸质教材最终确认课时划分、课时数和标题表述。
 - 已在 `track/trig-sample-pack` 上为 `SH-HS-MATH-HJ-B2-C07-L01-A01` 创建“单位圆到正弦曲线”资源包草稿：
   - 已包含 `metadata.yaml`、`README.md`、`teacher-script.md`、`student-task.md`、`review.md`。
   - 已新增 `src/index.html` 可运行原型，支持单位圆动点拖拽、`theta` 滑块、播放/暂停、重置、投影线、轨迹、关键点和周期延拓。
@@ -106,7 +111,7 @@
   - `npm run verify` 现在会先执行 `npm run validate:content`，再运行测试和平台构建。
 - 已创建首版资源工厂工作流：
   - `scripts/generate-resource-backlog.js` 会从 `content/curriculum/index.yaml` 的 `digital_entry_points` 和已落地的 Applet / Manim / Diagnosis 资源包生成生产 backlog。
-  - `content/production/resource-backlog.json` 当前列出必修第二册第 7 章 15 个资源工作单元，15 个均已实现；Applet 为 8 个已实现、0 个待创建；Manim 为 3 个已实现、0 个待创建；Diagnosis 为 4 个已实现、0 个待创建；每个 item 都包含推荐分支、下一步动作和可复制到新 Codex 对话的 `threadPrompt`。
+  - `content/production/resource-backlog.json` 当前列出必修第二册第 7 章和第 8 章共 33 个资源工作单元：第 7 章 15 个均已实现，第 8 章 18 个为 `planned`；Applet 为 18 个总计、8 个已实现、10 个待创建；Manim 为 6 个总计、3 个已实现、3 个待创建；Diagnosis 为 9 个总计、4 个已实现、5 个待创建；每个 item 都包含推荐分支、下一步动作和可复制到新 Codex 对话的 `threadPrompt`。
   - `scripts/scaffold-resource-packages.js` 提供首版批量资源骨架生成能力：当前已支持 Applet、Manim Clip 和 Diagnosis planned item 的 dry-run、按数量或 ID 生成、嵌套文件写入和避免覆盖已有资源包。
   - `npm run generate:backlog` 已加入脚本，`npm run verify` 现在会先校验内容、生成 backlog，再运行测试和平台构建。
   - `docs/resource-factory-workflow.md` 记录了课程图谱 -> backlog -> 单资源对话 -> 校验 -> 合并的半自动生产流程。
@@ -149,13 +154,14 @@
 
 - 尚未正式核验沪教版教材全册课时目录。
 - 必修第二册第 7 章目录已完成首版结构化整理，但尚未完成纸质教材人工终核。
-- 第 7 章的前置章节节点、第 8 章平面向量和第 9 章复数等后续节点仍是引用占位，尚未展开为完整图谱。
+- 必修第二册第 8 章“平面向量”已完成首版结构化整理，但尚未完成纸质教材人工终核，也尚未创建对应资源包。
+- 第 7 章的前置章节节点和第 9 章复数等后续节点仍是引用占位，尚未展开为完整图谱。
 - 尚未创建独立课件播放器；教师工作台内已完成样板 Applet iframe 预览接入，但尚未沉淀为独立 `apps/player`。
 - 已创建八个可运行 HTML Applet 原型，并已接入平台壳 iframe 预览；尚未完成数学审校、课堂节奏试读和浏览器交互复核。
 - 已创建三个 Manim 场景脚本，`L01-M01`、`L05-M01` 与 `L06-M01` 均已导出可播放 `mp4` / `webm` / poster；三者尚未完成数学审校或课堂试用。
 - 已将 Applet、Manim 和 Diagnosis metadata JSON Schema 接入首版自动校验脚本。
-- 已建立首版资源生产 backlog，可按单个资源工作单元开启新对话，避免全高中内容挤在一个上下文中；当前必修第二册第 7 章 15 个资源工作单元已全部落地，四个 Diagnosis 资源包均为 `item_bank_ready`，并已补充 Applet / Manim / Diagnosis 全类型 scaffold 命令以减少后续手工建目录成本。
-- 当前第 7 章 backlog 已无 `planned` item。下一轮若要大面积扩充资源，应先在课程图谱中扩展新的章节或册别，再用 scaffold 批量铺资源骨架；若继续深挖第 7 章，应优先推进数学审校、课堂节奏试读和资源状态升级，而不是继续新增同质资源。
+- 已建立首版资源生产 backlog，可按单个资源工作单元开启新对话，避免全高中内容挤在一个上下文中；当前必修第二册第 7 章 15 个资源工作单元已全部落地，第 8 章新增 18 个 `planned` 工作单元，并已补充 Applet / Manim / Diagnosis 全类型 scaffold 命令以减少后续手工建目录成本。
+- 当前第 7 章 backlog 已无 `planned` item；第 8 章 backlog 可按同一资源类型和同一推荐分支分批 scaffold，再进入单资源精修。若继续深挖第 7 章，应优先推进数学审校、课堂节奏试读和资源状态升级，而不是继续新增同质资源。
 - 平台壳已读取 `content/manim/*/metadata.yaml` 并渲染样板 Manim 视频资源卡；尚未沉淀为独立播放器或接入播放器级学习状态记录。
 - 尚未配置 GitHub 分支保护规则。
 

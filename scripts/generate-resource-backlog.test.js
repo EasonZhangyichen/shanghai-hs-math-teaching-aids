@@ -13,12 +13,12 @@ test("generates a deterministic backlog from curriculum entry points and impleme
   const backlog = await generateResourceBacklog({ rootDir: repoRoot });
 
   assert.equal(backlog.source.curriculum, "content/curriculum/index.yaml");
-  assert.equal(backlog.summary.total, 15);
+  assert.equal(backlog.summary.total, 33);
   assert.equal(backlog.summary.implemented, 15);
-  assert.equal(backlog.summary.planned, 0);
-  assert.deepEqual(backlog.summary.byType.applet, { total: 8, implemented: 8, planned: 0 });
-  assert.deepEqual(backlog.summary.byType.manim_clip, { total: 3, implemented: 3, planned: 0 });
-  assert.deepEqual(backlog.summary.byType.diagnosis, { total: 4, implemented: 4, planned: 0 });
+  assert.equal(backlog.summary.planned, 18);
+  assert.deepEqual(backlog.summary.byType.applet, { total: 18, implemented: 8, planned: 10 });
+  assert.deepEqual(backlog.summary.byType.manim_clip, { total: 6, implemented: 3, planned: 3 });
+  assert.deepEqual(backlog.summary.byType.diagnosis, { total: 9, implemented: 4, planned: 5 });
 
   const sineApplet = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B2-C07-L01-A01");
   assert.equal(sineApplet.status, "implemented");
@@ -180,6 +180,28 @@ test("generates a deterministic backlog from curriculum entry points and impleme
   assert.equal(tangentPropertiesDiagnosis.recommendedTrack, "track/review-system");
   assert.equal(tangentPropertiesDiagnosis.priority, "chapter_backlog");
   assert.match(tangentPropertiesDiagnosis.threadPrompt, /SH-HS-MATH-HJ-B2-C07-L07-D01/);
+
+  const vectorConceptApplet = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B2-C08-L01-A01");
+  assert.equal(vectorConceptApplet.status, "planned");
+  assert.equal(vectorConceptApplet.availability, "planned");
+  assert.equal(vectorConceptApplet.type, "applet");
+  assert.equal(vectorConceptApplet.lessonTitle, "向量的概念");
+  assert.equal(vectorConceptApplet.chapterTitle, "平面向量");
+  assert.equal(vectorConceptApplet.packagePath, null);
+  assert.equal(vectorConceptApplet.metadataPath, null);
+  assert.equal(vectorConceptApplet.recommendedTrack, "track/trig-sample-pack");
+  assert.equal(vectorConceptApplet.priority, "chapter_backlog");
+  assert.match(vectorConceptApplet.threadPrompt, /创建并推进 SH-HS-MATH-HJ-B2-C08-L01-A01/);
+
+  const vectorProjectionManim = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B2-C08-L04-M01");
+  assert.equal(vectorProjectionManim.status, "planned");
+  assert.equal(vectorProjectionManim.type, "manim_clip");
+  assert.equal(vectorProjectionManim.recommendedTrack, "track/manim-pipeline");
+
+  const vectorApplicationDiagnosis = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B2-C08-L10-D01");
+  assert.equal(vectorApplicationDiagnosis.status, "planned");
+  assert.equal(vectorApplicationDiagnosis.type, "diagnosis");
+  assert.equal(vectorApplicationDiagnosis.recommendedTrack, "track/review-system");
 });
 
 test("writes the backlog as stable pretty JSON", async () => {
@@ -192,12 +214,13 @@ test("writes the backlog as stable pretty JSON", async () => {
     });
     const written = JSON.parse(await readFile(outputPath, "utf8"));
 
-    assert.equal(written.summary.total, 15);
+    assert.equal(written.summary.total, 33);
     assert.equal(written.summary.implemented, 15);
+    assert.equal(written.summary.planned, 18);
     assert.equal(written.items[0].id, "SH-HS-MATH-HJ-B2-C07-L01-A01");
     assert.ok(
       JSON.stringify(written, null, 2).includes(
-        '"id": "SH-HS-MATH-HJ-B2-C07-L07-D01"',
+        '"id": "SH-HS-MATH-HJ-B2-C08-L10-D01"',
       ),
     );
   } finally {

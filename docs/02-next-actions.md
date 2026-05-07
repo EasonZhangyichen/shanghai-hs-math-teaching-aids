@@ -22,7 +22,10 @@
 - [x] 为必修第二册第 7 章建立首批知识节点。
 - [x] 标注必修第二册第 7 章的先修知识、后续知识、教学痛点、数字化形式。
 - [ ] 人工终核必修第二册第 7 章的课时划分、课时数和标题表述。
-- [ ] 展开第 7 章前置章节、第 8 章平面向量和第 9 章复数的承接节点。
+- [x] 为必修第二册第 8 章“平面向量”建立首批课时级知识节点。
+- [x] 标注必修第二册第 8 章的先修知识、后续知识、教学痛点、数字化形式。
+- [ ] 人工终核必修第二册第 8 章的课时划分、课时数和标题表述。
+- [ ] 展开第 7 章前置章节和第 9 章复数等承接节点。
 
 ## P2：课件规范
 
@@ -88,11 +91,12 @@
 
 ## P5：资源工厂
 
-- [x] 生成 `content/production/resource-backlog.json`，覆盖必修第二册第 7 章 15 个资源工作单元；当前 15 个已实现、0 个待创建。
+- [x] 生成 `content/production/resource-backlog.json`，覆盖必修第二册第 7 章和第 8 章共 33 个资源工作单元；当前 15 个已实现、18 个待创建。
 - [x] 为每个 backlog item 自动生成推荐分支、下一步动作和新对话 `threadPrompt`。
 - [x] 将 `npm run generate:backlog` 接入 `npm run verify`。
 - [x] 为 Diagnosis planned item 增加首版资源包 scaffold 命令，支持 dry-run、按数量或 ID 生成并避免覆盖已有资源包。
 - [x] 将资源包 scaffold 扩展到 Applet、Manim Clip 与 Diagnosis，并按 schema 生成对应必备文件。
+- [ ] 从第 8 章 backlog 中按同一资源类型和推荐分支筛选 planned item，先 dry-run scaffold，再小批量生成资源骨架。
 - [ ] 为 backlog item 增加更细的审核状态和课堂试用状态聚合。
 - [ ] 增加 backlog 批量生产计划导出能力：按章节、类型、优先级和数量输出同一分支上的资源清单与 threadPrompt。
 - [ ] 为已实现资源增加审校工单维度，将 `math_review`、`classroom_trial`、`browser_review` 与资源状态分开聚合。

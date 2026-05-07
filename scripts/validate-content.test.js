@@ -13,7 +13,7 @@ test("validates the current curriculum and resource packages", async () => {
   const result = await validateContent({ rootDir: repoRoot });
 
   assert.deepEqual(result.errors, []);
-  assert.equal(result.counts.lessons, 7);
+  assert.equal(result.counts.lessons, 17);
   assert.equal(result.counts.applets, 8);
   assert.equal(result.counts.manimClips, 3);
   assert.equal(result.counts.diagnoses, 4);

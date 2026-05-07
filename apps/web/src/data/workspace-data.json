@@ -155,6 +155,130 @@
               }
             ],
             "lessonCount": 7
+          },
+          {
+            "id": "SH-HS-MATH-HJ-B2-C08",
+            "number": 8,
+            "title": "平面向量",
+            "status": "draft",
+            "verification": {
+              "textbook_outline_status": "secondary_sources_checked",
+              "needs_manual_textbook_check": true,
+              "checked_on": "2026-05-07",
+              "notes": "已用公开电子课本目录与基础教育精品课传课目录交叉核对章节主干；课时划分、课时数和标题表述仍需教师用纸质教材最终确认。"
+            },
+            "chapterRole": "把几何中的方向、长度、夹角和平移关系转化为可运算的代数对象，为复平面、空间向量、解析几何和几何建模提供语言。",
+            "sections": [
+              {
+                "id": "SH-HS-MATH-HJ-B2-C08-S01",
+                "textbookLabel": "8.1",
+                "title": "向量的概念和线性运算",
+                "lessons": [
+                  {
+                    "id": "SH-HS-MATH-HJ-B2-C08-L01",
+                    "textbookRef": "8.1.1",
+                    "title": "向量的概念",
+                    "status": "draft",
+                    "resourceCount": 1,
+                    "hasImplementedApplet": false
+                  },
+                  {
+                    "id": "SH-HS-MATH-HJ-B2-C08-L02",
+                    "textbookRef": "8.1.2",
+                    "title": "向量的加法和减法",
+                    "status": "draft",
+                    "resourceCount": 2,
+                    "hasImplementedApplet": false
+                  },
+                  {
+                    "id": "SH-HS-MATH-HJ-B2-C08-L03",
+                    "textbookRef": "8.1.3",
+                    "title": "实数与向量的乘法",
+                    "status": "draft",
+                    "resourceCount": 1,
+                    "hasImplementedApplet": false
+                  }
+                ]
+              },
+              {
+                "id": "SH-HS-MATH-HJ-B2-C08-S02",
+                "textbookLabel": "8.2",
+                "title": "向量的数量积",
+                "lessons": [
+                  {
+                    "id": "SH-HS-MATH-HJ-B2-C08-L04",
+                    "textbookRef": "8.2.1",
+                    "title": "向量的投影",
+                    "status": "draft",
+                    "resourceCount": 2,
+                    "hasImplementedApplet": false
+                  },
+                  {
+                    "id": "SH-HS-MATH-HJ-B2-C08-L05",
+                    "textbookRef": "8.2.2",
+                    "title": "向量的数量积的定义与运算律",
+                    "status": "draft",
+                    "resourceCount": 2,
+                    "hasImplementedApplet": false
+                  }
+                ]
+              },
+              {
+                "id": "SH-HS-MATH-HJ-B2-C08-S03",
+                "textbookLabel": "8.3",
+                "title": "向量的坐标表示",
+                "lessons": [
+                  {
+                    "id": "SH-HS-MATH-HJ-B2-C08-L06",
+                    "textbookRef": "8.3.1",
+                    "title": "向量基本定理",
+                    "status": "draft",
+                    "resourceCount": 2,
+                    "hasImplementedApplet": false
+                  },
+                  {
+                    "id": "SH-HS-MATH-HJ-B2-C08-L07",
+                    "textbookRef": "8.3.2",
+                    "title": "向量的正交分解与坐标表示",
+                    "status": "draft",
+                    "resourceCount": 1,
+                    "hasImplementedApplet": false
+                  },
+                  {
+                    "id": "SH-HS-MATH-HJ-B2-C08-L08",
+                    "textbookRef": "8.3.3",
+                    "title": "向量线性运算的坐标表示",
+                    "status": "draft",
+                    "resourceCount": 2,
+                    "hasImplementedApplet": false
+                  },
+                  {
+                    "id": "SH-HS-MATH-HJ-B2-C08-L09",
+                    "textbookRef": "8.3.4",
+                    "title": "向量数量积与夹角的坐标表示",
+                    "status": "draft",
+                    "resourceCount": 2,
+                    "hasImplementedApplet": false
+                  }
+                ]
+              },
+              {
+                "id": "SH-HS-MATH-HJ-B2-C08-S04",
+                "textbookLabel": "8.4",
+                "title": "向量的应用",
+                "lessons": [
+                  {
+                    "id": "SH-HS-MATH-HJ-B2-C08-L10",
+                    "textbookRef": "8.4",
+                    "title": "向量的应用",
+                    "status": "draft",
+                    "resourceCount": 3,
+                    "hasImplementedApplet": false
+                  }
+                ]
+              }
+            ],
+            "lessonCount": 10
           }
         ]
       },
@@ -5488,6 +5612,902 @@
           }
         }
       ]
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B2-C08-L01",
+      "textbookRef": "8.1.1",
+      "title": "向量的概念",
+      "status": "draft",
+      "estimatedPeriods": 1,
+      "volume": {
+        "id": "B2",
+        "title": "必修第二册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B2-C08",
+        "number": 8,
+        "title": "平面向量"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B2-C08-S01",
+        "textbookLabel": "8.1",
+        "title": "向量的概念和线性运算"
+      },
+      "coreKnowledge": [
+        "用大小和方向共同刻画平面向量",
+        "区分向量、数量、有向线段和位置无关的自由向量",
+        "识别零向量、单位向量、相等向量、相反向量、平行向量和共线向量"
+      ],
+      "prerequisites": [
+        "线段长度、方向、平行和共线关系",
+        "平面中的点、射线和有向线段表示",
+        "用符号表示几何对象的经验"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B2-C08-L02",
+        "SH-HS-MATH-HJ-B2-C08-L03",
+        "SH-HS-MATH-HJ-B2-C08-L06"
+      ],
+      "teachingPainPoints": [
+        "学生容易把向量绑定到起点位置，难以理解只要大小和方向相同就是同一向量。",
+        "零向量的方向约定、单位向量和相等向量常被机械记忆，缺少几何解释。",
+        "有向线段、向量记号和几何图形之间的表征切换容易断裂。"
+      ],
+      "digitalEntryPoints": [
+        {
+          "type": "applet",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L01-A01",
+          "title": "向量表示与等价拖拽板",
+          "cognitive_action": "比较",
+          "note": "拖动多个有向线段的起点和终点，实时判断相等、相反、平行和共线关系，突出向量的位置无关性。"
+        }
+      ],
+      "diagnosisFocus": [
+        "能否判断平移后的有向线段是否表示同一向量。",
+        "能否区分零向量、单位向量、相等向量和相反向量。"
+      ],
+      "coreCompetencies": [
+        "直观想象",
+        "数学抽象"
+      ],
+      "resources": [
+        {
+          "id": "SH-HS-MATH-HJ-B2-C08-L01-A01",
+          "resourceType": "applet",
+          "title": "向量表示与等价拖拽板",
+          "cognitiveAction": "比较",
+          "note": "拖动多个有向线段的起点和终点，实时判断相等、相反、平行和共线关系，突出向量的位置无关性。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        }
+      ]
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B2-C08-L02",
+      "textbookRef": "8.1.2",
+      "title": "向量的加法和减法",
+      "status": "draft",
+      "estimatedPeriods": 1,
+      "volume": {
+        "id": "B2",
+        "title": "必修第二册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B2-C08",
+        "number": 8,
+        "title": "平面向量"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B2-C08-S01",
+        "textbookLabel": "8.1",
+        "title": "向量的概念和线性运算"
+      },
+      "coreKnowledge": [
+        "用三角形法则和平行四边形法则理解向量加法",
+        "把向量减法转化为加上相反向量",
+        "在几何图形中识别首尾相接、共起点和闭合路径关系"
+      ],
+      "prerequisites": [
+        "向量相等和相反向量",
+        "平移有向线段表示同一向量",
+        "平行四边形与三角形的基本性质"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B2-C08-L03",
+        "SH-HS-MATH-HJ-B2-C08-L04",
+        "SH-HS-MATH-HJ-B2-C08-L10"
+      ],
+      "teachingPainPoints": [
+        "学生容易混淆三角形法则中的首尾相接和减法中的相反向量。",
+        "平行四边形法则常被当作画图模板，不能解释合向量的方向和大小。",
+        "从几何图形抽取向量等式时，路径方向和端点顺序容易出错。"
+      ],
+      "digitalEntryPoints": [
+        {
+          "type": "applet",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L02-A01",
+          "title": "向量加减法构造器",
+          "cognitive_action": "分解",
+          "note": "拖动两个向量并切换三角形法则、平行四边形法则和减法模式，同步显示合向量与路径解释。"
+        },
+        {
+          "type": "diagnosis",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L02-D01",
+          "title": "向量加减法方向诊断",
+          "cognitive_action": "比较",
+          "note": "围绕首尾相接、相反向量、闭合路径和端点顺序设计即时反馈。"
+        }
+      ],
+      "diagnosisFocus": [
+        "能否根据图形写出正确的向量加减等式。",
+        "能否把减法解释为加上相反向量。"
+      ],
+      "coreCompetencies": [
+        "直观想象",
+        "逻辑推理",
+        "数学运算"
+      ],
+      "resources": [
+        {
+          "id": "SH-HS-MATH-HJ-B2-C08-L02-A01",
+          "resourceType": "applet",
+          "title": "向量加减法构造器",
+          "cognitiveAction": "分解",
+          "note": "拖动两个向量并切换三角形法则、平行四边形法则和减法模式，同步显示合向量与路径解释。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        },
+        {
+          "id": "SH-HS-MATH-HJ-B2-C08-L02-D01",
+          "resourceType": "diagnosis",
+          "title": "向量加减法方向诊断",
+          "cognitiveAction": "比较",
+          "note": "围绕首尾相接、相反向量、闭合路径和端点顺序设计即时反馈。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        }
+      ]
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B2-C08-L03",
+      "textbookRef": "8.1.3",
+      "title": "实数与向量的乘法",
+      "status": "draft",
+      "estimatedPeriods": 1,
+      "volume": {
+        "id": "B2",
+        "title": "必修第二册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B2-C08",
+        "number": 8,
+        "title": "平面向量"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B2-C08-S01",
+        "textbookLabel": "8.1",
+        "title": "向量的概念和线性运算"
+      },
+      "coreKnowledge": [
+        "理解数乘对向量长度和方向的影响",
+        "识别正数、负数、零和分数倍数对应的伸缩与反向",
+        "用数乘刻画平行向量和共线向量关系"
+      ],
+      "prerequisites": [
+        "向量的概念、相反向量和单位向量",
+        "实数倍、比例和线段伸缩",
+        "向量加法和减法"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B2-C08-L04",
+        "SH-HS-MATH-HJ-B2-C08-L06",
+        "SH-HS-MATH-HJ-B2-C08-L08"
+      ],
+      "teachingPainPoints": [
+        "学生容易只记长度变为 |lambda| 倍，忽略 lambda 的符号决定方向。",
+        "数乘和向量加法混合运算时，几何图像和代数式容易脱节。",
+        "用数乘表达平行或共线时，零向量和比例系数的边界情况常被忽略。"
+      ],
+      "digitalEntryPoints": [
+        {
+          "type": "applet",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L03-A01",
+          "title": "数乘伸缩实验室",
+          "cognitive_action": "缩放",
+          "note": "用滑块控制实数 lambda，联动显示长度倍率、方向翻转、零向量和共线判定。"
+        }
+      ],
+      "diagnosisFocus": [
+        "能否解释负倍数向量的方向变化。",
+        "能否用数乘关系判断两个向量是否平行或共线。"
+      ],
+      "coreCompetencies": [
+        "直观想象",
+        "数学运算",
+        "数学抽象"
+      ],
+      "resources": [
+        {
+          "id": "SH-HS-MATH-HJ-B2-C08-L03-A01",
+          "resourceType": "applet",
+          "title": "数乘伸缩实验室",
+          "cognitiveAction": "缩放",
+          "note": "用滑块控制实数 lambda，联动显示长度倍率、方向翻转、零向量和共线判定。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        }
+      ]
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B2-C08-L04",
+      "textbookRef": "8.2.1",
+      "title": "向量的投影",
+      "status": "draft",
+      "estimatedPeriods": 1,
+      "volume": {
+        "id": "B2",
+        "title": "必修第二册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B2-C08",
+        "number": 8,
+        "title": "平面向量"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B2-C08-S02",
+        "textbookLabel": "8.2",
+        "title": "向量的数量积"
+      },
+      "coreKnowledge": [
+        "把一个向量在另一个方向上的有向长度理解为投影",
+        "用夹角的余弦解释投影的正负和大小",
+        "连接投影、垂足、直角三角形和数量积的几何直觉"
+      ],
+      "prerequisites": [
+        "向量的大小、方向和夹角",
+        "三角比中的余弦",
+        "垂线、垂足和直角三角形"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B2-C08-L05",
+        "SH-HS-MATH-HJ-B2-C08-L09"
+      ],
+      "teachingPainPoints": [
+        "学生容易把投影长度看成普通线段长度，忽略它是有方向符号的量。",
+        "夹角为钝角时投影为负的原因不直观。",
+        "投影、垂线和数量积公式之间的联系容易被分散记忆。"
+      ],
+      "digitalEntryPoints": [
+        {
+          "type": "applet",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L04-A01",
+          "title": "投影长度与夹角实验室",
+          "cognitive_action": "投影",
+          "note": "拖动两个向量改变夹角，联动显示垂足、有向投影长度、cos 值和正负变化。"
+        },
+        {
+          "type": "manim_clip",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L04-M01",
+          "title": "从垂足到投影",
+          "cognitive_action": "投影",
+          "note": "用短动画把作垂线、读有向长度和引出 a cos theta 的过程连续化。"
+        }
+      ],
+      "diagnosisFocus": [
+        "能否判断投影的正负。",
+        "能否解释投影长度与夹角余弦的关系。"
+      ],
+      "coreCompetencies": [
+        "直观想象",
+        "数学抽象",
+        "逻辑推理"
+      ],
+      "resources": [
+        {
+          "id": "SH-HS-MATH-HJ-B2-C08-L04-A01",
+          "resourceType": "applet",
+          "title": "投影长度与夹角实验室",
+          "cognitiveAction": "投影",
+          "note": "拖动两个向量改变夹角，联动显示垂足、有向投影长度、cos 值和正负变化。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        },
+        {
+          "id": "SH-HS-MATH-HJ-B2-C08-L04-M01",
+          "resourceType": "manim_clip",
+          "title": "从垂足到投影",
+          "cognitiveAction": "投影",
+          "note": "用短动画把作垂线、读有向长度和引出 a cos theta 的过程连续化。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        }
+      ]
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B2-C08-L05",
+      "textbookRef": "8.2.2",
+      "title": "向量的数量积的定义与运算律",
+      "status": "draft",
+      "estimatedPeriods": 1,
+      "volume": {
+        "id": "B2",
+        "title": "必修第二册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B2-C08",
+        "number": 8,
+        "title": "平面向量"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B2-C08-S02",
+        "textbookLabel": "8.2",
+        "title": "向量的数量积"
+      },
+      "coreKnowledge": [
+        "用 |a||b| cos theta 定义向量数量积",
+        "理解数量积的正负、零值和垂直判定",
+        "掌握数量积的交换律、分配律和数乘结合关系"
+      ],
+      "prerequisites": [
+        "向量的投影",
+        "向量夹角和余弦",
+        "向量线性运算"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B2-C08-L06",
+        "SH-HS-MATH-HJ-B2-C08-L09",
+        "SH-HS-MATH-HJ-B2-C08-L10"
+      ],
+      "teachingPainPoints": [
+        "学生容易把数量积误认为仍是向量，忽略结果是数量。",
+        "数量积为零与某个向量为零、两个向量垂直之间的条件边界容易混淆。",
+        "运算律和几何意义之间脱节，导致代数变形缺少方向感。"
+      ],
+      "digitalEntryPoints": [
+        {
+          "type": "applet",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L05-A01",
+          "title": "数量积动态解释器",
+          "cognitive_action": "比较",
+          "note": "同步展示两个向量、夹角、投影和数量积数值，突出正、零、负三种区域。"
+        },
+        {
+          "type": "diagnosis",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L05-D01",
+          "title": "数量积正负误区诊断",
+          "cognitive_action": "比较",
+          "note": "检测结果类型、垂直判定、零向量边界和运算律误用。"
+        }
+      ],
+      "diagnosisFocus": [
+        "能否判断数量积结果的符号和类型。",
+        "能否正确使用 a · b = 0 判断垂直并处理零向量边界。"
+      ],
+      "coreCompetencies": [
+        "逻辑推理",
+        "数学运算",
+        "直观想象"
+      ],
+      "resources": [
+        {
+          "id": "SH-HS-MATH-HJ-B2-C08-L05-A01",
+          "resourceType": "applet",
+          "title": "数量积动态解释器",
+          "cognitiveAction": "比较",
+          "note": "同步展示两个向量、夹角、投影和数量积数值，突出正、零、负三种区域。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        },
+        {
+          "id": "SH-HS-MATH-HJ-B2-C08-L05-D01",
+          "resourceType": "diagnosis",
+          "title": "数量积正负误区诊断",
+          "cognitiveAction": "比较",
+          "note": "检测结果类型、垂直判定、零向量边界和运算律误用。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        }
+      ]
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B2-C08-L06",
+      "textbookRef": "8.3.1",
+      "title": "向量基本定理",
+      "status": "draft",
+      "estimatedPeriods": 1,
+      "volume": {
+        "id": "B2",
+        "title": "必修第二册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B2-C08",
+        "number": 8,
+        "title": "平面向量"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B2-C08-S03",
+        "textbookLabel": "8.3",
+        "title": "向量的坐标表示"
+      },
+      "coreKnowledge": [
+        "理解平面内两个不共线向量可作为一组基底",
+        "把任意平面向量唯一表示为两个基向量的线性组合",
+        "用基底分解解释向量坐标表示的来源"
+      ],
+      "prerequisites": [
+        "向量加法、减法和数乘",
+        "平行、共线和不共线关系",
+        "平行四边形法则"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B2-C08-L07",
+        "SH-HS-MATH-HJ-B2-C08-L08",
+        "SH-HS-MATH-HJ-B2-C08-L09"
+      ],
+      "teachingPainPoints": [
+        "学生容易把基底看成固定坐标轴，忽略任意不共线向量都可作为基底。",
+        "唯一表示的条件依赖不共线，常被弱化成代数结论。",
+        "从几何分解过渡到坐标表示时，两个系数的含义容易丢失。"
+      ],
+      "digitalEntryPoints": [
+        {
+          "type": "applet",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L06-A01",
+          "title": "基底分解探索板",
+          "cognitive_action": "分解",
+          "note": "拖动两条基向量和目标向量，实时显示线性组合系数、平行四边形分解和不共线条件。"
+        },
+        {
+          "type": "manim_clip",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L06-M01",
+          "title": "向量基本定理分解动画",
+          "cognitive_action": "分解",
+          "note": "用连续构造说明为什么两个不共线方向可以唯一定位目标向量。"
+        }
+      ],
+      "diagnosisFocus": [
+        "能否判断给定两个向量是否可以作为基底。",
+        "能否解释线性组合系数的几何意义。"
+      ],
+      "coreCompetencies": [
+        "数学抽象",
+        "逻辑推理",
+        "直观想象"
+      ],
+      "resources": [
+        {
+          "id": "SH-HS-MATH-HJ-B2-C08-L06-A01",
+          "resourceType": "applet",
+          "title": "基底分解探索板",
+          "cognitiveAction": "分解",
+          "note": "拖动两条基向量和目标向量，实时显示线性组合系数、平行四边形分解和不共线条件。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        },
+        {
+          "id": "SH-HS-MATH-HJ-B2-C08-L06-M01",
+          "resourceType": "manim_clip",
+          "title": "向量基本定理分解动画",
+          "cognitiveAction": "分解",
+          "note": "用连续构造说明为什么两个不共线方向可以唯一定位目标向量。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        }
+      ]
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B2-C08-L07",
+      "textbookRef": "8.3.2",
+      "title": "向量的正交分解与坐标表示",
+      "status": "draft",
+      "estimatedPeriods": 1,
+      "volume": {
+        "id": "B2",
+        "title": "必修第二册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B2-C08",
+        "number": 8,
+        "title": "平面向量"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B2-C08-S03",
+        "textbookLabel": "8.3",
+        "title": "向量的坐标表示"
+      },
+      "coreKnowledge": [
+        "把向量沿正交坐标轴分解为水平分量和竖直分量",
+        "用一对有序实数表示平面向量的坐标",
+        "理解向量坐标与起点位置无关、与分量有关"
+      ],
+      "prerequisites": [
+        "向量基本定理",
+        "平面直角坐标系",
+        "投影和垂直分解"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B2-C08-L08",
+        "SH-HS-MATH-HJ-B2-C08-L09"
+      ],
+      "teachingPainPoints": [
+        "学生容易把向量坐标和点坐标混为一谈，忽略向量坐标来自位移分量。",
+        "正交分解中的正负方向与坐标轴方向对应不稳定。",
+        "同一向量平移后坐标不变的理由不直观。"
+      ],
+      "digitalEntryPoints": [
+        {
+          "type": "applet",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L07-A01",
+          "title": "正交分解与坐标投影板",
+          "cognitive_action": "投影",
+          "note": "拖动向量并显示水平、竖直分量和坐标，支持平移向量验证坐标不变。"
+        }
+      ],
+      "diagnosisFocus": [
+        "能否从起点和终点坐标求向量坐标。",
+        "能否区分点坐标和向量坐标。"
+      ],
+      "coreCompetencies": [
+        "直观想象",
+        "数学抽象",
+        "数学运算"
+      ],
+      "resources": [
+        {
+          "id": "SH-HS-MATH-HJ-B2-C08-L07-A01",
+          "resourceType": "applet",
+          "title": "正交分解与坐标投影板",
+          "cognitiveAction": "投影",
+          "note": "拖动向量并显示水平、竖直分量和坐标，支持平移向量验证坐标不变。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        }
+      ]
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B2-C08-L08",
+      "textbookRef": "8.3.3",
+      "title": "向量线性运算的坐标表示",
+      "status": "draft",
+      "estimatedPeriods": 1,
+      "volume": {
+        "id": "B2",
+        "title": "必修第二册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B2-C08",
+        "number": 8,
+        "title": "平面向量"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B2-C08-S03",
+        "textbookLabel": "8.3",
+        "title": "向量的坐标表示"
+      },
+      "coreKnowledge": [
+        "用坐标表示向量加法、减法和数乘",
+        "把几何运算和分量运算对应起来",
+        "用坐标方法判断向量平行和共线"
+      ],
+      "prerequisites": [
+        "向量加减法和数乘",
+        "向量坐标表示",
+        "分量和有序实数对"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B2-C08-L09",
+        "SH-HS-MATH-HJ-B2-C08-L10"
+      ],
+      "teachingPainPoints": [
+        "学生容易把坐标运算当作公式替换，不能回到几何位移解释。",
+        "向量减法、终点减起点和端点顺序之间容易混乱。",
+        "用坐标判定平行时，比例关系和零分量边界处理不稳。"
+      ],
+      "digitalEntryPoints": [
+        {
+          "type": "applet",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L08-A01",
+          "title": "坐标线性运算联动表",
+          "cognitive_action": "比较",
+          "note": "同步显示图形拖拽、坐标表格和运算式，支持加、减、数乘和平行判定切换。"
+        },
+        {
+          "type": "diagnosis",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L08-D01",
+          "title": "坐标运算符号诊断",
+          "cognitive_action": "比较",
+          "note": "检测端点顺序、分量符号、数乘倍数和平行比例关系中的常见错误。"
+        }
+      ],
+      "diagnosisFocus": [
+        "能否正确处理向量坐标中的终点减起点。",
+        "能否用坐标比例关系判断平行并说明边界情况。"
+      ],
+      "coreCompetencies": [
+        "数学运算",
+        "逻辑推理",
+        "直观想象"
+      ],
+      "resources": [
+        {
+          "id": "SH-HS-MATH-HJ-B2-C08-L08-A01",
+          "resourceType": "applet",
+          "title": "坐标线性运算联动表",
+          "cognitiveAction": "比较",
+          "note": "同步显示图形拖拽、坐标表格和运算式，支持加、减、数乘和平行判定切换。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        },
+        {
+          "id": "SH-HS-MATH-HJ-B2-C08-L08-D01",
+          "resourceType": "diagnosis",
+          "title": "坐标运算符号诊断",
+          "cognitiveAction": "比较",
+          "note": "检测端点顺序、分量符号、数乘倍数和平行比例关系中的常见错误。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        }
+      ]
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B2-C08-L09",
+      "textbookRef": "8.3.4",
+      "title": "向量数量积与夹角的坐标表示",
+      "status": "draft",
+      "estimatedPeriods": 1,
+      "volume": {
+        "id": "B2",
+        "title": "必修第二册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B2-C08",
+        "number": 8,
+        "title": "平面向量"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B2-C08-S03",
+        "textbookLabel": "8.3",
+        "title": "向量的坐标表示"
+      },
+      "coreKnowledge": [
+        "用坐标表示向量数量积",
+        "用坐标公式求向量长度和夹角余弦",
+        "用数量积坐标形式判断垂直、夹角和投影"
+      ],
+      "prerequisites": [
+        "数量积的定义与运算律",
+        "向量坐标表示和线性运算",
+        "平方和、长度公式与余弦"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B2-C08-L10",
+        "SH-HS-MATH-HJ-B2-C09-K01"
+      ],
+      "teachingPainPoints": [
+        "学生容易把坐标公式当作计算模板，不能解释它与 |a||b| cos theta 的一致性。",
+        "求夹角时漏除向量长度或忽略零向量，导致公式适用条件错误。",
+        "垂直、投影、夹角和长度问题之间的公式选择容易混淆。"
+      ],
+      "digitalEntryPoints": [
+        {
+          "type": "applet",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L09-A01",
+          "title": "数量积与夹角坐标计算器",
+          "cognitive_action": "比较",
+          "note": "拖动坐标向量，联动显示点乘、长度、夹角余弦、垂直判定和投影值。"
+        },
+        {
+          "type": "diagnosis",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L09-D01",
+          "title": "夹角坐标误区诊断",
+          "cognitive_action": "比较",
+          "note": "围绕点乘公式、长度归一化、零向量条件和垂直判定设计即时反馈。"
+        }
+      ],
+      "diagnosisFocus": [
+        "能否用坐标公式求数量积和夹角余弦。",
+        "能否判断公式在零向量情况下是否适用。"
+      ],
+      "coreCompetencies": [
+        "数学运算",
+        "逻辑推理",
+        "直观想象"
+      ],
+      "resources": [
+        {
+          "id": "SH-HS-MATH-HJ-B2-C08-L09-A01",
+          "resourceType": "applet",
+          "title": "数量积与夹角坐标计算器",
+          "cognitiveAction": "比较",
+          "note": "拖动坐标向量，联动显示点乘、长度、夹角余弦、垂直判定和投影值。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        },
+        {
+          "id": "SH-HS-MATH-HJ-B2-C08-L09-D01",
+          "resourceType": "diagnosis",
+          "title": "夹角坐标误区诊断",
+          "cognitiveAction": "比较",
+          "note": "围绕点乘公式、长度归一化、零向量条件和垂直判定设计即时反馈。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        }
+      ]
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B2-C08-L10",
+      "textbookRef": "8.4",
+      "title": "向量的应用",
+      "status": "draft",
+      "estimatedPeriods": 2,
+      "volume": {
+        "id": "B2",
+        "title": "必修第二册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B2-C08",
+        "number": 8,
+        "title": "平面向量"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B2-C08-S04",
+        "textbookLabel": "8.4",
+        "title": "向量的应用"
+      },
+      "coreKnowledge": [
+        "用向量方法证明平行、垂直、共线、中点和长度关系",
+        "把几何条件转化为向量等式、坐标关系或数量积关系",
+        "在三角形、四边形和解析几何问题中选择合适的向量工具"
+      ],
+      "prerequisites": [
+        "向量线性运算及其坐标表示",
+        "数量积、夹角和垂直判定",
+        "平面几何中的平行、垂直、距离和中点关系"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B2-C09-K01",
+        "SH-HS-MATH-HJ-XB1-SPACEVEC-K01",
+        "SH-HS-MATH-HJ-XB1-ANALYTIC-K01"
+      ],
+      "teachingPainPoints": [
+        "学生面对几何题时不知道先选基底、建坐标还是使用数量积。",
+        "几何语言转化为向量等式的第一步难，容易直接套公式。",
+        "证明过程中的向量路径、辅助点和坐标系选择缺少策略。"
+      ],
+      "digitalEntryPoints": [
+        {
+          "type": "applet",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L10-A01",
+          "title": "向量法几何问题工作台",
+          "cognitive_action": "分解",
+          "note": "在典型三角形和四边形情境中切换基底法、坐标法和数量积法，展示条件到向量关系的转化路径。"
+        },
+        {
+          "type": "manim_clip",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L10-M01",
+          "title": "从几何关系到向量方程",
+          "cognitive_action": "分解",
+          "note": "用短动画展示把平行、垂直和中点条件翻译成向量等式的思路。"
+        },
+        {
+          "type": "diagnosis",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L10-D01",
+          "title": "向量应用路径选择诊断",
+          "cognitive_action": "比较",
+          "note": "给出不同几何条件，要求选择基底法、坐标法或数量积法并说明理由。"
+        }
+      ],
+      "diagnosisFocus": [
+        "能否把几何关系准确转化为向量关系。",
+        "能否根据问题特征选择线性运算、坐标表示或数量积。"
+      ],
+      "coreCompetencies": [
+        "逻辑推理",
+        "直观想象",
+        "数学建模",
+        "数学运算"
+      ],
+      "resources": [
+        {
+          "id": "SH-HS-MATH-HJ-B2-C08-L10-A01",
+          "resourceType": "applet",
+          "title": "向量法几何问题工作台",
+          "cognitiveAction": "分解",
+          "note": "在典型三角形和四边形情境中切换基底法、坐标法和数量积法，展示条件到向量关系的转化路径。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        },
+        {
+          "id": "SH-HS-MATH-HJ-B2-C08-L10-M01",
+          "resourceType": "manim_clip",
+          "title": "从几何关系到向量方程",
+          "cognitiveAction": "分解",
+          "note": "用短动画展示把平行、垂直和中点条件翻译成向量等式的思路。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        },
+        {
+          "id": "SH-HS-MATH-HJ-B2-C08-L10-D01",
+          "resourceType": "diagnosis",
+          "title": "向量应用路径选择诊断",
+          "cognitiveAction": "比较",
+          "note": "给出不同几何条件，要求选择基底法、坐标法或数量积法并说明理由。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        }
+      ]
     }
   ],
   "lessonsById": {
@@ -10763,6 +11783,902 @@
           }
         }
       ]
+    },
+    "SH-HS-MATH-HJ-B2-C08-L01": {
+      "id": "SH-HS-MATH-HJ-B2-C08-L01",
+      "textbookRef": "8.1.1",
+      "title": "向量的概念",
+      "status": "draft",
+      "estimatedPeriods": 1,
+      "volume": {
+        "id": "B2",
+        "title": "必修第二册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B2-C08",
+        "number": 8,
+        "title": "平面向量"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B2-C08-S01",
+        "textbookLabel": "8.1",
+        "title": "向量的概念和线性运算"
+      },
+      "coreKnowledge": [
+        "用大小和方向共同刻画平面向量",
+        "区分向量、数量、有向线段和位置无关的自由向量",
+        "识别零向量、单位向量、相等向量、相反向量、平行向量和共线向量"
+      ],
+      "prerequisites": [
+        "线段长度、方向、平行和共线关系",
+        "平面中的点、射线和有向线段表示",
+        "用符号表示几何对象的经验"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B2-C08-L02",
+        "SH-HS-MATH-HJ-B2-C08-L03",
+        "SH-HS-MATH-HJ-B2-C08-L06"
+      ],
+      "teachingPainPoints": [
+        "学生容易把向量绑定到起点位置，难以理解只要大小和方向相同就是同一向量。",
+        "零向量的方向约定、单位向量和相等向量常被机械记忆，缺少几何解释。",
+        "有向线段、向量记号和几何图形之间的表征切换容易断裂。"
+      ],
+      "digitalEntryPoints": [
+        {
+          "type": "applet",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L01-A01",
+          "title": "向量表示与等价拖拽板",
+          "cognitive_action": "比较",
+          "note": "拖动多个有向线段的起点和终点，实时判断相等、相反、平行和共线关系，突出向量的位置无关性。"
+        }
+      ],
+      "diagnosisFocus": [
+        "能否判断平移后的有向线段是否表示同一向量。",
+        "能否区分零向量、单位向量、相等向量和相反向量。"
+      ],
+      "coreCompetencies": [
+        "直观想象",
+        "数学抽象"
+      ],
+      "resources": [
+        {
+          "id": "SH-HS-MATH-HJ-B2-C08-L01-A01",
+          "resourceType": "applet",
+          "title": "向量表示与等价拖拽板",
+          "cognitiveAction": "比较",
+          "note": "拖动多个有向线段的起点和终点，实时判断相等、相反、平行和共线关系，突出向量的位置无关性。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        }
+      ]
+    },
+    "SH-HS-MATH-HJ-B2-C08-L02": {
+      "id": "SH-HS-MATH-HJ-B2-C08-L02",
+      "textbookRef": "8.1.2",
+      "title": "向量的加法和减法",
+      "status": "draft",
+      "estimatedPeriods": 1,
+      "volume": {
+        "id": "B2",
+        "title": "必修第二册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B2-C08",
+        "number": 8,
+        "title": "平面向量"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B2-C08-S01",
+        "textbookLabel": "8.1",
+        "title": "向量的概念和线性运算"
+      },
+      "coreKnowledge": [
+        "用三角形法则和平行四边形法则理解向量加法",
+        "把向量减法转化为加上相反向量",
+        "在几何图形中识别首尾相接、共起点和闭合路径关系"
+      ],
+      "prerequisites": [
+        "向量相等和相反向量",
+        "平移有向线段表示同一向量",
+        "平行四边形与三角形的基本性质"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B2-C08-L03",
+        "SH-HS-MATH-HJ-B2-C08-L04",
+        "SH-HS-MATH-HJ-B2-C08-L10"
+      ],
+      "teachingPainPoints": [
+        "学生容易混淆三角形法则中的首尾相接和减法中的相反向量。",
+        "平行四边形法则常被当作画图模板，不能解释合向量的方向和大小。",
+        "从几何图形抽取向量等式时，路径方向和端点顺序容易出错。"
+      ],
+      "digitalEntryPoints": [
+        {
+          "type": "applet",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L02-A01",
+          "title": "向量加减法构造器",
+          "cognitive_action": "分解",
+          "note": "拖动两个向量并切换三角形法则、平行四边形法则和减法模式，同步显示合向量与路径解释。"
+        },
+        {
+          "type": "diagnosis",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L02-D01",
+          "title": "向量加减法方向诊断",
+          "cognitive_action": "比较",
+          "note": "围绕首尾相接、相反向量、闭合路径和端点顺序设计即时反馈。"
+        }
+      ],
+      "diagnosisFocus": [
+        "能否根据图形写出正确的向量加减等式。",
+        "能否把减法解释为加上相反向量。"
+      ],
+      "coreCompetencies": [
+        "直观想象",
+        "逻辑推理",
+        "数学运算"
+      ],
+      "resources": [
+        {
+          "id": "SH-HS-MATH-HJ-B2-C08-L02-A01",
+          "resourceType": "applet",
+          "title": "向量加减法构造器",
+          "cognitiveAction": "分解",
+          "note": "拖动两个向量并切换三角形法则、平行四边形法则和减法模式，同步显示合向量与路径解释。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        },
+        {
+          "id": "SH-HS-MATH-HJ-B2-C08-L02-D01",
+          "resourceType": "diagnosis",
+          "title": "向量加减法方向诊断",
+          "cognitiveAction": "比较",
+          "note": "围绕首尾相接、相反向量、闭合路径和端点顺序设计即时反馈。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        }
+      ]
+    },
+    "SH-HS-MATH-HJ-B2-C08-L03": {
+      "id": "SH-HS-MATH-HJ-B2-C08-L03",
+      "textbookRef": "8.1.3",
+      "title": "实数与向量的乘法",
+      "status": "draft",
+      "estimatedPeriods": 1,
+      "volume": {
+        "id": "B2",
+        "title": "必修第二册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B2-C08",
+        "number": 8,
+        "title": "平面向量"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B2-C08-S01",
+        "textbookLabel": "8.1",
+        "title": "向量的概念和线性运算"
+      },
+      "coreKnowledge": [
+        "理解数乘对向量长度和方向的影响",
+        "识别正数、负数、零和分数倍数对应的伸缩与反向",
+        "用数乘刻画平行向量和共线向量关系"
+      ],
+      "prerequisites": [
+        "向量的概念、相反向量和单位向量",
+        "实数倍、比例和线段伸缩",
+        "向量加法和减法"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B2-C08-L04",
+        "SH-HS-MATH-HJ-B2-C08-L06",
+        "SH-HS-MATH-HJ-B2-C08-L08"
+      ],
+      "teachingPainPoints": [
+        "学生容易只记长度变为 |lambda| 倍，忽略 lambda 的符号决定方向。",
+        "数乘和向量加法混合运算时，几何图像和代数式容易脱节。",
+        "用数乘表达平行或共线时，零向量和比例系数的边界情况常被忽略。"
+      ],
+      "digitalEntryPoints": [
+        {
+          "type": "applet",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L03-A01",
+          "title": "数乘伸缩实验室",
+          "cognitive_action": "缩放",
+          "note": "用滑块控制实数 lambda，联动显示长度倍率、方向翻转、零向量和共线判定。"
+        }
+      ],
+      "diagnosisFocus": [
+        "能否解释负倍数向量的方向变化。",
+        "能否用数乘关系判断两个向量是否平行或共线。"
+      ],
+      "coreCompetencies": [
+        "直观想象",
+        "数学运算",
+        "数学抽象"
+      ],
+      "resources": [
+        {
+          "id": "SH-HS-MATH-HJ-B2-C08-L03-A01",
+          "resourceType": "applet",
+          "title": "数乘伸缩实验室",
+          "cognitiveAction": "缩放",
+          "note": "用滑块控制实数 lambda，联动显示长度倍率、方向翻转、零向量和共线判定。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        }
+      ]
+    },
+    "SH-HS-MATH-HJ-B2-C08-L04": {
+      "id": "SH-HS-MATH-HJ-B2-C08-L04",
+      "textbookRef": "8.2.1",
+      "title": "向量的投影",
+      "status": "draft",
+      "estimatedPeriods": 1,
+      "volume": {
+        "id": "B2",
+        "title": "必修第二册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B2-C08",
+        "number": 8,
+        "title": "平面向量"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B2-C08-S02",
+        "textbookLabel": "8.2",
+        "title": "向量的数量积"
+      },
+      "coreKnowledge": [
+        "把一个向量在另一个方向上的有向长度理解为投影",
+        "用夹角的余弦解释投影的正负和大小",
+        "连接投影、垂足、直角三角形和数量积的几何直觉"
+      ],
+      "prerequisites": [
+        "向量的大小、方向和夹角",
+        "三角比中的余弦",
+        "垂线、垂足和直角三角形"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B2-C08-L05",
+        "SH-HS-MATH-HJ-B2-C08-L09"
+      ],
+      "teachingPainPoints": [
+        "学生容易把投影长度看成普通线段长度，忽略它是有方向符号的量。",
+        "夹角为钝角时投影为负的原因不直观。",
+        "投影、垂线和数量积公式之间的联系容易被分散记忆。"
+      ],
+      "digitalEntryPoints": [
+        {
+          "type": "applet",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L04-A01",
+          "title": "投影长度与夹角实验室",
+          "cognitive_action": "投影",
+          "note": "拖动两个向量改变夹角，联动显示垂足、有向投影长度、cos 值和正负变化。"
+        },
+        {
+          "type": "manim_clip",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L04-M01",
+          "title": "从垂足到投影",
+          "cognitive_action": "投影",
+          "note": "用短动画把作垂线、读有向长度和引出 a cos theta 的过程连续化。"
+        }
+      ],
+      "diagnosisFocus": [
+        "能否判断投影的正负。",
+        "能否解释投影长度与夹角余弦的关系。"
+      ],
+      "coreCompetencies": [
+        "直观想象",
+        "数学抽象",
+        "逻辑推理"
+      ],
+      "resources": [
+        {
+          "id": "SH-HS-MATH-HJ-B2-C08-L04-A01",
+          "resourceType": "applet",
+          "title": "投影长度与夹角实验室",
+          "cognitiveAction": "投影",
+          "note": "拖动两个向量改变夹角，联动显示垂足、有向投影长度、cos 值和正负变化。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        },
+        {
+          "id": "SH-HS-MATH-HJ-B2-C08-L04-M01",
+          "resourceType": "manim_clip",
+          "title": "从垂足到投影",
+          "cognitiveAction": "投影",
+          "note": "用短动画把作垂线、读有向长度和引出 a cos theta 的过程连续化。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        }
+      ]
+    },
+    "SH-HS-MATH-HJ-B2-C08-L05": {
+      "id": "SH-HS-MATH-HJ-B2-C08-L05",
+      "textbookRef": "8.2.2",
+      "title": "向量的数量积的定义与运算律",
+      "status": "draft",
+      "estimatedPeriods": 1,
+      "volume": {
+        "id": "B2",
+        "title": "必修第二册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B2-C08",
+        "number": 8,
+        "title": "平面向量"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B2-C08-S02",
+        "textbookLabel": "8.2",
+        "title": "向量的数量积"
+      },
+      "coreKnowledge": [
+        "用 |a||b| cos theta 定义向量数量积",
+        "理解数量积的正负、零值和垂直判定",
+        "掌握数量积的交换律、分配律和数乘结合关系"
+      ],
+      "prerequisites": [
+        "向量的投影",
+        "向量夹角和余弦",
+        "向量线性运算"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B2-C08-L06",
+        "SH-HS-MATH-HJ-B2-C08-L09",
+        "SH-HS-MATH-HJ-B2-C08-L10"
+      ],
+      "teachingPainPoints": [
+        "学生容易把数量积误认为仍是向量，忽略结果是数量。",
+        "数量积为零与某个向量为零、两个向量垂直之间的条件边界容易混淆。",
+        "运算律和几何意义之间脱节，导致代数变形缺少方向感。"
+      ],
+      "digitalEntryPoints": [
+        {
+          "type": "applet",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L05-A01",
+          "title": "数量积动态解释器",
+          "cognitive_action": "比较",
+          "note": "同步展示两个向量、夹角、投影和数量积数值，突出正、零、负三种区域。"
+        },
+        {
+          "type": "diagnosis",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L05-D01",
+          "title": "数量积正负误区诊断",
+          "cognitive_action": "比较",
+          "note": "检测结果类型、垂直判定、零向量边界和运算律误用。"
+        }
+      ],
+      "diagnosisFocus": [
+        "能否判断数量积结果的符号和类型。",
+        "能否正确使用 a · b = 0 判断垂直并处理零向量边界。"
+      ],
+      "coreCompetencies": [
+        "逻辑推理",
+        "数学运算",
+        "直观想象"
+      ],
+      "resources": [
+        {
+          "id": "SH-HS-MATH-HJ-B2-C08-L05-A01",
+          "resourceType": "applet",
+          "title": "数量积动态解释器",
+          "cognitiveAction": "比较",
+          "note": "同步展示两个向量、夹角、投影和数量积数值，突出正、零、负三种区域。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        },
+        {
+          "id": "SH-HS-MATH-HJ-B2-C08-L05-D01",
+          "resourceType": "diagnosis",
+          "title": "数量积正负误区诊断",
+          "cognitiveAction": "比较",
+          "note": "检测结果类型、垂直判定、零向量边界和运算律误用。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        }
+      ]
+    },
+    "SH-HS-MATH-HJ-B2-C08-L06": {
+      "id": "SH-HS-MATH-HJ-B2-C08-L06",
+      "textbookRef": "8.3.1",
+      "title": "向量基本定理",
+      "status": "draft",
+      "estimatedPeriods": 1,
+      "volume": {
+        "id": "B2",
+        "title": "必修第二册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B2-C08",
+        "number": 8,
+        "title": "平面向量"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B2-C08-S03",
+        "textbookLabel": "8.3",
+        "title": "向量的坐标表示"
+      },
+      "coreKnowledge": [
+        "理解平面内两个不共线向量可作为一组基底",
+        "把任意平面向量唯一表示为两个基向量的线性组合",
+        "用基底分解解释向量坐标表示的来源"
+      ],
+      "prerequisites": [
+        "向量加法、减法和数乘",
+        "平行、共线和不共线关系",
+        "平行四边形法则"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B2-C08-L07",
+        "SH-HS-MATH-HJ-B2-C08-L08",
+        "SH-HS-MATH-HJ-B2-C08-L09"
+      ],
+      "teachingPainPoints": [
+        "学生容易把基底看成固定坐标轴，忽略任意不共线向量都可作为基底。",
+        "唯一表示的条件依赖不共线，常被弱化成代数结论。",
+        "从几何分解过渡到坐标表示时，两个系数的含义容易丢失。"
+      ],
+      "digitalEntryPoints": [
+        {
+          "type": "applet",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L06-A01",
+          "title": "基底分解探索板",
+          "cognitive_action": "分解",
+          "note": "拖动两条基向量和目标向量，实时显示线性组合系数、平行四边形分解和不共线条件。"
+        },
+        {
+          "type": "manim_clip",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L06-M01",
+          "title": "向量基本定理分解动画",
+          "cognitive_action": "分解",
+          "note": "用连续构造说明为什么两个不共线方向可以唯一定位目标向量。"
+        }
+      ],
+      "diagnosisFocus": [
+        "能否判断给定两个向量是否可以作为基底。",
+        "能否解释线性组合系数的几何意义。"
+      ],
+      "coreCompetencies": [
+        "数学抽象",
+        "逻辑推理",
+        "直观想象"
+      ],
+      "resources": [
+        {
+          "id": "SH-HS-MATH-HJ-B2-C08-L06-A01",
+          "resourceType": "applet",
+          "title": "基底分解探索板",
+          "cognitiveAction": "分解",
+          "note": "拖动两条基向量和目标向量，实时显示线性组合系数、平行四边形分解和不共线条件。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        },
+        {
+          "id": "SH-HS-MATH-HJ-B2-C08-L06-M01",
+          "resourceType": "manim_clip",
+          "title": "向量基本定理分解动画",
+          "cognitiveAction": "分解",
+          "note": "用连续构造说明为什么两个不共线方向可以唯一定位目标向量。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        }
+      ]
+    },
+    "SH-HS-MATH-HJ-B2-C08-L07": {
+      "id": "SH-HS-MATH-HJ-B2-C08-L07",
+      "textbookRef": "8.3.2",
+      "title": "向量的正交分解与坐标表示",
+      "status": "draft",
+      "estimatedPeriods": 1,
+      "volume": {
+        "id": "B2",
+        "title": "必修第二册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B2-C08",
+        "number": 8,
+        "title": "平面向量"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B2-C08-S03",
+        "textbookLabel": "8.3",
+        "title": "向量的坐标表示"
+      },
+      "coreKnowledge": [
+        "把向量沿正交坐标轴分解为水平分量和竖直分量",
+        "用一对有序实数表示平面向量的坐标",
+        "理解向量坐标与起点位置无关、与分量有关"
+      ],
+      "prerequisites": [
+        "向量基本定理",
+        "平面直角坐标系",
+        "投影和垂直分解"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B2-C08-L08",
+        "SH-HS-MATH-HJ-B2-C08-L09"
+      ],
+      "teachingPainPoints": [
+        "学生容易把向量坐标和点坐标混为一谈，忽略向量坐标来自位移分量。",
+        "正交分解中的正负方向与坐标轴方向对应不稳定。",
+        "同一向量平移后坐标不变的理由不直观。"
+      ],
+      "digitalEntryPoints": [
+        {
+          "type": "applet",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L07-A01",
+          "title": "正交分解与坐标投影板",
+          "cognitive_action": "投影",
+          "note": "拖动向量并显示水平、竖直分量和坐标，支持平移向量验证坐标不变。"
+        }
+      ],
+      "diagnosisFocus": [
+        "能否从起点和终点坐标求向量坐标。",
+        "能否区分点坐标和向量坐标。"
+      ],
+      "coreCompetencies": [
+        "直观想象",
+        "数学抽象",
+        "数学运算"
+      ],
+      "resources": [
+        {
+          "id": "SH-HS-MATH-HJ-B2-C08-L07-A01",
+          "resourceType": "applet",
+          "title": "正交分解与坐标投影板",
+          "cognitiveAction": "投影",
+          "note": "拖动向量并显示水平、竖直分量和坐标，支持平移向量验证坐标不变。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        }
+      ]
+    },
+    "SH-HS-MATH-HJ-B2-C08-L08": {
+      "id": "SH-HS-MATH-HJ-B2-C08-L08",
+      "textbookRef": "8.3.3",
+      "title": "向量线性运算的坐标表示",
+      "status": "draft",
+      "estimatedPeriods": 1,
+      "volume": {
+        "id": "B2",
+        "title": "必修第二册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B2-C08",
+        "number": 8,
+        "title": "平面向量"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B2-C08-S03",
+        "textbookLabel": "8.3",
+        "title": "向量的坐标表示"
+      },
+      "coreKnowledge": [
+        "用坐标表示向量加法、减法和数乘",
+        "把几何运算和分量运算对应起来",
+        "用坐标方法判断向量平行和共线"
+      ],
+      "prerequisites": [
+        "向量加减法和数乘",
+        "向量坐标表示",
+        "分量和有序实数对"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B2-C08-L09",
+        "SH-HS-MATH-HJ-B2-C08-L10"
+      ],
+      "teachingPainPoints": [
+        "学生容易把坐标运算当作公式替换，不能回到几何位移解释。",
+        "向量减法、终点减起点和端点顺序之间容易混乱。",
+        "用坐标判定平行时，比例关系和零分量边界处理不稳。"
+      ],
+      "digitalEntryPoints": [
+        {
+          "type": "applet",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L08-A01",
+          "title": "坐标线性运算联动表",
+          "cognitive_action": "比较",
+          "note": "同步显示图形拖拽、坐标表格和运算式，支持加、减、数乘和平行判定切换。"
+        },
+        {
+          "type": "diagnosis",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L08-D01",
+          "title": "坐标运算符号诊断",
+          "cognitive_action": "比较",
+          "note": "检测端点顺序、分量符号、数乘倍数和平行比例关系中的常见错误。"
+        }
+      ],
+      "diagnosisFocus": [
+        "能否正确处理向量坐标中的终点减起点。",
+        "能否用坐标比例关系判断平行并说明边界情况。"
+      ],
+      "coreCompetencies": [
+        "数学运算",
+        "逻辑推理",
+        "直观想象"
+      ],
+      "resources": [
+        {
+          "id": "SH-HS-MATH-HJ-B2-C08-L08-A01",
+          "resourceType": "applet",
+          "title": "坐标线性运算联动表",
+          "cognitiveAction": "比较",
+          "note": "同步显示图形拖拽、坐标表格和运算式，支持加、减、数乘和平行判定切换。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        },
+        {
+          "id": "SH-HS-MATH-HJ-B2-C08-L08-D01",
+          "resourceType": "diagnosis",
+          "title": "坐标运算符号诊断",
+          "cognitiveAction": "比较",
+          "note": "检测端点顺序、分量符号、数乘倍数和平行比例关系中的常见错误。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        }
+      ]
+    },
+    "SH-HS-MATH-HJ-B2-C08-L09": {
+      "id": "SH-HS-MATH-HJ-B2-C08-L09",
+      "textbookRef": "8.3.4",
+      "title": "向量数量积与夹角的坐标表示",
+      "status": "draft",
+      "estimatedPeriods": 1,
+      "volume": {
+        "id": "B2",
+        "title": "必修第二册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B2-C08",
+        "number": 8,
+        "title": "平面向量"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B2-C08-S03",
+        "textbookLabel": "8.3",
+        "title": "向量的坐标表示"
+      },
+      "coreKnowledge": [
+        "用坐标表示向量数量积",
+        "用坐标公式求向量长度和夹角余弦",
+        "用数量积坐标形式判断垂直、夹角和投影"
+      ],
+      "prerequisites": [
+        "数量积的定义与运算律",
+        "向量坐标表示和线性运算",
+        "平方和、长度公式与余弦"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B2-C08-L10",
+        "SH-HS-MATH-HJ-B2-C09-K01"
+      ],
+      "teachingPainPoints": [
+        "学生容易把坐标公式当作计算模板，不能解释它与 |a||b| cos theta 的一致性。",
+        "求夹角时漏除向量长度或忽略零向量，导致公式适用条件错误。",
+        "垂直、投影、夹角和长度问题之间的公式选择容易混淆。"
+      ],
+      "digitalEntryPoints": [
+        {
+          "type": "applet",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L09-A01",
+          "title": "数量积与夹角坐标计算器",
+          "cognitive_action": "比较",
+          "note": "拖动坐标向量，联动显示点乘、长度、夹角余弦、垂直判定和投影值。"
+        },
+        {
+          "type": "diagnosis",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L09-D01",
+          "title": "夹角坐标误区诊断",
+          "cognitive_action": "比较",
+          "note": "围绕点乘公式、长度归一化、零向量条件和垂直判定设计即时反馈。"
+        }
+      ],
+      "diagnosisFocus": [
+        "能否用坐标公式求数量积和夹角余弦。",
+        "能否判断公式在零向量情况下是否适用。"
+      ],
+      "coreCompetencies": [
+        "数学运算",
+        "逻辑推理",
+        "直观想象"
+      ],
+      "resources": [
+        {
+          "id": "SH-HS-MATH-HJ-B2-C08-L09-A01",
+          "resourceType": "applet",
+          "title": "数量积与夹角坐标计算器",
+          "cognitiveAction": "比较",
+          "note": "拖动坐标向量，联动显示点乘、长度、夹角余弦、垂直判定和投影值。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        },
+        {
+          "id": "SH-HS-MATH-HJ-B2-C08-L09-D01",
+          "resourceType": "diagnosis",
+          "title": "夹角坐标误区诊断",
+          "cognitiveAction": "比较",
+          "note": "围绕点乘公式、长度归一化、零向量条件和垂直判定设计即时反馈。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        }
+      ]
+    },
+    "SH-HS-MATH-HJ-B2-C08-L10": {
+      "id": "SH-HS-MATH-HJ-B2-C08-L10",
+      "textbookRef": "8.4",
+      "title": "向量的应用",
+      "status": "draft",
+      "estimatedPeriods": 2,
+      "volume": {
+        "id": "B2",
+        "title": "必修第二册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B2-C08",
+        "number": 8,
+        "title": "平面向量"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B2-C08-S04",
+        "textbookLabel": "8.4",
+        "title": "向量的应用"
+      },
+      "coreKnowledge": [
+        "用向量方法证明平行、垂直、共线、中点和长度关系",
+        "把几何条件转化为向量等式、坐标关系或数量积关系",
+        "在三角形、四边形和解析几何问题中选择合适的向量工具"
+      ],
+      "prerequisites": [
+        "向量线性运算及其坐标表示",
+        "数量积、夹角和垂直判定",
+        "平面几何中的平行、垂直、距离和中点关系"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B2-C09-K01",
+        "SH-HS-MATH-HJ-XB1-SPACEVEC-K01",
+        "SH-HS-MATH-HJ-XB1-ANALYTIC-K01"
+      ],
+      "teachingPainPoints": [
+        "学生面对几何题时不知道先选基底、建坐标还是使用数量积。",
+        "几何语言转化为向量等式的第一步难，容易直接套公式。",
+        "证明过程中的向量路径、辅助点和坐标系选择缺少策略。"
+      ],
+      "digitalEntryPoints": [
+        {
+          "type": "applet",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L10-A01",
+          "title": "向量法几何问题工作台",
+          "cognitive_action": "分解",
+          "note": "在典型三角形和四边形情境中切换基底法、坐标法和数量积法，展示条件到向量关系的转化路径。"
+        },
+        {
+          "type": "manim_clip",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L10-M01",
+          "title": "从几何关系到向量方程",
+          "cognitive_action": "分解",
+          "note": "用短动画展示把平行、垂直和中点条件翻译成向量等式的思路。"
+        },
+        {
+          "type": "diagnosis",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L10-D01",
+          "title": "向量应用路径选择诊断",
+          "cognitive_action": "比较",
+          "note": "给出不同几何条件，要求选择基底法、坐标法或数量积法并说明理由。"
+        }
+      ],
+      "diagnosisFocus": [
+        "能否把几何关系准确转化为向量关系。",
+        "能否根据问题特征选择线性运算、坐标表示或数量积。"
+      ],
+      "coreCompetencies": [
+        "逻辑推理",
+        "直观想象",
+        "数学建模",
+        "数学运算"
+      ],
+      "resources": [
+        {
+          "id": "SH-HS-MATH-HJ-B2-C08-L10-A01",
+          "resourceType": "applet",
+          "title": "向量法几何问题工作台",
+          "cognitiveAction": "分解",
+          "note": "在典型三角形和四边形情境中切换基底法、坐标法和数量积法，展示条件到向量关系的转化路径。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        },
+        {
+          "id": "SH-HS-MATH-HJ-B2-C08-L10-M01",
+          "resourceType": "manim_clip",
+          "title": "从几何关系到向量方程",
+          "cognitiveAction": "分解",
+          "note": "用短动画展示把平行、垂直和中点条件翻译成向量等式的思路。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        },
+        {
+          "id": "SH-HS-MATH-HJ-B2-C08-L10-D01",
+          "resourceType": "diagnosis",
+          "title": "向量应用路径选择诊断",
+          "cognitiveAction": "比较",
+          "note": "给出不同几何条件，要求选择基底法、坐标法或数量积法并说明理由。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        }
+      ]
     }
   },
   "mvp": {
@@ -10824,11 +12740,11 @@
   },
   "summary": {
     "volumeCount": 7,
-    "chapterCount": 1,
-    "lessonCount": 7,
+    "chapterCount": 2,
+    "lessonCount": 17,
     "implementedAppletCount": 8,
     "implementedManimCount": 3,
     "implementedDiagnosisCount": 4,
-    "plannedResourceCount": 0
+    "plannedResourceCount": 18
   }
 }

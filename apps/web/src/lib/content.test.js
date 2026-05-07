@@ -8,11 +8,11 @@ import { loadTeacherWorkspace } from "./content.js";
 
 const repoRoot = fileURLToPath(new URL("../../../../", import.meta.url));
 
-test("loads the B2 trigonometry curriculum tree for the teacher workspace", async () => {
+test("loads the B2 curriculum tree for the teacher workspace", async () => {
   const workspace = await loadTeacherWorkspace({ rootDir: repoRoot });
 
   assert.equal(workspace.project.name, "沪教版高中数学数字教具云平台");
-  assert.equal(workspace.summary.lessonCount, 7);
+  assert.equal(workspace.summary.lessonCount, 17);
   assert.equal(workspace.summary.implementedManimCount, 3);
   assert.equal(workspace.summary.implementedDiagnosisCount, 4);
 
@@ -21,6 +21,9 @@ test("loads the B2 trigonometry curriculum tree for the teacher workspace", asyn
   assert.equal(b2.status, "mvp_focus");
   assert.equal(b2.chapters[0].id, "SH-HS-MATH-HJ-B2-C07");
   assert.equal(b2.chapters[0].sections[0].lessons[0].id, "SH-HS-MATH-HJ-B2-C07-L01");
+  assert.equal(b2.chapters[1].id, "SH-HS-MATH-HJ-B2-C08");
+  assert.equal(b2.chapters[1].sections[0].lessons[0].id, "SH-HS-MATH-HJ-B2-C08-L01");
+  assert.equal(b2.chapters[1].sections[3].lessons[0].id, "SH-HS-MATH-HJ-B2-C08-L10");
 });
 
 test("links the sample applet package to lesson L01 with script and activity entries", async () => {
@@ -224,7 +227,7 @@ test("links the parameter lab applet and rendered transform-order Manim to lesso
   assert.equal(diagnosis.metadataPreview.diagnosisDesign.itemSummary.totalItems, 6);
   assert.equal(diagnosis.package.files.itemBank, "content/diagnosis/SH-HS-MATH-HJ-B2-C07-L05-D01/item-bank.yaml");
   assert.equal(diagnosis.player, null);
-  assert.equal(workspace.summary.plannedResourceCount, 0);
+  assert.equal(workspace.summary.plannedResourceCount, 18);
 });
 
 test("links the tangent graph applet and rendered asymptote Manim to lesson L06", async () => {
