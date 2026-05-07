@@ -1,0 +1,1271 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>正切函数图像生成器</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #17202a;
+        --muted: #5f6f7f;
+        --line: #d7e0e8;
+        --panel: #ffffff;
+        --paper: #f5f7f3;
+        --blue: #1f5f99;
+        --green: #2f7d62;
+        --orange: #d26b2c;
+        --red: #c94747;
+        --purple: #7b5bc7;
+        --soft-red: #fde8e6;
+        --soft-green: #e6f2ed;
+        --shadow: 0 18px 48px rgba(31, 44, 58, 0.14);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background:
+          linear-gradient(90deg, rgba(31, 95, 153, 0.06) 1px, transparent 1px),
+          linear-gradient(0deg, rgba(47, 125, 98, 0.06) 1px, transparent 1px),
+          var(--paper);
+        background-size: 36px 36px;
+        color: var(--ink);
+        font-family: "Songti SC", "Noto Serif CJK SC", "Source Han Serif SC", Georgia, serif;
+      }
+
+      button,
+      input {
+        font: inherit;
+      }
+
+      .shell {
+        width: min(1480px, calc(100vw - 28px));
+        margin: 0 auto;
+        padding: 22px 0 28px;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 20px;
+        align-items: end;
+        margin-bottom: 16px;
+      }
+
+      h1 {
+        margin: 0;
+        color: #102033;
+        font-size: clamp(28px, 4vw, 48px);
+        line-height: 1.08;
+        letter-spacing: 0;
+      }
+
+      .subtitle {
+        max-width: 820px;
+        margin: 10px 0 0;
+        color: var(--muted);
+        font-size: 17px;
+        line-height: 1.7;
+      }
+
+      .status-strip {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: flex-end;
+      }
+
+      .status-chip {
+        border: 1px solid #cbd8d6;
+        border-radius: 6px;
+        background: rgba(255, 255, 255, 0.76);
+        padding: 8px 10px;
+        color: #284050;
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      .workspace {
+        display: grid;
+        grid-template-columns: minmax(720px, 1fr) 360px;
+        gap: 18px;
+        align-items: start;
+      }
+
+      .stage,
+      .side-panel {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.94);
+        box-shadow: var(--shadow);
+      }
+
+      .stage {
+        padding: 16px;
+      }
+
+      .canvas-grid {
+        display: grid;
+        grid-template-columns: 360px minmax(0, 1fr);
+        gap: 14px;
+        align-items: stretch;
+      }
+
+      .circle-card,
+      .graph-card {
+        border: 1px solid #dbe4ec;
+        border-radius: 8px;
+        background: #fbfcfd;
+        min-width: 0;
+        overflow: hidden;
+      }
+
+      .card-title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 12px 14px 0;
+        color: #243849;
+        font-size: 15px;
+        font-weight: 800;
+      }
+
+      .mode-note {
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      svg {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      .readout-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 10px;
+        margin-top: 14px;
+      }
+
+      .metric {
+        border: 1px solid #d7e1e5;
+        border-radius: 8px;
+        background: #fff;
+        padding: 10px 12px;
+        min-height: 78px;
+      }
+
+      .metric-label {
+        margin: 0 0 6px;
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 800;
+      }
+
+      .metric-value {
+        display: block;
+        color: #122333;
+        font-size: 21px;
+        font-weight: 900;
+        line-height: 1.22;
+      }
+
+      .metric-help {
+        display: block;
+        margin-top: 5px;
+        color: #657687;
+        font-size: 12px;
+        line-height: 1.35;
+      }
+
+      .side-panel {
+        padding: 16px;
+        position: sticky;
+        top: 14px;
+      }
+
+      .panel-section + .panel-section {
+        margin-top: 16px;
+        padding-top: 16px;
+        border-top: 1px solid #dde6ec;
+      }
+
+      .section-title {
+        margin: 0 0 10px;
+        color: #243849;
+        font-size: 15px;
+        font-weight: 900;
+      }
+
+      .angle-row {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 10px;
+        align-items: center;
+      }
+
+      input[type="range"] {
+        width: 100%;
+        accent-color: var(--orange);
+      }
+
+      output {
+        min-width: 78px;
+        border: 1px solid #ccd9e2;
+        border-radius: 6px;
+        background: #fff;
+        padding: 5px 8px;
+        color: #162c3f;
+        text-align: center;
+        font-size: 14px;
+        font-weight: 900;
+      }
+
+      .button-row,
+      .toggle-grid,
+      .mode-grid {
+        display: grid;
+        gap: 8px;
+      }
+
+      .button-row {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .toggle-grid,
+      .mode-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      button {
+        min-height: 42px;
+        border: 1px solid #c9d7df;
+        border-radius: 7px;
+        background: #fff;
+        color: #233847;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 850;
+        transition:
+          transform 0.16s ease,
+          border-color 0.16s ease,
+          background 0.16s ease,
+          color 0.16s ease;
+      }
+
+      button:hover {
+        transform: translateY(-1px);
+        border-color: #92a8b7;
+      }
+
+      .is-primary,
+      .is-active,
+      button[aria-pressed="true"] {
+        border-color: #1f5f99;
+        background: #1f5f99;
+        color: #fff;
+      }
+
+      .summary-list,
+      .checkpoint-list {
+        margin: 0;
+        padding-left: 20px;
+        color: #314555;
+        font-size: 14px;
+        line-height: 1.65;
+      }
+
+      .summary-list strong {
+        color: #14283a;
+      }
+
+      .warning-box {
+        border: 1px solid #f0c7c1;
+        border-radius: 8px;
+        background: var(--soft-red);
+        padding: 10px 12px;
+        color: #773029;
+        font-size: 14px;
+        font-weight: 800;
+        line-height: 1.55;
+      }
+
+      .is-hidden {
+        display: none !important;
+      }
+
+      .grid-line {
+        stroke: #e4ebf0;
+        stroke-width: 1;
+      }
+
+      .axis-line {
+        stroke: #8396a5;
+        stroke-width: 1.6;
+      }
+
+      .tick-label,
+      .svg-label {
+        fill: #5d6c7b;
+        font-family: "Songti SC", "Noto Serif CJK SC", Georgia, serif;
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      .unit-circle {
+        fill: #f8fbf9;
+        stroke: var(--green);
+        stroke-width: 3;
+      }
+
+      .radius-line {
+        stroke: var(--green);
+        stroke-width: 4;
+        stroke-linecap: round;
+      }
+
+      .projection {
+        stroke: #87a99b;
+        stroke-width: 2;
+        stroke-dasharray: 7 6;
+      }
+
+      .slope-line {
+        stroke: var(--orange);
+        stroke-width: 4;
+        stroke-linecap: round;
+      }
+
+      .tangent-rail {
+        stroke: #d99158;
+        stroke-width: 2;
+        stroke-dasharray: 6 6;
+      }
+
+      .circle-point {
+        fill: var(--orange);
+        stroke: #fff;
+        stroke-width: 4;
+        cursor: grab;
+      }
+
+      .tan-path {
+        fill: none;
+        stroke: var(--blue);
+        stroke-width: 4;
+        stroke-linecap: round;
+      }
+
+      .asymptote {
+        stroke: var(--red);
+        stroke-width: 2.2;
+        stroke-dasharray: 8 7;
+      }
+
+      .undefined-zone {
+        fill: rgba(201, 71, 71, 0.08);
+      }
+
+      .current-guide {
+        stroke: var(--orange);
+        stroke-width: 2;
+        stroke-dasharray: 6 6;
+      }
+
+      .current-dot {
+        fill: var(--orange);
+        stroke: #fff;
+        stroke-width: 4;
+        cursor: grab;
+      }
+
+      .period-dot {
+        fill: var(--purple);
+        stroke: #fff;
+        stroke-width: 4;
+      }
+
+      .key-dot {
+        fill: #fff;
+        stroke: var(--blue);
+        stroke-width: 3;
+      }
+
+      .callout {
+        fill: rgba(255, 255, 255, 0.94);
+        stroke: #cbd8df;
+        stroke-width: 1.4;
+      }
+
+      .callout-text {
+        fill: #1d3142;
+        font-size: 14px;
+        font-weight: 850;
+      }
+
+      @media (max-width: 1120px) {
+        .workspace,
+        .canvas-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .side-panel {
+          position: static;
+        }
+
+        .readout-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 720px) {
+        .shell {
+          width: min(100vw - 18px, 680px);
+          padding-top: 12px;
+        }
+
+        .hero {
+          grid-template-columns: 1fr;
+        }
+
+        .status-strip {
+          justify-content: flex-start;
+        }
+
+        .stage,
+        .side-panel {
+          padding: 10px;
+        }
+
+        .readout-grid,
+        .toggle-grid,
+        .mode-grid,
+        .button-row {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="shell">
+      <header class="hero">
+        <div>
+          <h1>正切函数图像生成器</h1>
+          <p class="subtitle">拖动同一个角，观察单位圆终边斜率、cos x、tan x 和图像点如何一起变化；靠近渐近线时，图像为什么必须断开会变得很直观。</p>
+        </div>
+        <div class="status-strip" aria-label="资源状态">
+          <span class="status-chip">SH-HS-MATH-HJ-B2-C07-L06-A01</span>
+          <span class="status-chip">认知动作：逼近</span>
+          <span class="status-chip">draft</span>
+        </div>
+      </header>
+
+      <section class="workspace">
+        <section class="stage" aria-label="正切函数交互区">
+          <div class="canvas-grid">
+            <article class="circle-card" id="circleCard">
+              <div class="card-title">
+                <span>单位圆与斜率</span>
+                <span class="mode-note">tan x = sin x / cos x</span>
+              </div>
+              <svg id="circleSvg" viewBox="0 0 420 420" role="img" aria-label="单位圆终边和斜率线">
+                <line x1="46" y1="210" x2="374" y2="210" class="axis-line" />
+                <line x1="210" y1="46" x2="210" y2="374" class="axis-line" />
+                <circle cx="210" cy="210" r="128" class="unit-circle" />
+                <line id="cosProjection" x1="210" y1="210" x2="300" y2="210" class="projection" />
+                <line id="sinProjection" x1="300" y1="210" x2="300" y2="120" class="projection" />
+                <line id="tangentRail" x1="338" y1="66" x2="338" y2="354" class="tangent-rail" />
+                <line id="radiusLine" x1="210" y1="210" x2="300" y2="120" class="radius-line" />
+                <line id="slopeLine" x1="210" y1="210" x2="338" y2="82" class="slope-line" />
+                <circle id="circlePoint" cx="300" cy="120" r="10" class="circle-point" />
+                <circle id="slopePoint" cx="338" cy="82" r="7" fill="#d26b2c" />
+                <text x="346" y="206" class="svg-label">x = 1</text>
+                <text x="54" y="202" class="svg-label">-1</text>
+                <text x="342" y="232" class="svg-label">tan x</text>
+                <text id="circleLabel" x="30" y="35" class="callout-text">x = π/4</text>
+              </svg>
+            </article>
+
+            <article class="graph-card">
+              <div class="card-title">
+                <span>y = tan x 的分段图像</span>
+                <span class="mode-note" id="focusLabel">主值区间</span>
+              </div>
+              <svg id="graphSvg" viewBox="0 0 920 420" role="img" aria-label="正切函数图像和渐近线">
+                <g id="undefinedLayer"></g>
+                <g id="gridLayer"></g>
+                <g id="asymptoteLayer"></g>
+                <g id="curveLayer"></g>
+                <g id="keyPointLayer"></g>
+                <g id="periodLayer"></g>
+                <line id="pointGuideX" x1="0" y1="0" x2="0" y2="0" class="current-guide" />
+                <line id="pointGuideY" x1="0" y1="0" x2="0" y2="0" class="current-guide" />
+                <circle id="periodDot" cx="0" cy="0" r="7" class="period-dot" />
+                <circle id="currentDot" cx="0" cy="0" r="8" class="current-dot" />
+                <rect id="pointCallout" x="0" y="0" width="178" height="46" rx="7" class="callout" />
+                <text id="pointLabel" x="0" y="0" class="callout-text">x=π/4, y=1</text>
+              </svg>
+            </article>
+          </div>
+
+          <div class="readout-grid" aria-label="当前数学读数">
+            <div class="metric">
+              <p class="metric-label">当前角 x</p>
+              <span class="metric-value" id="xReadout">π/4</span>
+              <span class="metric-help">拖动终边或滑块改变</span>
+            </div>
+            <div class="metric">
+              <p class="metric-label">cos x</p>
+              <span class="metric-value" id="cosReadout">0.71</span>
+              <span class="metric-help">分母接近 0 时风险升高</span>
+            </div>
+            <div class="metric">
+              <p class="metric-label">tan x</p>
+              <span class="metric-value" id="tanReadout">1</span>
+              <span class="metric-help">终边斜率 / 图像纵坐标</span>
+            </div>
+            <div class="metric">
+              <p class="metric-label">最近渐近线</p>
+              <span class="metric-value" id="asymptoteReadout">π/2</span>
+              <span class="metric-help" id="distanceReadout">距离 π/4</span>
+            </div>
+          </div>
+        </section>
+
+        <aside class="side-panel" aria-label="教师控制区">
+          <section class="panel-section">
+            <p class="section-title">观察角</p>
+            <div class="angle-row">
+              <input id="angleSlider" type="range" min="-4.6" max="4.6" step="0.01" value="0.7853981633974483" aria-label="观察角" />
+              <output id="angleOutput">π/4</output>
+            </div>
+          </section>
+
+          <section class="panel-section">
+            <p class="section-title">课堂控制</p>
+            <div class="button-row">
+              <button class="is-primary" id="playButton" type="button">播放</button>
+              <button id="resetButton" type="button">重置</button>
+            </div>
+          </section>
+
+          <section class="panel-section">
+            <p class="section-title">观察焦点</p>
+            <div class="mode-grid" id="focusModeGroup">
+              <button class="is-active" data-focus="principal" type="button">主值区间</button>
+              <button data-focus="approach" type="button">逼近渐近线</button>
+              <button data-focus="period" type="button">周期对照</button>
+            </div>
+          </section>
+
+          <section class="panel-section">
+            <p class="section-title">图层</p>
+            <div class="toggle-grid">
+              <button id="toggleCircle" type="button" aria-pressed="true">单位圆</button>
+              <button id="toggleAsymptotes" type="button" aria-pressed="true">渐近线</button>
+              <button id="togglePeriod" type="button" aria-pressed="false">周期点</button>
+              <button id="toggleSummary" type="button" aria-pressed="false">归纳</button>
+            </div>
+          </section>
+
+          <section class="panel-section">
+            <p class="section-title">逼近提示</p>
+            <div class="warning-box" id="approachMessage">当前离渐近线较远，先观察单位圆斜率和图像点的同步关系。</div>
+          </section>
+
+          <section class="panel-section" id="summaryPanel">
+            <p class="section-title">课堂归纳</p>
+            <ul class="summary-list">
+              <li>定义域：<strong>x != π/2 + kπ</strong>。</li>
+              <li>渐近线来自：<strong>cos x = 0</strong>。</li>
+              <li>主值区间：<strong>(-π/2, π/2)</strong>。</li>
+              <li>周期：<strong>tan(x + π) = tan x</strong>。</li>
+            </ul>
+          </section>
+        </aside>
+      </section>
+    </main>
+
+    <script>
+      const RESOURCE_ID = "SH-HS-MATH-HJ-B2-C07-L06-A01";
+      const GRAPH = {
+        width: 920,
+        height: 420,
+        left: 62,
+        right: 26,
+        top: 28,
+        bottom: 52,
+        xMin: -1.55 * Math.PI,
+        xMax: 1.55 * Math.PI,
+        yMin: -4.2,
+        yMax: 4.2,
+      };
+      const CIRCLE = {
+        cx: 210,
+        cy: 210,
+        r: 128,
+        tangentX: 338,
+        tangentTop: 66,
+        tangentBottom: 354,
+      };
+      const ASYMPTOTE_EPSILON = 0.045;
+      const DISPLAY_Y_LIMIT = 4.05;
+
+      const state = {
+        currentX: Math.PI / 4,
+        focusMode: "principal",
+        unitCircleVisible: true,
+        asymptotesVisible: true,
+        periodCompareVisible: false,
+        summaryVisible: false,
+        playing: false,
+      };
+
+      const elements = {
+        circleCard: document.getElementById("circleCard"),
+        circleSvg: document.getElementById("circleSvg"),
+        circlePoint: document.getElementById("circlePoint"),
+        slopePoint: document.getElementById("slopePoint"),
+        radiusLine: document.getElementById("radiusLine"),
+        slopeLine: document.getElementById("slopeLine"),
+        tangentRail: document.getElementById("tangentRail"),
+        cosProjection: document.getElementById("cosProjection"),
+        sinProjection: document.getElementById("sinProjection"),
+        circleLabel: document.getElementById("circleLabel"),
+        graphSvg: document.getElementById("graphSvg"),
+        undefinedLayer: document.getElementById("undefinedLayer"),
+        gridLayer: document.getElementById("gridLayer"),
+        asymptoteLayer: document.getElementById("asymptoteLayer"),
+        curveLayer: document.getElementById("curveLayer"),
+        keyPointLayer: document.getElementById("keyPointLayer"),
+        periodLayer: document.getElementById("periodLayer"),
+        pointGuideX: document.getElementById("pointGuideX"),
+        pointGuideY: document.getElementById("pointGuideY"),
+        currentDot: document.getElementById("currentDot"),
+        periodDot: document.getElementById("periodDot"),
+        pointCallout: document.getElementById("pointCallout"),
+        pointLabel: document.getElementById("pointLabel"),
+        focusLabel: document.getElementById("focusLabel"),
+        xReadout: document.getElementById("xReadout"),
+        cosReadout: document.getElementById("cosReadout"),
+        tanReadout: document.getElementById("tanReadout"),
+        asymptoteReadout: document.getElementById("asymptoteReadout"),
+        distanceReadout: document.getElementById("distanceReadout"),
+        angleSlider: document.getElementById("angleSlider"),
+        angleOutput: document.getElementById("angleOutput"),
+        playButton: document.getElementById("playButton"),
+        resetButton: document.getElementById("resetButton"),
+        focusModeGroup: document.getElementById("focusModeGroup"),
+        toggleCircle: document.getElementById("toggleCircle"),
+        toggleAsymptotes: document.getElementById("toggleAsymptotes"),
+        togglePeriod: document.getElementById("togglePeriod"),
+        toggleSummary: document.getElementById("toggleSummary"),
+        approachMessage: document.getElementById("approachMessage"),
+        summaryPanel: document.getElementById("summaryPanel"),
+      };
+
+      function createSvgElement(tag, attrs = {}) {
+        const element = document.createElementNS("http://www.w3.org/2000/svg", tag);
+        Object.entries(attrs).forEach(([key, value]) => element.setAttribute(key, value));
+        return element;
+      }
+
+      function xToSvg(x) {
+        const width = GRAPH.width - GRAPH.left - GRAPH.right;
+        return GRAPH.left + ((x - GRAPH.xMin) / (GRAPH.xMax - GRAPH.xMin)) * width;
+      }
+
+      function yToSvg(y) {
+        const height = GRAPH.height - GRAPH.top - GRAPH.bottom;
+        return GRAPH.top + ((GRAPH.yMax - y) / (GRAPH.yMax - GRAPH.yMin)) * height;
+      }
+
+      function svgToX(svgX) {
+        const width = GRAPH.width - GRAPH.left - GRAPH.right;
+        const ratio = Math.max(0, Math.min(1, (svgX - GRAPH.left) / width));
+        return GRAPH.xMin + ratio * (GRAPH.xMax - GRAPH.xMin);
+      }
+
+      function nearestAsymptote(x) {
+        const k = Math.round((x - Math.PI / 2) / Math.PI);
+        return Math.PI / 2 + k * Math.PI;
+      }
+
+      function avoidAsymptote(x) {
+        const closest = nearestAsymptote(x);
+        if (Math.abs(x - closest) < ASYMPTOTE_EPSILON) {
+          return x < closest ? closest - ASYMPTOTE_EPSILON : closest + ASYMPTOTE_EPSILON;
+        }
+        return Math.max(GRAPH.xMin + 0.01, Math.min(GRAPH.xMax - 0.01, x));
+      }
+
+      function currentTan() {
+        return Math.tan(state.currentX);
+      }
+
+      function clampedTanValue(x) {
+        return Math.max(-DISPLAY_Y_LIMIT, Math.min(DISPLAY_Y_LIMIT, Math.tan(x)));
+      }
+
+      function drawGrid() {
+        elements.gridLayer.innerHTML = "";
+        const yTicks = [-4, -2, 0, 2, 4];
+        const xTicks = [-1.5, -1, -0.5, 0, 0.5, 1, 1.5];
+
+        yTicks.forEach((value) => {
+          const y = yToSvg(value);
+          elements.gridLayer.appendChild(createSvgElement("line", {
+            x1: GRAPH.left,
+            x2: GRAPH.width - GRAPH.right,
+            y1: y,
+            y2: y,
+            class: value === 0 ? "axis-line" : "grid-line",
+          }));
+          const label = createSvgElement("text", {
+            x: GRAPH.left - 13,
+            y: y + 5,
+            class: "tick-label",
+            "text-anchor": "end",
+          });
+          label.textContent = String(value);
+          elements.gridLayer.appendChild(label);
+        });
+
+        xTicks.forEach((multiple) => {
+          const xValue = multiple * Math.PI;
+          const x = xToSvg(xValue);
+          elements.gridLayer.appendChild(createSvgElement("line", {
+            x1: x,
+            x2: x,
+            y1: GRAPH.top,
+            y2: GRAPH.height - GRAPH.bottom,
+            class: multiple === 0 ? "axis-line" : "grid-line",
+          }));
+          const label = createSvgElement("text", {
+            x,
+            y: GRAPH.height - GRAPH.bottom + 29,
+            class: "tick-label",
+            "text-anchor": "middle",
+          });
+          label.textContent = formatPiMultiple(multiple);
+          elements.gridLayer.appendChild(label);
+        });
+      }
+
+      function drawAsymptotes() {
+        elements.undefinedLayer.innerHTML = "";
+        elements.asymptoteLayer.innerHTML = "";
+        const values = [];
+        for (let k = -3; k <= 3; k += 1) {
+          const x = Math.PI / 2 + k * Math.PI;
+          if (x >= GRAPH.xMin && x <= GRAPH.xMax) {
+            values.push(x);
+          }
+        }
+
+        values.forEach((value) => {
+          const sx = xToSvg(value);
+          const zoneWidth = Math.abs(xToSvg(value + 0.055) - sx) * 2;
+          elements.undefinedLayer.appendChild(createSvgElement("rect", {
+            x: sx - zoneWidth / 2,
+            y: GRAPH.top,
+            width: zoneWidth,
+            height: GRAPH.height - GRAPH.top - GRAPH.bottom,
+            class: "undefined-zone",
+          }));
+          elements.asymptoteLayer.appendChild(createSvgElement("line", {
+            x1: sx,
+            x2: sx,
+            y1: GRAPH.top,
+            y2: GRAPH.height - GRAPH.bottom,
+            class: "asymptote",
+          }));
+          const label = createSvgElement("text", {
+            x: sx + 7,
+            y: GRAPH.top + 18,
+            class: "tick-label",
+          });
+          label.textContent = formatPiValue(value);
+          elements.asymptoteLayer.appendChild(label);
+        });
+
+        elements.undefinedLayer.classList.toggle("is-hidden", !state.asymptotesVisible);
+        elements.asymptoteLayer.classList.toggle("is-hidden", !state.asymptotesVisible);
+      }
+
+      function drawCurve() {
+        elements.curveLayer.innerHTML = "";
+        const breaks = [GRAPH.xMin];
+        for (let k = -4; k <= 4; k += 1) {
+          const x = Math.PI / 2 + k * Math.PI;
+          if (x > GRAPH.xMin && x < GRAPH.xMax) {
+            breaks.push(x);
+          }
+        }
+        breaks.push(GRAPH.xMax);
+
+        for (let i = 0; i < breaks.length - 1; i += 1) {
+          const left = breaks[i] + (i === 0 ? 0.015 : ASYMPTOTE_EPSILON);
+          const right = breaks[i + 1] - (i === breaks.length - 2 ? 0.015 : ASYMPTOTE_EPSILON);
+          if (right <= left) {
+            continue;
+          }
+          const commands = [];
+          const steps = 90;
+          for (let step = 0; step <= steps; step += 1) {
+            const x = left + ((right - left) * step) / steps;
+            const y = clampedTanValue(x);
+            commands.push(`${step === 0 ? "M" : "L"} ${xToSvg(x).toFixed(2)} ${yToSvg(y).toFixed(2)}`);
+          }
+          elements.curveLayer.appendChild(createSvgElement("path", {
+            d: commands.join(" "),
+            class: "tan-path",
+          }));
+        }
+      }
+
+      function drawKeyPoints() {
+        elements.keyPointLayer.innerHTML = "";
+        const points = [];
+        for (let k = -2; k <= 2; k += 1) {
+          points.push(k * Math.PI - Math.PI / 4, k * Math.PI, k * Math.PI + Math.PI / 4);
+        }
+        points.forEach((x) => {
+          if (x < GRAPH.xMin || x > GRAPH.xMax) {
+            return;
+          }
+          const dot = createSvgElement("circle", {
+            cx: xToSvg(x),
+            cy: yToSvg(Math.tan(x)),
+            r: 5,
+            class: "key-dot",
+          });
+          elements.keyPointLayer.appendChild(dot);
+        });
+      }
+
+      function drawCurrentPoint() {
+        const x = state.currentX;
+        const y = clampedTanValue(x);
+        const sx = xToSvg(x);
+        const sy = yToSvg(y);
+        const originY = yToSvg(0);
+
+        elements.currentDot.setAttribute("cx", sx);
+        elements.currentDot.setAttribute("cy", sy);
+        elements.pointGuideX.setAttribute("x1", sx);
+        elements.pointGuideX.setAttribute("x2", sx);
+        elements.pointGuideX.setAttribute("y1", sy);
+        elements.pointGuideX.setAttribute("y2", originY);
+        elements.pointGuideY.setAttribute("x1", xToSvg(0));
+        elements.pointGuideY.setAttribute("x2", sx);
+        elements.pointGuideY.setAttribute("y1", sy);
+        elements.pointGuideY.setAttribute("y2", sy);
+
+        const calloutX = Math.min(GRAPH.width - 205, Math.max(GRAPH.left + 8, sx + 14));
+        const calloutY = Math.max(GRAPH.top + 8, Math.min(GRAPH.height - GRAPH.bottom - 54, sy - 58));
+        elements.pointCallout.setAttribute("x", calloutX);
+        elements.pointCallout.setAttribute("y", calloutY);
+        elements.pointLabel.setAttribute("x", calloutX + 12);
+        elements.pointLabel.setAttribute("y", calloutY + 28);
+        elements.pointLabel.textContent = `x=${formatPiValue(x)}, y=${formatTanReadout(currentTan())}`;
+      }
+
+      function drawPeriodComparison() {
+        const compareX = state.currentX + Math.PI;
+        const visible = state.periodCompareVisible && compareX <= GRAPH.xMax;
+        elements.periodDot.classList.toggle("is-hidden", !visible);
+        elements.periodLayer.innerHTML = "";
+        if (!visible) {
+          return;
+        }
+        const y = clampedTanValue(compareX);
+        const sx = xToSvg(compareX);
+        const sy = yToSvg(y);
+        elements.periodDot.setAttribute("cx", sx);
+        elements.periodDot.setAttribute("cy", sy);
+        elements.periodLayer.appendChild(createSvgElement("line", {
+          x1: xToSvg(state.currentX),
+          x2: sx,
+          y1: sy,
+          y2: sy,
+          stroke: "#7b5bc7",
+          "stroke-width": 2,
+          "stroke-dasharray": "5 6",
+        }));
+        const label = createSvgElement("text", {
+          x: sx + 10,
+          y: sy - 10,
+          class: "tick-label",
+        });
+        label.textContent = "x + π";
+        elements.periodLayer.appendChild(label);
+      }
+
+      function drawCircle() {
+        const x = state.currentX;
+        const cos = Math.cos(x);
+        const sin = Math.sin(x);
+        const tan = currentTan();
+        const px = CIRCLE.cx + CIRCLE.r * cos;
+        const py = CIRCLE.cy - CIRCLE.r * sin;
+        const slopeY = Math.max(CIRCLE.tangentTop, Math.min(CIRCLE.tangentBottom, CIRCLE.cy - CIRCLE.r * tan));
+
+        elements.circleCard.classList.toggle("is-hidden", !state.unitCircleVisible);
+        elements.radiusLine.setAttribute("x2", px);
+        elements.radiusLine.setAttribute("y2", py);
+        elements.circlePoint.setAttribute("cx", px);
+        elements.circlePoint.setAttribute("cy", py);
+        elements.cosProjection.setAttribute("x2", px);
+        elements.sinProjection.setAttribute("x1", px);
+        elements.sinProjection.setAttribute("x2", px);
+        elements.sinProjection.setAttribute("y1", CIRCLE.cy);
+        elements.sinProjection.setAttribute("y2", py);
+        elements.slopeLine.setAttribute("x2", CIRCLE.tangentX);
+        elements.slopeLine.setAttribute("y2", slopeY);
+        elements.slopePoint.setAttribute("cx", CIRCLE.tangentX);
+        elements.slopePoint.setAttribute("cy", slopeY);
+        elements.circleLabel.textContent = `x = ${formatPiValue(x)}，tan x = ${formatTanReadout(tan)}`;
+      }
+
+      function updateReadouts() {
+        const x = state.currentX;
+        const tan = currentTan();
+        const cos = Math.cos(x);
+        const asymptote = nearestAsymptote(x);
+        const distance = Math.abs(x - asymptote);
+        elements.xReadout.textContent = formatPiValue(x);
+        elements.cosReadout.textContent = formatNumber(cos);
+        elements.tanReadout.textContent = formatTanReadout(tan);
+        elements.asymptoteReadout.textContent = formatPiValue(asymptote);
+        elements.distanceReadout.textContent = `距离 ${formatPiValue(distance)}`;
+        elements.angleOutput.textContent = formatPiValue(x);
+        elements.angleSlider.value = x;
+
+        const side = x < asymptote ? "左侧" : "右侧";
+        if (distance < 0.18) {
+          elements.approachMessage.textContent =
+            `正在从${side}逼近 ${formatPiValue(asymptote)}：cos x 接近 0，tan x ${tan > 0 ? "快速增大" : "快速减小"}。`;
+        } else if (state.focusMode === "period") {
+          elements.approachMessage.textContent = "比较橙色点 x 与紫色点 x + π：两点纵坐标相同，说明周期为 π。";
+        } else {
+          elements.approachMessage.textContent = "当前离渐近线较远，先观察单位圆斜率和图像点的同步关系。";
+        }
+
+        const labels = {
+          principal: "主值区间",
+          approach: "逼近渐近线",
+          period: "周期对照",
+        };
+        elements.focusLabel.textContent = labels[state.focusMode];
+      }
+
+      function updateControls() {
+        elements.playButton.textContent = state.playing ? "暂停" : "播放";
+        elements.playButton.classList.toggle("is-primary", !state.playing);
+        document.querySelectorAll("[data-focus]").forEach((button) => {
+          button.classList.toggle("is-active", button.dataset.focus === state.focusMode);
+        });
+        syncToggle(elements.toggleCircle, state.unitCircleVisible);
+        syncToggle(elements.toggleAsymptotes, state.asymptotesVisible);
+        syncToggle(elements.togglePeriod, state.periodCompareVisible);
+        syncToggle(elements.toggleSummary, state.summaryVisible);
+        elements.summaryPanel.classList.toggle("is-hidden", !state.summaryVisible);
+      }
+
+      function syncToggle(button, pressed) {
+        button.setAttribute("aria-pressed", String(pressed));
+      }
+
+      function render(emit = true) {
+        drawAsymptotes();
+        drawCurrentPoint();
+        drawPeriodComparison();
+        drawCircle();
+        updateReadouts();
+        updateControls();
+        if (emit) {
+          emitStateChanged();
+        }
+      }
+
+      function setCurrentX(value) {
+        state.currentX = avoidAsymptote(value);
+      }
+
+      function resetState() {
+        Object.assign(state, {
+          currentX: Math.PI / 4,
+          focusMode: "principal",
+          unitCircleVisible: true,
+          asymptotesVisible: true,
+          periodCompareVisible: false,
+          summaryVisible: false,
+          playing: false,
+        });
+        render();
+        emitInteraction("reset");
+      }
+
+      function setFocusMode(mode) {
+        state.focusMode = mode;
+        if (mode === "principal") {
+          setCurrentX(Math.PI / 4);
+          state.periodCompareVisible = false;
+        } else if (mode === "approach") {
+          setCurrentX(Math.PI / 2 - 0.28);
+          state.asymptotesVisible = true;
+          state.periodCompareVisible = false;
+        } else if (mode === "period") {
+          setCurrentX(-Math.PI / 4);
+          state.periodCompareVisible = true;
+        }
+        render();
+        emitInteraction("focus_mode_changed");
+      }
+
+      function graphPointFromEvent(event) {
+        const rect = elements.graphSvg.getBoundingClientRect();
+        const svgX = ((event.clientX - rect.left) / rect.width) * GRAPH.width;
+        return svgToX(svgX);
+      }
+
+      function circleAngleFromEvent(event) {
+        const rect = elements.circleSvg.getBoundingClientRect();
+        const svgX = ((event.clientX - rect.left) / rect.width) * 420;
+        const svgY = ((event.clientY - rect.top) / rect.height) * 420;
+        return Math.atan2(CIRCLE.cy - svgY, svgX - CIRCLE.cx);
+      }
+
+      let graphDragging = false;
+      let circleDragging = false;
+
+      elements.currentDot.addEventListener("pointerdown", (event) => {
+        graphDragging = true;
+        elements.currentDot.setPointerCapture(event.pointerId);
+      });
+
+      elements.graphSvg.addEventListener("pointermove", (event) => {
+        if (!graphDragging) {
+          return;
+        }
+        setCurrentX(graphPointFromEvent(event));
+        render();
+        emitInteraction("current_angle_changed");
+      });
+
+      elements.graphSvg.addEventListener("pointerup", (event) => {
+        graphDragging = false;
+        try {
+          elements.currentDot.releasePointerCapture(event.pointerId);
+        } catch {
+          // Pointer may already be released.
+        }
+      });
+
+      elements.circlePoint.addEventListener("pointerdown", (event) => {
+        circleDragging = true;
+        elements.circlePoint.setPointerCapture(event.pointerId);
+      });
+
+      elements.circleSvg.addEventListener("pointermove", (event) => {
+        if (!circleDragging) {
+          return;
+        }
+        setCurrentX(circleAngleFromEvent(event));
+        render();
+        emitInteraction("current_angle_changed");
+      });
+
+      elements.circleSvg.addEventListener("pointerup", (event) => {
+        circleDragging = false;
+        try {
+          elements.circlePoint.releasePointerCapture(event.pointerId);
+        } catch {
+          // Pointer may already be released.
+        }
+      });
+
+      elements.angleSlider.addEventListener("input", () => {
+        setCurrentX(Number(elements.angleSlider.value));
+        render();
+        emitInteraction("current_angle_changed");
+        if (Math.abs(state.currentX - nearestAsymptote(state.currentX)) < 0.16) {
+          emitMessage("applet:interaction", { action: "asymptote_approached", ...getSnapshot() });
+        }
+      });
+
+      elements.playButton.addEventListener("click", () => {
+        state.playing = !state.playing;
+        updateControls();
+        emitInteraction(state.playing ? "play" : "pause");
+      });
+
+      elements.resetButton.addEventListener("click", resetState);
+      elements.focusModeGroup.addEventListener("click", (event) => {
+        const button = event.target.closest("[data-focus]");
+        if (button) {
+          setFocusMode(button.dataset.focus);
+        }
+      });
+      elements.toggleCircle.addEventListener("click", () => toggleLayer("unitCircleVisible"));
+      elements.toggleAsymptotes.addEventListener("click", () => toggleLayer("asymptotesVisible"));
+      elements.togglePeriod.addEventListener("click", () => toggleLayer("periodCompareVisible"));
+      elements.toggleSummary.addEventListener("click", () => toggleLayer("summaryVisible"));
+
+      function toggleLayer(key) {
+        state[key] = !state[key];
+        render();
+        emitInteraction("layer_toggled");
+      }
+
+      let lastFrameTime = performance.now();
+      function tick(now) {
+        if (state.playing) {
+          const delta = (now - lastFrameTime) / 1000;
+          const speed = state.focusMode === "approach" ? 0.32 : 0.72;
+          setCurrentX(state.currentX + delta * speed);
+          if (state.currentX >= GRAPH.xMax - 0.05) {
+            state.currentX = GRAPH.xMin + 0.05;
+          }
+          render(false);
+        }
+        lastFrameTime = now;
+        requestAnimationFrame(tick);
+      }
+
+      function formatNumber(value) {
+        const rounded = Math.round(value * 100) / 100;
+        if (Object.is(rounded, -0)) {
+          return "0";
+        }
+        return String(rounded);
+      }
+
+      function formatTanReadout(value) {
+        if (Math.abs(value) > 99) {
+          return value > 0 ? ">99" : "<-99";
+        }
+        return formatNumber(value);
+      }
+
+      function formatPiMultiple(multiple) {
+        if (multiple === 0) {
+          return "0";
+        }
+        if (multiple === 1) {
+          return "π";
+        }
+        if (multiple === -1) {
+          return "-π";
+        }
+        if (multiple === 0.5) {
+          return "π/2";
+        }
+        if (multiple === -0.5) {
+          return "-π/2";
+        }
+        if (multiple === 1.5) {
+          return "3π/2";
+        }
+        if (multiple === -1.5) {
+          return "-3π/2";
+        }
+        return `${formatNumber(multiple)}π`;
+      }
+
+      function formatPiValue(value) {
+        if (Math.abs(value) < 0.0001) {
+          return "0";
+        }
+        const multiple = value / Math.PI;
+        const common = [
+          [-1.5, "-3π/2"],
+          [-1.25, "-5π/4"],
+          [-1, "-π"],
+          [-0.75, "-3π/4"],
+          [-0.5, "-π/2"],
+          [-0.25, "-π/4"],
+          [0.25, "π/4"],
+          [0.5, "π/2"],
+          [0.75, "3π/4"],
+          [1, "π"],
+          [1.25, "5π/4"],
+          [1.5, "3π/2"],
+        ];
+        const match = common.find(([raw]) => Math.abs(multiple - raw) < 0.015);
+        if (match) {
+          return match[1];
+        }
+        return `${formatNumber(multiple)}π`;
+      }
+
+      function getSnapshot() {
+        const asymptote = nearestAsymptote(state.currentX);
+        return {
+          current_x: state.currentX,
+          current_tan: currentTan(),
+          cos_value: Math.cos(state.currentX),
+          nearest_asymptote: asymptote,
+          distance_to_asymptote: Math.abs(state.currentX - asymptote),
+          focus_mode: state.focusMode,
+          unit_circle_visible: state.unitCircleVisible,
+          asymptotes_visible: state.asymptotesVisible,
+          period_compare_visible: state.periodCompareVisible,
+          summary_visible: state.summaryVisible,
+        };
+      }
+
+      function emitMessage(type, payload = {}) {
+        window.parent?.postMessage(
+          {
+            source: "shanghai-hs-math-applet",
+            resourceId: RESOURCE_ID,
+            type,
+            payload,
+          },
+          "*",
+        );
+      }
+
+      function emitStateChanged() {
+        emitMessage("applet:stateChanged", getSnapshot());
+      }
+
+      function emitInteraction(action) {
+        emitMessage("applet:interaction", { action, ...getSnapshot() });
+      }
+
+      window.addEventListener("message", (event) => {
+        if (event.data?.type !== "player:init") {
+          return;
+        }
+        const incoming = event.data.payload?.state;
+        if (incoming) {
+          state.currentX = typeof incoming.current_x === "number" ? avoidAsymptote(incoming.current_x) : state.currentX;
+          state.focusMode = incoming.focus_mode ?? state.focusMode;
+          state.unitCircleVisible = incoming.unit_circle_visible ?? state.unitCircleVisible;
+          state.asymptotesVisible = incoming.asymptotes_visible ?? state.asymptotesVisible;
+          state.periodCompareVisible = incoming.period_compare_visible ?? state.periodCompareVisible;
+          state.summaryVisible = incoming.summary_visible ?? state.summaryVisible;
+        }
+        render();
+      });
+
+      drawGrid();
+      drawCurve();
+      drawKeyPoints();
+      render(false);
+      emitMessage("applet:ready", getSnapshot());
+      requestAnimationFrame(tick);
+    </script>
+  </body>
+</html>
