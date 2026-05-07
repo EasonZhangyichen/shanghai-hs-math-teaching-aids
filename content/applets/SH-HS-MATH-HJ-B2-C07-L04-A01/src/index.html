@@ -1,0 +1,810 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="sh-hs-math-applet-sdk" content="0.1.0" />
+    <title>正弦余弦性质对照板</title>
+    <style>
+      :root {
+        color: #18232f;
+        background: #f4f7f9;
+        font-family:
+          "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", system-ui, -apple-system,
+          BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        --surface: #ffffff;
+        --soft: #f8fbfc;
+        --ink: #18232f;
+        --muted: #5d6c7c;
+        --border: #d5e0e8;
+        --cos: #176b87;
+        --sin: #b45309;
+        --period: #647620;
+        --increase: #0f8764;
+        --decrease: #b13c35;
+        --axis: #315fbd;
+        --center: #8b4d11;
+        --key: #7c3b85;
+        --shadow: 0 18px 42px rgba(24, 35, 47, 0.1);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-width: 320px;
+        min-height: 100vh;
+        color: var(--ink);
+        background:
+          linear-gradient(90deg, rgba(23, 107, 135, 0.05) 0 1px, transparent 1px 100%),
+          linear-gradient(0deg, rgba(24, 35, 47, 0.035) 0 1px, transparent 1px 100%),
+          #f4f7f9;
+        background-size: 28px 28px;
+      }
+
+      button,
+      input {
+        font: inherit;
+      }
+
+      .applet-shell {
+        min-height: 100vh;
+        display: grid;
+        grid-template-rows: auto minmax(0, 1fr);
+      }
+
+      .topbar {
+        display: flex;
+        justify-content: space-between;
+        gap: 18px;
+        padding: 15px 22px;
+        border-bottom: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.94);
+      }
+
+      .eyebrow {
+        margin: 0 0 4px;
+        color: var(--muted);
+        font-size: 0.78rem;
+        font-weight: 700;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 1.5rem;
+        line-height: 1.15;
+        letter-spacing: 0;
+      }
+
+      .state-readout {
+        flex: 0 0 auto;
+        display: grid;
+        grid-template-columns: repeat(4, auto);
+        gap: 8px;
+        align-content: start;
+      }
+
+      .state-readout span {
+        min-width: 90px;
+        padding: 7px 9px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: #fbfdfe;
+        color: var(--muted);
+        font-size: 0.78rem;
+        text-align: center;
+      }
+
+      .state-readout strong {
+        display: block;
+        color: var(--ink);
+        font-size: 0.96rem;
+      }
+
+      .workspace {
+        min-height: 0;
+        display: grid;
+        grid-template-columns: minmax(430px, 1fr) 350px;
+        gap: 16px;
+        padding: 16px;
+      }
+
+      .visual-panel,
+      .control-panel {
+        min-width: 0;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.96);
+        box-shadow: var(--shadow);
+      }
+
+      .visual-panel {
+        align-self: start;
+        overflow: hidden;
+      }
+
+      svg {
+        display: block;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1200 / 610;
+        touch-action: none;
+        user-select: none;
+      }
+
+      .control-panel {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        padding: 16px;
+        overflow: auto;
+      }
+
+      .panel-section {
+        display: grid;
+        gap: 10px;
+      }
+
+      .section-title {
+        margin: 0;
+        font-size: 0.96rem;
+        font-weight: 800;
+      }
+
+      .button-row,
+      .toggle-grid,
+      .k-grid,
+      .angle-grid {
+        display: grid;
+        gap: 8px;
+      }
+
+      .button-row,
+      .toggle-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .k-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .angle-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      button {
+        min-height: 39px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        color: var(--ink);
+        background: #fff;
+        cursor: pointer;
+      }
+
+      button:hover {
+        border-color: #88b4c5;
+        background: #eef8fb;
+      }
+
+      .is-primary,
+      .is-active,
+      button[aria-pressed="true"] {
+        border-color: var(--cos);
+        color: #fff;
+        background: var(--cos);
+      }
+
+      .slider-wrap {
+        display: grid;
+        gap: 8px;
+      }
+
+      .slider-label {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        color: var(--muted);
+        font-size: 0.82rem;
+      }
+
+      input[type="range"] {
+        width: 100%;
+        accent-color: var(--cos);
+      }
+
+      .formula-card {
+        display: grid;
+        gap: 8px;
+        padding: 12px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: var(--soft);
+      }
+
+      .feedback {
+        margin: 0;
+        font-weight: 760;
+      }
+
+      .formula-list {
+        display: grid;
+        gap: 6px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        color: var(--muted);
+        font-size: 0.86rem;
+      }
+
+      .formula-list code,
+      .feedback code {
+        color: var(--ink);
+        font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      }
+
+      .property-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.82rem;
+      }
+
+      .property-table th,
+      .property-table td {
+        border-bottom: 1px solid var(--border);
+        padding: 7px 6px;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      .property-table th {
+        color: #334155;
+        background: #f7fafb;
+      }
+
+      @media (max-width: 900px) {
+        .workspace {
+          grid-template-columns: 1fr;
+        }
+
+        .topbar,
+        .state-readout {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="applet-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">SH-HS-MATH-HJ-B2-C07-L04-A01 · 余弦函数的性质</p>
+          <h1>正弦余弦性质对照板</h1>
+        </div>
+        <div class="state-readout" aria-live="polite">
+          <span>x<strong id="read-x">0</strong></span>
+          <span>cos x<strong id="read-cos">1</strong></span>
+          <span>sin x<strong id="read-sin">0</strong></span>
+          <span>k<strong id="read-k">0</strong></span>
+        </div>
+      </header>
+
+      <main class="workspace">
+        <section class="visual-panel" aria-label="正弦余弦性质对照图">
+          <svg id="graph" viewBox="0 0 1200 610" role="img" aria-labelledby="graph-title">
+            <title id="graph-title">正弦与余弦曲线、性质层和关键点</title>
+          </svg>
+        </section>
+
+        <aside class="control-panel" aria-label="课堂控制">
+          <section class="panel-section">
+            <p class="section-title">观察位置</p>
+            <div class="slider-wrap">
+              <div class="slider-label">
+                <label for="x-slider">x</label>
+                <span id="slider-value">0</span>
+              </div>
+              <input id="x-slider" type="range" min="-628" max="1257" value="0" />
+            </div>
+            <div class="button-row">
+              <button id="play-button" class="is-primary" type="button">播放</button>
+              <button id="reset-button" type="button">重置</button>
+            </div>
+          </section>
+
+          <section class="panel-section">
+            <p class="section-title">关键角跳转</p>
+            <div class="angle-grid" id="angle-buttons"></div>
+          </section>
+
+          <section class="panel-section">
+            <p class="section-title">周期段 k</p>
+            <div class="k-grid" id="k-buttons"></div>
+          </section>
+
+          <section class="panel-section">
+            <p class="section-title">分步揭示</p>
+            <div class="toggle-grid">
+              <button type="button" data-toggle="sineReference" aria-pressed="true">正弦参照</button>
+              <button type="button" data-toggle="period" aria-pressed="false">周期</button>
+              <button type="button" data-toggle="monotonic" aria-pressed="false">单调</button>
+              <button type="button" data-toggle="symmetry" aria-pressed="false">对称</button>
+              <button type="button" data-toggle="keyPoints" aria-pressed="false">关键点</button>
+              <button type="button" data-toggle="summary" aria-pressed="false">归纳</button>
+            </div>
+          </section>
+
+          <section class="formula-card">
+            <p class="feedback" id="feedback">先比较 x = 0：余弦从最大值开始，正弦从零点开始。</p>
+            <ul class="formula-list" id="formula-list">
+              <li>周期：<code>cos(x + 2kpi) = cos x</code></li>
+              <li>偶函数：<code>cos(-x) = cos x</code></li>
+            </ul>
+            <table class="property-table" id="property-table" hidden>
+              <thead>
+                <tr><th>性质</th><th>余弦函数一般式</th></tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </section>
+        </aside>
+      </main>
+    </div>
+
+    <script>
+      const TAU = Math.PI * 2;
+      const MIN_X = -TAU;
+      const MAX_X = TAU * 2;
+      const graph = document.querySelector("#graph");
+      const slider = document.querySelector("#x-slider");
+      const playButton = document.querySelector("#play-button");
+      const resetButton = document.querySelector("#reset-button");
+      const angleButtons = document.querySelector("#angle-buttons");
+      const kButtons = document.querySelector("#k-buttons");
+      const feedback = document.querySelector("#feedback");
+      const formulaList = document.querySelector("#formula-list");
+      const propertyTable = document.querySelector("#property-table");
+      const propertyBody = propertyTable.querySelector("tbody");
+      const reads = {
+        x: document.querySelector("#read-x"),
+        cos: document.querySelector("#read-cos"),
+        sin: document.querySelector("#read-sin"),
+        k: document.querySelector("#read-k"),
+        slider: document.querySelector("#slider-value"),
+      };
+
+      const state = {
+        x: 0,
+        k: 0,
+        playing: false,
+        sineReference: true,
+        period: false,
+        monotonic: false,
+        symmetry: false,
+        keyPoints: false,
+        summary: false,
+      };
+
+      const W = 1200;
+      const H = 610;
+      const plot = { left: 68, right: 1134, top: 66, bottom: 442 };
+      const labelsY = 505;
+      const xScale = (x) => plot.left + ((x - MIN_X) / (MAX_X - MIN_X)) * (plot.right - plot.left);
+      const yScale = (y) => plot.bottom - ((y + 1.25) / 2.5) * (plot.bottom - plot.top);
+      const fromClientX = (clientX) => {
+        const rect = graph.getBoundingClientRect();
+        const svgX = ((clientX - rect.left) / rect.width) * W;
+        const ratio = (svgX - plot.left) / (plot.right - plot.left);
+        return clamp(MIN_X + ratio * (MAX_X - MIN_X), MIN_X, MAX_X);
+      };
+
+      const fmt = (value) => {
+        const entries = [
+          [-2 * Math.PI, "-2pi"],
+          [-1.5 * Math.PI, "-3pi/2"],
+          [-Math.PI, "-pi"],
+          [-0.5 * Math.PI, "-pi/2"],
+          [0, "0"],
+          [0.5 * Math.PI, "pi/2"],
+          [Math.PI, "pi"],
+          [1.5 * Math.PI, "3pi/2"],
+          [2 * Math.PI, "2pi"],
+          [2.5 * Math.PI, "5pi/2"],
+          [3 * Math.PI, "3pi"],
+          [3.5 * Math.PI, "7pi/2"],
+          [4 * Math.PI, "4pi"],
+        ];
+        const hit = entries.find(([x]) => Math.abs(value - x) < 0.015);
+        return hit ? hit[1] : value.toFixed(2);
+      };
+
+      const make = (name, attrs = {}, text = "") => {
+        const el = document.createElementNS("http://www.w3.org/2000/svg", name);
+        Object.entries(attrs).forEach(([key, value]) => el.setAttribute(key, value));
+        if (text) el.textContent = text;
+        return el;
+      };
+
+      const pathFor = (fn) => {
+        const points = [];
+        const steps = 420;
+        for (let i = 0; i <= steps; i += 1) {
+          const x = MIN_X + ((MAX_X - MIN_X) * i) / steps;
+          points.push(`${i === 0 ? "M" : "L"} ${xScale(x).toFixed(2)} ${yScale(fn(x)).toFixed(2)}`);
+        }
+        return points.join(" ");
+      };
+
+      function clamp(value, min, max) {
+        return Math.max(min, Math.min(max, value));
+      }
+
+      function buildButtons() {
+        [
+          [-Math.PI, "-pi"],
+          [-Math.PI / 2, "-pi/2"],
+          [0, "0"],
+          [Math.PI / 2, "pi/2"],
+          [Math.PI, "pi"],
+          [1.5 * Math.PI, "3pi/2"],
+          [2 * Math.PI, "2pi"],
+          [3 * Math.PI, "3pi"],
+        ].forEach(([value, label]) => {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.textContent = label;
+          button.addEventListener("click", () => setX(value, "key_angle_jump"));
+          angleButtons.append(button);
+        });
+
+        [-1, 0, 1].forEach((k) => {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.textContent = String(k);
+          button.dataset.k = String(k);
+          button.className = k === 0 ? "is-active" : "";
+          button.addEventListener("click", () => {
+            state.k = k;
+            render();
+            emitState("period_shift_changed");
+          });
+          kButtons.append(button);
+        });
+      }
+
+      function render() {
+        graph.replaceChildren();
+        drawBackground();
+        drawCurves();
+        if (state.period) drawPeriod();
+        if (state.monotonic) drawMonotonic();
+        if (state.symmetry) drawSymmetry();
+        if (state.keyPoints) drawKeyPoints();
+        drawCursor();
+        drawLegend();
+        updateReadouts();
+        updateControls();
+        updateFeedback();
+      }
+
+      function drawBackground() {
+        graph.append(make("rect", { x: 0, y: 0, width: W, height: H, fill: "#f8fbfc" }));
+        for (let y = -1; y <= 1; y += 0.5) {
+          graph.append(make("line", {
+            x1: plot.left, y1: yScale(y), x2: plot.right, y2: yScale(y),
+            stroke: y === 0 ? "#718293" : "#dce6ed", "stroke-width": y === 0 ? 1.4 : 1,
+          }));
+        }
+        const ticks = [-2, -1.5, -1, -0.5, 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4].map((n) => n * Math.PI);
+        ticks.forEach((x) => {
+          const sx = xScale(x);
+          graph.append(make("line", { x1: sx, y1: plot.top, x2: sx, y2: plot.bottom, stroke: "#e2e9ef" }));
+          graph.append(make("line", { x1: sx, y1: plot.bottom, x2: sx, y2: plot.bottom + 7, stroke: "#718293" }));
+          graph.append(make("text", { x: sx, y: plot.bottom + 25, "text-anchor": "middle", fill: "#5d6c7c", "font-size": 13 }, fmt(x)));
+        });
+        [-1, 0, 1].forEach((y) => {
+          graph.append(make("text", { x: plot.left - 18, y: yScale(y) + 5, "text-anchor": "end", fill: "#5d6c7c", "font-size": 13 }, String(y)));
+        });
+        graph.append(make("text", { x: plot.right, y: plot.bottom + 52, "text-anchor": "end", fill: "#334155", "font-size": 15 }, "x"));
+        graph.append(make("text", { x: plot.left + 6, y: plot.top - 22, fill: "#334155", "font-size": 15 }, "函数值"));
+      }
+
+      function drawCurves() {
+        if (state.sineReference) {
+          graph.append(make("path", {
+            d: pathFor(Math.sin),
+            fill: "none",
+            stroke: "var(--sin)",
+            "stroke-width": 3,
+            "stroke-dasharray": "9 8",
+            opacity: 0.72,
+          }));
+        }
+        graph.append(make("path", {
+          d: pathFor(Math.cos),
+          fill: "none",
+          stroke: "var(--cos)",
+          "stroke-width": 4,
+          "stroke-linecap": "round",
+        }));
+      }
+
+      function drawPeriod() {
+        const twinX = state.x + TAU <= MAX_X ? state.x + TAU : state.x - TAU;
+        const y = Math.cos(state.x);
+        [state.x, twinX].forEach((x, index) => {
+          graph.append(make("line", {
+            x1: xScale(x), y1: yScale(y), x2: xScale(x), y2: yScale(0),
+            stroke: "var(--period)", "stroke-width": 1.5, "stroke-dasharray": "5 5",
+          }));
+          graph.append(make("circle", { cx: xScale(x), cy: yScale(y), r: index === 0 ? 8 : 7, fill: "var(--period)" }));
+        });
+        graph.append(make("line", {
+          x1: xScale(state.x), y1: yScale(y) - 28, x2: xScale(twinX), y2: yScale(y) - 28,
+          stroke: "var(--period)", "stroke-width": 2,
+        }));
+        graph.append(make("text", {
+          x: (xScale(state.x) + xScale(twinX)) / 2,
+          y: yScale(y) - 36,
+          "text-anchor": "middle",
+          fill: "var(--period)",
+          "font-size": 14,
+          "font-weight": 700,
+        }, "横坐标相差 2pi，余弦值相同"));
+      }
+
+      function drawMonotonic() {
+        const k = state.k;
+        const incStart = -Math.PI + TAU * k;
+        const incEnd = TAU * k;
+        const decStart = TAU * k;
+        const decEnd = Math.PI + TAU * k;
+        drawSegment(incStart, incEnd, Math.cos, "var(--increase)", "递增");
+        drawSegment(decStart, decEnd, Math.cos, "var(--decrease)", "递减");
+      }
+
+      function drawSegment(a, b, fn, color, label) {
+        const start = clamp(a, MIN_X, MAX_X);
+        const end = clamp(b, MIN_X, MAX_X);
+        if (end <= MIN_X || start >= MAX_X || start >= end) return;
+        const points = [];
+        const steps = 80;
+        for (let i = 0; i <= steps; i += 1) {
+          const x = start + ((end - start) * i) / steps;
+          points.push(`${i === 0 ? "M" : "L"} ${xScale(x).toFixed(2)} ${yScale(fn(x)).toFixed(2)}`);
+        }
+        graph.append(make("path", { d: points.join(" "), fill: "none", stroke: color, "stroke-width": 8, "stroke-linecap": "round", opacity: 0.72 }));
+        graph.append(make("text", { x: (xScale(start) + xScale(end)) / 2, y: labelsY, "text-anchor": "middle", fill: color, "font-size": 15, "font-weight": 800 }, `${label} ${fmt(a)} 到 ${fmt(b)}`));
+      }
+
+      function drawSymmetry() {
+        const axes = [-2, -1, 0, 1, 2, 3, 4].map((n) => n * Math.PI);
+        axes.forEach((x) => {
+          if (x < MIN_X || x > MAX_X) return;
+          graph.append(make("line", { x1: xScale(x), y1: plot.top, x2: xScale(x), y2: plot.bottom, stroke: "var(--axis)", "stroke-width": 1.8, "stroke-dasharray": "7 7", opacity: 0.78 }));
+        });
+        const centers = [-1.5, -0.5, 0.5, 1.5, 2.5, 3.5].map((n) => n * Math.PI);
+        centers.forEach((x) => {
+          if (x < MIN_X || x > MAX_X) return;
+          graph.append(make("rect", { x: xScale(x) - 6, y: yScale(0) - 6, width: 12, height: 12, fill: "var(--center)", transform: `rotate(45 ${xScale(x)} ${yScale(0)})` }));
+        });
+        const pair = Math.abs(state.x) < 0.08 ? Math.PI / 3 : Math.abs(((state.x + Math.PI) % TAU) - Math.PI);
+        [-pair, pair].forEach((x) => {
+          if (x < MIN_X || x > MAX_X) return;
+          graph.append(make("circle", { cx: xScale(x), cy: yScale(Math.cos(x)), r: 7, fill: "#fff", stroke: "var(--axis)", "stroke-width": 3 }));
+        });
+        graph.append(make("text", { x: xScale(0) + 14, y: plot.top + 24, fill: "var(--axis)", "font-size": 14, "font-weight": 800 }, "y 轴配对：cos(-x) = cos x"));
+      }
+
+      function drawKeyPoints() {
+        const points = [];
+        for (let n = -4; n <= 8; n += 1) {
+          const zero = Math.PI / 2 + n * Math.PI;
+          if (zero >= MIN_X && zero <= MAX_X) points.push([zero, 0, "零点", "var(--key)"]);
+        }
+        for (let n = -1; n <= 2; n += 1) {
+          const max = TAU * n;
+          const min = Math.PI + TAU * n;
+          if (max >= MIN_X && max <= MAX_X) points.push([max, 1, "最大", "var(--cos)"]);
+          if (min >= MIN_X && min <= MAX_X) points.push([min, -1, "最小", "var(--decrease)"]);
+        }
+        points.forEach(([x, y, label, color]) => {
+          graph.append(make("circle", { cx: xScale(x), cy: yScale(y), r: 6.5, fill: color }));
+          graph.append(make("text", { x: xScale(x), y: yScale(y) + (y >= 0 ? -14 : 24), "text-anchor": "middle", fill: color, "font-size": 12, "font-weight": 750 }, label));
+        });
+      }
+
+      function drawCursor() {
+        const cx = xScale(state.x);
+        const cosY = yScale(Math.cos(state.x));
+        const sinY = yScale(Math.sin(state.x));
+        graph.append(make("line", { x1: cx, y1: plot.top, x2: cx, y2: plot.bottom, stroke: "#25313d", "stroke-width": 1.5, "stroke-dasharray": "5 5" }));
+        if (state.sineReference) graph.append(make("circle", { cx, cy: sinY, r: 6.5, fill: "var(--sin)" }));
+        graph.append(make("circle", { cx, cy: cosY, r: 9, fill: "#fff", stroke: "var(--cos)", "stroke-width": 4 }));
+        graph.append(make("text", { x: cx + 12, y: cosY - 12, fill: "var(--cos)", "font-size": 14, "font-weight": 800 }, `(x, cos x)`));
+      }
+
+      function drawLegend() {
+        const items = [
+          ["var(--cos)", "余弦主图像"],
+          ["var(--sin)", "正弦参照"],
+          ["var(--increase)", "递增段"],
+          ["var(--decrease)", "递减段"],
+          ["var(--axis)", "对称轴"],
+          ["var(--center)", "对称中心"],
+        ];
+        items.forEach(([color, label], index) => {
+          const x = 74 + index * 150;
+          graph.append(make("circle", { cx: x, cy: 555, r: 6, fill: color }));
+          graph.append(make("text", { x: x + 12, y: 560, fill: "#334155", "font-size": 13 }, label));
+        });
+      }
+
+      function updateReadouts() {
+        reads.x.textContent = fmt(state.x);
+        reads.cos.textContent = Math.cos(state.x).toFixed(3);
+        reads.sin.textContent = Math.sin(state.x).toFixed(3);
+        reads.k.textContent = String(state.k);
+        reads.slider.textContent = fmt(state.x);
+        slider.value = String(Math.round(state.x * 100));
+      }
+
+      function updateControls() {
+        playButton.textContent = state.playing ? "暂停" : "播放";
+        document.querySelectorAll("[data-toggle]").forEach((button) => {
+          const key = button.dataset.toggle;
+          button.setAttribute("aria-pressed", String(Boolean(state[key])));
+        });
+        kButtons.querySelectorAll("button").forEach((button) => {
+          button.classList.toggle("is-active", Number(button.dataset.k) === state.k);
+        });
+      }
+
+      function updateFeedback() {
+        const cos = Math.cos(state.x);
+        if (near(cos, 1)) {
+          feedback.innerHTML = "余弦最大值点：<code>(2kpi, 1)</code>，这里不能套成正弦的 <code>pi/2 + 2kpi</code>。";
+        } else if (near(cos, -1)) {
+          feedback.innerHTML = "余弦最小值点：<code>(pi + 2kpi, -1)</code>，同类点横坐标相差 <code>2pi</code>。";
+        } else if (near(cos, 0)) {
+          feedback.innerHTML = "余弦零点：<code>x = pi/2 + kpi</code>，相邻零点间隔是 <code>pi</code>。";
+        } else if (state.symmetry) {
+          feedback.innerHTML = "看正负同角配对：<code>cos(-x) = cos x</code>，余弦是偶函数。";
+        } else if (state.monotonic) {
+          feedback.innerHTML = "读余弦自己的方向：<code>[-pi + 2kpi, 2kpi]</code> 递增，<code>[2kpi, pi + 2kpi]</code> 递减。";
+        } else {
+          feedback.textContent = "拖动游标比较同一 x 下的余弦主图像和正弦参照，先找关键点顺序差异。";
+        }
+
+        formulaList.hidden = state.summary;
+        propertyTable.hidden = !state.summary;
+        if (state.summary) {
+          propertyBody.innerHTML = [
+            ["定义域 / 值域", "R；[-1, 1]"],
+            ["周期", "T = 2pi；cos(x + 2kpi) = cos x"],
+            ["奇偶性", "偶函数；cos(-x) = cos x"],
+            ["单调递增", "[-pi + 2kpi, 2kpi], k in Z"],
+            ["单调递减", "[2kpi, pi + 2kpi], k in Z"],
+            ["对称轴", "x = kpi, k in Z"],
+            ["对称中心", "(pi/2 + kpi, 0), k in Z"],
+            ["零点", "x = pi/2 + kpi, k in Z"],
+            ["最大值点", "(2kpi, 1), k in Z"],
+            ["最小值点", "(pi + 2kpi, -1), k in Z"],
+          ].map(([name, value]) => `<tr><td>${name}</td><td><code>${value}</code></td></tr>`).join("");
+        }
+      }
+
+      function near(value, target) {
+        return Math.abs(value - target) < 0.035;
+      }
+
+      function setX(value, source = "x_changed") {
+        state.x = clamp(value, MIN_X, MAX_X);
+        render();
+        emitState(source);
+        if (near(Math.cos(state.x), 1) || near(Math.cos(state.x), -1) || near(Math.cos(state.x), 0)) {
+          emit("applet:checkpoint", {
+            type: "checkpoint_reached",
+            x_value: state.x,
+            cosine_value: Math.cos(state.x),
+          });
+        }
+      }
+
+      function emitState(type = "state_changed") {
+        emit("applet:stateChanged", currentPayload(type));
+        if (type !== "state_changed") emit("applet:interaction", currentPayload(type));
+      }
+
+      function currentPayload(type) {
+        return {
+          resourceId: "SH-HS-MATH-HJ-B2-C07-L04-A01",
+          type,
+          x_value: state.x,
+          cosine_value: Math.cos(state.x),
+          sine_value: Math.sin(state.x),
+          period_shift_k: state.k,
+          sine_reference_visible: state.sineReference,
+          period_compare_visible: state.period,
+          monotonic_segments_visible: state.monotonic,
+          symmetry_visible: state.symmetry,
+          key_points_visible: state.keyPoints,
+          summary_visible: state.summary,
+        };
+      }
+
+      function emit(type, payload) {
+        window.parent?.postMessage({ source: "sh-hs-math-applet", type, payload }, "*");
+      }
+
+      slider.addEventListener("input", () => setX(Number(slider.value) / 100));
+      playButton.addEventListener("click", () => {
+        state.playing = !state.playing;
+        render();
+        emitState(state.playing ? "play_started" : "play_paused");
+      });
+      resetButton.addEventListener("click", () => {
+        state.x = 0;
+        state.k = 0;
+        state.playing = false;
+        render();
+        emitState("reset");
+      });
+      document.querySelectorAll("[data-toggle]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const key = button.dataset.toggle;
+          state[key] = !state[key];
+          render();
+          emitState("layer_toggled");
+        });
+      });
+
+      let dragging = false;
+      graph.addEventListener("pointerdown", (event) => {
+        dragging = true;
+        graph.setPointerCapture(event.pointerId);
+        setX(fromClientX(event.clientX), "drag_started");
+      });
+      graph.addEventListener("pointermove", (event) => {
+        if (dragging) setX(fromClientX(event.clientX), "x_dragged");
+      });
+      graph.addEventListener("pointerup", (event) => {
+        dragging = false;
+        graph.releasePointerCapture(event.pointerId);
+        emitState("drag_ended");
+      });
+
+      window.addEventListener("message", (event) => {
+        const data = event.data || {};
+        if (data.type === "player:init") {
+          emit("applet:ready", currentPayload("ready"));
+        }
+        if (data.type === "player:setState" && data.payload) {
+          Object.assign(state, data.payload);
+          render();
+          emitState("player_state_applied");
+        }
+      });
+
+      buildButtons();
+      render();
+      emit("applet:ready", currentPayload("ready"));
+
+      let last = performance.now();
+      function tick(now) {
+        if (state.playing) {
+          const delta = (now - last) / 1000;
+          const next = state.x + delta * 0.85;
+          setX(next > MAX_X ? MIN_X : next, "animation_tick");
+        }
+        last = now;
+        requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    </script>
+  </body>
+</html>
