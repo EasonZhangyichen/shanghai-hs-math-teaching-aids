@@ -16,8 +16,8 @@
   },
   "summary": {
     "total": 25,
-    "implemented": 21,
-    "planned": 4,
+    "implemented": 24,
+    "planned": 1,
     "byType": {
       "applet": {
         "total": 14,
@@ -31,8 +31,8 @@
       },
       "diagnosis": {
         "total": 7,
-        "implemented": 4,
-        "planned": 3
+        "implemented": 7,
+        "planned": 0
       }
     }
   },
@@ -567,8 +567,8 @@
     {
       "id": "SH-HS-MATH-HJ-B2-C08-L02-D01",
       "type": "diagnosis",
-      "status": "planned",
-      "availability": "planned",
+      "status": "implemented",
+      "availability": "metadata_ready",
       "title": "加减法方向四类短诊断",
       "proposedTitle": "加减法方向四类短诊断",
       "lessonId": "SH-HS-MATH-HJ-B2-C08-L02",
@@ -589,11 +589,11 @@
       "note": "只覆盖首尾相接、相反向量、闭合路径、端点顺序四类错因，用即时反馈提示方向来源；不做构造演示。",
       "priority": "chapter_backlog",
       "priorityReason": "向量加减法最适合用拖拽构造暴露方向和路径错误。",
-      "packagePath": null,
-      "metadataPath": null,
+      "packagePath": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L02-D01",
+      "metadataPath": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L02-D01/metadata.yaml",
       "recommendedTrack": "track/review-system",
-      "nextAction": "创建 Diagnosis 资源包，先写 metadata、item-bank、scoring-rubric、teacher-notes 和 review。",
-      "threadPrompt": "请先读取项目锚点文件和 content/production/resource-backlog.json，然后切到 track/review-system。这次只创建并推进 SH-HS-MATH-HJ-B2-C08-L02-D01（Diagnosis），对应课时 SH-HS-MATH-HJ-B2-C08-L02「向量的加法和减法」。先确认教学痛点、认知动作、文件规范和验收标准，再动手；完成后运行 npm run generate:backlog 和 npm run verify，更新 docs/01-current-state.md 与 docs/02-next-actions.md，并提交。"
+      "nextAction": "核对 metadata、资源文件和审核记录，补齐缺口后运行内容校验。",
+      "threadPrompt": "请先读取项目锚点文件和 content/production/resource-backlog.json，然后切到 track/review-system。这次只复核并推进 SH-HS-MATH-HJ-B2-C08-L02-D01（Diagnosis），对应课时 SH-HS-MATH-HJ-B2-C08-L02「向量的加法和减法」。先确认教学痛点、认知动作、文件规范和验收标准，再动手；完成后运行 npm run generate:backlog 和 npm run verify，更新 docs/01-current-state.md 与 docs/02-next-actions.md，并提交。"
     },
     {
       "id": "SH-HS-MATH-HJ-B2-C08-L03-A01",
@@ -722,8 +722,8 @@
     {
       "id": "SH-HS-MATH-HJ-B2-C08-L05-D01",
       "type": "diagnosis",
-      "status": "planned",
-      "availability": "planned",
+      "status": "implemented",
+      "availability": "metadata_ready",
       "title": "数量积正负误区诊断",
       "proposedTitle": "数量积正负误区诊断",
       "lessonId": "SH-HS-MATH-HJ-B2-C08-L05",
@@ -744,11 +744,11 @@
       "note": "检测结果类型、垂直判定、零向量边界和运算律误用。",
       "priority": "chapter_backlog",
       "priorityReason": null,
-      "packagePath": null,
-      "metadataPath": null,
+      "packagePath": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L05-D01",
+      "metadataPath": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L05-D01/metadata.yaml",
       "recommendedTrack": "track/review-system",
-      "nextAction": "创建 Diagnosis 资源包，先写 metadata、item-bank、scoring-rubric、teacher-notes 和 review。",
-      "threadPrompt": "请先读取项目锚点文件和 content/production/resource-backlog.json，然后切到 track/review-system。这次只创建并推进 SH-HS-MATH-HJ-B2-C08-L05-D01（Diagnosis），对应课时 SH-HS-MATH-HJ-B2-C08-L05「向量的数量积的定义与运算律」。先确认教学痛点、认知动作、文件规范和验收标准，再动手；完成后运行 npm run generate:backlog 和 npm run verify，更新 docs/01-current-state.md 与 docs/02-next-actions.md，并提交。"
+      "nextAction": "核对 metadata、资源文件和审核记录，补齐缺口后运行内容校验。",
+      "threadPrompt": "请先读取项目锚点文件和 content/production/resource-backlog.json，然后切到 track/review-system。这次只复核并推进 SH-HS-MATH-HJ-B2-C08-L05-D01（Diagnosis），对应课时 SH-HS-MATH-HJ-B2-C08-L05「向量的数量积的定义与运算律」。先确认教学痛点、认知动作、文件规范和验收标准，再动手；完成后运行 npm run generate:backlog 和 npm run verify，更新 docs/01-current-state.md 与 docs/02-next-actions.md，并提交。"
     },
     {
       "id": "SH-HS-MATH-HJ-B2-C08-L10-A01",
@@ -784,8 +784,8 @@
     {
       "id": "SH-HS-MATH-HJ-B2-C08-L10-D01",
       "type": "diagnosis",
-      "status": "planned",
-      "availability": "planned",
+      "status": "implemented",
+      "availability": "metadata_ready",
       "title": "向量应用第一步诊断",
       "proposedTitle": "向量应用第一步诊断",
       "lessonId": "SH-HS-MATH-HJ-B2-C08-L10",
@@ -806,11 +806,11 @@
       "note": "围绕几何条件选择基底法、坐标法或数量积法的第一步理由给反馈，不批改完整证明过程。",
       "priority": "follow_up",
       "priorityReason": "向量应用适合在资源工厂中拆成多个典型问题包逐步推进。",
-      "packagePath": null,
-      "metadataPath": null,
+      "packagePath": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L10-D01",
+      "metadataPath": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L10-D01/metadata.yaml",
       "recommendedTrack": "track/review-system",
-      "nextAction": "创建 Diagnosis 资源包，先写 metadata、item-bank、scoring-rubric、teacher-notes 和 review。",
-      "threadPrompt": "请先读取项目锚点文件和 content/production/resource-backlog.json，然后切到 track/review-system。这次只创建并推进 SH-HS-MATH-HJ-B2-C08-L10-D01（Diagnosis），对应课时 SH-HS-MATH-HJ-B2-C08-L10「向量的应用」。先确认教学痛点、认知动作、文件规范和验收标准，再动手；完成后运行 npm run generate:backlog 和 npm run verify，更新 docs/01-current-state.md 与 docs/02-next-actions.md，并提交。"
+      "nextAction": "核对 metadata、资源文件和审核记录，补齐缺口后运行内容校验。",
+      "threadPrompt": "请先读取项目锚点文件和 content/production/resource-backlog.json，然后切到 track/review-system。这次只复核并推进 SH-HS-MATH-HJ-B2-C08-L10-D01（Diagnosis），对应课时 SH-HS-MATH-HJ-B2-C08-L10「向量的应用」。先确认教学痛点、认知动作、文件规范和验收标准，再动手；完成后运行 npm run generate:backlog 和 npm run verify，更新 docs/01-current-state.md 与 docs/02-next-actions.md，并提交。"
     }
   ]
 }

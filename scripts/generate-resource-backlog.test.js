@@ -14,11 +14,11 @@ test("generates a deterministic backlog from curriculum entry points and impleme
 
   assert.equal(backlog.source.curriculum, "content/curriculum/index.yaml");
   assert.equal(backlog.summary.total, 25);
-  assert.equal(backlog.summary.implemented, 21);
-  assert.equal(backlog.summary.planned, 4);
+  assert.equal(backlog.summary.implemented, 24);
+  assert.equal(backlog.summary.planned, 1);
   assert.deepEqual(backlog.summary.byType.applet, { total: 14, implemented: 14, planned: 0 });
   assert.deepEqual(backlog.summary.byType.manim_clip, { total: 4, implemented: 3, planned: 1 });
-  assert.deepEqual(backlog.summary.byType.diagnosis, { total: 7, implemented: 4, planned: 3 });
+  assert.deepEqual(backlog.summary.byType.diagnosis, { total: 7, implemented: 7, planned: 0 });
 
   const sineApplet = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B2-C07-L01-A01");
   assert.equal(sineApplet.status, "implemented");
@@ -241,10 +241,40 @@ test("generates a deterministic backlog from curriculum entry points and impleme
   assert.equal(vectorProjectionManim.title, "投影有向长度导入动画");
   assert.equal(vectorProjectionManim.recommendedTrack, "track/manim-pipeline");
 
+  const vectorAddSubtractDiagnosis = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B2-C08-L02-D01");
+  assert.equal(vectorAddSubtractDiagnosis.status, "implemented");
+  assert.equal(vectorAddSubtractDiagnosis.availability, "metadata_ready");
+  assert.equal(vectorAddSubtractDiagnosis.type, "diagnosis");
+  assert.equal(vectorAddSubtractDiagnosis.title, "加减法方向四类短诊断");
+  assert.equal(vectorAddSubtractDiagnosis.packagePath, "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L02-D01");
+  assert.equal(
+    vectorAddSubtractDiagnosis.metadataPath,
+    "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L02-D01/metadata.yaml",
+  );
+  assert.equal(vectorAddSubtractDiagnosis.recommendedTrack, "track/review-system");
+
+  const vectorDotProductDiagnosis = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B2-C08-L05-D01");
+  assert.equal(vectorDotProductDiagnosis.status, "implemented");
+  assert.equal(vectorDotProductDiagnosis.availability, "metadata_ready");
+  assert.equal(vectorDotProductDiagnosis.type, "diagnosis");
+  assert.equal(vectorDotProductDiagnosis.title, "数量积正负误区诊断");
+  assert.equal(vectorDotProductDiagnosis.packagePath, "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L05-D01");
+  assert.equal(
+    vectorDotProductDiagnosis.metadataPath,
+    "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L05-D01/metadata.yaml",
+  );
+  assert.equal(vectorDotProductDiagnosis.recommendedTrack, "track/review-system");
+
   const vectorApplicationDiagnosis = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B2-C08-L10-D01");
-  assert.equal(vectorApplicationDiagnosis.status, "planned");
+  assert.equal(vectorApplicationDiagnosis.status, "implemented");
+  assert.equal(vectorApplicationDiagnosis.availability, "metadata_ready");
   assert.equal(vectorApplicationDiagnosis.type, "diagnosis");
   assert.equal(vectorApplicationDiagnosis.title, "向量应用第一步诊断");
+  assert.equal(vectorApplicationDiagnosis.packagePath, "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L10-D01");
+  assert.equal(
+    vectorApplicationDiagnosis.metadataPath,
+    "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L10-D01/metadata.yaml",
+  );
   assert.equal(vectorApplicationDiagnosis.recommendedTrack, "track/review-system");
 
   assert.equal(backlog.items.some((item) => item.id === "SH-HS-MATH-HJ-B2-C08-L08-A01"), false);
@@ -262,8 +292,8 @@ test("writes the backlog as stable pretty JSON", async () => {
     const written = JSON.parse(await readFile(outputPath, "utf8"));
 
     assert.equal(written.summary.total, 25);
-    assert.equal(written.summary.implemented, 21);
-    assert.equal(written.summary.planned, 4);
+    assert.equal(written.summary.implemented, 24);
+    assert.equal(written.summary.planned, 1);
     assert.equal(written.items[0].id, "SH-HS-MATH-HJ-B2-C07-L01-A01");
     assert.ok(
       JSON.stringify(written, null, 2).includes(

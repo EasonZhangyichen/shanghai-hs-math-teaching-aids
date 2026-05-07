@@ -24,6 +24,10 @@ async function makeTempProject() {
     recursive: true,
     force: true,
   });
+  await rm(path.join(tempRoot, "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L02-D01"), {
+    recursive: true,
+    force: true,
+  });
 
   return tempRoot;
 }

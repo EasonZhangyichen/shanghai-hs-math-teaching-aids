@@ -16,7 +16,7 @@ test("validates the current curriculum and resource packages", async () => {
   assert.equal(result.counts.lessons, 17);
   assert.equal(result.counts.applets, 14);
   assert.equal(result.counts.manimClips, 3);
-  assert.equal(result.counts.diagnoses, 4);
+  assert.equal(result.counts.diagnoses, 7);
   assert.ok(result.resources.some((resource) => resource.id === "SH-HS-MATH-HJ-B2-C07-L01-A01"));
   assert.ok(result.resources.some((resource) => resource.id === "SH-HS-MATH-HJ-B2-C07-L02-A01"));
   assert.ok(result.resources.some((resource) => resource.id === "SH-HS-MATH-HJ-B2-C07-L03-A01"));
@@ -37,6 +37,9 @@ test("validates the current curriculum and resource packages", async () => {
   assert.ok(result.resources.some((resource) => resource.id === "SH-HS-MATH-HJ-B2-C07-L04-D01"));
   assert.ok(result.resources.some((resource) => resource.id === "SH-HS-MATH-HJ-B2-C07-L05-D01"));
   assert.ok(result.resources.some((resource) => resource.id === "SH-HS-MATH-HJ-B2-C07-L07-D01"));
+  assert.ok(result.resources.some((resource) => resource.id === "SH-HS-MATH-HJ-B2-C08-L02-D01"));
+  assert.ok(result.resources.some((resource) => resource.id === "SH-HS-MATH-HJ-B2-C08-L05-D01"));
+  assert.ok(result.resources.some((resource) => resource.id === "SH-HS-MATH-HJ-B2-C08-L10-D01"));
 });
 
 test("reports missing rendered Manim media when a package is video_ready", async () => {

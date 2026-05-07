@@ -26,7 +26,10 @@
       "content/diagnosis/SH-HS-MATH-HJ-B2-C07-L02-D01",
       "content/diagnosis/SH-HS-MATH-HJ-B2-C07-L04-D01",
       "content/diagnosis/SH-HS-MATH-HJ-B2-C07-L05-D01",
-      "content/diagnosis/SH-HS-MATH-HJ-B2-C07-L07-D01"
+      "content/diagnosis/SH-HS-MATH-HJ-B2-C07-L07-D01",
+      "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L02-D01",
+      "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L05-D01",
+      "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L10-D01"
     ]
   },
   "project": {
@@ -6147,14 +6150,161 @@
           "id": "SH-HS-MATH-HJ-B2-C08-L02-D01",
           "resourceType": "diagnosis",
           "title": "加减法方向四类短诊断",
+          "subtitle": "围绕向量的加法和减法的课堂即时诊断草稿",
           "cognitiveAction": "比较",
           "note": "只覆盖首尾相接、相反向量、闭合路径、端点顺序四类错因，用即时反馈提示方向来源；不做构造演示。",
-          "availability": "proposed",
-          "status": "planned",
-          "version": null,
-          "metadataPreview": null,
+          "availability": "metadata_ready",
+          "status": "draft",
+          "version": "0.1.0",
+          "metadataPreview": {
+            "id": "SH-HS-MATH-HJ-B2-C08-L02-D01",
+            "version": "0.1.0",
+            "status": "draft",
+            "resourceType": "diagnosis",
+            "title": "加减法方向四类短诊断",
+            "subtitle": "围绕向量的加法和减法的课堂即时诊断草稿",
+            "curriculum": {
+              "region": "上海",
+              "stage": "高中",
+              "subject": "数学",
+              "edition": "沪教版",
+              "volume_id": "B2",
+              "volume_title": "必修第二册",
+              "chapter_id": "SH-HS-MATH-HJ-B2-C08",
+              "chapter_title": "平面向量",
+              "section_id": "SH-HS-MATH-HJ-B2-C08-S01",
+              "section_title": "向量的概念和线性运算",
+              "lesson_id": "SH-HS-MATH-HJ-B2-C08-L02",
+              "textbook_ref": "8.1.2",
+              "lesson_title": "向量的加法和减法"
+            },
+            "pedagogy": {
+              "cognitiveAction": "比较",
+              "estimatedClassroomMinutes": 8,
+              "primaryTeachingProblem": "学生容易混淆三角形法则中的首尾相接和减法中的相反向量。",
+              "learningGoals": [
+                "识别向量的加法和减法学习中的典型错因。",
+                "用“比较”方式解释学生答案背后的数学理解偏差。",
+                "根据错因标签选择课堂回讲或补救练习路径。"
+              ],
+              "prerequisites": [
+                "向量的加法和减法相关先修知识"
+              ],
+              "successors": [
+                "后续课时学习与综合应用"
+              ],
+              "coreCompetencies": [
+                "逻辑推理",
+                "数学运算",
+                "直观想象"
+              ]
+            },
+            "representations": [],
+            "narrativeDesign": {
+              "beats": [],
+              "pausePoints": []
+            },
+            "interactionDesign": {
+              "teacherControls": [],
+              "studentControls": [],
+              "stagedReveal": []
+            },
+            "diagnosisDesign": {
+              "diagnosticFocus": [
+                "只覆盖首尾相接、相反向量、闭合路径、端点顺序四类错因，用即时反馈提示方向来源；不做构造演示。",
+                "能否暴露并解释：学生容易混淆三角形法则中的首尾相接和减法中的相反向量。",
+                "能否暴露并解释：平行四边形法则常被当作画图模板，不能解释合向量的方向和大小。",
+                "能否暴露并解释：从几何图形抽取向量等式时，路径方向和端点顺序容易出错。"
+              ],
+              "misconceptionTags": [
+                {
+                  "id": "concept_expression_gap",
+                  "title": "概念表达不完整",
+                  "description": "学生能回忆局部结论，但不能写成完整、可推广的数学表达。"
+                },
+                {
+                  "id": "representation_mixup",
+                  "title": "表征混淆",
+                  "description": "学生在图像、符号或语言表征之间转换时混淆对象或条件。"
+                }
+              ],
+              "itemSummary": {
+                "totalItems": 1,
+                "questionTypes": [
+                  "draft_placeholder"
+                ],
+                "estimatedMinutes": 8
+              },
+              "feedbackStrategy": {
+                "immediate_feedback": "首版 scaffold 仅提供题组结构，后续按具体错因补充即时反馈。",
+                "teacher_dashboard_notes": "教师端先显示诊断目标和错因标签草稿，题组定稿后再展示统计口径。"
+              }
+            },
+            "scoring": {
+              "mastery_threshold": 0.75,
+              "grading_mode": "tagged_misconception",
+              "retry_policy": "课堂内允许一次订正，保留首次错因标签。"
+            },
+            "platformCard": {
+              "availability": "metadata_ready",
+              "preview_behavior": "metadata_placeholder",
+              "embed_strategy": "首期显示诊断目标、错因标签和文件入口；题组定稿后升级为 item_bank_ready。"
+            },
+            "files": {
+              "readme": "README.md",
+              "item_bank": "item-bank.yaml",
+              "scoring_rubric": "scoring-rubric.md",
+              "teacher_notes": "teacher-notes.md",
+              "review_record": "review.md"
+            },
+            "compliance": {
+              "copyright_note": "本 scaffold 仅生成原创资源骨架，不复制教材正文、官方课件、教案或商业题库。",
+              "review_status": "self_checked_draft"
+            }
+          },
           "player": null,
-          "package": null
+          "package": {
+            "path": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L02-D01",
+            "files": {
+              "metadata": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L02-D01/metadata.yaml",
+              "readme": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L02-D01/README.md",
+              "itemBank": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L02-D01/item-bank.yaml",
+              "scoringRubric": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L02-D01/scoring-rubric.md",
+              "teacherNotes": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L02-D01/teacher-notes.md",
+              "reviewRecord": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L02-D01/review.md"
+            },
+            "itemBank": {
+              "title": "加减法方向四类短诊断题组草稿",
+              "itemCount": 0,
+              "totalScore": 0,
+              "estimatedMinutes": 8,
+              "misconceptionTags": [
+                "concept_expression_gap",
+                "representation_mixup"
+              ]
+            },
+            "teacherNotes": {
+              "kind": "teacher_notes",
+              "path": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L02-D01/teacher-notes.md",
+              "title": "教师说明",
+              "summary": "资源 ID：`SH-HS-MATH-HJ-B2-C08-L02-D01`",
+              "sections": [
+                "使用时机",
+                "讲评方向",
+                "后续补充"
+              ]
+            },
+            "scoringRubric": {
+              "kind": "scoring_rubric",
+              "path": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L02-D01/scoring-rubric.md",
+              "title": "评分规则",
+              "summary": "资源 ID：`SH-HS-MATH-HJ-B2-C08-L02-D01`",
+              "sections": [
+                "当前状态",
+                "默认掌握阈值"
+              ]
+            }
+          }
         }
       ]
     },
@@ -6966,14 +7116,161 @@
           "id": "SH-HS-MATH-HJ-B2-C08-L05-D01",
           "resourceType": "diagnosis",
           "title": "数量积正负误区诊断",
+          "subtitle": "围绕向量的数量积的定义与运算律的课堂即时诊断草稿",
           "cognitiveAction": "比较",
           "note": "检测结果类型、垂直判定、零向量边界和运算律误用。",
-          "availability": "proposed",
-          "status": "planned",
-          "version": null,
-          "metadataPreview": null,
+          "availability": "metadata_ready",
+          "status": "draft",
+          "version": "0.1.0",
+          "metadataPreview": {
+            "id": "SH-HS-MATH-HJ-B2-C08-L05-D01",
+            "version": "0.1.0",
+            "status": "draft",
+            "resourceType": "diagnosis",
+            "title": "数量积正负误区诊断",
+            "subtitle": "围绕向量的数量积的定义与运算律的课堂即时诊断草稿",
+            "curriculum": {
+              "region": "上海",
+              "stage": "高中",
+              "subject": "数学",
+              "edition": "沪教版",
+              "volume_id": "B2",
+              "volume_title": "必修第二册",
+              "chapter_id": "SH-HS-MATH-HJ-B2-C08",
+              "chapter_title": "平面向量",
+              "section_id": "SH-HS-MATH-HJ-B2-C08-S02",
+              "section_title": "向量的数量积",
+              "lesson_id": "SH-HS-MATH-HJ-B2-C08-L05",
+              "textbook_ref": "8.2.2",
+              "lesson_title": "向量的数量积的定义与运算律"
+            },
+            "pedagogy": {
+              "cognitiveAction": "比较",
+              "estimatedClassroomMinutes": 8,
+              "primaryTeachingProblem": "学生容易把数量积误认为仍是向量，忽略结果是数量。",
+              "learningGoals": [
+                "识别向量的数量积的定义与运算律学习中的典型错因。",
+                "用“比较”方式解释学生答案背后的数学理解偏差。",
+                "根据错因标签选择课堂回讲或补救练习路径。"
+              ],
+              "prerequisites": [
+                "向量的数量积的定义与运算律相关先修知识"
+              ],
+              "successors": [
+                "后续课时学习与综合应用"
+              ],
+              "coreCompetencies": [
+                "逻辑推理",
+                "数学运算",
+                "直观想象"
+              ]
+            },
+            "representations": [],
+            "narrativeDesign": {
+              "beats": [],
+              "pausePoints": []
+            },
+            "interactionDesign": {
+              "teacherControls": [],
+              "studentControls": [],
+              "stagedReveal": []
+            },
+            "diagnosisDesign": {
+              "diagnosticFocus": [
+                "检测结果类型、垂直判定、零向量边界和运算律误用。",
+                "能否暴露并解释：学生容易把数量积误认为仍是向量，忽略结果是数量。",
+                "能否暴露并解释：数量积为零与某个向量为零、两个向量垂直之间的条件边界容易混淆。",
+                "能否暴露并解释：运算律和几何意义之间脱节，导致代数变形缺少方向感。"
+              ],
+              "misconceptionTags": [
+                {
+                  "id": "concept_expression_gap",
+                  "title": "概念表达不完整",
+                  "description": "学生能回忆局部结论，但不能写成完整、可推广的数学表达。"
+                },
+                {
+                  "id": "representation_mixup",
+                  "title": "表征混淆",
+                  "description": "学生在图像、符号或语言表征之间转换时混淆对象或条件。"
+                }
+              ],
+              "itemSummary": {
+                "totalItems": 1,
+                "questionTypes": [
+                  "draft_placeholder"
+                ],
+                "estimatedMinutes": 8
+              },
+              "feedbackStrategy": {
+                "immediate_feedback": "首版 scaffold 仅提供题组结构，后续按具体错因补充即时反馈。",
+                "teacher_dashboard_notes": "教师端先显示诊断目标和错因标签草稿，题组定稿后再展示统计口径。"
+              }
+            },
+            "scoring": {
+              "mastery_threshold": 0.75,
+              "grading_mode": "tagged_misconception",
+              "retry_policy": "课堂内允许一次订正，保留首次错因标签。"
+            },
+            "platformCard": {
+              "availability": "metadata_ready",
+              "preview_behavior": "metadata_placeholder",
+              "embed_strategy": "首期显示诊断目标、错因标签和文件入口；题组定稿后升级为 item_bank_ready。"
+            },
+            "files": {
+              "readme": "README.md",
+              "item_bank": "item-bank.yaml",
+              "scoring_rubric": "scoring-rubric.md",
+              "teacher_notes": "teacher-notes.md",
+              "review_record": "review.md"
+            },
+            "compliance": {
+              "copyright_note": "本 scaffold 仅生成原创资源骨架，不复制教材正文、官方课件、教案或商业题库。",
+              "review_status": "self_checked_draft"
+            }
+          },
           "player": null,
-          "package": null
+          "package": {
+            "path": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L05-D01",
+            "files": {
+              "metadata": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L05-D01/metadata.yaml",
+              "readme": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L05-D01/README.md",
+              "itemBank": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L05-D01/item-bank.yaml",
+              "scoringRubric": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L05-D01/scoring-rubric.md",
+              "teacherNotes": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L05-D01/teacher-notes.md",
+              "reviewRecord": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L05-D01/review.md"
+            },
+            "itemBank": {
+              "title": "数量积正负误区诊断题组草稿",
+              "itemCount": 0,
+              "totalScore": 0,
+              "estimatedMinutes": 8,
+              "misconceptionTags": [
+                "concept_expression_gap",
+                "representation_mixup"
+              ]
+            },
+            "teacherNotes": {
+              "kind": "teacher_notes",
+              "path": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L05-D01/teacher-notes.md",
+              "title": "教师说明",
+              "summary": "资源 ID：`SH-HS-MATH-HJ-B2-C08-L05-D01`",
+              "sections": [
+                "使用时机",
+                "讲评方向",
+                "后续补充"
+              ]
+            },
+            "scoringRubric": {
+              "kind": "scoring_rubric",
+              "path": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L05-D01/scoring-rubric.md",
+              "title": "评分规则",
+              "summary": "资源 ID：`SH-HS-MATH-HJ-B2-C08-L05-D01`",
+              "sections": [
+                "当前状态",
+                "默认掌握阈值"
+              ]
+            }
+          }
         }
       ]
     },
@@ -7452,14 +7749,161 @@
           "id": "SH-HS-MATH-HJ-B2-C08-L10-D01",
           "resourceType": "diagnosis",
           "title": "向量应用第一步诊断",
+          "subtitle": "围绕向量的应用的课堂即时诊断草稿",
           "cognitiveAction": "比较",
           "note": "围绕几何条件选择基底法、坐标法或数量积法的第一步理由给反馈，不批改完整证明过程。",
-          "availability": "proposed",
-          "status": "planned",
-          "version": null,
-          "metadataPreview": null,
+          "availability": "metadata_ready",
+          "status": "draft",
+          "version": "0.1.0",
+          "metadataPreview": {
+            "id": "SH-HS-MATH-HJ-B2-C08-L10-D01",
+            "version": "0.1.0",
+            "status": "draft",
+            "resourceType": "diagnosis",
+            "title": "向量应用第一步诊断",
+            "subtitle": "围绕向量的应用的课堂即时诊断草稿",
+            "curriculum": {
+              "region": "上海",
+              "stage": "高中",
+              "subject": "数学",
+              "edition": "沪教版",
+              "volume_id": "B2",
+              "volume_title": "必修第二册",
+              "chapter_id": "SH-HS-MATH-HJ-B2-C08",
+              "chapter_title": "平面向量",
+              "section_id": "SH-HS-MATH-HJ-B2-C08-S04",
+              "section_title": "向量的应用",
+              "lesson_id": "SH-HS-MATH-HJ-B2-C08-L10",
+              "textbook_ref": "8.4",
+              "lesson_title": "向量的应用"
+            },
+            "pedagogy": {
+              "cognitiveAction": "比较",
+              "estimatedClassroomMinutes": 8,
+              "primaryTeachingProblem": "学生面对几何题时不知道先选基底、建坐标还是使用数量积。",
+              "learningGoals": [
+                "识别向量的应用学习中的典型错因。",
+                "用“比较”方式解释学生答案背后的数学理解偏差。",
+                "根据错因标签选择课堂回讲或补救练习路径。"
+              ],
+              "prerequisites": [
+                "向量的应用相关先修知识"
+              ],
+              "successors": [
+                "后续课时学习与综合应用"
+              ],
+              "coreCompetencies": [
+                "逻辑推理",
+                "数学运算",
+                "直观想象"
+              ]
+            },
+            "representations": [],
+            "narrativeDesign": {
+              "beats": [],
+              "pausePoints": []
+            },
+            "interactionDesign": {
+              "teacherControls": [],
+              "studentControls": [],
+              "stagedReveal": []
+            },
+            "diagnosisDesign": {
+              "diagnosticFocus": [
+                "围绕几何条件选择基底法、坐标法或数量积法的第一步理由给反馈，不批改完整证明过程。",
+                "能否暴露并解释：学生面对几何题时不知道先选基底、建坐标还是使用数量积。",
+                "能否暴露并解释：几何语言转化为向量等式的第一步难，容易直接套公式。",
+                "能否暴露并解释：证明过程中的向量路径、辅助点和坐标系选择缺少策略。"
+              ],
+              "misconceptionTags": [
+                {
+                  "id": "concept_expression_gap",
+                  "title": "概念表达不完整",
+                  "description": "学生能回忆局部结论，但不能写成完整、可推广的数学表达。"
+                },
+                {
+                  "id": "representation_mixup",
+                  "title": "表征混淆",
+                  "description": "学生在图像、符号或语言表征之间转换时混淆对象或条件。"
+                }
+              ],
+              "itemSummary": {
+                "totalItems": 1,
+                "questionTypes": [
+                  "draft_placeholder"
+                ],
+                "estimatedMinutes": 8
+              },
+              "feedbackStrategy": {
+                "immediate_feedback": "首版 scaffold 仅提供题组结构，后续按具体错因补充即时反馈。",
+                "teacher_dashboard_notes": "教师端先显示诊断目标和错因标签草稿，题组定稿后再展示统计口径。"
+              }
+            },
+            "scoring": {
+              "mastery_threshold": 0.75,
+              "grading_mode": "tagged_misconception",
+              "retry_policy": "课堂内允许一次订正，保留首次错因标签。"
+            },
+            "platformCard": {
+              "availability": "metadata_ready",
+              "preview_behavior": "metadata_placeholder",
+              "embed_strategy": "首期显示诊断目标、错因标签和文件入口；题组定稿后升级为 item_bank_ready。"
+            },
+            "files": {
+              "readme": "README.md",
+              "item_bank": "item-bank.yaml",
+              "scoring_rubric": "scoring-rubric.md",
+              "teacher_notes": "teacher-notes.md",
+              "review_record": "review.md"
+            },
+            "compliance": {
+              "copyright_note": "本 scaffold 仅生成原创资源骨架，不复制教材正文、官方课件、教案或商业题库。",
+              "review_status": "self_checked_draft"
+            }
+          },
           "player": null,
-          "package": null
+          "package": {
+            "path": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L10-D01",
+            "files": {
+              "metadata": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L10-D01/metadata.yaml",
+              "readme": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L10-D01/README.md",
+              "itemBank": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L10-D01/item-bank.yaml",
+              "scoringRubric": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L10-D01/scoring-rubric.md",
+              "teacherNotes": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L10-D01/teacher-notes.md",
+              "reviewRecord": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L10-D01/review.md"
+            },
+            "itemBank": {
+              "title": "向量应用第一步诊断题组草稿",
+              "itemCount": 0,
+              "totalScore": 0,
+              "estimatedMinutes": 8,
+              "misconceptionTags": [
+                "concept_expression_gap",
+                "representation_mixup"
+              ]
+            },
+            "teacherNotes": {
+              "kind": "teacher_notes",
+              "path": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L10-D01/teacher-notes.md",
+              "title": "教师说明",
+              "summary": "资源 ID：`SH-HS-MATH-HJ-B2-C08-L10-D01`",
+              "sections": [
+                "使用时机",
+                "讲评方向",
+                "后续补充"
+              ]
+            },
+            "scoringRubric": {
+              "kind": "scoring_rubric",
+              "path": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L10-D01/scoring-rubric.md",
+              "title": "评分规则",
+              "summary": "资源 ID：`SH-HS-MATH-HJ-B2-C08-L10-D01`",
+              "sections": [
+                "当前状态",
+                "默认掌握阈值"
+              ]
+            }
+          }
         }
       ]
     }
@@ -13266,14 +13710,161 @@
           "id": "SH-HS-MATH-HJ-B2-C08-L02-D01",
           "resourceType": "diagnosis",
           "title": "加减法方向四类短诊断",
+          "subtitle": "围绕向量的加法和减法的课堂即时诊断草稿",
           "cognitiveAction": "比较",
           "note": "只覆盖首尾相接、相反向量、闭合路径、端点顺序四类错因，用即时反馈提示方向来源；不做构造演示。",
-          "availability": "proposed",
-          "status": "planned",
-          "version": null,
-          "metadataPreview": null,
+          "availability": "metadata_ready",
+          "status": "draft",
+          "version": "0.1.0",
+          "metadataPreview": {
+            "id": "SH-HS-MATH-HJ-B2-C08-L02-D01",
+            "version": "0.1.0",
+            "status": "draft",
+            "resourceType": "diagnosis",
+            "title": "加减法方向四类短诊断",
+            "subtitle": "围绕向量的加法和减法的课堂即时诊断草稿",
+            "curriculum": {
+              "region": "上海",
+              "stage": "高中",
+              "subject": "数学",
+              "edition": "沪教版",
+              "volume_id": "B2",
+              "volume_title": "必修第二册",
+              "chapter_id": "SH-HS-MATH-HJ-B2-C08",
+              "chapter_title": "平面向量",
+              "section_id": "SH-HS-MATH-HJ-B2-C08-S01",
+              "section_title": "向量的概念和线性运算",
+              "lesson_id": "SH-HS-MATH-HJ-B2-C08-L02",
+              "textbook_ref": "8.1.2",
+              "lesson_title": "向量的加法和减法"
+            },
+            "pedagogy": {
+              "cognitiveAction": "比较",
+              "estimatedClassroomMinutes": 8,
+              "primaryTeachingProblem": "学生容易混淆三角形法则中的首尾相接和减法中的相反向量。",
+              "learningGoals": [
+                "识别向量的加法和减法学习中的典型错因。",
+                "用“比较”方式解释学生答案背后的数学理解偏差。",
+                "根据错因标签选择课堂回讲或补救练习路径。"
+              ],
+              "prerequisites": [
+                "向量的加法和减法相关先修知识"
+              ],
+              "successors": [
+                "后续课时学习与综合应用"
+              ],
+              "coreCompetencies": [
+                "逻辑推理",
+                "数学运算",
+                "直观想象"
+              ]
+            },
+            "representations": [],
+            "narrativeDesign": {
+              "beats": [],
+              "pausePoints": []
+            },
+            "interactionDesign": {
+              "teacherControls": [],
+              "studentControls": [],
+              "stagedReveal": []
+            },
+            "diagnosisDesign": {
+              "diagnosticFocus": [
+                "只覆盖首尾相接、相反向量、闭合路径、端点顺序四类错因，用即时反馈提示方向来源；不做构造演示。",
+                "能否暴露并解释：学生容易混淆三角形法则中的首尾相接和减法中的相反向量。",
+                "能否暴露并解释：平行四边形法则常被当作画图模板，不能解释合向量的方向和大小。",
+                "能否暴露并解释：从几何图形抽取向量等式时，路径方向和端点顺序容易出错。"
+              ],
+              "misconceptionTags": [
+                {
+                  "id": "concept_expression_gap",
+                  "title": "概念表达不完整",
+                  "description": "学生能回忆局部结论，但不能写成完整、可推广的数学表达。"
+                },
+                {
+                  "id": "representation_mixup",
+                  "title": "表征混淆",
+                  "description": "学生在图像、符号或语言表征之间转换时混淆对象或条件。"
+                }
+              ],
+              "itemSummary": {
+                "totalItems": 1,
+                "questionTypes": [
+                  "draft_placeholder"
+                ],
+                "estimatedMinutes": 8
+              },
+              "feedbackStrategy": {
+                "immediate_feedback": "首版 scaffold 仅提供题组结构，后续按具体错因补充即时反馈。",
+                "teacher_dashboard_notes": "教师端先显示诊断目标和错因标签草稿，题组定稿后再展示统计口径。"
+              }
+            },
+            "scoring": {
+              "mastery_threshold": 0.75,
+              "grading_mode": "tagged_misconception",
+              "retry_policy": "课堂内允许一次订正，保留首次错因标签。"
+            },
+            "platformCard": {
+              "availability": "metadata_ready",
+              "preview_behavior": "metadata_placeholder",
+              "embed_strategy": "首期显示诊断目标、错因标签和文件入口；题组定稿后升级为 item_bank_ready。"
+            },
+            "files": {
+              "readme": "README.md",
+              "item_bank": "item-bank.yaml",
+              "scoring_rubric": "scoring-rubric.md",
+              "teacher_notes": "teacher-notes.md",
+              "review_record": "review.md"
+            },
+            "compliance": {
+              "copyright_note": "本 scaffold 仅生成原创资源骨架，不复制教材正文、官方课件、教案或商业题库。",
+              "review_status": "self_checked_draft"
+            }
+          },
           "player": null,
-          "package": null
+          "package": {
+            "path": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L02-D01",
+            "files": {
+              "metadata": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L02-D01/metadata.yaml",
+              "readme": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L02-D01/README.md",
+              "itemBank": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L02-D01/item-bank.yaml",
+              "scoringRubric": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L02-D01/scoring-rubric.md",
+              "teacherNotes": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L02-D01/teacher-notes.md",
+              "reviewRecord": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L02-D01/review.md"
+            },
+            "itemBank": {
+              "title": "加减法方向四类短诊断题组草稿",
+              "itemCount": 0,
+              "totalScore": 0,
+              "estimatedMinutes": 8,
+              "misconceptionTags": [
+                "concept_expression_gap",
+                "representation_mixup"
+              ]
+            },
+            "teacherNotes": {
+              "kind": "teacher_notes",
+              "path": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L02-D01/teacher-notes.md",
+              "title": "教师说明",
+              "summary": "资源 ID：`SH-HS-MATH-HJ-B2-C08-L02-D01`",
+              "sections": [
+                "使用时机",
+                "讲评方向",
+                "后续补充"
+              ]
+            },
+            "scoringRubric": {
+              "kind": "scoring_rubric",
+              "path": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L02-D01/scoring-rubric.md",
+              "title": "评分规则",
+              "summary": "资源 ID：`SH-HS-MATH-HJ-B2-C08-L02-D01`",
+              "sections": [
+                "当前状态",
+                "默认掌握阈值"
+              ]
+            }
+          }
         }
       ]
     },
@@ -14085,14 +14676,161 @@
           "id": "SH-HS-MATH-HJ-B2-C08-L05-D01",
           "resourceType": "diagnosis",
           "title": "数量积正负误区诊断",
+          "subtitle": "围绕向量的数量积的定义与运算律的课堂即时诊断草稿",
           "cognitiveAction": "比较",
           "note": "检测结果类型、垂直判定、零向量边界和运算律误用。",
-          "availability": "proposed",
-          "status": "planned",
-          "version": null,
-          "metadataPreview": null,
+          "availability": "metadata_ready",
+          "status": "draft",
+          "version": "0.1.0",
+          "metadataPreview": {
+            "id": "SH-HS-MATH-HJ-B2-C08-L05-D01",
+            "version": "0.1.0",
+            "status": "draft",
+            "resourceType": "diagnosis",
+            "title": "数量积正负误区诊断",
+            "subtitle": "围绕向量的数量积的定义与运算律的课堂即时诊断草稿",
+            "curriculum": {
+              "region": "上海",
+              "stage": "高中",
+              "subject": "数学",
+              "edition": "沪教版",
+              "volume_id": "B2",
+              "volume_title": "必修第二册",
+              "chapter_id": "SH-HS-MATH-HJ-B2-C08",
+              "chapter_title": "平面向量",
+              "section_id": "SH-HS-MATH-HJ-B2-C08-S02",
+              "section_title": "向量的数量积",
+              "lesson_id": "SH-HS-MATH-HJ-B2-C08-L05",
+              "textbook_ref": "8.2.2",
+              "lesson_title": "向量的数量积的定义与运算律"
+            },
+            "pedagogy": {
+              "cognitiveAction": "比较",
+              "estimatedClassroomMinutes": 8,
+              "primaryTeachingProblem": "学生容易把数量积误认为仍是向量，忽略结果是数量。",
+              "learningGoals": [
+                "识别向量的数量积的定义与运算律学习中的典型错因。",
+                "用“比较”方式解释学生答案背后的数学理解偏差。",
+                "根据错因标签选择课堂回讲或补救练习路径。"
+              ],
+              "prerequisites": [
+                "向量的数量积的定义与运算律相关先修知识"
+              ],
+              "successors": [
+                "后续课时学习与综合应用"
+              ],
+              "coreCompetencies": [
+                "逻辑推理",
+                "数学运算",
+                "直观想象"
+              ]
+            },
+            "representations": [],
+            "narrativeDesign": {
+              "beats": [],
+              "pausePoints": []
+            },
+            "interactionDesign": {
+              "teacherControls": [],
+              "studentControls": [],
+              "stagedReveal": []
+            },
+            "diagnosisDesign": {
+              "diagnosticFocus": [
+                "检测结果类型、垂直判定、零向量边界和运算律误用。",
+                "能否暴露并解释：学生容易把数量积误认为仍是向量，忽略结果是数量。",
+                "能否暴露并解释：数量积为零与某个向量为零、两个向量垂直之间的条件边界容易混淆。",
+                "能否暴露并解释：运算律和几何意义之间脱节，导致代数变形缺少方向感。"
+              ],
+              "misconceptionTags": [
+                {
+                  "id": "concept_expression_gap",
+                  "title": "概念表达不完整",
+                  "description": "学生能回忆局部结论，但不能写成完整、可推广的数学表达。"
+                },
+                {
+                  "id": "representation_mixup",
+                  "title": "表征混淆",
+                  "description": "学生在图像、符号或语言表征之间转换时混淆对象或条件。"
+                }
+              ],
+              "itemSummary": {
+                "totalItems": 1,
+                "questionTypes": [
+                  "draft_placeholder"
+                ],
+                "estimatedMinutes": 8
+              },
+              "feedbackStrategy": {
+                "immediate_feedback": "首版 scaffold 仅提供题组结构，后续按具体错因补充即时反馈。",
+                "teacher_dashboard_notes": "教师端先显示诊断目标和错因标签草稿，题组定稿后再展示统计口径。"
+              }
+            },
+            "scoring": {
+              "mastery_threshold": 0.75,
+              "grading_mode": "tagged_misconception",
+              "retry_policy": "课堂内允许一次订正，保留首次错因标签。"
+            },
+            "platformCard": {
+              "availability": "metadata_ready",
+              "preview_behavior": "metadata_placeholder",
+              "embed_strategy": "首期显示诊断目标、错因标签和文件入口；题组定稿后升级为 item_bank_ready。"
+            },
+            "files": {
+              "readme": "README.md",
+              "item_bank": "item-bank.yaml",
+              "scoring_rubric": "scoring-rubric.md",
+              "teacher_notes": "teacher-notes.md",
+              "review_record": "review.md"
+            },
+            "compliance": {
+              "copyright_note": "本 scaffold 仅生成原创资源骨架，不复制教材正文、官方课件、教案或商业题库。",
+              "review_status": "self_checked_draft"
+            }
+          },
           "player": null,
-          "package": null
+          "package": {
+            "path": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L05-D01",
+            "files": {
+              "metadata": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L05-D01/metadata.yaml",
+              "readme": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L05-D01/README.md",
+              "itemBank": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L05-D01/item-bank.yaml",
+              "scoringRubric": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L05-D01/scoring-rubric.md",
+              "teacherNotes": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L05-D01/teacher-notes.md",
+              "reviewRecord": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L05-D01/review.md"
+            },
+            "itemBank": {
+              "title": "数量积正负误区诊断题组草稿",
+              "itemCount": 0,
+              "totalScore": 0,
+              "estimatedMinutes": 8,
+              "misconceptionTags": [
+                "concept_expression_gap",
+                "representation_mixup"
+              ]
+            },
+            "teacherNotes": {
+              "kind": "teacher_notes",
+              "path": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L05-D01/teacher-notes.md",
+              "title": "教师说明",
+              "summary": "资源 ID：`SH-HS-MATH-HJ-B2-C08-L05-D01`",
+              "sections": [
+                "使用时机",
+                "讲评方向",
+                "后续补充"
+              ]
+            },
+            "scoringRubric": {
+              "kind": "scoring_rubric",
+              "path": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L05-D01/scoring-rubric.md",
+              "title": "评分规则",
+              "summary": "资源 ID：`SH-HS-MATH-HJ-B2-C08-L05-D01`",
+              "sections": [
+                "当前状态",
+                "默认掌握阈值"
+              ]
+            }
+          }
         }
       ]
     },
@@ -14571,14 +15309,161 @@
           "id": "SH-HS-MATH-HJ-B2-C08-L10-D01",
           "resourceType": "diagnosis",
           "title": "向量应用第一步诊断",
+          "subtitle": "围绕向量的应用的课堂即时诊断草稿",
           "cognitiveAction": "比较",
           "note": "围绕几何条件选择基底法、坐标法或数量积法的第一步理由给反馈，不批改完整证明过程。",
-          "availability": "proposed",
-          "status": "planned",
-          "version": null,
-          "metadataPreview": null,
+          "availability": "metadata_ready",
+          "status": "draft",
+          "version": "0.1.0",
+          "metadataPreview": {
+            "id": "SH-HS-MATH-HJ-B2-C08-L10-D01",
+            "version": "0.1.0",
+            "status": "draft",
+            "resourceType": "diagnosis",
+            "title": "向量应用第一步诊断",
+            "subtitle": "围绕向量的应用的课堂即时诊断草稿",
+            "curriculum": {
+              "region": "上海",
+              "stage": "高中",
+              "subject": "数学",
+              "edition": "沪教版",
+              "volume_id": "B2",
+              "volume_title": "必修第二册",
+              "chapter_id": "SH-HS-MATH-HJ-B2-C08",
+              "chapter_title": "平面向量",
+              "section_id": "SH-HS-MATH-HJ-B2-C08-S04",
+              "section_title": "向量的应用",
+              "lesson_id": "SH-HS-MATH-HJ-B2-C08-L10",
+              "textbook_ref": "8.4",
+              "lesson_title": "向量的应用"
+            },
+            "pedagogy": {
+              "cognitiveAction": "比较",
+              "estimatedClassroomMinutes": 8,
+              "primaryTeachingProblem": "学生面对几何题时不知道先选基底、建坐标还是使用数量积。",
+              "learningGoals": [
+                "识别向量的应用学习中的典型错因。",
+                "用“比较”方式解释学生答案背后的数学理解偏差。",
+                "根据错因标签选择课堂回讲或补救练习路径。"
+              ],
+              "prerequisites": [
+                "向量的应用相关先修知识"
+              ],
+              "successors": [
+                "后续课时学习与综合应用"
+              ],
+              "coreCompetencies": [
+                "逻辑推理",
+                "数学运算",
+                "直观想象"
+              ]
+            },
+            "representations": [],
+            "narrativeDesign": {
+              "beats": [],
+              "pausePoints": []
+            },
+            "interactionDesign": {
+              "teacherControls": [],
+              "studentControls": [],
+              "stagedReveal": []
+            },
+            "diagnosisDesign": {
+              "diagnosticFocus": [
+                "围绕几何条件选择基底法、坐标法或数量积法的第一步理由给反馈，不批改完整证明过程。",
+                "能否暴露并解释：学生面对几何题时不知道先选基底、建坐标还是使用数量积。",
+                "能否暴露并解释：几何语言转化为向量等式的第一步难，容易直接套公式。",
+                "能否暴露并解释：证明过程中的向量路径、辅助点和坐标系选择缺少策略。"
+              ],
+              "misconceptionTags": [
+                {
+                  "id": "concept_expression_gap",
+                  "title": "概念表达不完整",
+                  "description": "学生能回忆局部结论，但不能写成完整、可推广的数学表达。"
+                },
+                {
+                  "id": "representation_mixup",
+                  "title": "表征混淆",
+                  "description": "学生在图像、符号或语言表征之间转换时混淆对象或条件。"
+                }
+              ],
+              "itemSummary": {
+                "totalItems": 1,
+                "questionTypes": [
+                  "draft_placeholder"
+                ],
+                "estimatedMinutes": 8
+              },
+              "feedbackStrategy": {
+                "immediate_feedback": "首版 scaffold 仅提供题组结构，后续按具体错因补充即时反馈。",
+                "teacher_dashboard_notes": "教师端先显示诊断目标和错因标签草稿，题组定稿后再展示统计口径。"
+              }
+            },
+            "scoring": {
+              "mastery_threshold": 0.75,
+              "grading_mode": "tagged_misconception",
+              "retry_policy": "课堂内允许一次订正，保留首次错因标签。"
+            },
+            "platformCard": {
+              "availability": "metadata_ready",
+              "preview_behavior": "metadata_placeholder",
+              "embed_strategy": "首期显示诊断目标、错因标签和文件入口；题组定稿后升级为 item_bank_ready。"
+            },
+            "files": {
+              "readme": "README.md",
+              "item_bank": "item-bank.yaml",
+              "scoring_rubric": "scoring-rubric.md",
+              "teacher_notes": "teacher-notes.md",
+              "review_record": "review.md"
+            },
+            "compliance": {
+              "copyright_note": "本 scaffold 仅生成原创资源骨架，不复制教材正文、官方课件、教案或商业题库。",
+              "review_status": "self_checked_draft"
+            }
+          },
           "player": null,
-          "package": null
+          "package": {
+            "path": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L10-D01",
+            "files": {
+              "metadata": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L10-D01/metadata.yaml",
+              "readme": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L10-D01/README.md",
+              "itemBank": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L10-D01/item-bank.yaml",
+              "scoringRubric": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L10-D01/scoring-rubric.md",
+              "teacherNotes": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L10-D01/teacher-notes.md",
+              "reviewRecord": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L10-D01/review.md"
+            },
+            "itemBank": {
+              "title": "向量应用第一步诊断题组草稿",
+              "itemCount": 0,
+              "totalScore": 0,
+              "estimatedMinutes": 8,
+              "misconceptionTags": [
+                "concept_expression_gap",
+                "representation_mixup"
+              ]
+            },
+            "teacherNotes": {
+              "kind": "teacher_notes",
+              "path": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L10-D01/teacher-notes.md",
+              "title": "教师说明",
+              "summary": "资源 ID：`SH-HS-MATH-HJ-B2-C08-L10-D01`",
+              "sections": [
+                "使用时机",
+                "讲评方向",
+                "后续补充"
+              ]
+            },
+            "scoringRubric": {
+              "kind": "scoring_rubric",
+              "path": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L10-D01/scoring-rubric.md",
+              "title": "评分规则",
+              "summary": "资源 ID：`SH-HS-MATH-HJ-B2-C08-L10-D01`",
+              "sections": [
+                "当前状态",
+                "默认掌握阈值"
+              ]
+            }
+          }
         }
       ]
     }
@@ -14646,7 +15531,7 @@
     "lessonCount": 17,
     "implementedAppletCount": 14,
     "implementedManimCount": 3,
-    "implementedDiagnosisCount": 4,
-    "plannedResourceCount": 4
+    "implementedDiagnosisCount": 7,
+    "plannedResourceCount": 1
   }
 }
