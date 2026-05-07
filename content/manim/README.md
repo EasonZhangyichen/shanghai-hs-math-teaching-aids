@@ -42,3 +42,5 @@ content/manim/SH-HS-MATH-HJ-B2-C07-L01-M01/
 ## 当前样板
 
 - `SH-HS-MATH-HJ-B2-C07-L01-M01`：正弦曲线的来源，当前为 `video_ready`，已导出 1080p30 `mp4` / `webm` / poster，并可在平台资源卡中预览。
+- `SH-HS-MATH-HJ-B2-C07-L05-M01`：图像变换顺序解释，当前为 `video_ready`，已导出 1080p30 `mp4` / `webm` / poster，并可在平台资源卡中预览。
+- `SH-HS-MATH-HJ-B2-C07-L06-M01`：为什么正切图像有渐近线，当前为 `video_ready`，已导出 1080p30 `mp4` / `webm` / poster，并可在平台资源卡中预览。

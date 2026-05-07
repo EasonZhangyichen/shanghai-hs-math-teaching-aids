@@ -16,8 +16,8 @@
   },
   "summary": {
     "total": 15,
-    "implemented": 12,
-    "planned": 3,
+    "implemented": 13,
+    "planned": 2,
     "byType": {
       "applet": {
         "total": 8,
@@ -26,8 +26,8 @@
       },
       "manim_clip": {
         "total": 3,
-        "implemented": 2,
-        "planned": 1
+        "implemented": 3,
+        "planned": 0
       },
       "diagnosis": {
         "total": 4,
@@ -412,8 +412,8 @@
     {
       "id": "SH-HS-MATH-HJ-B2-C07-L06-M01",
       "type": "manim_clip",
-      "status": "planned",
-      "availability": "planned",
+      "status": "implemented",
+      "availability": "video_ready",
       "title": "为什么正切图像有渐近线",
       "proposedTitle": "为什么正切图像有渐近线",
       "lessonId": "SH-HS-MATH-HJ-B2-C07-L06",
@@ -434,11 +434,11 @@
       "note": "从终边接近 y 轴时斜率变化解释图像趋向无穷。",
       "priority": "follow_up",
       "priorityReason": "正切渐近线适合做第二批概念生成动画。",
-      "packagePath": null,
-      "metadataPath": null,
+      "packagePath": "content/manim/SH-HS-MATH-HJ-B2-C07-L06-M01",
+      "metadataPath": "content/manim/SH-HS-MATH-HJ-B2-C07-L06-M01/metadata.yaml",
       "recommendedTrack": "track/manim-pipeline",
-      "nextAction": "创建 Manim 资源包，先写 metadata、storyboard、scene.py 和 review，再渲染 mp4/webm/poster。",
-      "threadPrompt": "请先读取项目锚点文件和 content/production/resource-backlog.json，然后切到 track/manim-pipeline。这次只创建并推进 SH-HS-MATH-HJ-B2-C07-L06-M01（Manim Clip），对应课时 SH-HS-MATH-HJ-B2-C07-L06「正切函数的图像」。先确认教学痛点、认知动作、文件规范和验收标准，再动手；完成后运行 npm run generate:backlog 和 npm run verify，更新 docs/01-current-state.md 与 docs/02-next-actions.md，并提交。"
+      "nextAction": "完成数学审校、分镜节奏复核和课堂播放口径确认，再决定是否进入 math_review。",
+      "threadPrompt": "请先读取项目锚点文件和 content/production/resource-backlog.json，然后切到 track/manim-pipeline。这次只复核并推进 SH-HS-MATH-HJ-B2-C07-L06-M01（Manim Clip），对应课时 SH-HS-MATH-HJ-B2-C07-L06「正切函数的图像」。先确认教学痛点、认知动作、文件规范和验收标准，再动手；完成后运行 npm run generate:backlog 和 npm run verify，更新 docs/01-current-state.md 与 docs/02-next-actions.md，并提交。"
     },
     {
       "id": "SH-HS-MATH-HJ-B2-C07-L07-A01",

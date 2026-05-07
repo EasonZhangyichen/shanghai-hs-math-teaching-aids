@@ -63,6 +63,10 @@
   - 已新增 `src/index.html` 可运行原型，支持单位圆终边拖动、角度滑块、播放/暂停、重置、正切图像分段绘制、渐近线、逼近提示和 `x + pi` 周期对照。
   - 资源聚焦“逼近”这一认知动作，对应 7.4.1“正切函数的图像”的三个痛点：定义域断裂、渐近线来自 `cos x = 0`、周期 `pi` 易受 `2pi` 干扰。
   - 当前仍为 `draft`，尚未进入数学审校、课堂节奏试读或更完整的浏览器交互复核。
+- 已在 `track/manim-pipeline` 上为 `SH-HS-MATH-HJ-B2-C07-L06-M01` 创建“为什么正切图像有渐近线”资源包：
+  - 已包含 `metadata.yaml`、`README.md`、`storyboard.md`、`scene.py`、`review.md` 和 `dist/final/` 视频产物。
+  - 资源聚焦“逼近”这一认知动作，从 `tan x = sin x / cos x` 和终边接近 y 轴时 `cos x -> 0` 的斜率变化解释 `x = pi/2 + k pi` 处的竖直渐近线，并用 `tan(x + pi) = tan x` 收束周期 `pi`。
+  - 当前为 `draft` / `video_ready`，已导出 1080p30、38.4 秒的 `mp4`、`webm` 和 poster，可用于平台预览和内部教研复核；尚未进入数学审校、分镜节奏复核或课堂试用。
 - 已在 `track/applet-sdk` 上创建 Applet SDK v0.1 契约草稿：
   - `packages/applet-sdk/schemas/applet-metadata.schema.json` 定义 Applet metadata schema。
   - `packages/applet-sdk/docs/resource-package.md` 定义 Applet 资源包目录规范。
@@ -76,6 +80,7 @@
   - `content/manim/SH-HS-MATH-HJ-B2-C07-L01-M01/` 已创建“正弦曲线的来源”资源包，包含 `metadata.yaml`、`README.md`、`storyboard.md`、`scene.py`、`review.md` 和 `dist/final/` 视频产物。
   - 当前 `L01-M01` Manim 资源仍为 `draft` 内容状态，但渲染阶段已到 `video_ready`：已导出 1080p30 `mp4`、`webm` 和 poster，可用于平台预览和内部教研复核。
   - `content/manim/SH-HS-MATH-HJ-B2-C07-L05-M01/` 已创建“图像变换顺序解释”资源包，包含 `metadata.yaml`、`README.md`、`storyboard.md`、`scene.py`、`review.md` 和 `dist/final/` 视频产物；当前为 `rendered` / `video_ready`，已导出 1080p30、约 53.5 秒的 `mp4`、`webm` 和 poster。
+  - `content/manim/SH-HS-MATH-HJ-B2-C07-L06-M01/` 已创建“为什么正切图像有渐近线”资源包，包含 `metadata.yaml`、`README.md`、`storyboard.md`、`scene.py`、`review.md` 和 `dist/final/` 视频产物；当前为 `rendered` / `video_ready`，已导出 1080p30、38.4 秒的 `mp4`、`webm` 和 poster。
 - 已在 `track/platform-shell` 上搭建教师端平台壳 MVP：
   - 根目录新增 npm/Vite 工程脚本，`apps/web` 为教师工作台入口。
   - `apps/web/src/lib/content.js` 可读取 `content/curriculum/index.yaml`、`content/applets/*/metadata.yaml` 和 `content/manim/*/metadata.yaml`，生成平台需要的课程树、课时资源卡、metadata 预览和脚本入口数据。
@@ -91,7 +96,7 @@
   - `npm run verify` 现在会先执行 `npm run validate:content`，再运行测试和平台构建。
 - 已创建首版资源工厂工作流：
   - `scripts/generate-resource-backlog.js` 会从 `content/curriculum/index.yaml` 的 `digital_entry_points` 和已落地的 Applet / Manim / Diagnosis 资源包生成生产 backlog。
-  - `content/production/resource-backlog.json` 当前列出必修第二册第 7 章 15 个资源工作单元，其中 12 个已实现、3 个待创建；Applet 为 7 个已实现、1 个待创建；Manim 为 2 个已实现、1 个待创建；Diagnosis 为 3 个已实现、1 个待创建；每个 item 都包含推荐分支、下一步动作和可复制到新 Codex 对话的 `threadPrompt`。
+  - `content/production/resource-backlog.json` 当前列出必修第二册第 7 章 15 个资源工作单元，其中 13 个已实现、2 个待创建；Applet 为 7 个已实现、1 个待创建；Manim 为 3 个已实现、0 个待创建；Diagnosis 为 3 个已实现、1 个待创建；每个 item 都包含推荐分支、下一步动作和可复制到新 Codex 对话的 `threadPrompt`。
   - `scripts/scaffold-resource-packages.js` 提供首版批量资源骨架生成能力：当前支持 Diagnosis planned item 的 dry-run、按数量或 ID 生成、避免覆盖已有资源包。
   - `npm run generate:backlog` 已加入脚本，`npm run verify` 现在会先校验内容、生成 backlog，再运行测试和平台构建。
   - `docs/resource-factory-workflow.md` 记录了课程图谱 -> backlog -> 单资源对话 -> 校验 -> 合并的半自动生产流程。
@@ -133,9 +138,9 @@
 - 第 7 章的前置章节节点、第 8 章平面向量和第 9 章复数等后续节点仍是引用占位，尚未展开为完整图谱。
 - 尚未创建独立课件播放器；教师工作台内已完成样板 Applet iframe 预览接入，但尚未沉淀为独立 `apps/player`。
 - 已创建七个可运行 HTML Applet 原型，并已接入平台壳 iframe 预览；尚未完成数学审校、课堂节奏试读和浏览器交互复核。
-- 已创建两个 Manim 场景脚本，`L01-M01` 与 `L05-M01` 均已导出可播放 `mp4` / `webm` / poster；两者尚未完成数学审校或课堂试用。
+- 已创建三个 Manim 场景脚本，`L01-M01`、`L05-M01` 与 `L06-M01` 均已导出可播放 `mp4` / `webm` / poster；三者尚未完成数学审校或课堂试用。
 - 已将 Applet、Manim 和 Diagnosis metadata JSON Schema 接入首版自动校验脚本。
-- 已建立首版资源生产 backlog，可按单个资源工作单元开启新对话，避免全高中内容挤在一个上下文中；三个 Diagnosis 资源包已落地为 `item_bank_ready`，并已补充 Diagnosis scaffold 命令以减少后续手工建目录成本。
+- 已建立首版资源生产 backlog，可按单个资源工作单元开启新对话，避免全高中内容挤在一个上下文中；当前必修第二册第 7 章还有 2 个 planned item（三角函数图像变换诊断和正切函数性质诊断），三个 Diagnosis 资源包已落地为 `item_bank_ready`，并已补充 Diagnosis scaffold 命令以减少后续手工建目录成本。
 - 平台壳已读取 `content/manim/*/metadata.yaml` 并渲染样板 Manim 视频资源卡；尚未沉淀为独立播放器或接入播放器级学习状态记录。
 - 尚未配置 GitHub 分支保护规则。
 

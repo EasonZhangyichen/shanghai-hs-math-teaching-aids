@@ -13,7 +13,7 @@ test("loads the B2 trigonometry curriculum tree for the teacher workspace", asyn
 
   assert.equal(workspace.project.name, "沪教版高中数学数字教具云平台");
   assert.equal(workspace.summary.lessonCount, 7);
-  assert.equal(workspace.summary.implementedManimCount, 2);
+  assert.equal(workspace.summary.implementedManimCount, 3);
 
   const b2 = workspace.tree.volumes.find((volume) => volume.id === "B2");
   assert.ok(b2, "B2 volume should be present");
@@ -222,4 +222,50 @@ test("links the parameter lab applet and rendered transform-order Manim to lesso
   assert.equal(diagnosis.availability, "proposed");
   assert.equal(diagnosis.player, null);
   assert.ok(workspace.summary.plannedResourceCount >= 5);
+});
+
+test("links the tangent graph applet and rendered asymptote Manim to lesson L06", async () => {
+  const workspace = await loadTeacherWorkspace({ rootDir: repoRoot });
+  const lesson = workspace.lessonsById["SH-HS-MATH-HJ-B2-C07-L06"];
+  const applet = lesson.resources.find((resource) => resource.id === "SH-HS-MATH-HJ-B2-C07-L06-A01");
+  const manim = lesson.resources.find((resource) => resource.id === "SH-HS-MATH-HJ-B2-C07-L06-M01");
+
+  assert.equal(lesson.title, "正切函数的图像");
+  assert.equal(lesson.resources.length, 2);
+  assert.deepEqual(
+    lesson.resources.map((resource) => resource.resourceType),
+    ["applet", "manim_clip"],
+  );
+  assert.equal(applet.availability, "metadata_ready");
+  assert.equal(applet.metadataPreview.implementation.phase, "runnable_prototype");
+  assert.equal(applet.package.files.srcEntry, "content/applets/SH-HS-MATH-HJ-B2-C07-L06-A01/src/index.html");
+  assert.deepEqual(applet.player, {
+    kind: "iframe",
+    isRunnable: true,
+    src: "content/applets/SH-HS-MATH-HJ-B2-C07-L06-A01/src/index.html",
+    title: "正切函数图像生成器",
+    sandbox: "allow-scripts allow-same-origin",
+  });
+  assert.equal(manim.availability, "video_ready");
+  assert.equal(manim.metadataPreview.renderPlan.phase, "rendered");
+  assert.equal(manim.package.storyboard.title, "分镜：为什么正切图像有渐近线");
+  assert.equal(manim.package.media.hasOutputMp4, true);
+  assert.equal(manim.package.media.hasOutputWebm, true);
+  assert.equal(manim.package.media.hasPoster, true);
+  assert.deepEqual(manim.player, {
+    kind: "video",
+    isRunnable: true,
+    title: "为什么正切图像有渐近线",
+    poster: "content/manim/SH-HS-MATH-HJ-B2-C07-L06-M01/dist/final/SH-HS-MATH-HJ-B2-C07-L06-M01-poster.png",
+    sources: [
+      {
+        src: "content/manim/SH-HS-MATH-HJ-B2-C07-L06-M01/dist/final/SH-HS-MATH-HJ-B2-C07-L06-M01.webm",
+        type: "video/webm",
+      },
+      {
+        src: "content/manim/SH-HS-MATH-HJ-B2-C07-L06-M01/dist/final/SH-HS-MATH-HJ-B2-C07-L06-M01.mp4",
+        type: "video/mp4",
+      },
+    ],
+  });
 });
