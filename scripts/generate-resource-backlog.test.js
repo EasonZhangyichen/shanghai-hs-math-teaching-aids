@@ -14,10 +14,10 @@ test("generates a deterministic backlog from curriculum entry points and impleme
 
   assert.equal(backlog.source.curriculum, "content/curriculum/index.yaml");
   assert.equal(backlog.summary.total, 15);
-  assert.equal(backlog.summary.implemented, 12);
-  assert.equal(backlog.summary.planned, 3);
+  assert.equal(backlog.summary.implemented, 13);
+  assert.equal(backlog.summary.planned, 2);
   assert.deepEqual(backlog.summary.byType.applet, { total: 8, implemented: 7, planned: 1 });
-  assert.deepEqual(backlog.summary.byType.manim_clip, { total: 3, implemented: 2, planned: 1 });
+  assert.deepEqual(backlog.summary.byType.manim_clip, { total: 3, implemented: 3, planned: 0 });
   assert.deepEqual(backlog.summary.byType.diagnosis, { total: 4, implemented: 3, planned: 1 });
 
   const sineApplet = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B2-C07-L01-A01");
@@ -136,6 +136,19 @@ test("generates a deterministic backlog from curriculum entry points and impleme
   assert.equal(tangentGraphApplet.recommendedTrack, "track/trig-sample-pack");
   assert.equal(tangentGraphApplet.priority, "follow_up");
   assert.match(tangentGraphApplet.nextAction, /审校|试读/);
+
+  const tangentAsymptoteManim = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B2-C07-L06-M01");
+  assert.equal(tangentAsymptoteManim.status, "implemented");
+  assert.equal(tangentAsymptoteManim.availability, "video_ready");
+  assert.equal(tangentAsymptoteManim.type, "manim_clip");
+  assert.equal(tangentAsymptoteManim.packagePath, "content/manim/SH-HS-MATH-HJ-B2-C07-L06-M01");
+  assert.equal(
+    tangentAsymptoteManim.metadataPath,
+    "content/manim/SH-HS-MATH-HJ-B2-C07-L06-M01/metadata.yaml",
+  );
+  assert.equal(tangentAsymptoteManim.recommendedTrack, "track/manim-pipeline");
+  assert.equal(tangentAsymptoteManim.priority, "follow_up");
+  assert.match(tangentAsymptoteManim.nextAction, /审校|分镜/);
 });
 
 test("writes the backlog as stable pretty JSON", async () => {
@@ -149,11 +162,11 @@ test("writes the backlog as stable pretty JSON", async () => {
     const written = JSON.parse(await readFile(outputPath, "utf8"));
 
     assert.equal(written.summary.total, 15);
-    assert.equal(written.summary.implemented, 12);
+    assert.equal(written.summary.implemented, 13);
     assert.equal(written.items[0].id, "SH-HS-MATH-HJ-B2-C07-L01-A01");
     assert.ok(
       JSON.stringify(written, null, 2).includes(
-        '"id": "SH-HS-MATH-HJ-B2-C07-L06-A01"',
+        '"id": "SH-HS-MATH-HJ-B2-C07-L06-M01"',
       ),
     );
   } finally {
