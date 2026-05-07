@@ -1,0 +1,166 @@
+schema_version: "0.1.0"
+resource_id: "SH-HS-MATH-HJ-B2-C07-L07-D01"
+title: "正切函数性质诊断题组"
+estimated_minutes: 8
+total_score: 10
+mastery_threshold: 0.75
+misconception_tags:
+  - "domain_asymptote_omission"
+  - "global_monotonic_overreach"
+  - "range_asymptote_conflict"
+  - "period_pi_confusion"
+  - "parity_symmetry_mixup"
+  - "interval_formula_error"
+
+items:
+  - id: "D01-Q01"
+    type: "single_choice"
+    score: 1
+    title: "定义域与渐近线"
+    diagnostic_focus: "能否写出正切函数的定义域限制。"
+    prompt: "函数 y = tan x 的定义域应排除哪些 x？"
+    choices:
+      - id: "A"
+        text: "x = pi/2 + kpi，k 属于整数"
+        is_correct: true
+        feedback: "这些点使 cos x = 0，tan x = sin x / cos x 无意义，也是图像的竖直渐近线位置。"
+      - id: "B"
+        text: "x = kpi，k 属于整数"
+        is_correct: false
+        misconception_tags: ["domain_asymptote_omission"]
+        feedback: "x = kpi 时 tan x = 0，不需要排除；要排除的是 cos x = 0 的点。"
+      - id: "C"
+        text: "x = 2kpi，k 属于整数"
+        is_correct: false
+        misconception_tags: ["period_pi_confusion", "domain_asymptote_omission"]
+        feedback: "2kpi 是正弦、余弦常见周期点，不是正切无定义点。"
+      - id: "D"
+        text: "所有实数"
+        is_correct: false
+        misconception_tags: ["domain_asymptote_omission"]
+        feedback: "正切函数不是在所有实数上都有定义，必须排除 pi/2 + kpi。"
+    answer: ["A"]
+    feedback_on_correct: "能从 tan x = sin x / cos x 回到定义域限制。"
+
+  - id: "D01-Q02"
+    type: "single_choice"
+    score: 2
+    title: "单调区间判断"
+    diagnostic_focus: "能否把单调性限定在每个连续定义区间。"
+    prompt: "关于 y = tan x 的单调性，下列说法正确的是哪一项？"
+    choices:
+      - id: "A"
+        text: "它在每个区间 (-pi/2 + kpi, pi/2 + kpi) 上递增，k 属于整数。"
+        is_correct: true
+        feedback: "正切图像被渐近线分成一段一段；每一段内部都是递增的。"
+      - id: "B"
+        text: "它在整个定义域上单调递增。"
+        is_correct: false
+        misconception_tags: ["global_monotonic_overreach"]
+        feedback: "单调性不能跨越无定义点比较；正切函数只在每个连续定义区间内递增。"
+      - id: "C"
+        text: "它在每个区间 [-pi/2 + kpi, pi/2 + kpi] 上递增，k 属于整数。"
+        is_correct: false
+        misconception_tags: ["interval_formula_error", "domain_asymptote_omission"]
+        feedback: "端点处函数无定义，单调区间应使用开区间。"
+      - id: "D"
+        text: "它在每个区间 (kpi, (k + 1)pi) 上递增，k 属于整数。"
+        is_correct: false
+        misconception_tags: ["interval_formula_error"]
+        feedback: "这个区间中间包含 pi/2 + kpi 形式的无定义点，不能作为一个连续单调区间。"
+    answer: ["A"]
+    feedback_on_correct: "能把分段图像、渐近线和单调区间端点对应起来。"
+
+  - id: "D01-Q03"
+    type: "multiple_select"
+    score: 2
+    title: "性质综合判断"
+    diagnostic_focus: "能否同时判断周期、奇偶性、值域和渐近线。"
+    prompt: "关于 y = tan x，下列说法正确的是哪些？"
+    choices:
+      - id: "A"
+        text: "最小正周期是 pi。"
+        is_correct: true
+        feedback: "tan(x + pi) = tan x，所以正切函数的最小正周期是 pi。"
+      - id: "B"
+        text: "它是奇函数。"
+        is_correct: true
+        feedback: "tan(-x) = -tan x，图像关于原点成中心对称。"
+      - id: "C"
+        text: "它的值域是全体实数。"
+        is_correct: true
+        feedback: "在任一连续定义区间内，函数值从负无穷变化到正无穷。"
+      - id: "D"
+        text: "因为有竖直渐近线，所以它的值域不是全体实数。"
+        is_correct: false
+        misconception_tags: ["range_asymptote_conflict"]
+        feedback: "渐近线限制的是 x 的取值位置，不妨碍每个分支上的 y 值取遍所有实数。"
+    answer: ["A", "B", "C"]
+    scoring_note: "全选且不多选得 2 分；漏选一个正确项得 1 分；选择 D 时记录 range_asymptote_conflict。"
+    feedback_on_correct: "能把周期、奇偶性和值域放在分支图像中统一理解。"
+
+  - id: "D01-Q04"
+    type: "short_explanation"
+    score: 2
+    title: "纠正整体单调说法"
+    diagnostic_focus: "能否解释为什么不能说在整个定义域上递增。"
+    prompt: "有同学说：y = tan x 在每一段图像上都向右上升，所以它在整个定义域上单调递增。请判断这句话是否正确，并说明理由。"
+    expected_response:
+      - "这句话不正确。"
+      - "正切函数在 x = pi/2 + kpi 处无定义，定义域被分成许多不连续的区间。"
+      - "单调性只能在每个连续定义区间 (-pi/2 + kpi, pi/2 + kpi) 内讨论。"
+      - "不能跨越渐近线把不同分支上的函数值直接比较。"
+    misconception_tags_when_incomplete:
+      - "global_monotonic_overreach"
+      - "domain_asymptote_omission"
+      - "interval_formula_error"
+    feedback_on_correct: "能用定义域断裂解释单调性范围，而不是只看图像向上。"
+
+  - id: "D01-Q05"
+    type: "single_choice"
+    score: 1
+    title: "值域与渐近线"
+    diagnostic_focus: "能否解释值域为 R 与渐近线并不矛盾。"
+    prompt: "为什么 y = tan x 的值域是 R？"
+    choices:
+      - id: "A"
+        text: "在每个区间 (-pi/2 + kpi, pi/2 + kpi) 内，函数值从负无穷趋向正无穷。"
+        is_correct: true
+        feedback: "单个分支内部已经覆盖所有实数，所以值域为 R。"
+      - id: "B"
+        text: "因为正切函数没有渐近线。"
+        is_correct: false
+        misconception_tags: ["domain_asymptote_omission", "range_asymptote_conflict"]
+        feedback: "正切函数有竖直渐近线；值域为 R 不是因为没有渐近线。"
+      - id: "C"
+        text: "因为 x 可以取所有实数。"
+        is_correct: false
+        misconception_tags: ["domain_asymptote_omission"]
+        feedback: "x 不能取 pi/2 + kpi；值域要看 y 的变化范围。"
+      - id: "D"
+        text: "因为正切函数有周期 pi，所以值域为 R。"
+        is_correct: false
+        misconception_tags: ["period_pi_confusion", "range_asymptote_conflict"]
+        feedback: "周期说明图像重复，不能单独推出值域；要看每个分支的 y 值覆盖。"
+    answer: ["A"]
+    feedback_on_correct: "能从一个连续分支解释值域，而不是把渐近线当成障碍。"
+
+  - id: "D01-Q06"
+    type: "error_analysis"
+    score: 2
+    title: "综合错因订正"
+    diagnostic_focus: "能否同时订正定义域、周期和单调区间表达。"
+    prompt: "某学生总结：y = tan x 的定义域是 R；周期是 2pi；在 (0, pi) 上递增；图像关于 y 轴对称。请指出至少两处错误并改正。"
+    expected_response:
+      - "定义域不是 R，应排除 x = pi/2 + kpi，k 属于整数。"
+      - "最小正周期是 pi，不是 2pi。"
+      - "(0, pi) 中包含 x = pi/2 这个无定义点，不能作为一个单调区间。"
+      - "单调递增区间应为 (-pi/2 + kpi, pi/2 + kpi)，k 属于整数。"
+      - "y = tan x 是奇函数，图像关于原点对称，不关于 y 轴对称。"
+    misconception_tags_when_incomplete:
+      - "domain_asymptote_omission"
+      - "period_pi_confusion"
+      - "interval_formula_error"
+      - "parity_symmetry_mixup"
+      - "global_monotonic_overreach"
+    feedback_on_correct: "能从错误总结中分辨定义域、周期、单调区间和奇偶性的不同问题。"
