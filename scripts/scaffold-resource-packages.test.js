@@ -20,6 +20,10 @@ async function makeTempProject() {
   await cp(path.join(repoRoot, "content/diagnosis"), path.join(tempRoot, "content/diagnosis"), {
     recursive: true,
   });
+  await rm(path.join(tempRoot, "content/diagnosis/SH-HS-MATH-HJ-B2-C07-L07-D01"), {
+    recursive: true,
+    force: true,
+  });
 
   return tempRoot;
 }

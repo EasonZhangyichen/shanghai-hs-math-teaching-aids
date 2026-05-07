@@ -1,0 +1,107 @@
+schema_version: "0.1.0"
+id: "SH-HS-MATH-HJ-B2-C07-L07-D01"
+version: "0.1.0"
+status: "draft"
+resource_type: "diagnosis"
+title: "正切函数性质诊断"
+subtitle: "围绕定义域断裂、分段单调和性质一般式的课堂即时诊断"
+
+curriculum:
+  region: "上海"
+  stage: "高中"
+  subject: "数学"
+  edition: "沪教版"
+  volume_id: "B2"
+  volume_title: "必修第二册"
+  chapter_id: "SH-HS-MATH-HJ-B2-C07"
+  chapter_title: "三角函数"
+  section_id: "SH-HS-MATH-HJ-B2-C07-S04"
+  section_title: "正切函数的图像与性质"
+  lesson_id: "SH-HS-MATH-HJ-B2-C07-L07"
+  textbook_ref: "7.4.2"
+  lesson_title: "正切函数的性质"
+
+pedagogy:
+  cognitive_action: "比较"
+  estimated_classroom_minutes: 8
+  primary_teaching_problem: "学生容易把正切函数的性质当作一张结论表来背，尤其会说它在整个定义域上单调递增，忽略定义域被渐近线切断；同时对值域为 R、周期 pi、奇函数和单调区间一般式之间的关系缺少整体判断。"
+  learning_goals:
+    - "写出 y = tan x 的定义域和竖直渐近线一般式，并说明二者来自 cos x = 0。"
+    - "判断正切函数只在每个连续定义区间内单调递增，不能说在整个定义域上单调递增。"
+    - "解释每个定义区间上的函数值都从负无穷到正无穷变化，因此值域为 R。"
+    - "区分周期 pi、奇函数性质和单调区间端点的一般式。"
+  prerequisites:
+    - "正切函数图像"
+    - "渐近线与定义域"
+    - "函数周期性、奇偶性和单调性的语言表达"
+    - "正弦、余弦函数性质的比较经验"
+  successors:
+    - "SH-HS-MATH-HJ-XB1-DERIV-K01"
+    - "SH-HS-MATH-HJ-MODEL-K01"
+  core_competencies:
+    - "逻辑推理"
+    - "数学运算"
+    - "直观想象"
+  classroom_use: "建议放在正切性质 Applet 分段观察之后 6 到 8 分钟完成；教师根据错因标签决定回到定义域断裂、分段单调、值域解释或周期奇偶一般式。"
+
+diagnosis_design:
+  diagnostic_focus:
+    - "能否把正切函数单调性限定在每个连续定义区间。"
+    - "能否写出定义域、渐近线和单调区间的一般式，并注明 k 属于整数。"
+    - "能否解释值域为 R 与存在竖直渐近线并不矛盾。"
+    - "能否区分周期 pi、奇函数性质和正弦余弦的 2pi 周期经验。"
+  misconception_tags:
+    - id: "domain_asymptote_omission"
+      title: "定义域和渐近线遗漏"
+      description: "忘记排除 x = pi/2 + kpi，或不能把这些点与竖直渐近线联系起来。"
+    - id: "global_monotonic_overreach"
+      title: "整体单调误说"
+      description: "把每个定义区间内递增误说成在整个定义域上递增，忽略函数在渐近线处断裂。"
+    - id: "range_asymptote_conflict"
+      title: "值域与渐近线矛盾感"
+      description: "认为有渐近线就不能取遍所有实数，不能用单个定义区间上的连续变化解释值域。"
+    - id: "period_pi_confusion"
+      title: "周期 pi 与 2pi 混淆"
+      description: "受正弦、余弦周期影响，把正切函数周期误写为 2pi，或漏写 kpi 平移。"
+    - id: "parity_symmetry_mixup"
+      title: "奇函数和对称元素混淆"
+      description: "不能用 tan(-x) = -tan x 判断奇函数，或把原点对称、周期平移和对称轴混在一起。"
+    - id: "interval_formula_error"
+      title: "区间一般式端点错误"
+      description: "单调区间端点写错、开闭区间误用，或遗漏 k 属于整数。"
+  item_summary:
+    total_items: 6
+    question_types:
+      - "single_choice"
+      - "multiple_select"
+      - "short_explanation"
+      - "error_analysis"
+    estimated_minutes: 8
+  feedback_strategy:
+    immediate_feedback: "每题返回命中的性质错因标签，并给出一个回看动作：标渐近线、选一个定义区间、观察 y 值覆盖、平移 pi 或验证 tan(-x)。"
+    teacher_dashboard_notes: "若 global_monotonic_overreach 集中出现，先回到 Applet 分段高亮；若 domain_asymptote_omission 或 interval_formula_error 集中出现，板书定义区间一般式；若 range_asymptote_conflict 集中出现，观察单段从负无穷到正无穷；若 period_pi_confusion 集中出现，对照 x 与 x + pi。"
+    remediation_links:
+      - "content/applets/SH-HS-MATH-HJ-B2-C07-L07-A01"
+      - "content/applets/SH-HS-MATH-HJ-B2-C07-L06-A01"
+      - "content/manim/SH-HS-MATH-HJ-B2-C07-L06-M01"
+
+scoring:
+  mastery_threshold: 0.75
+  grading_mode: "mixed"
+  retry_policy: "课堂内允许一次订正；订正时必须补写一个定义区间、一个一般式或一句性质比较理由，首次错因标签保留给教师看板。"
+
+platform_card:
+  availability: "item_bank_ready"
+  preview_behavior: "item_bank_preview"
+  embed_strategy: "首期显示诊断目标、错因标签、题组摘要和评分规则；后续接入诊断播放器后按正切性质错因返回即时反馈。"
+
+files:
+  readme: "README.md"
+  item_bank: "item-bank.yaml"
+  scoring_rubric: "scoring-rubric.md"
+  teacher_notes: "teacher-notes.md"
+  review_record: "review.md"
+
+compliance:
+  copyright_note: "本诊断包为原创题组与反馈设计，不复制教材正文、官方课件、教案或商业题库。"
+  review_status: "self_checked_draft"

@@ -14,11 +14,11 @@ test("generates a deterministic backlog from curriculum entry points and impleme
 
   assert.equal(backlog.source.curriculum, "content/curriculum/index.yaml");
   assert.equal(backlog.summary.total, 15);
-  assert.equal(backlog.summary.implemented, 14);
-  assert.equal(backlog.summary.planned, 1);
+  assert.equal(backlog.summary.implemented, 15);
+  assert.equal(backlog.summary.planned, 0);
   assert.deepEqual(backlog.summary.byType.applet, { total: 8, implemented: 8, planned: 0 });
   assert.deepEqual(backlog.summary.byType.manim_clip, { total: 3, implemented: 3, planned: 0 });
-  assert.deepEqual(backlog.summary.byType.diagnosis, { total: 4, implemented: 3, planned: 1 });
+  assert.deepEqual(backlog.summary.byType.diagnosis, { total: 4, implemented: 4, planned: 0 });
 
   const sineApplet = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B2-C07-L01-A01");
   assert.equal(sineApplet.status, "implemented");
@@ -162,6 +162,24 @@ test("generates a deterministic backlog from curriculum entry points and impleme
   assert.equal(tangentPropertiesApplet.recommendedTrack, "track/trig-sample-pack");
   assert.equal(tangentPropertiesApplet.priority, "chapter_backlog");
   assert.match(tangentPropertiesApplet.nextAction, /审校|试读/);
+
+  const tangentPropertiesDiagnosis = backlog.items.find(
+    (item) => item.id === "SH-HS-MATH-HJ-B2-C07-L07-D01",
+  );
+  assert.equal(tangentPropertiesDiagnosis.status, "implemented");
+  assert.equal(tangentPropertiesDiagnosis.availability, "item_bank_ready");
+  assert.equal(tangentPropertiesDiagnosis.type, "diagnosis");
+  assert.equal(
+    tangentPropertiesDiagnosis.packagePath,
+    "content/diagnosis/SH-HS-MATH-HJ-B2-C07-L07-D01",
+  );
+  assert.equal(
+    tangentPropertiesDiagnosis.metadataPath,
+    "content/diagnosis/SH-HS-MATH-HJ-B2-C07-L07-D01/metadata.yaml",
+  );
+  assert.equal(tangentPropertiesDiagnosis.recommendedTrack, "track/review-system");
+  assert.equal(tangentPropertiesDiagnosis.priority, "chapter_backlog");
+  assert.match(tangentPropertiesDiagnosis.threadPrompt, /SH-HS-MATH-HJ-B2-C07-L07-D01/);
 });
 
 test("writes the backlog as stable pretty JSON", async () => {
@@ -175,11 +193,11 @@ test("writes the backlog as stable pretty JSON", async () => {
     const written = JSON.parse(await readFile(outputPath, "utf8"));
 
     assert.equal(written.summary.total, 15);
-    assert.equal(written.summary.implemented, 14);
+    assert.equal(written.summary.implemented, 15);
     assert.equal(written.items[0].id, "SH-HS-MATH-HJ-B2-C07-L01-A01");
     assert.ok(
       JSON.stringify(written, null, 2).includes(
-        '"id": "SH-HS-MATH-HJ-B2-C07-L07-A01"',
+        '"id": "SH-HS-MATH-HJ-B2-C07-L07-D01"',
       ),
     );
   } finally {

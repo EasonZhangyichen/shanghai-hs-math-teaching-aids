@@ -55,6 +55,7 @@
 - [x] 设计并创建 `SH-HS-MATH-HJ-B2-C07-L06-A01`“正切函数图像生成器”Applet 资源包。
 - [x] 创建并渲染 `SH-HS-MATH-HJ-B2-C07-L06-M01`“为什么正切图像有渐近线”Manim 资源包。
 - [x] 设计并创建 `SH-HS-MATH-HJ-B2-C07-L07-A01`“正切性质分段观察”Applet 资源包。
+- [x] 创建 `SH-HS-MATH-HJ-B2-C07-L07-D01`“正切函数性质诊断”Diagnosis 资源包，包含 metadata、题组、评分规则、教师说明和审核记录。
 - [x] 渲染并复核 `SH-HS-MATH-HJ-B2-C07-L01-M01` 的 `mp4`、`webm` 和 poster。
 - [x] 创建八个可运行 HTML Applet 原型。
 - [x] 渲染并复核 `SH-HS-MATH-HJ-B2-C07-L05-M01` 的 `mp4`、`webm` 和 poster。
@@ -71,7 +72,8 @@
 - [ ] 对 `SH-HS-MATH-HJ-B2-C07-L02-D01`“正弦函数性质诊断”做数学审校、题目试做和课堂节奏试读。
 - [ ] 对 `SH-HS-MATH-HJ-B2-C07-L04-D01`“余弦性质误区诊断”做数学审校、题目试做和课堂节奏试读。
 - [ ] 对 `SH-HS-MATH-HJ-B2-C07-L05-D01`“参数识别诊断任务”做数学审校、题目试做和课堂节奏试读。
-- [ ] 从 `content/production/resource-backlog.json` 中选择下一个资源 item，优先推进已实现资源的数学审校、课堂试读或第 7 章剩余 planned Diagnosis item。
+- [ ] 对 `SH-HS-MATH-HJ-B2-C07-L07-D01`“正切函数性质诊断”做数学审校、题目试做和课堂节奏试读。
+- [ ] 从 `content/production/resource-backlog.json` 中选择下一个资源 item，优先推进已实现资源的数学审校、课堂试读或平台接入。
 
 ## P4：平台雏形
 
@@ -85,7 +87,7 @@
 
 ## P5：资源工厂
 
-- [x] 生成 `content/production/resource-backlog.json`，覆盖必修第二册第 7 章 15 个资源工作单元；当前 14 个已实现、1 个待创建。
+- [x] 生成 `content/production/resource-backlog.json`，覆盖必修第二册第 7 章 15 个资源工作单元；当前 15 个已实现、0 个待创建。
 - [x] 为每个 backlog item 自动生成推荐分支、下一步动作和新对话 `threadPrompt`。
 - [x] 将 `npm run generate:backlog` 接入 `npm run verify`。
 - [x] 为 Diagnosis planned item 增加首版资源包 scaffold 命令，支持 dry-run、按数量或 ID 生成并避免覆盖已有资源包。
