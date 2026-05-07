@@ -30,13 +30,13 @@ class TransformOrderScene(Scene):
             axis_config={"stroke_color": "#4c566a", "stroke_width": 2},
         ).to_edge(DOWN, buff=0.65)
 
-        title = Text("Transform order for y = A sin(omega x + phi)", font_size=32, color=ink)
+        title = Text("Transform order for y = A sin(ωx + φ)", font_size=32, color=ink)
         title.to_edge(UP, buff=0.35)
 
-        formula = Text("y = -1.5 sin(2x + pi/2)", font_size=30, color=ink)
+        formula = Text("y = -1.5 sin(2x + π/2)", font_size=30, color=ink)
         formula.next_to(title, DOWN, buff=0.25)
 
-        factored = Text("2x + pi/2 = 2(x + pi/4)", font_size=28, color=accent)
+        factored = Text("2x + π/2 = 2(x + π/4)", font_size=28, color=accent)
         factored.next_to(formula, DOWN, buff=0.25)
 
         base_curve = axes.plot(
@@ -67,7 +67,7 @@ class TransformOrderScene(Scene):
         base_label = Text("base: y = sin x", font_size=24, color=base_color)
         base_label.next_to(axes, UP, buff=0.2).align_to(axes, LEFT)
 
-        step_label = Text("1. omega = 2: period 2pi -> pi", font_size=24, color=current_color)
+        step_label = Text("1. ω = 2: period 2π → π", font_size=24, color=current_color)
         step_label.next_to(axes, UP, buff=0.2).align_to(axes, RIGHT)
 
         period_brace = BraceBetweenPoints(
@@ -75,7 +75,7 @@ class TransformOrderScene(Scene):
             axes.c2p(3 * PI / 4, -1.75),
             color=guide,
         )
-        period_label = Text("period = pi", font_size=22, color=guide).next_to(period_brace, DOWN, buff=0.1)
+        period_label = Text("period = π", font_size=22, color=guide).next_to(period_brace, DOWN, buff=0.1)
 
         shift_arrow = Arrow(
             start=axes.c2p(0, 1.55),
@@ -85,7 +85,7 @@ class TransformOrderScene(Scene):
             stroke_width=5,
             max_tip_length_to_length_ratio=0.2,
         )
-        shift_label = Text("left pi/4", font_size=22, color=accent).next_to(shift_arrow, UP, buff=0.1)
+        shift_label = Text("left π/4", font_size=22, color=accent).next_to(shift_arrow, UP, buff=0.1)
 
         amplitude_line = DashedLine(
             axes.c2p(PI / 2, 0),
@@ -98,8 +98,8 @@ class TransformOrderScene(Scene):
         readout = VGroup(
             Text("Read from graph", font_size=26, color=ink),
             Text("amplitude = 1.5", font_size=23, color=ink),
-            Text("period = pi", font_size=23, color=ink),
-            Text("shift = left pi/4", font_size=23, color=ink),
+            Text("period = π", font_size=23, color=ink),
+            Text("shift = left π/4", font_size=23, color=ink),
         ).arrange(DOWN, aligned_edge=LEFT, buff=0.16)
         readout.to_corner(UR, buff=0.55).shift(DOWN * 0.85)
 
@@ -122,7 +122,7 @@ class TransformOrderScene(Scene):
         self.play(FadeIn(period_brace), FadeIn(period_label), run_time=2.0)
         self.wait(4.0)
 
-        shift_step_label = Text("2. phi with omega: shift left pi/4", font_size=24, color=current_color)
+        shift_step_label = Text("2. φ with ω: shift left π/4", font_size=24, color=current_color)
         shift_step_label.move_to(step_label)
         self.play(Transform(step_label, shift_step_label), FadeIn(shift_arrow), FadeIn(shift_label), run_time=3.0)
         self.play(Transform(base_curve, shifted_curve), run_time=4.0)
