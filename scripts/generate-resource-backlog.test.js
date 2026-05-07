@@ -14,9 +14,9 @@ test("generates a deterministic backlog from curriculum entry points and impleme
 
   assert.equal(backlog.source.curriculum, "content/curriculum/index.yaml");
   assert.equal(backlog.summary.total, 15);
-  assert.equal(backlog.summary.implemented, 13);
-  assert.equal(backlog.summary.planned, 2);
-  assert.deepEqual(backlog.summary.byType.applet, { total: 8, implemented: 7, planned: 1 });
+  assert.equal(backlog.summary.implemented, 14);
+  assert.equal(backlog.summary.planned, 1);
+  assert.deepEqual(backlog.summary.byType.applet, { total: 8, implemented: 8, planned: 0 });
   assert.deepEqual(backlog.summary.byType.manim_clip, { total: 3, implemented: 3, planned: 0 });
   assert.deepEqual(backlog.summary.byType.diagnosis, { total: 4, implemented: 3, planned: 1 });
 
@@ -149,6 +149,19 @@ test("generates a deterministic backlog from curriculum entry points and impleme
   assert.equal(tangentAsymptoteManim.recommendedTrack, "track/manim-pipeline");
   assert.equal(tangentAsymptoteManim.priority, "follow_up");
   assert.match(tangentAsymptoteManim.nextAction, /审校|分镜/);
+
+  const tangentPropertiesApplet = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B2-C07-L07-A01");
+  assert.equal(tangentPropertiesApplet.status, "implemented");
+  assert.equal(tangentPropertiesApplet.availability, "metadata_ready");
+  assert.equal(tangentPropertiesApplet.type, "applet");
+  assert.equal(tangentPropertiesApplet.packagePath, "content/applets/SH-HS-MATH-HJ-B2-C07-L07-A01");
+  assert.equal(
+    tangentPropertiesApplet.metadataPath,
+    "content/applets/SH-HS-MATH-HJ-B2-C07-L07-A01/metadata.yaml",
+  );
+  assert.equal(tangentPropertiesApplet.recommendedTrack, "track/trig-sample-pack");
+  assert.equal(tangentPropertiesApplet.priority, "chapter_backlog");
+  assert.match(tangentPropertiesApplet.nextAction, /审校|试读/);
 });
 
 test("writes the backlog as stable pretty JSON", async () => {
@@ -162,11 +175,11 @@ test("writes the backlog as stable pretty JSON", async () => {
     const written = JSON.parse(await readFile(outputPath, "utf8"));
 
     assert.equal(written.summary.total, 15);
-    assert.equal(written.summary.implemented, 13);
+    assert.equal(written.summary.implemented, 14);
     assert.equal(written.items[0].id, "SH-HS-MATH-HJ-B2-C07-L01-A01");
     assert.ok(
       JSON.stringify(written, null, 2).includes(
-        '"id": "SH-HS-MATH-HJ-B2-C07-L06-M01"',
+        '"id": "SH-HS-MATH-HJ-B2-C07-L07-A01"',
       ),
     );
   } finally {

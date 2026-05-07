@@ -221,7 +221,7 @@ test("links the parameter lab applet and rendered transform-order Manim to lesso
   });
   assert.equal(diagnosis.availability, "proposed");
   assert.equal(diagnosis.player, null);
-  assert.ok(workspace.summary.plannedResourceCount >= 5);
+  assert.equal(workspace.summary.plannedResourceCount, 4);
 });
 
 test("links the tangent graph applet and rendered asymptote Manim to lesson L06", async () => {
@@ -268,4 +268,32 @@ test("links the tangent graph applet and rendered asymptote Manim to lesson L06"
       },
     ],
   });
+});
+
+test("links the tangent properties applet to lesson L07", async () => {
+  const workspace = await loadTeacherWorkspace({ rootDir: repoRoot });
+  const lesson = workspace.lessonsById["SH-HS-MATH-HJ-B2-C07-L07"];
+  const applet = lesson.resources.find((resource) => resource.id === "SH-HS-MATH-HJ-B2-C07-L07-A01");
+  const diagnosis = lesson.resources.find((resource) => resource.id === "SH-HS-MATH-HJ-B2-C07-L07-D01");
+
+  assert.equal(workspace.summary.implementedAppletCount, 8);
+  assert.equal(lesson.title, "正切函数的性质");
+  assert.equal(lesson.resources.length, 2);
+  assert.deepEqual(
+    lesson.resources.map((resource) => resource.resourceType),
+    ["applet", "diagnosis"],
+  );
+  assert.equal(applet.availability, "metadata_ready");
+  assert.equal(applet.metadataPreview.pedagogy.cognitiveAction, "比较");
+  assert.equal(applet.metadataPreview.implementation.phase, "runnable_prototype");
+  assert.equal(applet.package.files.srcEntry, "content/applets/SH-HS-MATH-HJ-B2-C07-L07-A01/src/index.html");
+  assert.deepEqual(applet.player, {
+    kind: "iframe",
+    isRunnable: true,
+    src: "content/applets/SH-HS-MATH-HJ-B2-C07-L07-A01/src/index.html",
+    title: "正切性质分段观察",
+    sandbox: "allow-scripts allow-same-origin",
+  });
+  assert.equal(diagnosis.availability, "proposed");
+  assert.equal(diagnosis.player, null);
 });
