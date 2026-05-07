@@ -1,0 +1,212 @@
+id: "SH-HS-MATH-HJ-B2-C07-L07-A01"
+version: "0.1.0"
+status: "draft"
+resource_type: "applet"
+title: "正切性质分段观察"
+subtitle: "比较分段单调、pi 周期、奇对称和值域"
+
+curriculum:
+  region: "上海"
+  stage: "高中"
+  subject: "数学"
+  edition: "沪教版"
+  volume_id: "B2"
+  volume_title: "必修第二册"
+  chapter_id: "SH-HS-MATH-HJ-B2-C07"
+  chapter_title: "三角函数"
+  section_id: "SH-HS-MATH-HJ-B2-C07-S04"
+  section_title: "正切函数的图像与性质"
+  lesson_id: "SH-HS-MATH-HJ-B2-C07-L07"
+  textbook_ref: "7.4.2"
+  lesson_title: "正切函数的性质"
+
+pedagogy:
+  cognitive_action: "比较"
+  estimated_classroom_minutes: 18
+  primary_teaching_problem: "学生容易把正切函数在每个定义区间内递增误说成在整个定义域上递增，也容易把值域、渐近线、pi 周期和奇函数结论割裂记忆。"
+  learning_goals:
+    - "把正切函数的单调性限定在每个连续定义区间 ( -pi/2 + kpi, pi/2 + kpi ) 内。"
+    - "用相邻分支平移比较说明 tan(x + pi) = tan x，周期为 pi。"
+    - "用原点对称的点对说明 tan(-x) = -tan x，正切函数是奇函数。"
+    - "解释值域为 R 与存在竖直渐近线并不矛盾：每个分支都从负无穷延伸到正无穷。"
+  prerequisites:
+    - "正切函数图像"
+    - "渐近线与定义域"
+    - "函数周期性、奇偶性和单调性"
+  successors:
+    - "SH-HS-MATH-HJ-XB1-DERIV-K01"
+    - "SH-HS-MATH-HJ-MODEL-K01"
+  core_competencies:
+    - "逻辑推理"
+    - "数学运算"
+    - "直观想象"
+
+mathematical_scope:
+  function: "y = tan x"
+  independent_variable: "角 x 的弧度量"
+  dependent_variable: "正切值"
+  default_x_range: "-3pi/2 < x < 3pi/2, excluding x = pi/2 + kpi"
+  visible_y_range: "-4 <= y <= 4"
+  domain: "x != pi/2 + kpi, k in Z"
+  range: "R"
+  period: "pi"
+  parity: "odd, tan(-x) = -tan x"
+  monotonicity: "strictly increasing on every interval (-pi/2 + kpi, pi/2 + kpi), k in Z"
+  warning: "不能说 y = tan x 在整个定义域上单调递增，因为定义域被渐近线分成多个不连续区间。"
+  key_intervals:
+    - interval: "(-pi/2, pi/2)"
+      note: "主值区间，函数值从负无穷增至正无穷。"
+    - interval: "(pi/2, 3pi/2)"
+      note: "向右平移 pi 得到的相邻分支。"
+    - interval: "(-3pi/2, -pi/2)"
+      note: "向左平移 pi 得到的相邻分支。"
+  out_of_scope:
+    - "用导数证明正切函数单调性"
+    - "反正切函数"
+    - "y = A tan(omega x + phi) 的参数变换"
+
+representations:
+  - id: "segmented_tan_graph"
+    role: "分段显示 y = tan x，突出渐近线造成的定义区间断裂。"
+  - id: "interval_highlight"
+    role: "高亮一个连续定义区间，限定单调性的讨论范围。"
+  - id: "period_compare"
+    role: "显示 x 与 x + pi 两个点的同值对照。"
+  - id: "odd_symmetry"
+    role: "显示 x 与 -x 两个点关于原点对称。"
+  - id: "range_probe"
+    role: "用分支上下端逼近说明每个分支覆盖全体实数。"
+  - id: "property_summary"
+    role: "分步归纳定义域、值域、周期、奇偶性和单调性。"
+
+interaction_design:
+  primary_control: "拖动 x 滑块或点击关键角，在同一张分段图像中比较当前点、相邻周期点和奇对称点。"
+  teacher_controls:
+    - "切换观察焦点：分段单调、周期 pi、奇函数、值域与渐近线"
+    - "选择高亮的定义区间 k = -1, 0, 1"
+    - "显示或隐藏相邻周期点、奇对称点、性质归纳和渐近线说明"
+    - "播放或暂停观察点在当前定义区间内移动"
+    - "重置到 x = pi/4"
+  student_controls:
+    - "拖动观察点，比较同一分支内 x 增大时 tan x 的变化。"
+    - "记录 x 与 x + pi、x 与 -x 的函数值关系。"
+    - "判断给定单调性说法是否遗漏了定义区间限制。"
+  staged_reveal:
+    - step: "interval_first"
+      description: "先只高亮一个连续定义区间，讨论分支内单调递增。"
+    - step: "period_compare"
+      description: "打开 x 与 x + pi 的点对，比较相邻分支重复。"
+    - step: "odd_symmetry"
+      description: "打开 x 与 -x 的点对，比较原点对称。"
+    - step: "range_probe"
+      description: "观察同一分支从下到上穿过所有可见 y 值。"
+    - step: "summary"
+      description: "汇总性质并强调单调性不能跨渐近线表述。"
+
+data_contract:
+  state_variables:
+    - name: "current_x"
+      unit: "radian"
+      value_type: "number"
+      default: 0.7853981633974483
+      description: "当前观察角 x。"
+      persistence: "snapshot"
+    - name: "current_tan"
+      value_type: "number"
+      default: 1
+      description: "当前 tan x 的函数值。"
+      persistence: "snapshot"
+    - name: "selected_interval_k"
+      value_type: "number"
+      default: 0
+      description: "当前高亮定义区间的整数 k。"
+      persistence: "snapshot"
+    - name: "focus_mode"
+      value_type: "string"
+      default: "monotonicity"
+      description: "观察焦点：monotonicity、period、parity 或 range。"
+      persistence: "snapshot"
+    - name: "period_compare_visible"
+      value_type: "boolean"
+      default: false
+      description: "是否显示 x 与 x + pi 的周期对照点。"
+      persistence: "snapshot"
+    - name: "odd_symmetry_visible"
+      value_type: "boolean"
+      default: false
+      description: "是否显示 x 与 -x 的奇对称点。"
+      persistence: "snapshot"
+    - name: "summary_visible"
+      value_type: "boolean"
+      default: false
+      description: "是否显示性质归纳。"
+      persistence: "snapshot"
+  events:
+    - name: "current_angle_changed"
+      direction: "applet_to_player"
+      description: "当前观察角或正切值发生变化。"
+      payload: ["current_x", "current_tan", "selected_interval_k", "focus_mode"]
+    - name: "focus_mode_changed"
+      direction: "applet_to_player"
+      description: "教师切换观察焦点。"
+      payload: ["focus_mode"]
+    - name: "interval_changed"
+      direction: "applet_to_player"
+      description: "教师切换高亮定义区间。"
+      payload: ["selected_interval_k"]
+    - name: "comparison_toggled"
+      direction: "applet_to_player"
+      description: "教师显示或隐藏周期、奇对称或归纳图层。"
+      payload: ["period_compare_visible", "odd_symmetry_visible", "summary_visible"]
+
+feedback_and_diagnosis:
+  success_evidence:
+    - "学生能写出定义域 x != pi/2 + kpi。"
+    - "学生能把单调性表述为在每个区间 (-pi/2 + kpi, pi/2 + kpi) 上递增。"
+    - "学生能用 tan(x + pi) = tan x 解释周期 pi。"
+    - "学生能用 tan(-x) = -tan x 解释奇函数。"
+    - "学生能说明值域为 R 与渐近线不矛盾。"
+  common_error_tags:
+    - id: "global_monotonicity_overclaim"
+      label: "把分段递增误说成整个定义域递增"
+    - id: "range_asymptote_conflict"
+      label: "认为有渐近线就不能取遍全体实数"
+    - id: "period_parity_formula_mixed"
+      label: "周期、奇偶性和单调区间一般式混淆"
+    - id: "domain_interval_omission"
+      label: "遗漏 x = pi/2 + kpi 的定义域断点"
+  feedback_principles:
+    - "反馈先要求补全定义域，再讨论性质。"
+    - "单调性错误必须回到单个连续定义区间。"
+    - "周期和奇偶性用点对比较，不只显示公式。"
+    - "值域讨论要结合分支从负无穷到正无穷的趋势。"
+
+visual_semantics:
+  tan_curve: "深蓝色分段曲线表示 y = tan x。"
+  selected_interval: "淡绿色背景表示当前连续定义区间。"
+  current_point: "橙色点表示当前 x。"
+  period_compare: "紫色点表示 x + pi 的周期对照。"
+  odd_symmetry: "玫红色点表示 -x 的奇对称对照。"
+  asymptote: "红色虚线表示 x = pi/2 + kpi 的渐近线。"
+  rule: "颜色只用于区分数学对象和性质线索，不作装饰。"
+
+implementation:
+  phase: "runnable_prototype"
+  html_src_status: "runnable"
+  planned_engine: "native-canvas-svg"
+  create_src_in_later_task: false
+  classroom_device_targets:
+    - "教师电脑浏览器"
+    - "教室大屏"
+    - "触控屏或触控板"
+
+files:
+  readme: "README.md"
+  teacher_script: "teacher-script.md"
+  student_task: "student-task.md"
+  review_record: "review.md"
+  src_entry: "src/index.html"
+
+compliance:
+  copyright_note: "本资源包为原创教学脚本与交互实现，不复制教材正文、官方课件、教案或商业平台资源。"
+  review_status: "self_checked_draft"
