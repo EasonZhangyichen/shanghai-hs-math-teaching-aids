@@ -33,7 +33,9 @@ content/curriculum/index.yaml
 - 推荐工作的 `track/*` 分支。
 - 可直接复制到新对话里的 `threadPrompt`。
 
-当前覆盖必修第二册第 7 章三角函数和第 8 章平面向量：33 个资源工作单元，其中 15 个已实现，18 个待创建。第 8 章新增的 planned item 可作为下一轮资源骨架生成和单资源精修的来源。
+backlog 不是“每课必做资源清单”。课程图谱中的 `digital_entry_points` 必须先通过数字化必要性判断：只有数字化确实能解决该知识点的动态变化、多表征联动、操作诊断或动画叙事问题，才进入 Applet / Manim / Diagnosis 生产。普通板书、纸笔练习或静态图足够解决的内容，不应为了覆盖率强行进入 backlog。
+
+当前覆盖必修第二册第 7 章三角函数和第 8 章平面向量：33 个资源工作单元，其中 15 个已实现，18 个待创建。第 8 章新增的 planned item 仍需做数字化必要性筛选，确认后才可作为下一轮资源骨架生成和单资源精修的来源。
 
 ## scaffold 命令
 
@@ -69,7 +71,7 @@ npm run scaffold:backlog -- --id SH-HS-MATH-HJ-B2-C07-L04-D01 --write
 
 scaffold 只负责创建可校验的草稿骨架，不代表题组、数学表达或课堂节奏已经完成。已存在的资源包会被跳过，不会覆盖。
 
-当前必修第二册第 7 章已经没有 `planned` item；第 8 章“平面向量”已有 18 个 `planned` item。下一轮 scaffold 应先按同一类型和同一推荐分支筛选第 8 章条目，例如只生成 Applet 骨架或只生成 Diagnosis 骨架。对已实现资源，下一步不是重复 scaffold，而是进入数学审校、课堂试读、浏览器复核和状态升级。
+当前必修第二册第 7 章已经没有 `planned` item；第 8 章“平面向量”已有 18 个 `planned` item。下一轮 scaffold 应先按同一类型、同一推荐分支和数字化必要性筛选第 8 章条目，例如只生成必要性明确的 Applet 骨架或 Diagnosis 骨架。对已实现资源，下一步不是重复 scaffold，而是进入数学审校、课堂试读、浏览器复核和状态升级。
 
 ## 分支分派规则
 
@@ -87,17 +89,18 @@ curriculum   -> track/curriculum-map
 ## 新对话怎么用
 
 1. 在总控对话查看 `content/production/resource-backlog.json`。
-2. 选择一个 `status: "planned"` 或需要复核的 `implemented` item。
-3. 如果是批量铺骨架，只选择同一 `type`、同一 `recommendedTrack` 的 planned item，一次建议 3 到 10 个。
-4. 如果是内容精修、数学审校或课堂试读，复制该 item 的 `threadPrompt` 到新对话；新对话只处理这个资源或这一个审核动作。
-5. 完成后运行：
+2. 先确认该 item 对应的数字化必要性：是否解决传统板书或静态 PPT 难以解决的问题。
+3. 选择一个 `status: "planned"` 或需要复核的 `implemented` item。
+4. 如果是批量铺骨架，只选择同一 `type`、同一 `recommendedTrack` 且必要性明确的 planned item，一次建议 3 到 10 个。
+5. 如果是内容精修、数学审校或课堂试读，复制该 item 的 `threadPrompt` 到新对话；新对话只处理这个资源或这一个审核动作。
+6. 完成后运行：
 
 ```bash
 npm run generate:backlog
 npm run verify
 ```
 
-6. 提交并把分支合并回 `develop`。
+7. 提交并把分支合并回 `develop`。
 
 原则：骨架可以批量生成，优质课件不应批量草率完成。一个对话可以批量创建同类型目录，但真正的交互设计、Manim 分镜、诊断题质量和数学审校仍建议按单资源或小批量推进。
 

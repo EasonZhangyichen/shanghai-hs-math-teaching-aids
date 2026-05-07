@@ -27,6 +27,7 @@
 - [x] 记录必修第二册第 8 章 dolearning.net 来源核对结果，明确 8.3 三课时分组与当前四小节拆分的待确认差异。
 - [ ] 人工终核必修第二册第 8 章的课时划分、课时数和标题表述。
 - [ ] 用纸质教材或已登录 dolearning 左侧目录专项确认必修第二册第 8 章 8.3“向量的坐标表示”应按三课时还是四小节进入课程图谱。
+- [ ] 对必修第二册第 8 章的 18 个 `digital_entry_points` 做数字化必要性筛选，删除或降级不需要 Applet / Manim 的条目。
 - [ ] 展开第 7 章前置章节和第 9 章复数等承接节点。
 
 ## P2：课件规范
@@ -98,7 +99,7 @@
 - [x] 将 `npm run generate:backlog` 接入 `npm run verify`。
 - [x] 为 Diagnosis planned item 增加首版资源包 scaffold 命令，支持 dry-run、按数量或 ID 生成并避免覆盖已有资源包。
 - [x] 将资源包 scaffold 扩展到 Applet、Manim Clip 与 Diagnosis，并按 schema 生成对应必备文件。
-- [ ] 从第 8 章 backlog 中按同一资源类型和推荐分支筛选 planned item，先 dry-run scaffold，再小批量生成资源骨架。
+- [ ] 从第 8 章 backlog 中按同一资源类型、推荐分支和数字化必要性筛选 planned item，先 dry-run scaffold，再小批量生成资源骨架。
 - [ ] 为 backlog item 增加更细的审核状态和课堂试用状态聚合。
 - [ ] 增加 backlog 批量生产计划导出能力：按章节、类型、优先级和数量输出同一分支上的资源清单与 threadPrompt。
 - [ ] 为已实现资源增加审校工单维度，将 `math_review`、`classroom_trial`、`browser_review` 与资源状态分开聚合。
