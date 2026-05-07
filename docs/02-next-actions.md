@@ -1,6 +1,6 @@
 # 下一步任务
 
-更新时间：2026-05-07
+更新时间：2026-05-08
 
 ## P0：项目治理
 
@@ -96,12 +96,14 @@
 
 ## P5：资源工厂
 
-- [x] 生成 `content/production/resource-backlog.json`，覆盖必修第二册第 7 章和第 8 章共 33 个资源工作单元；当前 15 个已实现、18 个待创建。
+- [x] 生成 `content/production/resource-backlog.json`，覆盖必修第二册第 7 章和第 8 章共 25 个资源工作单元；当前 18 个已实现、7 个待创建。
 - [x] 为每个 backlog item 自动生成推荐分支、下一步动作和新对话 `threadPrompt`。
 - [x] 将 `npm run generate:backlog` 接入 `npm run verify`。
 - [x] 为 Diagnosis planned item 增加首版资源包 scaffold 命令，支持 dry-run、按数量或 ID 生成并避免覆盖已有资源包。
 - [x] 将资源包 scaffold 扩展到 Applet、Manim Clip 与 Diagnosis，并按 schema 生成对应必备文件。
-- [ ] 从第 8 章 backlog 中按同一资源类型、推荐分支和数字化必要性筛选 planned item，先 dry-run scaffold，再小批量生成资源骨架。
+- [x] 先 dry-run 并生成必修第二册第 8 章首批 3 个 Applet 骨架：`SH-HS-MATH-HJ-B2-C08-L01-A01`、`SH-HS-MATH-HJ-B2-C08-L02-A01`、`SH-HS-MATH-HJ-B2-C08-L03-A01`；本批未处理 8.3 暂缓项。
+- [ ] 继续从第 8 章 backlog 中按同一资源类型、推荐分支和数字化必要性筛选剩余 planned item，先 dry-run scaffold，再小批量生成资源骨架。
+- [ ] 对 `SH-HS-MATH-HJ-B2-C08-L01-A01`、`SH-HS-MATH-HJ-B2-C08-L02-A01`、`SH-HS-MATH-HJ-B2-C08-L03-A01` 分别开启单资源精修对话，补齐真实数学模型、交互状态和课堂脚本。
 - [ ] 为 backlog item 增加更细的审核状态和课堂试用状态聚合。
 - [ ] 增加 backlog 批量生产计划导出能力：按章节、类型、优先级和数量输出同一分支上的资源清单与 threadPrompt。
 - [ ] 为已实现资源增加审校工单维度，将 `math_review`、`classroom_trial`、`browser_review` 与资源状态分开聚合。

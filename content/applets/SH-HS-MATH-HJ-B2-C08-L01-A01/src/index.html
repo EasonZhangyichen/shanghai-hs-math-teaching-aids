@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>向量表示与等价拖拽板</title>
+    <style>
+      body {
+        margin: 0;
+        min-height: 100svh;
+        display: grid;
+        place-items: center;
+        background: #f6faf8;
+        color: #17231f;
+        font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+      }
+
+      main {
+        width: min(720px, calc(100vw - 32px));
+        padding: 24px;
+        border: 1px solid #d7e0dc;
+        border-radius: 8px;
+        background: #ffffff;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p>sh-hs-math-applet-sdk</p>
+      <h1>向量表示与等价拖拽板</h1>
+      <p>拖动多个有向线段的起点和终点，实时判断相等、相反、平行和共线关系，突出向量的位置无关性。</p>
+      <p>资源 ID：SH-HS-MATH-HJ-B2-C08-L01-A01</p>
+    </main>
+    <script>
+      const RESOURCE_ID = "SH-HS-MATH-HJ-B2-C08-L01-A01";
+      window.parent?.postMessage({ type: "applet:ready", resourceId: RESOURCE_ID, payload: { current_value: 0 } }, "*");
+    </script>
+  </body>
+</html>

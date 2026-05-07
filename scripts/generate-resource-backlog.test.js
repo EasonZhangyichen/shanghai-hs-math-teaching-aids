@@ -14,9 +14,9 @@ test("generates a deterministic backlog from curriculum entry points and impleme
 
   assert.equal(backlog.source.curriculum, "content/curriculum/index.yaml");
   assert.equal(backlog.summary.total, 25);
-  assert.equal(backlog.summary.implemented, 15);
-  assert.equal(backlog.summary.planned, 10);
-  assert.deepEqual(backlog.summary.byType.applet, { total: 14, implemented: 8, planned: 6 });
+  assert.equal(backlog.summary.implemented, 18);
+  assert.equal(backlog.summary.planned, 7);
+  assert.deepEqual(backlog.summary.byType.applet, { total: 14, implemented: 11, planned: 3 });
   assert.deepEqual(backlog.summary.byType.manim_clip, { total: 4, implemented: 3, planned: 1 });
   assert.deepEqual(backlog.summary.byType.diagnosis, { total: 7, implemented: 4, planned: 3 });
 
@@ -182,16 +182,31 @@ test("generates a deterministic backlog from curriculum entry points and impleme
   assert.match(tangentPropertiesDiagnosis.threadPrompt, /SH-HS-MATH-HJ-B2-C07-L07-D01/);
 
   const vectorConceptApplet = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B2-C08-L01-A01");
-  assert.equal(vectorConceptApplet.status, "planned");
-  assert.equal(vectorConceptApplet.availability, "planned");
+  assert.equal(vectorConceptApplet.status, "implemented");
+  assert.equal(vectorConceptApplet.availability, "metadata_ready");
   assert.equal(vectorConceptApplet.type, "applet");
   assert.equal(vectorConceptApplet.lessonTitle, "向量的概念");
   assert.equal(vectorConceptApplet.chapterTitle, "平面向量");
-  assert.equal(vectorConceptApplet.packagePath, null);
-  assert.equal(vectorConceptApplet.metadataPath, null);
+  assert.equal(vectorConceptApplet.packagePath, "content/applets/SH-HS-MATH-HJ-B2-C08-L01-A01");
+  assert.equal(vectorConceptApplet.metadataPath, "content/applets/SH-HS-MATH-HJ-B2-C08-L01-A01/metadata.yaml");
   assert.equal(vectorConceptApplet.recommendedTrack, "track/trig-sample-pack");
   assert.equal(vectorConceptApplet.priority, "chapter_backlog");
-  assert.match(vectorConceptApplet.threadPrompt, /创建并推进 SH-HS-MATH-HJ-B2-C08-L01-A01/);
+  assert.match(vectorConceptApplet.threadPrompt, /复核并推进 SH-HS-MATH-HJ-B2-C08-L01-A01/);
+
+  const vectorAddSubtractApplet = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B2-C08-L02-A01");
+  assert.equal(vectorAddSubtractApplet.status, "implemented");
+  assert.equal(vectorAddSubtractApplet.availability, "metadata_ready");
+  assert.equal(vectorAddSubtractApplet.packagePath, "content/applets/SH-HS-MATH-HJ-B2-C08-L02-A01");
+  assert.equal(
+    vectorAddSubtractApplet.metadataPath,
+    "content/applets/SH-HS-MATH-HJ-B2-C08-L02-A01/metadata.yaml",
+  );
+
+  const vectorScalarApplet = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B2-C08-L03-A01");
+  assert.equal(vectorScalarApplet.status, "implemented");
+  assert.equal(vectorScalarApplet.availability, "metadata_ready");
+  assert.equal(vectorScalarApplet.packagePath, "content/applets/SH-HS-MATH-HJ-B2-C08-L03-A01");
+  assert.equal(vectorScalarApplet.metadataPath, "content/applets/SH-HS-MATH-HJ-B2-C08-L03-A01/metadata.yaml");
 
   const vectorProjectionManim = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B2-C08-L04-M01");
   assert.equal(vectorProjectionManim.status, "planned");
@@ -220,8 +235,8 @@ test("writes the backlog as stable pretty JSON", async () => {
     const written = JSON.parse(await readFile(outputPath, "utf8"));
 
     assert.equal(written.summary.total, 25);
-    assert.equal(written.summary.implemented, 15);
-    assert.equal(written.summary.planned, 10);
+    assert.equal(written.summary.implemented, 18);
+    assert.equal(written.summary.planned, 7);
     assert.equal(written.items[0].id, "SH-HS-MATH-HJ-B2-C07-L01-A01");
     assert.ok(
       JSON.stringify(written, null, 2).includes(

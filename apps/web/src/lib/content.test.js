@@ -13,6 +13,7 @@ test("loads the B2 curriculum tree for the teacher workspace", async () => {
 
   assert.equal(workspace.project.name, "沪教版高中数学数字教具云平台");
   assert.equal(workspace.summary.lessonCount, 17);
+  assert.equal(workspace.summary.implementedAppletCount, 11);
   assert.equal(workspace.summary.implementedManimCount, 3);
   assert.equal(workspace.summary.implementedDiagnosisCount, 4);
 
@@ -227,7 +228,7 @@ test("links the parameter lab applet and rendered transform-order Manim to lesso
   assert.equal(diagnosis.metadataPreview.diagnosisDesign.itemSummary.totalItems, 6);
   assert.equal(diagnosis.package.files.itemBank, "content/diagnosis/SH-HS-MATH-HJ-B2-C07-L05-D01/item-bank.yaml");
   assert.equal(diagnosis.player, null);
-  assert.equal(workspace.summary.plannedResourceCount, 10);
+  assert.equal(workspace.summary.plannedResourceCount, 7);
 });
 
 test("links the tangent graph applet and rendered asymptote Manim to lesson L06", async () => {
@@ -282,7 +283,7 @@ test("links the tangent properties applet to lesson L07", async () => {
   const applet = lesson.resources.find((resource) => resource.id === "SH-HS-MATH-HJ-B2-C07-L07-A01");
   const diagnosis = lesson.resources.find((resource) => resource.id === "SH-HS-MATH-HJ-B2-C07-L07-D01");
 
-  assert.equal(workspace.summary.implementedAppletCount, 8);
+  assert.equal(workspace.summary.implementedAppletCount, 11);
   assert.equal(lesson.title, "正切函数的性质");
   assert.equal(lesson.resources.length, 2);
   assert.deepEqual(

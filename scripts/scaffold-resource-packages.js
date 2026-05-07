@@ -166,8 +166,8 @@ function buildCommonCurriculum(item) {
   };
 }
 
-function buildCommonPedagogy(item, estimatedMinutes = 12) {
-  return {
+function buildCommonPedagogy(item, estimatedMinutes = 12, classroomUse = null) {
+  const pedagogy = {
     cognitive_action: item.cognitiveAction,
     estimated_classroom_minutes: estimatedMinutes,
     primary_teaching_problem: item.teachingPainPoints[0] ?? item.note,
@@ -179,8 +179,13 @@ function buildCommonPedagogy(item, estimatedMinutes = 12) {
     prerequisites: [`${item.lessonTitle}相关先修知识`],
     successors: ["后续课时学习与综合应用"],
     core_competencies: ["直观想象", "逻辑推理", "数学运算"],
-    classroom_use: `建议在「${item.lessonTitle}」课堂中作为新知建构或重点突破环节使用。`,
   };
+
+  if (classroomUse) {
+    pedagogy.classroom_use = classroomUse;
+  }
+
+  return pedagogy;
 }
 
 function buildAppletFiles(item) {
@@ -433,7 +438,11 @@ function buildManimMetadata(item) {
     title: item.title,
     subtitle: `围绕${item.lessonTitle}的 Manim 数学可视化骨架`,
     curriculum: buildCommonCurriculum(item),
-    pedagogy: buildCommonPedagogy(item, 6),
+    pedagogy: buildCommonPedagogy(
+      item,
+      6,
+      `建议在「${item.lessonTitle}」课堂中作为概念导入或关键过程解释使用。`,
+    ),
     mathematical_scope: {
       focus: item.note,
       lesson: item.lessonTitle,

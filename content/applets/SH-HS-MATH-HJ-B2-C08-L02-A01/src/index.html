@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>向量加减法构造器</title>
+    <style>
+      body {
+        margin: 0;
+        min-height: 100svh;
+        display: grid;
+        place-items: center;
+        background: #f6faf8;
+        color: #17231f;
+        font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+      }
+
+      main {
+        width: min(720px, calc(100vw - 32px));
+        padding: 24px;
+        border: 1px solid #d7e0dc;
+        border-radius: 8px;
+        background: #ffffff;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p>sh-hs-math-applet-sdk</p>
+      <h1>向量加减法构造器</h1>
+      <p>拖动两个向量并切换三角形法则、平行四边形法则和减法模式，同步显示合向量与路径解释。</p>
+      <p>资源 ID：SH-HS-MATH-HJ-B2-C08-L02-A01</p>
+    </main>
+    <script>
+      const RESOURCE_ID = "SH-HS-MATH-HJ-B2-C08-L02-A01";
+      window.parent?.postMessage({ type: "applet:ready", resourceId: RESOURCE_ID, payload: { current_value: 0 } }, "*");
+    </script>
+  </body>
+</html>
