@@ -6,6 +6,7 @@
       "content/applets/SH-HS-MATH-HJ-B2-C07-L02-A01",
       "content/applets/SH-HS-MATH-HJ-B2-C07-L03-A01",
       "content/applets/SH-HS-MATH-HJ-B2-C07-L03-A02",
+      "content/applets/SH-HS-MATH-HJ-B2-C07-L04-A01",
       "content/applets/SH-HS-MATH-HJ-B2-C07-L05-A01"
     ],
     "manim": [
@@ -101,7 +102,7 @@
                     "title": "余弦函数的性质",
                     "status": "draft",
                     "resourceCount": 2,
-                    "hasImplementedApplet": false
+                    "hasImplementedApplet": true
                   }
                 ]
               },
@@ -2258,14 +2259,403 @@
           "id": "SH-HS-MATH-HJ-B2-C07-L04-A01",
           "resourceType": "applet",
           "title": "正弦余弦性质对照板",
+          "subtitle": "并列比较关键点、单调段和对称元素，归纳 y = cos x 的性质",
           "cognitiveAction": "比较",
           "note": "并列联动关键点、单调段和对称元素，支持教师切换问题焦点。",
-          "availability": "proposed",
-          "status": "planned",
-          "version": null,
-          "metadataPreview": null,
-          "player": null,
-          "package": null
+          "availability": "metadata_ready",
+          "status": "draft",
+          "version": "0.1.0",
+          "metadataPreview": {
+            "id": "SH-HS-MATH-HJ-B2-C07-L04-A01",
+            "version": "0.1.0",
+            "status": "draft",
+            "resourceType": "applet",
+            "title": "正弦余弦性质对照板",
+            "subtitle": "并列比较关键点、单调段和对称元素，归纳 y = cos x 的性质",
+            "curriculum": {
+              "region": "上海",
+              "stage": "高中",
+              "subject": "数学",
+              "edition": "沪教版",
+              "volume_id": "B2",
+              "volume_title": "必修第二册",
+              "chapter_id": "SH-HS-MATH-HJ-B2-C07",
+              "chapter_title": "三角函数",
+              "section_id": "SH-HS-MATH-HJ-B2-C07-S02",
+              "section_title": "余弦函数的图像与性质",
+              "lesson_id": "SH-HS-MATH-HJ-B2-C07-L04",
+              "textbook_ref": "7.2.2",
+              "lesson_title": "余弦函数的性质"
+            },
+            "pedagogy": {
+              "cognitiveAction": "比较",
+              "estimatedClassroomMinutes": 20,
+              "primaryTeachingProblem": "学生常把正弦函数的奇偶性、单调区间和关键点一般式直接套到余弦函数，不能从单位圆和图像解释差异。",
+              "learningGoals": [
+                "比较 y = sin x 与 y = cos x 的起点和关键点顺序，说明余弦函数的性质不能机械套用正弦函数。",
+                "从图像对照中写出余弦函数的单调递增区间和递减区间，并保留 2kpi。",
+                "区分余弦函数的偶函数性质、对称轴和对称中心。",
+                "用 k 属于整数的形式表达余弦函数的零点、最大值点和最小值点。"
+              ],
+              "prerequisites": [
+                "余弦函数图像的生成过程",
+                "正弦函数性质",
+                "函数奇偶性、周期性和单调性的语言表达"
+              ],
+              "successors": [
+                "SH-HS-MATH-HJ-B2-C07-L05",
+                "SH-HS-MATH-HJ-B2-C08-K01"
+              ],
+              "coreCompetencies": [
+                "逻辑推理",
+                "数学运算",
+                "直观想象"
+              ]
+            },
+            "mathematicalScope": {
+              "primary_function": "y = cos x",
+              "comparison_function": "y = sin x",
+              "independent_variable": "角 x 的弧度量",
+              "dependent_variable": "函数值 y",
+              "domain": "R",
+              "range": "[-1, 1]",
+              "fundamental_period": "2pi",
+              "default_x_range": "-2pi <= x <= 4pi",
+              "monotonicity": {
+                "increasing": "[-pi + 2kpi, 2kpi], k in Z",
+                "decreasing": "[2kpi, pi + 2kpi], k in Z"
+              },
+              "symmetry": {
+                "even_function": "cos(-x) = cos x",
+                "axes": "x = kpi, k in Z",
+                "centers": "(pi/2 + kpi, 0), k in Z"
+              },
+              "key_points": {
+                "zeros": "x = pi/2 + kpi, k in Z",
+                "maximum_points": "(2kpi, 1), k in Z",
+                "minimum_points": "(pi + 2kpi, -1), k in Z"
+              },
+              "out_of_scope": [
+                "余弦图像的单位圆生成过程",
+                "正切函数图像与性质",
+                "y = A sin(omega x + phi) 的参数变换",
+                "用导数证明余弦函数单调性"
+              ]
+            },
+            "representations": [
+              {
+                "id": "paired_graphs",
+                "role": "同屏显示 y = cos x 与 y = sin x，余弦为主、正弦为参照。"
+              },
+              {
+                "id": "synchronized_cursor",
+                "role": "在同一 x 下读出 cos x 与 sin x，比较关键点顺序。"
+              },
+              {
+                "id": "monotonic_segments",
+                "role": "突出选定 k 下余弦函数的递增段和递减段。"
+              },
+              {
+                "id": "symmetry_elements",
+                "role": "标示余弦函数的对称轴、对称中心和偶函数配对点。"
+              },
+              {
+                "id": "key_point_table",
+                "role": "列出余弦函数零点、最大值点、最小值点及其一般形式。"
+              },
+              {
+                "id": "property_statement",
+                "role": "在教师揭示时给出余弦性质归纳句。"
+              }
+            ],
+            "narrativeDesign": {
+              "beats": [],
+              "pausePoints": []
+            },
+            "interactionDesign": {
+              "primaryControl": "拖动同步游标或用 x 滑块改变观察位置，在正弦参照下比较余弦函数的性质层。",
+              "teacherControls": [
+                "播放/暂停同步游标沿图像移动",
+                "重置到 x = 0",
+                "显示或隐藏正弦参照曲线",
+                "显示或隐藏余弦周期比较点",
+                "显示或隐藏余弦单调区间",
+                "显示或隐藏余弦对称轴、对称中心和偶函数配对点",
+                "显示或隐藏余弦零点、最值点和性质表",
+                "选择 k = -1、0、1 对应的周期段",
+                "分步揭示余弦性质归纳"
+              ],
+              "studentControls": [
+                "拖动同步游标比较 cos x 与 sin x 的关键点顺序",
+                "切换性质层后填写余弦函数的一般式",
+                "先判断当前余弦点所在性质，再查看反馈"
+              ],
+              "stagedReveal": [
+                {
+                  "step": "paired_graphs_only",
+                  "description": "只显示余弦曲线、正弦参照曲线和同步游标。"
+                },
+                {
+                  "step": "period_compare",
+                  "description": "显示相隔 2pi 的余弦同高点，确认周期性。"
+                },
+                {
+                  "step": "monotonic_compare",
+                  "description": "显示选定 k 下余弦函数的递增段和递减段，比较端点。"
+                },
+                {
+                  "step": "symmetry_compare",
+                  "description": "显示对称轴、对称中心和关于 y 轴的偶函数配对点。"
+                },
+                {
+                  "step": "key_points_generalization",
+                  "description": "显示零点、最大值点、最小值点，归纳带 k 的一般形式。"
+                },
+                {
+                  "step": "property_summary",
+                  "description": "显示定义域、值域、周期性、奇偶性、单调性和关键点结论。"
+                }
+              ]
+            },
+            "dataContract": {
+              "state_variables": [
+                {
+                  "name": "x_value",
+                  "unit": "radian",
+                  "value_type": "number",
+                  "default": 0,
+                  "description": "当前同步游标的横坐标 x。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "cosine_value",
+                  "unit": "unitless",
+                  "value_type": "number",
+                  "default": 1,
+                  "description": "当前观察点对应的 cos x。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "sine_value",
+                  "unit": "unitless",
+                  "value_type": "number",
+                  "default": 0,
+                  "description": "同一 x 下的 sin x，用作参照。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "period_shift_k",
+                  "unit": "integer",
+                  "value_type": "number",
+                  "default": 0,
+                  "description": "当前用于突出单调区间和周期段的整数 k。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "sine_reference_visible",
+                  "value_type": "boolean",
+                  "default": true,
+                  "description": "是否显示正弦参照曲线。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "period_compare_visible",
+                  "value_type": "boolean",
+                  "default": false,
+                  "description": "是否显示相隔 2pi 的余弦周期比较点。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "monotonic_segments_visible",
+                  "value_type": "boolean",
+                  "default": false,
+                  "description": "是否显示选定周期中的余弦单调区间。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "symmetry_visible",
+                  "value_type": "boolean",
+                  "default": false,
+                  "description": "是否显示余弦对称轴、对称中心和偶函数配对点。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "key_points_visible",
+                  "value_type": "boolean",
+                  "default": false,
+                  "description": "是否显示余弦零点、最值点和性质表。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "summary_visible",
+                  "value_type": "boolean",
+                  "default": false,
+                  "description": "是否显示余弦性质归纳。",
+                  "persistence": "snapshot"
+                }
+              ],
+              "events": [
+                {
+                  "name": "x_changed",
+                  "direction": "applet_to_player",
+                  "description": "当前同步游标移动。",
+                  "payload": [
+                    "x_value",
+                    "cosine_value",
+                    "sine_value"
+                  ]
+                },
+                {
+                  "name": "period_shift_changed",
+                  "direction": "applet_to_player",
+                  "description": "教师切换用于比较的周期段。",
+                  "payload": [
+                    "period_shift_k"
+                  ]
+                },
+                {
+                  "name": "layer_toggled",
+                  "direction": "applet_to_player",
+                  "description": "教师显示或隐藏某一性质层。",
+                  "payload": [
+                    "sine_reference_visible",
+                    "period_compare_visible",
+                    "monotonic_segments_visible",
+                    "symmetry_visible",
+                    "key_points_visible",
+                    "summary_visible"
+                  ]
+                },
+                {
+                  "name": "checkpoint_reached",
+                  "direction": "applet_to_player",
+                  "description": "当前点接近余弦零点、最大值点或最小值点。",
+                  "payload": [
+                    "x_value",
+                    "cosine_value"
+                  ]
+                }
+              ]
+            },
+            "files": {
+              "readme": "README.md",
+              "teacher_script": "teacher-script.md",
+              "student_task": "student-task.md",
+              "review_record": "review.md",
+              "src_entry": "src/index.html"
+            },
+            "feedbackAndDiagnosis": {
+              "success_evidence": [
+                "学生能说明余弦函数是偶函数，而正弦函数是奇函数，不能直接套用。",
+                "学生能写出余弦函数递增区间和递减区间，并保留 2kpi。",
+                "学生能把余弦对称轴 x = kpi 与对称中心 (pi/2 + kpi, 0) 分开表达。",
+                "学生能用 k 属于整数的形式写出余弦零点和最值点。"
+              ],
+              "common_error_tags": [
+                {
+                  "id": "sine_property_transfer",
+                  "label": "把正弦函数奇偶性或单调区间直接套到余弦函数"
+                },
+                {
+                  "id": "period_omission",
+                  "label": "只写一个周期，遗漏加 2kpi 或整数 k 的一般形式"
+                },
+                {
+                  "id": "monotonic_direction_confusion",
+                  "label": "把余弦函数在一个周期内的递增递减方向写反"
+                },
+                {
+                  "id": "axis_center_mixup",
+                  "label": "把余弦函数的对称轴和对称中心混为同一种对象"
+                },
+                {
+                  "id": "zero_extrema_formula_mixup",
+                  "label": "把零点、最大值点和最小值点的一般式互相混用"
+                }
+              ],
+              "feedback_principles": [
+                "反馈先要求学生指出比较对象是正弦还是余弦，再写结论。",
+                "单调性反馈必须回到余弦图像的端点和方向。",
+                "对称性反馈必须区分偶函数、对称轴和对称中心。",
+                "一般式反馈必须检查 k 属于整数和周期步长是否正确。"
+              ]
+            },
+            "visualSemantics": {
+              "cosine_curve": "余弦函数 y = cos x 的主图像，使用冷色。",
+              "sine_reference": "正弦函数 y = sin x 的参照图像，使用暖色虚线。",
+              "current_point": "当前余弦观察点 (x, cos x)。",
+              "sine_point": "同一 x 下的正弦参照点 (x, sin x)。",
+              "period_twin": "与当前余弦点相隔 2pi 且函数值相同的周期比较点。",
+              "increasing_segment": "选定 k 下余弦函数的递增区间。",
+              "decreasing_segment": "选定 k 下余弦函数的递减区间。",
+              "symmetry_axis": "余弦图像的竖直对称轴。",
+              "symmetry_center": "余弦图像的中心对称点。",
+              "key_points": "余弦函数的零点、最大值点和最小值点。",
+              "rule": "颜色只用于区分数学对象和性质层，不作装饰。"
+            },
+            "implementation": {
+              "phase": "runnable_prototype",
+              "html_src_status": "runnable",
+              "planned_engine": "native-canvas-svg",
+              "create_src_in_later_task": false,
+              "classroom_device_targets": [
+                "教师电脑浏览器",
+                "教室大屏",
+                "触控屏或触控板"
+              ]
+            },
+            "compliance": {
+              "copyright_note": "本资源包为原创教学脚本与交互实现，不复制教材正文、官方课件、教案或商业平台资源。",
+              "review_status": "self_checked_draft"
+            }
+          },
+          "player": {
+            "kind": "iframe",
+            "isRunnable": true,
+            "src": "content/applets/SH-HS-MATH-HJ-B2-C07-L04-A01/src/index.html",
+            "title": "正弦余弦性质对照板",
+            "sandbox": "allow-scripts allow-same-origin"
+          },
+          "package": {
+            "path": "content/applets/SH-HS-MATH-HJ-B2-C07-L04-A01",
+            "files": {
+              "metadata": "content/applets/SH-HS-MATH-HJ-B2-C07-L04-A01/metadata.yaml",
+              "readme": "content/applets/SH-HS-MATH-HJ-B2-C07-L04-A01/README.md",
+              "teacherScript": "content/applets/SH-HS-MATH-HJ-B2-C07-L04-A01/teacher-script.md",
+              "studentTask": "content/applets/SH-HS-MATH-HJ-B2-C07-L04-A01/student-task.md",
+              "reviewRecord": "content/applets/SH-HS-MATH-HJ-B2-C07-L04-A01/review.md",
+              "srcEntry": "content/applets/SH-HS-MATH-HJ-B2-C07-L04-A01/src/index.html"
+            },
+            "teacherScript": {
+              "kind": "teacher_script",
+              "path": "content/applets/SH-HS-MATH-HJ-B2-C07-L04-A01/teacher-script.md",
+              "title": "教师脚本：正弦余弦性质对照板",
+              "summary": "适用课时：必修第二册 7.2.2“余弦函数的性质” 建议时长：20 分钟 资源状态：`draft`",
+              "sections": [
+                "教学目标",
+                "课前准备",
+                "课堂流程",
+                "常见误区与处理",
+                "本节不展开"
+              ]
+            },
+            "studentTask": {
+              "kind": "student_task",
+              "path": "content/applets/SH-HS-MATH-HJ-B2-C07-L04-A01/student-task.md",
+              "title": "学生活动：比较余弦函数性质",
+              "summary": "适用资源：`SH-HS-MATH-HJ-B2-C07-L04-A01` 完成方式：课堂观察记录、小组讨论、个人短答",
+              "sections": [
+                "活动目标",
+                "任务一：先分清正弦参照和余弦主图像",
+                "任务二：周期比较",
+                "任务三：单调区间端点",
+                "任务四：对称元素分类",
+                "任务五：关键点一般式",
+                "任务六：快速诊断",
+                "提交要求"
+              ]
+            }
+          }
         },
         {
           "id": "SH-HS-MATH-HJ-B2-C07-L04-D01",
@@ -5330,14 +5720,403 @@
           "id": "SH-HS-MATH-HJ-B2-C07-L04-A01",
           "resourceType": "applet",
           "title": "正弦余弦性质对照板",
+          "subtitle": "并列比较关键点、单调段和对称元素，归纳 y = cos x 的性质",
           "cognitiveAction": "比较",
           "note": "并列联动关键点、单调段和对称元素，支持教师切换问题焦点。",
-          "availability": "proposed",
-          "status": "planned",
-          "version": null,
-          "metadataPreview": null,
-          "player": null,
-          "package": null
+          "availability": "metadata_ready",
+          "status": "draft",
+          "version": "0.1.0",
+          "metadataPreview": {
+            "id": "SH-HS-MATH-HJ-B2-C07-L04-A01",
+            "version": "0.1.0",
+            "status": "draft",
+            "resourceType": "applet",
+            "title": "正弦余弦性质对照板",
+            "subtitle": "并列比较关键点、单调段和对称元素，归纳 y = cos x 的性质",
+            "curriculum": {
+              "region": "上海",
+              "stage": "高中",
+              "subject": "数学",
+              "edition": "沪教版",
+              "volume_id": "B2",
+              "volume_title": "必修第二册",
+              "chapter_id": "SH-HS-MATH-HJ-B2-C07",
+              "chapter_title": "三角函数",
+              "section_id": "SH-HS-MATH-HJ-B2-C07-S02",
+              "section_title": "余弦函数的图像与性质",
+              "lesson_id": "SH-HS-MATH-HJ-B2-C07-L04",
+              "textbook_ref": "7.2.2",
+              "lesson_title": "余弦函数的性质"
+            },
+            "pedagogy": {
+              "cognitiveAction": "比较",
+              "estimatedClassroomMinutes": 20,
+              "primaryTeachingProblem": "学生常把正弦函数的奇偶性、单调区间和关键点一般式直接套到余弦函数，不能从单位圆和图像解释差异。",
+              "learningGoals": [
+                "比较 y = sin x 与 y = cos x 的起点和关键点顺序，说明余弦函数的性质不能机械套用正弦函数。",
+                "从图像对照中写出余弦函数的单调递增区间和递减区间，并保留 2kpi。",
+                "区分余弦函数的偶函数性质、对称轴和对称中心。",
+                "用 k 属于整数的形式表达余弦函数的零点、最大值点和最小值点。"
+              ],
+              "prerequisites": [
+                "余弦函数图像的生成过程",
+                "正弦函数性质",
+                "函数奇偶性、周期性和单调性的语言表达"
+              ],
+              "successors": [
+                "SH-HS-MATH-HJ-B2-C07-L05",
+                "SH-HS-MATH-HJ-B2-C08-K01"
+              ],
+              "coreCompetencies": [
+                "逻辑推理",
+                "数学运算",
+                "直观想象"
+              ]
+            },
+            "mathematicalScope": {
+              "primary_function": "y = cos x",
+              "comparison_function": "y = sin x",
+              "independent_variable": "角 x 的弧度量",
+              "dependent_variable": "函数值 y",
+              "domain": "R",
+              "range": "[-1, 1]",
+              "fundamental_period": "2pi",
+              "default_x_range": "-2pi <= x <= 4pi",
+              "monotonicity": {
+                "increasing": "[-pi + 2kpi, 2kpi], k in Z",
+                "decreasing": "[2kpi, pi + 2kpi], k in Z"
+              },
+              "symmetry": {
+                "even_function": "cos(-x) = cos x",
+                "axes": "x = kpi, k in Z",
+                "centers": "(pi/2 + kpi, 0), k in Z"
+              },
+              "key_points": {
+                "zeros": "x = pi/2 + kpi, k in Z",
+                "maximum_points": "(2kpi, 1), k in Z",
+                "minimum_points": "(pi + 2kpi, -1), k in Z"
+              },
+              "out_of_scope": [
+                "余弦图像的单位圆生成过程",
+                "正切函数图像与性质",
+                "y = A sin(omega x + phi) 的参数变换",
+                "用导数证明余弦函数单调性"
+              ]
+            },
+            "representations": [
+              {
+                "id": "paired_graphs",
+                "role": "同屏显示 y = cos x 与 y = sin x，余弦为主、正弦为参照。"
+              },
+              {
+                "id": "synchronized_cursor",
+                "role": "在同一 x 下读出 cos x 与 sin x，比较关键点顺序。"
+              },
+              {
+                "id": "monotonic_segments",
+                "role": "突出选定 k 下余弦函数的递增段和递减段。"
+              },
+              {
+                "id": "symmetry_elements",
+                "role": "标示余弦函数的对称轴、对称中心和偶函数配对点。"
+              },
+              {
+                "id": "key_point_table",
+                "role": "列出余弦函数零点、最大值点、最小值点及其一般形式。"
+              },
+              {
+                "id": "property_statement",
+                "role": "在教师揭示时给出余弦性质归纳句。"
+              }
+            ],
+            "narrativeDesign": {
+              "beats": [],
+              "pausePoints": []
+            },
+            "interactionDesign": {
+              "primaryControl": "拖动同步游标或用 x 滑块改变观察位置，在正弦参照下比较余弦函数的性质层。",
+              "teacherControls": [
+                "播放/暂停同步游标沿图像移动",
+                "重置到 x = 0",
+                "显示或隐藏正弦参照曲线",
+                "显示或隐藏余弦周期比较点",
+                "显示或隐藏余弦单调区间",
+                "显示或隐藏余弦对称轴、对称中心和偶函数配对点",
+                "显示或隐藏余弦零点、最值点和性质表",
+                "选择 k = -1、0、1 对应的周期段",
+                "分步揭示余弦性质归纳"
+              ],
+              "studentControls": [
+                "拖动同步游标比较 cos x 与 sin x 的关键点顺序",
+                "切换性质层后填写余弦函数的一般式",
+                "先判断当前余弦点所在性质，再查看反馈"
+              ],
+              "stagedReveal": [
+                {
+                  "step": "paired_graphs_only",
+                  "description": "只显示余弦曲线、正弦参照曲线和同步游标。"
+                },
+                {
+                  "step": "period_compare",
+                  "description": "显示相隔 2pi 的余弦同高点，确认周期性。"
+                },
+                {
+                  "step": "monotonic_compare",
+                  "description": "显示选定 k 下余弦函数的递增段和递减段，比较端点。"
+                },
+                {
+                  "step": "symmetry_compare",
+                  "description": "显示对称轴、对称中心和关于 y 轴的偶函数配对点。"
+                },
+                {
+                  "step": "key_points_generalization",
+                  "description": "显示零点、最大值点、最小值点，归纳带 k 的一般形式。"
+                },
+                {
+                  "step": "property_summary",
+                  "description": "显示定义域、值域、周期性、奇偶性、单调性和关键点结论。"
+                }
+              ]
+            },
+            "dataContract": {
+              "state_variables": [
+                {
+                  "name": "x_value",
+                  "unit": "radian",
+                  "value_type": "number",
+                  "default": 0,
+                  "description": "当前同步游标的横坐标 x。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "cosine_value",
+                  "unit": "unitless",
+                  "value_type": "number",
+                  "default": 1,
+                  "description": "当前观察点对应的 cos x。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "sine_value",
+                  "unit": "unitless",
+                  "value_type": "number",
+                  "default": 0,
+                  "description": "同一 x 下的 sin x，用作参照。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "period_shift_k",
+                  "unit": "integer",
+                  "value_type": "number",
+                  "default": 0,
+                  "description": "当前用于突出单调区间和周期段的整数 k。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "sine_reference_visible",
+                  "value_type": "boolean",
+                  "default": true,
+                  "description": "是否显示正弦参照曲线。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "period_compare_visible",
+                  "value_type": "boolean",
+                  "default": false,
+                  "description": "是否显示相隔 2pi 的余弦周期比较点。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "monotonic_segments_visible",
+                  "value_type": "boolean",
+                  "default": false,
+                  "description": "是否显示选定周期中的余弦单调区间。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "symmetry_visible",
+                  "value_type": "boolean",
+                  "default": false,
+                  "description": "是否显示余弦对称轴、对称中心和偶函数配对点。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "key_points_visible",
+                  "value_type": "boolean",
+                  "default": false,
+                  "description": "是否显示余弦零点、最值点和性质表。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "summary_visible",
+                  "value_type": "boolean",
+                  "default": false,
+                  "description": "是否显示余弦性质归纳。",
+                  "persistence": "snapshot"
+                }
+              ],
+              "events": [
+                {
+                  "name": "x_changed",
+                  "direction": "applet_to_player",
+                  "description": "当前同步游标移动。",
+                  "payload": [
+                    "x_value",
+                    "cosine_value",
+                    "sine_value"
+                  ]
+                },
+                {
+                  "name": "period_shift_changed",
+                  "direction": "applet_to_player",
+                  "description": "教师切换用于比较的周期段。",
+                  "payload": [
+                    "period_shift_k"
+                  ]
+                },
+                {
+                  "name": "layer_toggled",
+                  "direction": "applet_to_player",
+                  "description": "教师显示或隐藏某一性质层。",
+                  "payload": [
+                    "sine_reference_visible",
+                    "period_compare_visible",
+                    "monotonic_segments_visible",
+                    "symmetry_visible",
+                    "key_points_visible",
+                    "summary_visible"
+                  ]
+                },
+                {
+                  "name": "checkpoint_reached",
+                  "direction": "applet_to_player",
+                  "description": "当前点接近余弦零点、最大值点或最小值点。",
+                  "payload": [
+                    "x_value",
+                    "cosine_value"
+                  ]
+                }
+              ]
+            },
+            "files": {
+              "readme": "README.md",
+              "teacher_script": "teacher-script.md",
+              "student_task": "student-task.md",
+              "review_record": "review.md",
+              "src_entry": "src/index.html"
+            },
+            "feedbackAndDiagnosis": {
+              "success_evidence": [
+                "学生能说明余弦函数是偶函数，而正弦函数是奇函数，不能直接套用。",
+                "学生能写出余弦函数递增区间和递减区间，并保留 2kpi。",
+                "学生能把余弦对称轴 x = kpi 与对称中心 (pi/2 + kpi, 0) 分开表达。",
+                "学生能用 k 属于整数的形式写出余弦零点和最值点。"
+              ],
+              "common_error_tags": [
+                {
+                  "id": "sine_property_transfer",
+                  "label": "把正弦函数奇偶性或单调区间直接套到余弦函数"
+                },
+                {
+                  "id": "period_omission",
+                  "label": "只写一个周期，遗漏加 2kpi 或整数 k 的一般形式"
+                },
+                {
+                  "id": "monotonic_direction_confusion",
+                  "label": "把余弦函数在一个周期内的递增递减方向写反"
+                },
+                {
+                  "id": "axis_center_mixup",
+                  "label": "把余弦函数的对称轴和对称中心混为同一种对象"
+                },
+                {
+                  "id": "zero_extrema_formula_mixup",
+                  "label": "把零点、最大值点和最小值点的一般式互相混用"
+                }
+              ],
+              "feedback_principles": [
+                "反馈先要求学生指出比较对象是正弦还是余弦，再写结论。",
+                "单调性反馈必须回到余弦图像的端点和方向。",
+                "对称性反馈必须区分偶函数、对称轴和对称中心。",
+                "一般式反馈必须检查 k 属于整数和周期步长是否正确。"
+              ]
+            },
+            "visualSemantics": {
+              "cosine_curve": "余弦函数 y = cos x 的主图像，使用冷色。",
+              "sine_reference": "正弦函数 y = sin x 的参照图像，使用暖色虚线。",
+              "current_point": "当前余弦观察点 (x, cos x)。",
+              "sine_point": "同一 x 下的正弦参照点 (x, sin x)。",
+              "period_twin": "与当前余弦点相隔 2pi 且函数值相同的周期比较点。",
+              "increasing_segment": "选定 k 下余弦函数的递增区间。",
+              "decreasing_segment": "选定 k 下余弦函数的递减区间。",
+              "symmetry_axis": "余弦图像的竖直对称轴。",
+              "symmetry_center": "余弦图像的中心对称点。",
+              "key_points": "余弦函数的零点、最大值点和最小值点。",
+              "rule": "颜色只用于区分数学对象和性质层，不作装饰。"
+            },
+            "implementation": {
+              "phase": "runnable_prototype",
+              "html_src_status": "runnable",
+              "planned_engine": "native-canvas-svg",
+              "create_src_in_later_task": false,
+              "classroom_device_targets": [
+                "教师电脑浏览器",
+                "教室大屏",
+                "触控屏或触控板"
+              ]
+            },
+            "compliance": {
+              "copyright_note": "本资源包为原创教学脚本与交互实现，不复制教材正文、官方课件、教案或商业平台资源。",
+              "review_status": "self_checked_draft"
+            }
+          },
+          "player": {
+            "kind": "iframe",
+            "isRunnable": true,
+            "src": "content/applets/SH-HS-MATH-HJ-B2-C07-L04-A01/src/index.html",
+            "title": "正弦余弦性质对照板",
+            "sandbox": "allow-scripts allow-same-origin"
+          },
+          "package": {
+            "path": "content/applets/SH-HS-MATH-HJ-B2-C07-L04-A01",
+            "files": {
+              "metadata": "content/applets/SH-HS-MATH-HJ-B2-C07-L04-A01/metadata.yaml",
+              "readme": "content/applets/SH-HS-MATH-HJ-B2-C07-L04-A01/README.md",
+              "teacherScript": "content/applets/SH-HS-MATH-HJ-B2-C07-L04-A01/teacher-script.md",
+              "studentTask": "content/applets/SH-HS-MATH-HJ-B2-C07-L04-A01/student-task.md",
+              "reviewRecord": "content/applets/SH-HS-MATH-HJ-B2-C07-L04-A01/review.md",
+              "srcEntry": "content/applets/SH-HS-MATH-HJ-B2-C07-L04-A01/src/index.html"
+            },
+            "teacherScript": {
+              "kind": "teacher_script",
+              "path": "content/applets/SH-HS-MATH-HJ-B2-C07-L04-A01/teacher-script.md",
+              "title": "教师脚本：正弦余弦性质对照板",
+              "summary": "适用课时：必修第二册 7.2.2“余弦函数的性质” 建议时长：20 分钟 资源状态：`draft`",
+              "sections": [
+                "教学目标",
+                "课前准备",
+                "课堂流程",
+                "常见误区与处理",
+                "本节不展开"
+              ]
+            },
+            "studentTask": {
+              "kind": "student_task",
+              "path": "content/applets/SH-HS-MATH-HJ-B2-C07-L04-A01/student-task.md",
+              "title": "学生活动：比较余弦函数性质",
+              "summary": "适用资源：`SH-HS-MATH-HJ-B2-C07-L04-A01` 完成方式：课堂观察记录、小组讨论、个人短答",
+              "sections": [
+                "活动目标",
+                "任务一：先分清正弦参照和余弦主图像",
+                "任务二：周期比较",
+                "任务三：单调区间端点",
+                "任务四：对称元素分类",
+                "任务五：关键点一般式",
+                "任务六：快速诊断",
+                "提交要求"
+              ]
+            }
+          }
         },
         {
           "id": "SH-HS-MATH-HJ-B2-C07-L04-D01",
@@ -6410,8 +7189,8 @@
     "volumeCount": 7,
     "chapterCount": 1,
     "lessonCount": 7,
-    "implementedAppletCount": 5,
+    "implementedAppletCount": 6,
     "implementedManimCount": 2,
-    "plannedResourceCount": 8
+    "plannedResourceCount": 7
   }
 }
