@@ -17,15 +17,16 @@
 
 | 最高频错因 | 回讲入口 | 追问 |
 | --- | --- | --- |
-| `period_omission` | 打开 Applet 的周期比较图层。 | “这个点向右平移 2pi 后，函数值发生了什么？” |
+| `period_omission` | 打开 Applet 的周期比较图层。 | “这个点向右平移 2π 后，函数值发生了什么？一般式里的 `k ∈ Z` 覆盖了哪些周期？” |
+| `period_length_confusion` | 对照相邻零点与整条图像平移。 | “向右平移 π 时函数值变成什么？为什么零点间隔不是最小正周期？” |
 | `monotonic_endpoint_confusion` | 打开单调区间图层，只显示一个周期。 | “从哪个端点到哪个端点函数值一直增加？” |
 | `axis_center_mixup` | 同时显示对称轴和对称中心。 | “轴是一条直线，中心是一个点，它们分别落在图像哪里？” |
 | `extrema_zero_formula_omission` | 打开关键点图层。 | “最大值点、最小值点、零点的横坐标步长分别是多少？” |
-| `local_interval_overgeneralization` | 拖动观察点穿过 pi/2。 | “区间内出现转折点时，还能说整段单调吗？” |
+| `local_interval_overgeneralization` | 拖动观察点穿过 π/2。 | “区间内出现转折点时，还能说整段单调吗？” |
 
 ## 教师看板建议
 
-- 若 `period_omission` 命中率超过三分之一，先暂停推进，统一强调 `k 属于整数` 和周期步长。
+- 若 `period_omission` 或 `period_length_confusion` 命中率超过三分之一，先暂停推进，统一强调 `k ∈ Z`、周期步长 `2π` 和“零点间隔不等于周期”。
 - 若 `axis_center_mixup` 命中率高，避免只背表格，必须回到图像对象：竖直线、点、旋转半周。
 - 若简答题普遍只写结论不写理由，下一轮要求学生必须写“端点 - 趋势 - 一般式”三句。
 

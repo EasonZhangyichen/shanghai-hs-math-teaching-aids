@@ -6,6 +6,7 @@ total_score: 10
 mastery_threshold: 0.75
 misconception_tags:
   - "period_omission"
+  - "period_length_confusion"
   - "monotonic_endpoint_confusion"
   - "axis_center_mixup"
   - "extrema_zero_formula_omission"
@@ -13,62 +14,61 @@ misconception_tags:
 
 items:
   - id: "D01-Q01"
-    type: "single_choice"
+    type: "multiple_select"
     score: 1
-    title: "零点的一般式"
-    diagnostic_focus: "能否把一个周期内的零点推广到所有周期。"
-    prompt: "函数 y = sin x 的全部零点可以写成哪一种形式？"
+    title: "基础性质与零点"
+    diagnostic_focus: "能否同时确认定义域、值域、周期、奇偶性和零点一般式。"
+    prompt: "关于函数 y = sin x 的基础性质和零点，下列说法正确的是哪些？"
     choices:
       - id: "A"
-        text: "x = kpi，k 属于整数"
+        text: "定义域是 R，值域是 [-1, 1]。"
         is_correct: true
-        feedback: "零点每隔 pi 出现一次，k 属于整数能覆盖全部零点。"
+        feedback: "正弦函数对任意实数 x 都有定义，函数值始终在 -1 和 1 之间。"
       - id: "B"
-        text: "x = 0 或 x = pi"
-        is_correct: false
-        misconception_tags: ["period_omission"]
-        feedback: "这里只列出一个周期附近的零点，还没有推广到所有周期。"
+        text: "最小正周期是 2π，并且 y = sin x 是奇函数。"
+        is_correct: true
+        feedback: "sin(x + 2π) = sin x，sin(-x) = -sin x。"
       - id: "C"
-        text: "x = 2kpi，k 属于整数"
-        is_correct: false
-        misconception_tags: ["extrema_zero_formula_omission"]
-        feedback: "这个表达只覆盖偶数倍 pi，漏掉了奇数倍 pi 的零点。"
+        text: "全部零点可以写作 x = kπ，k ∈ Z。"
+        is_correct: true
+        feedback: "k ∈ Z 能覆盖 0、±π、±2π 等所有零点。"
       - id: "D"
-        text: "x = pi/2 + kpi，k 属于整数"
+        text: "相邻两个零点间隔 π，所以最小正周期是 π。"
         is_correct: false
-        misconception_tags: ["extrema_zero_formula_omission", "axis_center_mixup"]
-        feedback: "这组横坐标对应正弦图像的对称轴位置，不是零点。"
-    answer: ["A"]
-    feedback_on_correct: "能写出零点的一般式，说明已经把周期结构纳入表达。"
+        misconception_tags: ["period_length_confusion"]
+        feedback: "零点间隔 π 不等于函数周期；整体图像重复需要平移 2π。"
+    answer: ["A", "B", "C"]
+    scoring_note: "全选 A、B、C 且不选 D 得 1 分；选择 D 时记录 period_length_confusion。"
+    feedback_on_correct: "能把定义域、值域、周期、奇偶性和零点一般式放在同一张性质表中判断。"
 
   - id: "D01-Q02"
     type: "single_choice"
     score: 1
-    title: "最大值点横坐标"
+    title: "最值点横坐标"
     diagnostic_focus: "能否区分最大值点、最小值点和只写特殊值。"
-    prompt: "函数 y = sin x 取得最大值 1 的所有 x 可以写成哪一种形式？"
+    prompt: "函数 y = sin x 的最大值点和最小值点横坐标应如何完整表达？"
     choices:
       - id: "A"
-        text: "x = pi/2 + 2kpi，k 属于整数"
+        text: "最大值 1：x = π/2 + 2kπ；最小值 -1：x = -π/2 + 2kπ，k ∈ Z"
         is_correct: true
-        feedback: "最大值点每隔 2pi 重复一次。"
+        feedback: "最大值点和最小值点都每隔 2π 重复一次，且两类点不能混用。"
       - id: "B"
-        text: "x = pi/2 + kpi，k 属于整数"
+        text: "最大值 1：x = π/2 + kπ；最小值 -1：x = -π/2 + kπ，k ∈ Z"
         is_correct: false
         misconception_tags: ["extrema_zero_formula_omission"]
-        feedback: "这组点交替包含最大值点和最小值点，不能都作为最大值点。"
+        feedback: "这两组写法都会把最大值点和最小值点交替混在一起。"
       - id: "C"
-        text: "x = pi/2"
+        text: "最大值 1：x = π/2；最小值 -1：x = 3π/2"
         is_correct: false
         misconception_tags: ["period_omission"]
-        feedback: "这只写出了一个最大值点，遗漏了相隔 2pi 的所有点。"
+        feedback: "这里只写出一个周期中的最值点，遗漏了所有 2π 平移后的点。"
       - id: "D"
-        text: "x = kpi，k 属于整数"
+        text: "最大值和最小值都出现在 x = kπ，k ∈ Z"
         is_correct: false
         misconception_tags: ["extrema_zero_formula_omission"]
-        feedback: "kpi 是零点横坐标，不是最大值点横坐标。"
+        feedback: "x = kπ，k ∈ Z 是零点横坐标，不是最值点横坐标。"
     answer: ["A"]
-    feedback_on_correct: "最大值点与零点、最小值点已经分开表达。"
+    feedback_on_correct: "最大值点、最小值点与零点已经分开表达。"
 
   - id: "D01-Q03"
     type: "single_choice"
@@ -78,21 +78,21 @@ items:
     prompt: "下列哪一项能完整表达 y = sin x 的递增区间？"
     choices:
       - id: "A"
-        text: "[-pi/2 + 2kpi, pi/2 + 2kpi]，k 属于整数"
+        text: "[-π/2 + 2kπ, π/2 + 2kπ]，k ∈ Z"
         is_correct: true
         feedback: "这正是每个周期中的递增半周期。"
       - id: "B"
-        text: "[-pi/2, pi/2]"
+        text: "[-π/2, π/2]"
         is_correct: false
         misconception_tags: ["period_omission"]
         feedback: "这是一个递增区间，但没有写出所有周期中的递增区间。"
       - id: "C"
-        text: "[pi/2 + 2kpi, 3pi/2 + 2kpi]，k 属于整数"
+        text: "[π/2 + 2kπ, 3π/2 + 2kπ]，k ∈ Z"
         is_correct: false
         misconception_tags: ["monotonic_endpoint_confusion"]
         feedback: "这段从最大值走向最小值，是递减区间。"
       - id: "D"
-        text: "[0 + 2kpi, pi + 2kpi]，k 属于整数"
+        text: "[2kπ, π + 2kπ]，k ∈ Z"
         is_correct: false
         misconception_tags: ["local_interval_overgeneralization", "monotonic_endpoint_confusion"]
         feedback: "这段先增后减，不能作为一个单调递增区间。"
@@ -107,25 +107,25 @@ items:
     prompt: "关于 y = sin x 的对称性，下列说法正确的是哪些？"
     choices:
       - id: "A"
-        text: "x = pi/2 + kpi，k 属于整数，是正弦图像的对称轴"
+        text: "x = π/2 + kπ，k ∈ Z，是正弦图像的对称轴"
         is_correct: true
         feedback: "每个最大值点或最小值点所在竖直直线都是对称轴。"
       - id: "B"
-        text: "(kpi, 0)，k 属于整数，是正弦图像的对称中心"
+        text: "(kπ, 0)，k ∈ Z，是正弦图像的对称中心"
         is_correct: true
         feedback: "每个零点都是中心对称点。"
       - id: "C"
-        text: "x = kpi，k 属于整数，是正弦图像的对称轴"
+        text: "x = kπ，k ∈ Z，是正弦图像的对称轴"
         is_correct: false
         misconception_tags: ["axis_center_mixup"]
-        feedback: "x = kpi 对应的是对称中心的横坐标，不是竖直对称轴。"
+        feedback: "x = kπ 对应的是对称中心的横坐标，不是竖直对称轴。"
       - id: "D"
-        text: "(pi/2 + kpi, 1)，k 属于整数，是正弦图像的对称中心"
+        text: "(π/2 + 2kπ, 1)，k ∈ Z，是正弦图像的对称中心"
         is_correct: false
-        misconception_tags: ["axis_center_mixup", "extrema_zero_formula_omission"]
-        feedback: "最大值点或最小值点所在竖直直线可作对称轴，但这些点不是对称中心。"
+        misconception_tags: ["axis_center_mixup"]
+        feedback: "这是最大值点；经过它的竖直直线 x = π/2 + 2kπ 是对称轴的一部分，但点本身不是对称中心。"
     answer: ["A", "B"]
-    scoring_note: "全选且不多选得 2 分；漏选一个正确项得 1 分；选择 C 或 D 时记录 axis_center_mixup。"
+    scoring_note: "全选且不多选得 2 分；漏选 A 或 B 得 1 分；选择 C 或 D 时记录 axis_center_mixup。"
     feedback_on_correct: "能把对称轴和对称中心作为不同几何对象处理。"
 
   - id: "D01-Q05"
@@ -133,12 +133,12 @@ items:
     score: 2
     title: "局部观察与单调区间"
     diagnostic_focus: "能否解释为什么整段区间不是单调区间。"
-    prompt: "有同学说：因为 sin 0 = 0，sin(pi/2) = 1，sin pi = 0，所以 y = sin x 在 [0, pi] 上是递增的。请判断这句话是否正确，并说明理由。"
+    prompt: "有同学说：因为 sin 0 = 0，sin(π/2) = 1，sin π = 0，所以 y = sin x 在 [0, π] 上是递增的。请判断这句话是否正确，并说明理由。"
     expected_response:
       - "这句话不正确。"
-      - "在 [0, pi/2] 上函数值增加，在 [pi/2, pi] 上函数值减少。"
-      - "pi/2 是转折端点，不能把 [0, pi] 作为一个递增区间。"
-      - "完整递增区间应写作 [-pi/2 + 2kpi, pi/2 + 2kpi]，k 属于整数。"
+      - "在 [0, π/2] 上函数值增加，在 [π/2, π] 上函数值减少。"
+      - "π/2 是转折端点，不能把 [0, π] 作为一个递增区间。"
+      - "完整递增区间应写作 [-π/2 + 2kπ, π/2 + 2kπ]，k ∈ Z。"
     misconception_tags_when_incomplete:
       - "local_interval_overgeneralization"
       - "monotonic_endpoint_confusion"
@@ -149,15 +149,17 @@ items:
     type: "error_analysis"
     score: 2
     title: "综合错因订正"
-    diagnostic_focus: "能否同时订正关键点、周期和对称元素。"
-    prompt: "某学生写道：y = sin x 的最大值点横坐标是 x = pi/2；零点是 x = 0, pi；对称中心是 (pi/2, 1)。请指出至少两处错误并改正。"
+    diagnostic_focus: "能否同时订正关键点、周期长度、周期遗漏和对称元素。"
+    prompt: "某学生写道：y = sin x 的最大值点横坐标是 x = π/2；零点是 x = 0, π；最小正周期是 π；对称中心是 (π/2, 1)。请指出至少两处错误并改正。"
     expected_response:
-      - "最大值点横坐标应为 x = pi/2 + 2kpi，k 属于整数。"
-      - "零点应为 x = kpi，k 属于整数。"
-      - "对称中心应为 (kpi, 0)，k 属于整数。"
-      - "(pi/2 + kpi, sin(pi/2 + kpi)) 所在竖直直线 x = pi/2 + kpi 是对称轴位置，不是对称中心。"
+      - "最大值点横坐标应为 x = π/2 + 2kπ，k ∈ Z。"
+      - "零点应为 x = kπ，k ∈ Z。"
+      - "最小正周期应为 2π，不是 π。"
+      - "对称中心应为 (kπ, 0)，k ∈ Z。"
+      - "点 (π/2 + 2kπ, 1) 是最大值点；经过它的竖直直线 x = π/2 + 2kπ 是对称轴的一部分，不是对称中心。"
     misconception_tags_when_incomplete:
       - "period_omission"
+      - "period_length_confusion"
       - "axis_center_mixup"
       - "extrema_zero_formula_omission"
     feedback_on_correct: "能从一个错误答案中分辨周期遗漏、关键点混用和对称对象混淆。"
