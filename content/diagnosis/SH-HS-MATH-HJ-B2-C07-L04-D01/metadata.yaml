@@ -26,8 +26,8 @@ pedagogy:
   estimated_classroom_minutes: 8
   primary_teaching_problem: "学生容易把正弦函数的奇偶性、单调区间和关键点位置直接迁移到余弦函数，导致余弦性质的一般式、对称元素和单位圆解释相互脱节。"
   learning_goals:
-    - "判断 y = cos x 的偶函数性质，并能用单位圆横坐标解释 cos(-x) = cos x。"
-    - "写出余弦函数最大值点、最小值点、零点和单调区间的完整一般式，并注明 k 属于整数。"
+    - "确认 y = cos x 的定义域为 R、值域为 [-1, 1]、最小正周期为 2π，并能说明它是偶函数。"
+    - "写出余弦函数最大值点、最小值点、零点和单调区间的完整一般式，并注明 k ∈ Z。"
     - "区分余弦图像的对称轴、对称中心和关键点坐标。"
     - "根据错因标签选择回看正弦余弦性质对照板中的奇偶、单调、关键点或单位圆图层。"
   prerequisites:
@@ -47,7 +47,7 @@ pedagogy:
 
 diagnosis_design:
   diagnostic_focus:
-    - "能否准确判断 y = cos x 是偶函数，而不是套用正弦函数的奇函数结论。"
+    - "能否确认定义域、值域、最小正周期和偶函数性质。"
     - "能否写出最大值点、最小值点、零点和单调区间的完整一般式。"
     - "能否区分余弦图像的对称轴与对称中心。"
     - "能否把单位圆中的横坐标变化与图像上的单调、奇偶和关键点联系起来。"
@@ -57,16 +57,19 @@ diagnosis_design:
       description: "把正弦函数的奇偶性、最大值点或单调区间直接套到余弦函数。"
     - id: "period_omission"
       title: "周期遗漏"
-      description: "只写一个周期内的点或区间，遗漏加 2kpi 或 k 属于整数的完整表达。"
+      description: "只写一个周期内的点或区间，遗漏加 2kπ 或 k ∈ Z 的完整表达。"
+    - id: "period_length_confusion"
+      title: "周期长度混淆"
+      description: "把相邻零点间隔 π 误认为最小正周期，或把余弦函数的周期步长写成 π。"
     - id: "monotonic_interval_reversal"
       title: "单调区间方向混淆"
       description: "把余弦的递增、递减半周期端点写反，或把包含转折点的区间当作单调区间。"
-    - id: "parity_symmetry_mixup"
-      title: "奇偶性和对称元素混淆"
-      description: "把偶函数、y 轴对称、竖直对称轴和中心对称点混为同一类对象。"
+    - id: "axis_center_mixup"
+      title: "对称轴与对称中心混淆"
+      description: "把偶函数对应的 y 轴、余弦图像的竖直对称轴和中心对称点混为同一类对象。"
     - id: "zero_extrema_formula_mixup"
-      title: "零点最值一般式混用"
-      description: "把零点、最大值点和最小值点的横坐标公式互相替代。"
+      title: "关键点一般式遗漏或混用"
+      description: "只写特殊零点或最值点，或把最大值点、最小值点和零点的横坐标公式互相替代。"
     - id: "unit_circle_graph_gap"
       title: "单位圆图像转换断裂"
       description: "不能用单位圆横坐标解释余弦图像的奇偶性、单调变化或关键点位置。"
@@ -80,7 +83,7 @@ diagnosis_design:
     estimated_minutes: 8
   feedback_strategy:
     immediate_feedback: "每题按命中的错因标签返回一句图像或单位圆回看提示，并要求学生补写一个完整一般式或一句比较理由。"
-    teacher_dashboard_notes: "若 sine_transfer_error 集中出现，先回到正弦余弦性质对照；若 period_omission 或 zero_extrema_formula_mixup 集中出现，回看关键点一般式；若 unit_circle_graph_gap 集中出现，回到单位圆横坐标投影。"
+    teacher_dashboard_notes: "若 sine_transfer_error 集中出现，先回到正弦余弦性质对照；若 period_omission、period_length_confusion 或 zero_extrema_formula_mixup 集中出现，回看周期与关键点一般式；若 axis_center_mixup 集中出现，回看对称轴和对称中心；若 unit_circle_graph_gap 集中出现，回到单位圆横坐标投影。"
     remediation_links:
       - "content/applets/SH-HS-MATH-HJ-B2-C07-L04-A01"
       - "content/applets/SH-HS-MATH-HJ-B2-C07-L03-A01"

@@ -18,16 +18,17 @@
 | 最高频错因 | 回讲入口 | 追问 |
 | --- | --- | --- |
 | `sine_transfer_error` | 打开正弦余弦性质对照图层。 | “这条结论来自正弦还是余弦？关键点在哪儿不同？” |
-| `period_omission` | 打开关键点一般式图层。 | “这个最大值点向右平移 2pi 后，还是最大值点吗？” |
-| `zero_extrema_formula_mixup` | 同时显示最大值点、最小值点和零点。 | “x = pi/2 + kpi 在余弦图像上对应什么点？” |
-| `monotonic_interval_reversal` | 打开余弦单调区间图层，只显示一个周期。 | “从 0 到 pi，横坐标投影怎样变化？” |
-| `parity_symmetry_mixup` | 同时显示 y 轴、x = kpi 和零点对称中心。 | “轴是一条直线，中心是一个点，它们分别落在图像哪里？” |
+| `period_omission` | 打开关键点一般式图层。 | “这个最大值点向右平移 2π 后，还是最大值点吗？一般式里的 `k ∈ Z` 覆盖了哪些周期？” |
+| `period_length_confusion` | 对照相邻零点与整条图像平移。 | “向右平移 π 时函数值变成什么？为什么零点间隔不是最小正周期？” |
+| `zero_extrema_formula_mixup` | 同时显示最大值点、最小值点和零点。 | “x = π/2 + kπ 在余弦图像上对应什么点？” |
+| `monotonic_interval_reversal` | 打开余弦单调区间图层，只显示一个周期。 | “从 0 到 π，横坐标投影怎样变化？” |
+| `axis_center_mixup` | 同时显示 y 轴、x = kπ 和零点对称中心。 | “轴是一条直线，中心是一个点，它们分别落在图像哪里？” |
 | `unit_circle_graph_gap` | 回到单位圆横坐标投影。 | “角 x 和 -x 的终边为什么横坐标相同？” |
 
 ## 教师看板建议
 
 - 若 `sine_transfer_error` 命中率超过三分之一，先暂停进入参数变化，统一比较正弦与余弦的奇偶性、最大值点和单调区间。
-- 若 `period_omission` 或 `zero_extrema_formula_mixup` 高发，下一轮要求学生先标一个周期，再写一般式。
+- 若 `period_omission`、`period_length_confusion` 或 `zero_extrema_formula_mixup` 高发，下一轮要求学生先标一个周期，再写周期步长和一般式。
 - 若简答题普遍只写结论不写理由，要求学生用“单位圆变化 - 图像位置 - 一般式”三句订正。
 
 ## 补救资源
