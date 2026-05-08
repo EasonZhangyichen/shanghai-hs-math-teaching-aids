@@ -505,7 +505,7 @@
             <article class="circle-card" id="circleCard">
               <div class="card-title">
                 <span>单位圆与斜率</span>
-                <span class="mode-note">tan x = sin x / cos x</span>
+                <span class="mode-note">tan x = <span class="math-frac"><span>sin x</span><span>cos x</span></span></span>
               </div>
               <svg id="circleSvg" viewBox="0 0 420 420" role="img" aria-label="单位圆终边和斜率线">
                 <line x1="46" y1="210" x2="374" y2="210" class="axis-line" />
@@ -567,7 +567,7 @@
             <div class="metric">
               <p class="metric-label">tan x</p>
               <span class="metric-value" id="tanReadout">1</span>
-              <span class="metric-help">终边斜率 / 图像纵坐标</span>
+              <span class="metric-help">终边斜率与图像纵坐标</span>
             </div>
             <div class="metric">
               <p class="metric-label">最近渐近线</p>
@@ -621,7 +621,7 @@
           <section class="panel-section" id="summaryPanel">
             <p class="section-title">课堂归纳</p>
             <ul class="summary-list">
-              <li>定义域：<strong>x != π/2 + kπ</strong>。</li>
+              <li>定义域：<strong>x ≠ π/2 + kπ, k ∈ Z</strong>。</li>
               <li>渐近线来自：<strong>cos x = 0</strong>。</li>
               <li>主值区间：<strong>(-π/2, π/2)</strong>。</li>
               <li>周期：<strong>tan(x + π) = tan x</strong>。</li>
@@ -779,6 +779,11 @@
 
       function nearestAsymptote(x) {
         const k = Math.round((x - Math.PI / 2) / Math.PI);
+        return Math.PI / 2 + k * Math.PI;
+      }
+
+      function nextAsymptoteAfter(x) {
+        const k = Math.floor((x - Math.PI / 2) / Math.PI) + 1;
         return Math.PI / 2 + k * Math.PI;
       }
 
@@ -1220,7 +1225,10 @@
         if (state.playing) {
           const delta = (now - lastFrameTime) / 1000;
           const speed = state.focusMode === "approach" ? 0.32 : 0.72;
-          setCurrentX(state.currentX + delta * speed);
+          const rawNextX = state.currentX + delta * speed;
+          const nextBreak = nextAsymptoteAfter(state.currentX);
+          const nextX = rawNextX >= nextBreak - ASYMPTOTE_EPSILON ? nextBreak + ASYMPTOTE_EPSILON : rawNextX;
+          setCurrentX(nextX);
           if (state.currentX >= GRAPH.xMax - 0.05) {
             state.currentX = GRAPH.xMin + 0.05;
           }
