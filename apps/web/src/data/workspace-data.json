@@ -20,7 +20,8 @@
     "manim": [
       "content/manim/SH-HS-MATH-HJ-B2-C07-L01-M01",
       "content/manim/SH-HS-MATH-HJ-B2-C07-L05-M01",
-      "content/manim/SH-HS-MATH-HJ-B2-C07-L06-M01"
+      "content/manim/SH-HS-MATH-HJ-B2-C07-L06-M01",
+      "content/manim/SH-HS-MATH-HJ-B2-C08-L04-M01"
     ],
     "diagnosis": [
       "content/diagnosis/SH-HS-MATH-HJ-B2-C07-L02-D01",
@@ -6836,14 +6837,236 @@
           "id": "SH-HS-MATH-HJ-B2-C08-L04-M01",
           "resourceType": "manim_clip",
           "title": "投影有向长度导入动画",
+          "subtitle": "从作垂线到读有向投影长度的 Manim 场景骨架",
           "cognitiveAction": "投影",
           "note": "30-45 秒短动画，只串联作垂线、读有向投影、解释 a cos theta 的正负，不替代后续交互探索。",
-          "availability": "proposed",
-          "status": "planned",
-          "version": null,
-          "metadataPreview": null,
+          "availability": "metadata_ready",
+          "status": "draft",
+          "version": "0.1.0",
+          "metadataPreview": {
+            "id": "SH-HS-MATH-HJ-B2-C08-L04-M01",
+            "version": "0.1.0",
+            "status": "draft",
+            "resourceType": "manim_clip",
+            "title": "投影有向长度导入动画",
+            "subtitle": "从作垂线到读有向投影长度的 Manim 场景骨架",
+            "curriculum": {
+              "region": "上海",
+              "stage": "高中",
+              "subject": "数学",
+              "edition": "沪教版",
+              "volume_id": "B2",
+              "volume_title": "必修第二册",
+              "chapter_id": "SH-HS-MATH-HJ-B2-C08",
+              "chapter_title": "平面向量",
+              "section_id": "SH-HS-MATH-HJ-B2-C08-S02",
+              "section_title": "向量的数量积",
+              "lesson_id": "SH-HS-MATH-HJ-B2-C08-L04",
+              "textbook_ref": "8.2.1",
+              "lesson_title": "向量的投影"
+            },
+            "pedagogy": {
+              "cognitiveAction": "投影",
+              "estimatedClassroomMinutes": 6,
+              "primaryTeachingProblem": "学生容易把投影长度看成普通线段长度，忽略它是有方向符号的量。",
+              "learningGoals": [
+                "看见向量端点向基准方向作垂线后，投影点在有向轴上的位置。",
+                "区分普通线段长度与有向投影长度，解释锐角、直角、钝角时符号不同。",
+                "把有向投影长度与 |a| cos theta 及数量积公式的符号来源连接起来。"
+              ],
+              "prerequisites": [
+                "向量的几何表示与夹角",
+                "余弦值的正负",
+                "垂线与直角投影"
+              ],
+              "successors": [
+                "SH-HS-MATH-HJ-B2-C08-L04-A01",
+                "SH-HS-MATH-HJ-B2-C08-L05"
+              ],
+              "coreCompetencies": [
+                "直观想象",
+                "逻辑推理",
+                "数学运算"
+              ]
+            },
+            "mathematicalScope": {
+              "focus": "30-45 秒短动画，只串联作垂线、读有向投影、解释 |a| cos theta 的正负，不替代后续交互探索。",
+              "lesson": "向量的投影",
+              "projected_vector": "向量 a",
+              "baseline_vector": "向量 b 的方向作为有向轴",
+              "directed_length": "|a| cos theta",
+              "theta_range": "0 <= theta <= pi；锐角为正，直角为 0，钝角为负。",
+              "out_of_scope": [
+                "不展开完整数量积运算律证明。",
+                "不替代 SH-HS-MATH-HJ-B2-C08-L04-A01 的交互探索。",
+                "本 scaffold 只定义分镜和场景骨架，具体动画需在资源生产对话中补齐。"
+              ]
+            },
+            "representations": [
+              {
+                "id": "baseline_axis",
+                "role": "表示向量 b 的方向，也是读取有向投影长度的正方向。"
+              },
+              {
+                "id": "vector_a",
+                "role": "表示被投影的向量 a。"
+              },
+              {
+                "id": "perpendicular_drop",
+                "role": "从向量 a 的端点向基准方向作垂线，生成投影点。"
+              },
+              {
+                "id": "directed_segment",
+                "role": "用带方向的线段表示 |a| cos theta 的正、零、负。"
+              }
+            ],
+            "narrativeDesign": {
+              "targetDurationSeconds": 45,
+              "beats": [
+                {
+                  "id": "set_direction",
+                  "title": "先定方向",
+                  "purpose": "让学生先把向量 b 的方向看作有正负的读取轴，而不是普通线段。",
+                  "visuals": [
+                    "水平有向轴与向量 b。",
+                    "向量 a 从同一起点出发，夹角 theta 标在两向量之间。"
+                  ],
+                  "estimated_seconds": 10
+                },
+                {
+                  "id": "drop_perpendicular",
+                  "title": "作垂线读投影点",
+                  "purpose": "从 a 的端点向 b 的方向作垂线，强调投影点落在有向轴上。",
+                  "visuals": [
+                    "从 a 的端点落下垂线。",
+                    "投影点 H 在有向轴上出现，并显示有向线段 OH。"
+                  ],
+                  "estimated_seconds": 15
+                },
+                {
+                  "id": "compare_signs",
+                  "title": "比较正零负",
+                  "purpose": "用锐角、直角、钝角三个占位状态提示有向投影长度的符号变化。",
+                  "visuals": [
+                    "锐角：H 在正方向，|a| cos theta > 0。",
+                    "直角：H 回到原点，|a| cos theta = 0。",
+                    "钝角：H 在反方向，|a| cos theta < 0。"
+                  ],
+                  "estimated_seconds": 14
+                },
+                {
+                  "id": "connect_formula",
+                  "title": "收束到公式",
+                  "purpose": "把有向长度的正负和数量积 a dot b = |a||b| cos theta 的符号来源相连。",
+                  "visuals": [
+                    "|a| cos theta 标注在有向投影线段上。",
+                    "数量积公式只作为下一课衔接口径出现。"
+                  ],
+                  "estimated_seconds": 6
+                }
+              ],
+              "pausePoints": [
+                {
+                  "after_beat": "drop_perpendicular",
+                  "teacher_prompt": "如果只看线段长度，哪里会丢掉方向信息？"
+                },
+                {
+                  "after_beat": "compare_signs",
+                  "teacher_prompt": "为什么夹角变成钝角后，投影不是更长或更短的问题，而是符号变成负？"
+                }
+              ]
+            },
+            "interactionDesign": {
+              "teacherControls": [],
+              "studentControls": [],
+              "stagedReveal": []
+            },
+            "renderPlan": {
+              "phase": "scene_draft",
+              "scene_class": "DirectedProjectionLengthScene",
+              "aspect_ratio": "16:9",
+              "resolution": "1920x1080",
+              "fps": 30,
+              "background": "white",
+              "output_formats": [
+                "mp4",
+                "webm"
+              ],
+              "commands": {
+                "preview": "manim -pql scene.py DirectedProjectionLengthScene",
+                "mp4": "manim -qh scene.py DirectedProjectionLengthScene",
+                "webm": "manim -qh --format=webm scene.py DirectedProjectionLengthScene"
+              },
+              "notes": [
+                "首版场景为 scaffold，占位动画需由资源生产对话补齐。",
+                "本次不渲染 mp4、webm 或 poster，因此 files 中不填写 dist/final 产物。"
+              ]
+            },
+            "diagnosisDesign": {
+              "diagnosticFocus": [],
+              "misconceptionTags": [],
+              "itemSummary": null
+            },
+            "platformCard": {
+              "availability": "metadata_ready",
+              "preview_behavior": "metadata_placeholder",
+              "embed_strategy": "先展示 metadata 与 storyboard 摘要；视频渲染通过后再升级为 video_ready。",
+              "paired_resources": [
+                "SH-HS-MATH-HJ-B2-C08-L04-A01"
+              ]
+            },
+            "files": {
+              "readme": "README.md",
+              "storyboard": "storyboard.md",
+              "scene": "scene.py",
+              "review_record": "review.md"
+            },
+            "visualSemantics": {
+              "background": "light",
+              "baseline_axis": "基准方向用稳定深色箭头表示。",
+              "vector_a": "被投影向量用强调色表示。",
+              "perpendicular_drop": "垂线用低饱和虚线表示，只承担构造作用。",
+              "directed_segment": "正向投影与负向投影使用同一色系，通过箭头方向和符号区分。",
+              "emphasis_rule": "只高亮 a、b、theta、投影点 H 和有向线段 OH；避免提前铺开完整数量积推导。"
+            },
+            "compliance": {
+              "copyright_note": "本 scaffold 仅生成原创资源骨架，不复制教材正文、官方课件、教案或商业题库。",
+              "review_status": "self_checked_draft"
+            }
+          },
           "player": null,
-          "package": null
+          "package": {
+            "path": "content/manim/SH-HS-MATH-HJ-B2-C08-L04-M01",
+            "files": {
+              "metadata": "content/manim/SH-HS-MATH-HJ-B2-C08-L04-M01/metadata.yaml",
+              "readme": "content/manim/SH-HS-MATH-HJ-B2-C08-L04-M01/README.md",
+              "storyboard": "content/manim/SH-HS-MATH-HJ-B2-C08-L04-M01/storyboard.md",
+              "scene": "content/manim/SH-HS-MATH-HJ-B2-C08-L04-M01/scene.py",
+              "reviewRecord": "content/manim/SH-HS-MATH-HJ-B2-C08-L04-M01/review.md",
+              "outputMp4": null,
+              "outputWebm": null,
+              "poster": null
+            },
+            "media": {
+              "hasOutputMp4": false,
+              "hasOutputWebm": false,
+              "hasPoster": false
+            },
+            "storyboard": {
+              "kind": "storyboard",
+              "path": "content/manim/SH-HS-MATH-HJ-B2-C08-L04-M01/storyboard.md",
+              "title": "分镜：投影有向长度导入动画",
+              "summary": "",
+              "sections": [
+                "核心叙事",
+                "第 1 幕：先定方向",
+                "第 2 幕：作垂线读投影点",
+                "第 3 幕：比较正零负",
+                "第 4 幕：收束到公式衔接",
+                "与 Applet 的衔接"
+              ]
+            }
+          }
         }
       ]
     },
@@ -14396,14 +14619,236 @@
           "id": "SH-HS-MATH-HJ-B2-C08-L04-M01",
           "resourceType": "manim_clip",
           "title": "投影有向长度导入动画",
+          "subtitle": "从作垂线到读有向投影长度的 Manim 场景骨架",
           "cognitiveAction": "投影",
           "note": "30-45 秒短动画，只串联作垂线、读有向投影、解释 a cos theta 的正负，不替代后续交互探索。",
-          "availability": "proposed",
-          "status": "planned",
-          "version": null,
-          "metadataPreview": null,
+          "availability": "metadata_ready",
+          "status": "draft",
+          "version": "0.1.0",
+          "metadataPreview": {
+            "id": "SH-HS-MATH-HJ-B2-C08-L04-M01",
+            "version": "0.1.0",
+            "status": "draft",
+            "resourceType": "manim_clip",
+            "title": "投影有向长度导入动画",
+            "subtitle": "从作垂线到读有向投影长度的 Manim 场景骨架",
+            "curriculum": {
+              "region": "上海",
+              "stage": "高中",
+              "subject": "数学",
+              "edition": "沪教版",
+              "volume_id": "B2",
+              "volume_title": "必修第二册",
+              "chapter_id": "SH-HS-MATH-HJ-B2-C08",
+              "chapter_title": "平面向量",
+              "section_id": "SH-HS-MATH-HJ-B2-C08-S02",
+              "section_title": "向量的数量积",
+              "lesson_id": "SH-HS-MATH-HJ-B2-C08-L04",
+              "textbook_ref": "8.2.1",
+              "lesson_title": "向量的投影"
+            },
+            "pedagogy": {
+              "cognitiveAction": "投影",
+              "estimatedClassroomMinutes": 6,
+              "primaryTeachingProblem": "学生容易把投影长度看成普通线段长度，忽略它是有方向符号的量。",
+              "learningGoals": [
+                "看见向量端点向基准方向作垂线后，投影点在有向轴上的位置。",
+                "区分普通线段长度与有向投影长度，解释锐角、直角、钝角时符号不同。",
+                "把有向投影长度与 |a| cos theta 及数量积公式的符号来源连接起来。"
+              ],
+              "prerequisites": [
+                "向量的几何表示与夹角",
+                "余弦值的正负",
+                "垂线与直角投影"
+              ],
+              "successors": [
+                "SH-HS-MATH-HJ-B2-C08-L04-A01",
+                "SH-HS-MATH-HJ-B2-C08-L05"
+              ],
+              "coreCompetencies": [
+                "直观想象",
+                "逻辑推理",
+                "数学运算"
+              ]
+            },
+            "mathematicalScope": {
+              "focus": "30-45 秒短动画，只串联作垂线、读有向投影、解释 |a| cos theta 的正负，不替代后续交互探索。",
+              "lesson": "向量的投影",
+              "projected_vector": "向量 a",
+              "baseline_vector": "向量 b 的方向作为有向轴",
+              "directed_length": "|a| cos theta",
+              "theta_range": "0 <= theta <= pi；锐角为正，直角为 0，钝角为负。",
+              "out_of_scope": [
+                "不展开完整数量积运算律证明。",
+                "不替代 SH-HS-MATH-HJ-B2-C08-L04-A01 的交互探索。",
+                "本 scaffold 只定义分镜和场景骨架，具体动画需在资源生产对话中补齐。"
+              ]
+            },
+            "representations": [
+              {
+                "id": "baseline_axis",
+                "role": "表示向量 b 的方向，也是读取有向投影长度的正方向。"
+              },
+              {
+                "id": "vector_a",
+                "role": "表示被投影的向量 a。"
+              },
+              {
+                "id": "perpendicular_drop",
+                "role": "从向量 a 的端点向基准方向作垂线，生成投影点。"
+              },
+              {
+                "id": "directed_segment",
+                "role": "用带方向的线段表示 |a| cos theta 的正、零、负。"
+              }
+            ],
+            "narrativeDesign": {
+              "targetDurationSeconds": 45,
+              "beats": [
+                {
+                  "id": "set_direction",
+                  "title": "先定方向",
+                  "purpose": "让学生先把向量 b 的方向看作有正负的读取轴，而不是普通线段。",
+                  "visuals": [
+                    "水平有向轴与向量 b。",
+                    "向量 a 从同一起点出发，夹角 theta 标在两向量之间。"
+                  ],
+                  "estimated_seconds": 10
+                },
+                {
+                  "id": "drop_perpendicular",
+                  "title": "作垂线读投影点",
+                  "purpose": "从 a 的端点向 b 的方向作垂线，强调投影点落在有向轴上。",
+                  "visuals": [
+                    "从 a 的端点落下垂线。",
+                    "投影点 H 在有向轴上出现，并显示有向线段 OH。"
+                  ],
+                  "estimated_seconds": 15
+                },
+                {
+                  "id": "compare_signs",
+                  "title": "比较正零负",
+                  "purpose": "用锐角、直角、钝角三个占位状态提示有向投影长度的符号变化。",
+                  "visuals": [
+                    "锐角：H 在正方向，|a| cos theta > 0。",
+                    "直角：H 回到原点，|a| cos theta = 0。",
+                    "钝角：H 在反方向，|a| cos theta < 0。"
+                  ],
+                  "estimated_seconds": 14
+                },
+                {
+                  "id": "connect_formula",
+                  "title": "收束到公式",
+                  "purpose": "把有向长度的正负和数量积 a dot b = |a||b| cos theta 的符号来源相连。",
+                  "visuals": [
+                    "|a| cos theta 标注在有向投影线段上。",
+                    "数量积公式只作为下一课衔接口径出现。"
+                  ],
+                  "estimated_seconds": 6
+                }
+              ],
+              "pausePoints": [
+                {
+                  "after_beat": "drop_perpendicular",
+                  "teacher_prompt": "如果只看线段长度，哪里会丢掉方向信息？"
+                },
+                {
+                  "after_beat": "compare_signs",
+                  "teacher_prompt": "为什么夹角变成钝角后，投影不是更长或更短的问题，而是符号变成负？"
+                }
+              ]
+            },
+            "interactionDesign": {
+              "teacherControls": [],
+              "studentControls": [],
+              "stagedReveal": []
+            },
+            "renderPlan": {
+              "phase": "scene_draft",
+              "scene_class": "DirectedProjectionLengthScene",
+              "aspect_ratio": "16:9",
+              "resolution": "1920x1080",
+              "fps": 30,
+              "background": "white",
+              "output_formats": [
+                "mp4",
+                "webm"
+              ],
+              "commands": {
+                "preview": "manim -pql scene.py DirectedProjectionLengthScene",
+                "mp4": "manim -qh scene.py DirectedProjectionLengthScene",
+                "webm": "manim -qh --format=webm scene.py DirectedProjectionLengthScene"
+              },
+              "notes": [
+                "首版场景为 scaffold，占位动画需由资源生产对话补齐。",
+                "本次不渲染 mp4、webm 或 poster，因此 files 中不填写 dist/final 产物。"
+              ]
+            },
+            "diagnosisDesign": {
+              "diagnosticFocus": [],
+              "misconceptionTags": [],
+              "itemSummary": null
+            },
+            "platformCard": {
+              "availability": "metadata_ready",
+              "preview_behavior": "metadata_placeholder",
+              "embed_strategy": "先展示 metadata 与 storyboard 摘要；视频渲染通过后再升级为 video_ready。",
+              "paired_resources": [
+                "SH-HS-MATH-HJ-B2-C08-L04-A01"
+              ]
+            },
+            "files": {
+              "readme": "README.md",
+              "storyboard": "storyboard.md",
+              "scene": "scene.py",
+              "review_record": "review.md"
+            },
+            "visualSemantics": {
+              "background": "light",
+              "baseline_axis": "基准方向用稳定深色箭头表示。",
+              "vector_a": "被投影向量用强调色表示。",
+              "perpendicular_drop": "垂线用低饱和虚线表示，只承担构造作用。",
+              "directed_segment": "正向投影与负向投影使用同一色系，通过箭头方向和符号区分。",
+              "emphasis_rule": "只高亮 a、b、theta、投影点 H 和有向线段 OH；避免提前铺开完整数量积推导。"
+            },
+            "compliance": {
+              "copyright_note": "本 scaffold 仅生成原创资源骨架，不复制教材正文、官方课件、教案或商业题库。",
+              "review_status": "self_checked_draft"
+            }
+          },
           "player": null,
-          "package": null
+          "package": {
+            "path": "content/manim/SH-HS-MATH-HJ-B2-C08-L04-M01",
+            "files": {
+              "metadata": "content/manim/SH-HS-MATH-HJ-B2-C08-L04-M01/metadata.yaml",
+              "readme": "content/manim/SH-HS-MATH-HJ-B2-C08-L04-M01/README.md",
+              "storyboard": "content/manim/SH-HS-MATH-HJ-B2-C08-L04-M01/storyboard.md",
+              "scene": "content/manim/SH-HS-MATH-HJ-B2-C08-L04-M01/scene.py",
+              "reviewRecord": "content/manim/SH-HS-MATH-HJ-B2-C08-L04-M01/review.md",
+              "outputMp4": null,
+              "outputWebm": null,
+              "poster": null
+            },
+            "media": {
+              "hasOutputMp4": false,
+              "hasOutputWebm": false,
+              "hasPoster": false
+            },
+            "storyboard": {
+              "kind": "storyboard",
+              "path": "content/manim/SH-HS-MATH-HJ-B2-C08-L04-M01/storyboard.md",
+              "title": "分镜：投影有向长度导入动画",
+              "summary": "",
+              "sections": [
+                "核心叙事",
+                "第 1 幕：先定方向",
+                "第 2 幕：作垂线读投影点",
+                "第 3 幕：比较正零负",
+                "第 4 幕：收束到公式衔接",
+                "与 Applet 的衔接"
+              ]
+            }
+          }
         }
       ]
     },
@@ -15530,8 +15975,8 @@
     "chapterCount": 2,
     "lessonCount": 17,
     "implementedAppletCount": 14,
-    "implementedManimCount": 3,
+    "implementedManimCount": 4,
     "implementedDiagnosisCount": 7,
-    "plannedResourceCount": 1
+    "plannedResourceCount": 0
   }
 }

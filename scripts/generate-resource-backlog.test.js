@@ -14,10 +14,10 @@ test("generates a deterministic backlog from curriculum entry points and impleme
 
   assert.equal(backlog.source.curriculum, "content/curriculum/index.yaml");
   assert.equal(backlog.summary.total, 25);
-  assert.equal(backlog.summary.implemented, 24);
-  assert.equal(backlog.summary.planned, 1);
+  assert.equal(backlog.summary.implemented, 25);
+  assert.equal(backlog.summary.planned, 0);
   assert.deepEqual(backlog.summary.byType.applet, { total: 14, implemented: 14, planned: 0 });
-  assert.deepEqual(backlog.summary.byType.manim_clip, { total: 4, implemented: 3, planned: 1 });
+  assert.deepEqual(backlog.summary.byType.manim_clip, { total: 4, implemented: 4, planned: 0 });
   assert.deepEqual(backlog.summary.byType.diagnosis, { total: 7, implemented: 7, planned: 0 });
 
   const sineApplet = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B2-C07-L01-A01");
@@ -236,9 +236,12 @@ test("generates a deterministic backlog from curriculum entry points and impleme
   );
 
   const vectorProjectionManim = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B2-C08-L04-M01");
-  assert.equal(vectorProjectionManim.status, "planned");
+  assert.equal(vectorProjectionManim.status, "implemented");
+  assert.equal(vectorProjectionManim.availability, "metadata_ready");
   assert.equal(vectorProjectionManim.type, "manim_clip");
   assert.equal(vectorProjectionManim.title, "投影有向长度导入动画");
+  assert.equal(vectorProjectionManim.packagePath, "content/manim/SH-HS-MATH-HJ-B2-C08-L04-M01");
+  assert.equal(vectorProjectionManim.metadataPath, "content/manim/SH-HS-MATH-HJ-B2-C08-L04-M01/metadata.yaml");
   assert.equal(vectorProjectionManim.recommendedTrack, "track/manim-pipeline");
 
   const vectorAddSubtractDiagnosis = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B2-C08-L02-D01");
@@ -292,8 +295,8 @@ test("writes the backlog as stable pretty JSON", async () => {
     const written = JSON.parse(await readFile(outputPath, "utf8"));
 
     assert.equal(written.summary.total, 25);
-    assert.equal(written.summary.implemented, 24);
-    assert.equal(written.summary.planned, 1);
+    assert.equal(written.summary.implemented, 25);
+    assert.equal(written.summary.planned, 0);
     assert.equal(written.items[0].id, "SH-HS-MATH-HJ-B2-C07-L01-A01");
     assert.ok(
       JSON.stringify(written, null, 2).includes(

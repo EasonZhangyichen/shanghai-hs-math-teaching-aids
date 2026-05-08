@@ -14,7 +14,7 @@ test("loads the B2 curriculum tree for the teacher workspace", async () => {
   assert.equal(workspace.project.name, "沪教版高中数学数字教具云平台");
   assert.equal(workspace.summary.lessonCount, 17);
   assert.equal(workspace.summary.implementedAppletCount, 14);
-  assert.equal(workspace.summary.implementedManimCount, 3);
+  assert.equal(workspace.summary.implementedManimCount, 4);
   assert.equal(workspace.summary.implementedDiagnosisCount, 7);
 
   const b2 = workspace.tree.volumes.find((volume) => volume.id === "B2");
@@ -228,7 +228,30 @@ test("links the parameter lab applet and rendered transform-order Manim to lesso
   assert.equal(diagnosis.metadataPreview.diagnosisDesign.itemSummary.totalItems, 6);
   assert.equal(diagnosis.package.files.itemBank, "content/diagnosis/SH-HS-MATH-HJ-B2-C07-L05-D01/item-bank.yaml");
   assert.equal(diagnosis.player, null);
-  assert.equal(workspace.summary.plannedResourceCount, 1);
+  assert.equal(workspace.summary.plannedResourceCount, 0);
+});
+
+test("links the vector projection applet and Manim scaffold to lesson B2 C08 L04", async () => {
+  const workspace = await loadTeacherWorkspace({ rootDir: repoRoot });
+  const lesson = workspace.lessonsById["SH-HS-MATH-HJ-B2-C08-L04"];
+  const applet = lesson.resources.find((resource) => resource.id === "SH-HS-MATH-HJ-B2-C08-L04-A01");
+  const manim = lesson.resources.find((resource) => resource.id === "SH-HS-MATH-HJ-B2-C08-L04-M01");
+
+  assert.equal(lesson.title, "向量的投影");
+  assert.equal(lesson.resources.length, 2);
+  assert.deepEqual(
+    lesson.resources.map((resource) => resource.resourceType),
+    ["applet", "manim_clip"],
+  );
+  assert.equal(applet.availability, "metadata_ready");
+  assert.equal(applet.player, null);
+  assert.equal(manim.availability, "metadata_ready");
+  assert.equal(manim.metadataPreview.renderPlan.phase, "scene_draft");
+  assert.equal(manim.package.storyboard.title, "分镜：投影有向长度导入动画");
+  assert.equal(manim.package.media.hasOutputMp4, false);
+  assert.equal(manim.package.media.hasOutputWebm, false);
+  assert.equal(manim.package.media.hasPoster, false);
+  assert.equal(manim.player, null);
 });
 
 test("links the tangent graph applet and rendered asymptote Manim to lesson L06", async () => {
