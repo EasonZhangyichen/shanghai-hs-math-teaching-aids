@@ -46,16 +46,16 @@ test("dry-runs planned diagnosis scaffolds without writing packages", async () =
     assert.equal(result.write, false);
     assert.deepEqual(
       result.created.map((item) => item.id),
-      ["SH-HS-MATH-HJ-B2-C07-L07-D01", "SH-HS-MATH-HJ-B2-C08-L02-D01"],
+      ["SH-HS-MATH-HJ-B2-C06-L03-D01", "SH-HS-MATH-HJ-B2-C06-L05-D01"],
     );
     assert.deepEqual(result.skipped, []);
 
     await assert.rejects(
-      readdir(path.join(tempRoot, "content/diagnosis/SH-HS-MATH-HJ-B2-C07-L07-D01")),
+      readdir(path.join(tempRoot, "content/diagnosis/SH-HS-MATH-HJ-B2-C06-L03-D01")),
       /ENOENT/,
     );
     await assert.rejects(
-      readdir(path.join(tempRoot, "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L02-D01")),
+      readdir(path.join(tempRoot, "content/diagnosis/SH-HS-MATH-HJ-B2-C06-L05-D01")),
       /ENOENT/,
     );
   } finally {
