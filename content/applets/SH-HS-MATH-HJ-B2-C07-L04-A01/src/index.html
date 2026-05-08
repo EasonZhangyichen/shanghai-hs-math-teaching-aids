@@ -34,6 +34,10 @@
         box-sizing: border-box;
       }
 
+      [hidden] {
+        display: none !important;
+      }
+
       body {
         margin: 0;
         min-width: 320px;
@@ -249,13 +253,13 @@
       .property-table {
         width: 100%;
         border-collapse: collapse;
-        font-size: 0.82rem;
+        font-size: 0.76rem;
       }
 
       .property-table th,
       .property-table td {
         border-bottom: 1px solid var(--border);
-        padding: 7px 6px;
+        padding: 7px 5px;
         text-align: left;
         vertical-align: top;
       }
@@ -263,6 +267,15 @@
       .property-table th {
         color: #334155;
         background: #f7fafb;
+      }
+
+      .property-table th:first-child,
+      .property-table td:first-child {
+        width: 24%;
+      }
+
+      .property-table code {
+        white-space: normal;
       }
 
       @media (max-width: 900px) {
@@ -274,6 +287,68 @@
         .state-readout {
           grid-template-columns: repeat(2, minmax(0, 1fr));
           flex-direction: column;
+        }
+      }
+
+      @media (min-width: 901px) and (max-height: 760px) {
+        .topbar {
+          padding: 8px 20px;
+        }
+
+        h1 {
+          font-size: 1.3rem;
+        }
+
+        .workspace {
+          gap: 12px;
+          padding: 10px 12px;
+        }
+
+        .control-panel {
+          gap: 8px;
+          padding: 10px;
+        }
+
+        .panel-section {
+          gap: 6px;
+        }
+
+        .section-title {
+          font-size: 0.9rem;
+        }
+
+        .button-row,
+        .toggle-grid,
+        .k-grid,
+        .angle-grid {
+          gap: 6px;
+        }
+
+        button {
+          min-height: 31px;
+        }
+
+        .slider-wrap {
+          gap: 5px;
+        }
+
+        .formula-card {
+          gap: 4px;
+          padding: 8px 10px;
+        }
+
+        .formula-list {
+          gap: 3px;
+          font-size: 0.8rem;
+        }
+
+        .property-table {
+          font-size: 0.68rem;
+        }
+
+        .property-table th,
+        .property-table td {
+          padding: 4px;
         }
       }
     </style>
@@ -341,12 +416,13 @@
           <section class="formula-card">
             <p class="feedback" id="feedback">先比较 x = 0：余弦从最大值开始，正弦从零点开始。</p>
             <ul class="formula-list" id="formula-list">
-              <li>周期：<code>cos(x + 2kpi) = cos x</code></li>
+              <li>周期：<code>cos(x + 2kπ) = cos x</code></li>
               <li>偶函数：<code>cos(-x) = cos x</code></li>
+              <li>归纳：逐行对照 <code>sin x</code> 与 <code>cos x</code>。</li>
             </ul>
             <table class="property-table" id="property-table" hidden>
               <thead>
-                <tr><th>性质</th><th>余弦函数一般式</th></tr>
+                <tr><th>性质</th><th>正弦函数一般式</th><th>余弦函数一般式</th></tr>
               </thead>
               <tbody></tbody>
             </table>
@@ -405,19 +481,19 @@
 
       const fmt = (value) => {
         const entries = [
-          [-2 * Math.PI, "-2pi"],
-          [-1.5 * Math.PI, "-3pi/2"],
-          [-Math.PI, "-pi"],
-          [-0.5 * Math.PI, "-pi/2"],
+          [-2 * Math.PI, "-2π"],
+          [-1.5 * Math.PI, "-3π/2"],
+          [-Math.PI, "-π"],
+          [-0.5 * Math.PI, "-π/2"],
           [0, "0"],
-          [0.5 * Math.PI, "pi/2"],
-          [Math.PI, "pi"],
-          [1.5 * Math.PI, "3pi/2"],
-          [2 * Math.PI, "2pi"],
-          [2.5 * Math.PI, "5pi/2"],
-          [3 * Math.PI, "3pi"],
-          [3.5 * Math.PI, "7pi/2"],
-          [4 * Math.PI, "4pi"],
+          [0.5 * Math.PI, "π/2"],
+          [Math.PI, "π"],
+          [1.5 * Math.PI, "3π/2"],
+          [2 * Math.PI, "2π"],
+          [2.5 * Math.PI, "5π/2"],
+          [3 * Math.PI, "3π"],
+          [3.5 * Math.PI, "7π/2"],
+          [4 * Math.PI, "4π"],
         ];
         const hit = entries.find(([x]) => Math.abs(value - x) < 0.015);
         return hit ? hit[1] : value.toFixed(2);
@@ -446,14 +522,14 @@
 
       function buildButtons() {
         [
-          [-Math.PI, "-pi"],
-          [-Math.PI / 2, "-pi/2"],
+          [-Math.PI, "-π"],
+          [-Math.PI / 2, "-π/2"],
           [0, "0"],
-          [Math.PI / 2, "pi/2"],
-          [Math.PI, "pi"],
-          [1.5 * Math.PI, "3pi/2"],
-          [2 * Math.PI, "2pi"],
-          [3 * Math.PI, "3pi"],
+          [Math.PI / 2, "π/2"],
+          [Math.PI, "π"],
+          [1.5 * Math.PI, "3π/2"],
+          [2 * Math.PI, "2π"],
+          [3 * Math.PI, "3π"],
         ].forEach(([value, label]) => {
           const button = document.createElement("button");
           button.type = "button";
@@ -555,7 +631,7 @@
           fill: "var(--period)",
           "font-size": 14,
           "font-weight": 700,
-        }, "横坐标相差 2pi，余弦值相同"));
+        }, "横坐标相差 2π，余弦值相同"));
       }
 
       function drawMonotonic() {
@@ -593,6 +669,8 @@
           if (x < MIN_X || x > MAX_X) return;
           graph.append(make("rect", { x: xScale(x) - 6, y: yScale(0) - 6, width: 12, height: 12, fill: "var(--center)", transform: `rotate(45 ${xScale(x)} ${yScale(0)})` }));
         });
+        graph.append(make("text", { x: xScale(0) + 12, y: plot.top + 44, fill: "var(--axis)", "font-size": 14, "font-weight": 800 }, "余弦对称轴：x = kπ"));
+        graph.append(make("text", { x: xScale(Math.PI / 2) + 12, y: yScale(0) + 34, fill: "var(--center)", "font-size": 14, "font-weight": 800 }, "余弦对称中心：零点处"));
         const pair = Math.abs(state.x) < 0.08 ? Math.PI / 3 : Math.abs(((state.x + Math.PI) % TAU) - Math.PI);
         [-pair, pair].forEach((x) => {
           if (x < MIN_X || x > MAX_X) return;
@@ -668,15 +746,15 @@
       function updateFeedback() {
         const cos = Math.cos(state.x);
         if (near(cos, 1)) {
-          feedback.innerHTML = "余弦最大值点：<code>(2kpi, 1)</code>，这里不能套成正弦的 <code>pi/2 + 2kpi</code>。";
+          feedback.innerHTML = "余弦最大值点：<code>(2kπ, 1), k ∈ Z</code>，这里不能套成正弦的 <code>π/2 + 2kπ</code>。";
         } else if (near(cos, -1)) {
-          feedback.innerHTML = "余弦最小值点：<code>(pi + 2kpi, -1)</code>，同类点横坐标相差 <code>2pi</code>。";
+          feedback.innerHTML = "余弦最小值点：<code>(π + 2kπ, -1), k ∈ Z</code>，同类点横坐标相差 <code>2π</code>。";
         } else if (near(cos, 0)) {
-          feedback.innerHTML = "余弦零点：<code>x = pi/2 + kpi</code>，相邻零点间隔是 <code>pi</code>。";
+          feedback.innerHTML = "余弦零点：<code>x = π/2 + kπ, k ∈ Z</code>，相邻零点间隔是 <code>π</code>。";
         } else if (state.symmetry) {
-          feedback.innerHTML = "看正负同角配对：<code>cos(-x) = cos x</code>，余弦是偶函数。";
+          feedback.innerHTML = "看正负同角配对：<code>cos(-x) = cos x</code>；余弦轴是 <code>x = kπ</code>，中心是 <code>(π/2 + kπ, 0)</code>。";
         } else if (state.monotonic) {
-          feedback.innerHTML = "读余弦自己的方向：<code>[-pi + 2kpi, 2kpi]</code> 递增，<code>[2kpi, pi + 2kpi]</code> 递减。";
+          feedback.innerHTML = "读余弦自己的方向：<code>[-π + 2kπ, 2kπ]</code> 递增，<code>[2kπ, π + 2kπ]</code> 递减，<code>k ∈ Z</code>。";
         } else {
           feedback.textContent = "拖动游标比较同一 x 下的余弦主图像和正弦参照，先找关键点顺序差异。";
         }
@@ -685,17 +763,18 @@
         propertyTable.hidden = !state.summary;
         if (state.summary) {
           propertyBody.innerHTML = [
-            ["定义域 / 值域", "R；[-1, 1]"],
-            ["周期", "T = 2pi；cos(x + 2kpi) = cos x"],
-            ["奇偶性", "偶函数；cos(-x) = cos x"],
-            ["单调递增", "[-pi + 2kpi, 2kpi], k in Z"],
-            ["单调递减", "[2kpi, pi + 2kpi], k in Z"],
-            ["对称轴", "x = kpi, k in Z"],
-            ["对称中心", "(pi/2 + kpi, 0), k in Z"],
-            ["零点", "x = pi/2 + kpi, k in Z"],
-            ["最大值点", "(2kpi, 1), k in Z"],
-            ["最小值点", "(pi + 2kpi, -1), k in Z"],
-          ].map(([name, value]) => `<tr><td>${name}</td><td><code>${value}</code></td></tr>`).join("");
+            ["定义域", "R", "R"],
+            ["值域", "[-1, 1]", "[-1, 1]"],
+            ["最小正周期", "T = 2π；sin(x + 2kπ) = sin x, k ∈ Z", "T = 2π；cos(x + 2kπ) = cos x, k ∈ Z"],
+            ["奇偶性", "奇函数；sin(-x) = -sin x", "偶函数；cos(-x) = cos x"],
+            ["零点", "x = kπ, k ∈ Z", "x = π/2 + kπ, k ∈ Z"],
+            ["最大值点", "(π/2 + 2kπ, 1), k ∈ Z", "(2kπ, 1), k ∈ Z"],
+            ["最小值点", "(-π/2 + 2kπ, -1), k ∈ Z", "(π + 2kπ, -1), k ∈ Z"],
+            ["单调递增", "[-π/2 + 2kπ, π/2 + 2kπ], k ∈ Z", "[-π + 2kπ, 2kπ], k ∈ Z"],
+            ["单调递减", "[π/2 + 2kπ, 3π/2 + 2kπ], k ∈ Z", "[2kπ, π + 2kπ], k ∈ Z"],
+            ["对称轴", "x = π/2 + kπ, k ∈ Z", "x = kπ, k ∈ Z"],
+            ["对称中心", "(kπ, 0), k ∈ Z", "(π/2 + kπ, 0), k ∈ Z"],
+          ].map(([name, sine, cosine]) => `<tr><td>${name}</td><td><code>${sine}</code></td><td><code>${cosine}</code></td></tr>`).join("");
         }
       }
 
