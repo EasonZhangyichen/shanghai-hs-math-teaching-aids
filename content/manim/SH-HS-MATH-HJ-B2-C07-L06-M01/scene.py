@@ -28,7 +28,7 @@ class TangentAsymptoteScene(Scene):
         cos_color = "#e07a2f"
         period_color = "#7b8794"
 
-        title = Text("Why does y = tan x have vertical asymptotes?", font_size=32, color=ink)
+        title = Text("正切图像为什么有竖直渐近线？", font_size=34, color=ink)
         title.to_edge(UP, buff=0.32)
 
         formula = Text("tan x = sin x / cos x", font_size=28, color=ink)
@@ -77,15 +77,15 @@ class TangentAsymptoteScene(Scene):
             run_time=2.0,
         )
 
-        shrink_note = Text("cos x shrinks toward 0", font_size=24, color=cos_color)
+        shrink_note = Text("cos x 接近 0", font_size=24, color=cos_color)
         shrink_note.next_to(unit_group["circle"], DOWN, buff=0.22)
 
         self.play(FadeIn(shrink_note), run_time=1.0)
         self.play(theta.animate.set_value(1.31), run_time=7.0, rate_func=smooth)
         self.wait(1.0)
 
-        climb_note = Text("tan x grows without bound", font_size=24, color=tangent_color)
-        climb_note.next_to(graph_group["axes"], UP, buff=0.16).align_to(graph_group["axes"], RIGHT)
+        climb_note = Text("正切值不断增大", font_size=24, color=tangent_color)
+        climb_note.next_to(graph_group["axes"], DOWN, buff=0.16).align_to(graph_group["axes"], LEFT)
         self.play(
             FadeIn(climb_note),
             graph_group["right_asymptote"].animate.set_stroke(width=5),
@@ -93,15 +93,15 @@ class TangentAsymptoteScene(Scene):
         )
         self.wait(2.0)
 
-        undefined = VGroup(
-            Text("at x = π/2:", font_size=25, color=ink),
+        no_value_panel = VGroup(
+            Text("当 x = π/2 时：", font_size=25, color=ink),
             Text("cos x = 0", font_size=25, color=cos_color),
-            Text("tan x is undefined", font_size=25, color=tangent_color),
+            Text("tan x 未定义", font_size=25, color=tangent_color),
         ).arrange(DOWN, aligned_edge=LEFT, buff=0.12)
-        undefined.to_corner(UR, buff=0.48).shift(DOWN * 0.62)
+        no_value_panel.to_corner(UR, buff=0.48).shift(DOWN * 0.62)
 
-        no_bridge = Text("no bridge across the gap", font_size=25, color=asymptote_color)
-        no_bridge.next_to(graph_group["right_asymptote"], RIGHT, buff=0.16).shift(UP * 1.15)
+        no_bridge = Text("图像不能跨过断点", font_size=24, color=asymptote_color)
+        no_bridge.next_to(graph_group["right_asymptote"], LEFT, buff=0.18).shift(UP * 1.15)
 
         right_side_arrow = Arrow(
             graph_group["axes"].c2p(pi / 2 + 0.35, -0.5),
@@ -111,10 +111,10 @@ class TangentAsymptoteScene(Scene):
             stroke_width=4,
             max_tip_length_to_length_ratio=0.18,
         )
-        right_side_label = Text("right side → -∞", font_size=21, color=asymptote_color)
-        right_side_label.next_to(right_side_arrow, RIGHT, buff=0.05)
+        right_side_label = Text("右侧趋向 -∞", font_size=21, color=asymptote_color)
+        right_side_label.next_to(right_side_arrow, RIGHT, buff=0.06).shift(UP * 0.12)
 
-        self.play(FadeIn(undefined), FadeIn(no_bridge), run_time=2.0)
+        self.play(FadeIn(no_value_panel), FadeIn(no_bridge), run_time=2.0)
         self.play(Create(right_side_arrow), FadeIn(right_side_label), run_time=1.5)
         self.wait(2.5)
 
@@ -131,10 +131,10 @@ class TangentAsymptoteScene(Scene):
         self.wait(2.5)
 
         rules = VGroup(
-            Text("Graphing rules", font_size=27, color=ink),
-            Text("domain: x ≠ π/2 + kπ", font_size=23, color=ink),
-            Text("asymptotes: x = π/2 + kπ", font_size=23, color=ink),
-            Text("period: π", font_size=23, color=ink),
+            Text("画图规则", font_size=27, color=ink),
+            Text("定义域：x ≠ π/2 + kπ, k ∈ Z", font_size=21, color=ink),
+            Text("渐近线：x = π/2 + kπ, k ∈ Z", font_size=21, color=ink),
+            Text("周期：π", font_size=21, color=ink),
         ).arrange(DOWN, aligned_edge=LEFT, buff=0.14)
         rules.to_edge(LEFT, buff=0.85).shift(DOWN * 1.1)
 
@@ -148,7 +148,7 @@ class TangentAsymptoteScene(Scene):
             FadeOut(value_label),
             FadeOut(shrink_note),
             FadeOut(climb_note),
-            FadeOut(undefined),
+            FadeOut(no_value_panel),
             FadeOut(no_bridge),
             FadeOut(right_side_arrow),
             FadeOut(right_side_label),
@@ -166,7 +166,7 @@ class TangentAsymptoteScene(Scene):
         circle = Circle(radius=radius, color=axis_color, stroke_width=3).move_to(origin)
         y_axis_highlight = DashedLine(origin + DOWN * 1.65, origin + UP * 1.65, color=guide, dash_length=0.09)
 
-        label = Text("terminal ray slope", font_size=25, color=ink)
+        label = Text("终边斜率", font_size=25, color=ink)
         label.next_to(circle, UP, buff=0.22)
 
         cos_label = Text("cos x", font_size=21, color=cos_color)
@@ -287,8 +287,8 @@ class TangentAsymptoteScene(Scene):
 
         def make_value_label():
             angle = theta.get_value()
-            label = Text(f"tan x ~ {tan(angle):.2f}", font_size=24, color=ink)
-            label.next_to(graph_dot, UP, buff=0.16)
+            label = Text(f"tan x ≈ {tan(angle):.2f}", font_size=22, color=ink)
+            label.move_to(axes.c2p(0.18, 3.28))
             return label
 
         value_label = always_redraw(make_value_label)
