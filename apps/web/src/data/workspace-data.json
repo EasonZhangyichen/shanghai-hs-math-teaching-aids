@@ -5188,9 +5188,9 @@
               "estimatedClassroomMinutes": 18,
               "primaryTeachingProblem": "学生容易把余弦曲线机械看作正弦曲线平移，不能先说明 y = cos x 的函数值来自单位圆动点的横坐标。",
               "learningGoals": [
-                "把单位圆上动点 P 的横坐标与 cos theta 的函数值对应起来。",
-                "说明余弦图像上点 Q 的坐标应写成 (theta, cos theta)，其中 theta 是角的弧度量。",
-                "通过一周旋转识别 0、pi/2、pi、3pi/2、2pi 处的余弦关键点顺序。",
+                "把单位圆上动点 P = (cos x, sin x) 的横坐标与 cos x 的函数值对应起来。",
+                "说明余弦图像上点 Q 的坐标应写成 (x, cos x)，其中 x 是角的弧度量。",
+                "通过一周旋转识别 0、π/2、π、3π/2、2π 处的余弦关键点顺序。",
                 "借助可切换的正弦参照，解释 cos x 与 sin x 的相位关系但不替代横坐标来源。"
               ],
               "prerequisites": [
@@ -5213,8 +5213,8 @@
               "function": "y = cos x",
               "independent_variable": "角 x 的弧度量",
               "dependent_variable": "单位圆动点的横坐标",
-              "default_theta_range": "0 <= theta <= 2pi",
-              "extension_theta_range": "-2pi <= theta <= 4pi",
+              "default_theta_range": "0 <= x <= 2π",
+              "extension_theta_range": "-2π <= x <= 4π",
               "key_angles": [
                 {
                   "theta": "0",
@@ -5223,31 +5223,31 @@
                   "unit_circle_position": "(1, 0)"
                 },
                 {
-                  "theta": "pi/2",
+                  "theta": "π/2",
                   "cosine": "0",
                   "sine": "1",
                   "unit_circle_position": "(0, 1)"
                 },
                 {
-                  "theta": "pi",
+                  "theta": "π",
                   "cosine": "-1",
                   "sine": "0",
                   "unit_circle_position": "(-1, 0)"
                 },
                 {
-                  "theta": "3pi/2",
+                  "theta": "3π/2",
                   "cosine": "0",
                   "sine": "-1",
                   "unit_circle_position": "(0, -1)"
                 },
                 {
-                  "theta": "2pi",
+                  "theta": "2π",
                   "cosine": "1",
                   "sine": "0",
                   "unit_circle_position": "(1, 0)"
                 }
               ],
-              "relation_to_sine": "cos x = sin(x + pi/2)",
+              "relation_to_sine": "cos x = sin(x + π/2)",
               "out_of_scope": [
                 "余弦函数单调区间、奇偶性和对称性的系统归纳",
                 "正弦与余弦性质的完整比较",
@@ -5258,7 +5258,7 @@
             "representations": [
               {
                 "id": "unit_circle",
-                "role": "显示角 theta、动点 P 和 P 的横坐标。"
+                "role": "显示角 x、动点 P = (cos x, sin x) 和 P 的横坐标。"
               },
               {
                 "id": "horizontal_projection",
@@ -5266,15 +5266,15 @@
               },
               {
                 "id": "cosine_graph",
-                "role": "显示图像点 Q = (theta, cos theta) 和随 theta 变化生成的轨迹。"
+                "role": "显示图像点 Q = (x, cos x) 和随 x 变化生成的轨迹。"
               },
               {
                 "id": "sine_reference",
-                "role": "教师打开时显示同一 theta 下的 sin theta 参照，帮助区分横坐标与纵坐标来源。"
+                "role": "教师打开时显示同一 x 下的 sin x 参照，帮助区分横坐标与纵坐标来源。"
               },
               {
                 "id": "key_value_table",
-                "role": "记录关键角、单位圆位置、cos theta 与图像点。"
+                "role": "记录关键角、单位圆位置、cos x 与图像点。"
               }
             ],
             "narrativeDesign": {
@@ -5282,10 +5282,10 @@
               "pausePoints": []
             },
             "interactionDesign": {
-              "primaryControl": "拖动单位圆上的动点 P，或用 theta 滑块精确控制角度。",
+              "primaryControl": "拖动单位圆上的动点 P，或用 x 滑块精确控制角度。",
               "teacherControls": [
                 "播放/暂停匀速旋转",
-                "重置到 theta = 0",
+                "重置到 x = 0",
                 "显示或隐藏角弧与弧度标签",
                 "显示或隐藏横向投影线",
                 "显示或隐藏已生成余弦轨迹",
@@ -5301,27 +5301,27 @@
               "stagedReveal": [
                 {
                   "step": "circle_only",
-                  "description": "只显示单位圆、坐标轴、动点 P 和角 theta。"
+                  "description": "只显示单位圆、坐标轴、动点 P 和角 x。"
                 },
                 {
                   "step": "horizontal_projection",
-                  "description": "显示 P 到 x 轴方向的投影，强调 cos theta 是横坐标。"
+                  "description": "显示 P 到 x 轴方向的投影，强调 cos x 是横坐标。"
                 },
                 {
                   "step": "graph_point",
-                  "description": "在右侧坐标系显示 Q = (theta, cos theta)。"
+                  "description": "在右侧坐标系显示 Q = (x, cos x)。"
                 },
                 {
                   "step": "trace_generation",
-                  "description": "随拖动保留 Q 的轨迹，生成 0 到 2pi 的余弦曲线。"
+                  "description": "随拖动保留 Q 的轨迹，生成 0 到 2π 的余弦曲线。"
                 },
                 {
                   "step": "sine_reference",
-                  "description": "打开正弦参照，比较同一 theta 下横坐标投影和纵坐标投影的区别。"
+                  "description": "打开正弦参照，比较同一 x 下横坐标投影和纵坐标投影的区别。"
                 },
                 {
                   "step": "period_extension",
-                  "description": "显示 theta 与 theta + 2pi 的同一横坐标来源，解释周期重复。"
+                  "description": "显示 x 与 x + 2π 的同一横坐标来源，解释周期重复。"
                 }
               ]
             },
@@ -5338,7 +5338,7 @@
                 {
                   "name": "point_p",
                   "value_type": "point2d",
-                  "description": "单位圆动点坐标 (cos theta, sin theta)。",
+                  "description": "单位圆动点坐标 (cos x, sin x)。",
                   "persistence": "snapshot"
                 },
                 {
@@ -5346,7 +5346,7 @@
                   "unit": "unitless",
                   "value_type": "number",
                   "default": 1,
-                  "description": "point_p 的横坐标 cos theta。",
+                  "description": "point_p 的横坐标 cos x。",
                   "persistence": "snapshot"
                 },
                 {
@@ -5354,13 +5354,13 @@
                   "unit": "unitless",
                   "value_type": "number",
                   "default": 0,
-                  "description": "同一 theta 下的 sin theta，用于参照而非本资源主线。",
+                  "description": "同一 x 下的 sin x，用于参照而非本资源主线。",
                   "persistence": "snapshot"
                 },
                 {
                   "name": "point_q",
                   "value_type": "point2d",
-                  "description": "函数图像上的点 (theta, cos theta)。",
+                  "description": "函数图像上的点 (x, cos x)。",
                   "persistence": "snapshot"
                 },
                 {
@@ -5450,7 +5450,7 @@
             "feedbackAndDiagnosis": {
               "success_evidence": [
                 "学生能用自己的话说明余弦函数值来自单位圆动点的横坐标。",
-                "学生能写出余弦图像上点 Q = (theta, cos theta)，并说明 theta 是弧度量。",
+                "学生能写出余弦图像上点 Q = (x, cos x)，并说明 x 是弧度量。",
                 "学生能按 1、0、-1、0、1 的顺序说出五个关键角处的余弦值。",
                 "学生能说明 cos x 与 sin x 的相位关系，同时不把余弦来源简化为背平移。"
               ],
@@ -5469,22 +5469,22 @@
                 },
                 {
                   "id": "graph_x_circle_x_confusion",
-                  "label": "把函数图像横坐标 theta 与单位圆点横坐标 cos theta 混淆"
+                  "label": "把函数图像横坐标 x 与单位圆点横坐标 cos x 混淆"
                 }
               ],
               "feedback_principles": [
-                "反馈优先追问 cos theta 对应单位圆上的哪个坐标。",
-                "关键点错误要回到同一个 theta 下的点 P 和点 Q。",
+                "反馈优先追问 cos x 对应单位圆上的哪个坐标。",
+                "关键点错误要回到同一个 x 下的点 P 和点 Q。",
                 "相位参照只用于解释关系，不替代单位圆横坐标投影。"
               ]
             },
             "visualSemantics": {
-              "angle_arc": "表示角 theta 的弧度量。",
+              "angle_arc": "表示角 x 的弧度量。",
               "moving_point": "表示单位圆上的动点 P。",
-              "projection_line": "表示从 P 的横坐标到 cos theta 的投影关系。",
-              "graph_point": "表示余弦图像上的点 Q = (theta, cos theta)。",
-              "generated_trace": "表示随 theta 变化形成的余弦曲线。",
-              "sine_reference": "表示同一 theta 下的正弦参照，颜色弱于余弦主线。",
+              "projection_line": "表示从 P 的横坐标到 cos x 的投影关系。",
+              "graph_point": "表示余弦图像上的点 Q = (x, cos x)。",
+              "generated_trace": "表示随 x 变化形成的余弦曲线。",
+              "sine_reference": "表示同一 x 下的正弦参照，颜色弱于余弦主线。",
               "rule": "颜色只用于区分数学对象和对应关系，不作装饰。"
             },
             "implementation": {
@@ -6018,7 +6018,7 @@
           "id": "SH-HS-MATH-HJ-B2-C07-L04-A01",
           "resourceType": "applet",
           "title": "正弦余弦性质对照板",
-          "subtitle": "并列比较关键点、单调段和对称元素，归纳 y = cos x 的性质",
+          "subtitle": "并列比较关键点、单调段和对称元素，归纳 sin x 与 cos x 的性质差异",
           "cognitiveAction": "比较",
           "note": "并列联动关键点、单调段和对称元素，支持教师切换问题焦点。",
           "availability": "metadata_ready",
@@ -6030,7 +6030,7 @@
             "status": "draft",
             "resourceType": "applet",
             "title": "正弦余弦性质对照板",
-            "subtitle": "并列比较关键点、单调段和对称元素，归纳 y = cos x 的性质",
+            "subtitle": "并列比较关键点、单调段和对称元素，归纳 sin x 与 cos x 的性质差异",
             "curriculum": {
               "region": "上海",
               "stage": "高中",
@@ -6052,9 +6052,9 @@
               "primaryTeachingProblem": "学生常把正弦函数的奇偶性、单调区间和关键点一般式直接套到余弦函数，不能从单位圆和图像解释差异。",
               "learningGoals": [
                 "比较 y = sin x 与 y = cos x 的起点和关键点顺序，说明余弦函数的性质不能机械套用正弦函数。",
-                "从图像对照中写出余弦函数的单调递增区间和递减区间，并保留 2kpi。",
-                "区分余弦函数的偶函数性质、对称轴和对称中心。",
-                "用 k 属于整数的形式表达余弦函数的零点、最大值点和最小值点。"
+                "从图像对照中写出正弦函数与余弦函数各自的单调递增区间和递减区间，并保留 2kπ。",
+                "区分正弦函数与余弦函数的奇偶性、对称轴和对称中心。",
+                "用 k ∈ Z 的形式表达正弦函数与余弦函数的零点、最大值点和最小值点。"
               ],
               "prerequisites": [
                 "余弦函数图像的生成过程",
@@ -6078,21 +6078,49 @@
               "dependent_variable": "函数值 y",
               "domain": "R",
               "range": "[-1, 1]",
-              "fundamental_period": "2pi",
-              "default_x_range": "-2pi <= x <= 4pi",
+              "fundamental_period": "2π",
+              "default_x_range": "-2π <= x <= 4π",
+              "comparison_properties": {
+                "sine": {
+                  "domain": "R",
+                  "range": "[-1, 1]",
+                  "fundamental_period": "2π",
+                  "parity": "odd; sin(-x) = -sin x",
+                  "zeros": "x = kπ, k ∈ Z",
+                  "maximum_points": "(π/2 + 2kπ, 1), k ∈ Z",
+                  "minimum_points": "(-π/2 + 2kπ, -1), k ∈ Z",
+                  "increasing": "[-π/2 + 2kπ, π/2 + 2kπ], k ∈ Z",
+                  "decreasing": "[π/2 + 2kπ, 3π/2 + 2kπ], k ∈ Z",
+                  "axes": "x = π/2 + kπ, k ∈ Z",
+                  "centers": "(kπ, 0), k ∈ Z"
+                },
+                "cosine": {
+                  "domain": "R",
+                  "range": "[-1, 1]",
+                  "fundamental_period": "2π",
+                  "parity": "even; cos(-x) = cos x",
+                  "zeros": "x = π/2 + kπ, k ∈ Z",
+                  "maximum_points": "(2kπ, 1), k ∈ Z",
+                  "minimum_points": "(π + 2kπ, -1), k ∈ Z",
+                  "increasing": "[-π + 2kπ, 2kπ], k ∈ Z",
+                  "decreasing": "[2kπ, π + 2kπ], k ∈ Z",
+                  "axes": "x = kπ, k ∈ Z",
+                  "centers": "(π/2 + kπ, 0), k ∈ Z"
+                }
+              },
               "monotonicity": {
-                "increasing": "[-pi + 2kpi, 2kpi], k in Z",
-                "decreasing": "[2kpi, pi + 2kpi], k in Z"
+                "increasing": "[-π + 2kπ, 2kπ], k ∈ Z",
+                "decreasing": "[2kπ, π + 2kπ], k ∈ Z"
               },
               "symmetry": {
                 "even_function": "cos(-x) = cos x",
-                "axes": "x = kpi, k in Z",
-                "centers": "(pi/2 + kpi, 0), k in Z"
+                "axes": "x = kπ, k ∈ Z",
+                "centers": "(π/2 + kπ, 0), k ∈ Z"
               },
               "key_points": {
-                "zeros": "x = pi/2 + kpi, k in Z",
-                "maximum_points": "(2kpi, 1), k in Z",
-                "minimum_points": "(pi + 2kpi, -1), k in Z"
+                "zeros": "x = π/2 + kπ, k ∈ Z",
+                "maximum_points": "(2kπ, 1), k ∈ Z",
+                "minimum_points": "(π + 2kπ, -1), k ∈ Z"
               },
               "out_of_scope": [
                 "余弦图像的单位圆生成过程",
@@ -6124,7 +6152,7 @@
               },
               {
                 "id": "property_statement",
-                "role": "在教师揭示时给出余弦性质归纳句。"
+                "role": "在教师揭示时给出正弦与余弦性质并列表，突出相同项和错位项。"
               }
             ],
             "narrativeDesign": {
@@ -6156,7 +6184,7 @@
                 },
                 {
                   "step": "period_compare",
-                  "description": "显示相隔 2pi 的余弦同高点，确认周期性。"
+                  "description": "显示相隔 2π 的余弦同高点，确认周期性。"
                 },
                 {
                   "step": "monotonic_compare",
@@ -6172,7 +6200,7 @@
                 },
                 {
                   "step": "property_summary",
-                  "description": "显示定义域、值域、周期性、奇偶性、单调性和关键点结论。"
+                  "description": "显示正弦与余弦的定义域、值域、周期、奇偶性、单调、对称和关键点并列表。"
                 }
               ]
             },
@@ -6221,7 +6249,7 @@
                   "name": "period_compare_visible",
                   "value_type": "boolean",
                   "default": false,
-                  "description": "是否显示相隔 2pi 的余弦周期比较点。",
+                  "description": "是否显示相隔 2π 的余弦周期比较点。",
                   "persistence": "snapshot"
                 },
                 {
@@ -6311,9 +6339,9 @@
             "feedbackAndDiagnosis": {
               "success_evidence": [
                 "学生能说明余弦函数是偶函数，而正弦函数是奇函数，不能直接套用。",
-                "学生能写出余弦函数递增区间和递减区间，并保留 2kpi。",
-                "学生能把余弦对称轴 x = kpi 与对称中心 (pi/2 + kpi, 0) 分开表达。",
-                "学生能用 k 属于整数的形式写出余弦零点和最值点。"
+                "学生能分别写出正弦函数与余弦函数递增区间和递减区间，并保留 2kπ。",
+                "学生能把正弦与余弦的对称轴、对称中心分开表达，尤其不把余弦对称轴 x = kπ 和对称中心 (π/2 + kπ, 0) 混用。",
+                "学生能用 k ∈ Z 的形式写出正弦函数与余弦函数的零点和最值点。"
               ],
               "common_error_tags": [
                 {
@@ -6322,7 +6350,7 @@
                 },
                 {
                   "id": "period_omission",
-                  "label": "只写一个周期，遗漏加 2kpi 或整数 k 的一般形式"
+                  "label": "只写一个周期，遗漏加 2kπ 或整数 k 的一般形式"
                 },
                 {
                   "id": "monotonic_direction_confusion",
@@ -6349,7 +6377,7 @@
               "sine_reference": "正弦函数 y = sin x 的参照图像，使用暖色虚线。",
               "current_point": "当前余弦观察点 (x, cos x)。",
               "sine_point": "同一 x 下的正弦参照点 (x, sin x)。",
-              "period_twin": "与当前余弦点相隔 2pi 且函数值相同的周期比较点。",
+              "period_twin": "与当前余弦点相隔 2π 且函数值相同的周期比较点。",
               "increasing_segment": "选定 k 下余弦函数的递增区间。",
               "decreasing_segment": "选定 k 下余弦函数的递减区间。",
               "symmetry_axis": "余弦图像的竖直对称轴。",
@@ -6415,7 +6443,8 @@
                 "任务三：单调区间端点",
                 "任务四：对称元素分类",
                 "任务五：关键点一般式",
-                "任务六：快速诊断",
+                "任务六：正弦/余弦性质对照总表",
+                "任务七：快速诊断",
                 "提交要求"
               ]
             }
@@ -6458,8 +6487,8 @@
               "estimatedClassroomMinutes": 8,
               "primaryTeachingProblem": "学生容易把正弦函数的奇偶性、单调区间和关键点位置直接迁移到余弦函数，导致余弦性质的一般式、对称元素和单位圆解释相互脱节。",
               "learningGoals": [
-                "判断 y = cos x 的偶函数性质，并能用单位圆横坐标解释 cos(-x) = cos x。",
-                "写出余弦函数最大值点、最小值点、零点和单调区间的完整一般式，并注明 k 属于整数。",
+                "确认 y = cos x 的定义域为 R、值域为 [-1, 1]、最小正周期为 2π，并能说明它是偶函数。",
+                "写出余弦函数最大值点、最小值点、零点和单调区间的完整一般式，并注明 k ∈ Z。",
                 "区分余弦图像的对称轴、对称中心和关键点坐标。",
                 "根据错因标签选择回看正弦余弦性质对照板中的奇偶、单调、关键点或单位圆图层。"
               ],
@@ -6492,7 +6521,7 @@
             },
             "diagnosisDesign": {
               "diagnosticFocus": [
-                "能否准确判断 y = cos x 是偶函数，而不是套用正弦函数的奇函数结论。",
+                "能否确认定义域、值域、最小正周期和偶函数性质。",
                 "能否写出最大值点、最小值点、零点和单调区间的完整一般式。",
                 "能否区分余弦图像的对称轴与对称中心。",
                 "能否把单位圆中的横坐标变化与图像上的单调、奇偶和关键点联系起来。"
@@ -6506,7 +6535,12 @@
                 {
                   "id": "period_omission",
                   "title": "周期遗漏",
-                  "description": "只写一个周期内的点或区间，遗漏加 2kpi 或 k 属于整数的完整表达。"
+                  "description": "只写一个周期内的点或区间，遗漏加 2kπ 或 k ∈ Z 的完整表达。"
+                },
+                {
+                  "id": "period_length_confusion",
+                  "title": "周期长度混淆",
+                  "description": "把相邻零点间隔 π 误认为最小正周期，或把余弦函数的周期步长写成 π。"
                 },
                 {
                   "id": "monotonic_interval_reversal",
@@ -6514,14 +6548,14 @@
                   "description": "把余弦的递增、递减半周期端点写反，或把包含转折点的区间当作单调区间。"
                 },
                 {
-                  "id": "parity_symmetry_mixup",
-                  "title": "奇偶性和对称元素混淆",
-                  "description": "把偶函数、y 轴对称、竖直对称轴和中心对称点混为同一类对象。"
+                  "id": "axis_center_mixup",
+                  "title": "对称轴与对称中心混淆",
+                  "description": "把偶函数对应的 y 轴、余弦图像的竖直对称轴和中心对称点混为同一类对象。"
                 },
                 {
                   "id": "zero_extrema_formula_mixup",
-                  "title": "零点最值一般式混用",
-                  "description": "把零点、最大值点和最小值点的横坐标公式互相替代。"
+                  "title": "关键点一般式遗漏或混用",
+                  "description": "只写特殊零点或最值点，或把最大值点、最小值点和零点的横坐标公式互相替代。"
                 },
                 {
                   "id": "unit_circle_graph_gap",
@@ -6541,7 +6575,7 @@
               },
               "feedbackStrategy": {
                 "immediate_feedback": "每题按命中的错因标签返回一句图像或单位圆回看提示，并要求学生补写一个完整一般式或一句比较理由。",
-                "teacher_dashboard_notes": "若 sine_transfer_error 集中出现，先回到正弦余弦性质对照；若 period_omission 或 zero_extrema_formula_mixup 集中出现，回看关键点一般式；若 unit_circle_graph_gap 集中出现，回到单位圆横坐标投影。",
+                "teacher_dashboard_notes": "若 sine_transfer_error 集中出现，先回到正弦余弦性质对照；若 period_omission、period_length_confusion 或 zero_extrema_formula_mixup 集中出现，回看周期与关键点一般式；若 axis_center_mixup 集中出现，回看对称轴和对称中心；若 unit_circle_graph_gap 集中出现，回到单位圆横坐标投影。",
                 "remediation_links": [
                   "content/applets/SH-HS-MATH-HJ-B2-C07-L04-A01",
                   "content/applets/SH-HS-MATH-HJ-B2-C07-L03-A01"
@@ -6589,8 +6623,9 @@
               "misconceptionTags": [
                 "sine_transfer_error",
                 "period_omission",
+                "period_length_confusion",
                 "monotonic_interval_reversal",
-                "parity_symmetry_mixup",
+                "axis_center_mixup",
                 "zero_extrema_formula_mixup",
                 "unit_circle_graph_gap"
               ]
@@ -16106,9 +16141,9 @@
               "estimatedClassroomMinutes": 18,
               "primaryTeachingProblem": "学生容易把余弦曲线机械看作正弦曲线平移，不能先说明 y = cos x 的函数值来自单位圆动点的横坐标。",
               "learningGoals": [
-                "把单位圆上动点 P 的横坐标与 cos theta 的函数值对应起来。",
-                "说明余弦图像上点 Q 的坐标应写成 (theta, cos theta)，其中 theta 是角的弧度量。",
-                "通过一周旋转识别 0、pi/2、pi、3pi/2、2pi 处的余弦关键点顺序。",
+                "把单位圆上动点 P = (cos x, sin x) 的横坐标与 cos x 的函数值对应起来。",
+                "说明余弦图像上点 Q 的坐标应写成 (x, cos x)，其中 x 是角的弧度量。",
+                "通过一周旋转识别 0、π/2、π、3π/2、2π 处的余弦关键点顺序。",
                 "借助可切换的正弦参照，解释 cos x 与 sin x 的相位关系但不替代横坐标来源。"
               ],
               "prerequisites": [
@@ -16131,8 +16166,8 @@
               "function": "y = cos x",
               "independent_variable": "角 x 的弧度量",
               "dependent_variable": "单位圆动点的横坐标",
-              "default_theta_range": "0 <= theta <= 2pi",
-              "extension_theta_range": "-2pi <= theta <= 4pi",
+              "default_theta_range": "0 <= x <= 2π",
+              "extension_theta_range": "-2π <= x <= 4π",
               "key_angles": [
                 {
                   "theta": "0",
@@ -16141,31 +16176,31 @@
                   "unit_circle_position": "(1, 0)"
                 },
                 {
-                  "theta": "pi/2",
+                  "theta": "π/2",
                   "cosine": "0",
                   "sine": "1",
                   "unit_circle_position": "(0, 1)"
                 },
                 {
-                  "theta": "pi",
+                  "theta": "π",
                   "cosine": "-1",
                   "sine": "0",
                   "unit_circle_position": "(-1, 0)"
                 },
                 {
-                  "theta": "3pi/2",
+                  "theta": "3π/2",
                   "cosine": "0",
                   "sine": "-1",
                   "unit_circle_position": "(0, -1)"
                 },
                 {
-                  "theta": "2pi",
+                  "theta": "2π",
                   "cosine": "1",
                   "sine": "0",
                   "unit_circle_position": "(1, 0)"
                 }
               ],
-              "relation_to_sine": "cos x = sin(x + pi/2)",
+              "relation_to_sine": "cos x = sin(x + π/2)",
               "out_of_scope": [
                 "余弦函数单调区间、奇偶性和对称性的系统归纳",
                 "正弦与余弦性质的完整比较",
@@ -16176,7 +16211,7 @@
             "representations": [
               {
                 "id": "unit_circle",
-                "role": "显示角 theta、动点 P 和 P 的横坐标。"
+                "role": "显示角 x、动点 P = (cos x, sin x) 和 P 的横坐标。"
               },
               {
                 "id": "horizontal_projection",
@@ -16184,15 +16219,15 @@
               },
               {
                 "id": "cosine_graph",
-                "role": "显示图像点 Q = (theta, cos theta) 和随 theta 变化生成的轨迹。"
+                "role": "显示图像点 Q = (x, cos x) 和随 x 变化生成的轨迹。"
               },
               {
                 "id": "sine_reference",
-                "role": "教师打开时显示同一 theta 下的 sin theta 参照，帮助区分横坐标与纵坐标来源。"
+                "role": "教师打开时显示同一 x 下的 sin x 参照，帮助区分横坐标与纵坐标来源。"
               },
               {
                 "id": "key_value_table",
-                "role": "记录关键角、单位圆位置、cos theta 与图像点。"
+                "role": "记录关键角、单位圆位置、cos x 与图像点。"
               }
             ],
             "narrativeDesign": {
@@ -16200,10 +16235,10 @@
               "pausePoints": []
             },
             "interactionDesign": {
-              "primaryControl": "拖动单位圆上的动点 P，或用 theta 滑块精确控制角度。",
+              "primaryControl": "拖动单位圆上的动点 P，或用 x 滑块精确控制角度。",
               "teacherControls": [
                 "播放/暂停匀速旋转",
-                "重置到 theta = 0",
+                "重置到 x = 0",
                 "显示或隐藏角弧与弧度标签",
                 "显示或隐藏横向投影线",
                 "显示或隐藏已生成余弦轨迹",
@@ -16219,27 +16254,27 @@
               "stagedReveal": [
                 {
                   "step": "circle_only",
-                  "description": "只显示单位圆、坐标轴、动点 P 和角 theta。"
+                  "description": "只显示单位圆、坐标轴、动点 P 和角 x。"
                 },
                 {
                   "step": "horizontal_projection",
-                  "description": "显示 P 到 x 轴方向的投影，强调 cos theta 是横坐标。"
+                  "description": "显示 P 到 x 轴方向的投影，强调 cos x 是横坐标。"
                 },
                 {
                   "step": "graph_point",
-                  "description": "在右侧坐标系显示 Q = (theta, cos theta)。"
+                  "description": "在右侧坐标系显示 Q = (x, cos x)。"
                 },
                 {
                   "step": "trace_generation",
-                  "description": "随拖动保留 Q 的轨迹，生成 0 到 2pi 的余弦曲线。"
+                  "description": "随拖动保留 Q 的轨迹，生成 0 到 2π 的余弦曲线。"
                 },
                 {
                   "step": "sine_reference",
-                  "description": "打开正弦参照，比较同一 theta 下横坐标投影和纵坐标投影的区别。"
+                  "description": "打开正弦参照，比较同一 x 下横坐标投影和纵坐标投影的区别。"
                 },
                 {
                   "step": "period_extension",
-                  "description": "显示 theta 与 theta + 2pi 的同一横坐标来源，解释周期重复。"
+                  "description": "显示 x 与 x + 2π 的同一横坐标来源，解释周期重复。"
                 }
               ]
             },
@@ -16256,7 +16291,7 @@
                 {
                   "name": "point_p",
                   "value_type": "point2d",
-                  "description": "单位圆动点坐标 (cos theta, sin theta)。",
+                  "description": "单位圆动点坐标 (cos x, sin x)。",
                   "persistence": "snapshot"
                 },
                 {
@@ -16264,7 +16299,7 @@
                   "unit": "unitless",
                   "value_type": "number",
                   "default": 1,
-                  "description": "point_p 的横坐标 cos theta。",
+                  "description": "point_p 的横坐标 cos x。",
                   "persistence": "snapshot"
                 },
                 {
@@ -16272,13 +16307,13 @@
                   "unit": "unitless",
                   "value_type": "number",
                   "default": 0,
-                  "description": "同一 theta 下的 sin theta，用于参照而非本资源主线。",
+                  "description": "同一 x 下的 sin x，用于参照而非本资源主线。",
                   "persistence": "snapshot"
                 },
                 {
                   "name": "point_q",
                   "value_type": "point2d",
-                  "description": "函数图像上的点 (theta, cos theta)。",
+                  "description": "函数图像上的点 (x, cos x)。",
                   "persistence": "snapshot"
                 },
                 {
@@ -16368,7 +16403,7 @@
             "feedbackAndDiagnosis": {
               "success_evidence": [
                 "学生能用自己的话说明余弦函数值来自单位圆动点的横坐标。",
-                "学生能写出余弦图像上点 Q = (theta, cos theta)，并说明 theta 是弧度量。",
+                "学生能写出余弦图像上点 Q = (x, cos x)，并说明 x 是弧度量。",
                 "学生能按 1、0、-1、0、1 的顺序说出五个关键角处的余弦值。",
                 "学生能说明 cos x 与 sin x 的相位关系，同时不把余弦来源简化为背平移。"
               ],
@@ -16387,22 +16422,22 @@
                 },
                 {
                   "id": "graph_x_circle_x_confusion",
-                  "label": "把函数图像横坐标 theta 与单位圆点横坐标 cos theta 混淆"
+                  "label": "把函数图像横坐标 x 与单位圆点横坐标 cos x 混淆"
                 }
               ],
               "feedback_principles": [
-                "反馈优先追问 cos theta 对应单位圆上的哪个坐标。",
-                "关键点错误要回到同一个 theta 下的点 P 和点 Q。",
+                "反馈优先追问 cos x 对应单位圆上的哪个坐标。",
+                "关键点错误要回到同一个 x 下的点 P 和点 Q。",
                 "相位参照只用于解释关系，不替代单位圆横坐标投影。"
               ]
             },
             "visualSemantics": {
-              "angle_arc": "表示角 theta 的弧度量。",
+              "angle_arc": "表示角 x 的弧度量。",
               "moving_point": "表示单位圆上的动点 P。",
-              "projection_line": "表示从 P 的横坐标到 cos theta 的投影关系。",
-              "graph_point": "表示余弦图像上的点 Q = (theta, cos theta)。",
-              "generated_trace": "表示随 theta 变化形成的余弦曲线。",
-              "sine_reference": "表示同一 theta 下的正弦参照，颜色弱于余弦主线。",
+              "projection_line": "表示从 P 的横坐标到 cos x 的投影关系。",
+              "graph_point": "表示余弦图像上的点 Q = (x, cos x)。",
+              "generated_trace": "表示随 x 变化形成的余弦曲线。",
+              "sine_reference": "表示同一 x 下的正弦参照，颜色弱于余弦主线。",
               "rule": "颜色只用于区分数学对象和对应关系，不作装饰。"
             },
             "implementation": {
@@ -16936,7 +16971,7 @@
           "id": "SH-HS-MATH-HJ-B2-C07-L04-A01",
           "resourceType": "applet",
           "title": "正弦余弦性质对照板",
-          "subtitle": "并列比较关键点、单调段和对称元素，归纳 y = cos x 的性质",
+          "subtitle": "并列比较关键点、单调段和对称元素，归纳 sin x 与 cos x 的性质差异",
           "cognitiveAction": "比较",
           "note": "并列联动关键点、单调段和对称元素，支持教师切换问题焦点。",
           "availability": "metadata_ready",
@@ -16948,7 +16983,7 @@
             "status": "draft",
             "resourceType": "applet",
             "title": "正弦余弦性质对照板",
-            "subtitle": "并列比较关键点、单调段和对称元素，归纳 y = cos x 的性质",
+            "subtitle": "并列比较关键点、单调段和对称元素，归纳 sin x 与 cos x 的性质差异",
             "curriculum": {
               "region": "上海",
               "stage": "高中",
@@ -16970,9 +17005,9 @@
               "primaryTeachingProblem": "学生常把正弦函数的奇偶性、单调区间和关键点一般式直接套到余弦函数，不能从单位圆和图像解释差异。",
               "learningGoals": [
                 "比较 y = sin x 与 y = cos x 的起点和关键点顺序，说明余弦函数的性质不能机械套用正弦函数。",
-                "从图像对照中写出余弦函数的单调递增区间和递减区间，并保留 2kpi。",
-                "区分余弦函数的偶函数性质、对称轴和对称中心。",
-                "用 k 属于整数的形式表达余弦函数的零点、最大值点和最小值点。"
+                "从图像对照中写出正弦函数与余弦函数各自的单调递增区间和递减区间，并保留 2kπ。",
+                "区分正弦函数与余弦函数的奇偶性、对称轴和对称中心。",
+                "用 k ∈ Z 的形式表达正弦函数与余弦函数的零点、最大值点和最小值点。"
               ],
               "prerequisites": [
                 "余弦函数图像的生成过程",
@@ -16996,21 +17031,49 @@
               "dependent_variable": "函数值 y",
               "domain": "R",
               "range": "[-1, 1]",
-              "fundamental_period": "2pi",
-              "default_x_range": "-2pi <= x <= 4pi",
+              "fundamental_period": "2π",
+              "default_x_range": "-2π <= x <= 4π",
+              "comparison_properties": {
+                "sine": {
+                  "domain": "R",
+                  "range": "[-1, 1]",
+                  "fundamental_period": "2π",
+                  "parity": "odd; sin(-x) = -sin x",
+                  "zeros": "x = kπ, k ∈ Z",
+                  "maximum_points": "(π/2 + 2kπ, 1), k ∈ Z",
+                  "minimum_points": "(-π/2 + 2kπ, -1), k ∈ Z",
+                  "increasing": "[-π/2 + 2kπ, π/2 + 2kπ], k ∈ Z",
+                  "decreasing": "[π/2 + 2kπ, 3π/2 + 2kπ], k ∈ Z",
+                  "axes": "x = π/2 + kπ, k ∈ Z",
+                  "centers": "(kπ, 0), k ∈ Z"
+                },
+                "cosine": {
+                  "domain": "R",
+                  "range": "[-1, 1]",
+                  "fundamental_period": "2π",
+                  "parity": "even; cos(-x) = cos x",
+                  "zeros": "x = π/2 + kπ, k ∈ Z",
+                  "maximum_points": "(2kπ, 1), k ∈ Z",
+                  "minimum_points": "(π + 2kπ, -1), k ∈ Z",
+                  "increasing": "[-π + 2kπ, 2kπ], k ∈ Z",
+                  "decreasing": "[2kπ, π + 2kπ], k ∈ Z",
+                  "axes": "x = kπ, k ∈ Z",
+                  "centers": "(π/2 + kπ, 0), k ∈ Z"
+                }
+              },
               "monotonicity": {
-                "increasing": "[-pi + 2kpi, 2kpi], k in Z",
-                "decreasing": "[2kpi, pi + 2kpi], k in Z"
+                "increasing": "[-π + 2kπ, 2kπ], k ∈ Z",
+                "decreasing": "[2kπ, π + 2kπ], k ∈ Z"
               },
               "symmetry": {
                 "even_function": "cos(-x) = cos x",
-                "axes": "x = kpi, k in Z",
-                "centers": "(pi/2 + kpi, 0), k in Z"
+                "axes": "x = kπ, k ∈ Z",
+                "centers": "(π/2 + kπ, 0), k ∈ Z"
               },
               "key_points": {
-                "zeros": "x = pi/2 + kpi, k in Z",
-                "maximum_points": "(2kpi, 1), k in Z",
-                "minimum_points": "(pi + 2kpi, -1), k in Z"
+                "zeros": "x = π/2 + kπ, k ∈ Z",
+                "maximum_points": "(2kπ, 1), k ∈ Z",
+                "minimum_points": "(π + 2kπ, -1), k ∈ Z"
               },
               "out_of_scope": [
                 "余弦图像的单位圆生成过程",
@@ -17042,7 +17105,7 @@
               },
               {
                 "id": "property_statement",
-                "role": "在教师揭示时给出余弦性质归纳句。"
+                "role": "在教师揭示时给出正弦与余弦性质并列表，突出相同项和错位项。"
               }
             ],
             "narrativeDesign": {
@@ -17074,7 +17137,7 @@
                 },
                 {
                   "step": "period_compare",
-                  "description": "显示相隔 2pi 的余弦同高点，确认周期性。"
+                  "description": "显示相隔 2π 的余弦同高点，确认周期性。"
                 },
                 {
                   "step": "monotonic_compare",
@@ -17090,7 +17153,7 @@
                 },
                 {
                   "step": "property_summary",
-                  "description": "显示定义域、值域、周期性、奇偶性、单调性和关键点结论。"
+                  "description": "显示正弦与余弦的定义域、值域、周期、奇偶性、单调、对称和关键点并列表。"
                 }
               ]
             },
@@ -17139,7 +17202,7 @@
                   "name": "period_compare_visible",
                   "value_type": "boolean",
                   "default": false,
-                  "description": "是否显示相隔 2pi 的余弦周期比较点。",
+                  "description": "是否显示相隔 2π 的余弦周期比较点。",
                   "persistence": "snapshot"
                 },
                 {
@@ -17229,9 +17292,9 @@
             "feedbackAndDiagnosis": {
               "success_evidence": [
                 "学生能说明余弦函数是偶函数，而正弦函数是奇函数，不能直接套用。",
-                "学生能写出余弦函数递增区间和递减区间，并保留 2kpi。",
-                "学生能把余弦对称轴 x = kpi 与对称中心 (pi/2 + kpi, 0) 分开表达。",
-                "学生能用 k 属于整数的形式写出余弦零点和最值点。"
+                "学生能分别写出正弦函数与余弦函数递增区间和递减区间，并保留 2kπ。",
+                "学生能把正弦与余弦的对称轴、对称中心分开表达，尤其不把余弦对称轴 x = kπ 和对称中心 (π/2 + kπ, 0) 混用。",
+                "学生能用 k ∈ Z 的形式写出正弦函数与余弦函数的零点和最值点。"
               ],
               "common_error_tags": [
                 {
@@ -17240,7 +17303,7 @@
                 },
                 {
                   "id": "period_omission",
-                  "label": "只写一个周期，遗漏加 2kpi 或整数 k 的一般形式"
+                  "label": "只写一个周期，遗漏加 2kπ 或整数 k 的一般形式"
                 },
                 {
                   "id": "monotonic_direction_confusion",
@@ -17267,7 +17330,7 @@
               "sine_reference": "正弦函数 y = sin x 的参照图像，使用暖色虚线。",
               "current_point": "当前余弦观察点 (x, cos x)。",
               "sine_point": "同一 x 下的正弦参照点 (x, sin x)。",
-              "period_twin": "与当前余弦点相隔 2pi 且函数值相同的周期比较点。",
+              "period_twin": "与当前余弦点相隔 2π 且函数值相同的周期比较点。",
               "increasing_segment": "选定 k 下余弦函数的递增区间。",
               "decreasing_segment": "选定 k 下余弦函数的递减区间。",
               "symmetry_axis": "余弦图像的竖直对称轴。",
@@ -17333,7 +17396,8 @@
                 "任务三：单调区间端点",
                 "任务四：对称元素分类",
                 "任务五：关键点一般式",
-                "任务六：快速诊断",
+                "任务六：正弦/余弦性质对照总表",
+                "任务七：快速诊断",
                 "提交要求"
               ]
             }
@@ -17376,8 +17440,8 @@
               "estimatedClassroomMinutes": 8,
               "primaryTeachingProblem": "学生容易把正弦函数的奇偶性、单调区间和关键点位置直接迁移到余弦函数，导致余弦性质的一般式、对称元素和单位圆解释相互脱节。",
               "learningGoals": [
-                "判断 y = cos x 的偶函数性质，并能用单位圆横坐标解释 cos(-x) = cos x。",
-                "写出余弦函数最大值点、最小值点、零点和单调区间的完整一般式，并注明 k 属于整数。",
+                "确认 y = cos x 的定义域为 R、值域为 [-1, 1]、最小正周期为 2π，并能说明它是偶函数。",
+                "写出余弦函数最大值点、最小值点、零点和单调区间的完整一般式，并注明 k ∈ Z。",
                 "区分余弦图像的对称轴、对称中心和关键点坐标。",
                 "根据错因标签选择回看正弦余弦性质对照板中的奇偶、单调、关键点或单位圆图层。"
               ],
@@ -17410,7 +17474,7 @@
             },
             "diagnosisDesign": {
               "diagnosticFocus": [
-                "能否准确判断 y = cos x 是偶函数，而不是套用正弦函数的奇函数结论。",
+                "能否确认定义域、值域、最小正周期和偶函数性质。",
                 "能否写出最大值点、最小值点、零点和单调区间的完整一般式。",
                 "能否区分余弦图像的对称轴与对称中心。",
                 "能否把单位圆中的横坐标变化与图像上的单调、奇偶和关键点联系起来。"
@@ -17424,7 +17488,12 @@
                 {
                   "id": "period_omission",
                   "title": "周期遗漏",
-                  "description": "只写一个周期内的点或区间，遗漏加 2kpi 或 k 属于整数的完整表达。"
+                  "description": "只写一个周期内的点或区间，遗漏加 2kπ 或 k ∈ Z 的完整表达。"
+                },
+                {
+                  "id": "period_length_confusion",
+                  "title": "周期长度混淆",
+                  "description": "把相邻零点间隔 π 误认为最小正周期，或把余弦函数的周期步长写成 π。"
                 },
                 {
                   "id": "monotonic_interval_reversal",
@@ -17432,14 +17501,14 @@
                   "description": "把余弦的递增、递减半周期端点写反，或把包含转折点的区间当作单调区间。"
                 },
                 {
-                  "id": "parity_symmetry_mixup",
-                  "title": "奇偶性和对称元素混淆",
-                  "description": "把偶函数、y 轴对称、竖直对称轴和中心对称点混为同一类对象。"
+                  "id": "axis_center_mixup",
+                  "title": "对称轴与对称中心混淆",
+                  "description": "把偶函数对应的 y 轴、余弦图像的竖直对称轴和中心对称点混为同一类对象。"
                 },
                 {
                   "id": "zero_extrema_formula_mixup",
-                  "title": "零点最值一般式混用",
-                  "description": "把零点、最大值点和最小值点的横坐标公式互相替代。"
+                  "title": "关键点一般式遗漏或混用",
+                  "description": "只写特殊零点或最值点，或把最大值点、最小值点和零点的横坐标公式互相替代。"
                 },
                 {
                   "id": "unit_circle_graph_gap",
@@ -17459,7 +17528,7 @@
               },
               "feedbackStrategy": {
                 "immediate_feedback": "每题按命中的错因标签返回一句图像或单位圆回看提示，并要求学生补写一个完整一般式或一句比较理由。",
-                "teacher_dashboard_notes": "若 sine_transfer_error 集中出现，先回到正弦余弦性质对照；若 period_omission 或 zero_extrema_formula_mixup 集中出现，回看关键点一般式；若 unit_circle_graph_gap 集中出现，回到单位圆横坐标投影。",
+                "teacher_dashboard_notes": "若 sine_transfer_error 集中出现，先回到正弦余弦性质对照；若 period_omission、period_length_confusion 或 zero_extrema_formula_mixup 集中出现，回看周期与关键点一般式；若 axis_center_mixup 集中出现，回看对称轴和对称中心；若 unit_circle_graph_gap 集中出现，回到单位圆横坐标投影。",
                 "remediation_links": [
                   "content/applets/SH-HS-MATH-HJ-B2-C07-L04-A01",
                   "content/applets/SH-HS-MATH-HJ-B2-C07-L03-A01"
@@ -17507,8 +17576,9 @@
               "misconceptionTags": [
                 "sine_transfer_error",
                 "period_omission",
+                "period_length_confusion",
                 "monotonic_interval_reversal",
-                "parity_symmetry_mixup",
+                "axis_center_mixup",
                 "zero_extrema_formula_mixup",
                 "unit_circle_graph_gap"
               ]

@@ -3,7 +3,7 @@ version: "0.1.0"
 status: "draft"
 resource_type: "applet"
 title: "正弦余弦性质对照板"
-subtitle: "并列比较关键点、单调段和对称元素，归纳 y = cos x 的性质"
+subtitle: "并列比较关键点、单调段和对称元素，归纳 sin x 与 cos x 的性质差异"
 
 curriculum:
   region: "上海"
@@ -26,9 +26,9 @@ pedagogy:
   primary_teaching_problem: "学生常把正弦函数的奇偶性、单调区间和关键点一般式直接套到余弦函数，不能从单位圆和图像解释差异。"
   learning_goals:
     - "比较 y = sin x 与 y = cos x 的起点和关键点顺序，说明余弦函数的性质不能机械套用正弦函数。"
-    - "从图像对照中写出余弦函数的单调递增区间和递减区间，并保留 2kpi。"
-    - "区分余弦函数的偶函数性质、对称轴和对称中心。"
-    - "用 k 属于整数的形式表达余弦函数的零点、最大值点和最小值点。"
+    - "从图像对照中写出正弦函数与余弦函数各自的单调递增区间和递减区间，并保留 2kπ。"
+    - "区分正弦函数与余弦函数的奇偶性、对称轴和对称中心。"
+    - "用 k ∈ Z 的形式表达正弦函数与余弦函数的零点、最大值点和最小值点。"
   prerequisites:
     - "余弦函数图像的生成过程"
     - "正弦函数性质"
@@ -48,19 +48,44 @@ mathematical_scope:
   dependent_variable: "函数值 y"
   domain: "R"
   range: "[-1, 1]"
-  fundamental_period: "2pi"
-  default_x_range: "-2pi <= x <= 4pi"
+  fundamental_period: "2π"
+  default_x_range: "-2π <= x <= 4π"
+  comparison_properties:
+    sine:
+      domain: "R"
+      range: "[-1, 1]"
+      fundamental_period: "2π"
+      parity: "odd; sin(-x) = -sin x"
+      zeros: "x = kπ, k ∈ Z"
+      maximum_points: "(π/2 + 2kπ, 1), k ∈ Z"
+      minimum_points: "(-π/2 + 2kπ, -1), k ∈ Z"
+      increasing: "[-π/2 + 2kπ, π/2 + 2kπ], k ∈ Z"
+      decreasing: "[π/2 + 2kπ, 3π/2 + 2kπ], k ∈ Z"
+      axes: "x = π/2 + kπ, k ∈ Z"
+      centers: "(kπ, 0), k ∈ Z"
+    cosine:
+      domain: "R"
+      range: "[-1, 1]"
+      fundamental_period: "2π"
+      parity: "even; cos(-x) = cos x"
+      zeros: "x = π/2 + kπ, k ∈ Z"
+      maximum_points: "(2kπ, 1), k ∈ Z"
+      minimum_points: "(π + 2kπ, -1), k ∈ Z"
+      increasing: "[-π + 2kπ, 2kπ], k ∈ Z"
+      decreasing: "[2kπ, π + 2kπ], k ∈ Z"
+      axes: "x = kπ, k ∈ Z"
+      centers: "(π/2 + kπ, 0), k ∈ Z"
   monotonicity:
-    increasing: "[-pi + 2kpi, 2kpi], k in Z"
-    decreasing: "[2kpi, pi + 2kpi], k in Z"
+    increasing: "[-π + 2kπ, 2kπ], k ∈ Z"
+    decreasing: "[2kπ, π + 2kπ], k ∈ Z"
   symmetry:
     even_function: "cos(-x) = cos x"
-    axes: "x = kpi, k in Z"
-    centers: "(pi/2 + kpi, 0), k in Z"
+    axes: "x = kπ, k ∈ Z"
+    centers: "(π/2 + kπ, 0), k ∈ Z"
   key_points:
-    zeros: "x = pi/2 + kpi, k in Z"
-    maximum_points: "(2kpi, 1), k in Z"
-    minimum_points: "(pi + 2kpi, -1), k in Z"
+    zeros: "x = π/2 + kπ, k ∈ Z"
+    maximum_points: "(2kπ, 1), k ∈ Z"
+    minimum_points: "(π + 2kπ, -1), k ∈ Z"
   out_of_scope:
     - "余弦图像的单位圆生成过程"
     - "正切函数图像与性质"
@@ -79,7 +104,7 @@ representations:
   - id: "key_point_table"
     role: "列出余弦函数零点、最大值点、最小值点及其一般形式。"
   - id: "property_statement"
-    role: "在教师揭示时给出余弦性质归纳句。"
+    role: "在教师揭示时给出正弦与余弦性质并列表，突出相同项和错位项。"
 
 interaction_design:
   primary_control: "拖动同步游标或用 x 滑块改变观察位置，在正弦参照下比较余弦函数的性质层。"
@@ -101,7 +126,7 @@ interaction_design:
     - step: "paired_graphs_only"
       description: "只显示余弦曲线、正弦参照曲线和同步游标。"
     - step: "period_compare"
-      description: "显示相隔 2pi 的余弦同高点，确认周期性。"
+      description: "显示相隔 2π 的余弦同高点，确认周期性。"
     - step: "monotonic_compare"
       description: "显示选定 k 下余弦函数的递增段和递减段，比较端点。"
     - step: "symmetry_compare"
@@ -109,7 +134,7 @@ interaction_design:
     - step: "key_points_generalization"
       description: "显示零点、最大值点、最小值点，归纳带 k 的一般形式。"
     - step: "property_summary"
-      description: "显示定义域、值域、周期性、奇偶性、单调性和关键点结论。"
+      description: "显示正弦与余弦的定义域、值域、周期、奇偶性、单调、对称和关键点并列表。"
 
 data_contract:
   state_variables:
@@ -145,7 +170,7 @@ data_contract:
     - name: "period_compare_visible"
       value_type: "boolean"
       default: false
-      description: "是否显示相隔 2pi 的余弦周期比较点。"
+      description: "是否显示相隔 2π 的余弦周期比较点。"
       persistence: "snapshot"
     - name: "monotonic_segments_visible"
       value_type: "boolean"
@@ -188,14 +213,14 @@ data_contract:
 feedback_and_diagnosis:
   success_evidence:
     - "学生能说明余弦函数是偶函数，而正弦函数是奇函数，不能直接套用。"
-    - "学生能写出余弦函数递增区间和递减区间，并保留 2kpi。"
-    - "学生能把余弦对称轴 x = kpi 与对称中心 (pi/2 + kpi, 0) 分开表达。"
-    - "学生能用 k 属于整数的形式写出余弦零点和最值点。"
+    - "学生能分别写出正弦函数与余弦函数递增区间和递减区间，并保留 2kπ。"
+    - "学生能把正弦与余弦的对称轴、对称中心分开表达，尤其不把余弦对称轴 x = kπ 和对称中心 (π/2 + kπ, 0) 混用。"
+    - "学生能用 k ∈ Z 的形式写出正弦函数与余弦函数的零点和最值点。"
   common_error_tags:
     - id: "sine_property_transfer"
       label: "把正弦函数奇偶性或单调区间直接套到余弦函数"
     - id: "period_omission"
-      label: "只写一个周期，遗漏加 2kpi 或整数 k 的一般形式"
+      label: "只写一个周期，遗漏加 2kπ 或整数 k 的一般形式"
     - id: "monotonic_direction_confusion"
       label: "把余弦函数在一个周期内的递增递减方向写反"
     - id: "axis_center_mixup"
@@ -213,7 +238,7 @@ visual_semantics:
   sine_reference: "正弦函数 y = sin x 的参照图像，使用暖色虚线。"
   current_point: "当前余弦观察点 (x, cos x)。"
   sine_point: "同一 x 下的正弦参照点 (x, sin x)。"
-  period_twin: "与当前余弦点相隔 2pi 且函数值相同的周期比较点。"
+  period_twin: "与当前余弦点相隔 2π 且函数值相同的周期比较点。"
   increasing_segment: "选定 k 下余弦函数的递增区间。"
   decreasing_segment: "选定 k 下余弦函数的递减区间。"
   symmetry_axis: "余弦图像的竖直对称轴。"
