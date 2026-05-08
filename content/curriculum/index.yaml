@@ -16,6 +16,251 @@ volumes:
       - "幂、指数与对数"
       - "函数"
     chapters:
+      - id: "SH-HS-MATH-HJ-B1-C01"
+        number: 1
+        title: "集合与逻辑"
+        status: "draft"
+        verification:
+          textbook_outline_status: "official_e_textbook_checked"
+          needs_manual_textbook_check: true
+          checked_on: "2026-05-08"
+          source_audit: "docs/source-audits/b1-c01-source-audit.md"
+          notes: "国家智慧教育平台电子教材可确认第1章章标题、节标题和正文目标题；dolearning 与上海数字教学/备课平台课时目录当前无法直接确认。1.1 集合初步的平台拆课存在疑点：2024精品课目录只提取到部分节点，上海科技教育出版社同步课课练把集合表示与集合运算按练习分组重排。所有课时边界、课时数和资源候选均需纸质教材或已登录平台终核；本章本轮不新增 digital_entry_points。"
+        theme_strands:
+          - "logic"
+          - "algebra"
+          - "function_prerequisite"
+        chapter_role: "建立集合语言、区间与取值范围表达、命题和充分必要条件等逻辑语言，为第2章方程与不等式解集表达、第3章幂指数对数的条件限制、第5章函数定义域和值域语言提供基础。"
+        prerequisite_knowledge:
+          - id: "SH-HS-MATH-HJ-JH-ALG-K01"
+            title: "初中实数、方程、不等式和几何命题经验"
+        follow_up_knowledge:
+          - id: "SH-HS-MATH-HJ-B1-C02-K01"
+            title: "等式、不等式和解集表示"
+          - id: "SH-HS-MATH-HJ-B1-C03-K01"
+            title: "幂、指数与对数中的取值条件"
+          - id: "SH-HS-MATH-HJ-B1-C05-K01"
+            title: "函数定义域、值域和性质语言"
+        sections:
+          - id: "SH-HS-MATH-HJ-B1-C01-S01"
+            textbook_label: "1.1"
+            title: "集合初步"
+            lesson_ids:
+              - "SH-HS-MATH-HJ-B1-C01-L01"
+              - "SH-HS-MATH-HJ-B1-C01-L02"
+              - "SH-HS-MATH-HJ-B1-C01-L03"
+              - "SH-HS-MATH-HJ-B1-C01-L04"
+          - id: "SH-HS-MATH-HJ-B1-C01-S02"
+            textbook_label: "1.2"
+            title: "常用逻辑用语"
+            lesson_ids:
+              - "SH-HS-MATH-HJ-B1-C01-L05"
+              - "SH-HS-MATH-HJ-B1-C01-L06"
+              - "SH-HS-MATH-HJ-B1-C01-L07"
+        lessons:
+          - id: "SH-HS-MATH-HJ-B1-C01-L01"
+            textbook_ref: "1.1.1"
+            title: "集合"
+            status: "draft"
+            estimated_periods: null
+            period_status: "needs_manual_textbook_check"
+            source_status: "needs_manual_textbook_check"
+            core_knowledge:
+              - "用确定对象组成集合，并区分元素与集合的关系"
+              - "识别有限集、无限集、空集和常用数集符号"
+              - "把集合语言作为后续取值范围和解集表达的基础"
+            prerequisites:
+              - "初中实数、整数、有理数和自然数等数集经验"
+              - "初中方程、不等式和几何对象分类经验"
+            successors:
+              - "SH-HS-MATH-HJ-B1-C01-L02"
+              - "SH-HS-MATH-HJ-B1-C02-K01"
+              - "SH-HS-MATH-HJ-B1-C05-L01"
+            teaching_pain_points:
+              - "学生容易用模糊或主观标准描述集合，导致对象是否属于集合无法判定。"
+              - "元素属于集合和集合包含关系容易在符号上混用。"
+              - "常用数集符号如果只靠记忆，后续取值范围表达容易遗漏边界。"
+            diagnosis_focus:
+              - "能否判断给定对象是否能构成集合。"
+              - "能否正确使用元素与集合的关系符号。"
+            core_competencies:
+              - "数学抽象"
+              - "逻辑推理"
+          - id: "SH-HS-MATH-HJ-B1-C01-L02"
+            textbook_ref: "1.1.2"
+            title: "集合的表示方法"
+            status: "draft"
+            estimated_periods: null
+            period_status: "needs_manual_textbook_check"
+            source_status: "needs_manual_textbook_check"
+            core_knowledge:
+              - "用列举法和描述法表示集合"
+              - "用区间表示满足不等式条件的实数集合"
+              - "在集合表示中保持对象范围、条件和边界一致"
+            prerequisites:
+              - "集合和元素"
+              - "实数大小关系和一元一次不等式"
+            successors:
+              - "SH-HS-MATH-HJ-B1-C01-L03"
+              - "SH-HS-MATH-HJ-B1-C02-K01"
+              - "SH-HS-MATH-HJ-B1-C03-L02"
+              - "SH-HS-MATH-HJ-B1-C05-L01"
+            teaching_pain_points:
+              - "学生容易把列举法中的顺序、重复元素和集合本身混淆。"
+              - "描述法中对象范围和条件写得过宽或过窄，导致集合不等价。"
+              - "区间端点开闭和无穷端写法容易在后续不等式解集中迁移出错。"
+            diagnosis_focus:
+              - "能否选择合适的集合表示方法。"
+              - "能否从不等式条件正确写出区间。"
+            core_competencies:
+              - "数学抽象"
+              - "数学运算"
+              - "逻辑推理"
+          - id: "SH-HS-MATH-HJ-B1-C01-L03"
+            textbook_ref: "1.1.3"
+            title: "集合之间的关系"
+            status: "draft"
+            estimated_periods: null
+            period_status: "needs_manual_textbook_check"
+            source_status: "needs_manual_textbook_check"
+            core_knowledge:
+              - "用子集、真子集和相等描述两个集合之间的关系"
+              - "用元素逐一检验或条件包含判断集合关系"
+              - "把集合包含关系连接到命题推出和解集包含"
+            prerequisites:
+              - "集合的表示方法"
+              - "元素与集合关系"
+            successors:
+              - "SH-HS-MATH-HJ-B1-C01-L04"
+              - "SH-HS-MATH-HJ-B1-C01-L05"
+              - "SH-HS-MATH-HJ-B1-C02-K01"
+            teaching_pain_points:
+              - "学生容易把元素属于集合写成集合包含关系，或把单元素集合和元素本身混淆。"
+              - "判断子集方向时容易只看集合大小，不检查每个元素或条件是否包含。"
+              - "证明两个集合相等时容易只证一个方向。"
+            diagnosis_focus:
+              - "能否区分元素、单元素集合和子集关系。"
+              - "能否用双向包含判断集合相等。"
+            core_competencies:
+              - "逻辑推理"
+              - "数学抽象"
+          - id: "SH-HS-MATH-HJ-B1-C01-L04"
+            textbook_ref: "1.1.4"
+            title: "集合的运算"
+            status: "draft"
+            estimated_periods: null
+            period_status: "needs_manual_textbook_check"
+            source_status: "needs_manual_textbook_check"
+            core_knowledge:
+              - "理解交集、并集和补集的含义"
+              - "用文氏图、数轴和区间语言表示集合运算结果"
+              - "在明确全集的前提下讨论补集"
+            prerequisites:
+              - "集合之间的关系"
+              - "区间表示和实数不等式"
+            successors:
+              - "SH-HS-MATH-HJ-B1-C02-K01"
+              - "SH-HS-MATH-HJ-B1-C05-L02"
+              - "SH-HS-MATH-HJ-B1-C05-L07"
+            teaching_pain_points:
+              - "学生容易把交集和并集的条件语言混淆。"
+              - "区间交并时端点开闭和空集情形容易出错。"
+              - "补集依赖全集，离开全集谈补集会导致结果不确定。"
+            diagnosis_focus:
+              - "能否用数轴或文氏图区分交集、并集和补集。"
+              - "能否在区间运算中处理端点和空集。"
+            core_competencies:
+              - "直观想象"
+              - "逻辑推理"
+              - "数学运算"
+          - id: "SH-HS-MATH-HJ-B1-C01-L05"
+            textbook_ref: "1.2.1"
+            title: "命题"
+            status: "draft"
+            estimated_periods: null
+            period_status: "needs_manual_textbook_check"
+            source_status: "needs_manual_textbook_check"
+            core_knowledge:
+              - "判断语句是否为命题，并区分真命题和假命题"
+              - "把命题改写为若条件则结论的形式"
+              - "用反例判断命题为假，用证明判断命题为真"
+            prerequisites:
+              - "集合之间的关系"
+              - "初中几何命题和代数命题经验"
+            successors:
+              - "SH-HS-MATH-HJ-B1-C01-L06"
+              - "SH-HS-MATH-HJ-B1-C02-K01"
+              - "SH-HS-MATH-HJ-B1-C05-L04"
+            teaching_pain_points:
+              - "含变量的陈述句在变量未限定时容易被误判为命题。"
+              - "学生容易把生活中的因果关系和数学中的推出关系混同。"
+              - "判断假命题时容易尝试全面证明，而不会使用反例。"
+            diagnosis_focus:
+              - "能否判断语句是否有确定真假。"
+              - "能否用反例说明一个命题为假。"
+            core_competencies:
+              - "逻辑推理"
+              - "数学抽象"
+          - id: "SH-HS-MATH-HJ-B1-C01-L06"
+            textbook_ref: "1.2.2"
+            title: "充分条件与必要条件"
+            status: "draft"
+            estimated_periods: null
+            period_status: "needs_manual_textbook_check"
+            source_status: "needs_manual_textbook_check"
+            core_knowledge:
+              - "根据推出关系判断充分条件、必要条件和充要条件"
+              - "用集合包含关系辅助理解条件强弱"
+              - "在证明中区分充分性和必要性两个方向"
+            prerequisites:
+              - "命题和推出关系"
+              - "集合之间的关系"
+            successors:
+              - "SH-HS-MATH-HJ-B1-C01-L07"
+              - "SH-HS-MATH-HJ-B1-C02-K01"
+              - "SH-HS-MATH-HJ-B1-C03-L02"
+              - "SH-HS-MATH-HJ-B1-C05-L01"
+            teaching_pain_points:
+              - "学生容易把充分条件和必要条件的方向反过来。"
+              - "只看文字强弱，不用推出关系或集合包含关系验证。"
+              - "证明充要条件时容易漏证一个方向。"
+            diagnosis_focus:
+              - "能否把条件关系转化为推出方向。"
+              - "能否判断充分、必要、充要和既非充分又非必要。"
+            core_competencies:
+              - "逻辑推理"
+              - "数学抽象"
+          - id: "SH-HS-MATH-HJ-B1-C01-L07"
+            textbook_ref: "1.2.3"
+            title: "反证法"
+            status: "draft"
+            estimated_periods: null
+            period_status: "needs_manual_textbook_check"
+            source_status: "needs_manual_textbook_check"
+            core_knowledge:
+              - "理解反证法的基本证明结构"
+              - "写出结论的否定，并由假设推出矛盾"
+              - "在否定全称、存在、且、或等陈述时保持逻辑等价"
+            prerequisites:
+              - "命题和推出关系"
+              - "充分条件与必要条件"
+              - "集合语言和条件表达"
+            successors:
+              - "SH-HS-MATH-HJ-B1-C02-K01"
+              - "SH-HS-MATH-HJ-B1-C03-K01"
+              - "SH-HS-MATH-HJ-B1-C05-L03"
+              - "SH-HS-MATH-HJ-B1-C05-L04"
+            teaching_pain_points:
+              - "学生容易把要证结论的否定写错，尤其是全称与存在、且与或的否定。"
+              - "反证法容易被机械写成格式，无法说明矛盾来自哪里。"
+              - "把反例、逆否命题和反证法混为一谈。"
+            diagnosis_focus:
+              - "能否正确写出结论的否定。"
+              - "能否说明反证法中矛盾的来源。"
+            core_competencies:
+              - "逻辑推理"
+              - "数学抽象"
+        chapter_resource_priorities: []
       - id: "SH-HS-MATH-HJ-B1-C03"
         number: 3
         title: "幂、指数与对数"
