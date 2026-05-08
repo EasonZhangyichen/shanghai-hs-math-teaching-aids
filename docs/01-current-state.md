@@ -166,10 +166,12 @@
   - 平台侧和课件侧已接入富数学文本渲染，常见的 `π/2`、`-3π/2` 等会以竖式分数显示，避免 `pi/2`、`Theta` 或横向斜杠破坏数学语言。
   - `content/shared/math-text-normalizer.js` 已覆盖普通 HTML 文本、动态 DOM 更新和 SVG `<text>` 中的简单 π 分数标签。
   - `SH-HS-MATH-HJ-B2-C07-L06-A01` 与 `SH-HS-MATH-HJ-B2-C07-L07-A01` 已完成正切相关课件首屏尺寸压缩、平台 iframe 高度优化和基础浏览器复核。
-- 已形成第一轮已实现资源审校任务单：
+- 已完成第一轮已实现资源审校并进入总控集成：
   - 任务单位于 `docs/resource-review-rounds/2026-05-08-round-1.md`。
-  - 本轮只审校 3 个正切相关资源：`SH-HS-MATH-HJ-B2-C07-L06-A01` 正切函数图像生成器、`SH-HS-MATH-HJ-B2-C07-L06-M01` 为什么正切图像有渐近线、`SH-HS-MATH-HJ-B2-C07-L07-D01` 正切函数性质诊断。
-  - 本轮不新增资源、不 scaffold、不改课程图谱；目标是验证数学符号、定义域/渐近线/周期表达、首屏尺寸、视频可读性、诊断题一般式和 `review.md` 状态升级流程。
+  - `SH-HS-MATH-HJ-B2-C07-L06-A01` 正切函数图像生成器已完成数学表达、首屏、播放跨渐近线、教师脚本和学生活动节奏审校，建议进入 `math_review`，但仍需一线教师按 16 分钟流程试读。
+  - `SH-HS-MATH-HJ-B2-C07-L06-M01` 为什么正切图像有渐近线已完成数学审校、中文课堂表达替换、poster 更新和 1080p30 mp4/webm 重渲染，`metadata.compliance.review_status` 已更新为 `math_review_passed`，下一步进入视频观看和教研节奏复核。
+  - `SH-HS-MATH-HJ-B2-C07-L07-D01` 正切函数性质诊断已完成题组试做、一般式统一、跨分支反例补充和评分/教师说明一致性审校，建议进入 `math_review`，但暂不进入 `classroom_trial`。
+  - 本轮未新增资源、未 scaffold、未改课程图谱；所有改动限定在对应资源包内。
 
 ## 已建立的项目骨架
 
@@ -216,7 +218,7 @@
 - 已建立首版资源生产 backlog，可按单个资源工作单元开启新对话，避免全高中内容挤在一个上下文中；当前必修第二册第 7 章 15 个资源工作单元和第 8 章 10 个筛选后候选均已落地，新增的 B1-C02、B1-C04、B1-C05、B2-C06、B2-C09 planned 候选仅用于记录数字化必要性，不应立即 scaffold，并已补充 Applet / Manim / Diagnosis 全类型 scaffold 命令以减少后续手工建目录成本。
 - 当前第 7 章和第 8 章 backlog 已无 `planned` item；B1-C02 3 个、B1-C04 4 个、B1-C05 4 个、第 6 章 5 个、第 9 章 3 个 planned item 必须等待纸质教材或已登录 dolearning/上海数字教学平台终核后再进入 scaffold。下一步仍应优先推进第 7、8 章已实现资源的数学审校、课堂节奏试读和状态升级，或继续做其他章节来源核对，而不是继续新增同质资源。
 - 已完成三轮并行章节工厂：第一轮 B1 函数主线、B2-C06 与 B2-C09；第二轮 B1-C03、B1-C04 与 B2-C07 prerequisite alignment；第三轮 B1-C01、B1-C02 与 B2-C08 source tightening。后续继续沿用独立 worktree 并行，但只做沪教版来源核对、课程图谱和数字化必要性筛选，通过总控验收后再判断是否进入 scaffold。
-- 已进入已实现资源审校阶段；第一轮建议开三个独立对话处理正切 Applet、正切 Manim 和正切 Diagnosis，完成后由总控统一合并、再生 backlog / workspace data 并运行 `npm run verify`。
+- 已进入已实现资源审校阶段；第一轮正切 Applet、正切 Manim 和正切 Diagnosis 已由三个独立对话完成并合并到总控集成分支，后续继续按小批量资源审校而不是扩充未终核资源。
 - 平台壳已读取 `content/manim/*/metadata.yaml` 并渲染样板 Manim 视频资源卡；尚未沉淀为独立播放器或接入播放器级学习状态记录。
 - 尚未配置 GitHub 分支保护规则。
 

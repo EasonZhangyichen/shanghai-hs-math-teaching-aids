@@ -7719,13 +7719,13 @@
             },
             "pedagogy": {
               "cognitiveAction": "逼近",
-              "estimatedClassroomMinutes": 20,
-              "primaryTeachingProblem": "学生容易把正切图像画成连续曲线，不能把渐近线与 cos x = 0 的定义域限制联系起来，也容易被正弦、余弦的 2pi 周期干扰。",
+              "estimatedClassroomMinutes": 16,
+              "primaryTeachingProblem": "学生容易把正切图像画成连续曲线，不能把渐近线与 cos x = 0 的定义域限制联系起来，也容易被正弦、余弦的 2π 周期干扰。",
               "learningGoals": [
-                "用单位圆终边斜率和 sin x / cos x 解释 tan x 的函数值来源。",
-                "说明 x = pi/2 + kpi 处 cos x = 0，因此 tan x 无定义并形成渐近线。",
+                "用单位圆终边斜率和 sin x 与 cos x 的商解释 tan x 的函数值来源。",
+                "说明 x = π/2 + kπ, k ∈ Z 处 cos x = 0，因此 tan x 无定义并形成渐近线。",
                 "观察 x 从渐近线左右逼近时 tan x 分别趋向正无穷或负无穷。",
-                "通过相邻分支对照说明正切函数周期为 pi。"
+                "通过相邻分支对照说明正切函数周期为 π。"
               ],
               "prerequisites": [
                 "任意角的正切定义",
@@ -7744,18 +7744,18 @@
               ]
             },
             "mathematicalScope": {
-              "function": "y = tan x = sin x / cos x",
+              "function": "y = tan x，tan x 是 sin x 与 cos x 的商",
               "independent_variable": "角 x 的弧度量",
               "dependent_variable": "终边斜率或正切值",
-              "default_x_range": "-3pi/2 < x < 3pi/2, excluding x = pi/2 + kpi",
+              "default_x_range": "-3π/2 < x < 3π/2, excluding x = π/2 + kπ",
               "visible_y_range": "-4 <= y <= 4",
-              "domain": "x != pi/2 + kpi, k in Z",
-              "period": "pi",
-              "asymptotes": "x = pi/2 + kpi",
-              "anchor_interval": "(-pi/2, pi/2)",
+              "domain": "x ≠ π/2 + kπ, k ∈ Z",
+              "period": "π",
+              "asymptotes": "x = π/2 + kπ, k ∈ Z",
+              "anchor_interval": "(-π/2, π/2)",
               "key_points": [
                 {
-                  "angle": "-pi/4",
+                  "angle": "-π/4",
                   "value": "-1",
                   "note": "左侧分支中的常用描点"
                 },
@@ -7765,7 +7765,7 @@
                   "note": "主值区间中心点"
                 },
                 {
-                  "angle": "pi/4",
+                  "angle": "π/4",
                   "value": "1",
                   "note": "右侧分支中的常用描点"
                 }
@@ -7788,7 +7788,7 @@
               },
               {
                 "id": "asymptote_markers",
-                "role": "标出 x = pi/2 + kpi，强调 cos x = 0 与无定义位置。"
+                "role": "标出 x = π/2 + kπ, k ∈ Z，强调 cos x = 0 与无定义位置。"
               },
               {
                 "id": "approach_probe",
@@ -7796,7 +7796,7 @@
               },
               {
                 "id": "period_compare",
-                "role": "显示 x 与 x + pi 的两个观察点，帮助确认周期为 pi。"
+                "role": "显示 x 与 x + π 的两个观察点，帮助确认周期为 π。"
               },
               {
                 "id": "summary_panel",
@@ -7811,14 +7811,14 @@
               "primaryControl": "拖动角度滑块或单位圆终边，联动观察单位圆斜率、正切图像点、渐近线距离和周期对照。",
               "teacherControls": [
                 "播放或暂停观察角在可见区间内移动",
-                "重置到 x = pi/4",
+                "重置到 x = π/4",
                 "切换观察焦点：主值区间、渐近线逼近、周期对照",
                 "显示或隐藏单位圆、渐近线、周期对照和结论面板",
                 "在接近渐近线时显示 cos x 的绝对值和当前趋向语言"
               ],
               "studentControls": [
-                "先预测靠近 pi/2 左右两侧时 tan x 的变化方向，再拖动验证",
-                "比较 x 与 x + pi 的函数值，解释为什么周期是 pi",
+                "先预测靠近 π/2 左右两侧时 tan x 的变化方向，再拖动验证",
+                "比较 x 与 x + π 的函数值，解释为什么周期是 π",
                 "记录哪些 x 不能取，并把原因写成 cos x = 0"
               ],
               "stagedReveal": [
@@ -7828,7 +7828,7 @@
                 },
                 {
                   "step": "principal_branch",
-                  "description": "只看 (-pi/2, pi/2) 内的主分支，描出 -pi/4、0、pi/4。"
+                  "description": "只看 (-π/2, π/2) 内的主分支，描出 -π/4、0、π/4。"
                 },
                 {
                   "step": "asymptote_approach",
@@ -7836,7 +7836,7 @@
                 },
                 {
                   "step": "period_compare",
-                  "description": "显示 x 与 x + pi 的点位对照，确认相邻分支重复。"
+                  "description": "显示 x 与 x + π 的点位对照，确认相邻分支重复。"
                 },
                 {
                   "step": "summary",
@@ -7873,7 +7873,7 @@
                   "unit": "radian",
                   "value_type": "number",
                   "default": 1.5707963267948966,
-                  "description": "距离当前角最近的渐近线 x = pi/2 + kpi。",
+                  "description": "距离当前角最近的渐近线 x = π/2 + kπ。",
                   "persistence": "snapshot"
                 },
                 {
@@ -7909,7 +7909,7 @@
                   "name": "period_compare_visible",
                   "value_type": "boolean",
                   "default": false,
-                  "description": "是否显示 x 与 x + pi 的周期对照点。",
+                  "description": "是否显示 x 与 x + π 的周期对照点。",
                   "persistence": "snapshot"
                 },
                 {
@@ -7979,10 +7979,10 @@
             },
             "feedbackAndDiagnosis": {
               "success_evidence": [
-                "学生能写出 tan x 的定义域为 x != pi/2 + kpi。",
+                "学生能写出 tan x 的定义域为 x ≠ π/2 + kπ, k ∈ Z。",
                 "学生能说明渐近线来自 cos x = 0，而不是图像人为断开。",
                 "学生能描述靠近同一条渐近线左右两侧时函数值趋向相反方向。",
-                "学生能用 tan(x + pi) = tan x 解释周期为 pi。"
+                "学生能用 tan(x + π) = tan x 解释周期为 π。"
               ],
               "common_error_tags": [
                 {
@@ -7995,7 +7995,7 @@
                 },
                 {
                   "id": "period_confused_with_sine",
-                  "label": "把正切周期误写为 2pi"
+                  "label": "把正切周期误写为 2π"
                 },
                 {
                   "id": "one_sided_trend_reversed",
@@ -8003,18 +8003,18 @@
                 }
               ],
               "feedback_principles": [
-                "反馈必须先回到 tan x = sin x / cos x 的定义。",
+                "反馈必须先回到 tan x 是 sin x 与 cos x 的商这一事实。",
                 "出现连续曲线错误时，优先追问哪些 x 不能取。",
                 "讨论渐近线时同时显示 cos x 的大小和正切值变化。",
-                "讨论周期时用 x 与 x + pi 的同值对照，而不是只背结论。"
+                "讨论周期时用 x 与 x + π 的同值对照，而不是只背结论。"
               ]
             },
             "visualSemantics": {
               "unit_circle": "墨绿色表示单位圆和终边，强调角的来源。",
               "slope_line": "橙色表示终边斜率线和当前 tan x 值。",
               "tan_curve": "深蓝色分段曲线表示 y = tan x。",
-              "asymptote": "红色虚线表示 x = pi/2 + kpi 的渐近线。",
-              "period_compare": "紫色点表示 x + pi 的周期对照点。",
+              "asymptote": "红色虚线表示 x = π/2 + kπ 的渐近线。",
+              "period_compare": "紫色点表示 x + π 的周期对照点。",
               "undefined_zone": "淡红背景表示渐近线附近的无定义风险区。",
               "rule": "颜色只用于区分数学对象、趋势和风险，不作装饰。"
             },
@@ -8055,7 +8055,7 @@
               "kind": "teacher_script",
               "path": "content/applets/SH-HS-MATH-HJ-B2-C07-L06-A01/teacher-script.md",
               "title": "教师脚本：正切函数图像生成器",
-              "summary": "适用课时：必修第二册 7.4.1“正切函数的图像” 建议时长：20 分钟 资源状态：`draft`",
+              "summary": "适用课时：必修第二册 7.4.1“正切函数的图像” 建议时长：16 分钟 资源状态：`draft`",
               "sections": [
                 "教学目标",
                 "课前准备",
@@ -8116,11 +8116,11 @@
             "pedagogy": {
               "cognitiveAction": "逼近",
               "estimatedClassroomMinutes": 5,
-              "primaryTeachingProblem": "学生容易把正切图像画成连续曲线，却说不清为什么 x = pi/2 + k pi 处没有函数值以及渐近线为什么出现在这些位置。",
+              "primaryTeachingProblem": "学生容易把正切图像画成连续曲线，却说不清为什么 x = π/2 + kπ（k ∈ Z）处没有函数值以及渐近线为什么出现在这些位置。",
               "learningGoals": [
                 "用 tan x = sin x / cos x 解释当 cos x 接近 0 时正切值快速增大或减小。",
                 "把终边接近 y 轴的斜率变化与函数图像上的竖直渐近线对应起来。",
-                "说明正切函数的图像不能跨过 x = pi/2 + k pi，并用 tan(x + pi) = tan x 解释周期为 pi。"
+                "说明正切函数的图像不能跨过 x = π/2 + kπ（k ∈ Z），并用 tan(x + π) = tan x 解释周期为 π。"
               ],
               "prerequisites": [
                 "任意角的正切定义",
@@ -8143,10 +8143,10 @@
               "equivalent_definition": "tan x = sin x / cos x",
               "independent_variable": "x",
               "dependent_variable": "y",
-              "theta_range": "首版聚焦 (-pi/2, pi/2) 及相邻周期的图像延拓。",
-              "domain_exclusion": "x != pi/2 + k pi, k in Z",
-              "vertical_asymptotes": "x = pi/2 + k pi",
-              "period": "pi",
+              "theta_range": "首版聚焦 (-π/2, π/2) 及相邻周期的图像延拓。",
+              "domain_exclusion": "x ≠ π/2 + kπ, k ∈ Z",
+              "vertical_asymptotes": "x = π/2 + kπ, k ∈ Z",
+              "period": "π",
               "key_angles": [
                 {
                   "angle": "0",
@@ -8154,18 +8154,18 @@
                   "role": "中心点"
                 },
                 {
-                  "angle": "pi/4",
+                  "angle": "π/4",
                   "tangent": "1",
                   "role": "基本斜率参照"
                 },
                 {
-                  "angle": "pi/2",
-                  "tangent": "undefined",
+                  "angle": "π/2",
+                  "tangent": "未定义",
                   "role": "cos x = 0，对应竖直渐近线"
                 },
                 {
-                  "angle": "-pi/2",
-                  "tangent": "undefined",
+                  "angle": "-π/2",
+                  "tangent": "未定义",
                   "role": "cos x = 0，对应竖直渐近线"
                 }
               ],
@@ -8194,7 +8194,7 @@
               },
               {
                 "id": "period_copy",
-                "role": "用 x 与 x + pi 的对应点说明周期为 pi。"
+                "role": "用 x 与 x + π 的对应点说明周期为 π。"
               }
             ],
             "narrativeDesign": {
@@ -8215,7 +8215,7 @@
                   "title": "cos x 接近 0",
                   "purpose": "解释终边接近 y 轴时分母越来越小。",
                   "visuals": [
-                    "终边从 0 旋转到接近 pi/2。",
+                    "终边从 0 旋转到接近 π/2。",
                     "水平的 cos x 段缩短，斜率读数增大。"
                   ],
                   "estimated_seconds": 9
@@ -8225,8 +8225,8 @@
                   "title": "图像向上逼近渐近线",
                   "purpose": "把斜率无界和图像趋向无穷对应起来。",
                   "visuals": [
-                    "图像点沿 y = tan x 向 x = pi/2 左侧上升。",
-                    "x = pi/2 竖直虚线高亮。"
+                    "图像点沿 y = tan x 向 x = π/2 左侧上升。",
+                    "x = π/2 竖直虚线高亮。"
                   ],
                   "estimated_seconds": 8
                 },
@@ -8236,17 +8236,17 @@
                   "purpose": "强调定义域断裂，不能把两侧连成一条连续曲线。",
                   "visuals": [
                     "显示 cos x = 0，所以 tan x 未定义。",
-                    "渐近线两侧分别趋向 +infinity 和 -infinity。"
+                    "渐近线两侧分别趋向 +∞ 和 -∞。"
                   ],
                   "estimated_seconds": 8
                 },
                 {
-                  "id": "copy_by_pi",
-                  "title": "隔 pi 重复一次",
-                  "purpose": "说明正切周期为 pi，而不是正弦余弦的 2pi。",
+                  "id": "copy_by_period",
+                  "title": "隔 π 重复一次",
+                  "purpose": "说明正切周期为 π，而不是正弦余弦的 2π。",
                   "visuals": [
                     "相邻周期曲线淡入。",
-                    "箭头标注 tan(x + pi) = tan x。"
+                    "箭头标注 tan(x + π) = tan x。"
                   ],
                   "estimated_seconds": 6
                 },
@@ -8267,11 +8267,11 @@
                 },
                 {
                   "after_beat": "no_value_no_bridge",
-                  "teacher_prompt": "为什么图像不能穿过 x = pi/2 继续连起来？"
+                  "teacher_prompt": "为什么图像不能穿过 x = π/2 继续连起来？"
                 },
                 {
-                  "after_beat": "copy_by_pi",
-                  "teacher_prompt": "为什么这里重复的间隔是 pi，而不是 2pi？"
+                  "after_beat": "copy_by_period",
+                  "teacher_prompt": "为什么这里重复的间隔是 π，而不是 2π？"
                 }
               ]
             },
@@ -8298,8 +8298,9 @@
                 "webm": "ffmpeg -y -i dist/final/SH-HS-MATH-HJ-B2-C07-L06-M01.mp4 -c:v libvpx-vp9 -b:v 0 -crf 32 -an dist/final/SH-HS-MATH-HJ-B2-C07-L06-M01.webm"
               },
               "notes": [
-                "已完成首版 1080p30 渲染，视频时长 38.4 秒，可用于平台预览和内部教研复核。",
-                "进入 stable 前仍需教师确认渐近线两侧逼近语言和课堂暂停节奏。"
+                "2026-05-08 审校后已重新渲染 1080p30，视频时长 38.4 秒，可用于平台预览和内部教研复核。",
+                "poster 已改用 20 秒主体画面，避免封面停在淡入空白帧。",
+                "进入 stable 前仍需教师确认课堂暂停节奏。"
               ]
             },
             "diagnosisDesign": {
@@ -8329,12 +8330,12 @@
               "tangent_curve": "红色表示 y = tan x 的当前主周期图像。",
               "asymptotes": "紫色虚线表示定义域断点对应的竖直渐近线。",
               "ratio_parts": "sin x 用绿色，cos x 用橙色，强调分子和分母的不同变化。",
-              "copied_period": "灰色曲线表示由周期 pi 平移得到的相邻图像。",
+              "copied_period": "灰色曲线表示由周期 π 平移得到的相邻图像。",
               "rule": "颜色只用于数学对象含义，不作为装饰。"
             },
             "compliance": {
               "copyright_note": "本资源包为原创 Manim 分镜和场景脚本，不复制教材正文、官方课件、教案或商业平台资源。",
-              "review_status": "self_checked_draft"
+              "review_status": "math_review_passed"
             }
           },
           "player": {
@@ -8381,7 +8382,7 @@
                 "第 2 幕：cos x 越来越小",
                 "第 3 幕：图像向渐近线逼近",
                 "第 4 幕：这里没有函数值",
-                "第 5 幕：隔 pi 重复一次",
+                "第 5 幕：隔 π 重复一次",
                 "第 6 幕：画图规则",
                 "与 Applet 的衔接"
               ]
@@ -8855,12 +8856,12 @@
             "pedagogy": {
               "cognitiveAction": "比较",
               "estimatedClassroomMinutes": 8,
-              "primaryTeachingProblem": "学生容易把正切函数的性质当作一张结论表来背，尤其会说它在整个定义域上单调递增，忽略定义域被渐近线切断；同时对值域为 R、周期 pi、奇函数和单调区间一般式之间的关系缺少整体判断。",
+              "primaryTeachingProblem": "学生容易把正切函数的性质当作一张结论表来背，尤其会说它在整个定义域上单调递增，忽略定义域被渐近线切断；同时对值域为 R、周期 π、奇函数和单调区间一般式之间的关系缺少整体判断。",
               "learningGoals": [
-                "写出 y = tan x 的定义域和竖直渐近线一般式，并说明二者来自 cos x = 0。",
+                "写出 y = tan x 的定义域和竖直渐近线一般式，并注明 k ∈ Z，说明二者来自 cos x = 0。",
                 "判断正切函数只在每个连续定义区间内单调递增，不能说在整个定义域上单调递增。",
-                "解释每个定义区间上的函数值都从负无穷到正无穷变化，因此值域为 R。",
-                "区分周期 pi、奇函数性质和单调区间端点的一般式。"
+                "解释每个定义区间上的函数值可以任意小、任意大，并能覆盖任意实数，因此值域为 R。",
+                "区分周期 π、奇函数性质和单调区间端点的一般式。"
               ],
               "prerequisites": [
                 "正切函数图像",
@@ -8891,15 +8892,15 @@
             "diagnosisDesign": {
               "diagnosticFocus": [
                 "能否把正切函数单调性限定在每个连续定义区间。",
-                "能否写出定义域、渐近线和单调区间的一般式，并注明 k 属于整数。",
+                "能否写出定义域、渐近线和单调区间的一般式，并注明 k ∈ Z。",
                 "能否解释值域为 R 与存在竖直渐近线并不矛盾。",
-                "能否区分周期 pi、奇函数性质和正弦余弦的 2pi 周期经验。"
+                "能否区分周期 π、奇函数性质和正弦余弦的 2π 周期经验。"
               ],
               "misconceptionTags": [
                 {
                   "id": "domain_asymptote_omission",
                   "title": "定义域和渐近线遗漏",
-                  "description": "忘记排除 x = pi/2 + kpi，或不能把这些点与竖直渐近线联系起来。"
+                  "description": "忘记排除 x = π/2 + kπ，k ∈ Z，或不能把这些点与竖直渐近线联系起来。"
                 },
                 {
                   "id": "global_monotonic_overreach",
@@ -8913,8 +8914,8 @@
                 },
                 {
                   "id": "period_pi_confusion",
-                  "title": "周期 pi 与 2pi 混淆",
-                  "description": "受正弦、余弦周期影响，把正切函数周期误写为 2pi，或漏写 kpi 平移。"
+                  "title": "周期 π 与 2π 混淆",
+                  "description": "受正弦、余弦周期影响，把正切函数周期误写为 2π，或漏写 kπ 平移。"
                 },
                 {
                   "id": "parity_symmetry_mixup",
@@ -8924,7 +8925,7 @@
                 {
                   "id": "interval_formula_error",
                   "title": "区间一般式端点错误",
-                  "description": "单调区间端点写错、开闭区间误用，或遗漏 k 属于整数。"
+                  "description": "单调区间端点写错、开闭区间误用，或遗漏 k ∈ Z。"
                 }
               ],
               "itemSummary": {
@@ -8938,8 +8939,8 @@
                 "estimatedMinutes": 8
               },
               "feedbackStrategy": {
-                "immediate_feedback": "每题返回命中的性质错因标签，并给出一个回看动作：标渐近线、选一个定义区间、观察 y 值覆盖、平移 pi 或验证 tan(-x)。",
-                "teacher_dashboard_notes": "若 global_monotonic_overreach 集中出现，先回到 Applet 分段高亮；若 domain_asymptote_omission 或 interval_formula_error 集中出现，板书定义区间一般式；若 range_asymptote_conflict 集中出现，观察单段从负无穷到正无穷；若 period_pi_confusion 集中出现，对照 x 与 x + pi。",
+                "immediate_feedback": "每题返回命中的性质错因标签，并给出一个回看动作：标渐近线、选一个定义区间、观察 y 值覆盖、平移 π 或验证 tan(-x)。",
+                "teacher_dashboard_notes": "若 global_monotonic_overreach 集中出现，先回到 Applet 分段高亮；若 domain_asymptote_omission 或 interval_formula_error 集中出现，板书定义区间一般式；若 range_asymptote_conflict 集中出现，观察单段 y 值可以任意小、任意大；若 period_pi_confusion 集中出现，对照 x 与 x + π。",
                 "remediation_links": [
                   "content/applets/SH-HS-MATH-HJ-B2-C07-L07-A01",
                   "content/applets/SH-HS-MATH-HJ-B2-C07-L06-A01",
@@ -9001,7 +9002,7 @@
               "summary": "资源 ID：`SH-HS-MATH-HJ-B2-C07-L07-D01`",
               "sections": [
                 "使用时机",
-                "8 分钟流程",
+                "6 到 8 分钟流程",
                 "讲评路径",
                 "教师看板建议",
                 "补救资源",
@@ -18627,13 +18628,13 @@
             },
             "pedagogy": {
               "cognitiveAction": "逼近",
-              "estimatedClassroomMinutes": 20,
-              "primaryTeachingProblem": "学生容易把正切图像画成连续曲线，不能把渐近线与 cos x = 0 的定义域限制联系起来，也容易被正弦、余弦的 2pi 周期干扰。",
+              "estimatedClassroomMinutes": 16,
+              "primaryTeachingProblem": "学生容易把正切图像画成连续曲线，不能把渐近线与 cos x = 0 的定义域限制联系起来，也容易被正弦、余弦的 2π 周期干扰。",
               "learningGoals": [
-                "用单位圆终边斜率和 sin x / cos x 解释 tan x 的函数值来源。",
-                "说明 x = pi/2 + kpi 处 cos x = 0，因此 tan x 无定义并形成渐近线。",
+                "用单位圆终边斜率和 sin x 与 cos x 的商解释 tan x 的函数值来源。",
+                "说明 x = π/2 + kπ, k ∈ Z 处 cos x = 0，因此 tan x 无定义并形成渐近线。",
                 "观察 x 从渐近线左右逼近时 tan x 分别趋向正无穷或负无穷。",
-                "通过相邻分支对照说明正切函数周期为 pi。"
+                "通过相邻分支对照说明正切函数周期为 π。"
               ],
               "prerequisites": [
                 "任意角的正切定义",
@@ -18652,18 +18653,18 @@
               ]
             },
             "mathematicalScope": {
-              "function": "y = tan x = sin x / cos x",
+              "function": "y = tan x，tan x 是 sin x 与 cos x 的商",
               "independent_variable": "角 x 的弧度量",
               "dependent_variable": "终边斜率或正切值",
-              "default_x_range": "-3pi/2 < x < 3pi/2, excluding x = pi/2 + kpi",
+              "default_x_range": "-3π/2 < x < 3π/2, excluding x = π/2 + kπ",
               "visible_y_range": "-4 <= y <= 4",
-              "domain": "x != pi/2 + kpi, k in Z",
-              "period": "pi",
-              "asymptotes": "x = pi/2 + kpi",
-              "anchor_interval": "(-pi/2, pi/2)",
+              "domain": "x ≠ π/2 + kπ, k ∈ Z",
+              "period": "π",
+              "asymptotes": "x = π/2 + kπ, k ∈ Z",
+              "anchor_interval": "(-π/2, π/2)",
               "key_points": [
                 {
-                  "angle": "-pi/4",
+                  "angle": "-π/4",
                   "value": "-1",
                   "note": "左侧分支中的常用描点"
                 },
@@ -18673,7 +18674,7 @@
                   "note": "主值区间中心点"
                 },
                 {
-                  "angle": "pi/4",
+                  "angle": "π/4",
                   "value": "1",
                   "note": "右侧分支中的常用描点"
                 }
@@ -18696,7 +18697,7 @@
               },
               {
                 "id": "asymptote_markers",
-                "role": "标出 x = pi/2 + kpi，强调 cos x = 0 与无定义位置。"
+                "role": "标出 x = π/2 + kπ, k ∈ Z，强调 cos x = 0 与无定义位置。"
               },
               {
                 "id": "approach_probe",
@@ -18704,7 +18705,7 @@
               },
               {
                 "id": "period_compare",
-                "role": "显示 x 与 x + pi 的两个观察点，帮助确认周期为 pi。"
+                "role": "显示 x 与 x + π 的两个观察点，帮助确认周期为 π。"
               },
               {
                 "id": "summary_panel",
@@ -18719,14 +18720,14 @@
               "primaryControl": "拖动角度滑块或单位圆终边，联动观察单位圆斜率、正切图像点、渐近线距离和周期对照。",
               "teacherControls": [
                 "播放或暂停观察角在可见区间内移动",
-                "重置到 x = pi/4",
+                "重置到 x = π/4",
                 "切换观察焦点：主值区间、渐近线逼近、周期对照",
                 "显示或隐藏单位圆、渐近线、周期对照和结论面板",
                 "在接近渐近线时显示 cos x 的绝对值和当前趋向语言"
               ],
               "studentControls": [
-                "先预测靠近 pi/2 左右两侧时 tan x 的变化方向，再拖动验证",
-                "比较 x 与 x + pi 的函数值，解释为什么周期是 pi",
+                "先预测靠近 π/2 左右两侧时 tan x 的变化方向，再拖动验证",
+                "比较 x 与 x + π 的函数值，解释为什么周期是 π",
                 "记录哪些 x 不能取，并把原因写成 cos x = 0"
               ],
               "stagedReveal": [
@@ -18736,7 +18737,7 @@
                 },
                 {
                   "step": "principal_branch",
-                  "description": "只看 (-pi/2, pi/2) 内的主分支，描出 -pi/4、0、pi/4。"
+                  "description": "只看 (-π/2, π/2) 内的主分支，描出 -π/4、0、π/4。"
                 },
                 {
                   "step": "asymptote_approach",
@@ -18744,7 +18745,7 @@
                 },
                 {
                   "step": "period_compare",
-                  "description": "显示 x 与 x + pi 的点位对照，确认相邻分支重复。"
+                  "description": "显示 x 与 x + π 的点位对照，确认相邻分支重复。"
                 },
                 {
                   "step": "summary",
@@ -18781,7 +18782,7 @@
                   "unit": "radian",
                   "value_type": "number",
                   "default": 1.5707963267948966,
-                  "description": "距离当前角最近的渐近线 x = pi/2 + kpi。",
+                  "description": "距离当前角最近的渐近线 x = π/2 + kπ。",
                   "persistence": "snapshot"
                 },
                 {
@@ -18817,7 +18818,7 @@
                   "name": "period_compare_visible",
                   "value_type": "boolean",
                   "default": false,
-                  "description": "是否显示 x 与 x + pi 的周期对照点。",
+                  "description": "是否显示 x 与 x + π 的周期对照点。",
                   "persistence": "snapshot"
                 },
                 {
@@ -18887,10 +18888,10 @@
             },
             "feedbackAndDiagnosis": {
               "success_evidence": [
-                "学生能写出 tan x 的定义域为 x != pi/2 + kpi。",
+                "学生能写出 tan x 的定义域为 x ≠ π/2 + kπ, k ∈ Z。",
                 "学生能说明渐近线来自 cos x = 0，而不是图像人为断开。",
                 "学生能描述靠近同一条渐近线左右两侧时函数值趋向相反方向。",
-                "学生能用 tan(x + pi) = tan x 解释周期为 pi。"
+                "学生能用 tan(x + π) = tan x 解释周期为 π。"
               ],
               "common_error_tags": [
                 {
@@ -18903,7 +18904,7 @@
                 },
                 {
                   "id": "period_confused_with_sine",
-                  "label": "把正切周期误写为 2pi"
+                  "label": "把正切周期误写为 2π"
                 },
                 {
                   "id": "one_sided_trend_reversed",
@@ -18911,18 +18912,18 @@
                 }
               ],
               "feedback_principles": [
-                "反馈必须先回到 tan x = sin x / cos x 的定义。",
+                "反馈必须先回到 tan x 是 sin x 与 cos x 的商这一事实。",
                 "出现连续曲线错误时，优先追问哪些 x 不能取。",
                 "讨论渐近线时同时显示 cos x 的大小和正切值变化。",
-                "讨论周期时用 x 与 x + pi 的同值对照，而不是只背结论。"
+                "讨论周期时用 x 与 x + π 的同值对照，而不是只背结论。"
               ]
             },
             "visualSemantics": {
               "unit_circle": "墨绿色表示单位圆和终边，强调角的来源。",
               "slope_line": "橙色表示终边斜率线和当前 tan x 值。",
               "tan_curve": "深蓝色分段曲线表示 y = tan x。",
-              "asymptote": "红色虚线表示 x = pi/2 + kpi 的渐近线。",
-              "period_compare": "紫色点表示 x + pi 的周期对照点。",
+              "asymptote": "红色虚线表示 x = π/2 + kπ 的渐近线。",
+              "period_compare": "紫色点表示 x + π 的周期对照点。",
               "undefined_zone": "淡红背景表示渐近线附近的无定义风险区。",
               "rule": "颜色只用于区分数学对象、趋势和风险，不作装饰。"
             },
@@ -18963,7 +18964,7 @@
               "kind": "teacher_script",
               "path": "content/applets/SH-HS-MATH-HJ-B2-C07-L06-A01/teacher-script.md",
               "title": "教师脚本：正切函数图像生成器",
-              "summary": "适用课时：必修第二册 7.4.1“正切函数的图像” 建议时长：20 分钟 资源状态：`draft`",
+              "summary": "适用课时：必修第二册 7.4.1“正切函数的图像” 建议时长：16 分钟 资源状态：`draft`",
               "sections": [
                 "教学目标",
                 "课前准备",
@@ -19024,11 +19025,11 @@
             "pedagogy": {
               "cognitiveAction": "逼近",
               "estimatedClassroomMinutes": 5,
-              "primaryTeachingProblem": "学生容易把正切图像画成连续曲线，却说不清为什么 x = pi/2 + k pi 处没有函数值以及渐近线为什么出现在这些位置。",
+              "primaryTeachingProblem": "学生容易把正切图像画成连续曲线，却说不清为什么 x = π/2 + kπ（k ∈ Z）处没有函数值以及渐近线为什么出现在这些位置。",
               "learningGoals": [
                 "用 tan x = sin x / cos x 解释当 cos x 接近 0 时正切值快速增大或减小。",
                 "把终边接近 y 轴的斜率变化与函数图像上的竖直渐近线对应起来。",
-                "说明正切函数的图像不能跨过 x = pi/2 + k pi，并用 tan(x + pi) = tan x 解释周期为 pi。"
+                "说明正切函数的图像不能跨过 x = π/2 + kπ（k ∈ Z），并用 tan(x + π) = tan x 解释周期为 π。"
               ],
               "prerequisites": [
                 "任意角的正切定义",
@@ -19051,10 +19052,10 @@
               "equivalent_definition": "tan x = sin x / cos x",
               "independent_variable": "x",
               "dependent_variable": "y",
-              "theta_range": "首版聚焦 (-pi/2, pi/2) 及相邻周期的图像延拓。",
-              "domain_exclusion": "x != pi/2 + k pi, k in Z",
-              "vertical_asymptotes": "x = pi/2 + k pi",
-              "period": "pi",
+              "theta_range": "首版聚焦 (-π/2, π/2) 及相邻周期的图像延拓。",
+              "domain_exclusion": "x ≠ π/2 + kπ, k ∈ Z",
+              "vertical_asymptotes": "x = π/2 + kπ, k ∈ Z",
+              "period": "π",
               "key_angles": [
                 {
                   "angle": "0",
@@ -19062,18 +19063,18 @@
                   "role": "中心点"
                 },
                 {
-                  "angle": "pi/4",
+                  "angle": "π/4",
                   "tangent": "1",
                   "role": "基本斜率参照"
                 },
                 {
-                  "angle": "pi/2",
-                  "tangent": "undefined",
+                  "angle": "π/2",
+                  "tangent": "未定义",
                   "role": "cos x = 0，对应竖直渐近线"
                 },
                 {
-                  "angle": "-pi/2",
-                  "tangent": "undefined",
+                  "angle": "-π/2",
+                  "tangent": "未定义",
                   "role": "cos x = 0，对应竖直渐近线"
                 }
               ],
@@ -19102,7 +19103,7 @@
               },
               {
                 "id": "period_copy",
-                "role": "用 x 与 x + pi 的对应点说明周期为 pi。"
+                "role": "用 x 与 x + π 的对应点说明周期为 π。"
               }
             ],
             "narrativeDesign": {
@@ -19123,7 +19124,7 @@
                   "title": "cos x 接近 0",
                   "purpose": "解释终边接近 y 轴时分母越来越小。",
                   "visuals": [
-                    "终边从 0 旋转到接近 pi/2。",
+                    "终边从 0 旋转到接近 π/2。",
                     "水平的 cos x 段缩短，斜率读数增大。"
                   ],
                   "estimated_seconds": 9
@@ -19133,8 +19134,8 @@
                   "title": "图像向上逼近渐近线",
                   "purpose": "把斜率无界和图像趋向无穷对应起来。",
                   "visuals": [
-                    "图像点沿 y = tan x 向 x = pi/2 左侧上升。",
-                    "x = pi/2 竖直虚线高亮。"
+                    "图像点沿 y = tan x 向 x = π/2 左侧上升。",
+                    "x = π/2 竖直虚线高亮。"
                   ],
                   "estimated_seconds": 8
                 },
@@ -19144,17 +19145,17 @@
                   "purpose": "强调定义域断裂，不能把两侧连成一条连续曲线。",
                   "visuals": [
                     "显示 cos x = 0，所以 tan x 未定义。",
-                    "渐近线两侧分别趋向 +infinity 和 -infinity。"
+                    "渐近线两侧分别趋向 +∞ 和 -∞。"
                   ],
                   "estimated_seconds": 8
                 },
                 {
-                  "id": "copy_by_pi",
-                  "title": "隔 pi 重复一次",
-                  "purpose": "说明正切周期为 pi，而不是正弦余弦的 2pi。",
+                  "id": "copy_by_period",
+                  "title": "隔 π 重复一次",
+                  "purpose": "说明正切周期为 π，而不是正弦余弦的 2π。",
                   "visuals": [
                     "相邻周期曲线淡入。",
-                    "箭头标注 tan(x + pi) = tan x。"
+                    "箭头标注 tan(x + π) = tan x。"
                   ],
                   "estimated_seconds": 6
                 },
@@ -19175,11 +19176,11 @@
                 },
                 {
                   "after_beat": "no_value_no_bridge",
-                  "teacher_prompt": "为什么图像不能穿过 x = pi/2 继续连起来？"
+                  "teacher_prompt": "为什么图像不能穿过 x = π/2 继续连起来？"
                 },
                 {
-                  "after_beat": "copy_by_pi",
-                  "teacher_prompt": "为什么这里重复的间隔是 pi，而不是 2pi？"
+                  "after_beat": "copy_by_period",
+                  "teacher_prompt": "为什么这里重复的间隔是 π，而不是 2π？"
                 }
               ]
             },
@@ -19206,8 +19207,9 @@
                 "webm": "ffmpeg -y -i dist/final/SH-HS-MATH-HJ-B2-C07-L06-M01.mp4 -c:v libvpx-vp9 -b:v 0 -crf 32 -an dist/final/SH-HS-MATH-HJ-B2-C07-L06-M01.webm"
               },
               "notes": [
-                "已完成首版 1080p30 渲染，视频时长 38.4 秒，可用于平台预览和内部教研复核。",
-                "进入 stable 前仍需教师确认渐近线两侧逼近语言和课堂暂停节奏。"
+                "2026-05-08 审校后已重新渲染 1080p30，视频时长 38.4 秒，可用于平台预览和内部教研复核。",
+                "poster 已改用 20 秒主体画面，避免封面停在淡入空白帧。",
+                "进入 stable 前仍需教师确认课堂暂停节奏。"
               ]
             },
             "diagnosisDesign": {
@@ -19237,12 +19239,12 @@
               "tangent_curve": "红色表示 y = tan x 的当前主周期图像。",
               "asymptotes": "紫色虚线表示定义域断点对应的竖直渐近线。",
               "ratio_parts": "sin x 用绿色，cos x 用橙色，强调分子和分母的不同变化。",
-              "copied_period": "灰色曲线表示由周期 pi 平移得到的相邻图像。",
+              "copied_period": "灰色曲线表示由周期 π 平移得到的相邻图像。",
               "rule": "颜色只用于数学对象含义，不作为装饰。"
             },
             "compliance": {
               "copyright_note": "本资源包为原创 Manim 分镜和场景脚本，不复制教材正文、官方课件、教案或商业平台资源。",
-              "review_status": "self_checked_draft"
+              "review_status": "math_review_passed"
             }
           },
           "player": {
@@ -19289,7 +19291,7 @@
                 "第 2 幕：cos x 越来越小",
                 "第 3 幕：图像向渐近线逼近",
                 "第 4 幕：这里没有函数值",
-                "第 5 幕：隔 pi 重复一次",
+                "第 5 幕：隔 π 重复一次",
                 "第 6 幕：画图规则",
                 "与 Applet 的衔接"
               ]
@@ -19763,12 +19765,12 @@
             "pedagogy": {
               "cognitiveAction": "比较",
               "estimatedClassroomMinutes": 8,
-              "primaryTeachingProblem": "学生容易把正切函数的性质当作一张结论表来背，尤其会说它在整个定义域上单调递增，忽略定义域被渐近线切断；同时对值域为 R、周期 pi、奇函数和单调区间一般式之间的关系缺少整体判断。",
+              "primaryTeachingProblem": "学生容易把正切函数的性质当作一张结论表来背，尤其会说它在整个定义域上单调递增，忽略定义域被渐近线切断；同时对值域为 R、周期 π、奇函数和单调区间一般式之间的关系缺少整体判断。",
               "learningGoals": [
-                "写出 y = tan x 的定义域和竖直渐近线一般式，并说明二者来自 cos x = 0。",
+                "写出 y = tan x 的定义域和竖直渐近线一般式，并注明 k ∈ Z，说明二者来自 cos x = 0。",
                 "判断正切函数只在每个连续定义区间内单调递增，不能说在整个定义域上单调递增。",
-                "解释每个定义区间上的函数值都从负无穷到正无穷变化，因此值域为 R。",
-                "区分周期 pi、奇函数性质和单调区间端点的一般式。"
+                "解释每个定义区间上的函数值可以任意小、任意大，并能覆盖任意实数，因此值域为 R。",
+                "区分周期 π、奇函数性质和单调区间端点的一般式。"
               ],
               "prerequisites": [
                 "正切函数图像",
@@ -19799,15 +19801,15 @@
             "diagnosisDesign": {
               "diagnosticFocus": [
                 "能否把正切函数单调性限定在每个连续定义区间。",
-                "能否写出定义域、渐近线和单调区间的一般式，并注明 k 属于整数。",
+                "能否写出定义域、渐近线和单调区间的一般式，并注明 k ∈ Z。",
                 "能否解释值域为 R 与存在竖直渐近线并不矛盾。",
-                "能否区分周期 pi、奇函数性质和正弦余弦的 2pi 周期经验。"
+                "能否区分周期 π、奇函数性质和正弦余弦的 2π 周期经验。"
               ],
               "misconceptionTags": [
                 {
                   "id": "domain_asymptote_omission",
                   "title": "定义域和渐近线遗漏",
-                  "description": "忘记排除 x = pi/2 + kpi，或不能把这些点与竖直渐近线联系起来。"
+                  "description": "忘记排除 x = π/2 + kπ，k ∈ Z，或不能把这些点与竖直渐近线联系起来。"
                 },
                 {
                   "id": "global_monotonic_overreach",
@@ -19821,8 +19823,8 @@
                 },
                 {
                   "id": "period_pi_confusion",
-                  "title": "周期 pi 与 2pi 混淆",
-                  "description": "受正弦、余弦周期影响，把正切函数周期误写为 2pi，或漏写 kpi 平移。"
+                  "title": "周期 π 与 2π 混淆",
+                  "description": "受正弦、余弦周期影响，把正切函数周期误写为 2π，或漏写 kπ 平移。"
                 },
                 {
                   "id": "parity_symmetry_mixup",
@@ -19832,7 +19834,7 @@
                 {
                   "id": "interval_formula_error",
                   "title": "区间一般式端点错误",
-                  "description": "单调区间端点写错、开闭区间误用，或遗漏 k 属于整数。"
+                  "description": "单调区间端点写错、开闭区间误用，或遗漏 k ∈ Z。"
                 }
               ],
               "itemSummary": {
@@ -19846,8 +19848,8 @@
                 "estimatedMinutes": 8
               },
               "feedbackStrategy": {
-                "immediate_feedback": "每题返回命中的性质错因标签，并给出一个回看动作：标渐近线、选一个定义区间、观察 y 值覆盖、平移 pi 或验证 tan(-x)。",
-                "teacher_dashboard_notes": "若 global_monotonic_overreach 集中出现，先回到 Applet 分段高亮；若 domain_asymptote_omission 或 interval_formula_error 集中出现，板书定义区间一般式；若 range_asymptote_conflict 集中出现，观察单段从负无穷到正无穷；若 period_pi_confusion 集中出现，对照 x 与 x + pi。",
+                "immediate_feedback": "每题返回命中的性质错因标签，并给出一个回看动作：标渐近线、选一个定义区间、观察 y 值覆盖、平移 π 或验证 tan(-x)。",
+                "teacher_dashboard_notes": "若 global_monotonic_overreach 集中出现，先回到 Applet 分段高亮；若 domain_asymptote_omission 或 interval_formula_error 集中出现，板书定义区间一般式；若 range_asymptote_conflict 集中出现，观察单段 y 值可以任意小、任意大；若 period_pi_confusion 集中出现，对照 x 与 x + π。",
                 "remediation_links": [
                   "content/applets/SH-HS-MATH-HJ-B2-C07-L07-A01",
                   "content/applets/SH-HS-MATH-HJ-B2-C07-L06-A01",
@@ -19909,7 +19911,7 @@
               "summary": "资源 ID：`SH-HS-MATH-HJ-B2-C07-L07-D01`",
               "sections": [
                 "使用时机",
-                "8 分钟流程",
+                "6 到 8 分钟流程",
                 "讲评路径",
                 "教师看板建议",
                 "补救资源",

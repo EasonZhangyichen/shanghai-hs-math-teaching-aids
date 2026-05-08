@@ -98,14 +98,14 @@
 - [ ] 对“正弦与余弦相位对照”HTML Applet 做数学边界复核、课堂节奏试读和浏览器交互验证。
 - [ ] 对“正弦余弦性质对照板”HTML Applet 做数学边界复核、课堂节奏试读和浏览器交互验证。
 - [ ] 对“三角函数参数变化实验室”HTML Applet 做数学边界复核、课堂节奏试读和浏览器交互验证。
-- [ ] 对“正切函数图像生成器”HTML Applet 做数学边界复核、课堂节奏试读和浏览器交互验证。
+- [x] 对“正切函数图像生成器”HTML Applet 做数学边界复核和浏览器交互验证，压缩教师脚本至 16 分钟并修正跨渐近线播放；仍需一线教师课堂节奏试读。
 - [ ] 对“正切性质分段观察”HTML Applet 做数学边界复核、课堂节奏试读和浏览器交互验证。
 - [ ] 对 `SH-HS-MATH-HJ-B2-C07-L05-M01`“图像变换顺序解释”做数学审校、分镜节奏复核和课堂播放口径确认。
-- [ ] 对 `SH-HS-MATH-HJ-B2-C07-L06-M01`“为什么正切图像有渐近线”做数学审校、分镜节奏复核和课堂播放口径确认。
+- [x] 对 `SH-HS-MATH-HJ-B2-C07-L06-M01`“为什么正切图像有渐近线”完成数学审校、中文画面修订、poster 更新和 1080p30 重新渲染；仍需教研观看确认课堂暂停节奏。
 - [ ] 对 `SH-HS-MATH-HJ-B2-C07-L02-D01`“正弦函数性质诊断”做数学审校、题目试做和课堂节奏试读。
 - [ ] 对 `SH-HS-MATH-HJ-B2-C07-L04-D01`“余弦性质误区诊断”做数学审校、题目试做和课堂节奏试读。
 - [ ] 对 `SH-HS-MATH-HJ-B2-C07-L05-D01`“参数识别诊断任务”做数学审校、题目试做和课堂节奏试读。
-- [ ] 对 `SH-HS-MATH-HJ-B2-C07-L07-D01`“正切函数性质诊断”做数学审校、题目试做和课堂节奏试读。
+- [x] 对 `SH-HS-MATH-HJ-B2-C07-L07-D01`“正切函数性质诊断”完成数学审校、题目试做和文件一致性复核；仍需小组限时试做后再进入 `classroom_trial`。
 - [ ] 从 `content/production/resource-backlog.json` 中选择下一个资源 item，优先推进已实现资源的数学审校、课堂试读或平台接入。
 
 ## P4：平台雏形
@@ -155,5 +155,6 @@
 - [x] 第三轮完成后由总控只合并事实源，统一再生 generated files 并运行 `npm run verify`。
 - [x] 第三轮通过验收后，进入“已实现资源审校”轮，优先审校 B2-C07 已实现 Applet/Manim/Diagnosis 与 B2-C08 已 scaffold 资源。
 - [x] 形成第一轮已实现资源审校任务单：`docs/resource-review-rounds/2026-05-08-round-1.md`，先审校正切相关 Applet、Manim 和 Diagnosis 各 1 个资源。
-- [ ] 开启第一轮三个独立审校对话：`SH-HS-MATH-HJ-B2-C07-L06-A01`、`SH-HS-MATH-HJ-B2-C07-L06-M01`、`SH-HS-MATH-HJ-B2-C07-L07-D01`。
-- [ ] 第一轮审校完成后由总控合并资源包内改动，统一再生 generated files 并运行 `npm run verify`。
+- [x] 开启第一轮三个独立审校对话：`SH-HS-MATH-HJ-B2-C07-L06-A01`、`SH-HS-MATH-HJ-B2-C07-L06-M01`、`SH-HS-MATH-HJ-B2-C07-L07-D01`。
+- [x] 第一轮审校完成后由总控合并资源包内改动，统一再生 generated files 并运行 `npm run verify`。
+- [ ] 形成第二轮已实现资源审校任务单，优先选择正弦/余弦核心 Applet、Manim 或 Diagnosis，继续验证 `math_review` 到 `classroom_trial_ready` 的状态字段设计。
