@@ -29,6 +29,9 @@ const TYPE_LABELS = {
   diagnosis: "Diagnosis",
 };
 
+const SCAFFOLD_BLOCKING_PATTERN =
+  /禁止\s*scaffold|未终核|需(?:要)?(?:先)?(?:纸质教材|教师用书|已登录|dolearning|上海数字教学|上海数智教学|终核)|needs_manual_textbook_check/i;
+
 export async function generateResourceBacklog({ rootDir = process.cwd() } = {}) {
   const curriculum = await readYaml(path.join(rootDir, CURRICULUM_PATH));
   const curriculumEntries = indexCurriculumEntries(curriculum);
@@ -160,10 +163,11 @@ function buildBacklogItem({ record, implementedResource, mvpLessonIds }) {
   const { entry, volume, chapter, section, lesson, lessonPriority } = record;
   const resourceId = entry.proposed_resource_id;
   const isImplemented = Boolean(implementedResource);
+  const scaffoldBlocked = !isImplemented && isScaffoldBlocked({ entry, chapter, lesson, lessonPriority });
   const priority = mvpLessonIds.has(lesson.id)
     ? "mvp"
     : lessonPriority?.priority ?? "chapter_backlog";
-  const recommendedTrack = TRACK_BY_TYPE[entry.type] ?? "develop";
+  const recommendedTrack = scaffoldBlocked ? "track/curriculum-map" : TRACK_BY_TYPE[entry.type] ?? "develop";
 
   return {
     id: resourceId,
@@ -191,12 +195,39 @@ function buildBacklogItem({ record, implementedResource, mvpLessonIds }) {
     packagePath: implementedResource?.packagePath ?? null,
     metadataPath: implementedResource?.metadataPath ?? null,
     recommendedTrack,
-    nextAction: buildNextAction({ type: entry.type, isImplemented, availability: implementedResource?.availability }),
-    threadPrompt: buildThreadPrompt({ resourceId, type: entry.type, lesson, recommendedTrack, isImplemented }),
+    scaffoldPolicy: scaffoldBlocked ? "blocked_until_source_verified" : "ready_for_resource_work",
+    nextAction: buildNextAction({
+      type: entry.type,
+      isImplemented,
+      availability: implementedResource?.availability,
+      scaffoldBlocked,
+    }),
+    threadPrompt: buildThreadPrompt({
+      resourceId,
+      type: entry.type,
+      lesson,
+      recommendedTrack,
+      isImplemented,
+      scaffoldBlocked,
+    }),
   };
 }
 
-function buildNextAction({ type, isImplemented, availability }) {
+function isScaffoldBlocked({ entry, chapter, lesson, lessonPriority }) {
+  const gateText = [
+    entry.note,
+    lessonPriority?.reason,
+    chapter.verification?.notes,
+    lesson.period_status,
+    lesson.source_status,
+  ]
+    .filter(Boolean)
+    .join("\n");
+
+  return SCAFFOLD_BLOCKING_PATTERN.test(gateText);
+}
+
+function buildNextAction({ type, isImplemented, availability, scaffoldBlocked }) {
   if (isImplemented && type === "applet") {
     return "完成数学边界复核、课堂节奏试读和浏览器交互验证，再决定是否进入 math_review。";
   }
@@ -207,6 +238,10 @@ function buildNextAction({ type, isImplemented, availability }) {
 
   if (isImplemented) {
     return "核对 metadata、资源文件和审核记录，补齐缺口后运行内容校验。";
+  }
+
+  if (scaffoldBlocked) {
+    return "先完成纸质教材、教师用书或已登录 dolearning/上海数字教学平台终核；终核前只保留为 planned 候选，不创建资源包、不 scaffold。";
   }
 
   if (type === "applet") {
@@ -224,8 +259,13 @@ function buildNextAction({ type, isImplemented, availability }) {
   return "根据资源类型创建资源包并补齐 metadata、教学脚本、审核记录和校验。";
 }
 
-function buildThreadPrompt({ resourceId, type, lesson, recommendedTrack, isImplemented }) {
+function buildThreadPrompt({ resourceId, type, lesson, recommendedTrack, isImplemented, scaffoldBlocked }) {
   const typeLabel = TYPE_LABELS[type] ?? type;
+
+  if (scaffoldBlocked) {
+    return `请先读取项目锚点文件和 content/production/resource-backlog.json，然后切到 ${recommendedTrack}。这次只核对 ${resourceId}（${typeLabel}）是否已经满足制作前提，对应课时 ${lesson.id}「${lesson.title}」。不要创建资源包，不 scaffold，不渲染；只做纸质教材、教师用书或已登录 dolearning/上海数字教学平台的课时边界和数字化必要性终核。完成后运行 npm run generate:backlog 和 npm run verify，更新 docs/01-current-state.md 与 docs/02-next-actions.md，并提交。`;
+  }
+
   const action = isImplemented ? "复核并推进" : "创建并推进";
 
   return `请先读取项目锚点文件和 content/production/resource-backlog.json，然后切到 ${recommendedTrack}。这次只${action} ${resourceId}（${typeLabel}），对应课时 ${lesson.id}「${lesson.title}」。先确认教学痛点、认知动作、文件规范和验收标准，再动手；完成后运行 npm run generate:backlog 和 npm run verify，更新 docs/01-current-state.md 与 docs/02-next-actions.md，并提交。`;

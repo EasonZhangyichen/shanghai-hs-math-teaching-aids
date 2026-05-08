@@ -116,8 +116,9 @@
 
 ## P5：资源工厂
 
-- [x] 生成 `content/production/resource-backlog.json`，覆盖必修第一册第 5 章、必修第二册第 6、7、8、9 章共 37 个资源工作单元；当前 25 个已实现、12 个待创建，其中 B1-C05 4 个、第 6 章 5 个、第 9 章 3 个 planned 候选都需等待纸质教材或 dolearning/上海数字教学平台终核后再 scaffold。
+- [x] 生成 `content/production/resource-backlog.json`，覆盖必修第一册第 4、5 章、必修第二册第 6、7、8、9 章共 41 个资源工作单元；当前 25 个已实现、16 个待创建，其中 B1-C04 4 个、B1-C05 4 个、第 6 章 5 个、第 9 章 3 个 planned 候选都需等待纸质教材或 dolearning/上海数字教学平台终核后再 scaffold。
 - [x] 为每个 backlog item 自动生成推荐分支、下一步动作和新对话 `threadPrompt`。
+- [x] 为未终核 planned item 增加 `scaffoldPolicy: blocked_until_source_verified`，自动提示词只允许做来源终核，不允许直接创建资源包。
 - [x] 将 `npm run generate:backlog` 接入 `npm run verify`。
 - [x] 为 Diagnosis planned item 增加首版资源包 scaffold 命令，支持 dry-run、按数量或 ID 生成并避免覆盖已有资源包。
 - [x] 将资源包 scaffold 扩展到 Applet、Manim Clip 与 Diagnosis，并按 schema 生成对应必备文件。
@@ -128,7 +129,7 @@
 - [ ] 对 `SH-HS-MATH-HJ-B2-C08-L04-M01` 开启单资源精修对话，补齐真实 Manim 场景、数学符号、动画节奏、预览渲染和审校记录。
 - [ ] 对 `SH-HS-MATH-HJ-B2-C08-L01-A01`、`SH-HS-MATH-HJ-B2-C08-L02-A01`、`SH-HS-MATH-HJ-B2-C08-L03-A01`、`SH-HS-MATH-HJ-B2-C08-L04-A01`、`SH-HS-MATH-HJ-B2-C08-L05-A01`、`SH-HS-MATH-HJ-B2-C08-L10-A01` 分别开启单资源精修对话，补齐真实数学模型、交互状态和课堂脚本。
 - [ ] 对 `SH-HS-MATH-HJ-B2-C08-L02-D01`、`SH-HS-MATH-HJ-B2-C08-L05-D01`、`SH-HS-MATH-HJ-B2-C08-L10-D01` 分别开启单资源精修对话，补齐真实题组、错因标签、评分反馈和教师说明。
-- [ ] 在必修第一册第 5 章来源终核后，再按总控决定处理 `SH-HS-MATH-HJ-B1-C05-L02-A01`、`SH-HS-MATH-HJ-B1-C05-L03-D01`、`SH-HS-MATH-HJ-B1-C05-L04-A01`、`SH-HS-MATH-HJ-B1-C05-L08-A01`；当前不得直接 scaffold 或制作完整资源包。
+- [ ] 在必修第一册第 4、5 章来源终核后，再按总控决定处理 `SH-HS-MATH-HJ-B1-C04-L02-A01`、`SH-HS-MATH-HJ-B1-C04-L04-A01`、`SH-HS-MATH-HJ-B1-C04-L06-A01`、`SH-HS-MATH-HJ-B1-C04-L06-A02`、`SH-HS-MATH-HJ-B1-C05-L02-A01`、`SH-HS-MATH-HJ-B1-C05-L03-D01`、`SH-HS-MATH-HJ-B1-C05-L04-A01`、`SH-HS-MATH-HJ-B1-C05-L08-A01`；当前不得直接 scaffold 或制作完整资源包。
 - [ ] 为 backlog item 增加更细的审核状态和课堂试用状态聚合。
 - [ ] 增加 backlog 批量生产计划导出能力：按章节、类型、优先级和数量输出同一分支上的资源清单与 threadPrompt。
 - [ ] 为已实现资源增加审校工单维度，将 `math_review`、`classroom_trial`、`browser_review` 与资源状态分开聚合。
@@ -141,6 +142,7 @@
 - [x] 第一轮已由总控合并至 `develop`，统一再生 backlog 和平台数据，并通过 `npm run verify`。
 - [x] 第一轮新增 planned 候选均标记为未终核，不进入 scaffold。
 - [x] 形成第二轮并行任务单：`docs/parallel-rounds/2026-05-08-round-2.md`。
-- [ ] 开启第二轮三个独立对话：B1-C03、B1-C04、B2-C07 prerequisite alignment。
-- [ ] 第二轮完成后由总控只合并事实源，统一再生 generated files 并运行 `npm run verify`。
-- [ ] 第二轮通过验收后，再判断哪些章节进入终核或 scaffold；不要直接进入完整资源制作。
+- [x] 开启第二轮三个独立对话：B1-C03、B1-C04、B2-C07 prerequisite alignment。
+- [x] 第二轮完成后由总控只合并事实源，统一再生 generated files 并运行 `npm run verify`。
+- [x] 第二轮通过验收后，确认 B1-C03 不进入资源生产，B1-C04 4 个候选进入 blocked planned；不要直接进入完整资源制作。
+- [ ] 选择第三轮 3 个左右章节继续做来源核对和数字化必要性筛选，仍然先不 scaffold。

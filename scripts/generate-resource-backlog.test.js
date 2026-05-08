@@ -13,12 +13,23 @@ test("generates a deterministic backlog from curriculum entry points and impleme
   const backlog = await generateResourceBacklog({ rootDir: repoRoot });
 
   assert.equal(backlog.source.curriculum, "content/curriculum/index.yaml");
-  assert.equal(backlog.summary.total, 37);
+  assert.equal(backlog.summary.total, 41);
   assert.equal(backlog.summary.implemented, 25);
-  assert.equal(backlog.summary.planned, 12);
-  assert.deepEqual(backlog.summary.byType.applet, { total: 23, implemented: 14, planned: 9 });
+  assert.equal(backlog.summary.planned, 16);
+  assert.deepEqual(backlog.summary.byType.applet, { total: 27, implemented: 14, planned: 13 });
   assert.deepEqual(backlog.summary.byType.manim_clip, { total: 4, implemented: 4, planned: 0 });
   assert.deepEqual(backlog.summary.byType.diagnosis, { total: 10, implemented: 7, planned: 3 });
+
+  const powerFunctionApplet = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B1-C04-L02-A01");
+  assert.equal(powerFunctionApplet.status, "planned");
+  assert.equal(powerFunctionApplet.availability, "planned");
+  assert.equal(powerFunctionApplet.type, "applet");
+  assert.equal(powerFunctionApplet.lessonTitle, "幂函数的性质");
+  assert.equal(powerFunctionApplet.chapterTitle, "幂函数、指数函数与对数函数");
+  assert.equal(powerFunctionApplet.recommendedTrack, "track/curriculum-map");
+  assert.equal(powerFunctionApplet.scaffoldPolicy, "blocked_until_source_verified");
+  assert.match(powerFunctionApplet.nextAction, /终核前.*不创建资源包/);
+  assert.match(powerFunctionApplet.threadPrompt, /不要创建资源包，不 scaffold/);
 
   const functionRepresentationApplet = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B1-C05-L02-A01");
   assert.equal(functionRepresentationApplet.status, "planned");
@@ -27,12 +38,15 @@ test("generates a deterministic backlog from curriculum entry points and impleme
   assert.equal(functionRepresentationApplet.lessonTitle, "函数的表示方法");
   assert.equal(functionRepresentationApplet.chapterTitle, "函数的概念、性质及应用");
   assert.equal(functionRepresentationApplet.packagePath, null);
-  assert.equal(functionRepresentationApplet.recommendedTrack, "track/trig-sample-pack");
+  assert.equal(functionRepresentationApplet.recommendedTrack, "track/curriculum-map");
+  assert.equal(functionRepresentationApplet.scaffoldPolicy, "blocked_until_source_verified");
+  assert.match(functionRepresentationApplet.threadPrompt, /终核/);
 
   const functionParityDiagnosis = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B1-C05-L03-D01");
   assert.equal(functionParityDiagnosis.status, "planned");
   assert.equal(functionParityDiagnosis.type, "diagnosis");
-  assert.equal(functionParityDiagnosis.recommendedTrack, "track/review-system");
+  assert.equal(functionParityDiagnosis.recommendedTrack, "track/curriculum-map");
+  assert.equal(functionParityDiagnosis.scaffoldPolicy, "blocked_until_source_verified");
 
   const monotonicityApplet = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B1-C05-L04-A01");
   assert.equal(monotonicityApplet.status, "planned");
@@ -55,8 +69,9 @@ test("generates a deterministic backlog from curriculum entry points and impleme
   const trigRatioDiagnosis = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B2-C06-L03-D01");
   assert.equal(trigRatioDiagnosis.status, "planned");
   assert.equal(trigRatioDiagnosis.type, "diagnosis");
-  assert.equal(trigRatioDiagnosis.recommendedTrack, "track/review-system");
-  assert.match(trigRatioDiagnosis.nextAction, /创建 Diagnosis 资源包/);
+  assert.equal(trigRatioDiagnosis.recommendedTrack, "track/curriculum-map");
+  assert.equal(trigRatioDiagnosis.scaffoldPolicy, "blocked_until_source_verified");
+  assert.match(trigRatioDiagnosis.nextAction, /终核前.*不创建资源包/);
 
   const sineApplet = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B2-C07-L01-A01");
   assert.equal(sineApplet.status, "implemented");
@@ -328,10 +343,11 @@ test("generates a deterministic backlog from curriculum entry points and impleme
   assert.equal(complexPlaneApplet.metadataPath, null);
   assert.equal(complexPlaneApplet.chapterTitle, "复数");
   assert.equal(complexPlaneApplet.lessonTitle, "复平面、复数的向量表示与加法几何意义");
-  assert.equal(complexPlaneApplet.recommendedTrack, "track/trig-sample-pack");
+  assert.equal(complexPlaneApplet.recommendedTrack, "track/curriculum-map");
+  assert.equal(complexPlaneApplet.scaffoldPolicy, "blocked_until_source_verified");
   assert.equal(complexPlaneApplet.priority, "chapter_backlog");
-  assert.match(complexPlaneApplet.nextAction, /创建 Applet 资源包/);
-  assert.match(complexPlaneApplet.threadPrompt, /创建并推进 SH-HS-MATH-HJ-B2-C09-L03-A01/);
+  assert.match(complexPlaneApplet.nextAction, /终核前.*不创建资源包/);
+  assert.match(complexPlaneApplet.threadPrompt, /不要创建资源包，不 scaffold/);
 
   const modulusApplet = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B2-C09-L04-A01");
   assert.equal(modulusApplet.status, "planned");
@@ -355,10 +371,10 @@ test("writes the backlog as stable pretty JSON", async () => {
     });
     const written = JSON.parse(await readFile(outputPath, "utf8"));
 
-    assert.equal(written.summary.total, 37);
+    assert.equal(written.summary.total, 41);
     assert.equal(written.summary.implemented, 25);
-    assert.equal(written.summary.planned, 12);
-    assert.equal(written.items[0].id, "SH-HS-MATH-HJ-B1-C05-L02-A01");
+    assert.equal(written.summary.planned, 16);
+    assert.equal(written.items[0].id, "SH-HS-MATH-HJ-B1-C04-L02-A01");
     assert.ok(
       JSON.stringify(written, null, 2).includes(
         '"id": "SH-HS-MATH-HJ-B2-C09-L07-A01"',

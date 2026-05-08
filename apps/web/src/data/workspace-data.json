@@ -55,6 +55,155 @@
         ],
         "chapters": [
           {
+            "id": "SH-HS-MATH-HJ-B1-C03",
+            "number": 3,
+            "title": "幂、指数与对数",
+            "status": "draft",
+            "verification": {
+              "textbook_outline_status": "official_e_textbook_checked",
+              "needs_manual_textbook_check": true,
+              "checked_on": "2026-05-08",
+              "source_audit": "docs/source-audits/b1-c03-source-audit.md",
+              "notes": "国家智慧教育平台电子教材可确认第3章章标题、节标题和正文目标题；2024年基础教育精品课传课目录可辅助确认3.1.1、3.2.1、3.2.2、3.2.3及第3章复习课平台节点。纸质教材、教师用书、dolearning或上海数字教学/备课平台课时边界仍未终核，本章不新增数字资源入口。"
+            },
+            "chapterRole": "把指数幂从整数范围拓展到实数指数，并建立对数定义、运算性质和换底公式，为第4章指数函数、对数函数的定义与性质提供运算语言；第5章再在已有基本初等函数经验上抽象函数概念和性质。",
+            "sections": [
+              {
+                "id": "SH-HS-MATH-HJ-B1-C03-S01",
+                "textbookLabel": "3.1",
+                "title": "幂与指数",
+                "lessons": [
+                  {
+                    "id": "SH-HS-MATH-HJ-B1-C03-L01",
+                    "textbookRef": "3.1.1",
+                    "title": "指数幂的拓展",
+                    "status": "draft",
+                    "resourceCount": 0,
+                    "hasImplementedApplet": false
+                  }
+                ]
+              },
+              {
+                "id": "SH-HS-MATH-HJ-B1-C03-S02",
+                "textbookLabel": "3.2",
+                "title": "对数",
+                "lessons": [
+                  {
+                    "id": "SH-HS-MATH-HJ-B1-C03-L02",
+                    "textbookRef": "3.2.1",
+                    "title": "对数的定义",
+                    "status": "draft",
+                    "resourceCount": 0,
+                    "hasImplementedApplet": false
+                  },
+                  {
+                    "id": "SH-HS-MATH-HJ-B1-C03-L03",
+                    "textbookRef": "3.2.2",
+                    "title": "对数的运算性质",
+                    "status": "draft",
+                    "resourceCount": 0,
+                    "hasImplementedApplet": false
+                  },
+                  {
+                    "id": "SH-HS-MATH-HJ-B1-C03-L04",
+                    "textbookRef": "3.2.3",
+                    "title": "对数的换底",
+                    "status": "draft",
+                    "resourceCount": 0,
+                    "hasImplementedApplet": false
+                  }
+                ]
+              }
+            ],
+            "lessonCount": 4
+          },
+          {
+            "id": "SH-HS-MATH-HJ-B1-C04",
+            "number": 4,
+            "title": "幂函数、指数函数与对数函数",
+            "status": "draft",
+            "verification": {
+              "textbook_outline_status": "official_e_textbook_checked",
+              "needs_manual_textbook_check": true,
+              "checked_on": "2026-05-08",
+              "source_audit": "docs/source-audits/b1-c04-source-audit.md",
+              "notes": "国家智慧教育平台电子教材可确认第4章章节、节和正文目标题；dolearning 与上海数字教学/备课平台课时目录当前无法直接确认，课时数和平台课时包边界仍需纸质教材或已登录平台终核。"
+            },
+            "chapterRole": "在第3章幂、指数与对数的运算基础上，把幂函数、指数函数和对数函数作为具体基本函数进行图像与性质研究；这是第5章抽象函数概念、函数表示和函数性质的前置经验，不能按外地版本顺序重排到第5章之后。",
+            "sections": [
+              {
+                "id": "SH-HS-MATH-HJ-B1-C04-S01",
+                "textbookLabel": "4.1",
+                "title": "幂函数",
+                "lessons": [
+                  {
+                    "id": "SH-HS-MATH-HJ-B1-C04-L01",
+                    "textbookRef": "4.1.1",
+                    "title": "幂函数的定义与图像",
+                    "status": "draft",
+                    "resourceCount": 0,
+                    "hasImplementedApplet": false
+                  },
+                  {
+                    "id": "SH-HS-MATH-HJ-B1-C04-L02",
+                    "textbookRef": "4.1.2",
+                    "title": "幂函数的性质",
+                    "status": "draft",
+                    "resourceCount": 1,
+                    "hasImplementedApplet": false
+                  }
+                ]
+              },
+              {
+                "id": "SH-HS-MATH-HJ-B1-C04-S02",
+                "textbookLabel": "4.2",
+                "title": "指数函数",
+                "lessons": [
+                  {
+                    "id": "SH-HS-MATH-HJ-B1-C04-L03",
+                    "textbookRef": "4.2.1",
+                    "title": "指数函数的定义与图像",
+                    "status": "draft",
+                    "resourceCount": 0,
+                    "hasImplementedApplet": false
+                  },
+                  {
+                    "id": "SH-HS-MATH-HJ-B1-C04-L04",
+                    "textbookRef": "4.2.2",
+                    "title": "指数函数的性质",
+                    "status": "draft",
+                    "resourceCount": 1,
+                    "hasImplementedApplet": false
+                  }
+                ]
+              },
+              {
+                "id": "SH-HS-MATH-HJ-B1-C04-S03",
+                "textbookLabel": "4.3",
+                "title": "对数函数",
+                "lessons": [
+                  {
+                    "id": "SH-HS-MATH-HJ-B1-C04-L05",
+                    "textbookRef": "4.3.1",
+                    "title": "对数函数的定义与图像",
+                    "status": "draft",
+                    "resourceCount": 0,
+                    "hasImplementedApplet": false
+                  },
+                  {
+                    "id": "SH-HS-MATH-HJ-B1-C04-L06",
+                    "textbookRef": "4.3.2",
+                    "title": "对数函数的性质",
+                    "status": "draft",
+                    "resourceCount": 2,
+                    "hasImplementedApplet": false
+                  }
+                ]
+              }
+            ],
+            "lessonCount": 6
+          },
+          {
             "id": "SH-HS-MATH-HJ-B1-C05",
             "number": 5,
             "title": "函数的概念、性质及应用",
@@ -319,9 +468,11 @@
               "textbook_outline_status": "secondary_sources_checked",
               "needs_manual_textbook_check": true,
               "checked_on": "2026-04-30",
-              "notes": "已用公开教材目录与课程资源目录交叉核对章节主干；课时划分和课时数仍需教师用纸质教材最终确认。"
+              "prereq_alignment_audit": "docs/source-audits/b2-c07-prereq-alignment.md",
+              "prereq_alignment_checked_on": "2026-05-08",
+              "notes": "已用公开教材目录与课程资源目录交叉核对章节主干；课时划分和课时数仍需教师用纸质教材最终确认。2026-05-08 仅复核先修链、后续链和教学痛点语言；B1-C05 函数主线与 B2-C06 三角仍为 draft/needs_manual_textbook_check 前置，不能视为已终核。"
             },
-            "chapterRole": "把第6章任意角三角比和三角公式转化为函数观点，为后续向量、复平面和周期模型建立图像语言。",
+            "chapterRole": "承接必修第一册第5章函数定义域、值域、图像、单调性和奇偶性等通用函数语言，并把第6章任意角、弧度制、单位圆三角比和诱导公式转化为函数图像与性质，为后续向量投影、复平面和周期模型建立图像语言。",
             "sections": [
               {
                 "id": "SH-HS-MATH-HJ-B2-C07-S01",
@@ -694,6 +845,607 @@
     ]
   },
   "lessons": [
+    {
+      "id": "SH-HS-MATH-HJ-B1-C03-L01",
+      "textbookRef": "3.1.1",
+      "title": "指数幂的拓展",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C03",
+        "number": 3,
+        "title": "幂、指数与对数"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C03-S01",
+        "textbookLabel": "3.1",
+        "title": "幂与指数"
+      },
+      "coreKnowledge": [
+        "把正整数指数幂逐步拓展到整数指数幂、有理数指数幂和实数指数幂",
+        "在适当底数条件下使用幂的运算性质",
+        "理解指数幂拓展是第4章指数函数定义域取全体实数的运算准备"
+      ],
+      "prerequisites": [
+        "整数指数幂和根式",
+        "实数运算和代数式变形",
+        "等式变形与取值范围"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C04-L02",
+        "SH-HS-MATH-HJ-B1-C04-L03"
+      ],
+      "teachingPainPoints": [
+        "学生容易把幂的运算性质机械外推到不满足底数或指数条件的情形。",
+        "负底数、零底数、分数指数和实数指数的适用边界容易混淆。",
+        "指数幂拓展若只靠规则记忆，后续指数函数定义域为什么可取全体实数不够清楚。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否先检查底数和指数范围再使用幂的运算性质。",
+        "能否区分整数指数、有理数指数和实数指数下的意义边界。"
+      ],
+      "coreCompetencies": [
+        "数学运算",
+        "数学抽象",
+        "逻辑推理"
+      ],
+      "resources": []
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B1-C03-L02",
+      "textbookRef": "3.2.1",
+      "title": "对数的定义",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C03",
+        "number": 3,
+        "title": "幂、指数与对数"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C03-S02",
+        "textbookLabel": "3.2",
+        "title": "对数"
+      },
+      "coreKnowledge": [
+        "把指数式和对数式互相转化",
+        "理解对数底数和真数的取值条件",
+        "把对数定义作为后续对数函数定义和图像的运算基础"
+      ],
+      "prerequisites": [
+        "指数幂的拓展",
+        "指数式等价变形",
+        "正数、非零和不等于1的条件意识"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C03-L03",
+        "SH-HS-MATH-HJ-B1-C04-L05"
+      ],
+      "teachingPainPoints": [
+        "学生容易只做符号互换，忽略底数为正且不等于1、真数为正的条件。",
+        "指数式和对数式的对应关系容易和解方程步骤混在一起。",
+        "对数定义若停留在记号层面，后续对数函数的定义域来源会变弱。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否在指数式和对数式互化前先判断底数和真数条件。",
+        "能否说明对数记号中的底数、真数和对数值分别对应指数式中的哪一部分。"
+      ],
+      "coreCompetencies": [
+        "数学抽象",
+        "逻辑推理",
+        "数学运算"
+      ],
+      "resources": []
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B1-C03-L03",
+      "textbookRef": "3.2.2",
+      "title": "对数的运算性质",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C03",
+        "number": 3,
+        "title": "幂、指数与对数"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C03-S02",
+        "textbookLabel": "3.2",
+        "title": "对数"
+      },
+      "coreKnowledge": [
+        "由指数运算性质推出同底对数的乘、除、乘方相关性质",
+        "在真数为正、同底等条件下进行对数化简和变形",
+        "理解对数把乘除与乘方开方运算转化为较简单运算的结构"
+      ],
+      "prerequisites": [
+        "对数的定义",
+        "幂的运算性质",
+        "代数式恒等变形"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C03-L04",
+        "SH-HS-MATH-HJ-B1-C04-L06"
+      ],
+      "teachingPainPoints": [
+        "学生常把积、商、幂的对数性质误迁移为和、差的对数性质。",
+        "同底、真数为正等前提容易在化简过程中被省略。",
+        "公式推导和运算练习若割裂，后续对数函数性质证明的依据不稳定。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否识别对数运算性质的适用前提。",
+        "能否区分可用对数性质化简的结构和不可化简的结构。"
+      ],
+      "coreCompetencies": [
+        "数学运算",
+        "逻辑推理"
+      ],
+      "resources": []
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B1-C03-L04",
+      "textbookRef": "3.2.3",
+      "title": "对数的换底",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C03",
+        "number": 3,
+        "title": "幂、指数与对数"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C03-S02",
+        "textbookLabel": "3.2",
+        "title": "对数"
+      },
+      "coreKnowledge": [
+        "理解不同底对数之间的换底关系",
+        "用换底公式把不同底对数统一为同一个底",
+        "为第4章对数函数之间的常数倍关系和比较大小提供工具"
+      ],
+      "prerequisites": [
+        "对数的定义",
+        "对数的运算性质",
+        "分式和同底变形"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C04-L05",
+        "SH-HS-MATH-HJ-B1-C04-L06",
+        "SH-HS-MATH-HJ-B1-C05-L09"
+      ],
+      "teachingPainPoints": [
+        "学生容易把换底公式当成记忆模板，忽略新底也必须为正且不等于1。",
+        "分母为零、底数相同或真数条件等边界容易被跳过。",
+        "把不同底统一后再比较或化简的策略意识不稳定。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否选择合适的新底并检查换底公式条件。",
+        "能否说明换底公式在对数比较和后续对数函数研究中的作用。"
+      ],
+      "coreCompetencies": [
+        "数学运算",
+        "逻辑推理"
+      ],
+      "resources": []
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B1-C04-L01",
+      "textbookRef": "4.1.1",
+      "title": "幂函数的定义与图像",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C04",
+        "number": 4,
+        "title": "幂函数、指数函数与对数函数"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C04-S01",
+        "textbookLabel": "4.1",
+        "title": "幂函数"
+      },
+      "coreKnowledge": [
+        "把指数固定、底数作为变量的关系表示为幂函数 y = x^a",
+        "理解幂函数定义域会随指数 a 的取值而改变",
+        "通过列表、描点和图像观察典型幂函数形状"
+      ],
+      "prerequisites": [
+        "指数幂的拓展",
+        "初中正比例函数、反比例函数和二次函数图像",
+        "平面直角坐标系和函数图像"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C04-L02",
+        "SH-HS-MATH-HJ-B1-C05-L01",
+        "SH-HS-MATH-HJ-B1-C05-L03"
+      ],
+      "teachingPainPoints": [
+        "学生容易把幂函数和指数函数都理解为幂式，不能区分变量在底数还是指数位置。",
+        "常规求定义域容易退化为代数步骤，忽略定义域随指数类型变化。",
+        "描点作图能给出局部形状，但不一定能形成关于指数变化的整体比较。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否区分幂函数与指数函数。",
+        "能否根据指数形式判断幂函数定义域。"
+      ],
+      "coreCompetencies": [
+        "数学抽象",
+        "直观想象",
+        "数学运算"
+      ],
+      "resources": []
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B1-C04-L02",
+      "textbookRef": "4.1.2",
+      "title": "幂函数的性质",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C04",
+        "number": 4,
+        "title": "幂函数、指数函数与对数函数"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C04-S01",
+        "textbookLabel": "4.1",
+        "title": "幂函数"
+      },
+      "coreKnowledge": [
+        "比较不同指数下幂函数的定义域、图像形状和经过点",
+        "理解幂函数在 (0, +infty) 上随指数正负呈现严格增减性",
+        "联系典型指数形式判断幂函数图像的单调和对称特征"
+      ],
+      "prerequisites": [
+        "幂函数的定义与图像",
+        "幂的基本性质和基本不等式",
+        "关于原点或坐标轴的对称"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C04-L03",
+        "SH-HS-MATH-HJ-B1-C05-L03",
+        "SH-HS-MATH-HJ-B1-C05-L04"
+      ],
+      "teachingPainPoints": [
+        "学生容易把幂函数性质只记成少数图像模板，不能解释指数改变为何影响定义域和对称性。",
+        "只在第一象限讨论单调性时，容易误迁移到整个定义域。",
+        "分数指数和负指数同时出现时，定义域、单调性和图像分支容易互相干扰。"
+      ],
+      "digitalEntryPoints": [
+        {
+          "type": "applet",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B1-C04-L02-A01",
+          "title": "幂函数指数变化图像实验室",
+          "cognitive_action": "比较",
+          "note": "通过切换或调节指数类型，同步观察定义域、单调性、对称性和坐标轴附近边界；数字化价值在于动态比较指数变化导致的性质差异，不做常规求定义域题库。仅为 draft planned，纸质教材或已登录平台终核前禁止 scaffold。"
+        }
+      ],
+      "diagnosisFocus": [
+        "能否说明幂函数性质要先限定定义域或区间。",
+        "能否从指数特征判断图像对称和单调趋势。"
+      ],
+      "coreCompetencies": [
+        "直观想象",
+        "逻辑推理",
+        "数学抽象"
+      ],
+      "resources": [
+        {
+          "id": "SH-HS-MATH-HJ-B1-C04-L02-A01",
+          "resourceType": "applet",
+          "title": "幂函数指数变化图像实验室",
+          "cognitiveAction": "比较",
+          "note": "通过切换或调节指数类型，同步观察定义域、单调性、对称性和坐标轴附近边界；数字化价值在于动态比较指数变化导致的性质差异，不做常规求定义域题库。仅为 draft planned，纸质教材或已登录平台终核前禁止 scaffold。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        }
+      ]
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B1-C04-L03",
+      "textbookRef": "4.2.1",
+      "title": "指数函数的定义与图像",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C04",
+        "number": 4,
+        "title": "幂函数、指数函数与对数函数"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C04-S02",
+        "textbookLabel": "4.2",
+        "title": "指数函数"
+      },
+      "coreKnowledge": [
+        "把底数固定、指数作为变量的关系表示为指数函数 y = a^x",
+        "理解指数函数底数满足 a > 0 且 a != 1 的规定",
+        "通过典型底数的图像建立指数增长和指数衰减的初步直观"
+      ],
+      "prerequisites": [
+        "指数幂和指数运算",
+        "幂函数中变量位置的比较经验",
+        "函数图像的描点与比较"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C04-L04",
+        "SH-HS-MATH-HJ-B1-C04-L05",
+        "SH-HS-MATH-HJ-B1-C05-L01"
+      ],
+      "teachingPainPoints": [
+        "学生容易把指数函数和幂函数混淆，尤其忽略变量在指数位置。",
+        "底数 a > 0 且 a != 1 的条件常被机械记忆，不能联系定义域和函数是否退化。",
+        "描点作图能看到形状，但对底数变化造成的整体趋势仍需要后续性质课整理。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否判断一个式子是否为指数函数。",
+        "能否解释底数限制的意义。"
+      ],
+      "coreCompetencies": [
+        "数学抽象",
+        "直观想象"
+      ],
+      "resources": []
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B1-C04-L04",
+      "textbookRef": "4.2.2",
+      "title": "指数函数的性质",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C04",
+        "number": 4,
+        "title": "幂函数、指数函数与对数函数"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C04-S02",
+        "textbookLabel": "4.2",
+        "title": "指数函数"
+      },
+      "coreKnowledge": [
+        "理解指数函数定义域为 R 且函数值恒正",
+        "比较 a > 1 与 0 < a < 1 时的单调性和图像趋势",
+        "用指数函数性质解释简单增长、衰减和比较问题"
+      ],
+      "prerequisites": [
+        "指数函数的定义与图像",
+        "指数幂运算性质",
+        "函数图像和单调趋势"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C04-L05",
+        "SH-HS-MATH-HJ-B1-C05-L04",
+        "SH-HS-MATH-HJ-B1-C05-L07"
+      ],
+      "teachingPainPoints": [
+        "学生容易只背 a > 1 增、0 < a < 1 减，却不能从图像和数值变化解释。",
+        "指数函数图像恒过定点并趋近 x 轴的整体特征容易被常规比较大小题淹没。",
+        "实际增长模型中的百分比增长和指数函数底数之间的联系容易断裂。"
+      ],
+      "digitalEntryPoints": [
+        {
+          "type": "applet",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B1-C04-L04-A01",
+          "title": "指数函数底数变化与增长比较器",
+          "cognitive_action": "变换",
+          "note": "拖动底数 a，同步比较 a > 1 与 0 < a < 1 时的图像、表格、定点、单调方向和增长速度；数字化比板书更能呈现连续底数变化和增长差异。不做定义背诵、常规比较大小或指数不等式求解。仅为 draft planned，纸质教材或已登录平台终核前禁止 scaffold。"
+        }
+      ],
+      "diagnosisFocus": [
+        "能否根据底数范围判断单调性和图像趋势。",
+        "能否用指数函数解释等比例增长或衰减。"
+      ],
+      "coreCompetencies": [
+        "直观想象",
+        "数学抽象",
+        "数学建模"
+      ],
+      "resources": [
+        {
+          "id": "SH-HS-MATH-HJ-B1-C04-L04-A01",
+          "resourceType": "applet",
+          "title": "指数函数底数变化与增长比较器",
+          "cognitiveAction": "变换",
+          "note": "拖动底数 a，同步比较 a > 1 与 0 < a < 1 时的图像、表格、定点、单调方向和增长速度；数字化比板书更能呈现连续底数变化和增长差异。不做定义背诵、常规比较大小或指数不等式求解。仅为 draft planned，纸质教材或已登录平台终核前禁止 scaffold。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        }
+      ]
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B1-C04-L05",
+      "textbookRef": "4.3.1",
+      "title": "对数函数的定义与图像",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C04",
+        "number": 4,
+        "title": "幂函数、指数函数与对数函数"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C04-S03",
+        "textbookLabel": "4.3",
+        "title": "对数函数"
+      },
+      "coreKnowledge": [
+        "把底数固定、真数作为变量的关系表示为对数函数 y = log_a x",
+        "理解对数函数底数满足 a > 0 且 a != 1，定义域为 (0, +infty)",
+        "通过典型底数的图像建立对数函数的形状直观"
+      ],
+      "prerequisites": [
+        "对数的定义和运算",
+        "指数函数的图像与性质",
+        "函数图像的描点与比较"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C04-L06",
+        "SH-HS-MATH-HJ-B1-C05-L01",
+        "SH-HS-MATH-HJ-B1-C05-L09"
+      ],
+      "teachingPainPoints": [
+        "学生容易把对数函数的定义域题当作纯代数条件，不能联系图像只在 y 轴右侧。",
+        "底数大于 1 和小于 1 的图像差异容易与指数函数混淆。",
+        "对数函数来源于指数运算逆运算的意义容易被公式记忆遮蔽。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否判断对数函数定义域必须满足真数大于 0。",
+        "能否区分对数函数和指数函数的图像位置。"
+      ],
+      "coreCompetencies": [
+        "数学抽象",
+        "直观想象",
+        "数学运算"
+      ],
+      "resources": []
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B1-C04-L06",
+      "textbookRef": "4.3.2",
+      "title": "对数函数的性质",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C04",
+        "number": 4,
+        "title": "幂函数、指数函数与对数函数"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C04-S03",
+        "textbookLabel": "4.3",
+        "title": "对数函数"
+      },
+      "coreKnowledge": [
+        "理解对数函数经过点 (1, 0)，并按底数范围呈现不同单调性",
+        "理解对数运算是指数运算的逆运算，对数函数是指数函数的反函数",
+        "解释指数函数与对应对数函数图像关于直线 y = x 对称"
+      ],
+      "prerequisites": [
+        "对数函数的定义与图像",
+        "指数函数的图像与性质",
+        "点关于直线 y = x 的对称直观"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C05-L04",
+        "SH-HS-MATH-HJ-B1-C05-L09",
+        "SH-HS-MATH-HJ-B1-C05-L10",
+        "SH-HS-MATH-HJ-MODEL-K01"
+      ],
+      "teachingPainPoints": [
+        "学生容易只记对数函数单调性，不能说明它和指数函数底数范围的对应关系。",
+        "指数函数与对数函数互为反函数的图像对称，容易被误画成关于 x 轴或 y 轴对称。",
+        "幂、指数、对数三类函数的增长差异常被割裂记忆，难以迁移到模型比较。"
+      ],
+      "digitalEntryPoints": [
+        {
+          "type": "applet",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B1-C04-L06-A01",
+          "title": "指数对数互反图像镜像板",
+          "cognitive_action": "对应",
+          "note": "拖动指数函数图像上的点，同步交换坐标生成对数函数点，展示定义域/值域互换和关于 y = x 的对称；数字化比板书更能显化点的动态对应。不做对数定义背诵或换底公式练习。仅为 draft planned，纸质教材或已登录平台终核前禁止 scaffold。"
+        },
+        {
+          "type": "applet",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B1-C04-L06-A02",
+          "title": "幂指数对数增长模型对比板",
+          "cognitive_action": "比较",
+          "note": "在同一图像、表格和观察点中比较幂函数、指数函数和对数函数的增长差异，可切换尺度避免远端差异被压扁；数字化价值在于多表征和尺度联动。若价值与第5章函数应用资源重叠，生产前应合并或取消。仅为 draft planned，纸质教材或已登录平台终核前禁止 scaffold。"
+        }
+      ],
+      "diagnosisFocus": [
+        "能否说明对数函数单调性与底数范围的关系。",
+        "能否用坐标互换解释指数函数和对数函数图像关于 y = x 对称。"
+      ],
+      "coreCompetencies": [
+        "直观想象",
+        "数学抽象",
+        "数学建模"
+      ],
+      "resources": [
+        {
+          "id": "SH-HS-MATH-HJ-B1-C04-L06-A01",
+          "resourceType": "applet",
+          "title": "指数对数互反图像镜像板",
+          "cognitiveAction": "对应",
+          "note": "拖动指数函数图像上的点，同步交换坐标生成对数函数点，展示定义域/值域互换和关于 y = x 的对称；数字化比板书更能显化点的动态对应。不做对数定义背诵或换底公式练习。仅为 draft planned，纸质教材或已登录平台终核前禁止 scaffold。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        },
+        {
+          "id": "SH-HS-MATH-HJ-B1-C04-L06-A02",
+          "resourceType": "applet",
+          "title": "幂指数对数增长模型对比板",
+          "cognitiveAction": "比较",
+          "note": "在同一图像、表格和观察点中比较幂函数、指数函数和对数函数的增长差异，可切换尺度避免远端差异被压扁；数字化价值在于多表征和尺度联动。若价值与第5章函数应用资源重叠，生产前应合并或取消。仅为 draft planned，纸质教材或已登录平台终核前禁止 scaffold。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        }
+      ]
+    },
     {
       "id": "SH-HS-MATH-HJ-B1-C05-L01",
       "textbookRef": "5.1.1",
@@ -1938,9 +2690,9 @@
         "识别正弦曲线的周期重复结构"
       ],
       "prerequisites": [
-        "弧度制和终边相同角",
-        "单位圆中的正弦定义",
-        "函数图像描点与坐标表示"
+        "第6章 draft：任意角、弧度制和终边相同角",
+        "第6章 draft：单位圆中正弦值的坐标定义",
+        "第5章函数主线 draft：函数图像、定义域/值域与坐标表示"
       ],
       "successors": [
         "SH-HS-MATH-HJ-B2-C07-L02",
@@ -2621,8 +3373,8 @@
       ],
       "prerequisites": [
         "正弦曲线的生成过程",
-        "函数性质的语言表达",
-        "诱导公式"
+        "第5章函数主线 draft：定义域、值域、单调性、奇偶性和最值的表达",
+        "第6章 draft：诱导公式、终边相同角和同值角的一般式"
       ],
       "successors": [
         "SH-HS-MATH-HJ-B2-C07-L03",
@@ -2630,9 +3382,9 @@
         "SH-HS-MATH-HJ-XB1-DERIV-K01"
       ],
       "teachingPainPoints": [
-        "学生会背周期和值域，但难以用图像解释单调区间端点。",
-        "奇偶性、对称轴、对称中心容易混淆。",
-        "最值点和零点的弧度表达容易出现周期遗漏。"
+        "学生会背周期和值域，但难以用定义域、值域和图像语言说明单调区间端点。",
+        "奇偶性、对称轴、对称中心容易混淆，尤其容易跳过定义域关于原点对称的前提。",
+        "最值点和零点的弧度表达容易出现 pi 分数和周期项遗漏。"
       ],
       "digitalEntryPoints": [
         {
@@ -3265,9 +4017,9 @@
         "识别余弦曲线的关键点和周期结构"
       ],
       "prerequisites": [
-        "单位圆中的余弦定义",
+        "第6章 draft：单位圆中余弦值的坐标定义",
         "正弦函数图像",
-        "诱导公式和图像平移直觉"
+        "第6章 draft：诱导公式和单位圆对称；函数图像平移直觉"
       ],
       "successors": [
         "SH-HS-MATH-HJ-B2-C07-L04",
@@ -3277,7 +4029,7 @@
       "teachingPainPoints": [
         "学生容易把余弦图像机械看作正弦图像平移，忽略单位圆横坐标来源。",
         "余弦图像关键点顺序与正弦图像混用。",
-        "相位平移的方向常与代数表达中的符号混淆。"
+        "相位关系、平移方向和代数表达中的符号语言容易混淆。"
       ],
       "digitalEntryPoints": [
         {
@@ -4130,14 +4882,14 @@
       "prerequisites": [
         "余弦函数图像",
         "正弦函数性质",
-        "函数奇偶性与周期性"
+        "第5章函数主线 draft：奇偶性、单调性、最值和一般式表达"
       ],
       "successors": [
         "SH-HS-MATH-HJ-B2-C07-L05",
         "SH-HS-MATH-HJ-B2-C08-K01"
       ],
       "teachingPainPoints": [
-        "学生常把正弦函数的奇偶性和单调区间直接套到余弦函数。",
+        "学生常把正弦函数的奇偶性和单调区间直接套到余弦函数，忽略定义域、对称轴和对称中心的判断条件。",
         "最大值点、最小值点和零点的一般形式容易漏写周期。",
         "同一性质在单位圆和图像中的解释不能互相转换。"
       ],
@@ -4806,7 +5558,8 @@
       ],
       "prerequisites": [
         "正弦函数图像与性质",
-        "函数图像平移、伸缩和对称变换",
+        "第5章函数主线 draft：函数图像、定义域和值域语言",
+        "函数图像平移、伸缩和对称变换直觉",
         "周期与关键点"
       ],
       "successors": [
@@ -4815,9 +5568,9 @@
         "SH-HS-MATH-HJ-B2-C08-K01"
       ],
       "teachingPainPoints": [
-        "学生容易把横向伸缩、相位平移和括号内符号的关系搞反。",
+        "学生容易把周期、横向伸缩、相位平移和括号内符号的关系搞反。",
         "多参数同时变化时认知负荷过高，难以分辨每个参数的独立作用。",
-        "从图像反推解析式时，振幅、周期和初相位经常相互干扰。"
+        "从图像反推解析式时，振幅、周期、初相位和 A < 0 翻折经常相互干扰。"
       ],
       "digitalEntryPoints": [
         {
@@ -5807,16 +6560,16 @@
         "描绘一个周期内的正切曲线并延拓"
       ],
       "prerequisites": [
-        "任意角的正切定义",
-        "正弦、余弦函数图像与零点",
-        "函数定义域和间断点意识"
+        "第6章 draft：任意角正切定义、终边斜率和 tan x = sin x / cos x",
+        "正弦、余弦函数图像与 cos x = 0 的零点",
+        "第5章函数主线 draft：定义域限制和图像断裂意识"
       ],
       "successors": [
         "SH-HS-MATH-HJ-B2-C07-L07",
         "SH-HS-MATH-HJ-XB1-DERIV-K01"
       ],
       "teachingPainPoints": [
-        "学生容易忽略正切函数定义域限制，把图像画成连续曲线。",
+        "学生容易忽略 x = pi/2 + kpi 的定义域限制，把图像画成连续曲线。",
         "渐近线来自 cos x = 0 的原因不清楚。",
         "正切曲线的周期为 pi 容易被正弦余弦的 2pi 干扰。"
       ],
@@ -6579,14 +7332,15 @@
       "prerequisites": [
         "正切函数图像",
         "渐近线与定义域",
-        "函数周期性和奇偶性"
+        "第5章函数主线 draft：单调性限定在区间上、奇偶性定义前提",
+        "第6章 draft：诱导公式和周期项"
       ],
       "successors": [
         "SH-HS-MATH-HJ-XB1-DERIV-K01",
         "SH-HS-MATH-HJ-MODEL-K01"
       ],
       "teachingPainPoints": [
-        "学生容易说正切函数在整个定义域上单调递增，忽略定义区间断裂。",
+        "学生容易说正切函数在整个定义域上单调递增，忽略只能在每个 (-pi/2 + kpi, pi/2 + kpi) 上讨论。",
         "值域为全体实数与渐近线限制看似矛盾，需用局部区间解释。",
         "周期 pi、奇函数和单调区间的一般表达容易混淆。"
       ],
@@ -10113,6 +10867,607 @@
     }
   ],
   "lessonsById": {
+    "SH-HS-MATH-HJ-B1-C03-L01": {
+      "id": "SH-HS-MATH-HJ-B1-C03-L01",
+      "textbookRef": "3.1.1",
+      "title": "指数幂的拓展",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C03",
+        "number": 3,
+        "title": "幂、指数与对数"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C03-S01",
+        "textbookLabel": "3.1",
+        "title": "幂与指数"
+      },
+      "coreKnowledge": [
+        "把正整数指数幂逐步拓展到整数指数幂、有理数指数幂和实数指数幂",
+        "在适当底数条件下使用幂的运算性质",
+        "理解指数幂拓展是第4章指数函数定义域取全体实数的运算准备"
+      ],
+      "prerequisites": [
+        "整数指数幂和根式",
+        "实数运算和代数式变形",
+        "等式变形与取值范围"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C04-L02",
+        "SH-HS-MATH-HJ-B1-C04-L03"
+      ],
+      "teachingPainPoints": [
+        "学生容易把幂的运算性质机械外推到不满足底数或指数条件的情形。",
+        "负底数、零底数、分数指数和实数指数的适用边界容易混淆。",
+        "指数幂拓展若只靠规则记忆，后续指数函数定义域为什么可取全体实数不够清楚。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否先检查底数和指数范围再使用幂的运算性质。",
+        "能否区分整数指数、有理数指数和实数指数下的意义边界。"
+      ],
+      "coreCompetencies": [
+        "数学运算",
+        "数学抽象",
+        "逻辑推理"
+      ],
+      "resources": []
+    },
+    "SH-HS-MATH-HJ-B1-C03-L02": {
+      "id": "SH-HS-MATH-HJ-B1-C03-L02",
+      "textbookRef": "3.2.1",
+      "title": "对数的定义",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C03",
+        "number": 3,
+        "title": "幂、指数与对数"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C03-S02",
+        "textbookLabel": "3.2",
+        "title": "对数"
+      },
+      "coreKnowledge": [
+        "把指数式和对数式互相转化",
+        "理解对数底数和真数的取值条件",
+        "把对数定义作为后续对数函数定义和图像的运算基础"
+      ],
+      "prerequisites": [
+        "指数幂的拓展",
+        "指数式等价变形",
+        "正数、非零和不等于1的条件意识"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C03-L03",
+        "SH-HS-MATH-HJ-B1-C04-L05"
+      ],
+      "teachingPainPoints": [
+        "学生容易只做符号互换，忽略底数为正且不等于1、真数为正的条件。",
+        "指数式和对数式的对应关系容易和解方程步骤混在一起。",
+        "对数定义若停留在记号层面，后续对数函数的定义域来源会变弱。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否在指数式和对数式互化前先判断底数和真数条件。",
+        "能否说明对数记号中的底数、真数和对数值分别对应指数式中的哪一部分。"
+      ],
+      "coreCompetencies": [
+        "数学抽象",
+        "逻辑推理",
+        "数学运算"
+      ],
+      "resources": []
+    },
+    "SH-HS-MATH-HJ-B1-C03-L03": {
+      "id": "SH-HS-MATH-HJ-B1-C03-L03",
+      "textbookRef": "3.2.2",
+      "title": "对数的运算性质",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C03",
+        "number": 3,
+        "title": "幂、指数与对数"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C03-S02",
+        "textbookLabel": "3.2",
+        "title": "对数"
+      },
+      "coreKnowledge": [
+        "由指数运算性质推出同底对数的乘、除、乘方相关性质",
+        "在真数为正、同底等条件下进行对数化简和变形",
+        "理解对数把乘除与乘方开方运算转化为较简单运算的结构"
+      ],
+      "prerequisites": [
+        "对数的定义",
+        "幂的运算性质",
+        "代数式恒等变形"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C03-L04",
+        "SH-HS-MATH-HJ-B1-C04-L06"
+      ],
+      "teachingPainPoints": [
+        "学生常把积、商、幂的对数性质误迁移为和、差的对数性质。",
+        "同底、真数为正等前提容易在化简过程中被省略。",
+        "公式推导和运算练习若割裂，后续对数函数性质证明的依据不稳定。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否识别对数运算性质的适用前提。",
+        "能否区分可用对数性质化简的结构和不可化简的结构。"
+      ],
+      "coreCompetencies": [
+        "数学运算",
+        "逻辑推理"
+      ],
+      "resources": []
+    },
+    "SH-HS-MATH-HJ-B1-C03-L04": {
+      "id": "SH-HS-MATH-HJ-B1-C03-L04",
+      "textbookRef": "3.2.3",
+      "title": "对数的换底",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C03",
+        "number": 3,
+        "title": "幂、指数与对数"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C03-S02",
+        "textbookLabel": "3.2",
+        "title": "对数"
+      },
+      "coreKnowledge": [
+        "理解不同底对数之间的换底关系",
+        "用换底公式把不同底对数统一为同一个底",
+        "为第4章对数函数之间的常数倍关系和比较大小提供工具"
+      ],
+      "prerequisites": [
+        "对数的定义",
+        "对数的运算性质",
+        "分式和同底变形"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C04-L05",
+        "SH-HS-MATH-HJ-B1-C04-L06",
+        "SH-HS-MATH-HJ-B1-C05-L09"
+      ],
+      "teachingPainPoints": [
+        "学生容易把换底公式当成记忆模板，忽略新底也必须为正且不等于1。",
+        "分母为零、底数相同或真数条件等边界容易被跳过。",
+        "把不同底统一后再比较或化简的策略意识不稳定。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否选择合适的新底并检查换底公式条件。",
+        "能否说明换底公式在对数比较和后续对数函数研究中的作用。"
+      ],
+      "coreCompetencies": [
+        "数学运算",
+        "逻辑推理"
+      ],
+      "resources": []
+    },
+    "SH-HS-MATH-HJ-B1-C04-L01": {
+      "id": "SH-HS-MATH-HJ-B1-C04-L01",
+      "textbookRef": "4.1.1",
+      "title": "幂函数的定义与图像",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C04",
+        "number": 4,
+        "title": "幂函数、指数函数与对数函数"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C04-S01",
+        "textbookLabel": "4.1",
+        "title": "幂函数"
+      },
+      "coreKnowledge": [
+        "把指数固定、底数作为变量的关系表示为幂函数 y = x^a",
+        "理解幂函数定义域会随指数 a 的取值而改变",
+        "通过列表、描点和图像观察典型幂函数形状"
+      ],
+      "prerequisites": [
+        "指数幂的拓展",
+        "初中正比例函数、反比例函数和二次函数图像",
+        "平面直角坐标系和函数图像"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C04-L02",
+        "SH-HS-MATH-HJ-B1-C05-L01",
+        "SH-HS-MATH-HJ-B1-C05-L03"
+      ],
+      "teachingPainPoints": [
+        "学生容易把幂函数和指数函数都理解为幂式，不能区分变量在底数还是指数位置。",
+        "常规求定义域容易退化为代数步骤，忽略定义域随指数类型变化。",
+        "描点作图能给出局部形状，但不一定能形成关于指数变化的整体比较。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否区分幂函数与指数函数。",
+        "能否根据指数形式判断幂函数定义域。"
+      ],
+      "coreCompetencies": [
+        "数学抽象",
+        "直观想象",
+        "数学运算"
+      ],
+      "resources": []
+    },
+    "SH-HS-MATH-HJ-B1-C04-L02": {
+      "id": "SH-HS-MATH-HJ-B1-C04-L02",
+      "textbookRef": "4.1.2",
+      "title": "幂函数的性质",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C04",
+        "number": 4,
+        "title": "幂函数、指数函数与对数函数"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C04-S01",
+        "textbookLabel": "4.1",
+        "title": "幂函数"
+      },
+      "coreKnowledge": [
+        "比较不同指数下幂函数的定义域、图像形状和经过点",
+        "理解幂函数在 (0, +infty) 上随指数正负呈现严格增减性",
+        "联系典型指数形式判断幂函数图像的单调和对称特征"
+      ],
+      "prerequisites": [
+        "幂函数的定义与图像",
+        "幂的基本性质和基本不等式",
+        "关于原点或坐标轴的对称"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C04-L03",
+        "SH-HS-MATH-HJ-B1-C05-L03",
+        "SH-HS-MATH-HJ-B1-C05-L04"
+      ],
+      "teachingPainPoints": [
+        "学生容易把幂函数性质只记成少数图像模板，不能解释指数改变为何影响定义域和对称性。",
+        "只在第一象限讨论单调性时，容易误迁移到整个定义域。",
+        "分数指数和负指数同时出现时，定义域、单调性和图像分支容易互相干扰。"
+      ],
+      "digitalEntryPoints": [
+        {
+          "type": "applet",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B1-C04-L02-A01",
+          "title": "幂函数指数变化图像实验室",
+          "cognitive_action": "比较",
+          "note": "通过切换或调节指数类型，同步观察定义域、单调性、对称性和坐标轴附近边界；数字化价值在于动态比较指数变化导致的性质差异，不做常规求定义域题库。仅为 draft planned，纸质教材或已登录平台终核前禁止 scaffold。"
+        }
+      ],
+      "diagnosisFocus": [
+        "能否说明幂函数性质要先限定定义域或区间。",
+        "能否从指数特征判断图像对称和单调趋势。"
+      ],
+      "coreCompetencies": [
+        "直观想象",
+        "逻辑推理",
+        "数学抽象"
+      ],
+      "resources": [
+        {
+          "id": "SH-HS-MATH-HJ-B1-C04-L02-A01",
+          "resourceType": "applet",
+          "title": "幂函数指数变化图像实验室",
+          "cognitiveAction": "比较",
+          "note": "通过切换或调节指数类型，同步观察定义域、单调性、对称性和坐标轴附近边界；数字化价值在于动态比较指数变化导致的性质差异，不做常规求定义域题库。仅为 draft planned，纸质教材或已登录平台终核前禁止 scaffold。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        }
+      ]
+    },
+    "SH-HS-MATH-HJ-B1-C04-L03": {
+      "id": "SH-HS-MATH-HJ-B1-C04-L03",
+      "textbookRef": "4.2.1",
+      "title": "指数函数的定义与图像",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C04",
+        "number": 4,
+        "title": "幂函数、指数函数与对数函数"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C04-S02",
+        "textbookLabel": "4.2",
+        "title": "指数函数"
+      },
+      "coreKnowledge": [
+        "把底数固定、指数作为变量的关系表示为指数函数 y = a^x",
+        "理解指数函数底数满足 a > 0 且 a != 1 的规定",
+        "通过典型底数的图像建立指数增长和指数衰减的初步直观"
+      ],
+      "prerequisites": [
+        "指数幂和指数运算",
+        "幂函数中变量位置的比较经验",
+        "函数图像的描点与比较"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C04-L04",
+        "SH-HS-MATH-HJ-B1-C04-L05",
+        "SH-HS-MATH-HJ-B1-C05-L01"
+      ],
+      "teachingPainPoints": [
+        "学生容易把指数函数和幂函数混淆，尤其忽略变量在指数位置。",
+        "底数 a > 0 且 a != 1 的条件常被机械记忆，不能联系定义域和函数是否退化。",
+        "描点作图能看到形状，但对底数变化造成的整体趋势仍需要后续性质课整理。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否判断一个式子是否为指数函数。",
+        "能否解释底数限制的意义。"
+      ],
+      "coreCompetencies": [
+        "数学抽象",
+        "直观想象"
+      ],
+      "resources": []
+    },
+    "SH-HS-MATH-HJ-B1-C04-L04": {
+      "id": "SH-HS-MATH-HJ-B1-C04-L04",
+      "textbookRef": "4.2.2",
+      "title": "指数函数的性质",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C04",
+        "number": 4,
+        "title": "幂函数、指数函数与对数函数"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C04-S02",
+        "textbookLabel": "4.2",
+        "title": "指数函数"
+      },
+      "coreKnowledge": [
+        "理解指数函数定义域为 R 且函数值恒正",
+        "比较 a > 1 与 0 < a < 1 时的单调性和图像趋势",
+        "用指数函数性质解释简单增长、衰减和比较问题"
+      ],
+      "prerequisites": [
+        "指数函数的定义与图像",
+        "指数幂运算性质",
+        "函数图像和单调趋势"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C04-L05",
+        "SH-HS-MATH-HJ-B1-C05-L04",
+        "SH-HS-MATH-HJ-B1-C05-L07"
+      ],
+      "teachingPainPoints": [
+        "学生容易只背 a > 1 增、0 < a < 1 减，却不能从图像和数值变化解释。",
+        "指数函数图像恒过定点并趋近 x 轴的整体特征容易被常规比较大小题淹没。",
+        "实际增长模型中的百分比增长和指数函数底数之间的联系容易断裂。"
+      ],
+      "digitalEntryPoints": [
+        {
+          "type": "applet",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B1-C04-L04-A01",
+          "title": "指数函数底数变化与增长比较器",
+          "cognitive_action": "变换",
+          "note": "拖动底数 a，同步比较 a > 1 与 0 < a < 1 时的图像、表格、定点、单调方向和增长速度；数字化比板书更能呈现连续底数变化和增长差异。不做定义背诵、常规比较大小或指数不等式求解。仅为 draft planned，纸质教材或已登录平台终核前禁止 scaffold。"
+        }
+      ],
+      "diagnosisFocus": [
+        "能否根据底数范围判断单调性和图像趋势。",
+        "能否用指数函数解释等比例增长或衰减。"
+      ],
+      "coreCompetencies": [
+        "直观想象",
+        "数学抽象",
+        "数学建模"
+      ],
+      "resources": [
+        {
+          "id": "SH-HS-MATH-HJ-B1-C04-L04-A01",
+          "resourceType": "applet",
+          "title": "指数函数底数变化与增长比较器",
+          "cognitiveAction": "变换",
+          "note": "拖动底数 a，同步比较 a > 1 与 0 < a < 1 时的图像、表格、定点、单调方向和增长速度；数字化比板书更能呈现连续底数变化和增长差异。不做定义背诵、常规比较大小或指数不等式求解。仅为 draft planned，纸质教材或已登录平台终核前禁止 scaffold。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        }
+      ]
+    },
+    "SH-HS-MATH-HJ-B1-C04-L05": {
+      "id": "SH-HS-MATH-HJ-B1-C04-L05",
+      "textbookRef": "4.3.1",
+      "title": "对数函数的定义与图像",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C04",
+        "number": 4,
+        "title": "幂函数、指数函数与对数函数"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C04-S03",
+        "textbookLabel": "4.3",
+        "title": "对数函数"
+      },
+      "coreKnowledge": [
+        "把底数固定、真数作为变量的关系表示为对数函数 y = log_a x",
+        "理解对数函数底数满足 a > 0 且 a != 1，定义域为 (0, +infty)",
+        "通过典型底数的图像建立对数函数的形状直观"
+      ],
+      "prerequisites": [
+        "对数的定义和运算",
+        "指数函数的图像与性质",
+        "函数图像的描点与比较"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C04-L06",
+        "SH-HS-MATH-HJ-B1-C05-L01",
+        "SH-HS-MATH-HJ-B1-C05-L09"
+      ],
+      "teachingPainPoints": [
+        "学生容易把对数函数的定义域题当作纯代数条件，不能联系图像只在 y 轴右侧。",
+        "底数大于 1 和小于 1 的图像差异容易与指数函数混淆。",
+        "对数函数来源于指数运算逆运算的意义容易被公式记忆遮蔽。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否判断对数函数定义域必须满足真数大于 0。",
+        "能否区分对数函数和指数函数的图像位置。"
+      ],
+      "coreCompetencies": [
+        "数学抽象",
+        "直观想象",
+        "数学运算"
+      ],
+      "resources": []
+    },
+    "SH-HS-MATH-HJ-B1-C04-L06": {
+      "id": "SH-HS-MATH-HJ-B1-C04-L06",
+      "textbookRef": "4.3.2",
+      "title": "对数函数的性质",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C04",
+        "number": 4,
+        "title": "幂函数、指数函数与对数函数"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C04-S03",
+        "textbookLabel": "4.3",
+        "title": "对数函数"
+      },
+      "coreKnowledge": [
+        "理解对数函数经过点 (1, 0)，并按底数范围呈现不同单调性",
+        "理解对数运算是指数运算的逆运算，对数函数是指数函数的反函数",
+        "解释指数函数与对应对数函数图像关于直线 y = x 对称"
+      ],
+      "prerequisites": [
+        "对数函数的定义与图像",
+        "指数函数的图像与性质",
+        "点关于直线 y = x 的对称直观"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C05-L04",
+        "SH-HS-MATH-HJ-B1-C05-L09",
+        "SH-HS-MATH-HJ-B1-C05-L10",
+        "SH-HS-MATH-HJ-MODEL-K01"
+      ],
+      "teachingPainPoints": [
+        "学生容易只记对数函数单调性，不能说明它和指数函数底数范围的对应关系。",
+        "指数函数与对数函数互为反函数的图像对称，容易被误画成关于 x 轴或 y 轴对称。",
+        "幂、指数、对数三类函数的增长差异常被割裂记忆，难以迁移到模型比较。"
+      ],
+      "digitalEntryPoints": [
+        {
+          "type": "applet",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B1-C04-L06-A01",
+          "title": "指数对数互反图像镜像板",
+          "cognitive_action": "对应",
+          "note": "拖动指数函数图像上的点，同步交换坐标生成对数函数点，展示定义域/值域互换和关于 y = x 的对称；数字化比板书更能显化点的动态对应。不做对数定义背诵或换底公式练习。仅为 draft planned，纸质教材或已登录平台终核前禁止 scaffold。"
+        },
+        {
+          "type": "applet",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B1-C04-L06-A02",
+          "title": "幂指数对数增长模型对比板",
+          "cognitive_action": "比较",
+          "note": "在同一图像、表格和观察点中比较幂函数、指数函数和对数函数的增长差异，可切换尺度避免远端差异被压扁；数字化价值在于多表征和尺度联动。若价值与第5章函数应用资源重叠，生产前应合并或取消。仅为 draft planned，纸质教材或已登录平台终核前禁止 scaffold。"
+        }
+      ],
+      "diagnosisFocus": [
+        "能否说明对数函数单调性与底数范围的关系。",
+        "能否用坐标互换解释指数函数和对数函数图像关于 y = x 对称。"
+      ],
+      "coreCompetencies": [
+        "直观想象",
+        "数学抽象",
+        "数学建模"
+      ],
+      "resources": [
+        {
+          "id": "SH-HS-MATH-HJ-B1-C04-L06-A01",
+          "resourceType": "applet",
+          "title": "指数对数互反图像镜像板",
+          "cognitiveAction": "对应",
+          "note": "拖动指数函数图像上的点，同步交换坐标生成对数函数点，展示定义域/值域互换和关于 y = x 的对称；数字化比板书更能显化点的动态对应。不做对数定义背诵或换底公式练习。仅为 draft planned，纸质教材或已登录平台终核前禁止 scaffold。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        },
+        {
+          "id": "SH-HS-MATH-HJ-B1-C04-L06-A02",
+          "resourceType": "applet",
+          "title": "幂指数对数增长模型对比板",
+          "cognitiveAction": "比较",
+          "note": "在同一图像、表格和观察点中比较幂函数、指数函数和对数函数的增长差异，可切换尺度避免远端差异被压扁；数字化价值在于多表征和尺度联动。若价值与第5章函数应用资源重叠，生产前应合并或取消。仅为 draft planned，纸质教材或已登录平台终核前禁止 scaffold。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        }
+      ]
+    },
     "SH-HS-MATH-HJ-B1-C05-L01": {
       "id": "SH-HS-MATH-HJ-B1-C05-L01",
       "textbookRef": "5.1.1",
@@ -11357,9 +12712,9 @@
         "识别正弦曲线的周期重复结构"
       ],
       "prerequisites": [
-        "弧度制和终边相同角",
-        "单位圆中的正弦定义",
-        "函数图像描点与坐标表示"
+        "第6章 draft：任意角、弧度制和终边相同角",
+        "第6章 draft：单位圆中正弦值的坐标定义",
+        "第5章函数主线 draft：函数图像、定义域/值域与坐标表示"
       ],
       "successors": [
         "SH-HS-MATH-HJ-B2-C07-L02",
@@ -12040,8 +13395,8 @@
       ],
       "prerequisites": [
         "正弦曲线的生成过程",
-        "函数性质的语言表达",
-        "诱导公式"
+        "第5章函数主线 draft：定义域、值域、单调性、奇偶性和最值的表达",
+        "第6章 draft：诱导公式、终边相同角和同值角的一般式"
       ],
       "successors": [
         "SH-HS-MATH-HJ-B2-C07-L03",
@@ -12049,9 +13404,9 @@
         "SH-HS-MATH-HJ-XB1-DERIV-K01"
       ],
       "teachingPainPoints": [
-        "学生会背周期和值域，但难以用图像解释单调区间端点。",
-        "奇偶性、对称轴、对称中心容易混淆。",
-        "最值点和零点的弧度表达容易出现周期遗漏。"
+        "学生会背周期和值域，但难以用定义域、值域和图像语言说明单调区间端点。",
+        "奇偶性、对称轴、对称中心容易混淆，尤其容易跳过定义域关于原点对称的前提。",
+        "最值点和零点的弧度表达容易出现 pi 分数和周期项遗漏。"
       ],
       "digitalEntryPoints": [
         {
@@ -12684,9 +14039,9 @@
         "识别余弦曲线的关键点和周期结构"
       ],
       "prerequisites": [
-        "单位圆中的余弦定义",
+        "第6章 draft：单位圆中余弦值的坐标定义",
         "正弦函数图像",
-        "诱导公式和图像平移直觉"
+        "第6章 draft：诱导公式和单位圆对称；函数图像平移直觉"
       ],
       "successors": [
         "SH-HS-MATH-HJ-B2-C07-L04",
@@ -12696,7 +14051,7 @@
       "teachingPainPoints": [
         "学生容易把余弦图像机械看作正弦图像平移，忽略单位圆横坐标来源。",
         "余弦图像关键点顺序与正弦图像混用。",
-        "相位平移的方向常与代数表达中的符号混淆。"
+        "相位关系、平移方向和代数表达中的符号语言容易混淆。"
       ],
       "digitalEntryPoints": [
         {
@@ -13549,14 +14904,14 @@
       "prerequisites": [
         "余弦函数图像",
         "正弦函数性质",
-        "函数奇偶性与周期性"
+        "第5章函数主线 draft：奇偶性、单调性、最值和一般式表达"
       ],
       "successors": [
         "SH-HS-MATH-HJ-B2-C07-L05",
         "SH-HS-MATH-HJ-B2-C08-K01"
       ],
       "teachingPainPoints": [
-        "学生常把正弦函数的奇偶性和单调区间直接套到余弦函数。",
+        "学生常把正弦函数的奇偶性和单调区间直接套到余弦函数，忽略定义域、对称轴和对称中心的判断条件。",
         "最大值点、最小值点和零点的一般形式容易漏写周期。",
         "同一性质在单位圆和图像中的解释不能互相转换。"
       ],
@@ -14225,7 +15580,8 @@
       ],
       "prerequisites": [
         "正弦函数图像与性质",
-        "函数图像平移、伸缩和对称变换",
+        "第5章函数主线 draft：函数图像、定义域和值域语言",
+        "函数图像平移、伸缩和对称变换直觉",
         "周期与关键点"
       ],
       "successors": [
@@ -14234,9 +15590,9 @@
         "SH-HS-MATH-HJ-B2-C08-K01"
       ],
       "teachingPainPoints": [
-        "学生容易把横向伸缩、相位平移和括号内符号的关系搞反。",
+        "学生容易把周期、横向伸缩、相位平移和括号内符号的关系搞反。",
         "多参数同时变化时认知负荷过高，难以分辨每个参数的独立作用。",
-        "从图像反推解析式时，振幅、周期和初相位经常相互干扰。"
+        "从图像反推解析式时，振幅、周期、初相位和 A < 0 翻折经常相互干扰。"
       ],
       "digitalEntryPoints": [
         {
@@ -15226,16 +16582,16 @@
         "描绘一个周期内的正切曲线并延拓"
       ],
       "prerequisites": [
-        "任意角的正切定义",
-        "正弦、余弦函数图像与零点",
-        "函数定义域和间断点意识"
+        "第6章 draft：任意角正切定义、终边斜率和 tan x = sin x / cos x",
+        "正弦、余弦函数图像与 cos x = 0 的零点",
+        "第5章函数主线 draft：定义域限制和图像断裂意识"
       ],
       "successors": [
         "SH-HS-MATH-HJ-B2-C07-L07",
         "SH-HS-MATH-HJ-XB1-DERIV-K01"
       ],
       "teachingPainPoints": [
-        "学生容易忽略正切函数定义域限制，把图像画成连续曲线。",
+        "学生容易忽略 x = pi/2 + kpi 的定义域限制，把图像画成连续曲线。",
         "渐近线来自 cos x = 0 的原因不清楚。",
         "正切曲线的周期为 pi 容易被正弦余弦的 2pi 干扰。"
       ],
@@ -15998,14 +17354,15 @@
       "prerequisites": [
         "正切函数图像",
         "渐近线与定义域",
-        "函数周期性和奇偶性"
+        "第5章函数主线 draft：单调性限定在区间上、奇偶性定义前提",
+        "第6章 draft：诱导公式和周期项"
       ],
       "successors": [
         "SH-HS-MATH-HJ-XB1-DERIV-K01",
         "SH-HS-MATH-HJ-MODEL-K01"
       ],
       "teachingPainPoints": [
-        "学生容易说正切函数在整个定义域上单调递增，忽略定义区间断裂。",
+        "学生容易说正切函数在整个定义域上单调递增，忽略只能在每个 (-pi/2 + kpi, pi/2 + kpi) 上讨论。",
         "值域为全体实数与渐近线限制看似矛盾，需用局部区间解释。",
         "周期 pi、奇函数和单调区间的一般表达容易混淆。"
       ],
@@ -19590,11 +20947,11 @@
   },
   "summary": {
     "volumeCount": 7,
-    "chapterCount": 5,
-    "lessonCount": 44,
+    "chapterCount": 7,
+    "lessonCount": 54,
     "implementedAppletCount": 14,
     "implementedManimCount": 4,
     "implementedDiagnosisCount": 7,
-    "plannedResourceCount": 12
+    "plannedResourceCount": 16
   }
 }
