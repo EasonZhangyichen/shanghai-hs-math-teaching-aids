@@ -154,4 +154,6 @@
 - [x] 开启第三轮三个独立对话：B1-C01、B1-C02、B2-C08 source tightening。
 - [x] 第三轮完成后由总控只合并事实源，统一再生 generated files 并运行 `npm run verify`。
 - [x] 第三轮通过验收后，进入“已实现资源审校”轮，优先审校 B2-C07 已实现 Applet/Manim/Diagnosis 与 B2-C08 已 scaffold 资源。
-- [ ] 形成第一轮已实现资源审校任务单，先从 B2-C07 的可运行 Applet 和 Manim 视频中挑 3 个资源做数学符号、交互边界、课堂节奏和 review 状态升级。
+- [x] 形成第一轮已实现资源审校任务单：`docs/resource-review-rounds/2026-05-08-round-1.md`，先审校正切相关 Applet、Manim 和 Diagnosis 各 1 个资源。
+- [ ] 开启第一轮三个独立审校对话：`SH-HS-MATH-HJ-B2-C07-L06-A01`、`SH-HS-MATH-HJ-B2-C07-L06-M01`、`SH-HS-MATH-HJ-B2-C07-L07-D01`。
+- [ ] 第一轮审校完成后由总控合并资源包内改动，统一再生 generated files 并运行 `npm run verify`。
