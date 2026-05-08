@@ -137,9 +137,10 @@
 ## P6：并行章节工厂
 
 - [x] 建立 `docs/parallel-chapter-factory.md`。
-- [x] 为必修第二册第 6 章创建独立 worktree 和短分支，完成来源核对、draft 课程图谱和数字化必要性筛选，不制作资源包。
-- [ ] 由总控选择第一轮 3 到 5 个并行章节，只分派来源核对、课程图谱和数字化必要性筛选。
-- [ ] 为第一轮并行章节创建独立短分支或 git worktree，避免多个对话同时写同一分支。
-- [x] 已为必修第二册第 9 章“复数”创建独立 worktree：`../数学教育教师云平台-b2-c09`，分支 `codex/curriculum-b2-c09-source-audit`。
-- [ ] 每个章节完成后由总控运行 `npm run generate:backlog` 和 `npm run verify`，再决定是否合并。
-- [ ] 第一轮并行章节通过验收后，再按资源类型小批量 scaffold；不要直接进入完整资源制作。
+- [x] 第一轮并行章节已完成：B1 函数主线、B2-C06 三角前置、B2-C09 复数均已用独立 worktree / 短分支完成来源核对、draft 图谱和数字化必要性筛选。
+- [x] 第一轮已由总控合并至 `develop`，统一再生 backlog 和平台数据，并通过 `npm run verify`。
+- [x] 第一轮新增 planned 候选均标记为未终核，不进入 scaffold。
+- [x] 形成第二轮并行任务单：`docs/parallel-rounds/2026-05-08-round-2.md`。
+- [ ] 开启第二轮三个独立对话：B1-C03、B1-C04、B2-C07 prerequisite alignment。
+- [ ] 第二轮完成后由总控只合并事实源，统一再生 generated files 并运行 `npm run verify`。
+- [ ] 第二轮通过验收后，再判断哪些章节进入终核或 scaffold；不要直接进入完整资源制作。

@@ -82,6 +82,12 @@ develop
 这次作为并行章节工厂总控。请读取项目锚点文件、docs/parallel-chapter-factory.md、docs/content-standards.md 和 content/production/resource-backlog.json，检查 git status 和当前分支。不要先写代码，先推荐下一轮可并行推进的 3 到 5 个章节，并为每个章节给出独立短分支名、任务边界和可复制到新对话的提示词。只分派来源核对、课程图谱和数字化必要性筛选，不分派完整资源制作。
 ```
 
+当前第二轮任务单可直接读取：
+
+```text
+docs/parallel-rounds/2026-05-08-round-2.md
+```
+
 验收标准：
 
 - 每个章节有独立分支或独立 worktree。

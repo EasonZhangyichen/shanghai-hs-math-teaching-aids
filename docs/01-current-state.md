@@ -158,6 +158,7 @@
   - `docs/parallel-chapter-factory.md` 定义了多章节并行推进时的来源核对、课程图谱、数字化必要性筛选、总控验收和 scaffold 顺序。
   - 后续可每轮并行 3 到 5 个章节，但只先做目录来源和必要性筛选；完整资源制作仍按单资源或同类型小批量推进。
   - 并行章节建议使用独立短分支或 git worktree，避免多个对话同时修改同一分支和同一批 YAML。
+  - 第二轮并行任务单已写入 `docs/parallel-rounds/2026-05-08-round-2.md`，建议并行推进 B1-C03、B1-C04 与 B2-C07 prerequisite alignment；本轮仍只做来源、图谱和先修链对齐，不做 scaffold。
 - 已完成首轮数学符号与布局统一修正：
   - 平台侧和课件侧已接入富数学文本渲染，常见的 `π/2`、`-3π/2` 等会以竖式分数显示，避免 `pi/2`、`Theta` 或横向斜杠破坏数学语言。
   - `content/shared/math-text-normalizer.js` 已覆盖普通 HTML 文本、动态 DOM 更新和 SVG `<text>` 中的简单 π 分数标签。
@@ -207,7 +208,7 @@
 - 已将 Applet、Manim 和 Diagnosis metadata JSON Schema 接入首版自动校验脚本。
 - 已建立首版资源生产 backlog，可按单个资源工作单元开启新对话，避免全高中内容挤在一个上下文中；当前必修第二册第 7 章 15 个资源工作单元和第 8 章 10 个筛选后候选均已落地，新增的 B1-C05、B2-C06、B2-C09 planned 候选仅用于记录数字化必要性，不应立即 scaffold，并已补充 Applet / Manim / Diagnosis 全类型 scaffold 命令以减少后续手工建目录成本。
 - 当前第 7 章和第 8 章 backlog 已无 `planned` item；B1-C05 4 个、第 6 章 5 个、第 9 章 3 个 planned item 必须等待纸质教材或已登录 dolearning/上海数字教学平台终核后再进入 scaffold。下一步仍应优先推进第 7、8 章已实现资源的数学审校、课堂节奏试读和状态升级，或继续做其他章节来源核对，而不是继续新增同质资源。
-- 已完成第一轮并行章节工厂中的 B1 函数主线、B2-C06 与 B2-C09 来源核对任务；后续可由总控继续选择 3 到 5 个新章节，只做沪教版来源核对、课程图谱和数字化必要性筛选，通过验收后再进入 scaffold。
+- 已完成第一轮并行章节工厂中的 B1 函数主线、B2-C06 与 B2-C09 来源核对任务；第二轮建议按 `docs/parallel-rounds/2026-05-08-round-2.md` 开启 B1-C03、B1-C04 与 B2-C07 prerequisite alignment 三个独立 worktree 对话，只做沪教版来源核对、课程图谱和数字化必要性筛选，通过总控验收后再判断是否进入 scaffold。
 - 平台壳已读取 `content/manim/*/metadata.yaml` 并渲染样板 Manim 视频资源卡；尚未沉淀为独立播放器或接入播放器级学习状态记录。
 - 尚未配置 GitHub 分支保护规则。
 
