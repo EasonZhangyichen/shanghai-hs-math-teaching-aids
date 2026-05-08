@@ -12,11 +12,11 @@ test("loads the B2 curriculum tree for the teacher workspace", async () => {
   const workspace = await loadTeacherWorkspace({ rootDir: repoRoot });
 
   assert.equal(workspace.project.name, "沪教版高中数学数字教具云平台");
-  assert.equal(workspace.summary.lessonCount, 27);
+  assert.equal(workspace.summary.lessonCount, 34);
   assert.equal(workspace.summary.implementedAppletCount, 14);
   assert.equal(workspace.summary.implementedManimCount, 4);
   assert.equal(workspace.summary.implementedDiagnosisCount, 7);
-  assert.equal(workspace.summary.plannedResourceCount, 5);
+  assert.equal(workspace.summary.plannedResourceCount, 8);
 
   const b2 = workspace.tree.volumes.find((volume) => volume.id === "B2");
   assert.ok(b2, "B2 volume should be present");
@@ -29,6 +29,9 @@ test("loads the B2 curriculum tree for the teacher workspace", async () => {
   assert.equal(b2.chapters[2].id, "SH-HS-MATH-HJ-B2-C08");
   assert.equal(b2.chapters[2].sections[0].lessons[0].id, "SH-HS-MATH-HJ-B2-C08-L01");
   assert.equal(b2.chapters[2].sections[3].lessons[0].id, "SH-HS-MATH-HJ-B2-C08-L10");
+  assert.equal(b2.chapters[3].id, "SH-HS-MATH-HJ-B2-C09");
+  assert.equal(b2.chapters[3].sections[1].lessons[0].id, "SH-HS-MATH-HJ-B2-C09-L03");
+  assert.equal(b2.chapters[3].sections[3].lessons[1].id, "SH-HS-MATH-HJ-B2-C09-L07");
 });
 
 test("links the sample applet package to lesson L01 with script and activity entries", async () => {
@@ -232,7 +235,39 @@ test("links the parameter lab applet and rendered transform-order Manim to lesso
   assert.equal(diagnosis.metadataPreview.diagnosisDesign.itemSummary.totalItems, 6);
   assert.equal(diagnosis.package.files.itemBank, "content/diagnosis/SH-HS-MATH-HJ-B2-C07-L05-D01/item-bank.yaml");
   assert.equal(diagnosis.player, null);
-  assert.equal(workspace.summary.plannedResourceCount, 5);
+  assert.equal(workspace.summary.plannedResourceCount, 8);
+});
+
+test("lists the B2 C09 complex-number draft applet candidates as planned resources", async () => {
+  const workspace = await loadTeacherWorkspace({ rootDir: repoRoot });
+  const complexPlaneLesson = workspace.lessonsById["SH-HS-MATH-HJ-B2-C09-L03"];
+  const modulusLesson = workspace.lessonsById["SH-HS-MATH-HJ-B2-C09-L04"];
+  const multiplicationLesson = workspace.lessonsById["SH-HS-MATH-HJ-B2-C09-L07"];
+
+  assert.equal(complexPlaneLesson.status, "draft");
+  assert.equal(complexPlaneLesson.title, "复平面、复数的向量表示与加法几何意义");
+  assert.equal(complexPlaneLesson.resources.length, 1);
+  assert.deepEqual(complexPlaneLesson.resources[0], {
+    id: "SH-HS-MATH-HJ-B2-C09-L03-A01",
+    resourceType: "applet",
+    title: "复平面点向量对应与加法构造板",
+    cognitiveAction: "对应",
+    note: "拖动复平面上的点，同步显示复数代数形式、原点向量、坐标分量和加法平行四边形；只覆盖表示对应与加法几何意义，不做通用复数计算器。",
+    availability: "proposed",
+    status: "planned",
+    version: null,
+    metadataPreview: null,
+    player: null,
+    package: null,
+  });
+
+  assert.equal(modulusLesson.resources[0].id, "SH-HS-MATH-HJ-B2-C09-L04-A01");
+  assert.equal(modulusLesson.resources[0].availability, "proposed");
+  assert.equal(modulusLesson.resources[0].title, "模与共轭几何对照板");
+
+  assert.equal(multiplicationLesson.resources[0].id, "SH-HS-MATH-HJ-B2-C09-L07-A01");
+  assert.equal(multiplicationLesson.resources[0].availability, "proposed");
+  assert.equal(multiplicationLesson.resources[0].title, "复数乘法旋转缩放实验室");
 });
 
 test("links the vector projection applet and Manim scaffold to lesson B2 C08 L04", async () => {

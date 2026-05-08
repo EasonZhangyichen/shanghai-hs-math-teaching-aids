@@ -15,14 +15,14 @@
     "updateRule": "新增或修改资源包后运行 npm run generate:backlog 与 npm run verify。"
   },
   "summary": {
-    "total": 30,
+    "total": 33,
     "implemented": 25,
-    "planned": 5,
+    "planned": 8,
     "byType": {
       "applet": {
-        "total": 17,
+        "total": 20,
         "implemented": 14,
-        "planned": 3
+        "planned": 6
       },
       "manim_clip": {
         "total": 4,
@@ -966,6 +966,99 @@
       "recommendedTrack": "track/review-system",
       "nextAction": "核对 metadata、资源文件和审核记录，补齐缺口后运行内容校验。",
       "threadPrompt": "请先读取项目锚点文件和 content/production/resource-backlog.json，然后切到 track/review-system。这次只复核并推进 SH-HS-MATH-HJ-B2-C08-L10-D01（Diagnosis），对应课时 SH-HS-MATH-HJ-B2-C08-L10「向量的应用」。先确认教学痛点、认知动作、文件规范和验收标准，再动手；完成后运行 npm run generate:backlog 和 npm run verify，更新 docs/01-current-state.md 与 docs/02-next-actions.md，并提交。"
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B2-C09-L03-A01",
+      "type": "applet",
+      "status": "planned",
+      "availability": "planned",
+      "title": "复平面点向量对应与加法构造板",
+      "proposedTitle": "复平面点向量对应与加法构造板",
+      "lessonId": "SH-HS-MATH-HJ-B2-C09-L03",
+      "lessonTitle": "复平面、复数的向量表示与加法几何意义",
+      "textbookRef": "9.2.1-9.2.3",
+      "volumeId": "B2",
+      "volumeTitle": "必修第二册",
+      "chapterId": "SH-HS-MATH-HJ-B2-C09",
+      "chapterTitle": "复数",
+      "sectionId": "SH-HS-MATH-HJ-B2-C09-S02",
+      "sectionTitle": "复数的几何意义",
+      "cognitiveAction": "对应",
+      "teachingPainPoints": [
+        "学生容易把复数、点和向量当作三个孤立对象，不能在表示之间切换。",
+        "复数加法的坐标相加和向量平行四边形法则容易断裂。",
+        "从第 8 章向量迁移到复平面时，原点向量和任意位置向量的区别需要显化。"
+      ],
+      "note": "拖动复平面上的点，同步显示复数代数形式、原点向量、坐标分量和加法平行四边形；只覆盖表示对应与加法几何意义，不做通用复数计算器。",
+      "priority": "chapter_backlog",
+      "priorityReason": "复数、点、向量和加法几何意义是第 8 章平面向量向复平面迁移的核心节点。",
+      "packagePath": null,
+      "metadataPath": null,
+      "recommendedTrack": "track/trig-sample-pack",
+      "nextAction": "创建 Applet 资源包，先写 metadata、教师脚本、学生任务和 review，再实现最小可运行 HTML 原型。",
+      "threadPrompt": "请先读取项目锚点文件和 content/production/resource-backlog.json，然后切到 track/trig-sample-pack。这次只创建并推进 SH-HS-MATH-HJ-B2-C09-L03-A01（Applet），对应课时 SH-HS-MATH-HJ-B2-C09-L03「复平面、复数的向量表示与加法几何意义」。先确认教学痛点、认知动作、文件规范和验收标准，再动手；完成后运行 npm run generate:backlog 和 npm run verify，更新 docs/01-current-state.md 与 docs/02-next-actions.md，并提交。"
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B2-C09-L04-A01",
+      "type": "applet",
+      "status": "planned",
+      "availability": "planned",
+      "title": "模与共轭几何对照板",
+      "proposedTitle": "模与共轭几何对照板",
+      "lessonId": "SH-HS-MATH-HJ-B2-C09-L04",
+      "lessonTitle": "复数的模",
+      "textbookRef": "9.2.4",
+      "volumeId": "B2",
+      "volumeTitle": "必修第二册",
+      "chapterId": "SH-HS-MATH-HJ-B2-C09",
+      "chapterTitle": "复数",
+      "sectionId": "SH-HS-MATH-HJ-B2-C09-S02",
+      "sectionTitle": "复数的几何意义",
+      "cognitiveAction": "比较",
+      "teachingPainPoints": [
+        "学生容易把模误认为实部或虚部的绝对值，而不是到原点的距离。",
+        "共轭变号、关于实轴对称和模相等之间的关系容易被分散记忆。",
+        "只用公式会弱化第 8 章向量长度和坐标距离的迁移。"
+      ],
+      "note": "拖动复平面点，同步显示到原点距离、共轭点关于实轴对称和模不变关系；纯代数化简仍保留为纸笔练习。",
+      "priority": "chapter_backlog",
+      "priorityReason": "模和共轭的几何解释能把代数符号记忆转化为距离与对称直觉。",
+      "packagePath": null,
+      "metadataPath": null,
+      "recommendedTrack": "track/trig-sample-pack",
+      "nextAction": "创建 Applet 资源包，先写 metadata、教师脚本、学生任务和 review，再实现最小可运行 HTML 原型。",
+      "threadPrompt": "请先读取项目锚点文件和 content/production/resource-backlog.json，然后切到 track/trig-sample-pack。这次只创建并推进 SH-HS-MATH-HJ-B2-C09-L04-A01（Applet），对应课时 SH-HS-MATH-HJ-B2-C09-L04「复数的模」。先确认教学痛点、认知动作、文件规范和验收标准，再动手；完成后运行 npm run generate:backlog 和 npm run verify，更新 docs/01-current-state.md 与 docs/02-next-actions.md，并提交。"
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B2-C09-L07-A01",
+      "type": "applet",
+      "status": "planned",
+      "availability": "planned",
+      "title": "复数乘法旋转缩放实验室",
+      "proposedTitle": "复数乘法旋转缩放实验室",
+      "lessonId": "SH-HS-MATH-HJ-B2-C09-L07",
+      "lessonTitle": "三角形式下复数的乘除、乘方与开方运算",
+      "textbookRef": "*9.4.2-*9.4.3",
+      "volumeId": "B2",
+      "volumeTitle": "必修第二册",
+      "chapterId": "SH-HS-MATH-HJ-B2-C09",
+      "chapterTitle": "复数",
+      "sectionId": "SH-HS-MATH-HJ-B2-C09-S04",
+      "sectionTitle": "复数的三角形式",
+      "cognitiveAction": "变换",
+      "teachingPainPoints": [
+        "学生容易只记三角形式乘法公式，不能解释为什么是旋转与缩放。",
+        "除法中的辐角相减和乘方中的角度倍增容易被当作符号规律机械记忆。",
+        "开方的多值性需要动态呈现均匀分布的角度，否则纸面公式负担较重。"
+      ],
+      "note": "调节两个复数的模和辐角，观察乘积点如何旋转和缩放；仅在 *9.4 确认进入教学进度后生产，先聚焦乘除法几何意义，乘方与开方作为后续模式。",
+      "priority": "follow_up_optional",
+      "priorityReason": "*9.4 需先确认教学进度；若讲授，复数乘法的旋转缩放意义适合动态可视化。",
+      "packagePath": null,
+      "metadataPath": null,
+      "recommendedTrack": "track/trig-sample-pack",
+      "nextAction": "创建 Applet 资源包，先写 metadata、教师脚本、学生任务和 review，再实现最小可运行 HTML 原型。",
+      "threadPrompt": "请先读取项目锚点文件和 content/production/resource-backlog.json，然后切到 track/trig-sample-pack。这次只创建并推进 SH-HS-MATH-HJ-B2-C09-L07-A01（Applet），对应课时 SH-HS-MATH-HJ-B2-C09-L07「三角形式下复数的乘除、乘方与开方运算」。先确认教学痛点、认知动作、文件规范和验收标准，再动手；完成后运行 npm run generate:backlog 和 npm run verify，更新 docs/01-current-state.md 与 docs/02-next-actions.md，并提交。"
     }
   ]
 }
