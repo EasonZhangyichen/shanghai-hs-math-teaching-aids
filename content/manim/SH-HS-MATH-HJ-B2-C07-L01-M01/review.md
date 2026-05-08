@@ -4,54 +4,38 @@
 当前状态：`draft`
 当前阶段：`video_ready`
 
-## 自检结论
+## 2026-05-08 单资源审校结论
 
-- 内容为原创分镜和 Manim 场景脚本。
-- 数学主线限定为 `y = sin x` 的生成来源，不展开性质归纳。
-- 当前没有使用外部图片、音频、教材正文、官方课件或商业平台资源。
-- 已完成首版 1080p30 mp4/webm/poster 导出，可进入平台预览和内部教研复核。
+- 数学主线通过：单位圆动点 `P = (cos x, sin x)`、纵坐标 `sin x`、图像点 `Q = (x, sin x)`、一周轨迹生成 `y = sin x`、以及 `sin(x + 2π) = sin x` 的周期来源说明保持一致。
+- 已发现并修复：metadata、storyboard、README 和画面中存在 `pi` / `2pi` 等 ASCII 写法，已统一为 `π`、`π/2`、`2π` 等课堂可接受的数学语言。
+- 已发现并修复：原视频首屏直接给出 `Q = (x, sin x)`，关键点只有蓝点没有坐标标签，容易让学生跳过“横坐标是角 x 的弧度量”这一关键转换；已补充输入/输出/图像点规则面板、`sin x` 高度段和关键点坐标。
+- 分镜节奏复核：视频由约 29 秒调整为 43.6 秒，适合放在 Applet 前或新课导入中；建议教师在 `Q = (x, sin x)` 出现后暂停追问“横坐标为什么是 x，而不是 cos x？”。
+- 画面可读性复核：低质量预览和 1080p poster 抽帧显示单位圆、投影线、坐标轴、正弦曲线、关键点和规则面板互不遮挡；`(2π, 0)` 标签已避开红色 `Q` 标记。
+- 已重渲染：完成 Python 语法检查、低质量预览、1080p30 mp4、webm 转码和 poster 更新。
 
-## 数学审校关注点
+## 已审校项
 
-- `Q = (x, sin x)` 的横坐标解释是否足够清楚。
-- `x` 的弧度量、单位圆转角、图像横轴刻度之间是否会被学生误读。
-- 关键角 `0`、`pi/2`、`pi`、`3pi/2`、`2pi` 的停顿位置和正弦值标记是否准确。
-- 结尾周期提示是否只作为来源说明，避免提前替代后续性质课的系统归纳。
+- 数学准确性：`0`、`π/2`、`π`、`3π/2`、`2π` 的正弦值和图像关键点准确；周期提示只作为来源说明，不替代下一课时性质归纳。
+- 视频符号：`scene.py`、`storyboard.md`、`metadata.yaml` 中的 `π`、`π/2`、`2π`、`sin x`、`Q = (x, sin x)` 已统一。
+- 课堂节奏：保留“先单位圆、再抽高度、再放到函数图像、最后提示周期”的导入顺序；不额外引入单调性、奇偶性或对称性术语。
+- 大屏画面：规则面板放在左上，单位圆在左下，函数图像在右侧，主要对象有固定空间；最终画面可用于平台 poster。
 
-## 教学审校关注点
+## 仍需人工观看确认
 
-- 60 到 90 秒的节奏是否适合课堂开场。
-- 在 `Q = (x, sin x)` 出现后是否需要强制暂停，先让学生回答横坐标来源。
-- 动画结束后是否能自然切换到 `SH-HS-MATH-HJ-B2-C07-L01-A01` 的拖动验证。
-
-## 视觉与渲染关注点
-
-- 教室大屏上 `P`、`Q`、投影线和轨迹颜色是否可区分。
-- `TracedPath` 生成轨迹与最终 `sine_curve` 的切换是否平滑。
-- 16:9 画面中单位圆和函数坐标系的距离是否适合投屏。
-- 中文字幕暂未进入 `scene.py`，后续若加入需确认字体和跨平台渲染。
+- 建议教师完整播放最终 mp4，确认中文字体和 `π` 字符在实际投屏设备上无替换异常。
+- `sin x` 高度标签在 `sin x = 0` 附近贴近 x 轴，低质量预览可读；仍建议教室大屏实播确认。
+- 若教师希望更强的课堂停顿，优先在播放器层增加暂停点，不建议继续拉长动画本身。
 
 ## 渲染记录
 
 - Manim：`Manim Community v0.20.1 via uvx`。
+- 语法检查：`python3 -m py_compile content/manim/SH-HS-MATH-HJ-B2-C07-L01-M01/scene.py` 已通过。
 - 预览：`uvx manim -ql --media_dir dist scene.py SineOriginScene` 已通过。
-- 课堂视频：`dist/final/SH-HS-MATH-HJ-B2-C07-L01-M01.mp4`，1920x1080，30fps，29.1 秒。
-- Web 预览：`dist/final/SH-HS-MATH-HJ-B2-C07-L01-M01.webm`，1920x1080，30fps，29.1 秒。
-- Poster：`dist/final/SH-HS-MATH-HJ-B2-C07-L01-M01-poster.png`，1920x1080。
-- 为降低环境依赖，`scene.py` 使用 Manim `Text` 标签，不依赖本地 LaTeX。
+- 课堂视频：`dist/final/SH-HS-MATH-HJ-B2-C07-L01-M01.mp4`，1920x1080，30fps，43.6 秒，2026-05-08 已重渲染。
+- Web 预览：`dist/final/SH-HS-MATH-HJ-B2-C07-L01-M01.webm`，1920x1080，30fps，2026-05-08 已转码更新。
+- Poster：`dist/final/SH-HS-MATH-HJ-B2-C07-L01-M01-poster.png`，1920x1080，2026-05-08 已改为 36 秒主体画面。
 
-## 推进门槛
+## 下一状态建议
 
-进入 `math_review` 前必须完成：
-
-1. `scene.py` 通过 Python 语法检查。
-2. 低质量预览 `manim -pql scene.py SineOriginScene` 成功生成。
-3. 分镜暂停点经教师或总控对话确认。
-4. `metadata.yaml` 与 `storyboard.md` 保持一致。
-
-进入 `video_ready` 前必须完成：
-
-1. 已导出 `dist/final/SH-HS-MATH-HJ-B2-C07-L01-M01.mp4`。
-2. 已转码 `dist/final/SH-HS-MATH-HJ-B2-C07-L01-M01.webm`。
-3. 已生成 `dist/final/SH-HS-MATH-HJ-B2-C07-L01-M01-poster.png`。
-4. 已更新 `metadata.yaml` 的 `files` 和 `platform_card` 字段。
+- 数学审校已通过，建议进入 `math_review` 通过后的 `video_reviewed` / 教研节奏复核阶段。
+- metadata 已将 `compliance.review_status` 更新为 `math_review_passed`；顶层 `status` 暂保留 `draft`，等待总控统一决定状态枚举和流转口径。

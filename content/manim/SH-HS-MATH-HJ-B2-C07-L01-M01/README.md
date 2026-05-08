@@ -14,7 +14,7 @@
 -> P 的纵坐标 sin x
 -> 图像点 Q = (x, sin x)
 -> Q 的轨迹生成 y = sin x
--> 终边重合解释 2pi 周期
+-> 终边重合解释 2π 周期
 ```
 
 ## 为什么用 Manim
@@ -23,7 +23,7 @@
 
 ## 课堂用法
 
-- 新课导入：播放 60 到 90 秒，暂停在 `Q = (x, sin x)` 出现后追问横坐标来源。
+- 新课导入：播放约 44 秒，暂停在 `Q = (x, sin x)` 出现后追问横坐标来源。
 - 概念澄清：学生把图像横坐标误认为单位圆点横坐标时，回放“放到函数图像”一幕。
 - 与 Applet 配合：动画负责建立直觉，`SH-HS-MATH-HJ-B2-C07-L01-A01` 负责学生拖动、预测和验证。
 
@@ -66,7 +66,7 @@ ffmpeg -y -i dist/final/SH-HS-MATH-HJ-B2-C07-L01-M01.mp4 -c:v libvpx-vp9 -b:v 0 
 生成 poster：
 
 ```bash
-ffmpeg -y -ss 00:00:03 -i dist/final/SH-HS-MATH-HJ-B2-C07-L01-M01.mp4 -frames:v 1 dist/final/SH-HS-MATH-HJ-B2-C07-L01-M01-poster.png
+ffmpeg -y -ss 00:00:36 -i dist/final/SH-HS-MATH-HJ-B2-C07-L01-M01.mp4 -frames:v 1 dist/final/SH-HS-MATH-HJ-B2-C07-L01-M01-poster.png
 ```
 
 `metadata.yaml` 已将 `render_plan.phase` 标记为 `rendered`，并补齐 `files.output_mp4`、`files.output_webm` 和 `files.poster`，平台资源卡会从 metadata 中读取稳定视频入口。
