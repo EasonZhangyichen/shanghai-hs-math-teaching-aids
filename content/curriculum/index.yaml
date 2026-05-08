@@ -2138,8 +2138,11 @@ volumes:
         verification:
           textbook_outline_status: "secondary_sources_checked"
           needs_manual_textbook_check: true
-          checked_on: "2026-05-07"
-          notes: "已用公开电子课本目录与基础教育精品课传课目录交叉核对章节主干；课时划分、课时数和标题表述仍需教师用纸质教材最终确认。"
+          checked_on: "2026-05-08"
+          source_audit: "docs/source-audits/b2-c08-dolearning-audit.md"
+          source_tightening_audit: "docs/source-audits/b2-c08-source-tightening.md"
+          period_status: "8.3_boundary_pending_manual_check"
+          notes: "已用公开电子课本目录与基础教育精品课传课目录交叉核对章节主干；2026-05-08 复核确认已 scaffold 的 10 个第 8 章资源均落在 8.1、8.2 或 8.4 的当前课时，8.3 暂缓资源未恢复。课时划分、课时数和标题表述仍需教师用纸质教材或已登录 dolearning 左侧目录最终确认，尤其是 8.3 应按教材 8.3.1 至 8.3.4 四小节拆分，还是按 dolearning 三课时分组。"
         theme_strands:
           - "trig_vector_complex"
           - "geometry"
