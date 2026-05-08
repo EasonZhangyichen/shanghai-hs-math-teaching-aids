@@ -163,4 +163,7 @@
 - [x] 形成第三轮已实现资源审校任务单：`docs/resource-review-rounds/2026-05-08-round-3.md`，选择余弦链条两个 Applet 和一个 Diagnosis。
 - [x] 开启第三轮三个独立审校对话：`SH-HS-MATH-HJ-B2-C07-L03-A01`、`SH-HS-MATH-HJ-B2-C07-L04-A01`、`SH-HS-MATH-HJ-B2-C07-L04-D01`。
 - [x] 第三轮审校完成后由总控合并资源包内改动，统一再生 generated files 并运行 `npm run verify`。
-- [ ] 形成第四轮已实现资源审校任务单，优先选择参数变换链条或正弦性质探究，继续验证 `math_review` 到 `classroom_trial_ready` 的状态字段设计。
+- [x] 形成第四轮已实现资源审校任务单：`docs/resource-review-rounds/2026-05-08-round-4.md`，选择正弦性质探究 Applet、参数变化 Applet 和参数识别 Diagnosis。
+- [ ] 开启第四轮三个独立审校对话：`SH-HS-MATH-HJ-B2-C07-L02-A01`、`SH-HS-MATH-HJ-B2-C07-L05-A01`、`SH-HS-MATH-HJ-B2-C07-L05-D01`。
+- [ ] 第四轮审校完成后由总控合并资源包内改动，统一再生 generated files 并运行 `npm run verify`。
+- [ ] 形成第五轮已实现资源审校任务单，优先选择 `SH-HS-MATH-HJ-B2-C07-L03-A02`、`SH-HS-MATH-HJ-B2-C07-L05-M01` 或 `SH-HS-MATH-HJ-B2-C07-L07-A01`。
