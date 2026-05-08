@@ -778,25 +778,29 @@ volumes:
           textbook_outline_status: "secondary_sources_checked"
           needs_manual_textbook_check: true
           checked_on: "2026-04-30"
-          notes: "已用公开教材目录与课程资源目录交叉核对章节主干；课时划分和课时数仍需教师用纸质教材最终确认。"
+          prereq_alignment_audit: "docs/source-audits/b2-c07-prereq-alignment.md"
+          prereq_alignment_checked_on: "2026-05-08"
+          notes: "已用公开教材目录与课程资源目录交叉核对章节主干；课时划分和课时数仍需教师用纸质教材最终确认。2026-05-08 仅复核先修链、后续链和教学痛点语言；B1-C05 函数主线与 B2-C06 三角仍为 draft/needs_manual_textbook_check 前置，不能视为已终核。"
         theme_strands:
           - "function"
           - "trig_vector_complex"
-        chapter_role: "把第6章任意角三角比和三角公式转化为函数观点，为后续向量、复平面和周期模型建立图像语言。"
+        chapter_role: "承接必修第一册第5章函数定义域、值域、图像、单调性和奇偶性等通用函数语言，并把第6章任意角、弧度制、单位圆三角比和诱导公式转化为函数图像与性质，为后续向量投影、复平面和周期模型建立图像语言。"
         prerequisite_knowledge:
           - id: "SH-HS-MATH-HJ-B2-C06-K01"
-            title: "任意角与弧度制"
+            title: "任意角、终边相同角与弧度制（第6章 draft，需终核）"
           - id: "SH-HS-MATH-HJ-B2-C06-K02"
-            title: "单位圆中的正弦、余弦、正切"
+            title: "单位圆中的正弦、余弦、正切及定义域边界（第6章 draft，需终核）"
           - id: "SH-HS-MATH-HJ-B2-C06-K03"
-            title: "诱导公式与同角关系"
-          - id: "SH-HS-MATH-HJ-B1-FUNC-K01"
-            title: "函数图像、定义域、值域、单调性和奇偶性"
+            title: "诱导公式、同值角和单位圆对称（第6章 draft，需终核）"
+          - id: "SH-HS-MATH-HJ-B1-C05-K01"
+            title: "函数的定义域、值域、表示方法和图像语言（第5章 draft，需终核）"
+          - id: "SH-HS-MATH-HJ-B1-C05-K02"
+            title: "函数的单调性、奇偶性、最值和区间表达（第5章 draft，需终核）"
         follow_up_knowledge:
           - id: "SH-HS-MATH-HJ-B2-C08-K01"
-            title: "平面向量的方向、投影和数量积"
+            title: "平面向量的夹角、投影和数量积"
           - id: "SH-HS-MATH-HJ-B2-C09-K01"
-            title: "复数的几何意义与复平面"
+            title: "复数的几何意义、复平面和辐角语言"
           - id: "SH-HS-MATH-HJ-XB1-DERIV-K01"
             title: "函数变化率与周期函数的局部变化"
           - id: "SH-HS-MATH-HJ-MODEL-K01"
@@ -836,9 +840,9 @@ volumes:
               - "把角的变化、单位圆运动和坐标平面上的图像生成对应起来"
               - "识别正弦曲线的周期重复结构"
             prerequisites:
-              - "弧度制和终边相同角"
-              - "单位圆中的正弦定义"
-              - "函数图像描点与坐标表示"
+              - "第6章 draft：任意角、弧度制和终边相同角"
+              - "第6章 draft：单位圆中正弦值的坐标定义"
+              - "第5章函数主线 draft：函数图像、定义域/值域与坐标表示"
             successors:
               - "SH-HS-MATH-HJ-B2-C07-L02"
               - "SH-HS-MATH-HJ-B2-C07-L03"
@@ -876,16 +880,16 @@ volumes:
               - "用性质解决简单比较、求值和图像判断问题"
             prerequisites:
               - "正弦曲线的生成过程"
-              - "函数性质的语言表达"
-              - "诱导公式"
+              - "第5章函数主线 draft：定义域、值域、单调性、奇偶性和最值的表达"
+              - "第6章 draft：诱导公式、终边相同角和同值角的一般式"
             successors:
               - "SH-HS-MATH-HJ-B2-C07-L03"
               - "SH-HS-MATH-HJ-B2-C07-L05"
               - "SH-HS-MATH-HJ-XB1-DERIV-K01"
             teaching_pain_points:
-              - "学生会背周期和值域，但难以用图像解释单调区间端点。"
-              - "奇偶性、对称轴、对称中心容易混淆。"
-              - "最值点和零点的弧度表达容易出现周期遗漏。"
+              - "学生会背周期和值域，但难以用定义域、值域和图像语言说明单调区间端点。"
+              - "奇偶性、对称轴、对称中心容易混淆，尤其容易跳过定义域关于原点对称的前提。"
+              - "最值点和零点的弧度表达容易出现 pi 分数和周期项遗漏。"
             digital_entry_points:
               - type: "applet"
                 proposed_resource_id: "SH-HS-MATH-HJ-B2-C07-L02-A01"
@@ -914,9 +918,9 @@ volumes:
               - "通过相位平移理解余弦曲线与正弦曲线的关系"
               - "识别余弦曲线的关键点和周期结构"
             prerequisites:
-              - "单位圆中的余弦定义"
+              - "第6章 draft：单位圆中余弦值的坐标定义"
               - "正弦函数图像"
-              - "诱导公式和图像平移直觉"
+              - "第6章 draft：诱导公式和单位圆对称；函数图像平移直觉"
             successors:
               - "SH-HS-MATH-HJ-B2-C07-L04"
               - "SH-HS-MATH-HJ-B2-C07-L05"
@@ -924,7 +928,7 @@ volumes:
             teaching_pain_points:
               - "学生容易把余弦图像机械看作正弦图像平移，忽略单位圆横坐标来源。"
               - "余弦图像关键点顺序与正弦图像混用。"
-              - "相位平移的方向常与代数表达中的符号混淆。"
+              - "相位关系、平移方向和代数表达中的符号语言容易混淆。"
             digital_entry_points:
               - type: "applet"
                 proposed_resource_id: "SH-HS-MATH-HJ-B2-C07-L03-A01"
@@ -954,12 +958,12 @@ volumes:
             prerequisites:
               - "余弦函数图像"
               - "正弦函数性质"
-              - "函数奇偶性与周期性"
+              - "第5章函数主线 draft：奇偶性、单调性、最值和一般式表达"
             successors:
               - "SH-HS-MATH-HJ-B2-C07-L05"
               - "SH-HS-MATH-HJ-B2-C08-K01"
             teaching_pain_points:
-              - "学生常把正弦函数的奇偶性和单调区间直接套到余弦函数。"
+              - "学生常把正弦函数的奇偶性和单调区间直接套到余弦函数，忽略定义域、对称轴和对称中心的判断条件。"
               - "最大值点、最小值点和零点的一般形式容易漏写周期。"
               - "同一性质在单位圆和图像中的解释不能互相转换。"
             digital_entry_points:
@@ -991,16 +995,17 @@ volumes:
               - "根据图像识别解析式中的关键参数"
             prerequisites:
               - "正弦函数图像与性质"
-              - "函数图像平移、伸缩和对称变换"
+              - "第5章函数主线 draft：函数图像、定义域和值域语言"
+              - "函数图像平移、伸缩和对称变换直觉"
               - "周期与关键点"
             successors:
               - "SH-HS-MATH-HJ-MODEL-K01"
               - "SH-HS-MATH-HJ-XB1-DERIV-K01"
               - "SH-HS-MATH-HJ-B2-C08-K01"
             teaching_pain_points:
-              - "学生容易把横向伸缩、相位平移和括号内符号的关系搞反。"
+              - "学生容易把周期、横向伸缩、相位平移和括号内符号的关系搞反。"
               - "多参数同时变化时认知负荷过高，难以分辨每个参数的独立作用。"
-              - "从图像反推解析式时，振幅、周期和初相位经常相互干扰。"
+              - "从图像反推解析式时，振幅、周期、初相位和 A < 0 翻折经常相互干扰。"
             digital_entry_points:
               - type: "applet"
                 proposed_resource_id: "SH-HS-MATH-HJ-B2-C07-L05-A01"
@@ -1036,14 +1041,14 @@ volumes:
               - "识别正切函数的定义域断点和渐近线"
               - "描绘一个周期内的正切曲线并延拓"
             prerequisites:
-              - "任意角的正切定义"
-              - "正弦、余弦函数图像与零点"
-              - "函数定义域和间断点意识"
+              - "第6章 draft：任意角正切定义、终边斜率和 tan x = sin x / cos x"
+              - "正弦、余弦函数图像与 cos x = 0 的零点"
+              - "第5章函数主线 draft：定义域限制和图像断裂意识"
             successors:
               - "SH-HS-MATH-HJ-B2-C07-L07"
               - "SH-HS-MATH-HJ-XB1-DERIV-K01"
             teaching_pain_points:
-              - "学生容易忽略正切函数定义域限制，把图像画成连续曲线。"
+              - "学生容易忽略 x = pi/2 + kpi 的定义域限制，把图像画成连续曲线。"
               - "渐近线来自 cos x = 0 的原因不清楚。"
               - "正切曲线的周期为 pi 容易被正弦余弦的 2pi 干扰。"
             digital_entry_points:
@@ -1076,12 +1081,13 @@ volumes:
             prerequisites:
               - "正切函数图像"
               - "渐近线与定义域"
-              - "函数周期性和奇偶性"
+              - "第5章函数主线 draft：单调性限定在区间上、奇偶性定义前提"
+              - "第6章 draft：诱导公式和周期项"
             successors:
               - "SH-HS-MATH-HJ-XB1-DERIV-K01"
               - "SH-HS-MATH-HJ-MODEL-K01"
             teaching_pain_points:
-              - "学生容易说正切函数在整个定义域上单调递增，忽略定义区间断裂。"
+              - "学生容易说正切函数在整个定义域上单调递增，忽略只能在每个 (-pi/2 + kpi, pi/2 + kpi) 上讨论。"
               - "值域为全体实数与渐近线限制看似矛盾，需用局部区间解释。"
               - "周期 pi、奇函数和单调区间的一般表达容易混淆。"
             digital_entry_points:
