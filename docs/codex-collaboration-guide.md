@@ -12,7 +12,8 @@
 4. 同一时间不要让多个对话在同一个工作树里改同一个分支。
 5. 每次完成一小块都提交，提交信息要能看懂。
 6. 每次任务结束都更新 `docs/01-current-state.md` 和 `docs/02-next-actions.md`。
-7. 资源类任务优先从 `content/production/resource-backlog.json` 选择单个 item，不要让一个对话同时生产一批资源。
+7. 资源类任务优先从 `content/production/resource-backlog.json` 选择单个 item，不要让一个对话同时生产一批完整资源。
+8. 章节级并行必须遵守 `docs/parallel-chapter-factory.md`：先来源核对和必要性筛选，再由总控合并，最后才进入 scaffold 或单资源精修。
 
 ## 推荐对话类型
 
@@ -145,15 +146,17 @@ git switch develop
 
 如果只是一个本地工作目录，建议同时只让一个 Codex 对话写文件。
 
-如果未来需要真正并行，可以用 Git worktree，为每个分支创建独立目录：
+如果需要真正并行，可以用 Git worktree，为每个章节或主题创建独立目录：
 
 ```bash
-git worktree add ../数学教育教师云平台-curriculum track/curriculum-map
-git worktree add ../数学教育教师云平台-trig track/trig-sample-pack
-git worktree add ../数学教育教师云平台-platform track/platform-shell
+git worktree add ../数学教育教师云平台-b2-c06 -b codex/curriculum-b2-c06-source-audit develop
+git worktree add ../数学教育教师云平台-b2-c09 -b codex/curriculum-b2-c09-source-audit develop
+git worktree add ../数学教育教师云平台-b1-functions -b codex/curriculum-b1-functions-source-audit develop
 ```
 
 这样每个对话进入不同目录，彼此不会踩文件。
+
+并行章节的推荐上限是每轮 3 到 5 个。每个章节先做来源核对、课程图谱和数字化必要性筛选；不要让多个章节同时进入完整资源制作。总控对话负责 review、`npm run verify`、合并和同步长期分支。
 
 ## 新对话启动提示词
 
@@ -168,6 +171,7 @@ docs/git-workflow.md
 docs/content-standards.md
 docs/codex-collaboration-guide.md
 docs/resource-factory-workflow.md
+docs/parallel-chapter-factory.md
 docs/thread-starter-prompts.md
 content/curriculum/index.yaml
 content/production/resource-backlog.json

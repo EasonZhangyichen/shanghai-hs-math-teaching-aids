@@ -4,12 +4,12 @@
 
 每次开启新对话时，先复制“通用启动提示词”。如果已经明确任务，再追加对应分支的“专项任务提示词”。
 
-不要让多个对话同时改同一个分支。如果要并行推进，优先让每个对话处理不同 `track/*` 分支。
+不要让多个对话同时改同一个分支。如果要并行推进，优先让每个对话处理不同短分支或不同 git worktree，并遵守 `docs/parallel-chapter-factory.md`。
 
 ## 通用启动提示词
 
 ```text
-请先读取 docs/00-project-brief.md、docs/01-current-state.md、docs/02-next-actions.md、docs/git-workflow.md、docs/content-standards.md、docs/codex-collaboration-guide.md、docs/resource-factory-workflow.md、docs/thread-starter-prompts.md、content/curriculum/index.yaml 和 content/production/resource-backlog.json，然后运行 git status --short 和 git branch --show-current。不要先写代码，先确认应该在哪个分支工作。
+请先读取 docs/00-project-brief.md、docs/01-current-state.md、docs/02-next-actions.md、docs/git-workflow.md、docs/content-standards.md、docs/codex-collaboration-guide.md、docs/resource-factory-workflow.md、docs/parallel-chapter-factory.md、docs/thread-starter-prompts.md、content/curriculum/index.yaml 和 content/production/resource-backlog.json，然后运行 git status --short 和 git branch --show-current。不要先写代码，先确认应该在哪个分支工作。
 ```
 
 ## 总控对话
@@ -60,6 +60,34 @@ develop
 - 说明推荐原因和对应分支。
 - 说明该资源为什么值得数字化；如果普通板书或纸笔任务更合适，应明确建议暂不制作。
 - 不把全章资源塞进同一个对话。
+
+## 并行章节工厂总控
+
+负责分支：
+
+```text
+develop
+```
+
+适合做：
+
+- 同时分派 3 到 5 个章节的来源核对任务。
+- 检查每个章节是否遵守沪教版来源优先级。
+- 合并章节级来源记录、课程图谱和数字化必要性筛选。
+- 决定哪些章节可以进入 scaffold，哪些必须继续等待教材或 dolearning 终核。
+
+启动提示词：
+
+```text
+这次作为并行章节工厂总控。请读取项目锚点文件、docs/parallel-chapter-factory.md、docs/content-standards.md 和 content/production/resource-backlog.json，检查 git status 和当前分支。不要先写代码，先推荐下一轮可并行推进的 3 到 5 个章节，并为每个章节给出独立短分支名、任务边界和可复制到新对话的提示词。只分派来源核对、课程图谱和数字化必要性筛选，不分派完整资源制作。
+```
+
+验收标准：
+
+- 每个章节有独立分支或独立 worktree。
+- 每个章节都先做来源核对和必要性筛选。
+- 不把整本书交给一个对话。
+- 不让目录未确认的章节进入 scaffold。
 
 ## 批量资源骨架生成
 
@@ -310,6 +338,9 @@ track/design-system
 
 8. 批量资源骨架生成
    课程图谱扩展后，用 scaffold 批量铺同类型资源骨架，再分派单资源精修对话。
+
+9. 并行章节工厂
+   每轮并行 3 到 5 个章节，只做来源核对、课程图谱和必要性筛选；通过总控验收后再进入 scaffold。
 ```
 
 ## 一个任务多大合适
@@ -322,5 +353,6 @@ track/design-system
 - “只搭建课程树页面。”
 - “只写 Manim 正弦函数导入 storyboard。”
 - “只批量生成 5 个同类型 planned Applet 骨架，不深入实现内容。”
+- “只核对必修第二册第 9 章复数的沪教版来源和数字化必要性，不制作资源。”
 
 不要一次要求一个对话“把整个平台做完”。

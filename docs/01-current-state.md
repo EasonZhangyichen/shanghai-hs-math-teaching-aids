@@ -140,6 +140,10 @@
   - 已修正 Applet scaffold 模板，避免在 `pedagogy` 中写入 Applet schema 不接受的 `classroom_use` 字段；Manim 与 Diagnosis 仍保留各自 schema 需要的课堂使用说明。
   - `npm run generate:backlog` 已加入脚本，`npm run verify` 现在会先校验内容、生成 backlog，再运行测试和平台构建。
   - `docs/resource-factory-workflow.md` 记录了课程图谱 -> backlog -> 单资源对话 -> 校验 -> 合并的半自动生产流程。
+- 已建立并行章节工厂规则：
+  - `docs/parallel-chapter-factory.md` 定义了多章节并行推进时的来源核对、课程图谱、数字化必要性筛选、总控验收和 scaffold 顺序。
+  - 后续可每轮并行 3 到 5 个章节，但只先做目录来源和必要性筛选；完整资源制作仍按单资源或同类型小批量推进。
+  - 并行章节建议使用独立短分支或 git worktree，避免多个对话同时修改同一分支和同一批 YAML。
 - 已完成首轮数学符号与布局统一修正：
   - 平台侧和课件侧已接入富数学文本渲染，常见的 `π/2`、`-3π/2` 等会以竖式分数显示，避免 `pi/2`、`Theta` 或横向斜杠破坏数学语言。
   - `content/shared/math-text-normalizer.js` 已覆盖普通 HTML 文本、动态 DOM 更新和 SVG `<text>` 中的简单 π 分数标签。
@@ -187,6 +191,7 @@
 - 已将 Applet、Manim 和 Diagnosis metadata JSON Schema 接入首版自动校验脚本。
 - 已建立首版资源生产 backlog，可按单个资源工作单元开启新对话，避免全高中内容挤在一个上下文中；当前必修第二册第 7 章 15 个资源工作单元和第 8 章 10 个筛选后候选均已落地，并已补充 Applet / Manim / Diagnosis 全类型 scaffold 命令以减少后续手工建目录成本。
 - 当前第 7 章和第 8 章 backlog 已无 `planned` item；下一步应对已生成的第 8 章 Applet / Manim / Diagnosis 逐个进入单资源精修，或优先推进第 7 章资源的数学审校、课堂节奏试读和状态升级，而不是继续新增同质资源。
+- 已具备开启第一轮并行章节工厂的条件：下一步可由总控选择 3 到 5 个新章节，只做沪教版来源核对、课程图谱和数字化必要性筛选，通过验收后再进入 scaffold。
 - 平台壳已读取 `content/manim/*/metadata.yaml` 并渲染样板 Manim 视频资源卡；尚未沉淀为独立播放器或接入播放器级学习状态记录。
 - 尚未配置 GitHub 分支保护规则。
 
@@ -201,6 +206,7 @@
 5. `docs/content-standards.md`
 6. `docs/codex-collaboration-guide.md`
 7. `docs/resource-factory-workflow.md`
-8. `docs/thread-starter-prompts.md`
-9. `content/curriculum/index.yaml`
-10. `content/production/resource-backlog.json`
+8. `docs/parallel-chapter-factory.md`
+9. `docs/thread-starter-prompts.md`
+10. `content/curriculum/index.yaml`
+11. `content/production/resource-backlog.json`
