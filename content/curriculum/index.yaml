@@ -24,6 +24,375 @@ volumes:
       - "平面向量"
       - "复数"
     chapters:
+      - id: "SH-HS-MATH-HJ-B2-C06"
+        number: 6
+        title: "三角"
+        status: "draft"
+        verification:
+          textbook_outline_status: "auxiliary_sources_checked"
+          needs_manual_textbook_check: true
+          checked_on: "2026-05-08"
+          source_audit: "docs/source-audits/b2-c06-source-audit.md"
+          notes: "本轮未取得纸质教材或已登录 dolearning 目录；国家精品课传课目录确认 6.1 与 6.2 部分节点，公开电子课本、教师资源目录和教辅目录辅助确认第 6 章主干。所有课时边界、课时数和标题表述仍需纸质教材或 dolearning 终核。"
+        theme_strands:
+          - "trig_vector_complex"
+          - "function"
+          - "geometry"
+        chapter_role: "把锐角三角比扩展到任意角、弧度制、单位圆三角比和常用三角公式，为第7章三角函数的图像与性质、第8章向量投影和后续复平面提供角度与三角比语言。"
+        prerequisite_knowledge:
+          - id: "SH-HS-MATH-HJ-JH-TRIG-K01"
+            title: "直角三角形中的锐角三角比"
+          - id: "SH-HS-MATH-HJ-B1-FUNC-K01"
+            title: "函数、图像和坐标表示"
+          - id: "SH-HS-MATH-HJ-B1-GEOM-K01"
+            title: "平面几何中的角、圆和相似三角形"
+        follow_up_knowledge:
+          - id: "SH-HS-MATH-HJ-B2-C07-K01"
+            title: "三角函数的图像与性质"
+          - id: "SH-HS-MATH-HJ-B2-C08-K01"
+            title: "向量夹角、投影和数量积"
+          - id: "SH-HS-MATH-HJ-B2-C09-K01"
+            title: "复数的几何意义与复平面"
+          - id: "SH-HS-MATH-HJ-MODEL-K01"
+            title: "周期现象的函数建模"
+        sections:
+          - id: "SH-HS-MATH-HJ-B2-C06-S01"
+            textbook_label: "6.1"
+            title: "正弦、余弦、正切、余切"
+            lesson_ids:
+              - "SH-HS-MATH-HJ-B2-C06-L01"
+              - "SH-HS-MATH-HJ-B2-C06-L02"
+              - "SH-HS-MATH-HJ-B2-C06-L03"
+              - "SH-HS-MATH-HJ-B2-C06-L04"
+              - "SH-HS-MATH-HJ-B2-C06-L05"
+          - id: "SH-HS-MATH-HJ-B2-C06-S02"
+            textbook_label: "6.2"
+            title: "常用三角公式"
+            lesson_ids:
+              - "SH-HS-MATH-HJ-B2-C06-L06"
+              - "SH-HS-MATH-HJ-B2-C06-L07"
+              - "SH-HS-MATH-HJ-B2-C06-L08"
+          - id: "SH-HS-MATH-HJ-B2-C06-S03"
+            textbook_label: "6.3"
+            title: "解三角形"
+            lesson_ids:
+              - "SH-HS-MATH-HJ-B2-C06-L09"
+              - "SH-HS-MATH-HJ-B2-C06-L10"
+        lessons:
+          - id: "SH-HS-MATH-HJ-B2-C06-L01"
+            textbook_ref: "6.1.1"
+            title: "锐角的正弦、余弦、正切、余切"
+            status: "draft"
+            estimated_periods: null
+            core_knowledge:
+              - "回顾直角三角形中锐角的正弦、余弦、正切和余切"
+              - "把边长比和角的大小对应起来"
+              - "为任意角三角比扩展保留几何来源"
+            prerequisites:
+              - "直角三角形边角关系"
+              - "相似三角形"
+              - "平面直角坐标系"
+            successors:
+              - "SH-HS-MATH-HJ-B2-C06-L02"
+              - "SH-HS-MATH-HJ-B2-C06-L03"
+            teaching_pain_points:
+              - "学生容易把锐角三角比只记为边名比例，不能说明比例为何只由角决定。"
+              - "余切在初中经验中较弱，和正切互倒关系容易机械记忆。"
+              - "从直角三角形过渡到坐标系终边时，几何来源容易断裂。"
+            diagnosis_focus:
+              - "能否根据直角三角形准确写出四个锐角三角比。"
+              - "能否解释同一锐角在相似直角三角形中的三角比不变。"
+            core_competencies:
+              - "直观想象"
+              - "数学抽象"
+          - id: "SH-HS-MATH-HJ-B2-C06-L02"
+            textbook_ref: "6.1.2"
+            title: "任意角及其度量"
+            status: "draft"
+            estimated_periods: null
+            core_knowledge:
+              - "用旋转方向和旋转量理解正角、负角、零角和终边相同角"
+              - "理解角度制与弧度制的对应关系"
+              - "把弧度量解释为单位圆上的弧长与半径之比"
+            prerequisites:
+              - "角的几何概念"
+              - "圆、半径和弧长"
+              - "平面直角坐标系中的射线和旋转"
+            successors:
+              - "SH-HS-MATH-HJ-B2-C06-L03"
+              - "SH-HS-MATH-HJ-B2-C07-L01"
+              - "SH-HS-MATH-HJ-B2-C07-L06"
+            teaching_pain_points:
+              - "学生容易把任意角只看作超过 180 度的角，忽略方向和旋转过程。"
+              - "终边相同角的一般式容易漏写整数参数或符号方向。"
+              - "弧度制常被当作换算公式，不能解释为什么横轴可以用弧度量表示角。"
+            digital_entry_points:
+              - type: "applet"
+                proposed_resource_id: "SH-HS-MATH-HJ-B2-C06-L02-A01"
+                title: "任意角与弧度动态量角器"
+                cognitive_action: "旋转"
+                note: "拖动终边显示正负旋转、终边相同角、角度制和弧度制，并把单位圆弧长与弧度量同步联动；只服务任意角和弧度意义，不做普通换算刷题。"
+            diagnosis_focus:
+              - "能否写出终边相同角的一般式。"
+              - "能否说明弧度量和单位圆弧长的关系。"
+            core_competencies:
+              - "直观想象"
+              - "数学抽象"
+          - id: "SH-HS-MATH-HJ-B2-C06-L03"
+            textbook_ref: "6.1.3"
+            title: "任意角的正弦、余弦、正切、余切"
+            status: "draft"
+            estimated_periods: null
+            core_knowledge:
+              - "用终边上一点或单位圆坐标定义任意角的正弦、余弦、正切和余切"
+              - "判断四个三角比在不同象限和坐标轴上的符号与定义域"
+              - "把坐标、单位圆和三角比数值联系起来"
+            prerequisites:
+              - "任意角和弧度制"
+              - "锐角三角比"
+              - "平面直角坐标系和单位圆"
+            successors:
+              - "SH-HS-MATH-HJ-B2-C06-L04"
+              - "SH-HS-MATH-HJ-B2-C06-L05"
+              - "SH-HS-MATH-HJ-B2-C07-L01"
+              - "SH-HS-MATH-HJ-B2-C07-L03"
+              - "SH-HS-MATH-HJ-B2-C07-L06"
+            teaching_pain_points:
+              - "学生容易把任意角三角比仍理解成直角三角形边长比，忽略坐标定义。"
+              - "象限符号和轴上角的定义边界容易混淆。"
+              - "正切、余切无定义条件常被漏掉，影响后续正切函数定义域。"
+            digital_entry_points:
+              - type: "applet"
+                proposed_resource_id: "SH-HS-MATH-HJ-B2-C06-L03-A01"
+                title: "单位圆三角比与终边联动板"
+                cognitive_action: "投影"
+                note: "拖动单位圆终边，同步显示坐标、四个三角比、象限符号和无定义状态，突出三角比几何意义与第7章函数值来源。"
+              - type: "diagnosis"
+                proposed_resource_id: "SH-HS-MATH-HJ-B2-C06-L03-D01"
+                title: "任意角三角比符号与定义域诊断"
+                cognitive_action: "比较"
+                note: "围绕象限符号、轴上角、正切/余切无定义和坐标比值来源给即时错因反馈；不替代纸笔求值训练。"
+            diagnosis_focus:
+              - "能否根据终边位置判断三角比符号。"
+              - "能否说明正切和余切何时无定义。"
+            core_competencies:
+              - "直观想象"
+              - "数学抽象"
+              - "逻辑推理"
+          - id: "SH-HS-MATH-HJ-B2-C06-L04"
+            textbook_ref: "6.1.4"
+            title: "诱导公式"
+            status: "draft"
+            estimated_periods: null
+            core_knowledge:
+              - "用终边相同角和单位圆对称关系理解诱导公式"
+              - "从象限和参考角判断三角比符号"
+              - "把诱导公式作为第7章周期性、奇偶性和图像对称性的前置语言"
+            prerequisites:
+              - "任意角三角比"
+              - "单位圆坐标"
+              - "平面中的轴对称和中心对称"
+            successors:
+              - "SH-HS-MATH-HJ-B2-C06-L05"
+              - "SH-HS-MATH-HJ-B2-C07-L02"
+              - "SH-HS-MATH-HJ-B2-C07-L04"
+              - "SH-HS-MATH-HJ-B2-C07-L07"
+            teaching_pain_points:
+              - "学生容易把诱导公式作为孤立口诀记忆，不能解释符号变化来源。"
+              - "参考角、象限和函数名是否改变之间的关系容易混乱。"
+              - "诱导公式和后续三角函数图像对称性的联系不够清楚。"
+            digital_entry_points:
+              - type: "applet"
+                proposed_resource_id: "SH-HS-MATH-HJ-B2-C06-L04-A01"
+                title: "诱导公式单位圆对称板"
+                cognitive_action: "比较"
+                note: "只用单位圆上的对称映射解释公式来源，支持教师切换 alpha、pi-alpha、pi+alpha、2pi-alpha 等关系；不把纯公式记忆做成动画。"
+            diagnosis_focus:
+              - "能否从单位圆对称判断三角比符号。"
+              - "能否把诱导公式和三角函数图像的奇偶性、周期性连接起来。"
+            core_competencies:
+              - "逻辑推理"
+              - "直观想象"
+              - "数学抽象"
+          - id: "SH-HS-MATH-HJ-B2-C06-L05"
+            textbook_ref: "6.1.5"
+            title: "已知正弦、余弦或正切值求角"
+            status: "draft"
+            estimated_periods: null
+            core_knowledge:
+              - "根据三角比值和象限条件确定角"
+              - "用单位圆和终边相同角表达多解结构"
+              - "区分特殊角求值、主值判断和一般解书写"
+            prerequisites:
+              - "任意角三角比"
+              - "诱导公式"
+              - "特殊角三角比值"
+            successors:
+              - "SH-HS-MATH-HJ-B2-C07-L02"
+              - "SH-HS-MATH-HJ-B2-C07-L04"
+              - "SH-HS-MATH-HJ-B2-C07-L07"
+            teaching_pain_points:
+              - "学生容易只给出一个角，遗漏同值角或周期项。"
+              - "给定正弦、余弦或正切值时，象限限制和参考角关系容易混淆。"
+              - "主值、特解和一般解的语言边界不稳定。"
+            digital_entry_points:
+              - type: "diagnosis"
+                proposed_resource_id: "SH-HS-MATH-HJ-B2-C06-L05-D01"
+                title: "已知三角值求角多解诊断"
+                cognitive_action: "比较"
+                note: "用短题即时标注象限遗漏、周期遗漏、主值误用和正切周期误判；不做完整代数解题器。"
+            diagnosis_focus:
+              - "能否根据三角值和象限条件列出完整角集。"
+              - "能否区分正弦/余弦的 2pi 周期和正切的 pi 周期。"
+            core_competencies:
+              - "逻辑推理"
+              - "数学运算"
+          - id: "SH-HS-MATH-HJ-B2-C06-L06"
+            textbook_ref: "6.2.1"
+            title: "两角和与差的正弦、余弦、正切公式"
+            status: "draft"
+            estimated_periods: null
+            core_knowledge:
+              - "理解并使用两角和与差的正弦、余弦、正切公式"
+              - "在求值、化简和证明中选择合适公式"
+              - "识别公式使用中的角度拆分和定义域限制"
+            prerequisites:
+              - "任意角三角比"
+              - "诱导公式"
+              - "代数恒等变形"
+            successors:
+              - "SH-HS-MATH-HJ-B2-C06-L07"
+              - "SH-HS-MATH-HJ-B2-C06-L08"
+              - "SH-HS-MATH-HJ-B2-C07-L05"
+            teaching_pain_points:
+              - "学生容易只机械套公式，不能判断角度拆分是否有利于计算。"
+              - "正切和差公式的分母条件容易遗漏。"
+              - "公式之间的选择路径不清，导致代数变形冗长。"
+            diagnosis_focus:
+              - "能否根据目标式选择合适的和差公式。"
+              - "能否检查正切公式的适用条件。"
+            core_competencies:
+              - "逻辑推理"
+              - "数学运算"
+          - id: "SH-HS-MATH-HJ-B2-C06-L07"
+            textbook_ref: "6.2.2"
+            title: "二倍角公式"
+            status: "draft"
+            estimated_periods: null
+            core_knowledge:
+              - "由两角和公式推出并使用二倍角公式"
+              - "掌握正弦、余弦、正切二倍角公式的常见变形"
+              - "在求值、化简和证明中识别二倍角结构"
+            prerequisites:
+              - "两角和与差公式"
+              - "同角关系"
+              - "代数恒等变形"
+            successors:
+              - "SH-HS-MATH-HJ-B2-C06-L08"
+              - "SH-HS-MATH-HJ-B2-C07-L05"
+            teaching_pain_points:
+              - "学生容易把多个余弦二倍角形式割裂记忆。"
+              - "半角、倍角和降幂目标之间的转换意识不足。"
+              - "正切二倍角公式的分母条件容易被忽略。"
+            diagnosis_focus:
+              - "能否根据表达式结构选择合适的二倍角形式。"
+              - "能否识别公式适用条件和等价变形。"
+            core_competencies:
+              - "数学运算"
+              - "逻辑推理"
+          - id: "SH-HS-MATH-HJ-B2-C06-L08"
+            textbook_ref: "6.2.3"
+            title: "三角变换的应用"
+            status: "draft"
+            estimated_periods: null
+            core_knowledge:
+              - "综合使用诱导公式、和差公式和二倍角公式进行三角变换"
+              - "在求值、化简、证明和简单应用中组织变换路径"
+              - "根据目标形式选择拆角、配角、降幂或化一策略"
+            prerequisites:
+              - "诱导公式"
+              - "两角和与差公式"
+              - "二倍角公式"
+            successors:
+              - "SH-HS-MATH-HJ-B2-C06-L09"
+              - "SH-HS-MATH-HJ-B2-C07-L05"
+            teaching_pain_points:
+              - "学生常把三角变换看作公式堆叠，缺少目标导向。"
+              - "不同公式之间的转换顺序和变形方向容易失控。"
+              - "证明题中等价变形的合法性和条件意识不足。"
+            diagnosis_focus:
+              - "能否说明某一步三角变换的目标。"
+              - "能否避免无目的套公式。"
+            core_competencies:
+              - "数学运算"
+              - "逻辑推理"
+          - id: "SH-HS-MATH-HJ-B2-C06-L09"
+            textbook_ref: "6.3.1"
+            title: "正弦定理"
+            status: "draft"
+            estimated_periods: null
+            core_knowledge:
+              - "理解正弦定理中边长和对角正弦的比例关系"
+              - "用正弦定理解三角形中的边角问题"
+              - "意识到 SSA 情形可能出现多解或无解"
+            prerequisites:
+              - "任意角三角比"
+              - "三角形边角关系"
+              - "代数方程求解"
+            successors:
+              - "SH-HS-MATH-HJ-B2-C06-L10"
+              - "SH-HS-MATH-HJ-B2-C08-K01"
+            teaching_pain_points:
+              - "学生容易只记比例式，不能根据已知条件判断是否适合用正弦定理。"
+              - "SSA 多解情形容易被忽略。"
+              - "边角对应关系写错会导致整题方向错误。"
+            diagnosis_focus:
+              - "能否根据已知条件判断正弦定理是否适用。"
+              - "能否处理可能的多解情形。"
+            core_competencies:
+              - "逻辑推理"
+              - "数学运算"
+              - "直观想象"
+          - id: "SH-HS-MATH-HJ-B2-C06-L10"
+            textbook_ref: "6.3.2"
+            title: "余弦定理"
+            status: "draft"
+            estimated_periods: null
+            core_knowledge:
+              - "理解余弦定理作为勾股定理的推广"
+              - "用余弦定理解三角形中的边角问题"
+              - "连接夹角、边长和后续向量数量积中的余弦结构"
+            prerequisites:
+              - "正弦定理"
+              - "三角比中的余弦"
+              - "三角形边角关系"
+            successors:
+              - "SH-HS-MATH-HJ-B2-C08-L04"
+              - "SH-HS-MATH-HJ-B2-C08-L05"
+            teaching_pain_points:
+              - "学生容易把余弦定理公式作为计算模板，不能解释夹角项的作用。"
+              - "已知三边求角时，余弦值和角的范围判断容易出错。"
+              - "余弦定理与向量数量积的结构联系尚未建立。"
+            diagnosis_focus:
+              - "能否根据已知条件判断余弦定理是否适用。"
+              - "能否解释余弦项和夹角的关系。"
+            core_competencies:
+              - "逻辑推理"
+              - "数学运算"
+              - "直观想象"
+        chapter_resource_priorities:
+          - lesson_id: "SH-HS-MATH-HJ-B2-C06-L02"
+            priority: "chapter_backlog"
+            reason: "任意角和弧度制是第7章三角函数横轴意义的关键前置，动态旋转和单位圆弧长联动有明显数字化价值。"
+          - lesson_id: "SH-HS-MATH-HJ-B2-C06-L03"
+            priority: "chapter_backlog"
+            reason: "单位圆三角比直接支撑后续正弦、余弦、正切函数值来源，也适合暴露象限和定义域误区。"
+          - lesson_id: "SH-HS-MATH-HJ-B2-C06-L04"
+            priority: "follow_up"
+            reason: "诱导公式只有在聚焦单位圆对称来源时才值得数字化，生产前需再次收窄。"
+          - lesson_id: "SH-HS-MATH-HJ-B2-C06-L05"
+            priority: "follow_up"
+            reason: "已知三角值求角更适合做多解与周期遗漏的即时诊断，不做完整解题器。"
       - id: "SH-HS-MATH-HJ-B2-C07"
         number: 7
         title: "三角函数"

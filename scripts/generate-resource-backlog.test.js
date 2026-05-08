@@ -13,12 +13,28 @@ test("generates a deterministic backlog from curriculum entry points and impleme
   const backlog = await generateResourceBacklog({ rootDir: repoRoot });
 
   assert.equal(backlog.source.curriculum, "content/curriculum/index.yaml");
-  assert.equal(backlog.summary.total, 25);
+  assert.equal(backlog.summary.total, 30);
   assert.equal(backlog.summary.implemented, 25);
-  assert.equal(backlog.summary.planned, 0);
-  assert.deepEqual(backlog.summary.byType.applet, { total: 14, implemented: 14, planned: 0 });
+  assert.equal(backlog.summary.planned, 5);
+  assert.deepEqual(backlog.summary.byType.applet, { total: 17, implemented: 14, planned: 3 });
   assert.deepEqual(backlog.summary.byType.manim_clip, { total: 4, implemented: 4, planned: 0 });
-  assert.deepEqual(backlog.summary.byType.diagnosis, { total: 7, implemented: 7, planned: 0 });
+  assert.deepEqual(backlog.summary.byType.diagnosis, { total: 9, implemented: 7, planned: 2 });
+
+  const angleMeasureApplet = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B2-C06-L02-A01");
+  assert.equal(angleMeasureApplet.status, "planned");
+  assert.equal(angleMeasureApplet.availability, "planned");
+  assert.equal(angleMeasureApplet.type, "applet");
+  assert.equal(angleMeasureApplet.chapterTitle, "三角");
+  assert.equal(angleMeasureApplet.lessonTitle, "任意角及其度量");
+  assert.equal(angleMeasureApplet.priority, "chapter_backlog");
+  assert.equal(angleMeasureApplet.packagePath, null);
+  assert.match(angleMeasureApplet.note, /不做普通换算刷题/);
+
+  const trigRatioDiagnosis = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B2-C06-L03-D01");
+  assert.equal(trigRatioDiagnosis.status, "planned");
+  assert.equal(trigRatioDiagnosis.type, "diagnosis");
+  assert.equal(trigRatioDiagnosis.recommendedTrack, "track/review-system");
+  assert.match(trigRatioDiagnosis.nextAction, /创建 Diagnosis 资源包/);
 
   const sineApplet = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B2-C07-L01-A01");
   assert.equal(sineApplet.status, "implemented");
@@ -294,10 +310,10 @@ test("writes the backlog as stable pretty JSON", async () => {
     });
     const written = JSON.parse(await readFile(outputPath, "utf8"));
 
-    assert.equal(written.summary.total, 25);
+    assert.equal(written.summary.total, 30);
     assert.equal(written.summary.implemented, 25);
-    assert.equal(written.summary.planned, 0);
-    assert.equal(written.items[0].id, "SH-HS-MATH-HJ-B2-C07-L01-A01");
+    assert.equal(written.summary.planned, 5);
+    assert.equal(written.items[0].id, "SH-HS-MATH-HJ-B2-C06-L02-A01");
     assert.ok(
       JSON.stringify(written, null, 2).includes(
         '"id": "SH-HS-MATH-HJ-B2-C08-L10-D01"',
