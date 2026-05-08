@@ -289,6 +289,106 @@
               }
             ],
             "lessonCount": 10
+          },
+          {
+            "id": "SH-HS-MATH-HJ-B2-C09",
+            "number": 9,
+            "title": "复数",
+            "status": "draft",
+            "verification": {
+              "textbook_outline_status": "secondary_sources_checked",
+              "needs_manual_textbook_check": true,
+              "checked_on": "2026-05-08",
+              "notes": "公开电子课本目录、基础教育精品课传课目录、上海科技教育出版社同步课课练目录和教师资源目录支持第 9 章主干；dolearning 与上海数智教学系统公开访问均无法直接确认。9.2、9.3 与 *9.4 的教材小节和平台课时包存在合并线索，当前课时边界均为 draft。"
+            },
+            "chapterRole": "把实数系扩展到复数系，并借助复平面把代数运算、点坐标、向量表示和三角形式连接起来，为后续解析几何、函数与代数结构学习提供二维数的语言。",
+            "sections": [
+              {
+                "id": "SH-HS-MATH-HJ-B2-C09-S01",
+                "textbookLabel": "9.1",
+                "title": "复数及其四则运算",
+                "lessons": [
+                  {
+                    "id": "SH-HS-MATH-HJ-B2-C09-L01",
+                    "textbookRef": "9.1.1",
+                    "title": "复数的引入与复数的四则运算",
+                    "status": "draft",
+                    "resourceCount": 0,
+                    "hasImplementedApplet": false
+                  },
+                  {
+                    "id": "SH-HS-MATH-HJ-B2-C09-L02",
+                    "textbookRef": "9.1.2",
+                    "title": "复数的实部、虚部与共轭",
+                    "status": "draft",
+                    "resourceCount": 0,
+                    "hasImplementedApplet": false
+                  }
+                ]
+              },
+              {
+                "id": "SH-HS-MATH-HJ-B2-C09-S02",
+                "textbookLabel": "9.2",
+                "title": "复数的几何意义",
+                "lessons": [
+                  {
+                    "id": "SH-HS-MATH-HJ-B2-C09-L03",
+                    "textbookRef": "9.2.1-9.2.3",
+                    "title": "复平面、复数的向量表示与加法几何意义",
+                    "status": "draft",
+                    "resourceCount": 1,
+                    "hasImplementedApplet": false
+                  },
+                  {
+                    "id": "SH-HS-MATH-HJ-B2-C09-L04",
+                    "textbookRef": "9.2.4",
+                    "title": "复数的模",
+                    "status": "draft",
+                    "resourceCount": 1,
+                    "hasImplementedApplet": false
+                  }
+                ]
+              },
+              {
+                "id": "SH-HS-MATH-HJ-B2-C09-S03",
+                "textbookLabel": "9.3",
+                "title": "实系数一元二次方程",
+                "lessons": [
+                  {
+                    "id": "SH-HS-MATH-HJ-B2-C09-L05",
+                    "textbookRef": "9.3.1-9.3.2",
+                    "title": "实数的平方根与实系数一元二次方程",
+                    "status": "draft",
+                    "resourceCount": 0,
+                    "hasImplementedApplet": false
+                  }
+                ]
+              },
+              {
+                "id": "SH-HS-MATH-HJ-B2-C09-S04",
+                "textbookLabel": "*9.4",
+                "title": "复数的三角形式",
+                "lessons": [
+                  {
+                    "id": "SH-HS-MATH-HJ-B2-C09-L06",
+                    "textbookRef": "*9.4.1",
+                    "title": "复数的三角形式",
+                    "status": "draft",
+                    "resourceCount": 0,
+                    "hasImplementedApplet": false
+                  },
+                  {
+                    "id": "SH-HS-MATH-HJ-B2-C09-L07",
+                    "textbookRef": "*9.4.2-*9.4.3",
+                    "title": "三角形式下复数的乘除、乘方与开方运算",
+                    "status": "draft",
+                    "resourceCount": 1,
+                    "hasImplementedApplet": false
+                  }
+                ]
+              }
+            ],
+            "lessonCount": 7
           }
         ]
       },
@@ -8129,6 +8229,425 @@
           }
         }
       ]
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B2-C09-L01",
+      "textbookRef": "9.1.1",
+      "title": "复数的引入与复数的四则运算",
+      "status": "draft",
+      "estimatedPeriods": 1,
+      "volume": {
+        "id": "B2",
+        "title": "必修第二册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B2-C09",
+        "number": 9,
+        "title": "复数"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B2-C09-S01",
+        "textbookLabel": "9.1",
+        "title": "复数及其四则运算"
+      },
+      "coreKnowledge": [
+        "用虚数单位 i 扩充实数系，并理解 i^2 = -1 的代数约定",
+        "把复数写成 a + bi 的代数形式",
+        "进行复数的加、减、乘、除运算"
+      ],
+      "prerequisites": [
+        "实数运算和整式运算",
+        "一元二次方程在实数范围内无解的经验",
+        "平方根和负数平方的矛盾意识"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B2-C09-L02",
+        "SH-HS-MATH-HJ-B2-C09-L03",
+        "SH-HS-MATH-HJ-B2-C09-L05"
+      ],
+      "teachingPainPoints": [
+        "学生容易把 i 当作普通未知数，忽略 i^2 = -1 是复数运算的核心规则。",
+        "复数除法中的分母实数化容易变成机械步骤，缺少运算闭包意识。",
+        "四则运算主要是符号和代数规则，过度可视化反而会分散注意力。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否正确使用 i^2 = -1 化简。",
+        "能否区分复数运算规则和实数运算中的平方根规则。"
+      ],
+      "coreCompetencies": [
+        "数学运算",
+        "数学抽象"
+      ],
+      "resources": []
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B2-C09-L02",
+      "textbookRef": "9.1.2",
+      "title": "复数的实部、虚部与共轭",
+      "status": "draft",
+      "estimatedPeriods": 1,
+      "volume": {
+        "id": "B2",
+        "title": "必修第二册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B2-C09",
+        "number": 9,
+        "title": "复数"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B2-C09-S01",
+        "textbookLabel": "9.1",
+        "title": "复数及其四则运算"
+      },
+      "coreKnowledge": [
+        "识别复数的实部和虚部",
+        "理解共轭复数的代数形式",
+        "用共轭处理简单化简和除法中的分母实数化"
+      ],
+      "prerequisites": [
+        "复数的代数形式",
+        "复数四则运算",
+        "实数和虚数单位的分离表示"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B2-C09-L03",
+        "SH-HS-MATH-HJ-B2-C09-L04"
+      ],
+      "teachingPainPoints": [
+        "学生容易把虚部误写成 bi，而不是 b。",
+        "共轭复数容易停留在变号记忆，尚未连接到复平面中的对称关系。",
+        "常规化简和符号辨析更适合纸笔练习，不宜单独制作 Applet。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否准确指出实部、虚部和共轭。",
+        "能否说明共轭在复数除法中的作用。"
+      ],
+      "coreCompetencies": [
+        "数学抽象",
+        "数学运算"
+      ],
+      "resources": []
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B2-C09-L03",
+      "textbookRef": "9.2.1-9.2.3",
+      "title": "复平面、复数的向量表示与加法几何意义",
+      "status": "draft",
+      "estimatedPeriods": 1,
+      "volume": {
+        "id": "B2",
+        "title": "必修第二册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B2-C09",
+        "number": 9,
+        "title": "复数"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B2-C09-S02",
+        "textbookLabel": "9.2",
+        "title": "复数的几何意义"
+      },
+      "coreKnowledge": [
+        "建立复数 a + bi 与复平面点 (a, b) 的一一对应",
+        "把复数表示为从原点出发的平面向量",
+        "用向量加法和平行四边形法则解释复数加法的几何意义"
+      ],
+      "prerequisites": [
+        "复数的代数形式",
+        "平面直角坐标系和点坐标",
+        "向量的坐标表示和加法法则"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B2-C09-L04",
+        "SH-HS-MATH-HJ-B2-C09-L06",
+        "SH-HS-MATH-HJ-B2-C09-L07"
+      ],
+      "teachingPainPoints": [
+        "学生容易把复数、点和向量当作三个孤立对象，不能在表示之间切换。",
+        "复数加法的坐标相加和向量平行四边形法则容易断裂。",
+        "从第 8 章向量迁移到复平面时，原点向量和任意位置向量的区别需要显化。"
+      ],
+      "digitalEntryPoints": [
+        {
+          "type": "applet",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B2-C09-L03-A01",
+          "title": "复平面点向量对应与加法构造板",
+          "cognitive_action": "对应",
+          "note": "拖动复平面上的点，同步显示复数代数形式、原点向量、坐标分量和加法平行四边形；只覆盖表示对应与加法几何意义，不做通用复数计算器。"
+        }
+      ],
+      "diagnosisFocus": [
+        "能否从复数写出对应点和向量。",
+        "能否用向量法解释复数加法。"
+      ],
+      "coreCompetencies": [
+        "直观想象",
+        "数学抽象",
+        "数学运算"
+      ],
+      "resources": [
+        {
+          "id": "SH-HS-MATH-HJ-B2-C09-L03-A01",
+          "resourceType": "applet",
+          "title": "复平面点向量对应与加法构造板",
+          "cognitiveAction": "对应",
+          "note": "拖动复平面上的点，同步显示复数代数形式、原点向量、坐标分量和加法平行四边形；只覆盖表示对应与加法几何意义，不做通用复数计算器。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        }
+      ]
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B2-C09-L04",
+      "textbookRef": "9.2.4",
+      "title": "复数的模",
+      "status": "draft",
+      "estimatedPeriods": 1,
+      "volume": {
+        "id": "B2",
+        "title": "必修第二册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B2-C09",
+        "number": 9,
+        "title": "复数"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B2-C09-S02",
+        "textbookLabel": "9.2",
+        "title": "复数的几何意义"
+      },
+      "coreKnowledge": [
+        "把复数的模理解为复平面中对应点到原点的距离",
+        "用坐标距离公式计算复数的模",
+        "把共轭复数与关于实轴对称、模相等等几何关系联系起来"
+      ],
+      "prerequisites": [
+        "复数的实部、虚部与共轭",
+        "复平面点和向量表示",
+        "平面向量长度和坐标距离公式"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B2-C09-L06",
+        "SH-HS-MATH-HJ-B2-C09-L07"
+      ],
+      "teachingPainPoints": [
+        "学生容易把模误认为实部或虚部的绝对值，而不是到原点的距离。",
+        "共轭变号、关于实轴对称和模相等之间的关系容易被分散记忆。",
+        "只用公式会弱化第 8 章向量长度和坐标距离的迁移。"
+      ],
+      "digitalEntryPoints": [
+        {
+          "type": "applet",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B2-C09-L04-A01",
+          "title": "模与共轭几何对照板",
+          "cognitive_action": "比较",
+          "note": "拖动复平面点，同步显示到原点距离、共轭点关于实轴对称和模不变关系；纯代数化简仍保留为纸笔练习。"
+        }
+      ],
+      "diagnosisFocus": [
+        "能否用距离公式解释复数的模。",
+        "能否从几何对称关系判断共轭和模。"
+      ],
+      "coreCompetencies": [
+        "直观想象",
+        "数学运算",
+        "数学抽象"
+      ],
+      "resources": [
+        {
+          "id": "SH-HS-MATH-HJ-B2-C09-L04-A01",
+          "resourceType": "applet",
+          "title": "模与共轭几何对照板",
+          "cognitiveAction": "比较",
+          "note": "拖动复平面点，同步显示到原点距离、共轭点关于实轴对称和模不变关系；纯代数化简仍保留为纸笔练习。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        }
+      ]
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B2-C09-L05",
+      "textbookRef": "9.3.1-9.3.2",
+      "title": "实数的平方根与实系数一元二次方程",
+      "status": "draft",
+      "estimatedPeriods": 1,
+      "volume": {
+        "id": "B2",
+        "title": "必修第二册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B2-C09",
+        "number": 9,
+        "title": "复数"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B2-C09-S03",
+        "textbookLabel": "9.3",
+        "title": "实系数一元二次方程"
+      },
+      "coreKnowledge": [
+        "在复数范围内理解负实数的平方根",
+        "用复数表示实系数一元二次方程的非实根",
+        "理解实系数方程的非实根成共轭关系"
+      ],
+      "prerequisites": [
+        "复数四则运算和共轭",
+        "一元二次方程求根公式",
+        "判别式和实数范围内根的情况"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-XB1-ALG-K01"
+      ],
+      "teachingPainPoints": [
+        "学生容易把判别式小于 0 误认为方程无解，而不是实数范围内无实根。",
+        "非实根成共轭关系需要回到代数结构说明。",
+        "本课主要依靠板书推导和纸笔练习，暂不建议制作独立数字化资源。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否区分实数范围和复数范围的解。",
+        "能否正确写出判别式小于 0 时的复数根。"
+      ],
+      "coreCompetencies": [
+        "逻辑推理",
+        "数学运算"
+      ],
+      "resources": []
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B2-C09-L06",
+      "textbookRef": "*9.4.1",
+      "title": "复数的三角形式",
+      "status": "draft",
+      "estimatedPeriods": 1,
+      "volume": {
+        "id": "B2",
+        "title": "必修第二册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B2-C09",
+        "number": 9,
+        "title": "复数"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B2-C09-S04",
+        "textbookLabel": "*9.4",
+        "title": "复数的三角形式"
+      },
+      "coreKnowledge": [
+        "用模和辐角表示非零复数",
+        "把代数形式 a + bi 与三角形式联系起来",
+        "理解辐角多值性和辐角主值"
+      ],
+      "prerequisites": [
+        "复数的模",
+        "复平面中的点和向量",
+        "弧度制、三角函数和单位圆"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B2-C09-L07"
+      ],
+      "teachingPainPoints": [
+        "学生容易把辐角主值当成唯一角，忽略同终边角。",
+        "代数形式和三角形式之间的转换容易退化为公式套用。",
+        "若学校不讲授选学内容，本课不应进入资源生产 backlog。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否从复平面读出模和一个辐角。",
+        "能否处理不同象限下的辐角主值。"
+      ],
+      "coreCompetencies": [
+        "直观想象",
+        "数学抽象",
+        "数学运算"
+      ],
+      "resources": []
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B2-C09-L07",
+      "textbookRef": "*9.4.2-*9.4.3",
+      "title": "三角形式下复数的乘除、乘方与开方运算",
+      "status": "draft",
+      "estimatedPeriods": 1,
+      "volume": {
+        "id": "B2",
+        "title": "必修第二册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B2-C09",
+        "number": 9,
+        "title": "复数"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B2-C09-S04",
+        "textbookLabel": "*9.4",
+        "title": "复数的三角形式"
+      },
+      "coreKnowledge": [
+        "理解三角形式下复数乘法对应模相乘、辐角相加",
+        "理解复数除法对应模相除、辐角相减",
+        "初步认识乘方和开方中的角度倍增、均分与多值现象"
+      ],
+      "prerequisites": [
+        "复数的三角形式",
+        "三角函数中的角和同终边角",
+        "向量长度、方向和旋转直觉"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-MODEL-K02"
+      ],
+      "teachingPainPoints": [
+        "学生容易只记三角形式乘法公式，不能解释为什么是旋转与缩放。",
+        "除法中的辐角相减和乘方中的角度倍增容易被当作符号规律机械记忆。",
+        "开方的多值性需要动态呈现均匀分布的角度，否则纸面公式负担较重。"
+      ],
+      "digitalEntryPoints": [
+        {
+          "type": "applet",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B2-C09-L07-A01",
+          "title": "复数乘法旋转缩放实验室",
+          "cognitive_action": "变换",
+          "note": "调节两个复数的模和辐角，观察乘积点如何旋转和缩放；仅在 *9.4 确认进入教学进度后生产，先聚焦乘除法几何意义，乘方与开方作为后续模式。"
+        }
+      ],
+      "diagnosisFocus": [
+        "能否解释复数乘法中的模和辐角变化。",
+        "能否区分乘除、乘方和开方中的角度变化规则。"
+      ],
+      "coreCompetencies": [
+        "直观想象",
+        "数学抽象",
+        "数学运算"
+      ],
+      "resources": [
+        {
+          "id": "SH-HS-MATH-HJ-B2-C09-L07-A01",
+          "resourceType": "applet",
+          "title": "复数乘法旋转缩放实验室",
+          "cognitiveAction": "变换",
+          "note": "调节两个复数的模和辐角，观察乘积点如何旋转和缩放；仅在 *9.4 确认进入教学进度后生产，先聚焦乘除法几何意义，乘方与开方作为后续模式。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        }
+      ]
     }
   ],
   "lessonsById": {
@@ -15911,6 +16430,425 @@
           }
         }
       ]
+    },
+    "SH-HS-MATH-HJ-B2-C09-L01": {
+      "id": "SH-HS-MATH-HJ-B2-C09-L01",
+      "textbookRef": "9.1.1",
+      "title": "复数的引入与复数的四则运算",
+      "status": "draft",
+      "estimatedPeriods": 1,
+      "volume": {
+        "id": "B2",
+        "title": "必修第二册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B2-C09",
+        "number": 9,
+        "title": "复数"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B2-C09-S01",
+        "textbookLabel": "9.1",
+        "title": "复数及其四则运算"
+      },
+      "coreKnowledge": [
+        "用虚数单位 i 扩充实数系，并理解 i^2 = -1 的代数约定",
+        "把复数写成 a + bi 的代数形式",
+        "进行复数的加、减、乘、除运算"
+      ],
+      "prerequisites": [
+        "实数运算和整式运算",
+        "一元二次方程在实数范围内无解的经验",
+        "平方根和负数平方的矛盾意识"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B2-C09-L02",
+        "SH-HS-MATH-HJ-B2-C09-L03",
+        "SH-HS-MATH-HJ-B2-C09-L05"
+      ],
+      "teachingPainPoints": [
+        "学生容易把 i 当作普通未知数，忽略 i^2 = -1 是复数运算的核心规则。",
+        "复数除法中的分母实数化容易变成机械步骤，缺少运算闭包意识。",
+        "四则运算主要是符号和代数规则，过度可视化反而会分散注意力。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否正确使用 i^2 = -1 化简。",
+        "能否区分复数运算规则和实数运算中的平方根规则。"
+      ],
+      "coreCompetencies": [
+        "数学运算",
+        "数学抽象"
+      ],
+      "resources": []
+    },
+    "SH-HS-MATH-HJ-B2-C09-L02": {
+      "id": "SH-HS-MATH-HJ-B2-C09-L02",
+      "textbookRef": "9.1.2",
+      "title": "复数的实部、虚部与共轭",
+      "status": "draft",
+      "estimatedPeriods": 1,
+      "volume": {
+        "id": "B2",
+        "title": "必修第二册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B2-C09",
+        "number": 9,
+        "title": "复数"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B2-C09-S01",
+        "textbookLabel": "9.1",
+        "title": "复数及其四则运算"
+      },
+      "coreKnowledge": [
+        "识别复数的实部和虚部",
+        "理解共轭复数的代数形式",
+        "用共轭处理简单化简和除法中的分母实数化"
+      ],
+      "prerequisites": [
+        "复数的代数形式",
+        "复数四则运算",
+        "实数和虚数单位的分离表示"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B2-C09-L03",
+        "SH-HS-MATH-HJ-B2-C09-L04"
+      ],
+      "teachingPainPoints": [
+        "学生容易把虚部误写成 bi，而不是 b。",
+        "共轭复数容易停留在变号记忆，尚未连接到复平面中的对称关系。",
+        "常规化简和符号辨析更适合纸笔练习，不宜单独制作 Applet。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否准确指出实部、虚部和共轭。",
+        "能否说明共轭在复数除法中的作用。"
+      ],
+      "coreCompetencies": [
+        "数学抽象",
+        "数学运算"
+      ],
+      "resources": []
+    },
+    "SH-HS-MATH-HJ-B2-C09-L03": {
+      "id": "SH-HS-MATH-HJ-B2-C09-L03",
+      "textbookRef": "9.2.1-9.2.3",
+      "title": "复平面、复数的向量表示与加法几何意义",
+      "status": "draft",
+      "estimatedPeriods": 1,
+      "volume": {
+        "id": "B2",
+        "title": "必修第二册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B2-C09",
+        "number": 9,
+        "title": "复数"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B2-C09-S02",
+        "textbookLabel": "9.2",
+        "title": "复数的几何意义"
+      },
+      "coreKnowledge": [
+        "建立复数 a + bi 与复平面点 (a, b) 的一一对应",
+        "把复数表示为从原点出发的平面向量",
+        "用向量加法和平行四边形法则解释复数加法的几何意义"
+      ],
+      "prerequisites": [
+        "复数的代数形式",
+        "平面直角坐标系和点坐标",
+        "向量的坐标表示和加法法则"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B2-C09-L04",
+        "SH-HS-MATH-HJ-B2-C09-L06",
+        "SH-HS-MATH-HJ-B2-C09-L07"
+      ],
+      "teachingPainPoints": [
+        "学生容易把复数、点和向量当作三个孤立对象，不能在表示之间切换。",
+        "复数加法的坐标相加和向量平行四边形法则容易断裂。",
+        "从第 8 章向量迁移到复平面时，原点向量和任意位置向量的区别需要显化。"
+      ],
+      "digitalEntryPoints": [
+        {
+          "type": "applet",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B2-C09-L03-A01",
+          "title": "复平面点向量对应与加法构造板",
+          "cognitive_action": "对应",
+          "note": "拖动复平面上的点，同步显示复数代数形式、原点向量、坐标分量和加法平行四边形；只覆盖表示对应与加法几何意义，不做通用复数计算器。"
+        }
+      ],
+      "diagnosisFocus": [
+        "能否从复数写出对应点和向量。",
+        "能否用向量法解释复数加法。"
+      ],
+      "coreCompetencies": [
+        "直观想象",
+        "数学抽象",
+        "数学运算"
+      ],
+      "resources": [
+        {
+          "id": "SH-HS-MATH-HJ-B2-C09-L03-A01",
+          "resourceType": "applet",
+          "title": "复平面点向量对应与加法构造板",
+          "cognitiveAction": "对应",
+          "note": "拖动复平面上的点，同步显示复数代数形式、原点向量、坐标分量和加法平行四边形；只覆盖表示对应与加法几何意义，不做通用复数计算器。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        }
+      ]
+    },
+    "SH-HS-MATH-HJ-B2-C09-L04": {
+      "id": "SH-HS-MATH-HJ-B2-C09-L04",
+      "textbookRef": "9.2.4",
+      "title": "复数的模",
+      "status": "draft",
+      "estimatedPeriods": 1,
+      "volume": {
+        "id": "B2",
+        "title": "必修第二册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B2-C09",
+        "number": 9,
+        "title": "复数"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B2-C09-S02",
+        "textbookLabel": "9.2",
+        "title": "复数的几何意义"
+      },
+      "coreKnowledge": [
+        "把复数的模理解为复平面中对应点到原点的距离",
+        "用坐标距离公式计算复数的模",
+        "把共轭复数与关于实轴对称、模相等等几何关系联系起来"
+      ],
+      "prerequisites": [
+        "复数的实部、虚部与共轭",
+        "复平面点和向量表示",
+        "平面向量长度和坐标距离公式"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B2-C09-L06",
+        "SH-HS-MATH-HJ-B2-C09-L07"
+      ],
+      "teachingPainPoints": [
+        "学生容易把模误认为实部或虚部的绝对值，而不是到原点的距离。",
+        "共轭变号、关于实轴对称和模相等之间的关系容易被分散记忆。",
+        "只用公式会弱化第 8 章向量长度和坐标距离的迁移。"
+      ],
+      "digitalEntryPoints": [
+        {
+          "type": "applet",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B2-C09-L04-A01",
+          "title": "模与共轭几何对照板",
+          "cognitive_action": "比较",
+          "note": "拖动复平面点，同步显示到原点距离、共轭点关于实轴对称和模不变关系；纯代数化简仍保留为纸笔练习。"
+        }
+      ],
+      "diagnosisFocus": [
+        "能否用距离公式解释复数的模。",
+        "能否从几何对称关系判断共轭和模。"
+      ],
+      "coreCompetencies": [
+        "直观想象",
+        "数学运算",
+        "数学抽象"
+      ],
+      "resources": [
+        {
+          "id": "SH-HS-MATH-HJ-B2-C09-L04-A01",
+          "resourceType": "applet",
+          "title": "模与共轭几何对照板",
+          "cognitiveAction": "比较",
+          "note": "拖动复平面点，同步显示到原点距离、共轭点关于实轴对称和模不变关系；纯代数化简仍保留为纸笔练习。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        }
+      ]
+    },
+    "SH-HS-MATH-HJ-B2-C09-L05": {
+      "id": "SH-HS-MATH-HJ-B2-C09-L05",
+      "textbookRef": "9.3.1-9.3.2",
+      "title": "实数的平方根与实系数一元二次方程",
+      "status": "draft",
+      "estimatedPeriods": 1,
+      "volume": {
+        "id": "B2",
+        "title": "必修第二册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B2-C09",
+        "number": 9,
+        "title": "复数"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B2-C09-S03",
+        "textbookLabel": "9.3",
+        "title": "实系数一元二次方程"
+      },
+      "coreKnowledge": [
+        "在复数范围内理解负实数的平方根",
+        "用复数表示实系数一元二次方程的非实根",
+        "理解实系数方程的非实根成共轭关系"
+      ],
+      "prerequisites": [
+        "复数四则运算和共轭",
+        "一元二次方程求根公式",
+        "判别式和实数范围内根的情况"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-XB1-ALG-K01"
+      ],
+      "teachingPainPoints": [
+        "学生容易把判别式小于 0 误认为方程无解，而不是实数范围内无实根。",
+        "非实根成共轭关系需要回到代数结构说明。",
+        "本课主要依靠板书推导和纸笔练习，暂不建议制作独立数字化资源。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否区分实数范围和复数范围的解。",
+        "能否正确写出判别式小于 0 时的复数根。"
+      ],
+      "coreCompetencies": [
+        "逻辑推理",
+        "数学运算"
+      ],
+      "resources": []
+    },
+    "SH-HS-MATH-HJ-B2-C09-L06": {
+      "id": "SH-HS-MATH-HJ-B2-C09-L06",
+      "textbookRef": "*9.4.1",
+      "title": "复数的三角形式",
+      "status": "draft",
+      "estimatedPeriods": 1,
+      "volume": {
+        "id": "B2",
+        "title": "必修第二册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B2-C09",
+        "number": 9,
+        "title": "复数"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B2-C09-S04",
+        "textbookLabel": "*9.4",
+        "title": "复数的三角形式"
+      },
+      "coreKnowledge": [
+        "用模和辐角表示非零复数",
+        "把代数形式 a + bi 与三角形式联系起来",
+        "理解辐角多值性和辐角主值"
+      ],
+      "prerequisites": [
+        "复数的模",
+        "复平面中的点和向量",
+        "弧度制、三角函数和单位圆"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B2-C09-L07"
+      ],
+      "teachingPainPoints": [
+        "学生容易把辐角主值当成唯一角，忽略同终边角。",
+        "代数形式和三角形式之间的转换容易退化为公式套用。",
+        "若学校不讲授选学内容，本课不应进入资源生产 backlog。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否从复平面读出模和一个辐角。",
+        "能否处理不同象限下的辐角主值。"
+      ],
+      "coreCompetencies": [
+        "直观想象",
+        "数学抽象",
+        "数学运算"
+      ],
+      "resources": []
+    },
+    "SH-HS-MATH-HJ-B2-C09-L07": {
+      "id": "SH-HS-MATH-HJ-B2-C09-L07",
+      "textbookRef": "*9.4.2-*9.4.3",
+      "title": "三角形式下复数的乘除、乘方与开方运算",
+      "status": "draft",
+      "estimatedPeriods": 1,
+      "volume": {
+        "id": "B2",
+        "title": "必修第二册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B2-C09",
+        "number": 9,
+        "title": "复数"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B2-C09-S04",
+        "textbookLabel": "*9.4",
+        "title": "复数的三角形式"
+      },
+      "coreKnowledge": [
+        "理解三角形式下复数乘法对应模相乘、辐角相加",
+        "理解复数除法对应模相除、辐角相减",
+        "初步认识乘方和开方中的角度倍增、均分与多值现象"
+      ],
+      "prerequisites": [
+        "复数的三角形式",
+        "三角函数中的角和同终边角",
+        "向量长度、方向和旋转直觉"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-MODEL-K02"
+      ],
+      "teachingPainPoints": [
+        "学生容易只记三角形式乘法公式，不能解释为什么是旋转与缩放。",
+        "除法中的辐角相减和乘方中的角度倍增容易被当作符号规律机械记忆。",
+        "开方的多值性需要动态呈现均匀分布的角度，否则纸面公式负担较重。"
+      ],
+      "digitalEntryPoints": [
+        {
+          "type": "applet",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B2-C09-L07-A01",
+          "title": "复数乘法旋转缩放实验室",
+          "cognitive_action": "变换",
+          "note": "调节两个复数的模和辐角，观察乘积点如何旋转和缩放；仅在 *9.4 确认进入教学进度后生产，先聚焦乘除法几何意义，乘方与开方作为后续模式。"
+        }
+      ],
+      "diagnosisFocus": [
+        "能否解释复数乘法中的模和辐角变化。",
+        "能否区分乘除、乘方和开方中的角度变化规则。"
+      ],
+      "coreCompetencies": [
+        "直观想象",
+        "数学抽象",
+        "数学运算"
+      ],
+      "resources": [
+        {
+          "id": "SH-HS-MATH-HJ-B2-C09-L07-A01",
+          "resourceType": "applet",
+          "title": "复数乘法旋转缩放实验室",
+          "cognitiveAction": "变换",
+          "note": "调节两个复数的模和辐角，观察乘积点如何旋转和缩放；仅在 *9.4 确认进入教学进度后生产，先聚焦乘除法几何意义，乘方与开方作为后续模式。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        }
+      ]
     }
   },
   "mvp": {
@@ -15972,11 +16910,11 @@
   },
   "summary": {
     "volumeCount": 7,
-    "chapterCount": 2,
-    "lessonCount": 17,
+    "chapterCount": 3,
+    "lessonCount": 24,
     "implementedAppletCount": 14,
     "implementedManimCount": 4,
     "implementedDiagnosisCount": 7,
-    "plannedResourceCount": 0
+    "plannedResourceCount": 3
   }
 }

@@ -31,7 +31,12 @@
 - [ ] 人工终核必修第二册第 8 章的课时划分、课时数和标题表述。
 - [ ] 用纸质教材或已登录 dolearning 左侧目录专项确认必修第二册第 8 章 8.3“向量的坐标表示”应按三课时还是四小节进入课程图谱。
 - [ ] 在 8.3 目录终核后，根据 `docs/source-audits/b2-c08-digital-necessity-review.md` 决定是否恢复或重排暂缓的 8.3 资源候选。
-- [ ] 展开第 7 章前置章节和第 9 章复数等承接节点。
+- [x] 完成必修第二册第 9 章“复数”首轮来源核对、课程图谱 draft 和数字化必要性筛选，记录到 `docs/source-audits/b2-c09-source-audit.md`。
+- [x] 在 `content/curriculum/index.yaml` 中新增第 9 章 `SH-HS-MATH-HJ-B2-C09` draft 图谱，并只保留 3 个数字化必要性明确的 Applet 候选。
+- [ ] 用纸质教材或已登录 dolearning 左侧目录终核必修第二册第 9 章的章标题、节标题、课时边界、课时数和 `*9.4` 选学属性。
+- [ ] 专项确认第 9 章 9.2.1-9.2.3、9.3.1-9.3.2、`*9.4.2-*9.4.3` 是教材小节拆分还是平台课时包合并关系。
+- [ ] 在第 9 章终核前，不 scaffold `SH-HS-MATH-HJ-B2-C09-L03-A01`、`SH-HS-MATH-HJ-B2-C09-L04-A01`、`SH-HS-MATH-HJ-B2-C09-L07-A01`。
+- [ ] 展开第 7 章前置章节节点。
 
 ## P2：课件规范
 
@@ -97,7 +102,7 @@
 
 ## P5：资源工厂
 
-- [x] 生成 `content/production/resource-backlog.json`，覆盖必修第二册第 7 章和第 8 章共 25 个资源工作单元；当前 25 个已实现、0 个待创建。
+- [x] 生成 `content/production/resource-backlog.json`，覆盖必修第二册第 7 章、第 8 章和第 9 章 draft 候选共 28 个资源工作单元；当前 25 个已实现、3 个第 9 章 planned Applet 候选待教材终核后再决定是否创建。
 - [x] 为每个 backlog item 自动生成推荐分支、下一步动作和新对话 `threadPrompt`。
 - [x] 将 `npm run generate:backlog` 接入 `npm run verify`。
 - [x] 为 Diagnosis planned item 增加首版资源包 scaffold 命令，支持 dry-run、按数量或 ID 生成并避免覆盖已有资源包。
@@ -119,5 +124,6 @@
 - [x] 建立 `docs/parallel-chapter-factory.md`。
 - [ ] 由总控选择第一轮 3 到 5 个并行章节，只分派来源核对、课程图谱和数字化必要性筛选。
 - [ ] 为第一轮并行章节创建独立短分支或 git worktree，避免多个对话同时写同一分支。
+- [x] 已为必修第二册第 9 章“复数”创建独立 worktree：`../数学教育教师云平台-b2-c09`，分支 `codex/curriculum-b2-c09-source-audit`。
 - [ ] 每个章节完成后由总控运行 `npm run generate:backlog` 和 `npm run verify`，再决定是否合并。
 - [ ] 第一轮并行章节通过验收后，再按资源类型小批量 scaffold；不要直接进入完整资源制作。

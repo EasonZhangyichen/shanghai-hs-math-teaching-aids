@@ -13,10 +13,10 @@ test("generates a deterministic backlog from curriculum entry points and impleme
   const backlog = await generateResourceBacklog({ rootDir: repoRoot });
 
   assert.equal(backlog.source.curriculum, "content/curriculum/index.yaml");
-  assert.equal(backlog.summary.total, 25);
+  assert.equal(backlog.summary.total, 28);
   assert.equal(backlog.summary.implemented, 25);
-  assert.equal(backlog.summary.planned, 0);
-  assert.deepEqual(backlog.summary.byType.applet, { total: 14, implemented: 14, planned: 0 });
+  assert.equal(backlog.summary.planned, 3);
+  assert.deepEqual(backlog.summary.byType.applet, { total: 17, implemented: 14, planned: 3 });
   assert.deepEqual(backlog.summary.byType.manim_clip, { total: 4, implemented: 4, planned: 0 });
   assert.deepEqual(backlog.summary.byType.diagnosis, { total: 7, implemented: 7, planned: 0 });
 
@@ -282,6 +282,29 @@ test("generates a deterministic backlog from curriculum entry points and impleme
 
   assert.equal(backlog.items.some((item) => item.id === "SH-HS-MATH-HJ-B2-C08-L08-A01"), false);
   assert.equal(backlog.items.some((item) => item.id === "SH-HS-MATH-HJ-B2-C08-L09-A01"), false);
+
+  const complexPlaneApplet = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B2-C09-L03-A01");
+  assert.equal(complexPlaneApplet.status, "planned");
+  assert.equal(complexPlaneApplet.availability, "planned");
+  assert.equal(complexPlaneApplet.packagePath, null);
+  assert.equal(complexPlaneApplet.metadataPath, null);
+  assert.equal(complexPlaneApplet.chapterTitle, "复数");
+  assert.equal(complexPlaneApplet.lessonTitle, "复平面、复数的向量表示与加法几何意义");
+  assert.equal(complexPlaneApplet.recommendedTrack, "track/trig-sample-pack");
+  assert.equal(complexPlaneApplet.priority, "chapter_backlog");
+  assert.match(complexPlaneApplet.nextAction, /创建 Applet 资源包/);
+  assert.match(complexPlaneApplet.threadPrompt, /创建并推进 SH-HS-MATH-HJ-B2-C09-L03-A01/);
+
+  const modulusApplet = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B2-C09-L04-A01");
+  assert.equal(modulusApplet.status, "planned");
+  assert.equal(modulusApplet.lessonTitle, "复数的模");
+  assert.equal(modulusApplet.priority, "chapter_backlog");
+
+  const complexMultiplicationApplet = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B2-C09-L07-A01");
+  assert.equal(complexMultiplicationApplet.status, "planned");
+  assert.equal(complexMultiplicationApplet.lessonTitle, "三角形式下复数的乘除、乘方与开方运算");
+  assert.equal(complexMultiplicationApplet.priority, "follow_up_optional");
+  assert.equal(backlog.items.some((item) => item.id === "SH-HS-MATH-HJ-B2-C09-L01-A01"), false);
 });
 
 test("writes the backlog as stable pretty JSON", async () => {
@@ -294,13 +317,13 @@ test("writes the backlog as stable pretty JSON", async () => {
     });
     const written = JSON.parse(await readFile(outputPath, "utf8"));
 
-    assert.equal(written.summary.total, 25);
+    assert.equal(written.summary.total, 28);
     assert.equal(written.summary.implemented, 25);
-    assert.equal(written.summary.planned, 0);
+    assert.equal(written.summary.planned, 3);
     assert.equal(written.items[0].id, "SH-HS-MATH-HJ-B2-C07-L01-A01");
     assert.ok(
       JSON.stringify(written, null, 2).includes(
-        '"id": "SH-HS-MATH-HJ-B2-C08-L10-D01"',
+        '"id": "SH-HS-MATH-HJ-B2-C09-L07-A01"',
       ),
     );
   } finally {
