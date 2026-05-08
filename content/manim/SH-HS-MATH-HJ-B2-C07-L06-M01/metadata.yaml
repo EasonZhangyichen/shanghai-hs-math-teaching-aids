@@ -24,11 +24,11 @@ curriculum:
 pedagogy:
   cognitive_action: "逼近"
   estimated_classroom_minutes: 5
-  primary_teaching_problem: "学生容易把正切图像画成连续曲线，却说不清为什么 x = pi/2 + k pi 处没有函数值以及渐近线为什么出现在这些位置。"
+  primary_teaching_problem: "学生容易把正切图像画成连续曲线，却说不清为什么 x = π/2 + kπ（k ∈ Z）处没有函数值以及渐近线为什么出现在这些位置。"
   learning_goals:
     - "用 tan x = sin x / cos x 解释当 cos x 接近 0 时正切值快速增大或减小。"
     - "把终边接近 y 轴的斜率变化与函数图像上的竖直渐近线对应起来。"
-    - "说明正切函数的图像不能跨过 x = pi/2 + k pi，并用 tan(x + pi) = tan x 解释周期为 pi。"
+    - "说明正切函数的图像不能跨过 x = π/2 + kπ（k ∈ Z），并用 tan(x + π) = tan x 解释周期为 π。"
   prerequisites:
     - "任意角的正切定义"
     - "单位圆中的正弦、余弦和同角关系"
@@ -48,22 +48,22 @@ mathematical_scope:
   equivalent_definition: "tan x = sin x / cos x"
   independent_variable: "x"
   dependent_variable: "y"
-  theta_range: "首版聚焦 (-pi/2, pi/2) 及相邻周期的图像延拓。"
-  domain_exclusion: "x != pi/2 + k pi, k in Z"
-  vertical_asymptotes: "x = pi/2 + k pi"
-  period: "pi"
+  theta_range: "首版聚焦 (-π/2, π/2) 及相邻周期的图像延拓。"
+  domain_exclusion: "x ≠ π/2 + kπ, k ∈ Z"
+  vertical_asymptotes: "x = π/2 + kπ, k ∈ Z"
+  period: "π"
   key_angles:
     - angle: "0"
       tangent: "0"
       role: "中心点"
-    - angle: "pi/4"
+    - angle: "π/4"
       tangent: "1"
       role: "基本斜率参照"
-    - angle: "pi/2"
-      tangent: "undefined"
+    - angle: "π/2"
+      tangent: "未定义"
       role: "cos x = 0，对应竖直渐近线"
-    - angle: "-pi/2"
-      tangent: "undefined"
+    - angle: "-π/2"
+      tangent: "未定义"
       role: "cos x = 0，对应竖直渐近线"
   out_of_scope:
     - "正切函数单调性的一般证明"
@@ -80,7 +80,7 @@ representations:
   - id: "asymptote_gap"
     role: "用竖直虚线和断开提示说明图像不能跨过定义域断点。"
   - id: "period_copy"
-    role: "用 x 与 x + pi 的对应点说明周期为 pi。"
+    role: "用 x 与 x + π 的对应点说明周期为 π。"
 
 narrative_design:
   target_duration_seconds: 40
@@ -96,29 +96,29 @@ narrative_design:
       title: "cos x 接近 0"
       purpose: "解释终边接近 y 轴时分母越来越小。"
       visuals:
-        - "终边从 0 旋转到接近 pi/2。"
+        - "终边从 0 旋转到接近 π/2。"
         - "水平的 cos x 段缩短，斜率读数增大。"
       estimated_seconds: 9
     - id: "graph_runs_up"
       title: "图像向上逼近渐近线"
       purpose: "把斜率无界和图像趋向无穷对应起来。"
       visuals:
-        - "图像点沿 y = tan x 向 x = pi/2 左侧上升。"
-        - "x = pi/2 竖直虚线高亮。"
+        - "图像点沿 y = tan x 向 x = π/2 左侧上升。"
+        - "x = π/2 竖直虚线高亮。"
       estimated_seconds: 8
     - id: "no_value_no_bridge"
       title: "这里没有函数值"
       purpose: "强调定义域断裂，不能把两侧连成一条连续曲线。"
       visuals:
         - "显示 cos x = 0，所以 tan x 未定义。"
-        - "渐近线两侧分别趋向 +infinity 和 -infinity。"
+        - "渐近线两侧分别趋向 +∞ 和 -∞。"
       estimated_seconds: 8
-    - id: "copy_by_pi"
-      title: "隔 pi 重复一次"
-      purpose: "说明正切周期为 pi，而不是正弦余弦的 2pi。"
+    - id: "copy_by_period"
+      title: "隔 π 重复一次"
+      purpose: "说明正切周期为 π，而不是正弦余弦的 2π。"
       visuals:
         - "相邻周期曲线淡入。"
-        - "箭头标注 tan(x + pi) = tan x。"
+        - "箭头标注 tan(x + π) = tan x。"
       estimated_seconds: 6
     - id: "close_the_rule"
       title: "画图规则"
@@ -130,16 +130,16 @@ narrative_design:
     - after_beat: "cos_denominator_shrinks"
       teacher_prompt: "当终边越来越接近 y 轴时，sin x 和 cos x 哪一个在接近 0？这会怎样影响 sin x / cos x？"
     - after_beat: "no_value_no_bridge"
-      teacher_prompt: "为什么图像不能穿过 x = pi/2 继续连起来？"
-    - after_beat: "copy_by_pi"
-      teacher_prompt: "为什么这里重复的间隔是 pi，而不是 2pi？"
+      teacher_prompt: "为什么图像不能穿过 x = π/2 继续连起来？"
+    - after_beat: "copy_by_period"
+      teacher_prompt: "为什么这里重复的间隔是 π，而不是 2π？"
 
 visual_semantics:
   circle_objects: "蓝色表示单位圆、终边和当前角。"
   tangent_curve: "红色表示 y = tan x 的当前主周期图像。"
   asymptotes: "紫色虚线表示定义域断点对应的竖直渐近线。"
   ratio_parts: "sin x 用绿色，cos x 用橙色，强调分子和分母的不同变化。"
-  copied_period: "灰色曲线表示由周期 pi 平移得到的相邻图像。"
+  copied_period: "灰色曲线表示由周期 π 平移得到的相邻图像。"
   rule: "颜色只用于数学对象含义，不作为装饰。"
 
 render_plan:
@@ -158,8 +158,9 @@ render_plan:
     mp4: "uvx manim -r 1920,1080 --fps 30 --format=mp4 --media_dir dist scene.py TangentAsymptoteScene"
     webm: "ffmpeg -y -i dist/final/SH-HS-MATH-HJ-B2-C07-L06-M01.mp4 -c:v libvpx-vp9 -b:v 0 -crf 32 -an dist/final/SH-HS-MATH-HJ-B2-C07-L06-M01.webm"
   notes:
-    - "已完成首版 1080p30 渲染，视频时长 38.4 秒，可用于平台预览和内部教研复核。"
-    - "进入 stable 前仍需教师确认渐近线两侧逼近语言和课堂暂停节奏。"
+    - "2026-05-08 审校后已重新渲染 1080p30，视频时长 38.4 秒，可用于平台预览和内部教研复核。"
+    - "poster 已改用 20 秒主体画面，避免封面停在淡入空白帧。"
+    - "进入 stable 前仍需教师确认课堂暂停节奏。"
 
 files:
   readme: "README.md"
@@ -179,4 +180,4 @@ platform_card:
 
 compliance:
   copyright_note: "本资源包为原创 Manim 分镜和场景脚本，不复制教材正文、官方课件、教案或商业平台资源。"
-  review_status: "self_checked_draft"
+  review_status: "math_review_passed"

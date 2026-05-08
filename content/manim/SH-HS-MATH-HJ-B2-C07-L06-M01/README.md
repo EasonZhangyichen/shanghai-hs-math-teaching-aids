@@ -13,8 +13,8 @@
 tan x = sin x / cos x
 -> 终边接近 y 轴时 cos x 接近 0
 -> 正切值向无穷方向逼近
--> x = pi/2 + k pi 处没有函数值
--> 相邻图像每隔 pi 重复
+-> x = π/2 + kπ（k ∈ Z）处没有函数值
+-> 相邻图像每隔 π 重复
 ```
 
 ## 为什么用 Manim
@@ -24,7 +24,7 @@ tan x = sin x / cos x
 ## 课堂用法
 
 - 概念导入：播放第一轮，只让学生观察终边接近 y 轴时 `cos x` 如何变化。
-- 关键暂停：在 `x = pi/2` 竖直线出现后追问“这里为什么没有函数值”。
+- 关键暂停：在 `x = π/2` 竖直线出现后追问“这里为什么没有函数值”。
 - 与 Applet 配合：动画结束后切到 `SH-HS-MATH-HJ-B2-C07-L06-A01`，让学生拖动角度观察两侧逼近趋势。
 - 板书收束：把定义域、渐近线和周期三条结论写成一般式。
 
@@ -69,7 +69,7 @@ ffmpeg -y -i dist/final/SH-HS-MATH-HJ-B2-C07-L06-M01.mp4 -c:v libvpx-vp9 -b:v 0 
 生成 poster：
 
 ```bash
-ffmpeg -y -ss 00:00:12 -i dist/final/SH-HS-MATH-HJ-B2-C07-L06-M01.mp4 -frames:v 1 -update 1 dist/final/SH-HS-MATH-HJ-B2-C07-L06-M01-poster.png
+ffmpeg -y -ss 00:00:20 -i dist/final/SH-HS-MATH-HJ-B2-C07-L06-M01.mp4 -frames:v 1 -update 1 dist/final/SH-HS-MATH-HJ-B2-C07-L06-M01-poster.png
 ```
 
 当前 `metadata.yaml` 已标记为 `render_plan.phase: rendered` 和 `platform_card.availability: video_ready`，平台资源卡会从 metadata 中读取稳定视频入口。
