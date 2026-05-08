@@ -145,4 +145,8 @@
 - [x] 开启第二轮三个独立对话：B1-C03、B1-C04、B2-C07 prerequisite alignment。
 - [x] 第二轮完成后由总控只合并事实源，统一再生 generated files 并运行 `npm run verify`。
 - [x] 第二轮通过验收后，确认 B1-C03 不进入资源生产，B1-C04 4 个候选进入 blocked planned；不要直接进入完整资源制作。
-- [ ] 选择第三轮 3 个左右章节继续做来源核对和数字化必要性筛选，仍然先不 scaffold。
+- [x] 选择第三轮 3 个任务继续做来源核对和数字化必要性筛选：B1-C01、B1-C02、B2-C08 source tightening。
+- [x] 形成第三轮并行任务单：`docs/parallel-rounds/2026-05-08-round-3.md`。
+- [ ] 开启第三轮三个独立对话：B1-C01、B1-C02、B2-C08 source tightening。
+- [ ] 第三轮完成后由总控只合并事实源，统一再生 generated files 并运行 `npm run verify`。
+- [ ] 第三轮通过验收后，进入“已实现资源审校”轮，优先审校 B2-C07 已实现 Applet/Manim/Diagnosis 与 B2-C08 已 scaffold 资源。
