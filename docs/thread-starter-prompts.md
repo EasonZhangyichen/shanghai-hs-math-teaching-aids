@@ -86,6 +86,7 @@ develop
 
 - 每个章节有独立分支或独立 worktree。
 - 每个章节都先做来源核对和必要性筛选。
+- 并行章节分支只提交来源记录和事实源 YAML；`resource-backlog.json`、`workspace-data.json`、全局测试计数和总控状态文档由总控统一再生与更新。
 - 不把整本书交给一个对话。
 - 不让目录未确认的章节进入 scaffold。
 

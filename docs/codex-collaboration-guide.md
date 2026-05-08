@@ -11,7 +11,7 @@
 3. 一个工作主题对应一个分支，避免不同任务互相污染。
 4. 同一时间不要让多个对话在同一个工作树里改同一个分支。
 5. 每次完成一小块都提交，提交信息要能看懂。
-6. 每次任务结束都更新 `docs/01-current-state.md` 和 `docs/02-next-actions.md`。
+6. 普通单分支任务结束时更新 `docs/01-current-state.md` 和 `docs/02-next-actions.md`；并行章节来源核对分支只提交来源记录和事实源，状态文档由总控批量合并时统一更新。
 7. 资源类任务优先从 `content/production/resource-backlog.json` 选择单个 item，不要让一个对话同时生产一批完整资源。
 8. 章节级并行必须遵守 `docs/parallel-chapter-factory.md`：先来源核对和必要性筛选，再由总控合并，最后才进入 scaffold 或单资源精修。
 
@@ -156,7 +156,7 @@ git worktree add ../数学教育教师云平台-b1-functions -b codex/curriculum
 
 这样每个对话进入不同目录，彼此不会踩文件。
 
-并行章节的推荐上限是每轮 3 到 5 个。每个章节先做来源核对、课程图谱和数字化必要性筛选；不要让多个章节同时进入完整资源制作。总控对话负责 review、`npm run verify`、合并和同步长期分支。
+并行章节的推荐上限是每轮 3 到 5 个。每个章节先做来源核对、课程图谱和数字化必要性筛选；不要让多个章节同时进入完整资源制作。并行章节分支避免提交 `content/production/resource-backlog.json`、`apps/web/src/data/workspace-data.json`、全局测试计数和总控状态文档；总控对话负责 review、统一再生、`npm run verify`、合并和同步长期分支。
 
 ## 新对话启动提示词
 
