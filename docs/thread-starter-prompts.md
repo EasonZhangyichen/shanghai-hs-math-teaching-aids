@@ -88,15 +88,16 @@ develop
 docs/parallel-rounds/2026-05-08-round-3.md
 ```
 
-下一轮建议先进入“已实现资源审校”而不是继续 scaffold 未终核候选；由总控从 B2-C07 可运行 Applet / Manim / Diagnosis 和 B2-C08 scaffold 骨架中挑选小批量审校任务。
+下一轮建议继续“已实现资源审校”而不是 scaffold 未终核候选；由总控从 B2-C07 可运行 Applet / Manim / Diagnosis 和 B2-C08 scaffold 骨架中挑选小批量审校任务。
 
-当前第一轮已实现资源审校任务单可直接读取：
+当前已实现资源审校任务单可直接读取：
 
 ```text
 docs/resource-review-rounds/2026-05-08-round-1.md
+docs/resource-review-rounds/2026-05-08-round-2.md
 ```
 
-本轮建议开 3 个独立对话，分别审校 `SH-HS-MATH-HJ-B2-C07-L06-A01`、`SH-HS-MATH-HJ-B2-C07-L06-M01`、`SH-HS-MATH-HJ-B2-C07-L07-D01`。
+第一轮审校 `SH-HS-MATH-HJ-B2-C07-L06-A01`、`SH-HS-MATH-HJ-B2-C07-L06-M01`、`SH-HS-MATH-HJ-B2-C07-L07-D01`；第二轮审校 `SH-HS-MATH-HJ-B2-C07-L01-A01`、`SH-HS-MATH-HJ-B2-C07-L01-M01`、`SH-HS-MATH-HJ-B2-C07-L02-D01`。后续仍按 3 个独立对话一轮推进。
 
 验收标准：
 
