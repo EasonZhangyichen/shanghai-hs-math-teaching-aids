@@ -15,14 +15,14 @@
     "updateRule": "新增或修改资源包后运行 npm run generate:backlog 与 npm run verify。"
   },
   "summary": {
-    "total": 25,
+    "total": 29,
     "implemented": 25,
-    "planned": 0,
+    "planned": 4,
     "byType": {
       "applet": {
-        "total": 14,
+        "total": 17,
         "implemented": 14,
-        "planned": 0
+        "planned": 3
       },
       "manim_clip": {
         "total": 4,
@@ -30,13 +30,137 @@
         "planned": 0
       },
       "diagnosis": {
-        "total": 7,
+        "total": 8,
         "implemented": 7,
-        "planned": 0
+        "planned": 1
       }
     }
   },
   "items": [
+    {
+      "id": "SH-HS-MATH-HJ-B1-C05-L02-A01",
+      "type": "applet",
+      "status": "planned",
+      "availability": "planned",
+      "title": "函数多表征联动板",
+      "proposedTitle": "函数多表征联动板",
+      "lessonId": "SH-HS-MATH-HJ-B1-C05-L02",
+      "lessonTitle": "函数的表示方法",
+      "textbookRef": "5.1.2",
+      "volumeId": "B1",
+      "volumeTitle": "必修第一册",
+      "chapterId": "SH-HS-MATH-HJ-B1-C05",
+      "chapterTitle": "函数的概念、性质及应用",
+      "sectionId": "SH-HS-MATH-HJ-B1-C05-S01",
+      "sectionTitle": "函数",
+      "cognitiveAction": "比较",
+      "teachingPainPoints": [
+        "学生常把解析式、表格和图像并列记忆，不能说明它们表示的是同一对应关系。",
+        "从图像读定义域和值域时容易漏端点、断点或离散点。",
+        "实际数据表转化为函数图像时，离散变量和连续变量容易混用。"
+      ],
+      "note": "同步联动解析式、表格和图像，突出定义域限制、离散点和连续曲线的差异；不替代纸笔作图。",
+      "priority": "chapter_backlog",
+      "priorityReason": "函数表示方法的解析式、表格、图像和情境之间存在明确多表征联动价值。",
+      "packagePath": null,
+      "metadataPath": null,
+      "recommendedTrack": "track/trig-sample-pack",
+      "nextAction": "创建 Applet 资源包，先写 metadata、教师脚本、学生任务和 review，再实现最小可运行 HTML 原型。",
+      "threadPrompt": "请先读取项目锚点文件和 content/production/resource-backlog.json，然后切到 track/trig-sample-pack。这次只创建并推进 SH-HS-MATH-HJ-B1-C05-L02-A01（Applet），对应课时 SH-HS-MATH-HJ-B1-C05-L02「函数的表示方法」。先确认教学痛点、认知动作、文件规范和验收标准，再动手；完成后运行 npm run generate:backlog 和 npm run verify，更新 docs/01-current-state.md 与 docs/02-next-actions.md，并提交。"
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B1-C05-L03-D01",
+      "type": "diagnosis",
+      "status": "planned",
+      "availability": "planned",
+      "title": "奇偶性前提与对称误区诊断",
+      "proposedTitle": "奇偶性前提与对称误区诊断",
+      "lessonId": "SH-HS-MATH-HJ-B1-C05-L03",
+      "lessonTitle": "函数的奇偶性",
+      "textbookRef": "5.2.1",
+      "volumeId": "B1",
+      "volumeTitle": "必修第一册",
+      "chapterId": "SH-HS-MATH-HJ-B1-C05",
+      "chapterTitle": "函数的概念、性质及应用",
+      "sectionId": "SH-HS-MATH-HJ-B1-C05-S02",
+      "sectionTitle": "函数的基本性质",
+      "cognitiveAction": "比较",
+      "teachingPainPoints": [
+        "学生容易跳过定义域关于原点对称这一前提。",
+        "代数判断和图像对称判断不能相互解释。",
+        "奇函数图像关于原点对称与偶函数图像关于 y 轴对称容易混淆。"
+      ],
+      "note": "即时反馈定义域不对称、只看半边图像、轴对称/中心对称混淆等错因；不把定义背诵做成动画。",
+      "priority": "chapter_backlog",
+      "priorityReason": null,
+      "packagePath": null,
+      "metadataPath": null,
+      "recommendedTrack": "track/review-system",
+      "nextAction": "创建 Diagnosis 资源包，先写 metadata、item-bank、scoring-rubric、teacher-notes 和 review。",
+      "threadPrompt": "请先读取项目锚点文件和 content/production/resource-backlog.json，然后切到 track/review-system。这次只创建并推进 SH-HS-MATH-HJ-B1-C05-L03-D01（Diagnosis），对应课时 SH-HS-MATH-HJ-B1-C05-L03「函数的奇偶性」。先确认教学痛点、认知动作、文件规范和验收标准，再动手；完成后运行 npm run generate:backlog 和 npm run verify，更新 docs/01-current-state.md 与 docs/02-next-actions.md，并提交。"
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B1-C05-L04-A01",
+      "type": "applet",
+      "status": "planned",
+      "availability": "planned",
+      "title": "单调性区间比较器",
+      "proposedTitle": "单调性区间比较器",
+      "lessonId": "SH-HS-MATH-HJ-B1-C05-L04",
+      "lessonTitle": "函数的单调性",
+      "textbookRef": "5.2.2",
+      "volumeId": "B1",
+      "volumeTitle": "必修第一册",
+      "chapterId": "SH-HS-MATH-HJ-B1-C05",
+      "chapterTitle": "函数的概念、性质及应用",
+      "sectionId": "SH-HS-MATH-HJ-B1-C05-S02",
+      "sectionTitle": "函数的基本性质",
+      "cognitiveAction": "比较",
+      "teachingPainPoints": [
+        "学生会用图像口头说上升下降，但难以落到区间和任意取值的定义。",
+        "单调区间端点、开闭区间和断点处理容易混乱。",
+        "把多个分段区间误合并为全定义域单调。"
+      ],
+      "note": "拖动同一区间内两个自变量点，同步比较 x1、x2 与 f(x1)、f(x2)，突出单调性定义中的全称比较。",
+      "priority": "chapter_backlog",
+      "priorityReason": "单调性定义中的区间、任意取值和函数值比较适合用交互暴露误区。",
+      "packagePath": null,
+      "metadataPath": null,
+      "recommendedTrack": "track/trig-sample-pack",
+      "nextAction": "创建 Applet 资源包，先写 metadata、教师脚本、学生任务和 review，再实现最小可运行 HTML 原型。",
+      "threadPrompt": "请先读取项目锚点文件和 content/production/resource-backlog.json，然后切到 track/trig-sample-pack。这次只创建并推进 SH-HS-MATH-HJ-B1-C05-L04-A01（Applet），对应课时 SH-HS-MATH-HJ-B1-C05-L04「函数的单调性」。先确认教学痛点、认知动作、文件规范和验收标准，再动手；完成后运行 npm run generate:backlog 和 npm run verify，更新 docs/01-current-state.md 与 docs/02-next-actions.md，并提交。"
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B1-C05-L08-A01",
+      "type": "applet",
+      "status": "planned",
+      "availability": "planned",
+      "title": "二分法零点逼近实验室",
+      "proposedTitle": "二分法零点逼近实验室",
+      "lessonId": "SH-HS-MATH-HJ-B1-C05-L08",
+      "lessonTitle": "用二分法求函数的零点",
+      "textbookRef": "5.3.3",
+      "volumeId": "B1",
+      "volumeTitle": "必修第一册",
+      "chapterId": "SH-HS-MATH-HJ-B1-C05",
+      "chapterTitle": "函数的概念、性质及应用",
+      "sectionId": "SH-HS-MATH-HJ-B1-C05-S03",
+      "sectionTitle": "函数的应用",
+      "cognitiveAction": "逼近",
+      "teachingPainPoints": [
+        "学生容易把端点异号误认为唯一零点。",
+        "区间折半后选择哪一半依赖函数值符号，步骤关系不易在静态板书中保持清晰。",
+        "近似精度、区间长度和最终近似值之间的关系容易混淆。"
+      ],
+      "note": "动态展示端点符号、中点、保留区间和区间长度递减，帮助学生理解算法步骤和近似精度。",
+      "priority": "chapter_backlog",
+      "priorityReason": "二分法具有反复折半和逼近零点的动态过程，数字化能明显提升演示和理解。",
+      "packagePath": null,
+      "metadataPath": null,
+      "recommendedTrack": "track/trig-sample-pack",
+      "nextAction": "创建 Applet 资源包，先写 metadata、教师脚本、学生任务和 review，再实现最小可运行 HTML 原型。",
+      "threadPrompt": "请先读取项目锚点文件和 content/production/resource-backlog.json，然后切到 track/trig-sample-pack。这次只创建并推进 SH-HS-MATH-HJ-B1-C05-L08-A01（Applet），对应课时 SH-HS-MATH-HJ-B1-C05-L08「用二分法求函数的零点」。先确认教学痛点、认知动作、文件规范和验收标准，再动手；完成后运行 npm run generate:backlog 和 npm run verify，更新 docs/01-current-state.md 与 docs/02-next-actions.md，并提交。"
+    },
     {
       "id": "SH-HS-MATH-HJ-B2-C07-L01-A01",
       "type": "applet",

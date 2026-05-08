@@ -13,12 +13,34 @@ test("generates a deterministic backlog from curriculum entry points and impleme
   const backlog = await generateResourceBacklog({ rootDir: repoRoot });
 
   assert.equal(backlog.source.curriculum, "content/curriculum/index.yaml");
-  assert.equal(backlog.summary.total, 25);
+  assert.equal(backlog.summary.total, 29);
   assert.equal(backlog.summary.implemented, 25);
-  assert.equal(backlog.summary.planned, 0);
-  assert.deepEqual(backlog.summary.byType.applet, { total: 14, implemented: 14, planned: 0 });
+  assert.equal(backlog.summary.planned, 4);
+  assert.deepEqual(backlog.summary.byType.applet, { total: 17, implemented: 14, planned: 3 });
   assert.deepEqual(backlog.summary.byType.manim_clip, { total: 4, implemented: 4, planned: 0 });
-  assert.deepEqual(backlog.summary.byType.diagnosis, { total: 7, implemented: 7, planned: 0 });
+  assert.deepEqual(backlog.summary.byType.diagnosis, { total: 8, implemented: 7, planned: 1 });
+
+  const functionRepresentationApplet = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B1-C05-L02-A01");
+  assert.equal(functionRepresentationApplet.status, "planned");
+  assert.equal(functionRepresentationApplet.availability, "planned");
+  assert.equal(functionRepresentationApplet.type, "applet");
+  assert.equal(functionRepresentationApplet.lessonTitle, "函数的表示方法");
+  assert.equal(functionRepresentationApplet.chapterTitle, "函数的概念、性质及应用");
+  assert.equal(functionRepresentationApplet.packagePath, null);
+  assert.equal(functionRepresentationApplet.recommendedTrack, "track/trig-sample-pack");
+
+  const functionParityDiagnosis = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B1-C05-L03-D01");
+  assert.equal(functionParityDiagnosis.status, "planned");
+  assert.equal(functionParityDiagnosis.type, "diagnosis");
+  assert.equal(functionParityDiagnosis.recommendedTrack, "track/review-system");
+
+  const monotonicityApplet = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B1-C05-L04-A01");
+  assert.equal(monotonicityApplet.status, "planned");
+  assert.equal(monotonicityApplet.type, "applet");
+
+  const bisectionApplet = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B1-C05-L08-A01");
+  assert.equal(bisectionApplet.status, "planned");
+  assert.equal(bisectionApplet.type, "applet");
 
   const sineApplet = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B2-C07-L01-A01");
   assert.equal(sineApplet.status, "implemented");
@@ -294,10 +316,10 @@ test("writes the backlog as stable pretty JSON", async () => {
     });
     const written = JSON.parse(await readFile(outputPath, "utf8"));
 
-    assert.equal(written.summary.total, 25);
+    assert.equal(written.summary.total, 29);
     assert.equal(written.summary.implemented, 25);
-    assert.equal(written.summary.planned, 0);
-    assert.equal(written.items[0].id, "SH-HS-MATH-HJ-B2-C07-L01-A01");
+    assert.equal(written.summary.planned, 4);
+    assert.equal(written.items[0].id, "SH-HS-MATH-HJ-B1-C05-L02-A01");
     assert.ok(
       JSON.stringify(written, null, 2).includes(
         '"id": "SH-HS-MATH-HJ-B2-C08-L10-D01"',

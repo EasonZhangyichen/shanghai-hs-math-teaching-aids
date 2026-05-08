@@ -20,6 +20,11 @@
   - 已标注每个课时的核心知识、先修、后续、教学痛点、数字化切入点、诊断焦点和核心素养。
   - 已新增 `docs/source-audits/b2-c08-dolearning-audit.md` 记录来源核对：dolearning.net 备课目录当前需要登录态，公开 secondary cross-check 支持 8.1 至 8.4 主干和当前 8.3 四小节拆分，但用户提供的 dolearning 截图线索显示 8.3 可能按“向量的坐标表示（1）（2）（3）”三课时组织；仍需纸质教材或已登录 dolearning 左侧目录最终确认。
   - 已新增并落实 `docs/source-audits/b2-c08-digital-necessity-review.md`：第 8 章 18 个原 planned resource 中，6 个强烈保留继续进入 backlog，4 个可保留条目已收窄 title / note / 生产边界，3 个降级为教师脚本/纸笔任务/普通诊断，5 个 8.3 相关资源暂缓等待教材或 dolearning 终核；课程图谱 YAML 现只保留 10 个第 8 章 `digital_entry_points`。
+- 已在 `codex/curriculum-b1-functions-source-audit` 上完成必修第一册函数主线的首轮来源核对和课程图谱准备：
+  - 新增 `docs/source-audits/b1-functions-source-audit.md`，记录国家智慧教育平台沪教版必修第一册电子教材、2024 年基础教育精品课传课目录、上海中小学数字教学系统操作指南、dolearning.net 访问结果和辅助来源边界。
+  - 官方电子教材可确认第 3 章“幂、指数与对数”、第 4 章“幂函数、指数函数与对数函数”、第 5 章“函数的概念、性质及应用”的章节、节和正文“目”标题；dolearning 与上海数字教学/备课平台课时目录当前无法直接确认，课时数和课时边界仍需人工终核。
+  - 课程图谱只补入最高置信度的第 5 章 `draft` 入口节点：`SH-HS-MATH-HJ-B1-C05-L01` 至 `SH-HS-MATH-HJ-B1-C05-L10`，并全部标记 `needs_manual_textbook_check`；第 3、4 章暂不展开到 YAML，后续拆成独立章节级来源核对任务。
+  - 数字化必要性筛选后仅保留 4 个第 5 章 planned 候选：函数多表征联动板、奇偶性前提与对称误区诊断、单调性区间比较器、二分法零点逼近实验室；定义背诵、常规代数运算、纸笔证明、普通建模题和星号反函数内容暂不进入资源生产。
 - 已在 `track/trig-sample-pack` 上为必修第二册第 8 章首批 3 个 Applet planned item 生成资源骨架：
   - `SH-HS-MATH-HJ-B2-C08-L01-A01`“向量表示与等价拖拽板”。
   - `SH-HS-MATH-HJ-B2-C08-L02-A01`“向量加减法构造器”。
@@ -135,7 +140,7 @@
   - `npm run verify` 现在会先执行 `npm run validate:content`，再运行测试和平台构建。
 - 已创建首版资源工厂工作流：
   - `scripts/generate-resource-backlog.js` 会从 `content/curriculum/index.yaml` 的 `digital_entry_points` 和已落地的 Applet / Manim / Diagnosis 资源包生成生产 backlog。
-  - `content/production/resource-backlog.json` 当前列出必修第二册第 7 章和第 8 章共 25 个资源工作单元：25 个已实现、0 个仍为 `planned`；第 7 章 15 个均已实现，第 8 章 10 个数字化必要性筛选后的候选中，6 个 Applet 骨架、3 个 Diagnosis 骨架与 1 个 Manim Clip 骨架均已落地。当前 Applet 为 14 个总计、14 个已实现、0 个待创建；Manim 为 4 个总计、4 个已实现、0 个待创建；Diagnosis 为 7 个总计、7 个已实现、0 个待创建；每个 item 都包含推荐分支、下一步动作和可复制到新 Codex 对话的 `threadPrompt`。8.3 暂缓资源仍不进入 scaffold 生产队列。
+  - `content/production/resource-backlog.json` 当前列出 29 个资源工作单元：25 个已实现、4 个仍为 `planned`。第 7 章三角函数 15 个均已实现，第 8 章平面向量 10 个数字化必要性筛选后的候选均已落地；新增的 4 个 planned item 来自必修第一册第 5 章函数主线来源核对，只是课程图谱候选，尚未 scaffold。当前 Applet 为 17 个总计、14 个已实现、3 个待创建；Manim 为 4 个总计、4 个已实现、0 个待创建；Diagnosis 为 8 个总计、7 个已实现、1 个待创建；每个 item 都包含推荐分支、下一步动作和可复制到新 Codex 对话的 `threadPrompt`。8.3 暂缓资源仍不进入 scaffold 生产队列。
   - `scripts/scaffold-resource-packages.js` 提供首版批量资源骨架生成能力：当前已支持 Applet、Manim Clip 和 Diagnosis planned item 的 dry-run、按数量或 ID 生成、嵌套文件写入和避免覆盖已有资源包。
   - 已修正 Applet scaffold 模板，避免在 `pedagogy` 中写入 Applet schema 不接受的 `classroom_use` 字段；Manim 与 Diagnosis 仍保留各自 schema 需要的课堂使用说明。
   - `npm run generate:backlog` 已加入脚本，`npm run verify` 现在会先校验内容、生成 backlog，再运行测试和平台构建。
@@ -182,6 +187,7 @@
 ## 当前尚未完成
 
 - 尚未正式核验沪教版教材全册课时目录。
+- 必修第一册函数主线已完成首轮来源核对，但仍需纸质教材、教师用书或已登录 dolearning/上海数字教学系统终核第 3、4、5 章的课时数、课时边界和平台目录；第 5 章当前仅为 `draft` 入口节点，第 3、4 章仍未展开进 YAML。
 - 必修第二册第 7 章目录已完成首版结构化整理，但尚未完成纸质教材人工终核。
 - 必修第二册第 8 章“平面向量”已完成首版结构化整理、dolearning 来源核对记录和 planned resource 数字化必要性筛选落地，但尚未完成纸质教材/已登录 dolearning 终核；尤其需要确认 8.3 是教材四小节拆分，还是 dolearning 三课时分组。第 8 章 6 个筛选后保留的 Applet 资源包、3 个 Diagnosis 资源包和 1 个 Manim Clip 资源包均已生成骨架；8.3 暂缓资源仍不进入 scaffold 生产队列。
 - 第 7 章的前置章节节点和第 9 章复数等后续节点仍是引用占位，尚未展开为完整图谱。
@@ -190,7 +196,7 @@
 - 已创建四个 Manim 场景脚本：`L01-M01`、`L05-M01` 与 `L06-M01` 均已导出可播放 `mp4` / `webm` / poster，`SH-HS-MATH-HJ-B2-C08-L04-M01` 当前仅为 `scene_draft` / `metadata_ready` 骨架；四者尚未完成数学审校或课堂试用。
 - 已将 Applet、Manim 和 Diagnosis metadata JSON Schema 接入首版自动校验脚本。
 - 已建立首版资源生产 backlog，可按单个资源工作单元开启新对话，避免全高中内容挤在一个上下文中；当前必修第二册第 7 章 15 个资源工作单元和第 8 章 10 个筛选后候选均已落地，并已补充 Applet / Manim / Diagnosis 全类型 scaffold 命令以减少后续手工建目录成本。
-- 当前第 7 章和第 8 章 backlog 已无 `planned` item；下一步应对已生成的第 8 章 Applet / Manim / Diagnosis 逐个进入单资源精修，或优先推进第 7 章资源的数学审校、课堂节奏试读和状态升级，而不是继续新增同质资源。
+- 当前第 7 章和第 8 章 backlog 已无 `planned` item；新增的 4 个 `planned` item 只来自必修第一册第 5 章函数主线的 draft 图谱候选。下一步不应立即 scaffold，而应先由总控确认来源核对和数字化必要性，再决定是否开启第 5 章单独资源骨架任务。
 - 已具备开启第一轮并行章节工厂的条件：下一步可由总控选择 3 到 5 个新章节，只做沪教版来源核对、课程图谱和数字化必要性筛选，通过验收后再进入 scaffold。
 - 平台壳已读取 `content/manim/*/metadata.yaml` 并渲染样板 Manim 视频资源卡；尚未沉淀为独立播放器或接入播放器级学习状态记录。
 - 尚未配置 GitHub 分支保护规则。

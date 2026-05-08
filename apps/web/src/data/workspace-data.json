@@ -53,7 +53,133 @@
           "幂、指数与对数",
           "函数"
         ],
-        "chapters": []
+        "chapters": [
+          {
+            "id": "SH-HS-MATH-HJ-B1-C05",
+            "number": 5,
+            "title": "函数的概念、性质及应用",
+            "status": "draft",
+            "verification": {
+              "textbook_outline_status": "official_e_textbook_checked",
+              "needs_manual_textbook_check": true,
+              "checked_on": "2026-05-08",
+              "source_audit": "docs/source-audits/b1-functions-source-audit.md",
+              "notes": "国家智慧教育平台电子教材可确认第5章章节、节和正文目标题；dolearning 与上海数字教学/备课平台课时目录当前无法直接确认，课时数和课堂边界仍需纸质教材或已登录平台终核。"
+            },
+            "chapterRole": "在第4章幂函数、指数函数与对数函数之后，抽象函数的定义域、值域、表示方法、基本性质和应用方法，为必修第二册三角函数、后续数列、导数和建模提供通用函数语言。",
+            "sections": [
+              {
+                "id": "SH-HS-MATH-HJ-B1-C05-S01",
+                "textbookLabel": "5.1",
+                "title": "函数",
+                "lessons": [
+                  {
+                    "id": "SH-HS-MATH-HJ-B1-C05-L01",
+                    "textbookRef": "5.1.1",
+                    "title": "函数",
+                    "status": "draft",
+                    "resourceCount": 0,
+                    "hasImplementedApplet": false
+                  },
+                  {
+                    "id": "SH-HS-MATH-HJ-B1-C05-L02",
+                    "textbookRef": "5.1.2",
+                    "title": "函数的表示方法",
+                    "status": "draft",
+                    "resourceCount": 1,
+                    "hasImplementedApplet": false
+                  }
+                ]
+              },
+              {
+                "id": "SH-HS-MATH-HJ-B1-C05-S02",
+                "textbookLabel": "5.2",
+                "title": "函数的基本性质",
+                "lessons": [
+                  {
+                    "id": "SH-HS-MATH-HJ-B1-C05-L03",
+                    "textbookRef": "5.2.1",
+                    "title": "函数的奇偶性",
+                    "status": "draft",
+                    "resourceCount": 1,
+                    "hasImplementedApplet": false
+                  },
+                  {
+                    "id": "SH-HS-MATH-HJ-B1-C05-L04",
+                    "textbookRef": "5.2.2",
+                    "title": "函数的单调性",
+                    "status": "draft",
+                    "resourceCount": 1,
+                    "hasImplementedApplet": false
+                  },
+                  {
+                    "id": "SH-HS-MATH-HJ-B1-C05-L05",
+                    "textbookRef": "5.2.3",
+                    "title": "函数的最值",
+                    "status": "draft",
+                    "resourceCount": 0,
+                    "hasImplementedApplet": false
+                  }
+                ]
+              },
+              {
+                "id": "SH-HS-MATH-HJ-B1-C05-S03",
+                "textbookLabel": "5.3",
+                "title": "函数的应用",
+                "lessons": [
+                  {
+                    "id": "SH-HS-MATH-HJ-B1-C05-L06",
+                    "textbookRef": "5.3.1",
+                    "title": "函数关系的建立",
+                    "status": "draft",
+                    "resourceCount": 0,
+                    "hasImplementedApplet": false
+                  },
+                  {
+                    "id": "SH-HS-MATH-HJ-B1-C05-L07",
+                    "textbookRef": "5.3.2",
+                    "title": "用函数观点求解方程与不等式",
+                    "status": "draft",
+                    "resourceCount": 0,
+                    "hasImplementedApplet": false
+                  },
+                  {
+                    "id": "SH-HS-MATH-HJ-B1-C05-L08",
+                    "textbookRef": "5.3.3",
+                    "title": "用二分法求函数的零点",
+                    "status": "draft",
+                    "resourceCount": 1,
+                    "hasImplementedApplet": false
+                  }
+                ]
+              },
+              {
+                "id": "SH-HS-MATH-HJ-B1-C05-S04",
+                "textbookLabel": "*5.4",
+                "title": "反函数",
+                "lessons": [
+                  {
+                    "id": "SH-HS-MATH-HJ-B1-C05-L09",
+                    "textbookRef": "5.4.1",
+                    "title": "反函数的概念",
+                    "status": "draft",
+                    "resourceCount": 0,
+                    "hasImplementedApplet": false
+                  },
+                  {
+                    "id": "SH-HS-MATH-HJ-B1-C05-L10",
+                    "textbookRef": "5.4.2",
+                    "title": "反函数的图像",
+                    "status": "draft",
+                    "resourceCount": 0,
+                    "hasImplementedApplet": false
+                  }
+                ]
+              }
+            ],
+            "lessonCount": 10
+          }
+        ]
       },
       {
         "id": "B2",
@@ -350,6 +476,604 @@
     ]
   },
   "lessons": [
+    {
+      "id": "SH-HS-MATH-HJ-B1-C05-L01",
+      "textbookRef": "5.1.1",
+      "title": "函数",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C05",
+        "number": 5,
+        "title": "函数的概念、性质及应用"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C05-S01",
+        "textbookLabel": "5.1",
+        "title": "函数"
+      },
+      "coreKnowledge": [
+        "用非空实数集、对应关系、定义域、函数值和值域描述函数",
+        "理解定义域和对应关系是确定函数的两个要素",
+        "判断两个表达形式不同的函数是否为同一函数"
+      ],
+      "prerequisites": [
+        "正比例函数、反比例函数、一次函数和二次函数",
+        "幂函数、指数函数和对数函数的具体经验",
+        "集合语言和实数取值范围"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C05-L02",
+        "SH-HS-MATH-HJ-B1-C05-L03",
+        "SH-HS-MATH-HJ-B1-C05-L04"
+      ],
+      "teachingPainPoints": [
+        "学生容易只看解析式，忽略定义域变化会改变函数。",
+        "定义域、值域和对应关系之间的角色容易混淆。",
+        "判断相同函数时常把代数化简等同于函数相同，忽略取值范围。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否同时检查定义域和对应关系。",
+        "能否区分函数值、值域和自变量取值范围。"
+      ],
+      "coreCompetencies": [
+        "数学抽象",
+        "逻辑推理"
+      ],
+      "resources": []
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B1-C05-L02",
+      "textbookRef": "5.1.2",
+      "title": "函数的表示方法",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C05",
+        "number": 5,
+        "title": "函数的概念、性质及应用"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C05-S01",
+        "textbookLabel": "5.1",
+        "title": "函数"
+      },
+      "coreKnowledge": [
+        "用解析法、列表法和图像法表示函数",
+        "在不同表示之间转换定义域、对应关系和函数值信息",
+        "从表格、图像或实际数据中提取函数关系"
+      ],
+      "prerequisites": [
+        "函数的两个要素",
+        "平面直角坐标系和函数图像",
+        "用表格整理数据的经验"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C05-L03",
+        "SH-HS-MATH-HJ-B1-C05-L06",
+        "SH-HS-MATH-HJ-B2-C07-L01"
+      ],
+      "teachingPainPoints": [
+        "学生常把解析式、表格和图像并列记忆，不能说明它们表示的是同一对应关系。",
+        "从图像读定义域和值域时容易漏端点、断点或离散点。",
+        "实际数据表转化为函数图像时，离散变量和连续变量容易混用。"
+      ],
+      "digitalEntryPoints": [
+        {
+          "type": "applet",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B1-C05-L02-A01",
+          "title": "函数多表征联动板",
+          "cognitive_action": "比较",
+          "note": "同步联动解析式、表格和图像，突出定义域限制、离散点和连续曲线的差异；不替代纸笔作图。"
+        }
+      ],
+      "diagnosisFocus": [
+        "能否从图像和表格中读出定义域、值域和特殊函数值。",
+        "能否判断三种表示是否描述同一函数关系。"
+      ],
+      "coreCompetencies": [
+        "直观想象",
+        "数学抽象",
+        "数据分析"
+      ],
+      "resources": [
+        {
+          "id": "SH-HS-MATH-HJ-B1-C05-L02-A01",
+          "resourceType": "applet",
+          "title": "函数多表征联动板",
+          "cognitiveAction": "比较",
+          "note": "同步联动解析式、表格和图像，突出定义域限制、离散点和连续曲线的差异；不替代纸笔作图。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        }
+      ]
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B1-C05-L03",
+      "textbookRef": "5.2.1",
+      "title": "函数的奇偶性",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C05",
+        "number": 5,
+        "title": "函数的概念、性质及应用"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C05-S02",
+        "textbookLabel": "5.2",
+        "title": "函数的基本性质"
+      },
+      "coreKnowledge": [
+        "理解奇函数、偶函数的定义和定义域对称前提",
+        "用代数条件与图像对称性判断奇偶性",
+        "区分关于原点的中心对称和关于 y 轴的轴对称"
+      ],
+      "prerequisites": [
+        "函数定义域和值域",
+        "函数图像和点的对称",
+        "幂函数、指数函数和对数函数的图像经验"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C05-L04",
+        "SH-HS-MATH-HJ-B2-C07-L02",
+        "SH-HS-MATH-HJ-B2-C07-L04"
+      ],
+      "teachingPainPoints": [
+        "学生容易跳过定义域关于原点对称这一前提。",
+        "代数判断和图像对称判断不能相互解释。",
+        "奇函数图像关于原点对称与偶函数图像关于 y 轴对称容易混淆。"
+      ],
+      "digitalEntryPoints": [
+        {
+          "type": "diagnosis",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B1-C05-L03-D01",
+          "title": "奇偶性前提与对称误区诊断",
+          "cognitive_action": "比较",
+          "note": "即时反馈定义域不对称、只看半边图像、轴对称/中心对称混淆等错因；不把定义背诵做成动画。"
+        }
+      ],
+      "diagnosisFocus": [
+        "能否先检查定义域是否关于原点对称。",
+        "能否用 f(-x) 与 f(x) 的关系解释图像对称。"
+      ],
+      "coreCompetencies": [
+        "逻辑推理",
+        "直观想象"
+      ],
+      "resources": [
+        {
+          "id": "SH-HS-MATH-HJ-B1-C05-L03-D01",
+          "resourceType": "diagnosis",
+          "title": "奇偶性前提与对称误区诊断",
+          "cognitiveAction": "比较",
+          "note": "即时反馈定义域不对称、只看半边图像、轴对称/中心对称混淆等错因；不把定义背诵做成动画。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        }
+      ]
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B1-C05-L04",
+      "textbookRef": "5.2.2",
+      "title": "函数的单调性",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C05",
+        "number": 5,
+        "title": "函数的概念、性质及应用"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C05-S02",
+        "textbookLabel": "5.2",
+        "title": "函数的基本性质"
+      },
+      "coreKnowledge": [
+        "用区间上任意两个自变量的函数值比较定义单调性",
+        "从图像变化趋势和代数不等式双重判断单调区间",
+        "区分局部观察、单调区间和整个定义域上的单调性"
+      ],
+      "prerequisites": [
+        "函数图像",
+        "不等式性质",
+        "函数的奇偶性和对称直觉"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C05-L05",
+        "SH-HS-MATH-HJ-B1-C05-L07",
+        "SH-HS-MATH-HJ-B2-C07-L02"
+      ],
+      "teachingPainPoints": [
+        "学生会用图像口头说上升下降，但难以落到区间和任意取值的定义。",
+        "单调区间端点、开闭区间和断点处理容易混乱。",
+        "把多个分段区间误合并为全定义域单调。"
+      ],
+      "digitalEntryPoints": [
+        {
+          "type": "applet",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B1-C05-L04-A01",
+          "title": "单调性区间比较器",
+          "cognitive_action": "比较",
+          "note": "拖动同一区间内两个自变量点，同步比较 x1、x2 与 f(x1)、f(x2)，突出单调性定义中的全称比较。"
+        }
+      ],
+      "diagnosisFocus": [
+        "能否把单调性限定在指定区间上。",
+        "能否说明为什么不能跨断点或跨谷点合并区间。"
+      ],
+      "coreCompetencies": [
+        "逻辑推理",
+        "直观想象",
+        "数学运算"
+      ],
+      "resources": [
+        {
+          "id": "SH-HS-MATH-HJ-B1-C05-L04-A01",
+          "resourceType": "applet",
+          "title": "单调性区间比较器",
+          "cognitiveAction": "比较",
+          "note": "拖动同一区间内两个自变量点，同步比较 x1、x2 与 f(x1)、f(x2)，突出单调性定义中的全称比较。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        }
+      ]
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B1-C05-L05",
+      "textbookRef": "5.2.3",
+      "title": "函数的最值",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C05",
+        "number": 5,
+        "title": "函数的概念、性质及应用"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C05-S02",
+        "textbookLabel": "5.2",
+        "title": "函数的基本性质"
+      },
+      "coreKnowledge": [
+        "理解最大值、最小值和最值点的区别",
+        "结合函数图像、单调性和定义域判断最值",
+        "处理端点、顶点和区间限制对最值的影响"
+      ],
+      "prerequisites": [
+        "函数的单调性",
+        "二次函数图像与顶点",
+        "定义域和值域"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C05-L06",
+        "SH-HS-MATH-HJ-B2-C07-L02",
+        "SH-HS-MATH-HJ-XB1-DERIV-K01"
+      ],
+      "teachingPainPoints": [
+        "学生容易只找顶点，忽略定义域端点。",
+        "最大值、最小值、极值和最值点的语言容易混用。",
+        "闭区间、开区间和离散定义域中的最值存在性容易混淆。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否区分最值和取得最值的自变量。",
+        "能否根据定义域判断端点是否参与比较。"
+      ],
+      "coreCompetencies": [
+        "逻辑推理",
+        "数学运算",
+        "直观想象"
+      ],
+      "resources": []
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B1-C05-L06",
+      "textbookRef": "5.3.1",
+      "title": "函数关系的建立",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C05",
+        "number": 5,
+        "title": "函数的概念、性质及应用"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C05-S03",
+        "textbookLabel": "5.3",
+        "title": "函数的应用"
+      },
+      "coreKnowledge": [
+        "从实际问题中选择变量并建立函数关系",
+        "根据问题实际意义确定定义域",
+        "用函数表达式、图像或分段关系描述情境"
+      ],
+      "prerequisites": [
+        "函数的表示方法",
+        "函数的最值",
+        "一次函数、二次函数和分段函数经验"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C05-L07",
+        "SH-HS-MATH-HJ-MODEL-K01"
+      ],
+      "teachingPainPoints": [
+        "学生面对文字情境时不知道先选哪两个变量。",
+        "建立表达式后常漏掉实际定义域。",
+        "分段计费、几何面积等问题中，条件边界容易遗漏。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否说明自变量、函数值和定义域的实际含义。",
+        "能否把文字条件转成分段或约束条件。"
+      ],
+      "coreCompetencies": [
+        "数学建模",
+        "数学抽象",
+        "数学运算"
+      ],
+      "resources": []
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B1-C05-L07",
+      "textbookRef": "5.3.2",
+      "title": "用函数观点求解方程与不等式",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C05",
+        "number": 5,
+        "title": "函数的概念、性质及应用"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C05-S03",
+        "textbookLabel": "5.3",
+        "title": "函数的应用"
+      },
+      "coreKnowledge": [
+        "把方程解转化为函数零点",
+        "把不等式解集转化为函数图像在坐标轴上方或下方的横坐标范围",
+        "利用函数单调性和零点位置求解简单方程与不等式"
+      ],
+      "prerequisites": [
+        "函数的单调性",
+        "函数的图像表示",
+        "一元二次方程和不等式"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C05-L08",
+        "SH-HS-MATH-HJ-XB1-DERIV-K01"
+      ],
+      "teachingPainPoints": [
+        "学生习惯静态代数求解，不能把解看成函数图像和坐标轴的关系。",
+        "零点、方程根和图像交点横坐标之间的语言转换容易断裂。",
+        "不等式解集常忽略函数定义域限制。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否把方程根、零点和图像交点联系起来。",
+        "能否用图像符号区域解释不等式解集。"
+      ],
+      "coreCompetencies": [
+        "逻辑推理",
+        "直观想象",
+        "数学运算"
+      ],
+      "resources": []
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B1-C05-L08",
+      "textbookRef": "5.3.3",
+      "title": "用二分法求函数的零点",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C05",
+        "number": 5,
+        "title": "函数的概念、性质及应用"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C05-S03",
+        "textbookLabel": "5.3",
+        "title": "函数的应用"
+      },
+      "coreKnowledge": [
+        "用函数连续图像和端点函数值异号判断区间内存在零点",
+        "通过反复折半区间逼近函数零点",
+        "理解二分法作为明确步骤可重复执行的算法"
+      ],
+      "prerequisites": [
+        "函数零点",
+        "函数图像的连续曲线直觉",
+        "区间和近似值"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-XB1-DERIV-K01",
+        "SH-HS-MATH-HJ-MODEL-K01"
+      ],
+      "teachingPainPoints": [
+        "学生容易把端点异号误认为唯一零点。",
+        "区间折半后选择哪一半依赖函数值符号，步骤关系不易在静态板书中保持清晰。",
+        "近似精度、区间长度和最终近似值之间的关系容易混淆。"
+      ],
+      "digitalEntryPoints": [
+        {
+          "type": "applet",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B1-C05-L08-A01",
+          "title": "二分法零点逼近实验室",
+          "cognitive_action": "逼近",
+          "note": "动态展示端点符号、中点、保留区间和区间长度递减，帮助学生理解算法步骤和近似精度。"
+        }
+      ],
+      "diagnosisFocus": [
+        "能否判断哪一个子区间继续包含零点。",
+        "能否说明二分法只能保证存在零点而非必然唯一。"
+      ],
+      "coreCompetencies": [
+        "数学抽象",
+        "逻辑推理",
+        "数学建模"
+      ],
+      "resources": [
+        {
+          "id": "SH-HS-MATH-HJ-B1-C05-L08-A01",
+          "resourceType": "applet",
+          "title": "二分法零点逼近实验室",
+          "cognitiveAction": "逼近",
+          "note": "动态展示端点符号、中点、保留区间和区间长度递减，帮助学生理解算法步骤和近似精度。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        }
+      ]
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B1-C05-L09",
+      "textbookRef": "5.4.1",
+      "title": "反函数的概念",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C05",
+        "number": 5,
+        "title": "函数的概念、性质及应用"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C05-S04",
+        "textbookLabel": "*5.4",
+        "title": "反函数"
+      },
+      "coreKnowledge": [
+        "理解互为反函数时自变量和函数值的角色互换",
+        "判断函数是否存在反函数",
+        "确定反函数的定义域和值域"
+      ],
+      "prerequisites": [
+        "函数的定义域和值域",
+        "严格单调函数",
+        "指数函数和对数函数互为反函数的经验"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C05-L10",
+        "SH-HS-MATH-HJ-B1-C04-K02"
+      ],
+      "teachingPainPoints": [
+        "学生容易只做代数换元，不检查原函数是否一一对应。",
+        "反函数的定义域和值域与原函数互换常被机械记忆。",
+        "星号内容在实际教学中的要求深度不明确。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否判断函数是否存在反函数。",
+        "能否正确交换定义域和值域。"
+      ],
+      "coreCompetencies": [
+        "数学抽象",
+        "逻辑推理"
+      ],
+      "resources": []
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B1-C05-L10",
+      "textbookRef": "5.4.2",
+      "title": "反函数的图像",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C05",
+        "number": 5,
+        "title": "函数的概念、性质及应用"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C05-S04",
+        "textbookLabel": "*5.4",
+        "title": "反函数"
+      },
+      "coreKnowledge": [
+        "理解互为反函数的图像关于直线 y = x 对称",
+        "从图像角度解释定义域和值域互换",
+        "联系指数函数和对数函数的图像关系"
+      ],
+      "prerequisites": [
+        "反函数的概念",
+        "函数图像和点关于直线 y = x 的对称",
+        "指数函数和对数函数图像"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B2-C07-K01"
+      ],
+      "teachingPainPoints": [
+        "学生容易把关于 y = x 对称误画成关于 x 轴或 y 轴对称。",
+        "从图像读取反函数定义域和值域时容易漏掉原函数限制。",
+        "星号内容是否进入正式资源生产仍需终核。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否判断反函数图像的对称关系。",
+        "能否从原函数图像读出反函数的定义域和值域。"
+      ],
+      "coreCompetencies": [
+        "直观想象",
+        "数学抽象"
+      ],
+      "resources": []
+    },
     {
       "id": "SH-HS-MATH-HJ-B2-C07-L01",
       "textbookRef": "7.1.1",
@@ -8132,6 +8856,604 @@
     }
   ],
   "lessonsById": {
+    "SH-HS-MATH-HJ-B1-C05-L01": {
+      "id": "SH-HS-MATH-HJ-B1-C05-L01",
+      "textbookRef": "5.1.1",
+      "title": "函数",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C05",
+        "number": 5,
+        "title": "函数的概念、性质及应用"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C05-S01",
+        "textbookLabel": "5.1",
+        "title": "函数"
+      },
+      "coreKnowledge": [
+        "用非空实数集、对应关系、定义域、函数值和值域描述函数",
+        "理解定义域和对应关系是确定函数的两个要素",
+        "判断两个表达形式不同的函数是否为同一函数"
+      ],
+      "prerequisites": [
+        "正比例函数、反比例函数、一次函数和二次函数",
+        "幂函数、指数函数和对数函数的具体经验",
+        "集合语言和实数取值范围"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C05-L02",
+        "SH-HS-MATH-HJ-B1-C05-L03",
+        "SH-HS-MATH-HJ-B1-C05-L04"
+      ],
+      "teachingPainPoints": [
+        "学生容易只看解析式，忽略定义域变化会改变函数。",
+        "定义域、值域和对应关系之间的角色容易混淆。",
+        "判断相同函数时常把代数化简等同于函数相同，忽略取值范围。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否同时检查定义域和对应关系。",
+        "能否区分函数值、值域和自变量取值范围。"
+      ],
+      "coreCompetencies": [
+        "数学抽象",
+        "逻辑推理"
+      ],
+      "resources": []
+    },
+    "SH-HS-MATH-HJ-B1-C05-L02": {
+      "id": "SH-HS-MATH-HJ-B1-C05-L02",
+      "textbookRef": "5.1.2",
+      "title": "函数的表示方法",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C05",
+        "number": 5,
+        "title": "函数的概念、性质及应用"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C05-S01",
+        "textbookLabel": "5.1",
+        "title": "函数"
+      },
+      "coreKnowledge": [
+        "用解析法、列表法和图像法表示函数",
+        "在不同表示之间转换定义域、对应关系和函数值信息",
+        "从表格、图像或实际数据中提取函数关系"
+      ],
+      "prerequisites": [
+        "函数的两个要素",
+        "平面直角坐标系和函数图像",
+        "用表格整理数据的经验"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C05-L03",
+        "SH-HS-MATH-HJ-B1-C05-L06",
+        "SH-HS-MATH-HJ-B2-C07-L01"
+      ],
+      "teachingPainPoints": [
+        "学生常把解析式、表格和图像并列记忆，不能说明它们表示的是同一对应关系。",
+        "从图像读定义域和值域时容易漏端点、断点或离散点。",
+        "实际数据表转化为函数图像时，离散变量和连续变量容易混用。"
+      ],
+      "digitalEntryPoints": [
+        {
+          "type": "applet",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B1-C05-L02-A01",
+          "title": "函数多表征联动板",
+          "cognitive_action": "比较",
+          "note": "同步联动解析式、表格和图像，突出定义域限制、离散点和连续曲线的差异；不替代纸笔作图。"
+        }
+      ],
+      "diagnosisFocus": [
+        "能否从图像和表格中读出定义域、值域和特殊函数值。",
+        "能否判断三种表示是否描述同一函数关系。"
+      ],
+      "coreCompetencies": [
+        "直观想象",
+        "数学抽象",
+        "数据分析"
+      ],
+      "resources": [
+        {
+          "id": "SH-HS-MATH-HJ-B1-C05-L02-A01",
+          "resourceType": "applet",
+          "title": "函数多表征联动板",
+          "cognitiveAction": "比较",
+          "note": "同步联动解析式、表格和图像，突出定义域限制、离散点和连续曲线的差异；不替代纸笔作图。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        }
+      ]
+    },
+    "SH-HS-MATH-HJ-B1-C05-L03": {
+      "id": "SH-HS-MATH-HJ-B1-C05-L03",
+      "textbookRef": "5.2.1",
+      "title": "函数的奇偶性",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C05",
+        "number": 5,
+        "title": "函数的概念、性质及应用"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C05-S02",
+        "textbookLabel": "5.2",
+        "title": "函数的基本性质"
+      },
+      "coreKnowledge": [
+        "理解奇函数、偶函数的定义和定义域对称前提",
+        "用代数条件与图像对称性判断奇偶性",
+        "区分关于原点的中心对称和关于 y 轴的轴对称"
+      ],
+      "prerequisites": [
+        "函数定义域和值域",
+        "函数图像和点的对称",
+        "幂函数、指数函数和对数函数的图像经验"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C05-L04",
+        "SH-HS-MATH-HJ-B2-C07-L02",
+        "SH-HS-MATH-HJ-B2-C07-L04"
+      ],
+      "teachingPainPoints": [
+        "学生容易跳过定义域关于原点对称这一前提。",
+        "代数判断和图像对称判断不能相互解释。",
+        "奇函数图像关于原点对称与偶函数图像关于 y 轴对称容易混淆。"
+      ],
+      "digitalEntryPoints": [
+        {
+          "type": "diagnosis",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B1-C05-L03-D01",
+          "title": "奇偶性前提与对称误区诊断",
+          "cognitive_action": "比较",
+          "note": "即时反馈定义域不对称、只看半边图像、轴对称/中心对称混淆等错因；不把定义背诵做成动画。"
+        }
+      ],
+      "diagnosisFocus": [
+        "能否先检查定义域是否关于原点对称。",
+        "能否用 f(-x) 与 f(x) 的关系解释图像对称。"
+      ],
+      "coreCompetencies": [
+        "逻辑推理",
+        "直观想象"
+      ],
+      "resources": [
+        {
+          "id": "SH-HS-MATH-HJ-B1-C05-L03-D01",
+          "resourceType": "diagnosis",
+          "title": "奇偶性前提与对称误区诊断",
+          "cognitiveAction": "比较",
+          "note": "即时反馈定义域不对称、只看半边图像、轴对称/中心对称混淆等错因；不把定义背诵做成动画。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        }
+      ]
+    },
+    "SH-HS-MATH-HJ-B1-C05-L04": {
+      "id": "SH-HS-MATH-HJ-B1-C05-L04",
+      "textbookRef": "5.2.2",
+      "title": "函数的单调性",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C05",
+        "number": 5,
+        "title": "函数的概念、性质及应用"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C05-S02",
+        "textbookLabel": "5.2",
+        "title": "函数的基本性质"
+      },
+      "coreKnowledge": [
+        "用区间上任意两个自变量的函数值比较定义单调性",
+        "从图像变化趋势和代数不等式双重判断单调区间",
+        "区分局部观察、单调区间和整个定义域上的单调性"
+      ],
+      "prerequisites": [
+        "函数图像",
+        "不等式性质",
+        "函数的奇偶性和对称直觉"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C05-L05",
+        "SH-HS-MATH-HJ-B1-C05-L07",
+        "SH-HS-MATH-HJ-B2-C07-L02"
+      ],
+      "teachingPainPoints": [
+        "学生会用图像口头说上升下降，但难以落到区间和任意取值的定义。",
+        "单调区间端点、开闭区间和断点处理容易混乱。",
+        "把多个分段区间误合并为全定义域单调。"
+      ],
+      "digitalEntryPoints": [
+        {
+          "type": "applet",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B1-C05-L04-A01",
+          "title": "单调性区间比较器",
+          "cognitive_action": "比较",
+          "note": "拖动同一区间内两个自变量点，同步比较 x1、x2 与 f(x1)、f(x2)，突出单调性定义中的全称比较。"
+        }
+      ],
+      "diagnosisFocus": [
+        "能否把单调性限定在指定区间上。",
+        "能否说明为什么不能跨断点或跨谷点合并区间。"
+      ],
+      "coreCompetencies": [
+        "逻辑推理",
+        "直观想象",
+        "数学运算"
+      ],
+      "resources": [
+        {
+          "id": "SH-HS-MATH-HJ-B1-C05-L04-A01",
+          "resourceType": "applet",
+          "title": "单调性区间比较器",
+          "cognitiveAction": "比较",
+          "note": "拖动同一区间内两个自变量点，同步比较 x1、x2 与 f(x1)、f(x2)，突出单调性定义中的全称比较。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        }
+      ]
+    },
+    "SH-HS-MATH-HJ-B1-C05-L05": {
+      "id": "SH-HS-MATH-HJ-B1-C05-L05",
+      "textbookRef": "5.2.3",
+      "title": "函数的最值",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C05",
+        "number": 5,
+        "title": "函数的概念、性质及应用"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C05-S02",
+        "textbookLabel": "5.2",
+        "title": "函数的基本性质"
+      },
+      "coreKnowledge": [
+        "理解最大值、最小值和最值点的区别",
+        "结合函数图像、单调性和定义域判断最值",
+        "处理端点、顶点和区间限制对最值的影响"
+      ],
+      "prerequisites": [
+        "函数的单调性",
+        "二次函数图像与顶点",
+        "定义域和值域"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C05-L06",
+        "SH-HS-MATH-HJ-B2-C07-L02",
+        "SH-HS-MATH-HJ-XB1-DERIV-K01"
+      ],
+      "teachingPainPoints": [
+        "学生容易只找顶点，忽略定义域端点。",
+        "最大值、最小值、极值和最值点的语言容易混用。",
+        "闭区间、开区间和离散定义域中的最值存在性容易混淆。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否区分最值和取得最值的自变量。",
+        "能否根据定义域判断端点是否参与比较。"
+      ],
+      "coreCompetencies": [
+        "逻辑推理",
+        "数学运算",
+        "直观想象"
+      ],
+      "resources": []
+    },
+    "SH-HS-MATH-HJ-B1-C05-L06": {
+      "id": "SH-HS-MATH-HJ-B1-C05-L06",
+      "textbookRef": "5.3.1",
+      "title": "函数关系的建立",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C05",
+        "number": 5,
+        "title": "函数的概念、性质及应用"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C05-S03",
+        "textbookLabel": "5.3",
+        "title": "函数的应用"
+      },
+      "coreKnowledge": [
+        "从实际问题中选择变量并建立函数关系",
+        "根据问题实际意义确定定义域",
+        "用函数表达式、图像或分段关系描述情境"
+      ],
+      "prerequisites": [
+        "函数的表示方法",
+        "函数的最值",
+        "一次函数、二次函数和分段函数经验"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C05-L07",
+        "SH-HS-MATH-HJ-MODEL-K01"
+      ],
+      "teachingPainPoints": [
+        "学生面对文字情境时不知道先选哪两个变量。",
+        "建立表达式后常漏掉实际定义域。",
+        "分段计费、几何面积等问题中，条件边界容易遗漏。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否说明自变量、函数值和定义域的实际含义。",
+        "能否把文字条件转成分段或约束条件。"
+      ],
+      "coreCompetencies": [
+        "数学建模",
+        "数学抽象",
+        "数学运算"
+      ],
+      "resources": []
+    },
+    "SH-HS-MATH-HJ-B1-C05-L07": {
+      "id": "SH-HS-MATH-HJ-B1-C05-L07",
+      "textbookRef": "5.3.2",
+      "title": "用函数观点求解方程与不等式",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C05",
+        "number": 5,
+        "title": "函数的概念、性质及应用"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C05-S03",
+        "textbookLabel": "5.3",
+        "title": "函数的应用"
+      },
+      "coreKnowledge": [
+        "把方程解转化为函数零点",
+        "把不等式解集转化为函数图像在坐标轴上方或下方的横坐标范围",
+        "利用函数单调性和零点位置求解简单方程与不等式"
+      ],
+      "prerequisites": [
+        "函数的单调性",
+        "函数的图像表示",
+        "一元二次方程和不等式"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C05-L08",
+        "SH-HS-MATH-HJ-XB1-DERIV-K01"
+      ],
+      "teachingPainPoints": [
+        "学生习惯静态代数求解，不能把解看成函数图像和坐标轴的关系。",
+        "零点、方程根和图像交点横坐标之间的语言转换容易断裂。",
+        "不等式解集常忽略函数定义域限制。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否把方程根、零点和图像交点联系起来。",
+        "能否用图像符号区域解释不等式解集。"
+      ],
+      "coreCompetencies": [
+        "逻辑推理",
+        "直观想象",
+        "数学运算"
+      ],
+      "resources": []
+    },
+    "SH-HS-MATH-HJ-B1-C05-L08": {
+      "id": "SH-HS-MATH-HJ-B1-C05-L08",
+      "textbookRef": "5.3.3",
+      "title": "用二分法求函数的零点",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C05",
+        "number": 5,
+        "title": "函数的概念、性质及应用"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C05-S03",
+        "textbookLabel": "5.3",
+        "title": "函数的应用"
+      },
+      "coreKnowledge": [
+        "用函数连续图像和端点函数值异号判断区间内存在零点",
+        "通过反复折半区间逼近函数零点",
+        "理解二分法作为明确步骤可重复执行的算法"
+      ],
+      "prerequisites": [
+        "函数零点",
+        "函数图像的连续曲线直觉",
+        "区间和近似值"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-XB1-DERIV-K01",
+        "SH-HS-MATH-HJ-MODEL-K01"
+      ],
+      "teachingPainPoints": [
+        "学生容易把端点异号误认为唯一零点。",
+        "区间折半后选择哪一半依赖函数值符号，步骤关系不易在静态板书中保持清晰。",
+        "近似精度、区间长度和最终近似值之间的关系容易混淆。"
+      ],
+      "digitalEntryPoints": [
+        {
+          "type": "applet",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B1-C05-L08-A01",
+          "title": "二分法零点逼近实验室",
+          "cognitive_action": "逼近",
+          "note": "动态展示端点符号、中点、保留区间和区间长度递减，帮助学生理解算法步骤和近似精度。"
+        }
+      ],
+      "diagnosisFocus": [
+        "能否判断哪一个子区间继续包含零点。",
+        "能否说明二分法只能保证存在零点而非必然唯一。"
+      ],
+      "coreCompetencies": [
+        "数学抽象",
+        "逻辑推理",
+        "数学建模"
+      ],
+      "resources": [
+        {
+          "id": "SH-HS-MATH-HJ-B1-C05-L08-A01",
+          "resourceType": "applet",
+          "title": "二分法零点逼近实验室",
+          "cognitiveAction": "逼近",
+          "note": "动态展示端点符号、中点、保留区间和区间长度递减，帮助学生理解算法步骤和近似精度。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        }
+      ]
+    },
+    "SH-HS-MATH-HJ-B1-C05-L09": {
+      "id": "SH-HS-MATH-HJ-B1-C05-L09",
+      "textbookRef": "5.4.1",
+      "title": "反函数的概念",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C05",
+        "number": 5,
+        "title": "函数的概念、性质及应用"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C05-S04",
+        "textbookLabel": "*5.4",
+        "title": "反函数"
+      },
+      "coreKnowledge": [
+        "理解互为反函数时自变量和函数值的角色互换",
+        "判断函数是否存在反函数",
+        "确定反函数的定义域和值域"
+      ],
+      "prerequisites": [
+        "函数的定义域和值域",
+        "严格单调函数",
+        "指数函数和对数函数互为反函数的经验"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C05-L10",
+        "SH-HS-MATH-HJ-B1-C04-K02"
+      ],
+      "teachingPainPoints": [
+        "学生容易只做代数换元，不检查原函数是否一一对应。",
+        "反函数的定义域和值域与原函数互换常被机械记忆。",
+        "星号内容在实际教学中的要求深度不明确。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否判断函数是否存在反函数。",
+        "能否正确交换定义域和值域。"
+      ],
+      "coreCompetencies": [
+        "数学抽象",
+        "逻辑推理"
+      ],
+      "resources": []
+    },
+    "SH-HS-MATH-HJ-B1-C05-L10": {
+      "id": "SH-HS-MATH-HJ-B1-C05-L10",
+      "textbookRef": "5.4.2",
+      "title": "反函数的图像",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C05",
+        "number": 5,
+        "title": "函数的概念、性质及应用"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C05-S04",
+        "textbookLabel": "*5.4",
+        "title": "反函数"
+      },
+      "coreKnowledge": [
+        "理解互为反函数的图像关于直线 y = x 对称",
+        "从图像角度解释定义域和值域互换",
+        "联系指数函数和对数函数的图像关系"
+      ],
+      "prerequisites": [
+        "反函数的概念",
+        "函数图像和点关于直线 y = x 的对称",
+        "指数函数和对数函数图像"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B2-C07-K01"
+      ],
+      "teachingPainPoints": [
+        "学生容易把关于 y = x 对称误画成关于 x 轴或 y 轴对称。",
+        "从图像读取反函数定义域和值域时容易漏掉原函数限制。",
+        "星号内容是否进入正式资源生产仍需终核。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否判断反函数图像的对称关系。",
+        "能否从原函数图像读出反函数的定义域和值域。"
+      ],
+      "coreCompetencies": [
+        "直观想象",
+        "数学抽象"
+      ],
+      "resources": []
+    },
     "SH-HS-MATH-HJ-B2-C07-L01": {
       "id": "SH-HS-MATH-HJ-B2-C07-L01",
       "textbookRef": "7.1.1",
@@ -15972,11 +17294,11 @@
   },
   "summary": {
     "volumeCount": 7,
-    "chapterCount": 2,
-    "lessonCount": 17,
+    "chapterCount": 3,
+    "lessonCount": 27,
     "implementedAppletCount": 14,
     "implementedManimCount": 4,
     "implementedDiagnosisCount": 7,
-    "plannedResourceCount": 0
+    "plannedResourceCount": 4
   }
 }

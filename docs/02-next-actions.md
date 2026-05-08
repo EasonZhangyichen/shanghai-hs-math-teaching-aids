@@ -31,6 +31,12 @@
 - [ ] 人工终核必修第二册第 8 章的课时划分、课时数和标题表述。
 - [ ] 用纸质教材或已登录 dolearning 左侧目录专项确认必修第二册第 8 章 8.3“向量的坐标表示”应按三课时还是四小节进入课程图谱。
 - [ ] 在 8.3 目录终核后，根据 `docs/source-audits/b2-c08-digital-necessity-review.md` 决定是否恢复或重排暂缓的 8.3 资源候选。
+- [x] 完成必修第一册函数主线首轮来源核对，新增 `docs/source-audits/b1-functions-source-audit.md`，确认第 3、4、5 章结构来源和 dolearning/上海数字教学平台无法直接确认的限制。
+- [x] 只将必修第一册第 5 章“函数的概念、性质及应用”补为 `draft` 入口节点，并保留 4 个数字化必要性明确的 planned 候选；第 3、4 章暂不展开进 YAML。
+- [ ] 用纸质教材、教师用书或已登录 dolearning/上海数字教学系统终核必修第一册第 5 章课时数、课时边界和星号 `*5.4 反函数` 的实际教学处理方式。
+- [ ] 为必修第一册第 3 章“幂、指数与对数”开启独立来源核对任务，只判断运算先修和少量诊断必要性，不直接制作资源。
+- [ ] 为必修第一册第 4 章“幂函数、指数函数与对数函数”开启独立来源核对和数字化必要性筛选任务，重点核对参数变化、图像性质、指数/对数互逆和增长模型。
+- [ ] 总控复核必修第一册第 5 章新增的 4 个 planned 候选后，再决定是否小批量 scaffold；未终核前不要制作完整资源包。
 - [ ] 展开第 7 章前置章节和第 9 章复数等承接节点。
 
 ## P2：课件规范
@@ -97,7 +103,7 @@
 
 ## P5：资源工厂
 
-- [x] 生成 `content/production/resource-backlog.json`，覆盖必修第二册第 7 章和第 8 章共 25 个资源工作单元；当前 25 个已实现、0 个待创建。
+- [x] 生成 `content/production/resource-backlog.json`，当前覆盖 29 个资源工作单元：25 个已实现，4 个必修第一册第 5 章函数主线候选仍为 planned，未 scaffold。
 - [x] 为每个 backlog item 自动生成推荐分支、下一步动作和新对话 `threadPrompt`。
 - [x] 将 `npm run generate:backlog` 接入 `npm run verify`。
 - [x] 为 Diagnosis planned item 增加首版资源包 scaffold 命令，支持 dry-run、按数量或 ID 生成并避免覆盖已有资源包。
@@ -109,6 +115,7 @@
 - [ ] 对 `SH-HS-MATH-HJ-B2-C08-L04-M01` 开启单资源精修对话，补齐真实 Manim 场景、数学符号、动画节奏、预览渲染和审校记录。
 - [ ] 对 `SH-HS-MATH-HJ-B2-C08-L01-A01`、`SH-HS-MATH-HJ-B2-C08-L02-A01`、`SH-HS-MATH-HJ-B2-C08-L03-A01`、`SH-HS-MATH-HJ-B2-C08-L04-A01`、`SH-HS-MATH-HJ-B2-C08-L05-A01`、`SH-HS-MATH-HJ-B2-C08-L10-A01` 分别开启单资源精修对话，补齐真实数学模型、交互状态和课堂脚本。
 - [ ] 对 `SH-HS-MATH-HJ-B2-C08-L02-D01`、`SH-HS-MATH-HJ-B2-C08-L05-D01`、`SH-HS-MATH-HJ-B2-C08-L10-D01` 分别开启单资源精修对话，补齐真实题组、错因标签、评分反馈和教师说明。
+- [ ] 在必修第一册第 5 章来源终核后，再按总控决定处理 `SH-HS-MATH-HJ-B1-C05-L02-A01`、`SH-HS-MATH-HJ-B1-C05-L03-D01`、`SH-HS-MATH-HJ-B1-C05-L04-A01`、`SH-HS-MATH-HJ-B1-C05-L08-A01`；当前不得直接 scaffold 或制作完整资源包。
 - [ ] 为 backlog item 增加更细的审核状态和课堂试用状态聚合。
 - [ ] 增加 backlog 批量生产计划导出能力：按章节、类型、优先级和数量输出同一分支上的资源清单与 threadPrompt。
 - [ ] 为已实现资源增加审校工单维度，将 `math_review`、`classroom_trial`、`browser_review` 与资源状态分开聚合。
