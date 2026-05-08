@@ -41,29 +41,29 @@ pedagogy:
     - "直观想象"
     - "数学抽象"
     - "数学建模"
-  classroom_use: "新授课导入 60 到 90 秒播放一次，随后暂停到 Applet 让学生拖动验证；也可在学生混淆横坐标来源时回放。"
+  classroom_use: "新授课导入约 44 秒播放一次，在 Q = (x, sin x) 出现后可暂停追问横坐标来源，随后切到 Applet 让学生拖动验证；也可在学生混淆横坐标来源时回放。"
 
 mathematical_scope:
   function: "y = sin x"
   independent_variable: "角 x 的弧度量"
   dependent_variable: "单位圆动点 P 的纵坐标"
-  theta_range: "0 <= x <= 2pi，结尾提示 x 与 x + 2pi 的终边重合"
+  theta_range: "0 ≤ x ≤ 2π，结尾提示 x 与 x + 2π 的终边重合"
   key_angles:
     - x: "0"
       sin_x: "0"
       graph_point: "(0, 0)"
-    - x: "pi/2"
+    - x: "π/2"
       sin_x: "1"
-      graph_point: "(pi/2, 1)"
-    - x: "pi"
+      graph_point: "(π/2, 1)"
+    - x: "π"
       sin_x: "0"
-      graph_point: "(pi, 0)"
-    - x: "3pi/2"
+      graph_point: "(π, 0)"
+    - x: "3π/2"
       sin_x: "-1"
-      graph_point: "(3pi/2, -1)"
-    - x: "2pi"
+      graph_point: "(3π/2, -1)"
+    - x: "2π"
       sin_x: "0"
-      graph_point: "(2pi, 0)"
+      graph_point: "(2π, 0)"
   out_of_scope:
     - "正弦函数单调区间的完整归纳"
     - "正弦函数奇偶性和对称性的系统证明"
@@ -79,10 +79,10 @@ representations:
   - id: "sine_trace"
     role: "保留 Q 的运动轨迹，形成正弦曲线。"
   - id: "period_hint"
-    role: "用终边重合提示 2pi 周期。"
+    role: "用终边重合提示 2π 周期。"
 
 narrative_design:
-  target_duration_seconds: 75
+  target_duration_seconds: 44
   beats:
     - id: "recall_unit_circle"
       title: "回到单位圆"
@@ -90,35 +90,36 @@ narrative_design:
       visuals:
         - "单位圆、坐标轴、角 x、动点 P。"
         - "P = (cos x, sin x) 标签。"
-      estimated_seconds: 12
+      estimated_seconds: 9
     - id: "extract_height"
       title: "抽取纵坐标"
       purpose: "把 P 的高度用投影线单独抽出来，建立 sin x 的数值来源。"
       visuals:
-        - "从 P 到 y 轴或水平参考线的投影。"
-        - "sin x 高度随旋转上升、下降。"
-      estimated_seconds: 14
+        - "从 P 到 y 轴的水平虚线，以及从原点到高度点的黄色 sin x 段。"
+        - "sin x 高度随旋转上升、下降，并在 π/2、π、3π/2 附近短暂停顿。"
+      estimated_seconds: 8
     - id: "place_graph_point"
       title: "放到函数图像"
       purpose: "把同一个 x 放在右侧横轴上，形成 Q = (x, sin x)。"
       visuals:
         - "右侧坐标系。"
         - "从单位圆高度连接到图像点 Q。"
-      estimated_seconds: 16
+        - "规则面板说明输入是角 x 的弧度量，输出是 P 的纵坐标 sin x。"
+      estimated_seconds: 8
     - id: "trace_one_period"
       title: "描出一周轨迹"
-      purpose: "让 Q 的连续运动留下 0 到 2pi 的正弦曲线。"
+      purpose: "让 Q 的连续运动留下 0 到 2π 的正弦曲线。"
       visuals:
         - "Q 的轨迹逐渐生成。"
-        - "关键角处短暂停顿。"
-      estimated_seconds: 25
+        - "关键点 (0, 0)、(π/2, 1)、(π, 0)、(3π/2, -1)、(2π, 0) 逐个亮起。"
+      estimated_seconds: 15
     - id: "hint_periodicity"
       title: "提示周期重复"
       purpose: "用终边重合解释曲线为什么继续重复，而不是只展示结论。"
       visuals:
-        - "x 与 x + 2pi 终边重合。"
+        - "x 与 x + 2π 终边重合。"
         - "同一高度对应相同正弦值。"
-      estimated_seconds: 8
+      estimated_seconds: 5
   pause_points:
     - after_beat: "place_graph_point"
       teacher_prompt: "Q 的横坐标为什么写成 x，而不是单位圆上 P 的横坐标 cos x？"
@@ -149,8 +150,8 @@ render_plan:
     mp4: "uvx manim -r 1920,1080 --fps 30 --format=mp4 --media_dir dist scene.py SineOriginScene"
     webm: "ffmpeg -y -i dist/final/SH-HS-MATH-HJ-B2-C07-L01-M01.mp4 -c:v libvpx-vp9 -b:v 0 -crf 32 -an dist/final/SH-HS-MATH-HJ-B2-C07-L01-M01.webm"
   notes:
-    - "已完成首版 1080p30 渲染，当前视频可用于平台预览和内部教研复核。"
-    - "进入 stable 前仍需教师确认分镜节奏、暂停点和课堂讲解口径。"
+    - "2026-05-08 审校后已补齐 π 关键角标签、sin x 高度段、Q = (x, sin x) 规则面板和主体画面 poster，并重新渲染 1080p30，最终 mp4 时长 43.6 秒。"
+    - "进入 stable 前仍需教师完整观看确认暂停节奏和教室大屏字体显示。"
 
 files:
   readme: "README.md"
@@ -170,4 +171,4 @@ platform_card:
 
 compliance:
   copyright_note: "本资源包为原创 Manim 场景脚本与教学分镜，不复制教材正文、官方课件、教案或商业平台资源。"
-  review_status: "self_checked_draft"
+  review_status: "math_review_passed"
