@@ -368,7 +368,7 @@
       <header>
         <div>
           <h1>单位圆到余弦曲线</h1>
-          <p class="subtitle">拖动单位圆动点，观察 P 的横坐标如何成为 Q = (θ, cos θ)。</p>
+          <p class="subtitle">拖动单位圆动点，观察 P = (cos x, sin x) 的横坐标如何成为 Q = (x, cos x)。</p>
         </div>
         <div class="badge-row" aria-label="资源信息">
           <span class="badge">7.2.1 余弦函数的图像</span>
@@ -402,7 +402,7 @@
       <section class="controls">
         <div class="panel control-panel">
           <div class="slider-row">
-            <label for="thetaSlider">θ</label>
+            <label for="thetaSlider">x</label>
             <input
               id="thetaSlider"
               type="range"
@@ -423,7 +423,7 @@
             <button id="periodButton" type="button">周期延拓</button>
           </div>
           <div class="prompt" id="teachingPrompt">
-            先让学生说清楚：cos θ 是单位圆动点 P 的横坐标，再把它放到函数图像的纵坐标位置。
+            先让学生说清楚：cos x 是单位圆动点 P 的横坐标，再把它放到函数图像的纵坐标位置。
           </div>
         </div>
 
@@ -434,16 +434,16 @@
               <div class="status-value" id="thetaStatus">0</div>
             </div>
             <div class="status-card">
-              <div class="status-label">cos θ</div>
+              <div class="status-label">cos x</div>
               <div class="status-value" id="cosStatus">1.000</div>
             </div>
             <div class="status-card">
-              <div class="status-label">sin θ 参照</div>
+              <div class="status-label">sin x 参照</div>
               <div class="status-value" id="sinStatus">0.000</div>
             </div>
             <div class="status-card">
               <div class="status-label">关键点判断</div>
-              <div class="status-value" id="checkpointStatus">θ = 0</div>
+              <div class="status-value" id="checkpointStatus">x = 0</div>
             </div>
           </div>
         </div>
@@ -532,16 +532,20 @@
           return node;
         }
 
-        function normalizeTheta(theta) {
+        function normalizeAngle(theta, preserveEndpoint = false) {
           const normalized = theta % TWO_PI;
-          return normalized < 0 ? normalized + TWO_PI : normalized;
+          const wrapped = normalized < 0 ? normalized + TWO_PI : normalized;
+          if (preserveEndpoint && theta > 0 && Math.abs(wrapped) < 0.000001) {
+            return TWO_PI;
+          }
+          return wrapped;
         }
 
         function round(value, digits = 3) {
           return Number.parseFloat(value.toFixed(digits)).toFixed(digits);
         }
 
-        function formatTheta(theta) {
+        function formatAngle(theta) {
           const candidates = [
             { value: 0, label: "0" },
             { value: Math.PI / 2, label: "π/2" },
@@ -615,7 +619,7 @@
             d: describeAngleArc(state.theta),
             class: "angle-arc",
           });
-          add(circleSvg, "text", { x: circle.cx + 42, y: circle.cy - 18, class: "formula-label", fill: "#7c3aed" }, "θ");
+          add(circleSvg, "text", { x: circle.cx + 42, y: circle.cy - 18, class: "formula-label", fill: "#7c3aed" }, "x");
 
           if (state.projectionVisible) {
             add(circleSvg, "line", {
@@ -637,7 +641,7 @@
               y: circle.cy + 42,
               class: "formula-label",
               fill: "#155e75",
-            }, "cos θ");
+            }, "cos x");
           }
 
           add(circleSvg, "line", {
@@ -669,26 +673,28 @@
               y: sineFoot.y - 8,
               class: "small-label",
               fill: "#9a3412",
-            }, "sin θ 参照");
+            }, "sin x 参照");
           }
 
           if (state.keyPointsVisible) {
             for (const key of keyAngles.slice(0, 4)) {
               const keyPoint = unitToCircle({ x: Math.cos(key.value), y: Math.sin(key.value) });
               add(circleSvg, "circle", { cx: keyPoint.x, cy: keyPoint.y, r: 4, fill: "#ffffff", stroke: "#155e75", "stroke-width": 1.8 });
-              add(circleSvg, "text", { x: keyPoint.x + 7, y: keyPoint.y - 7, class: "small-label" }, key.label);
+              const label = key.label === "0" ? "0, 2π" : key.label;
+              add(circleSvg, "text", { x: keyPoint.x + 7, y: keyPoint.y - 7, class: "small-label" }, label);
             }
           }
         }
 
         function describeAngleArc(theta) {
           const radius = 42;
+          const arcAngle = theta >= TWO_PI - 0.001 ? TWO_PI - 0.001 : theta;
           const start = { x: circle.cx + radius, y: circle.cy };
           const end = {
-            x: circle.cx + radius * Math.cos(theta),
-            y: circle.cy - radius * Math.sin(theta),
+            x: circle.cx + radius * Math.cos(arcAngle),
+            y: circle.cy - radius * Math.sin(arcAngle),
           };
-          const largeArc = theta > Math.PI ? 1 : 0;
+          const largeArc = arcAngle > Math.PI ? 1 : 0;
           return `M ${start.x} ${start.y} A ${radius} ${radius} 0 ${largeArc} 0 ${end.x} ${end.y}`;
         }
 
@@ -813,7 +819,7 @@
             y: graphY(y) - 12,
             class: "formula-label",
             fill: muted ? "#166534" : "#155e75",
-          }, muted ? "θ ± 2π" : "Q");
+          }, muted ? "x ± 2π" : "Q");
 
           if (state.sineReferenceVisible && !muted) {
             add(graphSvg, "circle", {
@@ -835,14 +841,14 @@
           const theta = state.theta;
           const cos = Math.cos(theta);
           const sin = Math.sin(theta);
-          const formattedTheta = formatTheta(theta);
+          const formattedAngle = formatAngle(theta);
           const checkpoint = currentCheckpoint(theta);
 
           thetaSlider.value = String(theta);
-          thetaReadout.textContent = formattedTheta;
+          thetaReadout.textContent = formattedAngle;
           pointReadout.textContent = `P = (${round(cos)}, ${round(sin)})`;
-          graphReadout.textContent = `Q = (${formattedTheta}, ${round(cos)})`;
-          thetaStatus.textContent = formattedTheta;
+          graphReadout.textContent = `Q = (${formattedAngle}, ${round(cos)})`;
+          thetaStatus.textContent = formattedAngle;
           cosStatus.textContent = round(cos);
           sinStatus.textContent = round(sin);
           checkpointStatus.textContent = checkpoint.label;
@@ -866,15 +872,15 @@
           }
 
           const prompts = {
-            "0": "θ = 0 时，P 在 (1, 0)，所以余弦图像从最大值 1 开始。",
-            "π/2": "θ = π/2 时，P 的横坐标为 0，余弦图像过 x 轴。",
-            "π": "θ = π 时，P 在 (-1, 0)，余弦值到达 -1。",
-            "3π/2": "θ = 3π/2 时，P 的横坐标回到 0，余弦图像再次过 x 轴。",
-            "2π": "θ = 2π 时，P 回到 (1, 0)，解释一个周期后余弦值重复。",
+            "0": "x = 0 时，P 在 (1, 0)，所以余弦图像从最大值 1 开始。",
+            "π/2": "x = π/2 时，P 的横坐标为 0，余弦图像过 x 轴。",
+            "π": "x = π 时，P 在 (-1, 0)，余弦值到达 -1。",
+            "3π/2": "x = 3π/2 时，P 的横坐标回到 0，余弦图像再次过 x 轴。",
+            "2π": "x = 2π 时，P 回到 (1, 0)，解释一个周期后余弦值重复。",
           };
 
           return {
-            label: `θ = ${match.label}`,
+            label: `x = ${match.label}`,
             prompt: prompts[match.label],
           };
         }
@@ -928,7 +934,7 @@
 
         function maybeEmitCheckpoint() {
           const checkpoint = currentCheckpoint(state.theta);
-          if (!checkpoint.label.startsWith("θ = ")) {
+          if (!checkpoint.label.startsWith("x = ")) {
             lastCheckpoint = "";
             return;
           }
@@ -942,8 +948,8 @@
           });
         }
 
-        function setTheta(theta, reason = "manual") {
-          state.theta = normalizeTheta(theta);
+        function setAngle(theta, reason = "manual") {
+          state.theta = normalizeAngle(theta, true);
           render(true);
           emit("interaction", {
             event: "theta_changed",
@@ -984,7 +990,7 @@
           if (!state.playing) return;
           const elapsed = (time - lastTime) / 1000;
           lastTime = time;
-          state.theta = normalizeTheta(state.theta + elapsed * 0.55);
+          state.theta = normalizeAngle(state.theta + elapsed * 0.55);
           render(true);
           animationFrame = requestAnimationFrame(tick);
         }
@@ -992,25 +998,25 @@
         function attachCircleDrag() {
           let dragging = false;
 
-          function pointerToTheta(event) {
+          function pointerToAngle(event) {
             const rect = circleSvg.getBoundingClientRect();
             const x = ((event.clientX - rect.left) / rect.width) * 420;
             const y = ((event.clientY - rect.top) / rect.height) * 360;
             const ux = (x - circle.cx) / circle.r;
             const uy = -(y - circle.cy) / circle.r;
-            return normalizeTheta(Math.atan2(uy, ux));
+            return normalizeAngle(Math.atan2(uy, ux));
           }
 
           circleSvg.addEventListener("pointerdown", (event) => {
             dragging = true;
             circleSvg.setPointerCapture(event.pointerId);
             stopPlayback();
-            setTheta(pointerToTheta(event), "drag");
+            setAngle(pointerToAngle(event), "drag");
           });
 
           circleSvg.addEventListener("pointermove", (event) => {
             if (!dragging) return;
-            setTheta(pointerToTheta(event), "drag");
+            setAngle(pointerToAngle(event), "drag");
           });
 
           circleSvg.addEventListener("pointerup", (event) => {
@@ -1025,7 +1031,7 @@
 
         thetaSlider.addEventListener("input", (event) => {
           stopPlayback();
-          setTheta(Number(event.target.value), "slider");
+          setAngle(Number(event.target.value), "slider");
         });
 
         playButton.addEventListener("click", () => {
@@ -1056,7 +1062,7 @@
           if (message.type !== "player:init") return;
           const nextState = message.payload?.state ?? {};
           if (Number.isFinite(nextState.theta)) {
-            state.theta = normalizeTheta(nextState.theta);
+            state.theta = normalizeAngle(nextState.theta, true);
           }
           for (const [incoming, local] of [
             ["projection_visible", "projectionVisible"],
