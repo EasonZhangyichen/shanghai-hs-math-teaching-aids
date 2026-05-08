@@ -340,6 +340,24 @@
         stroke-width: 3;
       }
 
+      .period-link {
+        stroke: rgba(190, 18, 60, 0.42);
+        stroke-width: 2;
+        stroke-dasharray: 4 7;
+      }
+
+      .period-copy-dot {
+        fill: #ffffff;
+        stroke: var(--rose);
+        stroke-width: 3;
+      }
+
+      .period-copy-label {
+        fill: var(--rose);
+        font-size: 13px;
+        font-weight: 700;
+      }
+
       .svg-label {
         fill: #1f2933;
         font-size: 17px;
@@ -417,8 +435,8 @@
           <h1>单位圆到正弦曲线</h1>
         </div>
         <div class="state-readout" aria-label="当前数学状态">
-          <span>theta <strong id="theta-readout">0</strong></span>
-          <span>sin theta <strong id="sine-readout">0</strong></span>
+          <span>x <strong id="theta-readout">0</strong></span>
+          <span>sin x <strong id="sine-readout">0</strong></span>
           <span>Q <strong id="pointq-readout">(0, 0)</strong></span>
         </div>
       </header>
@@ -438,14 +456,14 @@
               <line class="axis" x1="100" y1="350" x2="450" y2="350" marker-end="url(#arrow)"></line>
               <line class="axis" x1="275" y1="525" x2="275" y2="175" marker-end="url(#arrow)"></line>
               <circle class="unit-circle" cx="275" cy="350" r="145"></circle>
-              <text class="svg-label muted" x="438" y="374">cos theta</text>
-              <text class="svg-label muted" x="292" y="190">sin theta</text>
+              <text class="svg-label muted" x="438" y="374">cos x</text>
+              <text class="svg-label muted" x="292" y="190">sin x</text>
               <path id="angle-arc" class="angle-arc" d=""></path>
               <line id="angle-ray" class="angle-ray" x1="275" y1="350" x2="420" y2="350"></line>
               <g id="projection-group">
                 <line id="projection-line" class="projection-line" x1="275" y1="350" x2="420" y2="350"></line>
                 <circle id="projection-dot" class="key-dot" cx="275" cy="350" r="6"></circle>
-                <text id="projection-label" class="svg-label muted" x="200" y="344">sin theta</text>
+                <text id="projection-label" class="svg-label muted" x="200" y="344">sin x</text>
               </g>
               <g id="circle-key-layer"></g>
               <circle id="point-p" class="point-p" cx="420" cy="350" r="11"></circle>
@@ -466,8 +484,9 @@
               <g id="graph-point-group">
                 <line id="mapping-line" class="mapping-line" x1="420" y1="350" x2="555" y2="350"></line>
                 <circle id="point-q" class="point-q" cx="555" cy="350" r="10"></circle>
-                <text id="point-q-label" class="svg-label" x="568" y="340">Q(theta, sin theta)</text>
+                <text id="point-q-label" class="svg-label" x="568" y="340">Q(x, sin x)</text>
               </g>
+              <g id="period-copy-layer" class="hidden"></g>
             </g>
           </svg>
         </section>
@@ -482,11 +501,11 @@
           </section>
 
           <section class="panel-section">
-            <h2 class="section-title">theta 控制</h2>
+            <h2 class="section-title">x 控制</h2>
             <label class="slider-wrap">
               <span class="slider-label">
                 <span id="range-start">0</span>
-                <span id="range-end">2pi</span>
+                <span id="range-end">2π</span>
               </span>
               <input id="theta-slider" type="range" min="0" max="6.28318530718" value="0" step="any" />
             </label>
@@ -501,7 +520,7 @@
               <button class="stage-button" type="button" data-stage="4">4</button>
               <button class="stage-button" type="button" data-stage="5">5</button>
             </div>
-            <p id="stage-note" class="panel-note">只显示单位圆、角 theta、动点 P。</p>
+            <p id="stage-note" class="panel-note">只显示单位圆、角 x、动点 P。</p>
           </section>
 
           <section class="panel-section">
@@ -517,8 +536,8 @@
           <section class="panel-section">
             <h2 class="section-title">对应关系</h2>
             <div class="formula-card">
-              <span>P = (cos theta, sin theta)</span>
-              <span>Q = (theta, sin theta)</span>
+              <span>P = (cos x, sin x)</span>
+              <span>Q = (x, sin x)</span>
               <strong>横坐标来自角的弧度量，纵坐标来自单位圆动点。</strong>
             </div>
           </section>
@@ -528,8 +547,8 @@
             <table class="key-table">
               <thead>
                 <tr>
-                  <th>theta</th>
-                  <th>sin theta</th>
+                  <th>x</th>
+                  <th>sin x</th>
                   <th>P</th>
                 </tr>
               </thead>
@@ -554,19 +573,19 @@
       };
 
       const stageNotes = {
-        1: "只显示单位圆、角 theta、动点 P。",
-        2: "显示 P 到纵轴的投影，强调 sin theta 是纵坐标。",
-        3: "显示图像点 Q = (theta, sin theta)。",
-        4: "保留 Q 的轨迹，生成 0 到 2pi 的正弦曲线。",
-        5: "打开周期延拓，比较终边相同角的正弦值。",
+        1: "只显示单位圆、角 x、动点 P。",
+        2: "显示 P 到纵轴的投影，强调 sin x 是纵坐标。",
+        3: "显示图像点 Q = (x, sin x)。",
+        4: "保留 Q 的轨迹，生成 0 到 2π 的正弦曲线。",
+        5: "打开周期延拓，比较 x 与 x + 2π 的同一纵坐标。",
       };
 
       const keyAngles = [
         { theta: 0, label: "0", sineLabel: "0", pointLabel: "(1, 0)" },
-        { theta: HALF_PI, label: "pi/2", sineLabel: "1", pointLabel: "(0, 1)" },
-        { theta: Math.PI, label: "pi", sineLabel: "0", pointLabel: "(-1, 0)" },
-        { theta: Math.PI * 1.5, label: "3pi/2", sineLabel: "-1", pointLabel: "(0, -1)" },
-        { theta: TWO_PI, label: "2pi", sineLabel: "0", pointLabel: "(1, 0)" },
+        { theta: HALF_PI, label: "π/2", sineLabel: "1", pointLabel: "(0, 1)" },
+        { theta: Math.PI, label: "π", sineLabel: "0", pointLabel: "(-1, 0)" },
+        { theta: Math.PI * 1.5, label: "3π/2", sineLabel: "-1", pointLabel: "(0, -1)" },
+        { theta: TWO_PI, label: "2π", sineLabel: "0", pointLabel: "(1, 0)" },
       ];
 
       const state = {
@@ -623,6 +642,7 @@
         pointQLabel: document.querySelector("#point-q-label"),
         circleKeyLayer: document.querySelector("#circle-key-layer"),
         graphKeyLayer: document.querySelector("#graph-key-layer"),
+        periodCopyLayer: document.querySelector("#period-copy-layer"),
       };
 
       initialize();
@@ -926,8 +946,10 @@
         els.pointQ.setAttribute("cy", graphPoint.y);
         els.pointQLabel.setAttribute("x", Math.min(graphPoint.x + 14, 925));
         els.pointQLabel.setAttribute("y", graphPoint.y - 12);
+        els.pointQLabel.textContent = "Q(x, sin x)";
 
         els.traceCurve.setAttribute("d", state.traceVisible ? sinePath(range().min, state.theta) : "");
+        renderPeriodCopies(sine);
         els.circleKeyLayer.classList.toggle("hidden", !state.keyPointsVisible);
         els.graphKeyLayer.classList.toggle("hidden", !state.keyPointsVisible);
         els.keyTableSection.classList.toggle("hidden", !state.keyPointsVisible);
@@ -990,6 +1012,49 @@
 
         els.circleKeyLayer.innerHTML = circleMarkers;
         els.graphKeyLayer.innerHTML = graphMarkers.join("");
+      }
+
+      function renderPeriodCopies(sine) {
+        if (!state.periodExtension) {
+          els.periodCopyLayer.innerHTML = "";
+          els.periodCopyLayer.classList.add("hidden");
+          return;
+        }
+
+        const bounds = range();
+        const base = normalizeTheta(state.theta);
+        const copies = [];
+        for (let k = -2; k <= 2; k += 1) {
+          const theta = base + k * TWO_PI;
+          if (theta >= bounds.min - 0.0001 && theta <= bounds.max + 0.0001) {
+            copies.push({ theta, k, point: graphToScreen(theta, sine) });
+          }
+        }
+
+        if (copies.length < 2) {
+          els.periodCopyLayer.innerHTML = "";
+          els.periodCopyLayer.classList.add("hidden");
+          return;
+        }
+
+        const sorted = copies.sort((a, b) => a.theta - b.theta);
+        const y = sorted[0].point.y;
+        const start = sorted[0].point.x;
+        const end = sorted[sorted.length - 1].point.x;
+        const dots = sorted
+          .map(({ point, k }) => {
+            const label = k === 0 ? "x" : `x ${k > 0 ? "+" : "-"} ${Math.abs(k) * 2}π`;
+            const labelX = Math.max(560, Math.min(point.x - 24, 1035));
+            const labelY = Math.max(226, Math.min(point.y + 25, 492));
+            return `<circle class="period-copy-dot" cx="${point.x}" cy="${point.y}" r="7"></circle>
+              <text class="period-copy-label" x="${labelX}" y="${labelY}">${label}</text>`;
+          })
+          .join("");
+
+        els.periodCopyLayer.innerHTML = `<line class="period-link" x1="${start}" y1="${y}" x2="${end}" y2="${y}"></line>
+          ${dots}
+          <text class="svg-label muted" x="672" y="196">sin(x + 2π) = sin x：同终边 → 同一点 → 同一纵坐标</text>`;
+        els.periodCopyLayer.classList.remove("hidden");
       }
 
       function renderKeyTable() {
@@ -1110,15 +1175,15 @@
         const sign = rounded < 0 ? "-" : "";
         const abs = Math.abs(rounded);
         if (abs === 1) {
-          return `${sign}pi/2`;
+          return `${sign}π/2`;
         }
         if (abs === 2) {
-          return `${sign}pi`;
+          return `${sign}π`;
         }
         if (abs % 2 === 0) {
-          return `${sign}${abs / 2}pi`;
+          return `${sign}${abs / 2}π`;
         }
-        return `${sign}${abs}pi/2`;
+        return `${sign}${abs}π/2`;
       }
 
       function currentKeyAngle() {
