@@ -12,24 +12,28 @@ test("loads the curriculum tree for the teacher workspace", async () => {
   const workspace = await loadTeacherWorkspace({ rootDir: repoRoot });
 
   assert.equal(workspace.project.name, "沪教版高中数学数字教具云平台");
-  assert.equal(workspace.summary.lessonCount, 54);
+  assert.equal(workspace.summary.lessonCount, 70);
   assert.equal(workspace.summary.implementedAppletCount, 14);
   assert.equal(workspace.summary.implementedManimCount, 4);
   assert.equal(workspace.summary.implementedDiagnosisCount, 7);
-  assert.equal(workspace.summary.plannedResourceCount, 16);
+  assert.equal(workspace.summary.plannedResourceCount, 19);
 
   const b1 = workspace.tree.volumes.find((volume) => volume.id === "B1");
   assert.ok(b1, "B1 volume should be present");
-  assert.equal(b1.chapters[0].id, "SH-HS-MATH-HJ-B1-C03");
-  assert.equal(b1.chapters[1].id, "SH-HS-MATH-HJ-B1-C04");
-  assert.equal(b1.chapters[2].id, "SH-HS-MATH-HJ-B1-C05");
+  assert.equal(b1.chapters[0].id, "SH-HS-MATH-HJ-B1-C01");
+  assert.equal(b1.chapters[1].id, "SH-HS-MATH-HJ-B1-C02");
+  assert.equal(b1.chapters[2].id, "SH-HS-MATH-HJ-B1-C03");
+  assert.equal(b1.chapters[3].id, "SH-HS-MATH-HJ-B1-C04");
+  assert.equal(b1.chapters[4].id, "SH-HS-MATH-HJ-B1-C05");
   assert.equal(b1.chapters[0].status, "draft");
   assert.equal(b1.chapters[1].verification.needs_manual_textbook_check, true);
   assert.equal(b1.chapters[2].verification.needs_manual_textbook_check, true);
-  assert.equal(b1.chapters[0].sections[0].lessons[0].id, "SH-HS-MATH-HJ-B1-C03-L01");
-  assert.equal(b1.chapters[1].sections[2].lessons[1].id, "SH-HS-MATH-HJ-B1-C04-L06");
-  assert.equal(b1.chapters[2].sections[0].lessons[0].id, "SH-HS-MATH-HJ-B1-C05-L01");
-  assert.equal(b1.chapters[2].sections[2].lessons[2].id, "SH-HS-MATH-HJ-B1-C05-L08");
+  assert.equal(b1.chapters[0].sections[0].lessons[0].id, "SH-HS-MATH-HJ-B1-C01-L01");
+  assert.equal(b1.chapters[1].sections[2].lessons[0].id, "SH-HS-MATH-HJ-B1-C02-L08");
+  assert.equal(b1.chapters[2].sections[0].lessons[0].id, "SH-HS-MATH-HJ-B1-C03-L01");
+  assert.equal(b1.chapters[3].sections[2].lessons[1].id, "SH-HS-MATH-HJ-B1-C04-L06");
+  assert.equal(b1.chapters[4].sections[0].lessons[0].id, "SH-HS-MATH-HJ-B1-C05-L01");
+  assert.equal(b1.chapters[4].sections[2].lessons[2].id, "SH-HS-MATH-HJ-B1-C05-L08");
 
   const b2 = workspace.tree.volumes.find((volume) => volume.id === "B2");
   assert.ok(b2, "B2 volume should be present");
@@ -248,7 +252,7 @@ test("links the parameter lab applet and rendered transform-order Manim to lesso
   assert.equal(diagnosis.metadataPreview.diagnosisDesign.itemSummary.totalItems, 6);
   assert.equal(diagnosis.package.files.itemBank, "content/diagnosis/SH-HS-MATH-HJ-B2-C07-L05-D01/item-bank.yaml");
   assert.equal(diagnosis.player, null);
-  assert.equal(workspace.summary.plannedResourceCount, 16);
+  assert.equal(workspace.summary.plannedResourceCount, 19);
 });
 
 test("lists the B2 C09 complex-number draft applet candidates as planned resources", async () => {

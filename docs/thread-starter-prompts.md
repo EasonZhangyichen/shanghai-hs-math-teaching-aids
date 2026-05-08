@@ -82,11 +82,13 @@ develop
 这次作为并行章节工厂总控。请读取项目锚点文件、docs/parallel-chapter-factory.md、docs/content-standards.md 和 content/production/resource-backlog.json，检查 git status 和当前分支。不要先写代码，先推荐下一轮可并行推进的 3 到 5 个章节，并为每个章节给出独立短分支名、任务边界和可复制到新对话的提示词。只分派来源核对、课程图谱和数字化必要性筛选，不分派完整资源制作。
 ```
 
-当前第三轮任务单可直接读取：
+第三轮任务单已完成并集成，可作为并行来源核对样例读取：
 
 ```text
 docs/parallel-rounds/2026-05-08-round-3.md
 ```
+
+下一轮建议先进入“已实现资源审校”而不是继续 scaffold 未终核候选；由总控从 B2-C07 可运行 Applet / Manim / Diagnosis 和 B2-C08 scaffold 骨架中挑选小批量审校任务。
 
 验收标准：
 

@@ -13,12 +13,33 @@ test("generates a deterministic backlog from curriculum entry points and impleme
   const backlog = await generateResourceBacklog({ rootDir: repoRoot });
 
   assert.equal(backlog.source.curriculum, "content/curriculum/index.yaml");
-  assert.equal(backlog.summary.total, 41);
+  assert.equal(backlog.summary.total, 44);
   assert.equal(backlog.summary.implemented, 25);
-  assert.equal(backlog.summary.planned, 16);
-  assert.deepEqual(backlog.summary.byType.applet, { total: 27, implemented: 14, planned: 13 });
-  assert.deepEqual(backlog.summary.byType.manim_clip, { total: 4, implemented: 4, planned: 0 });
+  assert.equal(backlog.summary.planned, 19);
+  assert.deepEqual(backlog.summary.byType.applet, { total: 29, implemented: 14, planned: 15 });
+  assert.deepEqual(backlog.summary.byType.manim_clip, { total: 5, implemented: 4, planned: 1 });
   assert.deepEqual(backlog.summary.byType.diagnosis, { total: 10, implemented: 7, planned: 3 });
+
+  const parameterInequalityApplet = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B1-C02-L04-A01");
+  assert.equal(parameterInequalityApplet.status, "planned");
+  assert.equal(parameterInequalityApplet.availability, "planned");
+  assert.equal(parameterInequalityApplet.type, "applet");
+  assert.equal(parameterInequalityApplet.lessonTitle, "一元一次不等式及一元一次不等式组的求解");
+  assert.equal(parameterInequalityApplet.chapterTitle, "等式与不等式");
+  assert.equal(parameterInequalityApplet.recommendedTrack, "track/curriculum-map");
+  assert.equal(parameterInequalityApplet.scaffoldPolicy, "blocked_until_source_verified");
+  assert.match(parameterInequalityApplet.nextAction, /终核前.*不创建资源包/);
+  assert.match(parameterInequalityApplet.threadPrompt, /不要创建资源包，不 scaffold/);
+
+  const quadraticInequalityApplet = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B1-C02-L05-A01");
+  assert.equal(quadraticInequalityApplet.status, "planned");
+  assert.equal(quadraticInequalityApplet.type, "applet");
+  assert.equal(quadraticInequalityApplet.scaffoldPolicy, "blocked_until_source_verified");
+
+  const meanInequalityManim = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B1-C02-L08-M01");
+  assert.equal(meanInequalityManim.status, "planned");
+  assert.equal(meanInequalityManim.type, "manim_clip");
+  assert.equal(meanInequalityManim.scaffoldPolicy, "blocked_until_source_verified");
 
   const powerFunctionApplet = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B1-C04-L02-A01");
   assert.equal(powerFunctionApplet.status, "planned");
@@ -371,10 +392,10 @@ test("writes the backlog as stable pretty JSON", async () => {
     });
     const written = JSON.parse(await readFile(outputPath, "utf8"));
 
-    assert.equal(written.summary.total, 41);
+    assert.equal(written.summary.total, 44);
     assert.equal(written.summary.implemented, 25);
-    assert.equal(written.summary.planned, 16);
-    assert.equal(written.items[0].id, "SH-HS-MATH-HJ-B1-C04-L02-A01");
+    assert.equal(written.summary.planned, 19);
+    assert.equal(written.items[0].id, "SH-HS-MATH-HJ-B1-C02-L04-A01");
     assert.ok(
       JSON.stringify(written, null, 2).includes(
         '"id": "SH-HS-MATH-HJ-B2-C09-L07-A01"',

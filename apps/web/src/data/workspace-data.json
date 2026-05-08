@@ -55,6 +55,203 @@
         ],
         "chapters": [
           {
+            "id": "SH-HS-MATH-HJ-B1-C01",
+            "number": 1,
+            "title": "集合与逻辑",
+            "status": "draft",
+            "verification": {
+              "textbook_outline_status": "official_e_textbook_checked",
+              "needs_manual_textbook_check": true,
+              "checked_on": "2026-05-08",
+              "source_audit": "docs/source-audits/b1-c01-source-audit.md",
+              "notes": "国家智慧教育平台电子教材可确认第1章章标题、节标题和正文目标题；dolearning 与上海数字教学/备课平台课时目录当前无法直接确认。1.1 集合初步的平台拆课存在疑点：2024精品课目录只提取到部分节点，上海科技教育出版社同步课课练把集合表示与集合运算按练习分组重排。所有课时边界、课时数和资源候选均需纸质教材或已登录平台终核；本章本轮不新增 digital_entry_points。"
+            },
+            "chapterRole": "建立集合语言、区间与取值范围表达、命题和充分必要条件等逻辑语言，为第2章方程与不等式解集表达、第3章幂指数对数的条件限制、第5章函数定义域和值域语言提供基础。",
+            "sections": [
+              {
+                "id": "SH-HS-MATH-HJ-B1-C01-S01",
+                "textbookLabel": "1.1",
+                "title": "集合初步",
+                "lessons": [
+                  {
+                    "id": "SH-HS-MATH-HJ-B1-C01-L01",
+                    "textbookRef": "1.1.1",
+                    "title": "集合",
+                    "status": "draft",
+                    "resourceCount": 0,
+                    "hasImplementedApplet": false
+                  },
+                  {
+                    "id": "SH-HS-MATH-HJ-B1-C01-L02",
+                    "textbookRef": "1.1.2",
+                    "title": "集合的表示方法",
+                    "status": "draft",
+                    "resourceCount": 0,
+                    "hasImplementedApplet": false
+                  },
+                  {
+                    "id": "SH-HS-MATH-HJ-B1-C01-L03",
+                    "textbookRef": "1.1.3",
+                    "title": "集合之间的关系",
+                    "status": "draft",
+                    "resourceCount": 0,
+                    "hasImplementedApplet": false
+                  },
+                  {
+                    "id": "SH-HS-MATH-HJ-B1-C01-L04",
+                    "textbookRef": "1.1.4",
+                    "title": "集合的运算",
+                    "status": "draft",
+                    "resourceCount": 0,
+                    "hasImplementedApplet": false
+                  }
+                ]
+              },
+              {
+                "id": "SH-HS-MATH-HJ-B1-C01-S02",
+                "textbookLabel": "1.2",
+                "title": "常用逻辑用语",
+                "lessons": [
+                  {
+                    "id": "SH-HS-MATH-HJ-B1-C01-L05",
+                    "textbookRef": "1.2.1",
+                    "title": "命题",
+                    "status": "draft",
+                    "resourceCount": 0,
+                    "hasImplementedApplet": false
+                  },
+                  {
+                    "id": "SH-HS-MATH-HJ-B1-C01-L06",
+                    "textbookRef": "1.2.2",
+                    "title": "充分条件与必要条件",
+                    "status": "draft",
+                    "resourceCount": 0,
+                    "hasImplementedApplet": false
+                  },
+                  {
+                    "id": "SH-HS-MATH-HJ-B1-C01-L07",
+                    "textbookRef": "1.2.3",
+                    "title": "反证法",
+                    "status": "draft",
+                    "resourceCount": 0,
+                    "hasImplementedApplet": false
+                  }
+                ]
+              }
+            ],
+            "lessonCount": 7
+          },
+          {
+            "id": "SH-HS-MATH-HJ-B1-C02",
+            "number": 2,
+            "title": "等式与不等式",
+            "status": "draft",
+            "verification": {
+              "textbook_outline_status": "official_e_textbook_checked",
+              "needs_manual_textbook_check": true,
+              "checked_on": "2026-05-08",
+              "source_audit": "docs/source-audits/b1-c02-source-audit.md",
+              "notes": "国家智慧教育平台电子教材可确认第2章章标题、节标题和正文目标题；2024年基础教育精品课传课目录可辅助确认2.2.1-2.2.4、2.3.1、2.3.2及第2章复习课平台节点。纸质教材、教师用书、dolearning或上海数字教学/备课平台课时边界仍未终核；所有数字化候选仅为draft planned，未终核前禁止 scaffold。"
+            },
+            "chapterRole": "在沪教版必修第一册中承接第1章集合与逻辑语言，系统整理等式、方程、不等式、不等式求解和基本不等式，为第3章幂、指数与对数的条件变形、第4章基本函数性质和第5章定义域、值域、零点及函数观点求解方程与不等式提供代数基础；不得按其他版本顺序重排。",
+            "sections": [
+              {
+                "id": "SH-HS-MATH-HJ-B1-C02-S01",
+                "textbookLabel": "2.1",
+                "title": "等式与不等式的性质",
+                "lessons": [
+                  {
+                    "id": "SH-HS-MATH-HJ-B1-C02-L01",
+                    "textbookRef": "2.1.1",
+                    "title": "等式的性质与方程的解集",
+                    "status": "draft",
+                    "resourceCount": 0,
+                    "hasImplementedApplet": false
+                  },
+                  {
+                    "id": "SH-HS-MATH-HJ-B1-C02-L02",
+                    "textbookRef": "2.1.2",
+                    "title": "一元二次方程的解集及根与系数的关系",
+                    "status": "draft",
+                    "resourceCount": 0,
+                    "hasImplementedApplet": false
+                  },
+                  {
+                    "id": "SH-HS-MATH-HJ-B1-C02-L03",
+                    "textbookRef": "2.1.3",
+                    "title": "不等式的性质",
+                    "status": "draft",
+                    "resourceCount": 0,
+                    "hasImplementedApplet": false
+                  }
+                ]
+              },
+              {
+                "id": "SH-HS-MATH-HJ-B1-C02-S02",
+                "textbookLabel": "2.2",
+                "title": "不等式的求解",
+                "lessons": [
+                  {
+                    "id": "SH-HS-MATH-HJ-B1-C02-L04",
+                    "textbookRef": "2.2.1",
+                    "title": "一元一次不等式及一元一次不等式组的求解",
+                    "status": "draft",
+                    "resourceCount": 1,
+                    "hasImplementedApplet": false
+                  },
+                  {
+                    "id": "SH-HS-MATH-HJ-B1-C02-L05",
+                    "textbookRef": "2.2.2",
+                    "title": "一元二次不等式的求解",
+                    "status": "draft",
+                    "resourceCount": 1,
+                    "hasImplementedApplet": false
+                  },
+                  {
+                    "id": "SH-HS-MATH-HJ-B1-C02-L06",
+                    "textbookRef": "2.2.3",
+                    "title": "分式不等式的求解",
+                    "status": "draft",
+                    "resourceCount": 0,
+                    "hasImplementedApplet": false
+                  },
+                  {
+                    "id": "SH-HS-MATH-HJ-B1-C02-L07",
+                    "textbookRef": "2.2.4",
+                    "title": "含绝对值不等式的求解",
+                    "status": "draft",
+                    "resourceCount": 0,
+                    "hasImplementedApplet": false
+                  }
+                ]
+              },
+              {
+                "id": "SH-HS-MATH-HJ-B1-C02-S03",
+                "textbookLabel": "2.3",
+                "title": "基本不等式及其应用",
+                "lessons": [
+                  {
+                    "id": "SH-HS-MATH-HJ-B1-C02-L08",
+                    "textbookRef": "2.3.1",
+                    "title": "平均值不等式及其应用",
+                    "status": "draft",
+                    "resourceCount": 1,
+                    "hasImplementedApplet": false
+                  },
+                  {
+                    "id": "SH-HS-MATH-HJ-B1-C02-L09",
+                    "textbookRef": "2.3.2",
+                    "title": "三角不等式",
+                    "status": "draft",
+                    "resourceCount": 0,
+                    "hasImplementedApplet": false
+                  }
+                ]
+              }
+            ],
+            "lessonCount": 9
+          },
+          {
             "id": "SH-HS-MATH-HJ-B1-C03",
             "number": 3,
             "title": "幂、指数与对数",
@@ -569,8 +766,11 @@
             "verification": {
               "textbook_outline_status": "secondary_sources_checked",
               "needs_manual_textbook_check": true,
-              "checked_on": "2026-05-07",
-              "notes": "已用公开电子课本目录与基础教育精品课传课目录交叉核对章节主干；课时划分、课时数和标题表述仍需教师用纸质教材最终确认。"
+              "checked_on": "2026-05-08",
+              "source_audit": "docs/source-audits/b2-c08-dolearning-audit.md",
+              "source_tightening_audit": "docs/source-audits/b2-c08-source-tightening.md",
+              "period_status": "8.3_boundary_pending_manual_check",
+              "notes": "已用公开电子课本目录与基础教育精品课传课目录交叉核对章节主干；2026-05-08 复核确认已 scaffold 的 10 个第 8 章资源均落在 8.1、8.2 或 8.4 的当前课时，8.3 暂缓资源未恢复。课时划分、课时数和标题表述仍需教师用纸质教材或已登录 dolearning 左侧目录最终确认，尤其是 8.3 应按教材 8.3.1 至 8.3.4 四小节拆分，还是按 dolearning 三课时分组。"
             },
             "chapterRole": "把几何中的方向、长度、夹角和平移关系转化为可运算的代数对象，为复平面、空间向量、解析几何和几何建模提供语言。",
             "sections": [
@@ -845,6 +1045,892 @@
     ]
   },
   "lessons": [
+    {
+      "id": "SH-HS-MATH-HJ-B1-C01-L01",
+      "textbookRef": "1.1.1",
+      "title": "集合",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C01",
+        "number": 1,
+        "title": "集合与逻辑"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C01-S01",
+        "textbookLabel": "1.1",
+        "title": "集合初步"
+      },
+      "coreKnowledge": [
+        "用确定对象组成集合，并区分元素与集合的关系",
+        "识别有限集、无限集、空集和常用数集符号",
+        "把集合语言作为后续取值范围和解集表达的基础"
+      ],
+      "prerequisites": [
+        "初中实数、整数、有理数和自然数等数集经验",
+        "初中方程、不等式和几何对象分类经验"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C01-L02",
+        "SH-HS-MATH-HJ-B1-C02-K01",
+        "SH-HS-MATH-HJ-B1-C05-L01"
+      ],
+      "teachingPainPoints": [
+        "学生容易用模糊或主观标准描述集合，导致对象是否属于集合无法判定。",
+        "元素属于集合和集合包含关系容易在符号上混用。",
+        "常用数集符号如果只靠记忆，后续取值范围表达容易遗漏边界。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否判断给定对象是否能构成集合。",
+        "能否正确使用元素与集合的关系符号。"
+      ],
+      "coreCompetencies": [
+        "数学抽象",
+        "逻辑推理"
+      ],
+      "resources": []
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B1-C01-L02",
+      "textbookRef": "1.1.2",
+      "title": "集合的表示方法",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C01",
+        "number": 1,
+        "title": "集合与逻辑"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C01-S01",
+        "textbookLabel": "1.1",
+        "title": "集合初步"
+      },
+      "coreKnowledge": [
+        "用列举法和描述法表示集合",
+        "用区间表示满足不等式条件的实数集合",
+        "在集合表示中保持对象范围、条件和边界一致"
+      ],
+      "prerequisites": [
+        "集合和元素",
+        "实数大小关系和一元一次不等式"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C01-L03",
+        "SH-HS-MATH-HJ-B1-C02-K01",
+        "SH-HS-MATH-HJ-B1-C03-L02",
+        "SH-HS-MATH-HJ-B1-C05-L01"
+      ],
+      "teachingPainPoints": [
+        "学生容易把列举法中的顺序、重复元素和集合本身混淆。",
+        "描述法中对象范围和条件写得过宽或过窄，导致集合不等价。",
+        "区间端点开闭和无穷端写法容易在后续不等式解集中迁移出错。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否选择合适的集合表示方法。",
+        "能否从不等式条件正确写出区间。"
+      ],
+      "coreCompetencies": [
+        "数学抽象",
+        "数学运算",
+        "逻辑推理"
+      ],
+      "resources": []
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B1-C01-L03",
+      "textbookRef": "1.1.3",
+      "title": "集合之间的关系",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C01",
+        "number": 1,
+        "title": "集合与逻辑"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C01-S01",
+        "textbookLabel": "1.1",
+        "title": "集合初步"
+      },
+      "coreKnowledge": [
+        "用子集、真子集和相等描述两个集合之间的关系",
+        "用元素逐一检验或条件包含判断集合关系",
+        "把集合包含关系连接到命题推出和解集包含"
+      ],
+      "prerequisites": [
+        "集合的表示方法",
+        "元素与集合关系"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C01-L04",
+        "SH-HS-MATH-HJ-B1-C01-L05",
+        "SH-HS-MATH-HJ-B1-C02-K01"
+      ],
+      "teachingPainPoints": [
+        "学生容易把元素属于集合写成集合包含关系，或把单元素集合和元素本身混淆。",
+        "判断子集方向时容易只看集合大小，不检查每个元素或条件是否包含。",
+        "证明两个集合相等时容易只证一个方向。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否区分元素、单元素集合和子集关系。",
+        "能否用双向包含判断集合相等。"
+      ],
+      "coreCompetencies": [
+        "逻辑推理",
+        "数学抽象"
+      ],
+      "resources": []
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B1-C01-L04",
+      "textbookRef": "1.1.4",
+      "title": "集合的运算",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C01",
+        "number": 1,
+        "title": "集合与逻辑"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C01-S01",
+        "textbookLabel": "1.1",
+        "title": "集合初步"
+      },
+      "coreKnowledge": [
+        "理解交集、并集和补集的含义",
+        "用文氏图、数轴和区间语言表示集合运算结果",
+        "在明确全集的前提下讨论补集"
+      ],
+      "prerequisites": [
+        "集合之间的关系",
+        "区间表示和实数不等式"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C02-K01",
+        "SH-HS-MATH-HJ-B1-C05-L02",
+        "SH-HS-MATH-HJ-B1-C05-L07"
+      ],
+      "teachingPainPoints": [
+        "学生容易把交集和并集的条件语言混淆。",
+        "区间交并时端点开闭和空集情形容易出错。",
+        "补集依赖全集，离开全集谈补集会导致结果不确定。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否用数轴或文氏图区分交集、并集和补集。",
+        "能否在区间运算中处理端点和空集。"
+      ],
+      "coreCompetencies": [
+        "直观想象",
+        "逻辑推理",
+        "数学运算"
+      ],
+      "resources": []
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B1-C01-L05",
+      "textbookRef": "1.2.1",
+      "title": "命题",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C01",
+        "number": 1,
+        "title": "集合与逻辑"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C01-S02",
+        "textbookLabel": "1.2",
+        "title": "常用逻辑用语"
+      },
+      "coreKnowledge": [
+        "判断语句是否为命题，并区分真命题和假命题",
+        "把命题改写为若条件则结论的形式",
+        "用反例判断命题为假，用证明判断命题为真"
+      ],
+      "prerequisites": [
+        "集合之间的关系",
+        "初中几何命题和代数命题经验"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C01-L06",
+        "SH-HS-MATH-HJ-B1-C02-K01",
+        "SH-HS-MATH-HJ-B1-C05-L04"
+      ],
+      "teachingPainPoints": [
+        "含变量的陈述句在变量未限定时容易被误判为命题。",
+        "学生容易把生活中的因果关系和数学中的推出关系混同。",
+        "判断假命题时容易尝试全面证明，而不会使用反例。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否判断语句是否有确定真假。",
+        "能否用反例说明一个命题为假。"
+      ],
+      "coreCompetencies": [
+        "逻辑推理",
+        "数学抽象"
+      ],
+      "resources": []
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B1-C01-L06",
+      "textbookRef": "1.2.2",
+      "title": "充分条件与必要条件",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C01",
+        "number": 1,
+        "title": "集合与逻辑"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C01-S02",
+        "textbookLabel": "1.2",
+        "title": "常用逻辑用语"
+      },
+      "coreKnowledge": [
+        "根据推出关系判断充分条件、必要条件和充要条件",
+        "用集合包含关系辅助理解条件强弱",
+        "在证明中区分充分性和必要性两个方向"
+      ],
+      "prerequisites": [
+        "命题和推出关系",
+        "集合之间的关系"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C01-L07",
+        "SH-HS-MATH-HJ-B1-C02-K01",
+        "SH-HS-MATH-HJ-B1-C03-L02",
+        "SH-HS-MATH-HJ-B1-C05-L01"
+      ],
+      "teachingPainPoints": [
+        "学生容易把充分条件和必要条件的方向反过来。",
+        "只看文字强弱，不用推出关系或集合包含关系验证。",
+        "证明充要条件时容易漏证一个方向。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否把条件关系转化为推出方向。",
+        "能否判断充分、必要、充要和既非充分又非必要。"
+      ],
+      "coreCompetencies": [
+        "逻辑推理",
+        "数学抽象"
+      ],
+      "resources": []
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B1-C01-L07",
+      "textbookRef": "1.2.3",
+      "title": "反证法",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C01",
+        "number": 1,
+        "title": "集合与逻辑"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C01-S02",
+        "textbookLabel": "1.2",
+        "title": "常用逻辑用语"
+      },
+      "coreKnowledge": [
+        "理解反证法的基本证明结构",
+        "写出结论的否定，并由假设推出矛盾",
+        "在否定全称、存在、且、或等陈述时保持逻辑等价"
+      ],
+      "prerequisites": [
+        "命题和推出关系",
+        "充分条件与必要条件",
+        "集合语言和条件表达"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C02-K01",
+        "SH-HS-MATH-HJ-B1-C03-K01",
+        "SH-HS-MATH-HJ-B1-C05-L03",
+        "SH-HS-MATH-HJ-B1-C05-L04"
+      ],
+      "teachingPainPoints": [
+        "学生容易把要证结论的否定写错，尤其是全称与存在、且与或的否定。",
+        "反证法容易被机械写成格式，无法说明矛盾来自哪里。",
+        "把反例、逆否命题和反证法混为一谈。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否正确写出结论的否定。",
+        "能否说明反证法中矛盾的来源。"
+      ],
+      "coreCompetencies": [
+        "逻辑推理",
+        "数学抽象"
+      ],
+      "resources": []
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B1-C02-L01",
+      "textbookRef": "2.1.1",
+      "title": "等式的性质与方程的解集",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C02",
+        "number": 2,
+        "title": "等式与不等式"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C02-S01",
+        "textbookLabel": "2.1",
+        "title": "等式与不等式的性质"
+      },
+      "coreKnowledge": [
+        "理解等式的传递性、加法性质和乘法性质",
+        "用集合语言表示方程解集，并注意未知数取值范围对解集的影响",
+        "对参数一次方程做分类讨论"
+      ],
+      "prerequisites": [
+        "实数运算和等式变形",
+        "集合与空集、全集语言",
+        "一次方程求解经验"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C02-L02",
+        "SH-HS-MATH-HJ-B1-C02-L04",
+        "SH-HS-MATH-HJ-B1-C03-L01"
+      ],
+      "teachingPainPoints": [
+        "学生容易把等式两边同除同一个式子当作无条件操作，忽略可能为零的情形。",
+        "同一方程在不同取值范围内解集不同，容易被当作形式细节而非数学对象变化。",
+        "参数为零、无解、全体实数解等分类容易遗漏。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否在等式变形前检查除式是否可能为零。",
+        "能否用集合语言准确表示方程解集。"
+      ],
+      "coreCompetencies": [
+        "逻辑推理",
+        "数学运算",
+        "数学抽象"
+      ],
+      "resources": []
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B1-C02-L02",
+      "textbookRef": "2.1.2",
+      "title": "一元二次方程的解集及根与系数的关系",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C02",
+        "number": 2,
+        "title": "等式与不等式"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C02-S01",
+        "textbookLabel": "2.1",
+        "title": "等式与不等式的性质"
+      },
+      "coreKnowledge": [
+        "用判别式判断一元二次方程在实数集中的解集",
+        "理解重根在解集中只出现一次",
+        "利用根与系数的关系处理简单代数变形"
+      ],
+      "prerequisites": [
+        "一元二次方程求根公式",
+        "二次三项式因式分解",
+        "等式恒成立与系数比较"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C02-L05",
+        "SH-HS-MATH-HJ-B1-C05-L07",
+        "SH-HS-MATH-HJ-B2-C09-L05"
+      ],
+      "teachingPainPoints": [
+        "学生容易把根的个数和解集中元素个数混淆，尤其处理重根时重复记录。",
+        "判别式、根、因式分解和解集之间的关系常被割裂成公式记忆。",
+        "根与系数关系的使用容易忽略二次项系数非零和实根条件。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否根据判别式完整写出解集。",
+        "能否判断根与系数关系的适用前提。"
+      ],
+      "coreCompetencies": [
+        "数学运算",
+        "逻辑推理"
+      ],
+      "resources": []
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B1-C02-L03",
+      "textbookRef": "2.1.3",
+      "title": "不等式的性质",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C02",
+        "number": 2,
+        "title": "等式与不等式"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C02-S01",
+        "textbookLabel": "2.1",
+        "title": "等式与不等式的性质"
+      },
+      "coreKnowledge": [
+        "用差的符号比较两个实数或两个表达式的大小",
+        "理解不等式的传递性、加法性质和乘法性质",
+        "掌握同向可加、正数同向可乘、倒数比较和等号条件意识"
+      ],
+      "prerequisites": [
+        "实数大小关系",
+        "等式性质和逻辑推理",
+        "平方非负"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C02-L04",
+        "SH-HS-MATH-HJ-B1-C02-L08",
+        "SH-HS-MATH-HJ-B1-C04-L02"
+      ],
+      "teachingPainPoints": [
+        "学生容易机械移项或乘除，忽略乘除负数时不等号方向改变。",
+        "倒数比较、幂次比较和同向可乘都需要正数前提，前提常被省略。",
+        "比较大小时只套公式，不会回到差的符号。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否先判断乘除因子的符号再变形不等式。",
+        "能否用差的符号证明两个表达式大小关系。"
+      ],
+      "coreCompetencies": [
+        "逻辑推理",
+        "数学运算"
+      ],
+      "resources": []
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B1-C02-L04",
+      "textbookRef": "2.2.1",
+      "title": "一元一次不等式及一元一次不等式组的求解",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C02",
+        "number": 2,
+        "title": "等式与不等式"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C02-S02",
+        "textbookLabel": "2.2",
+        "title": "不等式的求解"
+      },
+      "coreKnowledge": [
+        "求一元一次不等式和不等式组的解集",
+        "用数轴和区间表示不等式或不等式组解集",
+        "对含参数的一次不等式做符号分类"
+      ],
+      "prerequisites": [
+        "不等式的加法性质和乘法性质",
+        "集合交集和空集",
+        "数轴和区间表示"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C02-L05",
+        "SH-HS-MATH-HJ-B1-C05-L01",
+        "SH-HS-MATH-HJ-B1-C05-L07"
+      ],
+      "teachingPainPoints": [
+        "学生能代数求解，却常把开区间、闭区间、无穷端和空集写错。",
+        "参数跨过零时，不等式方向和解集形态同时变化，分类讨论容易漏。",
+        "不等式组解集是交集，学生容易误写成并集。"
+      ],
+      "digitalEntryPoints": [
+        {
+          "type": "applet",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B1-C02-L04-A01",
+          "title": "参数不等式解集数轴实验室",
+          "cognitive_action": "对应",
+          "note": "拖动参数并同步显示不等式、数轴阴影、端点开闭、区间记号和空集/全集情形；数字化价值在于连续呈现参数过零时不等号方向和解集形态的变化，也能巩固数轴上解集与区间语言。不做常规移项、一元一次不等式刷题或机械化简。仅为 draft planned，未终核前禁止 scaffold。"
+        }
+      ],
+      "diagnosisFocus": [
+        "能否把不等式组解集理解为数轴交集。",
+        "能否正确处理参数为正、为零、为负时的解集差异。"
+      ],
+      "coreCompetencies": [
+        "直观想象",
+        "逻辑推理",
+        "数学运算"
+      ],
+      "resources": [
+        {
+          "id": "SH-HS-MATH-HJ-B1-C02-L04-A01",
+          "resourceType": "applet",
+          "title": "参数不等式解集数轴实验室",
+          "cognitiveAction": "对应",
+          "note": "拖动参数并同步显示不等式、数轴阴影、端点开闭、区间记号和空集/全集情形；数字化价值在于连续呈现参数过零时不等号方向和解集形态的变化，也能巩固数轴上解集与区间语言。不做常规移项、一元一次不等式刷题或机械化简。仅为 draft planned，未终核前禁止 scaffold。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        }
+      ]
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B1-C02-L05",
+      "textbookRef": "2.2.2",
+      "title": "一元二次不等式的求解",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C02",
+        "number": 2,
+        "title": "等式与不等式"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C02-S02",
+        "textbookLabel": "2.2",
+        "title": "不等式的求解"
+      },
+      "coreKnowledge": [
+        "把一元二次不等式转化为对应二次方程根和符号区间",
+        "根据判别式和二次项系数讨论解集",
+        "为第5章用函数观点求解方程与不等式建立代数先修"
+      ],
+      "prerequisites": [
+        "一元二次方程解集",
+        "不等式性质",
+        "二次函数图像经验"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C02-L06",
+        "SH-HS-MATH-HJ-B1-C05-L07",
+        "SH-HS-MATH-HJ-B1-C05-L08"
+      ],
+      "teachingPainPoints": [
+        "学生容易只背大于取两边、小于取中间，不能解释根、开口方向和符号区间。",
+        "判别式为零或小于零时，解集为 R、空集或单点的边界容易混淆。",
+        "二次项系数为负时先变号再改不等号方向，常出现双重错误。"
+      ],
+      "digitalEntryPoints": [
+        {
+          "type": "applet",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B1-C02-L05-A01",
+          "title": "二次不等式与函数符号区间联动板",
+          "cognitive_action": "对应",
+          "note": "调节二次项系数、判别式和零点位置，同步观察抛物线开口、与x轴交点、符号区间和解集表示；数字化比板书更能呈现从两个实根、重根到无实根时解集形态的变化，并为第5章函数观点求解作桥接。不做因式分解刷题、套表格或机械解二次不等式。仅为 draft planned，未终核前禁止 scaffold。"
+        }
+      ],
+      "diagnosisFocus": [
+        "能否区分 Delta > 0、Delta = 0、Delta < 0 下不同不等号的解集。",
+        "能否说明不等式解集对应二次函数图像在 x 轴上方或下方的横坐标。"
+      ],
+      "coreCompetencies": [
+        "直观想象",
+        "逻辑推理",
+        "数学运算"
+      ],
+      "resources": [
+        {
+          "id": "SH-HS-MATH-HJ-B1-C02-L05-A01",
+          "resourceType": "applet",
+          "title": "二次不等式与函数符号区间联动板",
+          "cognitiveAction": "对应",
+          "note": "调节二次项系数、判别式和零点位置，同步观察抛物线开口、与x轴交点、符号区间和解集表示；数字化比板书更能呈现从两个实根、重根到无实根时解集形态的变化，并为第5章函数观点求解作桥接。不做因式分解刷题、套表格或机械解二次不等式。仅为 draft planned，未终核前禁止 scaffold。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        }
+      ]
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B1-C02-L06",
+      "textbookRef": "2.2.3",
+      "title": "分式不等式的求解",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C02",
+        "number": 2,
+        "title": "等式与不等式"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C02-S02",
+        "textbookLabel": "2.2",
+        "title": "不等式的求解"
+      },
+      "coreKnowledge": [
+        "把简单分式不等式转化为同号或异号的不等式组",
+        "处理分母不为零的定义域限制",
+        "把分式不等式转化为整式不等式时保持等价条件"
+      ],
+      "prerequisites": [
+        "一元一次不等式和一元二次不等式",
+        "分式有意义条件",
+        "集合交并运算"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C02-L07",
+        "SH-HS-MATH-HJ-B1-C05-L01",
+        "SH-HS-MATH-HJ-B1-C05-L07"
+      ],
+      "teachingPainPoints": [
+        "学生容易在不确定分母符号时直接两边同乘分母。",
+        "分母为零的排除条件容易在化简后丢失。",
+        "同号/异号转化为不等式组时，交并关系容易写反。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否先写出分母不为零的条件。",
+        "能否判断分子分母同号或异号对应的解集结构。"
+      ],
+      "coreCompetencies": [
+        "逻辑推理",
+        "数学运算"
+      ],
+      "resources": []
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B1-C02-L07",
+      "textbookRef": "2.2.4",
+      "title": "含绝对值不等式的求解",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C02",
+        "number": 2,
+        "title": "等式与不等式"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C02-S02",
+        "textbookLabel": "2.2",
+        "title": "不等式的求解"
+      },
+      "coreKnowledge": [
+        "用绝对值的距离意义求解基本含绝对值不等式",
+        "根据零点把数轴分段，去掉绝对值符号",
+        "把分段结果合并为区间或区间并集"
+      ],
+      "prerequisites": [
+        "绝对值和数轴距离",
+        "一元一次不等式",
+        "区间、交集和并集"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C02-L09",
+        "SH-HS-MATH-HJ-B1-C05-L01",
+        "SH-HS-MATH-HJ-B2-C09-L04"
+      ],
+      "teachingPainPoints": [
+        "学生容易机械套 |x| < a 和 |x| > a 模板，不会先判断右侧是否为正。",
+        "多个绝对值时，分段点和区间端点容易遗漏。",
+        "分段解完后合并区间时开闭端点容易出错。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否根据绝对值内表达式的零点正确分段。",
+        "能否把分段结果合并为准确的区间语言。"
+      ],
+      "coreCompetencies": [
+        "直观想象",
+        "逻辑推理",
+        "数学运算"
+      ],
+      "resources": []
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B1-C02-L08",
+      "textbookRef": "2.3.1",
+      "title": "平均值不等式及其应用",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C02",
+        "number": 2,
+        "title": "等式与不等式"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C02-S03",
+        "textbookLabel": "2.3",
+        "title": "基本不等式及其应用"
+      },
+      "coreKnowledge": [
+        "理解两个非负数的算术平均值不小于几何平均值",
+        "掌握平均值不等式的等号成立条件",
+        "用基本不等式处理简单最值估计和矩形面积/周长问题"
+      ],
+      "prerequisites": [
+        "不等式性质",
+        "平方非负和开方",
+        "矩形面积、周长和正方形直观"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C04-L02",
+        "SH-HS-MATH-HJ-B1-C05-L05",
+        "SH-HS-MATH-HJ-MODEL-K01"
+      ],
+      "teachingPainPoints": [
+        "学生容易只记 a + b >= 2sqrt(ab)，忽略非负前提和等号条件。",
+        "定和定积最值问题常被当作套公式，不能解释为什么正方形达到极值。",
+        "把平均值不等式用于不满足同正或定值条件的情形。"
+      ],
+      "digitalEntryPoints": [
+        {
+          "type": "manim_clip",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B1-C02-L08-M01",
+          "title": "平均值不等式面积直观导入动画",
+          "cognitive_action": "构造",
+          "note": "用矩形与正方形面积、定周长面积最大和定面积周长最小的连续构造解释平均值不等式与等号条件；数字化价值在于把公式、面积和形状趋近正方形的过程连成一条直观叙事。不做基本不等式套公式求最值题库。仅为 draft planned，未终核前禁止 scaffold。"
+        }
+      ],
+      "diagnosisFocus": [
+        "能否先检查使用平均值不等式的正数或非负条件。",
+        "能否说明等号成立条件和定和定积条件。"
+      ],
+      "coreCompetencies": [
+        "直观想象",
+        "逻辑推理",
+        "数学运算"
+      ],
+      "resources": [
+        {
+          "id": "SH-HS-MATH-HJ-B1-C02-L08-M01",
+          "resourceType": "manim_clip",
+          "title": "平均值不等式面积直观导入动画",
+          "cognitiveAction": "构造",
+          "note": "用矩形与正方形面积、定周长面积最大和定面积周长最小的连续构造解释平均值不等式与等号条件；数字化价值在于把公式、面积和形状趋近正方形的过程连成一条直观叙事。不做基本不等式套公式求最值题库。仅为 draft planned，未终核前禁止 scaffold。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        }
+      ]
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B1-C02-L09",
+      "textbookRef": "2.3.2",
+      "title": "三角不等式",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C02",
+        "number": 2,
+        "title": "等式与不等式"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C02-S03",
+        "textbookLabel": "2.3",
+        "title": "基本不等式及其应用"
+      },
+      "coreKnowledge": [
+        "理解两个实数和的绝对值不超过绝对值的和",
+        "掌握三角不等式的等号条件",
+        "用三角不等式处理简单绝对值估计"
+      ],
+      "prerequisites": [
+        "绝对值和含绝对值不等式",
+        "平方不等式",
+        "逻辑推理和等号条件"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B2-C08-L05",
+        "SH-HS-MATH-HJ-B2-C09-L04",
+        "SH-HS-MATH-HJ-XB1-GEOM-K01"
+      ],
+      "teachingPainPoints": [
+        "学生容易把实数绝对值中的三角不等式当作孤立公式，不能识别等号条件。",
+        "绝对值估计中何时取等号容易凭直觉猜。",
+        "三角不等式与后续向量、复数几何意义之间的联系本章尚不充分。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否判断三角不等式等号成立条件。",
+        "能否把绝对值估计写成清晰的不等式链。"
+      ],
+      "coreCompetencies": [
+        "逻辑推理",
+        "直观想象"
+      ],
+      "resources": []
+    },
     {
       "id": "SH-HS-MATH-HJ-B1-C03-L01",
       "textbookRef": "3.1.1",
@@ -10867,6 +11953,892 @@
     }
   ],
   "lessonsById": {
+    "SH-HS-MATH-HJ-B1-C01-L01": {
+      "id": "SH-HS-MATH-HJ-B1-C01-L01",
+      "textbookRef": "1.1.1",
+      "title": "集合",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C01",
+        "number": 1,
+        "title": "集合与逻辑"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C01-S01",
+        "textbookLabel": "1.1",
+        "title": "集合初步"
+      },
+      "coreKnowledge": [
+        "用确定对象组成集合，并区分元素与集合的关系",
+        "识别有限集、无限集、空集和常用数集符号",
+        "把集合语言作为后续取值范围和解集表达的基础"
+      ],
+      "prerequisites": [
+        "初中实数、整数、有理数和自然数等数集经验",
+        "初中方程、不等式和几何对象分类经验"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C01-L02",
+        "SH-HS-MATH-HJ-B1-C02-K01",
+        "SH-HS-MATH-HJ-B1-C05-L01"
+      ],
+      "teachingPainPoints": [
+        "学生容易用模糊或主观标准描述集合，导致对象是否属于集合无法判定。",
+        "元素属于集合和集合包含关系容易在符号上混用。",
+        "常用数集符号如果只靠记忆，后续取值范围表达容易遗漏边界。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否判断给定对象是否能构成集合。",
+        "能否正确使用元素与集合的关系符号。"
+      ],
+      "coreCompetencies": [
+        "数学抽象",
+        "逻辑推理"
+      ],
+      "resources": []
+    },
+    "SH-HS-MATH-HJ-B1-C01-L02": {
+      "id": "SH-HS-MATH-HJ-B1-C01-L02",
+      "textbookRef": "1.1.2",
+      "title": "集合的表示方法",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C01",
+        "number": 1,
+        "title": "集合与逻辑"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C01-S01",
+        "textbookLabel": "1.1",
+        "title": "集合初步"
+      },
+      "coreKnowledge": [
+        "用列举法和描述法表示集合",
+        "用区间表示满足不等式条件的实数集合",
+        "在集合表示中保持对象范围、条件和边界一致"
+      ],
+      "prerequisites": [
+        "集合和元素",
+        "实数大小关系和一元一次不等式"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C01-L03",
+        "SH-HS-MATH-HJ-B1-C02-K01",
+        "SH-HS-MATH-HJ-B1-C03-L02",
+        "SH-HS-MATH-HJ-B1-C05-L01"
+      ],
+      "teachingPainPoints": [
+        "学生容易把列举法中的顺序、重复元素和集合本身混淆。",
+        "描述法中对象范围和条件写得过宽或过窄，导致集合不等价。",
+        "区间端点开闭和无穷端写法容易在后续不等式解集中迁移出错。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否选择合适的集合表示方法。",
+        "能否从不等式条件正确写出区间。"
+      ],
+      "coreCompetencies": [
+        "数学抽象",
+        "数学运算",
+        "逻辑推理"
+      ],
+      "resources": []
+    },
+    "SH-HS-MATH-HJ-B1-C01-L03": {
+      "id": "SH-HS-MATH-HJ-B1-C01-L03",
+      "textbookRef": "1.1.3",
+      "title": "集合之间的关系",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C01",
+        "number": 1,
+        "title": "集合与逻辑"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C01-S01",
+        "textbookLabel": "1.1",
+        "title": "集合初步"
+      },
+      "coreKnowledge": [
+        "用子集、真子集和相等描述两个集合之间的关系",
+        "用元素逐一检验或条件包含判断集合关系",
+        "把集合包含关系连接到命题推出和解集包含"
+      ],
+      "prerequisites": [
+        "集合的表示方法",
+        "元素与集合关系"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C01-L04",
+        "SH-HS-MATH-HJ-B1-C01-L05",
+        "SH-HS-MATH-HJ-B1-C02-K01"
+      ],
+      "teachingPainPoints": [
+        "学生容易把元素属于集合写成集合包含关系，或把单元素集合和元素本身混淆。",
+        "判断子集方向时容易只看集合大小，不检查每个元素或条件是否包含。",
+        "证明两个集合相等时容易只证一个方向。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否区分元素、单元素集合和子集关系。",
+        "能否用双向包含判断集合相等。"
+      ],
+      "coreCompetencies": [
+        "逻辑推理",
+        "数学抽象"
+      ],
+      "resources": []
+    },
+    "SH-HS-MATH-HJ-B1-C01-L04": {
+      "id": "SH-HS-MATH-HJ-B1-C01-L04",
+      "textbookRef": "1.1.4",
+      "title": "集合的运算",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C01",
+        "number": 1,
+        "title": "集合与逻辑"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C01-S01",
+        "textbookLabel": "1.1",
+        "title": "集合初步"
+      },
+      "coreKnowledge": [
+        "理解交集、并集和补集的含义",
+        "用文氏图、数轴和区间语言表示集合运算结果",
+        "在明确全集的前提下讨论补集"
+      ],
+      "prerequisites": [
+        "集合之间的关系",
+        "区间表示和实数不等式"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C02-K01",
+        "SH-HS-MATH-HJ-B1-C05-L02",
+        "SH-HS-MATH-HJ-B1-C05-L07"
+      ],
+      "teachingPainPoints": [
+        "学生容易把交集和并集的条件语言混淆。",
+        "区间交并时端点开闭和空集情形容易出错。",
+        "补集依赖全集，离开全集谈补集会导致结果不确定。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否用数轴或文氏图区分交集、并集和补集。",
+        "能否在区间运算中处理端点和空集。"
+      ],
+      "coreCompetencies": [
+        "直观想象",
+        "逻辑推理",
+        "数学运算"
+      ],
+      "resources": []
+    },
+    "SH-HS-MATH-HJ-B1-C01-L05": {
+      "id": "SH-HS-MATH-HJ-B1-C01-L05",
+      "textbookRef": "1.2.1",
+      "title": "命题",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C01",
+        "number": 1,
+        "title": "集合与逻辑"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C01-S02",
+        "textbookLabel": "1.2",
+        "title": "常用逻辑用语"
+      },
+      "coreKnowledge": [
+        "判断语句是否为命题，并区分真命题和假命题",
+        "把命题改写为若条件则结论的形式",
+        "用反例判断命题为假，用证明判断命题为真"
+      ],
+      "prerequisites": [
+        "集合之间的关系",
+        "初中几何命题和代数命题经验"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C01-L06",
+        "SH-HS-MATH-HJ-B1-C02-K01",
+        "SH-HS-MATH-HJ-B1-C05-L04"
+      ],
+      "teachingPainPoints": [
+        "含变量的陈述句在变量未限定时容易被误判为命题。",
+        "学生容易把生活中的因果关系和数学中的推出关系混同。",
+        "判断假命题时容易尝试全面证明，而不会使用反例。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否判断语句是否有确定真假。",
+        "能否用反例说明一个命题为假。"
+      ],
+      "coreCompetencies": [
+        "逻辑推理",
+        "数学抽象"
+      ],
+      "resources": []
+    },
+    "SH-HS-MATH-HJ-B1-C01-L06": {
+      "id": "SH-HS-MATH-HJ-B1-C01-L06",
+      "textbookRef": "1.2.2",
+      "title": "充分条件与必要条件",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C01",
+        "number": 1,
+        "title": "集合与逻辑"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C01-S02",
+        "textbookLabel": "1.2",
+        "title": "常用逻辑用语"
+      },
+      "coreKnowledge": [
+        "根据推出关系判断充分条件、必要条件和充要条件",
+        "用集合包含关系辅助理解条件强弱",
+        "在证明中区分充分性和必要性两个方向"
+      ],
+      "prerequisites": [
+        "命题和推出关系",
+        "集合之间的关系"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C01-L07",
+        "SH-HS-MATH-HJ-B1-C02-K01",
+        "SH-HS-MATH-HJ-B1-C03-L02",
+        "SH-HS-MATH-HJ-B1-C05-L01"
+      ],
+      "teachingPainPoints": [
+        "学生容易把充分条件和必要条件的方向反过来。",
+        "只看文字强弱，不用推出关系或集合包含关系验证。",
+        "证明充要条件时容易漏证一个方向。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否把条件关系转化为推出方向。",
+        "能否判断充分、必要、充要和既非充分又非必要。"
+      ],
+      "coreCompetencies": [
+        "逻辑推理",
+        "数学抽象"
+      ],
+      "resources": []
+    },
+    "SH-HS-MATH-HJ-B1-C01-L07": {
+      "id": "SH-HS-MATH-HJ-B1-C01-L07",
+      "textbookRef": "1.2.3",
+      "title": "反证法",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C01",
+        "number": 1,
+        "title": "集合与逻辑"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C01-S02",
+        "textbookLabel": "1.2",
+        "title": "常用逻辑用语"
+      },
+      "coreKnowledge": [
+        "理解反证法的基本证明结构",
+        "写出结论的否定，并由假设推出矛盾",
+        "在否定全称、存在、且、或等陈述时保持逻辑等价"
+      ],
+      "prerequisites": [
+        "命题和推出关系",
+        "充分条件与必要条件",
+        "集合语言和条件表达"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C02-K01",
+        "SH-HS-MATH-HJ-B1-C03-K01",
+        "SH-HS-MATH-HJ-B1-C05-L03",
+        "SH-HS-MATH-HJ-B1-C05-L04"
+      ],
+      "teachingPainPoints": [
+        "学生容易把要证结论的否定写错，尤其是全称与存在、且与或的否定。",
+        "反证法容易被机械写成格式，无法说明矛盾来自哪里。",
+        "把反例、逆否命题和反证法混为一谈。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否正确写出结论的否定。",
+        "能否说明反证法中矛盾的来源。"
+      ],
+      "coreCompetencies": [
+        "逻辑推理",
+        "数学抽象"
+      ],
+      "resources": []
+    },
+    "SH-HS-MATH-HJ-B1-C02-L01": {
+      "id": "SH-HS-MATH-HJ-B1-C02-L01",
+      "textbookRef": "2.1.1",
+      "title": "等式的性质与方程的解集",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C02",
+        "number": 2,
+        "title": "等式与不等式"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C02-S01",
+        "textbookLabel": "2.1",
+        "title": "等式与不等式的性质"
+      },
+      "coreKnowledge": [
+        "理解等式的传递性、加法性质和乘法性质",
+        "用集合语言表示方程解集，并注意未知数取值范围对解集的影响",
+        "对参数一次方程做分类讨论"
+      ],
+      "prerequisites": [
+        "实数运算和等式变形",
+        "集合与空集、全集语言",
+        "一次方程求解经验"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C02-L02",
+        "SH-HS-MATH-HJ-B1-C02-L04",
+        "SH-HS-MATH-HJ-B1-C03-L01"
+      ],
+      "teachingPainPoints": [
+        "学生容易把等式两边同除同一个式子当作无条件操作，忽略可能为零的情形。",
+        "同一方程在不同取值范围内解集不同，容易被当作形式细节而非数学对象变化。",
+        "参数为零、无解、全体实数解等分类容易遗漏。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否在等式变形前检查除式是否可能为零。",
+        "能否用集合语言准确表示方程解集。"
+      ],
+      "coreCompetencies": [
+        "逻辑推理",
+        "数学运算",
+        "数学抽象"
+      ],
+      "resources": []
+    },
+    "SH-HS-MATH-HJ-B1-C02-L02": {
+      "id": "SH-HS-MATH-HJ-B1-C02-L02",
+      "textbookRef": "2.1.2",
+      "title": "一元二次方程的解集及根与系数的关系",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C02",
+        "number": 2,
+        "title": "等式与不等式"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C02-S01",
+        "textbookLabel": "2.1",
+        "title": "等式与不等式的性质"
+      },
+      "coreKnowledge": [
+        "用判别式判断一元二次方程在实数集中的解集",
+        "理解重根在解集中只出现一次",
+        "利用根与系数的关系处理简单代数变形"
+      ],
+      "prerequisites": [
+        "一元二次方程求根公式",
+        "二次三项式因式分解",
+        "等式恒成立与系数比较"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C02-L05",
+        "SH-HS-MATH-HJ-B1-C05-L07",
+        "SH-HS-MATH-HJ-B2-C09-L05"
+      ],
+      "teachingPainPoints": [
+        "学生容易把根的个数和解集中元素个数混淆，尤其处理重根时重复记录。",
+        "判别式、根、因式分解和解集之间的关系常被割裂成公式记忆。",
+        "根与系数关系的使用容易忽略二次项系数非零和实根条件。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否根据判别式完整写出解集。",
+        "能否判断根与系数关系的适用前提。"
+      ],
+      "coreCompetencies": [
+        "数学运算",
+        "逻辑推理"
+      ],
+      "resources": []
+    },
+    "SH-HS-MATH-HJ-B1-C02-L03": {
+      "id": "SH-HS-MATH-HJ-B1-C02-L03",
+      "textbookRef": "2.1.3",
+      "title": "不等式的性质",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C02",
+        "number": 2,
+        "title": "等式与不等式"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C02-S01",
+        "textbookLabel": "2.1",
+        "title": "等式与不等式的性质"
+      },
+      "coreKnowledge": [
+        "用差的符号比较两个实数或两个表达式的大小",
+        "理解不等式的传递性、加法性质和乘法性质",
+        "掌握同向可加、正数同向可乘、倒数比较和等号条件意识"
+      ],
+      "prerequisites": [
+        "实数大小关系",
+        "等式性质和逻辑推理",
+        "平方非负"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C02-L04",
+        "SH-HS-MATH-HJ-B1-C02-L08",
+        "SH-HS-MATH-HJ-B1-C04-L02"
+      ],
+      "teachingPainPoints": [
+        "学生容易机械移项或乘除，忽略乘除负数时不等号方向改变。",
+        "倒数比较、幂次比较和同向可乘都需要正数前提，前提常被省略。",
+        "比较大小时只套公式，不会回到差的符号。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否先判断乘除因子的符号再变形不等式。",
+        "能否用差的符号证明两个表达式大小关系。"
+      ],
+      "coreCompetencies": [
+        "逻辑推理",
+        "数学运算"
+      ],
+      "resources": []
+    },
+    "SH-HS-MATH-HJ-B1-C02-L04": {
+      "id": "SH-HS-MATH-HJ-B1-C02-L04",
+      "textbookRef": "2.2.1",
+      "title": "一元一次不等式及一元一次不等式组的求解",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C02",
+        "number": 2,
+        "title": "等式与不等式"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C02-S02",
+        "textbookLabel": "2.2",
+        "title": "不等式的求解"
+      },
+      "coreKnowledge": [
+        "求一元一次不等式和不等式组的解集",
+        "用数轴和区间表示不等式或不等式组解集",
+        "对含参数的一次不等式做符号分类"
+      ],
+      "prerequisites": [
+        "不等式的加法性质和乘法性质",
+        "集合交集和空集",
+        "数轴和区间表示"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C02-L05",
+        "SH-HS-MATH-HJ-B1-C05-L01",
+        "SH-HS-MATH-HJ-B1-C05-L07"
+      ],
+      "teachingPainPoints": [
+        "学生能代数求解，却常把开区间、闭区间、无穷端和空集写错。",
+        "参数跨过零时，不等式方向和解集形态同时变化，分类讨论容易漏。",
+        "不等式组解集是交集，学生容易误写成并集。"
+      ],
+      "digitalEntryPoints": [
+        {
+          "type": "applet",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B1-C02-L04-A01",
+          "title": "参数不等式解集数轴实验室",
+          "cognitive_action": "对应",
+          "note": "拖动参数并同步显示不等式、数轴阴影、端点开闭、区间记号和空集/全集情形；数字化价值在于连续呈现参数过零时不等号方向和解集形态的变化，也能巩固数轴上解集与区间语言。不做常规移项、一元一次不等式刷题或机械化简。仅为 draft planned，未终核前禁止 scaffold。"
+        }
+      ],
+      "diagnosisFocus": [
+        "能否把不等式组解集理解为数轴交集。",
+        "能否正确处理参数为正、为零、为负时的解集差异。"
+      ],
+      "coreCompetencies": [
+        "直观想象",
+        "逻辑推理",
+        "数学运算"
+      ],
+      "resources": [
+        {
+          "id": "SH-HS-MATH-HJ-B1-C02-L04-A01",
+          "resourceType": "applet",
+          "title": "参数不等式解集数轴实验室",
+          "cognitiveAction": "对应",
+          "note": "拖动参数并同步显示不等式、数轴阴影、端点开闭、区间记号和空集/全集情形；数字化价值在于连续呈现参数过零时不等号方向和解集形态的变化，也能巩固数轴上解集与区间语言。不做常规移项、一元一次不等式刷题或机械化简。仅为 draft planned，未终核前禁止 scaffold。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        }
+      ]
+    },
+    "SH-HS-MATH-HJ-B1-C02-L05": {
+      "id": "SH-HS-MATH-HJ-B1-C02-L05",
+      "textbookRef": "2.2.2",
+      "title": "一元二次不等式的求解",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C02",
+        "number": 2,
+        "title": "等式与不等式"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C02-S02",
+        "textbookLabel": "2.2",
+        "title": "不等式的求解"
+      },
+      "coreKnowledge": [
+        "把一元二次不等式转化为对应二次方程根和符号区间",
+        "根据判别式和二次项系数讨论解集",
+        "为第5章用函数观点求解方程与不等式建立代数先修"
+      ],
+      "prerequisites": [
+        "一元二次方程解集",
+        "不等式性质",
+        "二次函数图像经验"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C02-L06",
+        "SH-HS-MATH-HJ-B1-C05-L07",
+        "SH-HS-MATH-HJ-B1-C05-L08"
+      ],
+      "teachingPainPoints": [
+        "学生容易只背大于取两边、小于取中间，不能解释根、开口方向和符号区间。",
+        "判别式为零或小于零时，解集为 R、空集或单点的边界容易混淆。",
+        "二次项系数为负时先变号再改不等号方向，常出现双重错误。"
+      ],
+      "digitalEntryPoints": [
+        {
+          "type": "applet",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B1-C02-L05-A01",
+          "title": "二次不等式与函数符号区间联动板",
+          "cognitive_action": "对应",
+          "note": "调节二次项系数、判别式和零点位置，同步观察抛物线开口、与x轴交点、符号区间和解集表示；数字化比板书更能呈现从两个实根、重根到无实根时解集形态的变化，并为第5章函数观点求解作桥接。不做因式分解刷题、套表格或机械解二次不等式。仅为 draft planned，未终核前禁止 scaffold。"
+        }
+      ],
+      "diagnosisFocus": [
+        "能否区分 Delta > 0、Delta = 0、Delta < 0 下不同不等号的解集。",
+        "能否说明不等式解集对应二次函数图像在 x 轴上方或下方的横坐标。"
+      ],
+      "coreCompetencies": [
+        "直观想象",
+        "逻辑推理",
+        "数学运算"
+      ],
+      "resources": [
+        {
+          "id": "SH-HS-MATH-HJ-B1-C02-L05-A01",
+          "resourceType": "applet",
+          "title": "二次不等式与函数符号区间联动板",
+          "cognitiveAction": "对应",
+          "note": "调节二次项系数、判别式和零点位置，同步观察抛物线开口、与x轴交点、符号区间和解集表示；数字化比板书更能呈现从两个实根、重根到无实根时解集形态的变化，并为第5章函数观点求解作桥接。不做因式分解刷题、套表格或机械解二次不等式。仅为 draft planned，未终核前禁止 scaffold。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        }
+      ]
+    },
+    "SH-HS-MATH-HJ-B1-C02-L06": {
+      "id": "SH-HS-MATH-HJ-B1-C02-L06",
+      "textbookRef": "2.2.3",
+      "title": "分式不等式的求解",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C02",
+        "number": 2,
+        "title": "等式与不等式"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C02-S02",
+        "textbookLabel": "2.2",
+        "title": "不等式的求解"
+      },
+      "coreKnowledge": [
+        "把简单分式不等式转化为同号或异号的不等式组",
+        "处理分母不为零的定义域限制",
+        "把分式不等式转化为整式不等式时保持等价条件"
+      ],
+      "prerequisites": [
+        "一元一次不等式和一元二次不等式",
+        "分式有意义条件",
+        "集合交并运算"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C02-L07",
+        "SH-HS-MATH-HJ-B1-C05-L01",
+        "SH-HS-MATH-HJ-B1-C05-L07"
+      ],
+      "teachingPainPoints": [
+        "学生容易在不确定分母符号时直接两边同乘分母。",
+        "分母为零的排除条件容易在化简后丢失。",
+        "同号/异号转化为不等式组时，交并关系容易写反。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否先写出分母不为零的条件。",
+        "能否判断分子分母同号或异号对应的解集结构。"
+      ],
+      "coreCompetencies": [
+        "逻辑推理",
+        "数学运算"
+      ],
+      "resources": []
+    },
+    "SH-HS-MATH-HJ-B1-C02-L07": {
+      "id": "SH-HS-MATH-HJ-B1-C02-L07",
+      "textbookRef": "2.2.4",
+      "title": "含绝对值不等式的求解",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C02",
+        "number": 2,
+        "title": "等式与不等式"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C02-S02",
+        "textbookLabel": "2.2",
+        "title": "不等式的求解"
+      },
+      "coreKnowledge": [
+        "用绝对值的距离意义求解基本含绝对值不等式",
+        "根据零点把数轴分段，去掉绝对值符号",
+        "把分段结果合并为区间或区间并集"
+      ],
+      "prerequisites": [
+        "绝对值和数轴距离",
+        "一元一次不等式",
+        "区间、交集和并集"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C02-L09",
+        "SH-HS-MATH-HJ-B1-C05-L01",
+        "SH-HS-MATH-HJ-B2-C09-L04"
+      ],
+      "teachingPainPoints": [
+        "学生容易机械套 |x| < a 和 |x| > a 模板，不会先判断右侧是否为正。",
+        "多个绝对值时，分段点和区间端点容易遗漏。",
+        "分段解完后合并区间时开闭端点容易出错。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否根据绝对值内表达式的零点正确分段。",
+        "能否把分段结果合并为准确的区间语言。"
+      ],
+      "coreCompetencies": [
+        "直观想象",
+        "逻辑推理",
+        "数学运算"
+      ],
+      "resources": []
+    },
+    "SH-HS-MATH-HJ-B1-C02-L08": {
+      "id": "SH-HS-MATH-HJ-B1-C02-L08",
+      "textbookRef": "2.3.1",
+      "title": "平均值不等式及其应用",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C02",
+        "number": 2,
+        "title": "等式与不等式"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C02-S03",
+        "textbookLabel": "2.3",
+        "title": "基本不等式及其应用"
+      },
+      "coreKnowledge": [
+        "理解两个非负数的算术平均值不小于几何平均值",
+        "掌握平均值不等式的等号成立条件",
+        "用基本不等式处理简单最值估计和矩形面积/周长问题"
+      ],
+      "prerequisites": [
+        "不等式性质",
+        "平方非负和开方",
+        "矩形面积、周长和正方形直观"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B1-C04-L02",
+        "SH-HS-MATH-HJ-B1-C05-L05",
+        "SH-HS-MATH-HJ-MODEL-K01"
+      ],
+      "teachingPainPoints": [
+        "学生容易只记 a + b >= 2sqrt(ab)，忽略非负前提和等号条件。",
+        "定和定积最值问题常被当作套公式，不能解释为什么正方形达到极值。",
+        "把平均值不等式用于不满足同正或定值条件的情形。"
+      ],
+      "digitalEntryPoints": [
+        {
+          "type": "manim_clip",
+          "proposed_resource_id": "SH-HS-MATH-HJ-B1-C02-L08-M01",
+          "title": "平均值不等式面积直观导入动画",
+          "cognitive_action": "构造",
+          "note": "用矩形与正方形面积、定周长面积最大和定面积周长最小的连续构造解释平均值不等式与等号条件；数字化价值在于把公式、面积和形状趋近正方形的过程连成一条直观叙事。不做基本不等式套公式求最值题库。仅为 draft planned，未终核前禁止 scaffold。"
+        }
+      ],
+      "diagnosisFocus": [
+        "能否先检查使用平均值不等式的正数或非负条件。",
+        "能否说明等号成立条件和定和定积条件。"
+      ],
+      "coreCompetencies": [
+        "直观想象",
+        "逻辑推理",
+        "数学运算"
+      ],
+      "resources": [
+        {
+          "id": "SH-HS-MATH-HJ-B1-C02-L08-M01",
+          "resourceType": "manim_clip",
+          "title": "平均值不等式面积直观导入动画",
+          "cognitiveAction": "构造",
+          "note": "用矩形与正方形面积、定周长面积最大和定面积周长最小的连续构造解释平均值不等式与等号条件；数字化价值在于把公式、面积和形状趋近正方形的过程连成一条直观叙事。不做基本不等式套公式求最值题库。仅为 draft planned，未终核前禁止 scaffold。",
+          "availability": "proposed",
+          "status": "planned",
+          "version": null,
+          "metadataPreview": null,
+          "player": null,
+          "package": null
+        }
+      ]
+    },
+    "SH-HS-MATH-HJ-B1-C02-L09": {
+      "id": "SH-HS-MATH-HJ-B1-C02-L09",
+      "textbookRef": "2.3.2",
+      "title": "三角不等式",
+      "status": "draft",
+      "estimatedPeriods": null,
+      "volume": {
+        "id": "B1",
+        "title": "必修第一册"
+      },
+      "chapter": {
+        "id": "SH-HS-MATH-HJ-B1-C02",
+        "number": 2,
+        "title": "等式与不等式"
+      },
+      "section": {
+        "id": "SH-HS-MATH-HJ-B1-C02-S03",
+        "textbookLabel": "2.3",
+        "title": "基本不等式及其应用"
+      },
+      "coreKnowledge": [
+        "理解两个实数和的绝对值不超过绝对值的和",
+        "掌握三角不等式的等号条件",
+        "用三角不等式处理简单绝对值估计"
+      ],
+      "prerequisites": [
+        "绝对值和含绝对值不等式",
+        "平方不等式",
+        "逻辑推理和等号条件"
+      ],
+      "successors": [
+        "SH-HS-MATH-HJ-B2-C08-L05",
+        "SH-HS-MATH-HJ-B2-C09-L04",
+        "SH-HS-MATH-HJ-XB1-GEOM-K01"
+      ],
+      "teachingPainPoints": [
+        "学生容易把实数绝对值中的三角不等式当作孤立公式，不能识别等号条件。",
+        "绝对值估计中何时取等号容易凭直觉猜。",
+        "三角不等式与后续向量、复数几何意义之间的联系本章尚不充分。"
+      ],
+      "digitalEntryPoints": [],
+      "diagnosisFocus": [
+        "能否判断三角不等式等号成立条件。",
+        "能否把绝对值估计写成清晰的不等式链。"
+      ],
+      "coreCompetencies": [
+        "逻辑推理",
+        "直观想象"
+      ],
+      "resources": []
+    },
     "SH-HS-MATH-HJ-B1-C03-L01": {
       "id": "SH-HS-MATH-HJ-B1-C03-L01",
       "textbookRef": "3.1.1",
@@ -20947,11 +22919,11 @@
   },
   "summary": {
     "volumeCount": 7,
-    "chapterCount": 7,
-    "lessonCount": 54,
+    "chapterCount": 9,
+    "lessonCount": 70,
     "implementedAppletCount": 14,
     "implementedManimCount": 4,
     "implementedDiagnosisCount": 7,
-    "plannedResourceCount": 16
+    "plannedResourceCount": 19
   }
 }

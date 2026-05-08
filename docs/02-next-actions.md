@@ -51,6 +51,10 @@
 - [ ] 为必修第一册第 3 章“幂、指数与对数”开启独立来源核对任务，只判断运算先修和少量诊断必要性，不直接制作资源。
 - [ ] 为必修第一册第 4 章“幂函数、指数函数与对数函数”开启独立来源核对和数字化必要性筛选任务，重点核对参数变化、图像性质、指数/对数互逆和增长模型。
 - [ ] 总控复核必修第一册第 5 章新增的 4 个 planned 候选后，再决定是否小批量 scaffold；未终核前不要制作完整资源包。
+- [x] 完成必修第一册第 1 章“集合与逻辑”来源核对和 draft 图谱入口，本轮不新增数字化候选。
+- [x] 完成必修第一册第 2 章“等式与不等式”来源核对、draft 图谱入口和数字化必要性筛选，仅保留 3 个 blocked planned 候选。
+- [ ] 用纸质教材或已登录 dolearning/上海数字教学平台终核必修第一册第 1、2 章课时边界、课时数和标题表述。
+- [ ] 在第 2 章终核前，不 scaffold `SH-HS-MATH-HJ-B1-C02-L04-A01`、`SH-HS-MATH-HJ-B1-C02-L05-A01`、`SH-HS-MATH-HJ-B1-C02-L08-M01`。
 
 ## P2：课件规范
 
@@ -116,7 +120,7 @@
 
 ## P5：资源工厂
 
-- [x] 生成 `content/production/resource-backlog.json`，覆盖必修第一册第 4、5 章、必修第二册第 6、7、8、9 章共 41 个资源工作单元；当前 25 个已实现、16 个待创建，其中 B1-C04 4 个、B1-C05 4 个、第 6 章 5 个、第 9 章 3 个 planned 候选都需等待纸质教材或 dolearning/上海数字教学平台终核后再 scaffold。
+- [x] 生成 `content/production/resource-backlog.json`，覆盖必修第一册第 2、4、5 章、必修第二册第 6、7、8、9 章共 44 个资源工作单元；当前 25 个已实现、19 个待创建，其中 B1-C02 3 个、B1-C04 4 个、B1-C05 4 个、第 6 章 5 个、第 9 章 3 个 planned 候选都需等待纸质教材或 dolearning/上海数字教学平台终核后再 scaffold。
 - [x] 为每个 backlog item 自动生成推荐分支、下一步动作和新对话 `threadPrompt`。
 - [x] 为未终核 planned item 增加 `scaffoldPolicy: blocked_until_source_verified`，自动提示词只允许做来源终核，不允许直接创建资源包。
 - [x] 将 `npm run generate:backlog` 接入 `npm run verify`。
@@ -147,6 +151,7 @@
 - [x] 第二轮通过验收后，确认 B1-C03 不进入资源生产，B1-C04 4 个候选进入 blocked planned；不要直接进入完整资源制作。
 - [x] 选择第三轮 3 个任务继续做来源核对和数字化必要性筛选：B1-C01、B1-C02、B2-C08 source tightening。
 - [x] 形成第三轮并行任务单：`docs/parallel-rounds/2026-05-08-round-3.md`。
-- [ ] 开启第三轮三个独立对话：B1-C01、B1-C02、B2-C08 source tightening。
-- [ ] 第三轮完成后由总控只合并事实源，统一再生 generated files 并运行 `npm run verify`。
-- [ ] 第三轮通过验收后，进入“已实现资源审校”轮，优先审校 B2-C07 已实现 Applet/Manim/Diagnosis 与 B2-C08 已 scaffold 资源。
+- [x] 开启第三轮三个独立对话：B1-C01、B1-C02、B2-C08 source tightening。
+- [x] 第三轮完成后由总控只合并事实源，统一再生 generated files 并运行 `npm run verify`。
+- [x] 第三轮通过验收后，进入“已实现资源审校”轮，优先审校 B2-C07 已实现 Applet/Manim/Diagnosis 与 B2-C08 已 scaffold 资源。
+- [ ] 形成第一轮已实现资源审校任务单，先从 B2-C07 的可运行 Applet 和 Manim 视频中挑 3 个资源做数学符号、交互边界、课堂节奏和 review 状态升级。

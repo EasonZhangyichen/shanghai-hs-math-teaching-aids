@@ -15,19 +15,19 @@
     "updateRule": "新增或修改资源包后运行 npm run generate:backlog 与 npm run verify。"
   },
   "summary": {
-    "total": 41,
+    "total": 44,
     "implemented": 25,
-    "planned": 16,
+    "planned": 19,
     "byType": {
       "applet": {
-        "total": 27,
+        "total": 29,
         "implemented": 14,
-        "planned": 13
+        "planned": 15
       },
       "manim_clip": {
-        "total": 4,
+        "total": 5,
         "implemented": 4,
-        "planned": 0
+        "planned": 1
       },
       "diagnosis": {
         "total": 10,
@@ -37,6 +37,102 @@
     }
   },
   "items": [
+    {
+      "id": "SH-HS-MATH-HJ-B1-C02-L04-A01",
+      "type": "applet",
+      "status": "planned",
+      "availability": "planned",
+      "title": "参数不等式解集数轴实验室",
+      "proposedTitle": "参数不等式解集数轴实验室",
+      "lessonId": "SH-HS-MATH-HJ-B1-C02-L04",
+      "lessonTitle": "一元一次不等式及一元一次不等式组的求解",
+      "textbookRef": "2.2.1",
+      "volumeId": "B1",
+      "volumeTitle": "必修第一册",
+      "chapterId": "SH-HS-MATH-HJ-B1-C02",
+      "chapterTitle": "等式与不等式",
+      "sectionId": "SH-HS-MATH-HJ-B1-C02-S02",
+      "sectionTitle": "不等式的求解",
+      "cognitiveAction": "对应",
+      "teachingPainPoints": [
+        "学生能代数求解，却常把开区间、闭区间、无穷端和空集写错。",
+        "参数跨过零时，不等式方向和解集形态同时变化，分类讨论容易漏。",
+        "不等式组解集是交集，学生容易误写成并集。"
+      ],
+      "note": "拖动参数并同步显示不等式、数轴阴影、端点开闭、区间记号和空集/全集情形；数字化价值在于连续呈现参数过零时不等号方向和解集形态的变化，也能巩固数轴上解集与区间语言。不做常规移项、一元一次不等式刷题或机械化简。仅为 draft planned，未终核前禁止 scaffold。",
+      "priority": "chapter_backlog",
+      "priorityReason": "参数一次不等式、数轴解集和区间语言存在明确多表征联动价值；但课时边界未终核前禁止 scaffold。",
+      "packagePath": null,
+      "metadataPath": null,
+      "recommendedTrack": "track/curriculum-map",
+      "scaffoldPolicy": "blocked_until_source_verified",
+      "nextAction": "先完成纸质教材、教师用书或已登录 dolearning/上海数字教学平台终核；终核前只保留为 planned 候选，不创建资源包、不 scaffold。",
+      "threadPrompt": "请先读取项目锚点文件和 content/production/resource-backlog.json，然后切到 track/curriculum-map。这次只核对 SH-HS-MATH-HJ-B1-C02-L04-A01（Applet）是否已经满足制作前提，对应课时 SH-HS-MATH-HJ-B1-C02-L04「一元一次不等式及一元一次不等式组的求解」。不要创建资源包，不 scaffold，不渲染；只做纸质教材、教师用书或已登录 dolearning/上海数字教学平台的课时边界和数字化必要性终核。完成后运行 npm run generate:backlog 和 npm run verify，更新 docs/01-current-state.md 与 docs/02-next-actions.md，并提交。"
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B1-C02-L05-A01",
+      "type": "applet",
+      "status": "planned",
+      "availability": "planned",
+      "title": "二次不等式与函数符号区间联动板",
+      "proposedTitle": "二次不等式与函数符号区间联动板",
+      "lessonId": "SH-HS-MATH-HJ-B1-C02-L05",
+      "lessonTitle": "一元二次不等式的求解",
+      "textbookRef": "2.2.2",
+      "volumeId": "B1",
+      "volumeTitle": "必修第一册",
+      "chapterId": "SH-HS-MATH-HJ-B1-C02",
+      "chapterTitle": "等式与不等式",
+      "sectionId": "SH-HS-MATH-HJ-B1-C02-S02",
+      "sectionTitle": "不等式的求解",
+      "cognitiveAction": "对应",
+      "teachingPainPoints": [
+        "学生容易只背大于取两边、小于取中间，不能解释根、开口方向和符号区间。",
+        "判别式为零或小于零时，解集为 R、空集或单点的边界容易混淆。",
+        "二次项系数为负时先变号再改不等号方向，常出现双重错误。"
+      ],
+      "note": "调节二次项系数、判别式和零点位置，同步观察抛物线开口、与x轴交点、符号区间和解集表示；数字化比板书更能呈现从两个实根、重根到无实根时解集形态的变化，并为第5章函数观点求解作桥接。不做因式分解刷题、套表格或机械解二次不等式。仅为 draft planned，未终核前禁止 scaffold。",
+      "priority": "chapter_backlog",
+      "priorityReason": "二次不等式与二次函数图像、零点和符号区间的对应具有明确动态可视化价值；但课时边界未终核前禁止 scaffold。",
+      "packagePath": null,
+      "metadataPath": null,
+      "recommendedTrack": "track/curriculum-map",
+      "scaffoldPolicy": "blocked_until_source_verified",
+      "nextAction": "先完成纸质教材、教师用书或已登录 dolearning/上海数字教学平台终核；终核前只保留为 planned 候选，不创建资源包、不 scaffold。",
+      "threadPrompt": "请先读取项目锚点文件和 content/production/resource-backlog.json，然后切到 track/curriculum-map。这次只核对 SH-HS-MATH-HJ-B1-C02-L05-A01（Applet）是否已经满足制作前提，对应课时 SH-HS-MATH-HJ-B1-C02-L05「一元二次不等式的求解」。不要创建资源包，不 scaffold，不渲染；只做纸质教材、教师用书或已登录 dolearning/上海数字教学平台的课时边界和数字化必要性终核。完成后运行 npm run generate:backlog 和 npm run verify，更新 docs/01-current-state.md 与 docs/02-next-actions.md，并提交。"
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B1-C02-L08-M01",
+      "type": "manim_clip",
+      "status": "planned",
+      "availability": "planned",
+      "title": "平均值不等式面积直观导入动画",
+      "proposedTitle": "平均值不等式面积直观导入动画",
+      "lessonId": "SH-HS-MATH-HJ-B1-C02-L08",
+      "lessonTitle": "平均值不等式及其应用",
+      "textbookRef": "2.3.1",
+      "volumeId": "B1",
+      "volumeTitle": "必修第一册",
+      "chapterId": "SH-HS-MATH-HJ-B1-C02",
+      "chapterTitle": "等式与不等式",
+      "sectionId": "SH-HS-MATH-HJ-B1-C02-S03",
+      "sectionTitle": "基本不等式及其应用",
+      "cognitiveAction": "构造",
+      "teachingPainPoints": [
+        "学生容易只记 a + b >= 2sqrt(ab)，忽略非负前提和等号条件。",
+        "定和定积最值问题常被当作套公式，不能解释为什么正方形达到极值。",
+        "把平均值不等式用于不满足同正或定值条件的情形。"
+      ],
+      "note": "用矩形与正方形面积、定周长面积最大和定面积周长最小的连续构造解释平均值不等式与等号条件；数字化价值在于把公式、面积和形状趋近正方形的过程连成一条直观叙事。不做基本不等式套公式求最值题库。仅为 draft planned，未终核前禁止 scaffold。",
+      "priority": "follow_up",
+      "priorityReason": "平均值不等式的几何面积直观适合短 Manim 导入，但需先确认2.3课时边界和是否与函数最值资源合并；未终核前禁止 scaffold。",
+      "packagePath": null,
+      "metadataPath": null,
+      "recommendedTrack": "track/curriculum-map",
+      "scaffoldPolicy": "blocked_until_source_verified",
+      "nextAction": "先完成纸质教材、教师用书或已登录 dolearning/上海数字教学平台终核；终核前只保留为 planned 候选，不创建资源包、不 scaffold。",
+      "threadPrompt": "请先读取项目锚点文件和 content/production/resource-backlog.json，然后切到 track/curriculum-map。这次只核对 SH-HS-MATH-HJ-B1-C02-L08-M01（Manim Clip）是否已经满足制作前提，对应课时 SH-HS-MATH-HJ-B1-C02-L08「平均值不等式及其应用」。不要创建资源包，不 scaffold，不渲染；只做纸质教材、教师用书或已登录 dolearning/上海数字教学平台的课时边界和数字化必要性终核。完成后运行 npm run generate:backlog 和 npm run verify，更新 docs/01-current-state.md 与 docs/02-next-actions.md，并提交。"
+    },
     {
       "id": "SH-HS-MATH-HJ-B1-C04-L02-A01",
       "type": "applet",

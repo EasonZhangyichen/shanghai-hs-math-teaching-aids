@@ -149,7 +149,7 @@
   - `npm run verify` 现在会先执行 `npm run validate:content`，再运行测试和平台构建。
 - 已创建首版资源工厂工作流：
   - `scripts/generate-resource-backlog.js` 会从 `content/curriculum/index.yaml` 的 `digital_entry_points` 和已落地的 Applet / Manim / Diagnosis 资源包生成生产 backlog。
-  - `content/production/resource-backlog.json` 当前列出 41 个资源工作单元：25 个已实现、16 个仍为 `planned`。第 7 章三角函数 15 个均已实现，第 8 章平面向量 10 个数字化必要性筛选后的候选均已落地；新增 planned item 包括必修第一册第 4 章基本初等函数 4 个、第 5 章函数主线 4 个、第 6 章三角前置 5 个、第 9 章复数 3 个，均只是课程图谱候选，尚未 scaffold。当前 Applet 为 27 个总计、14 个已实现、13 个待创建；Manim 为 4 个总计、4 个已实现、0 个待创建；Diagnosis 为 10 个总计、7 个已实现、3 个待创建；每个 item 都包含推荐分支、下一步动作、`scaffoldPolicy` 和可复制到新 Codex 对话的 `threadPrompt`。8.3 暂缓资源和未终核章节候选都不进入 scaffold 生产队列。
+  - `content/production/resource-backlog.json` 当前列出 44 个资源工作单元：25 个已实现、19 个仍为 `planned`。第 7 章三角函数 15 个均已实现，第 8 章平面向量 10 个数字化必要性筛选后的候选均已落地；新增 planned item 包括必修第一册第 2 章等式与不等式 3 个、第 4 章基本初等函数 4 个、第 5 章函数主线 4 个、第 6 章三角前置 5 个、第 9 章复数 3 个，均只是课程图谱候选，尚未 scaffold。当前 Applet 为 29 个总计、14 个已实现、15 个待创建；Manim 为 5 个总计、4 个已实现、1 个待创建；Diagnosis 为 10 个总计、7 个已实现、3 个待创建；每个 item 都包含推荐分支、下一步动作、`scaffoldPolicy` 和可复制到新 Codex 对话的 `threadPrompt`。8.3 暂缓资源和未终核章节候选都不进入 scaffold 生产队列。
   - 未终核 planned item 会标记为 `scaffoldPolicy: blocked_until_source_verified`，推荐分支改为 `track/curriculum-map`，自动提示词改为“先做纸质教材/已登录平台终核，不创建资源包、不 scaffold”。
   - `scripts/scaffold-resource-packages.js` 提供首版批量资源骨架生成能力：当前已支持 Applet、Manim Clip 和 Diagnosis planned item 的 dry-run、按数量或 ID 生成、嵌套文件写入和避免覆盖已有资源包。
   - 已修正 Applet scaffold 模板，避免在 `pedagogy` 中写入 Applet schema 不接受的 `classroom_use` 字段；Manim 与 Diagnosis 仍保留各自 schema 需要的课堂使用说明。
@@ -160,7 +160,8 @@
   - 后续可每轮并行 3 到 5 个章节，但只先做目录来源和必要性筛选；完整资源制作仍按单资源或同类型小批量推进。
   - 并行章节建议使用独立短分支或 git worktree，避免多个对话同时修改同一分支和同一批 YAML。
   - 第二轮并行任务已完成并由总控集成：B1-C03、B1-C04 与 B2-C07 prerequisite alignment 均只合并来源记录、draft 图谱和先修链语言，不制作资源包。
-  - 第三轮并行任务单已写入 `docs/parallel-rounds/2026-05-08-round-3.md`，建议并行推进 B1-C01、B1-C02 与 B2-C08 source tightening；本轮仍不制作资源包，为下一轮已实现资源审校做准备。
+  - 第三轮并行任务已完成并由总控集成：B1-C01、B1-C02 与 B2-C08 source tightening 均只合并来源记录、draft 图谱、数字化必要性筛选和边界收窄，不制作资源包。
+  - B1-C01 本轮不新增 `digital_entry_points`；B1-C02 仅保留 3 个 blocked planned 候选，全部要求纸质教材或已登录 dolearning/上海数字教学平台终核后再判断是否 scaffold；B2-C08 source tightening 进一步确认 8.3 暂缓项不进入生产队列。
 - 已完成首轮数学符号与布局统一修正：
   - 平台侧和课件侧已接入富数学文本渲染，常见的 `π/2`、`-3π/2` 等会以竖式分数显示，避免 `pi/2`、`Theta` 或横向斜杠破坏数学语言。
   - `content/shared/math-text-normalizer.js` 已覆盖普通 HTML 文本、动态 DOM 更新和 SVG `<text>` 中的简单 π 分数标签。
@@ -200,7 +201,7 @@
 
 - 尚未正式核验沪教版教材全册课时目录。
 - 必修第二册第 6 章“三角”已有 draft 图谱和来源核对记录，但尚未完成纸质教材/已登录 dolearning 终核；尤其需要确认 6.1 是否按 5 个教材节点组织、`6.1.2 任意角及其度量` 是否包含角度制与弧度制的多课时拆分、6.3 是否只有正弦定理和余弦定理两个教材节点。
-- 必修第一册函数主线已完成首轮与第二轮来源核对；第 3、4、5 章均已展开为 `draft` YAML 图谱，但仍需纸质教材、教师用书或已登录 dolearning/上海数字教学系统终核课时数、课时边界和平台目录。
+- 必修第一册第 1、2、3、4、5 章均已完成 draft 级来源核对或图谱入口；第 1 章不新增数字化候选，第 2 章只保留 3 个 blocked planned 候选，第 3 章暂不进入资源生产，第 4、5 章保留少量 blocked planned 候选。所有第一册课时仍需纸质教材、教师用书或已登录 dolearning/上海数字教学系统终核课时数、课时边界和平台目录。
 - 必修第二册第 7 章目录已完成首版结构化整理，但尚未完成纸质教材人工终核。
 - 必修第二册第 8 章“平面向量”已完成首版结构化整理、dolearning 来源核对记录和 planned resource 数字化必要性筛选落地，但尚未完成纸质教材/已登录 dolearning 终核；尤其需要确认 8.3 是教材四小节拆分，还是 dolearning 三课时分组。第 8 章 6 个筛选后保留的 Applet 资源包、3 个 Diagnosis 资源包和 1 个 Manim Clip 资源包均已生成骨架；8.3 暂缓资源仍不进入 scaffold 生产队列。
 - 第 7 章的第 6 章前置节点已 draft 展开，但仍需人工终核；第 9 章“复数”已新增 draft 图谱和数字化必要性初筛，但尚未完成纸质教材/已登录 dolearning 终核。
@@ -208,9 +209,9 @@
 - 已创建八个第 7 章可运行 HTML Applet 原型，并已接入平台壳 iframe 预览；另有六个第 8 章 Applet 处于 scaffolded 骨架状态。所有 Applet 尚未完成数学审校、课堂节奏试读和浏览器交互复核。
 - 已创建四个 Manim 场景脚本：`L01-M01`、`L05-M01` 与 `L06-M01` 均已导出可播放 `mp4` / `webm` / poster，`SH-HS-MATH-HJ-B2-C08-L04-M01` 当前仅为 `scene_draft` / `metadata_ready` 骨架；四者尚未完成数学审校或课堂试用。
 - 已将 Applet、Manim 和 Diagnosis metadata JSON Schema 接入首版自动校验脚本。
-- 已建立首版资源生产 backlog，可按单个资源工作单元开启新对话，避免全高中内容挤在一个上下文中；当前必修第二册第 7 章 15 个资源工作单元和第 8 章 10 个筛选后候选均已落地，新增的 B1-C04、B1-C05、B2-C06、B2-C09 planned 候选仅用于记录数字化必要性，不应立即 scaffold，并已补充 Applet / Manim / Diagnosis 全类型 scaffold 命令以减少后续手工建目录成本。
-- 当前第 7 章和第 8 章 backlog 已无 `planned` item；B1-C04 4 个、B1-C05 4 个、第 6 章 5 个、第 9 章 3 个 planned item 必须等待纸质教材或已登录 dolearning/上海数字教学平台终核后再进入 scaffold。下一步仍应优先推进第 7、8 章已实现资源的数学审校、课堂节奏试读和状态升级，或继续做其他章节来源核对，而不是继续新增同质资源。
-- 已完成两轮并行章节工厂：第一轮 B1 函数主线、B2-C06 与 B2-C09；第二轮 B1-C03、B1-C04 与 B2-C07 prerequisite alignment。第三轮已规划为 B1-C01、B1-C02 与 B2-C08 source tightening；后续继续沿用独立 worktree 并行，但只做沪教版来源核对、课程图谱和数字化必要性筛选，通过总控验收后再判断是否进入 scaffold。
+- 已建立首版资源生产 backlog，可按单个资源工作单元开启新对话，避免全高中内容挤在一个上下文中；当前必修第二册第 7 章 15 个资源工作单元和第 8 章 10 个筛选后候选均已落地，新增的 B1-C02、B1-C04、B1-C05、B2-C06、B2-C09 planned 候选仅用于记录数字化必要性，不应立即 scaffold，并已补充 Applet / Manim / Diagnosis 全类型 scaffold 命令以减少后续手工建目录成本。
+- 当前第 7 章和第 8 章 backlog 已无 `planned` item；B1-C02 3 个、B1-C04 4 个、B1-C05 4 个、第 6 章 5 个、第 9 章 3 个 planned item 必须等待纸质教材或已登录 dolearning/上海数字教学平台终核后再进入 scaffold。下一步仍应优先推进第 7、8 章已实现资源的数学审校、课堂节奏试读和状态升级，或继续做其他章节来源核对，而不是继续新增同质资源。
+- 已完成三轮并行章节工厂：第一轮 B1 函数主线、B2-C06 与 B2-C09；第二轮 B1-C03、B1-C04 与 B2-C07 prerequisite alignment；第三轮 B1-C01、B1-C02 与 B2-C08 source tightening。后续继续沿用独立 worktree 并行，但只做沪教版来源核对、课程图谱和数字化必要性筛选，通过总控验收后再判断是否进入 scaffold。
 - 平台壳已读取 `content/manim/*/metadata.yaml` 并渲染样板 Manim 视频资源卡；尚未沉淀为独立播放器或接入播放器级学习状态记录。
 - 尚未配置 GitHub 分支保护规则。
 
