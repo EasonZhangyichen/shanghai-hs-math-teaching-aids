@@ -24,9 +24,10 @@ curriculum:
 pedagogy:
   cognitive_action: "比较"
   estimated_classroom_minutes: 8
-  primary_teaching_problem: "学生会背正弦函数的周期、值域、单调性和对称性结论，但在端点、一般式和几何对象比较中容易暴露概念混淆。"
+  primary_teaching_problem: "学生会背正弦函数的定义域、值域、周期、奇偶性、单调性和对称性结论，但在周期长度、端点、一般式和几何对象比较中容易暴露概念混淆。"
   learning_goals:
-    - "写出零点、最值点和单调区间的完整一般式，并注明 k 属于整数。"
+    - "确认 y = sin x 的定义域为 R、值域为 [-1, 1]、最小正周期为 2π，并能说明它是奇函数。"
+    - "写出零点、最值点和单调区间的完整一般式，并注明 k ∈ Z。"
     - "用图像端点解释递增区间和递减区间，而不是只凭局部观察判断。"
     - "区分正弦图像的对称轴和对称中心。"
     - "根据错因标签选择回看 Applet 图层或教师回讲路径。"
@@ -46,6 +47,7 @@ pedagogy:
 
 diagnosis_design:
   diagnostic_focus:
+    - "能否确认定义域、值域、最小正周期和奇函数性质。"
     - "能否写出完整的一般解形式。"
     - "能否区分单调区间和局部观察区间。"
     - "能否区分对称轴与对称中心的几何含义。"
@@ -53,7 +55,10 @@ diagnosis_design:
   misconception_tags:
     - id: "period_omission"
       title: "周期遗漏"
-      description: "只写一个周期内的区间或点，遗漏加 2kpi 或 k 属于整数的完整表达。"
+      description: "只写一个周期内的区间或点，遗漏加 2kπ 或 k ∈ Z 的完整表达。"
+    - id: "period_length_confusion"
+      title: "周期长度混淆"
+      description: "把相邻零点间隔 π 误认为最小正周期，或把正弦函数的周期步长写成 π。"
     - id: "monotonic_endpoint_confusion"
       title: "单调端点混淆"
       description: "把递增、递减区间端点写反，或把相邻半周期的方向混用。"
@@ -76,7 +81,7 @@ diagnosis_design:
     estimated_minutes: 8
   feedback_strategy:
     immediate_feedback: "每题按命中的错因标签给出一句图像回看提示和一个追问，避免只显示对错。"
-    teacher_dashboard_notes: "统计各错因标签命中人数；若周期遗漏超过三分之一，先回到周期比较图层；若单调端点或局部概括集中出现，回到单调区间端点；若对称混淆集中出现，回到对称轴和对称中心对照。"
+    teacher_dashboard_notes: "统计各错因标签命中人数；若周期遗漏或周期长度混淆超过三分之一，先回到周期比较图层；若单调端点或局部概括集中出现，回到单调区间端点；若对称混淆集中出现，回到对称轴和对称中心对照。"
     remediation_links:
       - "content/applets/SH-HS-MATH-HJ-B2-C07-L02-A01"
 
