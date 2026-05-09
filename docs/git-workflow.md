@@ -62,16 +62,30 @@ SH-HS-MATH-HJ-B2-C07-L01-A01@0.1.0
 
 ```text
 draft
+-> self_checked_draft
 -> math_review
--> pedagogy_review
+-> browser_review
 -> classroom_trial
--> stable
--> deprecated
+-> release_candidate
+-> published
 ```
+
+含义：
+
+- `draft`：资源存在、骨架完整或可运行，但不代表数学正确。
+- `self_checked_draft`：作者完成基础自检，适合交给下一轮审校。
+- `math_review`：数学审校建议通过。
+- `browser_review`：平台 iframe、直达页、大屏或触控复核通过。
+- `classroom_trial`：教师试读或小组限时试做通过。
+- `release_candidate`：总控完成整合验证后标记为候选发布。
+- `published`：总控在 release 分支或正式版本中发布。
+
+工作对话只能建议进入 `self_checked_draft`、`math_review`、`browser_review` 或 `classroom_trial`。`release_candidate` 和 `published` 只能由总控决定。
 
 ## 合并规则
 
 - `main` 只接受来自 `release/*` 或稳定文档更新的合并。
 - `develop` 接受功能分支和 track 分支的阶段性合并。
 - `track/*` 用于长期主题推进，避免单次 Codex 会话上下文丢失。
-- 每个课件资源必须带 metadata、教师脚本、学生任务和审核记录后才能进入 `stable`。
+- 每个课件资源必须带 metadata、教师脚本、学生任务和审核记录后才能进入 `release_candidate`。
+- 所有 `content/production/resource-backlog.json`、`apps/web/src/data/workspace-data.json` 和全局状态文档更新，由总控在集成分支统一生成和提交。

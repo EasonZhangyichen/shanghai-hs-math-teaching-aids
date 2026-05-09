@@ -12,6 +12,7 @@
 - [x] 建立分支对话启动提示词。
 - [x] 建立资源工厂工作流和 backlog 自动生成器。
 - [x] 建立并行章节工厂规则，明确多章节并行时的来源核对、必要性筛选、分支/worktree 和总控验收规则。
+- [x] 建立质量优先双线并行系统，明确生产线 3 个、审核线 3 个、三三一组反馈、总控唯一裁决和暂停机制。
 - [x] 配置本仓库 Git 提交身份。
 - [x] 创建 GitHub 远程仓库并推送初始分支与标签。
 - [ ] 配置 GitHub 分支保护规则。
@@ -169,4 +170,16 @@
 - [x] 形成第五轮已实现资源审校任务单：`docs/resource-review-rounds/2026-05-09-round-5.md`，选择 `SH-HS-MATH-HJ-B2-C07-L03-A02`、`SH-HS-MATH-HJ-B2-C07-L05-M01` 和 `SH-HS-MATH-HJ-B2-C07-L07-A01`。
 - [x] 开启第五轮三个独立审校对话：`SH-HS-MATH-HJ-B2-C07-L03-A02`、`SH-HS-MATH-HJ-B2-C07-L05-M01`、`SH-HS-MATH-HJ-B2-C07-L07-A01`。
 - [x] 第五轮审校完成后由总控合并资源包内改动，统一再生 generated files 并运行 `npm run verify`。
-- [ ] 形成第六轮已实现资源审校或课堂试读任务单，优先考虑第 7 章已进入 `math_review` 的资源做教师试读/触控大屏复核，或转向第 8 章 scaffold 资源的单资源精修。
+- [x] 形成质量优先双线并行制度文档：`docs/parallel-quality-system.md`。
+- [ ] 开启第六轮双线并行：生产线 3 个对话、审核线 3 个对话，但按生产线一批 3 条反馈、审核线一批 3 条反馈交回总控。
+- [ ] 生产线优先处理平台框架筛选能力、第 8 章 `SH-HS-MATH-HJ-B2-C08-L01-A01` 单资源精修、资源工厂 dry-run 批次规划；不得碰 8.3 暂缓项或未终核章节正式生产。
+- [ ] 审核线优先处理第 7 章已实现资源的数学/沪教版一致性、课堂试读准备度、浏览器大屏触控 QA；只给状态建议，不直接进入 `published`。
+- [ ] 总控收到每批 3 条反馈后，使用 `git branch --contains <commit>` 和 `git show --stat <commit>` 核对分支与改动范围，再决定是否合并、再生 generated files、运行 `npm run verify`、推送并同步长期分支。
+
+## P7：双线并行质量系统
+
+- [x] 设定严格状态流：`draft -> self_checked_draft -> math_review -> browser_review -> classroom_trial -> release_candidate -> published`。
+- [x] 明确 `release_candidate` 与 `published` 只能由总控决定。
+- [x] 明确工作对话禁止越界修改 `develop`、长期 `track/*`、`release/v0.1-trig-mvp`、课程图谱和 generated files。
+- [x] 明确停止条件：同批 2 次以上验证失败、课时归属不确定、越界修改、平台预览稳定性受损或数学口径不确定时暂停推进。
+- [ ] 在第六轮双线并行后复盘：如果 6 线程仍能保持低冲突和高质量，再考虑扩展到“5 个生产/审核混合对话 + 1 个总控”的更大批次；否则维持 3+3。

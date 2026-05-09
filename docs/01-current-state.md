@@ -162,6 +162,11 @@
   - 第二轮并行任务已完成并由总控集成：B1-C03、B1-C04 与 B2-C07 prerequisite alignment 均只合并来源记录、draft 图谱和先修链语言，不制作资源包。
   - 第三轮并行任务已完成并由总控集成：B1-C01、B1-C02 与 B2-C08 source tightening 均只合并来源记录、draft 图谱、数字化必要性筛选和边界收窄，不制作资源包。
   - B1-C01 本轮不新增 `digital_entry_points`；B1-C02 仅保留 3 个 blocked planned 候选，全部要求纸质教材或已登录 dolearning/上海数字教学平台终核后再判断是否 scaffold；B2-C08 source tightening 进一步确认 8.3 暂缓项不进入生产队列。
+- 已建立质量优先双线并行系统：
+  - 新增 `docs/parallel-quality-system.md`，明确“生产线 3 个 + 审核线 3 个、三三一组反馈、总控唯一裁决”的推进方式。
+  - 本模式只在写入范围互不重叠、总控逐批验收、统一再生 generated files、统一运行 `npm run verify` 的前提下启用。
+  - 状态流收紧为 `draft -> self_checked_draft -> math_review -> browser_review -> classroom_trial -> release_candidate -> published`，其中 `release_candidate` 和 `published` 只允许总控决定。
+  - 下一轮 6 个对话提示词已沉淀到 `docs/parallel-quality-system.md` 和 `docs/thread-starter-prompts.md`；生产线聚焦平台框架、第 8 章单资源精修和资源工厂 dry-run 规划，审核线聚焦第 7 章数学/沪教版一致性、课堂试读准备度和浏览器大屏触控 QA。
 - 已完成首轮数学符号与布局统一修正：
   - 平台侧和课件侧已接入富数学文本渲染，常见的 `π/2`、`-3π/2` 等会以竖式分数显示，避免 `pi/2`、`Theta` 或横向斜杠破坏数学语言。
   - `content/shared/math-text-normalizer.js` 已覆盖普通 HTML 文本、动态 DOM 更新和 SVG `<text>` 中的简单 π 分数标签。

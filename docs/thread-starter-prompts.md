@@ -61,6 +61,51 @@ develop
 - 说明该资源为什么值得数字化；如果普通板书或纸笔任务更合适，应明确建议暂不制作。
 - 不把全章资源塞进同一个对话。
 
+## 质量优先双线并行总控
+
+负责分支：
+
+```text
+develop
+```
+
+适合做：
+
+- 同时分派生产线 3 个、审核线 3 个工作对话。
+- 按“三个一组”回收结果，并逐批核对 commit、分支、改动范围、验证结果和剩余风险。
+- 只由总控合并到 `develop`、同步长期 `track/*` 分支和 `release/v0.1-trig-mvp`。
+- 把资源状态从 `math_review` / `browser_review` / `classroom_trial` 继续推进到 `release_candidate` 或 `published`。
+
+启动提示词：
+
+```text
+这次作为质量优先双线并行总控。请读取项目锚点文件、docs/parallel-quality-system.md、docs/resource-factory-workflow.md、docs/parallel-chapter-factory.md 和 content/production/resource-backlog.json，检查 git status 和当前分支。不要先开始具体资源生产，先判断当前仓库是否适合启动生产线 3 个 + 审核线 3 个，并给出每个工作对话的独立分支、写入范围、禁止范围、验收标准和完整可复制提示词。总控是唯一合并点，所有工作对话只能建议状态，不能直接 published。
+```
+
+本轮 6 个可直接复制的新对话提示词已沉淀在：
+
+```text
+docs/parallel-quality-system.md
+```
+
+当前 6 个推荐工作对话：
+
+```text
+生产-平台框架 -> codex/production-platform-framework-filtering
+生产-第8章资源精修 -> codex/production-b2-c08-l01-a01-vector-applet
+生产-课程图谱与资源工厂 -> codex/production-resource-factory-batch-planner
+审核-数学与沪教版一致性 -> codex/review-b2-c07-math-hj-consistency
+审核-课堂试读 -> codex/review-b2-c07-classroom-trial-readiness
+审核-浏览器大屏触控 -> codex/review-b2-c07-browser-touch-audit
+```
+
+验收标准：
+
+- 生产线和审核线不得同时写同一资源包。
+- 工作对话不提交 `content/production/resource-backlog.json` 或 `apps/web/src/data/workspace-data.json`，由总控统一再生。
+- 未终核章节、8.3 暂缓项和数字化必要性不足的内容不得进入正式生产。
+- 总控收到每批 3 条反馈后，必须运行 `git branch --contains <commit>` 和 `git show --stat <commit>`，再决定是否合并。
+
 ## 并行章节工厂总控
 
 负责分支：
@@ -301,9 +346,9 @@ track/review-system
 
 验收标准：
 
-- 资源能从 draft 推进到 stable。
+- 资源能从 `draft` 推进到 `release_candidate`，但 `release_candidate` / `published` 只能由总控决定。
 - 数学审核、教学审核、课堂试用都有记录位置。
-- 审核流程不会阻碍 MVP，但能防止低质资源进入 stable。
+- 审核流程不会阻碍 MVP，但能防止低质资源进入正式发布。
 
 ## 设计系统分支
 
