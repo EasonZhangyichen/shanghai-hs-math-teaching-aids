@@ -5,35 +5,916 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>向量表示与等价拖拽板</title>
     <style>
+      :root {
+        --ink: #17211d;
+        --muted: #58675f;
+        --paper: #fbfcf8;
+        --panel: #ffffff;
+        --line: #d8e1da;
+        --grid: #e6ece7;
+        --axis: #8c9a92;
+        --base: #2563eb;
+        --base-soft: rgba(37, 99, 235, 0.14);
+        --copy: #d97706;
+        --copy-soft: rgba(217, 119, 6, 0.16);
+        --measure: #0f766e;
+        --measure-soft: rgba(15, 118, 110, 0.12);
+        --alert: #b91c1c;
+        --shadow: 0 18px 48px rgba(24, 35, 31, 0.14);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
       body {
         margin: 0;
         min-height: 100svh;
-        display: grid;
-        place-items: center;
-        background: #f6faf8;
-        color: #17231f;
+        background: var(--paper);
+        color: var(--ink);
         font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
       }
 
-      main {
-        width: min(720px, calc(100vw - 32px));
-        padding: 24px;
-        border: 1px solid #d7e0dc;
+      button {
+        font: inherit;
+      }
+
+      .applet {
+        min-height: 100svh;
+        padding: 14px;
+        display: grid;
+        grid-template-rows: auto 1fr;
+        gap: 12px;
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 12px 14px;
+        border: 1px solid var(--line);
         border-radius: 8px;
-        background: #ffffff;
+        background: var(--panel);
+        box-shadow: 0 8px 24px rgba(24, 35, 31, 0.08);
+      }
+
+      .title-block {
+        min-width: 220px;
+      }
+
+      .eyebrow {
+        margin: 0 0 2px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 22px;
+        line-height: 1.2;
+        font-weight: 750;
+        letter-spacing: 0;
+      }
+
+      .stepbar {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 8px;
+      }
+
+      .step-button,
+      .tool-button {
+        min-height: 38px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #f7faf7;
+        color: var(--ink);
+        padding: 7px 10px;
+        cursor: pointer;
+      }
+
+      .step-button[aria-pressed="true"],
+      .tool-button[aria-pressed="true"] {
+        border-color: var(--measure);
+        background: var(--measure-soft);
+        color: #0f4f49;
+        font-weight: 700;
+      }
+
+      .workspace {
+        display: grid;
+        grid-template-columns: minmax(560px, 1fr) minmax(300px, 380px);
+        gap: 12px;
+        min-height: 0;
+      }
+
+      .board-wrap,
+      .panel {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+        box-shadow: var(--shadow);
+        min-width: 0;
+      }
+
+      .board-wrap {
+        position: relative;
+        overflow: hidden;
+        display: grid;
+        min-height: 520px;
+      }
+
+      svg {
+        width: 100%;
+        height: 100%;
+        min-height: 520px;
+        touch-action: none;
+        user-select: none;
+      }
+
+      .grid-line {
+        stroke: var(--grid);
+        stroke-width: 1;
+      }
+
+      .axis-line {
+        stroke: var(--axis);
+        stroke-width: 1.5;
+      }
+
+      .axis-label,
+      .point-label,
+      .vector-label,
+      .component-label {
+        fill: var(--ink);
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      .axis-label {
+        fill: var(--muted);
+        font-size: 12px;
+      }
+
+      .base-vector {
+        stroke: var(--base);
+        stroke-width: 5;
+        stroke-linecap: round;
+        cursor: grab;
+      }
+
+      .copy-vector {
+        stroke: var(--copy);
+        stroke-width: 5;
+        stroke-linecap: round;
+        cursor: grab;
+      }
+
+      .ghost-vector {
+        stroke: var(--copy);
+        stroke-width: 3;
+        stroke-linecap: round;
+        opacity: 0.24;
+      }
+
+      .component-line {
+        stroke: var(--measure);
+        stroke-width: 2;
+        stroke-dasharray: 6 5;
+      }
+
+      .parallel-guide {
+        stroke: #64748b;
+        stroke-width: 1.5;
+        stroke-dasharray: 7 6;
+        opacity: 0.52;
+      }
+
+      .point-handle {
+        stroke: #ffffff;
+        stroke-width: 3;
+        cursor: grab;
+      }
+
+      .point-handle.base {
+        fill: var(--base);
+      }
+
+      .point-handle.copy {
+        fill: var(--copy);
+      }
+
+      .dragging .point-handle,
+      .dragging .base-vector,
+      .dragging .copy-vector {
+        cursor: grabbing;
+      }
+
+      .panel {
+        display: flex;
+        flex-direction: column;
+        min-height: 0;
+        overflow: hidden;
+      }
+
+      .panel-section {
+        padding: 14px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .panel-section:last-child {
+        border-bottom: 0;
+      }
+
+      .section-title {
+        margin: 0 0 10px;
+        font-size: 14px;
+        color: var(--muted);
+        font-weight: 700;
+      }
+
+      .readout-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+
+      .readout {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 10px;
+        background: #fbfdfb;
+        min-height: 76px;
+      }
+
+      .readout strong {
+        display: block;
+        margin-bottom: 4px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .readout span {
+        display: block;
+        font-size: 20px;
+        line-height: 1.25;
+        font-weight: 760;
+      }
+
+      .relation {
+        border: 1px solid rgba(15, 118, 110, 0.28);
+        border-radius: 8px;
+        padding: 12px;
+        background: var(--measure-soft);
+      }
+
+      .relation p {
+        margin: 0;
+        line-height: 1.55;
+      }
+
+      .relation .formula {
+        margin-top: 6px;
+        font-size: 20px;
+        font-weight: 800;
+        color: #0f4f49;
+      }
+
+      .control-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .compare-list {
+        display: grid;
+        gap: 8px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .compare-list li {
+        padding: 9px 10px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fbfdfb;
+        line-height: 1.45;
+      }
+
+      .compare-list b {
+        color: #0f4f49;
+      }
+
+      .warning {
+        color: var(--alert);
+        font-weight: 700;
+      }
+
+      .stage-note {
+        position: absolute;
+        left: 16px;
+        bottom: 16px;
+        max-width: min(560px, calc(100% - 32px));
+        padding: 10px 12px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.92);
+        color: var(--ink);
+        line-height: 1.45;
+        box-shadow: 0 10px 28px rgba(24, 35, 31, 0.12);
+      }
+
+      .stage-note strong {
+        color: #0f4f49;
+      }
+
+      [hidden] {
+        display: none !important;
+      }
+
+      @media (max-width: 980px) {
+        .workspace {
+          grid-template-columns: 1fr;
+        }
+
+        .board-wrap {
+          min-height: 480px;
+        }
+
+        svg {
+          min-height: 480px;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .applet {
+          padding: 10px;
+        }
+
+        .topbar {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .stepbar {
+          justify-content: flex-start;
+        }
+
+        .readout-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .board-wrap {
+          min-height: 430px;
+        }
+
+        svg {
+          min-height: 430px;
+        }
       }
     </style>
   </head>
   <body>
-    <main>
-      <p>sh-hs-math-applet-sdk</p>
-      <h1>向量表示与等价拖拽板</h1>
-      <p>拖动多个有向线段的起点和终点，实时判断相等、相反、平行和共线关系，突出向量的位置无关性。</p>
-      <p>资源 ID：SH-HS-MATH-HJ-B2-C08-L01-A01</p>
+    <main class="applet" aria-label="向量表示与等价拖拽板">
+      <header class="topbar">
+        <div class="title-block">
+          <p class="eyebrow">必修第二册 8.1.1 向量的概念</p>
+          <h1>向量表示与等价拖拽板</h1>
+        </div>
+        <nav class="stepbar" aria-label="分步揭示">
+          <button class="step-button" data-step="1" aria-pressed="true">1 观察</button>
+          <button class="step-button" data-step="2" aria-pressed="false">2 平移</button>
+          <button class="step-button" data-step="3" aria-pressed="false">3 读数</button>
+          <button class="step-button" data-step="4" aria-pressed="false">4 归纳</button>
+        </nav>
+      </header>
+
+      <section class="workspace">
+        <div class="board-wrap">
+          <svg id="board" viewBox="0 0 760 520" role="img" aria-label="平面网格中的两个有向线段"></svg>
+          <div class="stage-note" id="stage-note"></div>
+        </div>
+
+        <aside class="panel" aria-label="向量读数与课堂控制">
+          <section class="panel-section">
+            <p class="section-title">教师控制</p>
+            <div class="control-row">
+              <button class="tool-button" id="reset-button">重置</button>
+              <button class="tool-button" id="components-button" aria-pressed="true">分量</button>
+              <button class="tool-button" id="trail-button" aria-pressed="false">痕迹</button>
+            </div>
+          </section>
+
+          <section class="panel-section">
+            <p class="section-title">大小与方向</p>
+            <div class="readout-grid">
+              <div class="readout">
+                <strong>位移分量</strong>
+                <span id="component-readout">Δx = 3, Δy = 3</span>
+              </div>
+              <div class="readout">
+                <strong>向量长度</strong>
+                <span id="length-readout">|AB| = 3√2</span>
+              </div>
+              <div class="readout">
+                <strong>方向角</strong>
+                <span id="angle-readout">45°</span>
+              </div>
+              <div class="readout">
+                <strong>起点对照</strong>
+                <span id="start-readout">A ≠ C</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel-section">
+            <p class="section-title">等价判断</p>
+            <div class="relation" id="relation-box"></div>
+          </section>
+
+          <section class="panel-section" id="summary-section" hidden>
+            <p class="section-title">课堂归纳</p>
+            <ul class="compare-list">
+              <li><b>看大小：</b>两条有向线段的长度相同。</li>
+              <li><b>看方向：</b>两条有向线段的方向相同。</li>
+              <li><b>不看位置：</b>起点变化时，只要位移分量不变，表示的向量不变。</li>
+              <li><b>边界：</b>零向量长度为 0，方向不规定。</li>
+            </ul>
+          </section>
+        </aside>
+      </section>
     </main>
+
     <script>
       const RESOURCE_ID = "SH-HS-MATH-HJ-B2-C08-L01-A01";
-      window.parent?.postMessage({ type: "applet:ready", resourceId: RESOURCE_ID, payload: { current_value: 0 } }, "*");
+      const svg = document.querySelector("#board");
+      const stageNote = document.querySelector("#stage-note");
+      const componentReadout = document.querySelector("#component-readout");
+      const lengthReadout = document.querySelector("#length-readout");
+      const angleReadout = document.querySelector("#angle-readout");
+      const startReadout = document.querySelector("#start-readout");
+      const relationBox = document.querySelector("#relation-box");
+      const summarySection = document.querySelector("#summary-section");
+      const componentsButton = document.querySelector("#components-button");
+      const trailButton = document.querySelector("#trail-button");
+      const resetButton = document.querySelector("#reset-button");
+      const stepButtons = Array.from(document.querySelectorAll(".step-button"));
+
+      const view = {
+        width: 760,
+        height: 520,
+        unit: 48,
+        originX: 380,
+        originY: 260,
+        minX: -7,
+        maxX: 7,
+        minY: -5,
+        maxY: 5
+      };
+
+      const initialState = {
+        step: 1,
+        showComponents: true,
+        showTrail: false,
+        baseStart: { x: -4, y: -1 },
+        baseEnd: { x: -1, y: 2 },
+        copyStart: { x: 2, y: -2 },
+        trail: []
+      };
+
+      const state = clone(initialState);
+      let drag = null;
+
+      function clone(value) {
+        return JSON.parse(JSON.stringify(value));
+      }
+
+      function toScreen(point) {
+        return {
+          x: view.originX + point.x * view.unit,
+          y: view.originY - point.y * view.unit
+        };
+      }
+
+      function toMath(clientX, clientY) {
+        const rect = svg.getBoundingClientRect();
+        const sx = ((clientX - rect.left) / rect.width) * view.width;
+        const sy = ((clientY - rect.top) / rect.height) * view.height;
+        return {
+          x: (sx - view.originX) / view.unit,
+          y: (view.originY - sy) / view.unit
+        };
+      }
+
+      function snap(value) {
+        return Math.round(value * 2) / 2;
+      }
+
+      function snapPoint(point) {
+        return { x: snap(point.x), y: snap(point.y) };
+      }
+
+      function clamp(value, min, max) {
+        return Math.max(min, Math.min(max, value));
+      }
+
+      function clampPoint(point) {
+        return {
+          x: clamp(point.x, view.minX, view.maxX),
+          y: clamp(point.y, view.minY, view.maxY)
+        };
+      }
+
+      function displacement() {
+        return {
+          x: state.baseEnd.x - state.baseStart.x,
+          y: state.baseEnd.y - state.baseStart.y
+        };
+      }
+
+      function copyEnd() {
+        const d = displacement();
+        return {
+          x: state.copyStart.x + d.x,
+          y: state.copyStart.y + d.y
+        };
+      }
+
+      function clampTranslatedStart(start, d) {
+        const minStartX = view.minX - Math.min(0, d.x);
+        const maxStartX = view.maxX - Math.max(0, d.x);
+        const minStartY = view.minY - Math.min(0, d.y);
+        const maxStartY = view.maxY - Math.max(0, d.y);
+        return {
+          x: clamp(start.x, minStartX, maxStartX),
+          y: clamp(start.y, minStartY, maxStartY)
+        };
+      }
+
+      function translatePair(start, end, dx, dy) {
+        const lowX = view.minX - Math.min(start.x, end.x);
+        const highX = view.maxX - Math.max(start.x, end.x);
+        const lowY = view.minY - Math.min(start.y, end.y);
+        const highY = view.maxY - Math.max(start.y, end.y);
+        const tx = clamp(dx, lowX, highX);
+        const ty = clamp(dy, lowY, highY);
+        return {
+          start: { x: start.x + tx, y: start.y + ty },
+          end: { x: end.x + tx, y: end.y + ty }
+        };
+      }
+
+      function fmtNumber(value) {
+        if (Math.abs(value) < 0.0001) return "0";
+        if (Number.isInteger(value)) return String(value);
+        return value.toFixed(1);
+      }
+
+      function fmtPoint(point) {
+        return `(${fmtNumber(point.x)}, ${fmtNumber(point.y)})`;
+      }
+
+      function fmtLength(dx, dy) {
+        const square = dx * dx + dy * dy;
+        const length = Math.sqrt(square);
+        if (length < 0.0001) return "0";
+        if (Number.isInteger(length)) return String(length);
+        if (Number.isInteger(square)) return `√${square}`;
+        return length.toFixed(2);
+      }
+
+      function fmtAngle(dx, dy) {
+        const length = Math.hypot(dx, dy);
+        if (length < 0.0001) return "方向不规定";
+        const angle = (Math.atan2(dy, dx) * 180) / Math.PI;
+        return `${Math.round((angle + 360) % 360)}°`;
+      }
+
+      function createSvg(tag, attrs = {}) {
+        const node = document.createElementNS("http://www.w3.org/2000/svg", tag);
+        Object.entries(attrs).forEach(([key, value]) => node.setAttribute(key, String(value)));
+        return node;
+      }
+
+      function addText(parent, text, point, className, anchor = "middle") {
+        const screen = toScreen(point);
+        const label = createSvg("text", {
+          x: screen.x,
+          y: screen.y,
+          class: className,
+          "text-anchor": anchor
+        });
+        label.textContent = text;
+        parent.appendChild(label);
+        return label;
+      }
+
+      function addVector(parent, start, end, className, dragType, markerId) {
+        const a = toScreen(start);
+        const b = toScreen(end);
+        const line = createSvg("line", {
+          x1: a.x,
+          y1: a.y,
+          x2: b.x,
+          y2: b.y,
+          class: className,
+          "marker-end": `url(#${markerId})`,
+          "data-drag": dragType
+        });
+        parent.appendChild(line);
+        return line;
+      }
+
+      function addHandle(parent, point, label, dragType, className) {
+        const screen = toScreen(point);
+        const circle = createSvg("circle", {
+          cx: screen.x,
+          cy: screen.y,
+          r: 10,
+          class: `point-handle ${className}`,
+          "data-drag": dragType,
+          "aria-label": label
+        });
+        parent.appendChild(circle);
+        addText(parent, label, { x: point.x, y: point.y + 0.45 }, "point-label");
+      }
+
+      function drawGrid(root) {
+        const grid = createSvg("g");
+        for (let x = view.minX; x <= view.maxX; x += 1) {
+          const a = toScreen({ x, y: view.minY });
+          const b = toScreen({ x, y: view.maxY });
+          grid.appendChild(createSvg("line", { x1: a.x, y1: a.y, x2: b.x, y2: b.y, class: x === 0 ? "axis-line" : "grid-line" }));
+          if (x !== 0) addText(grid, String(x), { x, y: -0.25 }, "axis-label");
+        }
+        for (let y = view.minY; y <= view.maxY; y += 1) {
+          const a = toScreen({ x: view.minX, y });
+          const b = toScreen({ x: view.maxX, y });
+          grid.appendChild(createSvg("line", { x1: a.x, y1: a.y, x2: b.x, y2: b.y, class: y === 0 ? "axis-line" : "grid-line" }));
+          if (y !== 0) addText(grid, String(y), { x: 0.25, y }, "axis-label", "start");
+        }
+        addText(grid, "x", { x: view.maxX - 0.35, y: -0.35 }, "axis-label");
+        addText(grid, "y", { x: 0.35, y: view.maxY - 0.35 }, "axis-label", "start");
+        root.appendChild(grid);
+      }
+
+      function drawComponents(root, start, end) {
+        const corner = { x: end.x, y: start.y };
+        const s = toScreen(start);
+        const e = toScreen(end);
+        const c = toScreen(corner);
+        root.appendChild(createSvg("line", { x1: s.x, y1: s.y, x2: c.x, y2: c.y, class: "component-line" }));
+        root.appendChild(createSvg("line", { x1: c.x, y1: c.y, x2: e.x, y2: e.y, class: "component-line" }));
+        addText(root, "Δx", { x: (start.x + end.x) / 2, y: start.y - 0.24 }, "component-label");
+        addText(root, "Δy", { x: end.x + 0.26, y: (start.y + end.y) / 2 }, "component-label", "start");
+      }
+
+      function ensureTrail() {
+        if (!state.showTrail) return;
+        const last = state.trail[state.trail.length - 1];
+        const next = { x: state.copyStart.x, y: state.copyStart.y };
+        if (!last || Math.abs(last.x - next.x) + Math.abs(last.y - next.y) >= 1) {
+          state.trail.push(next);
+          state.trail = state.trail.slice(-7);
+        }
+      }
+
+      function render() {
+        const d = displacement();
+        const cEnd = copyEnd();
+        const length = Math.hypot(d.x, d.y);
+        const showCopy = state.step >= 2;
+        const showMeasures = state.step >= 3 && state.showComponents;
+        svg.innerHTML = "";
+        svg.classList.toggle("dragging", Boolean(drag));
+
+        const defs = createSvg("defs");
+        const baseMarker = createSvg("marker", {
+          id: "arrow-base",
+          viewBox: "0 0 10 10",
+          refX: 8.5,
+          refY: 5,
+          markerWidth: 7,
+          markerHeight: 7,
+          orient: "auto-start-reverse"
+        });
+        baseMarker.appendChild(createSvg("path", { d: "M 0 0 L 10 5 L 0 10 z", fill: "#2563eb" }));
+        const copyMarker = createSvg("marker", {
+          id: "arrow-copy",
+          viewBox: "0 0 10 10",
+          refX: 8.5,
+          refY: 5,
+          markerWidth: 7,
+          markerHeight: 7,
+          orient: "auto-start-reverse"
+        });
+        copyMarker.appendChild(createSvg("path", { d: "M 0 0 L 10 5 L 0 10 z", fill: "#d97706" }));
+        defs.append(baseMarker, copyMarker);
+        svg.appendChild(defs);
+
+        drawGrid(svg);
+
+        if (state.showTrail && state.step >= 2) {
+          const ghostGroup = createSvg("g");
+          state.trail.forEach((start) => {
+            const end = { x: start.x + d.x, y: start.y + d.y };
+            addVector(ghostGroup, start, end, "ghost-vector", "copy-body", "arrow-copy");
+          });
+          svg.appendChild(ghostGroup);
+        }
+
+        if (showCopy) {
+          const guideGroup = createSvg("g");
+          const a = toScreen(state.baseStart);
+          const c = toScreen(state.copyStart);
+          const b = toScreen(state.baseEnd);
+          const dScreen = toScreen(cEnd);
+          guideGroup.appendChild(createSvg("line", { x1: a.x, y1: a.y, x2: c.x, y2: c.y, class: "parallel-guide" }));
+          guideGroup.appendChild(createSvg("line", { x1: b.x, y1: b.y, x2: dScreen.x, y2: dScreen.y, class: "parallel-guide" }));
+          svg.appendChild(guideGroup);
+        }
+
+        if (showMeasures && length > 0.001) {
+          drawComponents(svg, state.baseStart, state.baseEnd);
+        }
+
+        addVector(svg, state.baseStart, state.baseEnd, "base-vector", "base-body", "arrow-base");
+        addHandle(svg, state.baseStart, "A", "a", "base");
+        addHandle(svg, state.baseEnd, "B", "b", "base");
+        addText(svg, "向量 AB", midpoint(state.baseStart, state.baseEnd, 0.34), "vector-label");
+
+        if (showCopy) {
+          addVector(svg, state.copyStart, cEnd, "copy-vector", "copy-body", "arrow-copy");
+          addHandle(svg, state.copyStart, "C", "c", "copy");
+          addHandle(svg, cEnd, "D", "d", "copy");
+          addText(svg, "平移后的 CD", midpoint(state.copyStart, cEnd, -0.38), "vector-label");
+          if (showMeasures && length > 0.001) {
+            drawComponents(svg, state.copyStart, cEnd);
+          }
+        }
+
+        componentReadout.textContent = `Δx = ${fmtNumber(d.x)}, Δy = ${fmtNumber(d.y)}`;
+        lengthReadout.textContent = `|AB| = |CD| = ${fmtLength(d.x, d.y)}`;
+        angleReadout.textContent = fmtAngle(d.x, d.y);
+        startReadout.textContent = samePoint(state.baseStart, state.copyStart) ? "A = C" : `A ${fmtPoint(state.baseStart)}, C ${fmtPoint(state.copyStart)}`;
+
+        const zero = length < 0.001;
+        relationBox.innerHTML = zero
+          ? `<p class="warning">当前为零向量：长度为 0，方向不规定。</p><p class="formula">AB = CD = 0</p>`
+          : `<p>蓝色 AB 与橙色 CD 有相同的位移分量、长度和方向。</p><p class="formula">AB = CD = (${fmtNumber(d.x)}, ${fmtNumber(d.y)})</p>`;
+
+        summarySection.hidden = state.step < 4;
+        stageNote.innerHTML = stageMessage(zero);
+        stepButtons.forEach((button) => {
+          button.setAttribute("aria-pressed", String(Number(button.dataset.step) === state.step));
+        });
+        componentsButton.setAttribute("aria-pressed", String(state.showComponents));
+        trailButton.setAttribute("aria-pressed", String(state.showTrail));
+        postState("state_changed");
+      }
+
+      function midpoint(start, end, offset) {
+        const dx = end.x - start.x;
+        const dy = end.y - start.y;
+        const length = Math.hypot(dx, dy) || 1;
+        return {
+          x: (start.x + end.x) / 2 - (dy / length) * offset,
+          y: (start.y + end.y) / 2 + (dx / length) * offset
+        };
+      }
+
+      function samePoint(a, b) {
+        return Math.abs(a.x - b.x) < 0.001 && Math.abs(a.y - b.y) < 0.001;
+      }
+
+      function stageMessage(zero) {
+        const messages = {
+          1: "<strong>观察：</strong>有向线段用起点和终点表示，真正要抓住的是从 A 到 B 的位移。",
+          2: "<strong>平移：</strong>把同一位移搬到 C 点，得到的 CD 与 AB 表示同一个向量。",
+          3: "<strong>读数：</strong>同时看 Δx、Δy、长度和方向，不能只看起点位置。",
+          4: "<strong>归纳：</strong>相等向量只要求大小相等、方向相同，与起点位置无关。"
+        };
+        if (zero) return "<strong>零向量：</strong>起点和终点重合时长度为 0，方向不规定。";
+        return messages[state.step];
+      }
+
+      function postState(type) {
+        const d = displacement();
+        const payload = {
+          base_start: state.baseStart,
+          base_end: state.baseEnd,
+          translated_start: state.copyStart,
+          translated_end: copyEnd(),
+          delta_x: d.x,
+          delta_y: d.y,
+          length: Number(Math.hypot(d.x, d.y).toFixed(4)),
+          angle_degrees: Math.hypot(d.x, d.y) < 0.001 ? null : Math.round((Math.atan2(d.y, d.x) * 180) / Math.PI + 360) % 360,
+          reveal_step: state.step
+        };
+        window.parent?.postMessage({ type: `applet:${type}`, resourceId: RESOURCE_ID, payload }, "*");
+      }
+
+      function startDrag(event) {
+        const target = event.target.closest("[data-drag]");
+        if (!target) return;
+        event.preventDefault();
+        drag = {
+          type: target.dataset.drag,
+          startPointer: toMath(event.clientX, event.clientY),
+          startState: clone(state)
+        };
+        svg.setPointerCapture(event.pointerId);
+        render();
+      }
+
+      function moveDrag(event) {
+        if (!drag) return;
+        const pointer = toMath(event.clientX, event.clientY);
+        const snappedPointer = clampPoint(snapPoint(pointer));
+        const dx = snap(pointer.x - drag.startPointer.x);
+        const dy = snap(pointer.y - drag.startPointer.y);
+        const original = drag.startState;
+
+        if (drag.type === "a") {
+          state.baseStart = snappedPointer;
+        }
+
+        if (drag.type === "b") {
+          state.baseEnd = snappedPointer;
+        }
+
+        if (drag.type === "base-body") {
+          const moved = translatePair(original.baseStart, original.baseEnd, dx, dy);
+          state.baseStart = moved.start;
+          state.baseEnd = moved.end;
+        }
+
+        const d = displacement();
+
+        if (drag.type === "c") {
+          state.copyStart = clampTranslatedStart(snappedPointer, d);
+          ensureTrail();
+        }
+
+        if (drag.type === "d") {
+          state.copyStart = clampTranslatedStart({ x: snappedPointer.x - d.x, y: snappedPointer.y - d.y }, d);
+          ensureTrail();
+        }
+
+        if (drag.type === "copy-body") {
+          state.copyStart = clampTranslatedStart({ x: original.copyStart.x + dx, y: original.copyStart.y + dy }, d);
+          ensureTrail();
+        }
+
+        state.copyStart = clampTranslatedStart(state.copyStart, displacement());
+        render();
+      }
+
+      function stopDrag(event) {
+        if (!drag) return;
+        svg.releasePointerCapture(event.pointerId);
+        drag = null;
+        render();
+      }
+
+      stepButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          state.step = Number(button.dataset.step);
+          render();
+        });
+      });
+
+      componentsButton.addEventListener("click", () => {
+        state.showComponents = !state.showComponents;
+        render();
+      });
+
+      trailButton.addEventListener("click", () => {
+        state.showTrail = !state.showTrail;
+        if (state.showTrail) {
+          state.trail = [clone(state.copyStart)];
+          state.step = Math.max(state.step, 2);
+        } else {
+          state.trail = [];
+        }
+        render();
+      });
+
+      resetButton.addEventListener("click", () => {
+        Object.assign(state, clone(initialState));
+        render();
+      });
+
+      svg.addEventListener("pointerdown", startDrag);
+      svg.addEventListener("pointermove", moveDrag);
+      svg.addEventListener("pointerup", stopDrag);
+      svg.addEventListener("pointercancel", stopDrag);
+
+      render();
+      postState("ready");
     </script>
   </body>
 </html>

@@ -4,7 +4,7 @@ version: 0.1.0
 status: draft
 resource_type: applet
 title: 向量表示与等价拖拽板
-subtitle: 围绕向量的概念的交互式数字教具骨架
+subtitle: 用平移后的有向线段比较向量的大小、方向和位置无关性
 curriculum:
   region: 上海
   stage: 高中
@@ -21,73 +21,176 @@ curriculum:
   lesson_title: 向量的概念
 pedagogy:
   cognitive_action: 比较
-  estimated_classroom_minutes: 12
+  estimated_classroom_minutes: 14
   primary_teaching_problem: 学生容易把向量绑定到起点位置，难以理解只要大小和方向相同就是同一向量。
   learning_goals:
-    - 围绕向量的概念建立可观察、可解释的数学表征。
-    - 用“比较”方式处理关键变量、边界条件和典型错因。
-    - 把交互观察转化为可板书、可追问、可迁移的课堂结论。
+    - 用有向线段 AB 的位移分量、长度和方向刻画一个平面向量。
+    - 通过平移后的 CD 说明起点不同但位移分量相同的有向线段表示相等向量。
+    - 同时读取 Δx、Δy、长度和方向角，避免只看线段所在位置或只看长度。
+    - 在零向量情形下说明长度为 0，方向不规定。
   prerequisites:
-    - 向量的概念相关先修知识
+    - 平面直角坐标系中的点和坐标读数
+    - 线段长度、方向、平行和共线关系
+    - 有向线段可以表示从起点到终点的位移
   successors:
-    - 后续课时学习与综合应用
+    - SH-HS-MATH-HJ-B2-C08-L02
+    - SH-HS-MATH-HJ-B2-C08-L03
+    - SH-HS-MATH-HJ-B2-C08-L06
   core_competencies:
     - 直观想象
+    - 数学抽象
     - 逻辑推理
-    - 数学运算
 mathematical_scope:
-  focus: 拖动多个有向线段的起点和终点，实时判断相等、相反、平行和共线关系，突出向量的位置无关性。
+  focus: 在平面网格中比较有向线段 AB 与平移后的 CD，突出向量由大小和方向决定，与起点位置无关。
   lesson: 向量的概念
+  vector_model: AB = (x_B - x_A, y_B - y_A)
+  equality_rule: 两个非零向量大小相等且方向相同则相等；在本课件中等价为位移分量 Δx、Δy 相同。
+  zero_vector_rule: 起点和终点重合时得到零向量，长度为 0，方向不规定。
+  default_points:
+    base_start: A(-4, -1)
+    base_end: B(-1, 2)
+    translated_start: C(2, -2)
+    translated_end: D(5, 1)
   out_of_scope:
-    - 本 scaffold 只定义首版交互骨架，数学细节需在资源生产对话中补齐。
+    - 向量加法、减法和数乘的运算法则
+    - 向量坐标运算的系统训练
+    - 8.3 向量坐标表示的课时边界讨论
+    - 用题库形式训练平行、共线和相反向量判定
 representations:
-  - id: interactive_canvas
-    role: 承载可拖拽、可观察、可复现的核心数学表征。
-  - id: teacher_readout
-    role: 为教师提供课堂追问所需的关键状态读数。
+  - id: coordinate_grid
+    role: 显示点的位置、位移分量和起点变化。
+  - id: base_vector
+    role: 用蓝色有向线段 AB 表示当前向量的大小和方向。
+  - id: translated_vector
+    role: 用橙色有向线段 CD 表示平移后的相等向量。
+  - id: measurement_readout
+    role: 同步显示 Δx、Δy、长度、方向角和起点对照。
+  - id: staged_summary
+    role: 供教师按观察、平移、读数、归纳四步揭示课堂结论。
 interaction_design:
-  primary_control: 预留一个核心滑块或拖拽控制，后续按知识点定制。
+  primary_control: 拖动 A 或 B 改变向量，拖动 AB 整体或 CD 整体改变起点但保持位移不变。
   teacher_controls:
-    - 重置
-    - 分步显示
-    - 重点标注
+    - 重置到默认位置
+    - 按观察、平移、读数、归纳四步揭示
+    - 显示或隐藏分量辅助线
+    - 显示或隐藏平移痕迹
   student_controls:
-    - 拖动观察
-    - 记录猜想
-    - 对照结论
+    - 拖动 A、B 观察大小和方向如何改变
+    - 拖动 C、D 或橙色向量整体观察起点变化
+    - 用读数判断 AB 与 CD 是否表示相同向量
   staged_reveal:
-    - step: observe
-      description: 先让学生观察变量变化和图像响应。
-    - step: explain
-      description: 再引导学生用符号语言解释观察结果。
+    - step: observe_base_vector
+      description: 只呈现 AB 和网格，先让学生说出从 A 到 B 的位移。
+    - step: translate_equivalent_vector
+      description: 显示 CD，把同一位移搬到不同起点，形成位置对照。
+    - step: read_components_length_direction
+      description: 揭示 Δx、Δy、长度和方向角，建立相等向量的证据链。
+    - step: summarize_position_independence
+      description: 归纳向量相等只看大小和方向，不看起点位置，并补充零向量边界。
 data_contract:
   state_variables:
-    - name: current_value
+    - name: base_start
+      value_type: point2d
+      description: 蓝色有向线段 AB 的起点 A。
+      persistence: snapshot
+    - name: base_end
+      value_type: point2d
+      description: 蓝色有向线段 AB 的终点 B。
+      persistence: snapshot
+    - name: translated_start
+      value_type: point2d
+      description: 橙色平移向量 CD 的起点 C。
+      persistence: snapshot
+    - name: translated_end
+      value_type: point2d
+      description: 橙色平移向量 CD 的终点 D，由 C 加上 AB 的位移得到。
+      persistence: snapshot
+    - name: delta_x
       value_type: number
-      default: 0
-      description: 首版 scaffold 的占位状态变量，后续替换为真实数学变量。
+      default: 3
+      description: 当前向量的横向位移分量。
+      persistence: snapshot
+    - name: delta_y
+      value_type: number
+      default: 3
+      description: 当前向量的纵向位移分量。
+      persistence: snapshot
+    - name: length
+      value_type: number
+      default: 4.2426
+      description: 当前向量的长度。
+      persistence: snapshot
+    - name: angle_degrees
+      unit: degree
+      value_type: number
+      default: 45
+      description: 当前非零向量相对 x 轴正方向的方向角；零向量时为空。
+      persistence: snapshot
+    - name: reveal_step
+      value_type: number
+      default: 1
+      description: 当前教师分步揭示阶段。
       persistence: snapshot
   events:
+    - name: ready
+      direction: applet_to_player
+      description: 课件完成初始渲染。
+      payload:
+        - base_start
+        - base_end
+        - translated_start
+        - translated_end
+        - delta_x
+        - delta_y
+        - length
+        - angle_degrees
+        - reveal_step
+      required_for_player: true
     - name: state_changed
       direction: applet_to_player
-      description: 交互状态变化时通知平台播放器。
+      description: 拖拽点、平移向量或切换揭示阶段时通知播放器。
       payload:
-        - current_value
+        - base_start
+        - base_end
+        - translated_start
+        - translated_end
+        - delta_x
+        - delta_y
+        - length
+        - angle_degrees
+        - reveal_step
       required_for_player: true
 feedback_and_diagnosis:
   success_evidence:
-    - 学生能说清楚观察变量、图像变化和数学结论之间的对应关系。
+    - 学生能用 Δx 和 Δy 说明 AB 与 CD 表示同一向量。
+    - 学生能解释起点 A 和 C 不同，但大小和方向不变，所以向量相等。
+    - 学生能指出只看长度不足以判断向量相等，还必须看方向。
+    - 学生能在 A 与 B 重合时说明这是零向量且方向不规定。
   common_error_tags:
+    - id: vector_bound_to_start
+      label: 把向量误认为固定在某个起点上
+    - id: magnitude_only_judgment
+      label: 只看长度，不看方向
+    - id: direction_only_judgment
+      label: 只看方向，不看大小
     - id: representation_gap
-      label: 表征对应断裂
+      label: 有向线段、分量和向量记号之间断裂
+    - id: zero_vector_direction_error
+      label: 误给零向量指定方向
   feedback_principles:
-    - 反馈先指向可视化证据，再回到符号表达。
+    - 先让学生读位移分量，再判断大小和方向。
+    - 纠正位置误区时拖动 CD 的起点，而不改变 Δx 和 Δy。
+    - 纠正只看长度的误区时保留相同长度但改变方向的反例追问。
+    - 遇到零向量时单独说明长度和方向边界。
 visual_semantics:
-  primary_color: teal
-  emphasis_rule: 当前变量用高对比色标注，历史轨迹和辅助线降低透明度。
+  base_vector: 蓝色表示用于定义当前向量的 AB。
+  translated_vector: 橙色表示平移后的等价向量 CD。
+  component_guides: 青绿色虚线表示 Δx 和 Δy 分量读数。
+  parallel_guides: 灰色虚线连接对应起点和终点，帮助观察整条有向线段的平移。
+  rule: 颜色只承载数学对象含义，不作为装饰。
 implementation:
-  phase: content_spec_only
-  html_src_status: scaffolded
+  phase: runnable_prototype
+  html_src_status: runnable
   planned_engine: native-canvas-svg
   create_src_in_later_task: false
   classroom_device_targets:
@@ -101,5 +204,5 @@ files:
   review_record: review.md
   src_entry: src/index.html
 compliance:
-  copyright_note: 本 scaffold 仅生成原创资源骨架，不复制教材正文、官方课件、教案或商业题库。
+  copyright_note: 本资源为原创交互草稿，不复制教材正文、官方课件、教案或商业题库；第 8 章课时边界仍需纸质教材或已登录平台终核。
   review_status: self_checked_draft
