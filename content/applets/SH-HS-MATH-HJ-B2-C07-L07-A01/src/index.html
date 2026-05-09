@@ -400,7 +400,7 @@
           <div>
             <h1>正切性质分段观察</h1>
             <p class="subtitle">
-              先把单调性锁定在一个连续定义区间，再比较相邻周期点和奇对称点。图像上的每一次比较，都对应一个性质表达。
+              先把单调性锁定在一个连续定义区间；拖动和播放始终限制在当前高亮分支内，再比较相邻周期点和奇对称点。
             </p>
           </div>
           <div class="status-pill" id="focusPill">焦点：分段单调</div>
@@ -421,13 +421,13 @@
         <div class="controls" aria-label="交互控制">
           <div class="range-row">
             <label for="xSlider">观察角 x</label>
-            <input id="xSlider" type="range" min="-4.55" max="4.55" step="0.005" value="0.785398" />
-            <span class="readout" id="xReadout">x = pi/4</span>
+            <input id="xSlider" type="range" min="-1.535" max="1.535" step="0.005" value="0.785398" />
+            <span class="readout" id="xReadout">x = π/4</span>
           </div>
 
           <div class="button-row" aria-label="观察焦点">
             <button class="mode-button" data-mode="monotonicity" aria-pressed="true">分段单调</button>
-            <button class="mode-button" data-mode="period" aria-pressed="false">周期 pi</button>
+            <button class="mode-button" data-mode="period" aria-pressed="false">周期 π</button>
             <button class="mode-button" data-mode="parity" aria-pressed="false">奇函数</button>
             <button class="mode-button" data-mode="range" aria-pressed="false">值域</button>
           </div>
@@ -454,7 +454,7 @@
           <div class="metric-grid">
             <div class="metric">
               <p class="metric-label">x</p>
-              <span class="metric-value" id="metricX">pi/4</span>
+              <span class="metric-value" id="metricX">π/4</span>
             </div>
             <div class="metric">
               <p class="metric-label">tan x</p>
@@ -462,7 +462,7 @@
             </div>
             <div class="metric">
               <p class="metric-label">所在区间</p>
-              <span class="metric-value" id="metricInterval">(-pi/2, pi/2)</span>
+              <span class="metric-value" id="metricInterval">(-π/2, π/2)</span>
             </div>
             <div class="metric">
               <p class="metric-label">比较对象</p>
@@ -481,11 +481,11 @@
         <section class="panel-block summary-box" id="summaryBox">
           <h2 class="block-title">性质归纳</h2>
           <ul class="formula-list">
-            <li>定义域：<code>x != pi/2 + kpi, k in Z</code></li>
+            <li>定义域：<code>x ≠ π/2 + kπ, k ∈ Z</code></li>
             <li>值域：<code>R</code></li>
-            <li>周期：<code>tan(x + pi) = tan x</code></li>
+            <li>周期：<code>tan(x + π) = tan x</code></li>
             <li>奇偶性：<code>tan(-x) = -tan x</code></li>
-            <li>单调性：在 <code>(-pi/2 + kpi, pi/2 + kpi)</code> 上递增</li>
+            <li>单调性：在 <code>(-π/2 + kπ, π/2 + kπ), k ∈ Z</code> 上递增</li>
           </ul>
         </section>
       </aside>
@@ -545,9 +545,9 @@
           compare: "同区间内",
         },
         period: {
-          label: "周期 pi",
-          prompt: "比较橙色点和紫色点：两个横坐标相差 pi，它们的高度是否相同？",
-          compare: "x 与 x + pi",
+          label: "周期 π",
+          prompt: "比较橙色点和紫色点：两个横坐标相差 π，它们的高度是否相同？",
+          compare: "x 与 x ± π",
         },
         parity: {
           label: "奇函数",
@@ -631,6 +631,14 @@
         };
       }
 
+      function safeIntervalBounds(k = state.selectedK) {
+        const bounds = intervalBounds(k);
+        return {
+          left: Math.max(X_MIN + EPS, bounds.left + EPS),
+          right: Math.min(X_MAX - EPS, bounds.right - EPS),
+        };
+      }
+
       function nearestAsymptote(x) {
         const k = Math.round((x - PI / 2) / PI);
         return PI / 2 + k * PI;
@@ -645,12 +653,25 @@
         return Math.max(X_MIN + EPS, Math.min(X_MAX - EPS, next));
       }
 
+      function clampToInterval(x, k = state.selectedK) {
+        const bounds = safeIntervalBounds(k);
+        const bounded = Math.max(bounds.left, Math.min(bounds.right, x));
+        return sanitizeX(bounded);
+      }
+
+      function intervalKForX(x) {
+        return [-1, 0, 1].find((k) => {
+          const bounds = safeIntervalBounds(k);
+          return x >= bounds.left && x <= bounds.right;
+        });
+      }
+
       function selectedIntervalLabel() {
         const k = state.selectedK;
-        if (k === 0) return "(-pi/2, pi/2)";
-        if (k === 1) return "(pi/2, 3pi/2)";
-        if (k === -1) return "(-3pi/2, -pi/2)";
-        return `(-pi/2 + ${k}pi, pi/2 + ${k}pi)`;
+        if (k === 0) return "(-π/2, π/2)";
+        if (k === 1) return "(π/2, 3π/2)";
+        if (k === -1) return "(-3π/2, -π/2)";
+        return `(-π/2 + ${k}π, π/2 + ${k}π)`;
       }
 
       function formatPiValue(value) {
@@ -658,12 +679,12 @@
         const abs = Math.abs(value);
         const units = [
           [0, "0"],
-          [PI / 4, "pi/4"],
-          [PI / 2, "pi/2"],
-          [(3 * PI) / 4, "3pi/4"],
-          [PI, "pi"],
-          [(5 * PI) / 4, "5pi/4"],
-          [(3 * PI) / 2, "3pi/2"],
+          [PI / 4, "π/4"],
+          [PI / 2, "π/2"],
+          [(3 * PI) / 4, "3π/4"],
+          [PI, "π"],
+          [(5 * PI) / 4, "5π/4"],
+          [(3 * PI) / 2, "3π/2"],
         ];
         for (const [number, label] of units) {
           if (Math.abs(abs - number) < 0.025) {
@@ -671,7 +692,7 @@
           }
         }
         const ratio = value / PI;
-        return `${ratio.toFixed(2)}pi`;
+        return `${ratio.toFixed(2)}π`;
       }
 
       function formatTan(value) {
@@ -783,9 +804,9 @@
       function comparisonX() {
         const plus = state.currentX + PI;
         if (plus < X_MAX - EPS) {
-          return { x: plus, label: "x + pi" };
+          return { x: plus, label: "x + π" };
         }
-        return { x: state.currentX - PI, label: "x - pi" };
+        return { x: state.currentX - PI, label: "x - π" };
       }
 
       function addPoint(x, y, className, label, dx = 12, dy = -12) {
@@ -848,7 +869,7 @@
         state.selectedK = k;
         const bounds = intervalBounds(k);
         if (state.currentX <= bounds.left + EPS || state.currentX >= bounds.right - EPS) {
-          state.currentX = sanitizeX((bounds.left + bounds.right) / 2 + PI / 4);
+          state.currentX = clampToInterval((bounds.left + bounds.right) / 2 + PI / 4, k);
         }
         syncButtons();
         render();
@@ -876,18 +897,22 @@
       function updateReadouts() {
         const tan = Math.tan(state.currentX);
         const copy = focusCopy[state.focusMode];
-	        elements.xSlider.value = String(state.currentX);
-	        setMathText(elements.xReadout, `x = ${formatPiValue(state.currentX)}`);
-	        setMathText(elements.focusPill, `焦点：${copy.label}`);
-	        setMathText(elements.metricX, formatPiValue(state.currentX));
-	        elements.metricTan.textContent = formatTan(tan);
-	        setMathText(elements.metricInterval, selectedIntervalLabel());
-	        setMathText(elements.metricCompare, copy.compare);
-	        setMathText(elements.promptText, copy.prompt);
+        const sliderBounds = safeIntervalBounds();
+        elements.xSlider.min = String(sliderBounds.left);
+        elements.xSlider.max = String(sliderBounds.right);
+        elements.xSlider.value = String(state.currentX);
+        setMathText(elements.xReadout, `x = ${formatPiValue(state.currentX)}`);
+        setMathText(elements.focusPill, `焦点：${copy.label}`);
+        setMathText(elements.metricX, formatPiValue(state.currentX));
+        elements.metricTan.textContent = formatTan(tan);
+        setMathText(elements.metricInterval, selectedIntervalLabel());
+        setMathText(elements.metricCompare, copy.compare);
+        setMathText(elements.promptText, copy.prompt);
         elements.summaryBox.classList.toggle("visible", state.summaryVisible);
       }
 
       function render() {
+        state.currentX = clampToInterval(state.currentX);
         drawInterval();
         drawCurve();
         drawComparisons();
@@ -917,17 +942,24 @@
 
       function tick() {
         if (!state.playing) return;
-        const bounds = intervalBounds(state.selectedK);
+        const bounds = safeIntervalBounds(state.selectedK);
         let next = state.currentX + 0.018;
-        if (next >= bounds.right - 0.08) next = bounds.left + 0.08;
-        state.currentX = sanitizeX(next);
+        if (next >= bounds.right - 0.08) {
+          state.currentX = bounds.right - 0.08;
+          state.playing = false;
+          syncButtons();
+          render();
+          emit("current_angle_changed");
+          return;
+        }
+        state.currentX = clampToInterval(next);
         render();
         emit("current_angle_changed");
         requestAnimationFrame(tick);
       }
 
       elements.xSlider.addEventListener("input", (event) => {
-        state.currentX = sanitizeX(Number(event.target.value));
+        state.currentX = clampToInterval(Number(event.target.value));
         render();
         emit("current_angle_changed");
       });
@@ -954,6 +986,12 @@
 
       elements.playButton.addEventListener("click", () => {
         state.playing = !state.playing;
+        if (state.playing) {
+          const bounds = safeIntervalBounds();
+          if (state.currentX >= bounds.right - 0.09) {
+            state.currentX = bounds.left + 0.08;
+          }
+        }
         syncButtons();
         if (state.playing) requestAnimationFrame(tick);
       });
@@ -976,7 +1014,11 @@
         const svgX = ((event.clientX - rect.left) / rect.width) * 900;
         if (svgX < plot.left || svgX > plot.left + plot.width) return;
         const x = X_MIN + ((svgX - plot.left) / plot.width) * (X_MAX - X_MIN);
-        state.currentX = sanitizeX(x);
+        const clickedK = intervalKForX(x);
+        if (clickedK === undefined) return;
+        state.selectedK = clickedK;
+        state.currentX = clampToInterval(x, clickedK);
+        syncButtons();
         render();
         emit("current_angle_changed");
       });
@@ -987,8 +1029,10 @@
         if (message.instanceId) state.instanceId = message.instanceId;
         if (message.payload?.state) {
           const incoming = message.payload.state;
-          if (typeof incoming.current_x === "number") state.currentX = sanitizeX(incoming.current_x);
-          if (typeof incoming.selected_interval_k === "number") state.selectedK = incoming.selected_interval_k;
+          if (typeof incoming.selected_interval_k === "number" && [-1, 0, 1].includes(incoming.selected_interval_k)) {
+            state.selectedK = incoming.selected_interval_k;
+          }
+          if (typeof incoming.current_x === "number") state.currentX = clampToInterval(incoming.current_x);
           if (typeof incoming.focus_mode === "string" && focusCopy[incoming.focus_mode]) {
             state.focusMode = incoming.focus_mode;
           }
