@@ -39,11 +39,13 @@
       }
 
       .applet-shell {
-        min-height: 100vh;
+        height: 100vh;
+        min-height: 560px;
         display: grid;
         grid-template-rows: auto 1fr auto;
-        gap: 14px;
-        padding: 18px;
+        gap: 10px;
+        overflow: hidden;
+        padding: 14px;
       }
 
       header {
@@ -55,14 +57,14 @@
 
       h1 {
         margin: 0;
-        font-size: 26px;
+        font-size: 24px;
         line-height: 1.2;
       }
 
       .subtitle {
-        margin: 6px 0 0;
+        margin: 4px 0 0;
         color: var(--muted);
-        font-size: 14px;
+        font-size: 13px;
       }
 
       .badge-row {
@@ -76,8 +78,8 @@
         border: 1px solid var(--line);
         border-radius: 8px;
         background: rgba(255, 255, 255, 0.82);
-        padding: 7px 10px;
-        font-size: 13px;
+        padding: 6px 9px;
+        font-size: 12px;
         color: #334155;
         white-space: nowrap;
       }
@@ -85,7 +87,7 @@
       main {
         display: grid;
         grid-template-columns: minmax(310px, 0.76fr) minmax(470px, 1.24fr);
-        gap: 14px;
+        gap: 10px;
         min-height: 0;
       }
 
@@ -109,14 +111,14 @@
         align-items: center;
         justify-content: space-between;
         gap: 12px;
-        padding: 12px 14px;
+        padding: 10px 14px;
         border-bottom: 1px solid var(--line);
         background: #fbfdff;
       }
 
       .panel-title h2 {
         margin: 0;
-        font-size: 16px;
+        font-size: 15px;
         line-height: 1.25;
       }
 
@@ -137,7 +139,7 @@
         display: block;
         width: 100%;
         height: 100%;
-        min-height: 360px;
+        min-height: 0;
         touch-action: none;
         user-select: none;
       }
@@ -145,11 +147,14 @@
       .controls {
         display: grid;
         grid-template-columns: minmax(290px, 0.9fr) minmax(420px, 1.1fr);
-        gap: 14px;
+        gap: 10px;
+        min-height: 0;
       }
 
       .control-panel {
-        padding: 14px;
+        min-height: 0;
+        overflow: hidden;
+        padding: 10px 12px;
       }
 
       .control-row {
@@ -162,9 +167,9 @@
       .slider-row {
         display: grid;
         grid-template-columns: auto 1fr auto;
-        gap: 10px;
+        gap: 8px;
         align-items: center;
-        margin-bottom: 12px;
+        margin-bottom: 8px;
       }
 
       label {
@@ -179,14 +184,14 @@
       }
 
       button {
-        min-height: 36px;
+        min-height: 31px;
         border: 1px solid #cbd5e1;
         border-radius: 8px;
         background: #ffffff;
         color: #1f2937;
-        padding: 7px 11px;
+        padding: 5px 9px;
         font: inherit;
-        font-size: 14px;
+        font-size: 13px;
         cursor: pointer;
       }
 
@@ -210,13 +215,13 @@
       .status-grid {
         display: grid;
         grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 10px;
+        gap: 8px;
       }
 
       .status-card {
         border: 1px solid var(--line);
         border-radius: 8px;
-        padding: 10px;
+        padding: 8px;
         background: #fbfdff;
         min-width: 0;
       }
@@ -236,7 +241,7 @@
       }
 
       .table-panel {
-        margin-top: 12px;
+        margin-top: 8px;
         border: 1px solid var(--line);
         border-radius: 8px;
         overflow: hidden;
@@ -245,13 +250,13 @@
       table {
         width: 100%;
         border-collapse: collapse;
-        font-size: 13px;
+        font-size: 12px;
       }
 
       th,
       td {
         border-bottom: 1px solid var(--line);
-        padding: 8px 9px;
+        padding: 5px 6px;
         text-align: center;
       }
 
@@ -276,6 +281,28 @@
         padding: 11px 12px;
         font-size: 14px;
         line-height: 1.55;
+      }
+
+      .controls .control-panel:last-child {
+        display: grid;
+        grid-template-columns: minmax(230px, 0.68fr) minmax(350px, 1.32fr);
+        gap: 8px;
+        align-content: start;
+      }
+
+      .controls .control-panel:last-child .status-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .controls .control-panel:last-child .table-panel,
+      .controls .control-panel:last-child .summary {
+        margin-top: 0;
+      }
+
+      .controls .control-panel:last-child .summary {
+        grid-column: 1 / -1;
+        max-height: 70px;
+        overflow: auto;
       }
 
       .hidden {
@@ -337,6 +364,15 @@
         .status-grid {
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
+
+        .controls .control-panel:last-child {
+          display: block;
+        }
+
+        .controls .control-panel:last-child .table-panel,
+        .controls .control-panel:last-child .summary {
+          margin-top: 12px;
+        }
       }
     </style>
   </head>
@@ -346,7 +382,7 @@
         <div>
           <h1>正弦与余弦相位对照</h1>
           <p class="subtitle">
-            同一角度同步比较单位圆坐标、y = sin x、y = cos x 与 sin(x + pi/2)。
+            同一角度同步比较单位圆坐标、y = sin x、y = cos x 与 sin(x + π/2)。
           </p>
         </div>
         <div class="badge-row">
@@ -372,7 +408,7 @@
         <section class="panel graph-panel">
           <div class="panel-title">
             <h2>函数图像：同一 x 与相位参照</h2>
-            <span id="graphReadout" class="math-readout">cos x = sin(x + pi/2)</span>
+            <span id="graphReadout" class="math-readout">cos x = sin(x + π/2)</span>
           </div>
           <div class="canvas-wrap">
             <svg id="graphSvg" viewBox="0 0 760 420" aria-label="正弦余弦图像对照">
@@ -399,15 +435,15 @@
           </div>
           <div class="control-row" style="margin-top: 10px">
             <button data-jump="0" type="button">0</button>
-            <button data-jump="1.5707963267948966" type="button">pi/2</button>
-            <button data-jump="3.141592653589793" type="button">pi</button>
-            <button data-jump="4.71238898038469" type="button">3pi/2</button>
-            <button data-jump="6.283185307179586" type="button">2pi</button>
+            <button data-jump="1.5707963267948966" type="button">π/2</button>
+            <button data-jump="3.141592653589793" type="button">π</button>
+            <button data-jump="4.71238898038469" type="button">3π/2</button>
+            <button data-jump="6.283185307179586" type="button">2π</button>
           </div>
         </div>
 
         <div class="panel control-panel">
-          <div class="status-grid">
+          <div class="status-grid" data-math-normalize="off">
             <div class="status-card">
               <strong>sin x</strong>
               <span id="sinValue">0.000</span>
@@ -417,8 +453,8 @@
               <span id="cosValue">1.000</span>
             </div>
             <div class="status-card">
-              <strong>x + pi/2</strong>
-              <span id="phaseValue">pi/2</span>
+              <strong>x + π/2</strong>
+              <span id="phaseValue">π/2</span>
             </div>
             <div class="status-card">
               <strong>检查式</strong>
@@ -427,7 +463,7 @@
           </div>
 
           <div id="keyTable" class="table-panel">
-            <table>
+            <table data-math-normalize="off">
               <thead>
                 <tr>
                   <th>x</th>
@@ -442,8 +478,9 @@
 
           <div id="summaryBox" class="summary hidden">
             同一角 x 下，sin x 来自单位圆动点的纵坐标，cos x 来自横坐标。
-            从图像关系看，余弦曲线与正弦曲线满足 cos x = sin(x + pi/2)；
-            用 x = 0 检查方向：cos 0 = 1，sin(pi/2) = 1。
+            从图像关系看，余弦曲线与正弦曲线满足 cos x = sin(x + π/2)；
+            用 x = 0 检查方向：cos 0 = 1，sin(π/2) = 1。
+            若说图像平移，是 y = sin x 向左平移 π/2 得到 y = cos x。
           </div>
         </div>
       </section>
@@ -463,11 +500,11 @@
       };
 
       const keyAngles = [
-        { value: 0, label: "0", phase: "sin(pi/2)" },
-        { value: HALF_PI, label: "pi/2", phase: "sin(pi)" },
-        { value: Math.PI, label: "pi", phase: "sin(3pi/2)" },
-        { value: Math.PI * 1.5, label: "3pi/2", phase: "sin(2pi)" },
-        { value: TAU, label: "2pi", phase: "sin(5pi/2)" },
+        { value: 0, label: "0", phase: "sin(π/2)" },
+        { value: HALF_PI, label: "π/2", phase: "sin(π)" },
+        { value: Math.PI, label: "π", phase: "sin(3π/2)" },
+        { value: Math.PI * 1.5, label: "3π/2", phase: "sin(2π)" },
+        { value: TAU, label: "2π", phase: "sin(5π/2)" },
       ];
 
       const els = {
@@ -502,19 +539,19 @@
       }
 
       function fmtAngle(value) {
-        const normalized = ((value % TAU) + TAU) % TAU;
         const matches = [
+          [-HALF_PI, "-π/2"],
           [0, "0"],
-          [HALF_PI, "pi/2"],
-          [Math.PI, "pi"],
-          [Math.PI * 1.5, "3pi/2"],
-          [TAU, "2pi"],
+          [HALF_PI, "π/2"],
+          [Math.PI, "π"],
+          [Math.PI * 1.5, "3π/2"],
+          [TAU, "2π"],
+          [TAU + HALF_PI, "5π/2"],
         ];
-        if (Math.abs(value - TAU) < 0.002) return "2pi";
         for (const [target, label] of matches) {
-          if (Math.abs(normalized - target) < 0.002) return label;
+          if (Math.abs(value - target) < 0.002) return label;
         }
-        return `${(value / Math.PI).toFixed(2)}pi`;
+        return `${(value / Math.PI).toFixed(2)}π`;
       }
 
       function svgEl(name, attrs = {}, text = "") {
@@ -695,7 +732,7 @@
             svgEl("line", { x1: phaseGraphX, y1: top, x2: phaseGraphX, y2: bottom, stroke: "var(--phase)", "stroke-width": 1.7, "stroke-dasharray": "4 5" }),
             svgEl("circle", { cx: phaseGraphX, cy: phaseY, r: 7, fill: "var(--phase)", stroke: "#ffffff", "stroke-width": 2 }),
             svgEl("line", { x1: currentX, y1: cosY, x2: phaseGraphX, y2: phaseY, stroke: "var(--phase)", "stroke-width": 2, "stroke-dasharray": "5 5" }),
-            svgEl("text", { x: phaseGraphX - 36, y: phaseY - 14, class: "small-label", fill: "var(--phase)" }, "sin(x + pi/2)"),
+            svgEl("text", { x: phaseGraphX - 36, y: phaseY - 14, class: "small-label", fill: "var(--phase)" }, "sin(x + π/2)"),
           );
         }
 
