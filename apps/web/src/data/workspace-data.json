@@ -4536,10 +4536,10 @@
               "estimatedClassroomMinutes": 20,
               "primaryTeachingProblem": "学生会背正弦函数性质，但常把单调区间端点、对称轴、对称中心、零点和最值点的一般形式混在一起。",
               "learningGoals": [
-                "从图像比较 x 与 x + 2pi 的函数值，解释正弦函数的周期性。",
+                "从图像比较 x 与 x + 2π 的函数值，解释正弦函数的周期性。",
                 "比较相邻上升段和下降段，写出完整的单调区间一般形式。",
-                "区分正弦图像的对称轴 x = pi/2 + kpi 与对称中心 (kpi, 0)。",
-                "用 k 属于整数的形式表达零点、最大值点和最小值点。"
+                "区分正弦图像的对称轴 x = π/2 + kπ 与对称中心 (kπ, 0)。",
+                "用 k ∈ Z 的形式表达零点、最大值点和最小值点。"
               ],
               "prerequisites": [
                 "正弦函数图像的生成过程",
@@ -4563,37 +4563,37 @@
               "dependent_variable": "sin x",
               "domain": "R",
               "range": "[-1, 1]",
-              "fundamental_period": "2pi",
-              "default_x_range": "-2pi <= x <= 4pi",
+              "fundamental_period": "2π",
+              "default_x_range": "-2π <= x <= 4π",
               "monotonicity": {
-                "increasing": "[-pi/2 + 2kpi, pi/2 + 2kpi], k in Z",
-                "decreasing": "[pi/2 + 2kpi, 3pi/2 + 2kpi], k in Z"
+                "increasing": "[-π/2 + 2kπ, π/2 + 2kπ], k ∈ Z",
+                "decreasing": "[π/2 + 2kπ, 3π/2 + 2kπ], k ∈ Z"
               },
               "symmetry": {
                 "odd_function": "sin(-x) = -sin x",
-                "axes": "x = pi/2 + kpi, k in Z",
-                "centers": "(kpi, 0), k in Z"
+                "axes": "x = π/2 + kπ, k ∈ Z",
+                "centers": "(kπ, 0), k ∈ Z"
               },
               "key_points": {
-                "zeros": "x = kpi, k in Z",
-                "maximum_points": "(pi/2 + 2kpi, 1), k in Z",
-                "minimum_points": "(3pi/2 + 2kpi, -1), k in Z"
+                "zeros": "x = kπ, k ∈ Z",
+                "maximum_points": "(π/2 + 2kπ, 1), k ∈ Z",
+                "minimum_points": "(-π/2 + 2kπ, -1), k ∈ Z；等价写法为 (3π/2 + 2kπ, -1), k ∈ Z"
               },
               "out_of_scope": [
                 "余弦函数性质的系统归纳",
                 "正切函数图像与性质",
-                "y = A sin(omega x + phi) 的参数变换",
+                "y = A sin(ωx + φ) 的参数变换",
                 "用导数证明正弦函数单调性"
               ]
             },
             "representations": [
               {
                 "id": "sine_graph",
-                "role": "显示 -2pi 到 4pi 上的正弦曲线和当前动点。"
+                "role": "显示 -2π 到 4π 上的正弦曲线和当前动点。"
               },
               {
                 "id": "period_comparison",
-                "role": "比较 x 与 x + 2pi 或 x - 2pi 的同高点。"
+                "role": "比较 x 与 x + 2π 或 x - 2π 的同高点。"
               },
               {
                 "id": "monotonic_segments",
@@ -4640,7 +4640,7 @@
                 },
                 {
                   "step": "period_compare",
-                  "description": "显示相隔 2pi 的同高点，比较周期段。"
+                  "description": "显示相隔 2π 的同高点，比较周期段。"
                 },
                 {
                   "step": "monotonic_compare",
@@ -4690,7 +4690,7 @@
                   "name": "period_compare_visible",
                   "value_type": "boolean",
                   "default": false,
-                  "description": "是否显示相隔 2pi 的周期比较点。",
+                  "description": "是否显示相隔 2π 的周期比较点。",
                   "persistence": "snapshot"
                 },
                 {
@@ -4777,15 +4777,15 @@
             },
             "feedbackAndDiagnosis": {
               "success_evidence": [
-                "学生能说明周期性来自图像相隔 2pi 的同高点，并写出 sin(x + 2kpi) = sin x。",
-                "学生能写出完整的单调递增区间和递减区间，并保留 2kpi。",
-                "学生能把对称轴 x = pi/2 + kpi 和对称中心 (kpi, 0) 分开表达。",
-                "学生能用 k 属于整数的形式写出零点和最值点。"
+                "学生能说明周期性来自图像相隔 2π 的同高点，并写出 sin(x + 2kπ) = sin x, k ∈ Z。",
+                "学生能写出完整的单调递增区间和递减区间，并保留 2kπ 与 k ∈ Z。",
+                "学生能把对称轴 x = π/2 + kπ 和对称中心 (kπ, 0) 分开表达。",
+                "学生能用 k ∈ Z 的形式写出零点和最值点。"
               ],
               "common_error_tags": [
                 {
                   "id": "period_omission",
-                  "label": "只写一个周期，遗漏加 2kpi 的一般形式"
+                  "label": "只写一个周期，遗漏加 2kπ 的一般形式"
                 },
                 {
                   "id": "monotonic_endpoint_confusion",
@@ -4810,7 +4810,7 @@
             "visualSemantics": {
               "sine_curve": "正弦函数 y = sin x 的图像。",
               "current_point": "当前观察点 (x, sin x)。",
-              "period_twin": "与当前点相隔 2pi 且函数值相同的周期比较点。",
+              "period_twin": "与当前点相隔 2π 且函数值相同的周期比较点。",
               "increasing_segment": "选定 k 下的递增区间。",
               "decreasing_segment": "选定 k 下的递减区间。",
               "symmetry_axis": "正弦图像的竖直对称轴。",
@@ -6741,7 +6741,7 @@
           "id": "SH-HS-MATH-HJ-B2-C07-L05-A01",
           "resourceType": "applet",
           "title": "三角函数参数变化实验室",
-          "subtitle": "分离观察 A、omega、phi 对 y = A sin(omega x + phi) 图像的影响",
+          "subtitle": "分离观察 A、ω、φ 对 y = A sin(ωx + φ) 图像的影响",
           "cognitiveAction": "变换",
           "note": "滑块控制 A、omega、phi，支持单参数锁定、变换顺序切换和关键点追踪；k 可作为平台扩展开关，默认对齐教材的无竖直平移形式。",
           "availability": "metadata_ready",
@@ -6753,7 +6753,7 @@
             "status": "draft",
             "resourceType": "applet",
             "title": "三角函数参数变化实验室",
-            "subtitle": "分离观察 A、omega、phi 对 y = A sin(omega x + phi) 图像的影响",
+            "subtitle": "分离观察 A、ω、φ 对 y = A sin(ωx + φ) 图像的影响",
             "curriculum": {
               "region": "上海",
               "stage": "高中",
@@ -6772,12 +6772,12 @@
             "pedagogy": {
               "cognitiveAction": "变换",
               "estimatedClassroomMinutes": 25,
-              "primaryTeachingProblem": "学生容易把横向伸缩、相位平移和括号内符号的关系搞反；多参数同时变化时认知负荷过高，难以从图像反推 A、omega、phi。",
+              "primaryTeachingProblem": "学生容易把横向伸缩、相位平移和括号内符号的关系搞反；多参数同时变化时认知负荷过高，难以从图像反推 A、ω、φ。",
               "learningGoals": [
-                "分别说明 A、omega、phi 对振幅、周期和相位平移的影响。",
-                "解释 y = A sin(omega x + phi) 的相位平移量为 -phi / omega。",
+                "分别说明 A、ω、φ 对振幅、周期和相位平移的影响。",
+                "解释 y = A sin(ωx + φ) 的相位平移量为 -φ / ω。",
                 "通过单参数锁定和变换顺序比较，降低多参数同时变化的认知负荷。",
-                "根据关键点追踪，从图像反推 A、omega、phi 的可能取值。"
+                "根据关键点追踪，从图像反推 A、ω、φ 的可能取值。"
               ],
               "prerequisites": [
                 "正弦函数图像与性质",
@@ -6797,10 +6797,10 @@
               ]
             },
             "mathematicalScope": {
-              "function": "y = A sin(omega x + phi)",
+              "function": "y = A sin(ωx + φ)",
               "independent_variable": "角 x 的弧度量",
               "dependent_variable": "函数值 y",
-              "default_x_range": "-2pi <= x <= 2pi",
+              "default_x_range": "-2π <= x <= 2π",
               "parameter_defaults": {
                 "A": 1,
                 "omega": 1,
@@ -6808,21 +6808,21 @@
               },
               "parameter_ranges": {
                 "A": "-2 <= A <= 2, A != 0 in discussion",
-                "omega": "0.5 <= omega <= 3, classroom default assumes omega > 0",
-                "phi": "-pi <= phi <= pi"
+                "omega": "0.5 <= ω <= 3；本资源主线限制 ω > 0，暂不讨论 ω < 0 的等价改写",
+                "phi": "-π <= φ <= π"
               },
               "derived_quantities": {
                 "amplitude": "|A|",
-                "period": "2pi / omega",
-                "phase_shift": "-phi / omega"
+                "period": "2π / |ω|；本资源 ω > 0 时显示为 2π / ω",
+                "phase_shift": "-φ / ω（本资源 ω > 0）"
               },
               "key_points": {
-                "zeros": "omega x + phi = kpi",
-                "extrema": "omega x + phi = pi/2 + kpi"
+                "zeros": "ωx + φ = kπ",
+                "extrema": "ωx + φ = π/2 + kπ；A < 0 时最大值点和最小值点对调"
               },
               "transformation_sequence": {
-                "scale_then_shift": "y = sin x -> y = sin(omega x) -> y = sin(omega x + phi) -> y = A sin(omega x + phi)",
-                "shift_then_scale": "y = sin x -> y = sin(x + phi) -> y = sin(omega x + phi) -> y = A sin(omega x + phi)"
+                "scale_then_shift": "y = sin x -> y = sin(ωx) -> y = sin(ωx + φ) -> y = A sin(ωx + φ)",
+                "shift_then_scale": "y = sin x -> y = sin(x + φ) -> y = sin(ωx + φ) -> y = A sin(ωx + φ)"
               },
               "out_of_scope": [
                 "加入竖直平移 k 的系统讨论",
@@ -6838,11 +6838,11 @@
               },
               {
                 "id": "transformed_curve",
-                "role": "显示 y = A sin(omega x + phi) 的当前图像。"
+                "role": "显示 y = A sin(ωx + φ) 的当前图像。"
               },
               {
                 "id": "parameter_controls",
-                "role": "通过 A、omega、phi 滑块分离观察参数影响。"
+                "role": "通过 A、ω、φ 滑块分离观察参数影响。"
               },
               {
                 "id": "sequence_trace",
@@ -6862,19 +6862,19 @@
               "pausePoints": []
             },
             "interactionDesign": {
-              "primaryControl": "拖动图像上的观察点或调节 A、omega、phi 滑块，观察基本正弦曲线如何变成参数函数图像。",
+              "primaryControl": "拖动图像上的观察点或调节 A、ω、φ 滑块，观察基本正弦曲线如何变成参数函数图像。",
               "teacherControls": [
                 "播放或暂停观察点沿当前图像移动",
-                "重置到 A = 1, omega = 1, phi = 0",
-                "选择单参数观察模式：A、omega、phi 或自由组合",
+                "重置到 A = 1, ω = 1, φ = 0",
+                "选择单参数观察模式：A、ω、φ 或自由组合",
                 "切换变换顺序：先横向伸缩后平移，或先平移后横向伸缩",
                 "显示或隐藏基本曲线、中间曲线、关键点和结论面板",
-                "调节 A、omega、phi 并同步显示振幅、周期、相位平移"
+                "调节 A、ω、φ 并同步显示振幅、周期、相位平移"
               ],
               "studentControls": [
                 "先锁定一个参数，预测图像变化后再移动滑块验证",
-                "拖动观察点，记录当前相位 omega x + phi 与函数值",
-                "根据关键点位置反推 A、omega、phi"
+                "拖动观察点，记录当前相位 ωx + φ 与函数值",
+                "根据关键点位置反推 A、ω、φ"
               ],
               "stagedReveal": [
                 {
@@ -6883,11 +6883,11 @@
                 },
                 {
                   "step": "single_parameter",
-                  "description": "依次锁定 A、omega、phi，分离观察振幅、周期和相位平移。"
+                  "description": "依次锁定 A、ω、φ，分离观察振幅、周期和相位平移。"
                 },
                 {
                   "step": "sequence_compare",
-                  "description": "切换变换顺序，比较 phi 和 -phi / omega 的不同角色。"
+                  "description": "切换变换顺序，比较 φ 和 -φ / ω 的不同角色。"
                 },
                 {
                   "step": "key_point_tracking",
@@ -6895,7 +6895,7 @@
                 },
                 {
                   "step": "summary",
-                  "description": "归纳 A、omega、phi 对图像的作用和常见误区。"
+                  "description": "归纳 A、ω、φ 对图像的作用和常见误区。"
                 }
               ]
             },
@@ -6914,7 +6914,7 @@
                   "unit": "unitless",
                   "value_type": "number",
                   "default": 1,
-                  "description": "参数 omega，控制周期 2pi / omega。",
+                  "description": "参数 ω；本资源限制 ω > 0，控制周期 2π / ω（一般式 2π / |ω|）。",
                   "persistence": "snapshot"
                 },
                 {
@@ -6922,7 +6922,7 @@
                   "unit": "radian",
                   "value_type": "number",
                   "default": 0,
-                  "description": "参数 phi，参与相位 omega x + phi。",
+                  "description": "参数 φ，参与相位 ωx + φ。",
                   "persistence": "snapshot"
                 },
                 {
@@ -6930,7 +6930,7 @@
                   "unit": "radian",
                   "value_type": "number",
                   "default": 0,
-                  "description": "相位平移量 -phi / omega。",
+                  "description": "相位平移量 -φ / ω。",
                   "persistence": "snapshot"
                 },
                 {
@@ -6953,7 +6953,7 @@
                   "name": "focus_mode",
                   "value_type": "string",
                   "default": "free",
-                  "description": "当前单参数观察模式：free、a、omega 或 phi。",
+                  "description": "当前单参数观察模式：free、a、ω 或 φ；状态值仍使用 API 枚举。",
                   "persistence": "snapshot"
                 },
                 {
@@ -6996,7 +6996,7 @@
                 {
                   "name": "parameters_changed",
                   "direction": "applet_to_player",
-                  "description": "A、omega 或 phi 发生变化。",
+                  "description": "A、ω 或 φ 发生变化。",
                   "payload": [
                     "amplitude_a",
                     "omega",
@@ -7057,22 +7057,22 @@
             "feedbackAndDiagnosis": {
               "success_evidence": [
                 "学生能说明 A 改变振幅，A 为负时图像关于 x 轴翻折。",
-                "学生能从周期 T 反推 omega = 2pi / T。",
-                "学生能解释相位平移量是 -phi / omega，而不是简单地把 phi 当作右移量。",
+                "学生能从周期 T 反推 |ω| = 2π / T；在本资源 ω > 0 范围内即 ω = 2π / T。",
+                "学生能解释相位平移量是 -φ / ω，而不是简单地把 φ 当作右移量。",
                 "学生能在多参数同时变化时先分离参数，再综合判断图像。"
               ],
               "common_error_tags": [
                 {
                   "id": "horizontal_scale_inverse",
-                  "label": "把 omega 变大误认为周期变大"
+                  "label": "把 ω 变大误认为周期变大"
                 },
                 {
                   "id": "phase_direction_confusion",
-                  "label": "把 phi 的符号与图像平移方向搞反"
+                  "label": "把 φ 的符号与图像平移方向搞反"
                 },
                 {
                   "id": "phase_shift_denominator_missing",
-                  "label": "计算平移量时遗漏除以 omega"
+                  "label": "计算平移量时遗漏除以 ω"
                 },
                 {
                   "id": "amplitude_reflection_ignored",
@@ -7085,20 +7085,20 @@
               ],
               "feedback_principles": [
                 "反馈先锁定单一参数，再回到复合函数。",
-                "omega 的反馈必须回到周期 T = 2pi / omega。",
-                "phi 的反馈必须同时呈现括号内符号和最终平移量 -phi / omega。",
+                "ω 的反馈必须回到周期 T = 2π / |ω|；本资源 ω > 0 时用 T = 2π / ω。",
+                "φ 的反馈必须同时呈现括号内符号和最终平移量 -φ / ω。",
                 "从图像反推解析式时，先找振幅和周期，再用关键点判断相位。"
               ]
             },
             "visualSemantics": {
               "base_curve": "灰蓝色虚线表示 y = sin x。",
               "intermediate_curve": "浅绿色曲线表示当前变换顺序下的中间曲线。",
-              "transformed_curve": "深蓝色粗曲线表示 y = A sin(omega x + phi)。",
+              "transformed_curve": "深蓝色粗曲线表示 y = A sin(ωx + φ)。",
               "current_point": "橙色动点表示当前观察点。",
               "zero_points": "空心点表示当前图像零点。",
               "extrema_points": "实心紫色点表示当前图像最值点。",
               "amplitude_band": "淡蓝水平带表示振幅范围 [-|A|, |A|]。",
-              "phase_marker": "竖直标记表示相位平移量 -phi / omega。",
+              "phase_marker": "竖直标记表示相位平移量 -φ / ω。",
               "rule": "颜色只用于区分数学对象和变换阶段，不作装饰。"
             },
             "implementation": {
@@ -7138,7 +7138,7 @@
               "kind": "teacher_script",
               "path": "content/applets/SH-HS-MATH-HJ-B2-C07-L05-A01/teacher-script.md",
               "title": "教师脚本：三角函数参数变化实验室",
-              "summary": "适用课时：必修第二册 7.3“函数 y = A sin(omega x + phi) 的图像” 建议时长：25 分钟 资源状态：`draft`",
+              "summary": "适用课时：必修第二册 7.3“函数 y = A sin(ωx + φ) 的图像” 建议时长：25 分钟 资源状态：`draft`",
               "sections": [
                 "教学目标",
                 "课前准备",
@@ -7155,8 +7155,8 @@
               "sections": [
                 "活动目标",
                 "任务一：单独改变 A",
-                "任务二：单独改变 omega",
-                "任务三：单独改变 phi",
+                "任务二：单独改变 ω",
+                "任务三：单独改变 φ",
                 "任务四：变换顺序比较",
                 "任务五：从图像反推参数",
                 "快速诊断",
@@ -7469,7 +7469,7 @@
           "id": "SH-HS-MATH-HJ-B2-C07-L05-D01",
           "resourceType": "diagnosis",
           "title": "参数识别诊断任务",
-          "subtitle": "围绕 A、omega、phi 的图像读数和错因分流",
+          "subtitle": "围绕 A、ω、φ 的图像读数和错因分流",
           "cognitiveAction": "比较",
           "note": "给出图像关键点，要求判断 A、omega、phi 的可能取值并解释理由。",
           "availability": "item_bank_ready",
@@ -7481,7 +7481,7 @@
             "status": "draft",
             "resourceType": "diagnosis",
             "title": "参数识别诊断任务",
-            "subtitle": "围绕 A、omega、phi 的图像读数和错因分流",
+            "subtitle": "围绕 A、ω、φ 的图像读数和错因分流",
             "curriculum": {
               "region": "上海",
               "stage": "高中",
@@ -7500,17 +7500,17 @@
             "pedagogy": {
               "cognitiveAction": "比较",
               "estimatedClassroomMinutes": 8,
-              "primaryTeachingProblem": "学生能分别说出振幅、周期和平移的结论，但从一张图像反推解析式时，常把周期与 omega、phi 与实际平移量、A 的负号与横向变化混在一起。",
+              "primaryTeachingProblem": "学生能分别说出振幅、周期和平移的结论，但从一张图像反推解析式时，常把周期与 ω、φ 与实际平移量、A 的负号与横向变化混在一起。",
               "learningGoals": [
                 "根据图像最大值和最小值判断振幅 |A|，并在必要时处理 A 的负号。",
-                "根据相邻关键点间距读出周期 T，并用 omega = 2pi / T 求 omega。",
-                "通过 omega x + phi = omega(x + phi / omega) 解释实际相位平移量。",
+                "根据相邻关键点间距读出周期 T，并在 ω > 0 的约定下用 ω = 2π / T 求 ω。",
+                "通过 ωx + φ = ω(x + φ / ω) 解释实际水平平移量 h = -φ / ω。",
                 "用一个关键点验证候选解析式，而不是只凭单个参数猜测。"
               ],
               "prerequisites": [
                 "正弦函数图像与关键点",
                 "函数图像平移、伸缩和翻折",
-                "y = A sin(omega x + phi) 的变换顺序"
+                "y = A sin(ωx + φ) 的变换顺序"
               ],
               "successors": [
                 "SH-HS-MATH-HJ-B2-C07-L06",
@@ -7536,21 +7536,21 @@
             },
             "diagnosisDesign": {
               "diagnosticFocus": [
-                "能否从图像周期求出 omega，而不是把周期本身当作 omega。",
-                "能否解释相位平移方向和距离，尤其是 phi 需要除以 omega。",
+                "能否从图像周期求出 ω，而不是把周期本身当作 ω。",
+                "能否解释相位平移方向和距离，尤其是实际水平平移量为 h = -φ / ω。",
                 "能否在 A 为负时正确处理关于 x 轴的翻折。",
                 "能否用关键点检验候选解析式，避免只看一个参数。"
               ],
               "misconceptionTags": [
                 {
                   "id": "period_to_omega_inversion",
-                  "title": "周期与 omega 互换",
-                  "description": "把周期 T 当成 omega，或忘记 omega = 2pi / T。"
+                  "title": "周期与 ω 互换",
+                  "description": "把周期 T 当成 ω，或忘记 ω = 2π / T。"
                 },
                 {
                   "id": "phase_shift_scale_omission",
-                  "title": "平移量未除以 omega",
-                  "description": "把 phi 直接看成实际平移量，忽略 omega(x + phi / omega)。"
+                  "title": "平移量未除以 ω",
+                  "description": "把 φ 直接看成实际平移量，忽略 ωx + φ = ω(x + φ / ω) 和 h = -φ / ω。"
                 },
                 {
                   "id": "phase_shift_sign_error",
@@ -7580,7 +7580,7 @@
               },
               "feedbackStrategy": {
                 "immediate_feedback": "每题返回命中的参数错因标签，并给出一个回看动作：周期读数、括号改写、A 的翻折或关键点代入。",
-                "teacher_dashboard_notes": "若 period_to_omega_inversion 集中出现，先回到周期标尺；若 phase_shift_scale_omission 或 phase_shift_sign_error 集中出现，回放 L05-M01 的公式改写；若 amplitude_reflection_mixup 集中出现，回到 Applet 固定 omega、phi 只调 A。",
+                "teacher_dashboard_notes": "若 period_to_omega_inversion 集中出现，先回到周期标尺；若 phase_shift_scale_omission 或 phase_shift_sign_error 集中出现，回放 L05-M01 的公式改写；若 amplitude_reflection_mixup 集中出现，回到 Applet 固定 ω、φ 只调 A。",
                 "remediation_links": [
                   "content/applets/SH-HS-MATH-HJ-B2-C07-L05-A01",
                   "content/manim/SH-HS-MATH-HJ-B2-C07-L05-M01"
@@ -15489,10 +15489,10 @@
               "estimatedClassroomMinutes": 20,
               "primaryTeachingProblem": "学生会背正弦函数性质，但常把单调区间端点、对称轴、对称中心、零点和最值点的一般形式混在一起。",
               "learningGoals": [
-                "从图像比较 x 与 x + 2pi 的函数值，解释正弦函数的周期性。",
+                "从图像比较 x 与 x + 2π 的函数值，解释正弦函数的周期性。",
                 "比较相邻上升段和下降段，写出完整的单调区间一般形式。",
-                "区分正弦图像的对称轴 x = pi/2 + kpi 与对称中心 (kpi, 0)。",
-                "用 k 属于整数的形式表达零点、最大值点和最小值点。"
+                "区分正弦图像的对称轴 x = π/2 + kπ 与对称中心 (kπ, 0)。",
+                "用 k ∈ Z 的形式表达零点、最大值点和最小值点。"
               ],
               "prerequisites": [
                 "正弦函数图像的生成过程",
@@ -15516,37 +15516,37 @@
               "dependent_variable": "sin x",
               "domain": "R",
               "range": "[-1, 1]",
-              "fundamental_period": "2pi",
-              "default_x_range": "-2pi <= x <= 4pi",
+              "fundamental_period": "2π",
+              "default_x_range": "-2π <= x <= 4π",
               "monotonicity": {
-                "increasing": "[-pi/2 + 2kpi, pi/2 + 2kpi], k in Z",
-                "decreasing": "[pi/2 + 2kpi, 3pi/2 + 2kpi], k in Z"
+                "increasing": "[-π/2 + 2kπ, π/2 + 2kπ], k ∈ Z",
+                "decreasing": "[π/2 + 2kπ, 3π/2 + 2kπ], k ∈ Z"
               },
               "symmetry": {
                 "odd_function": "sin(-x) = -sin x",
-                "axes": "x = pi/2 + kpi, k in Z",
-                "centers": "(kpi, 0), k in Z"
+                "axes": "x = π/2 + kπ, k ∈ Z",
+                "centers": "(kπ, 0), k ∈ Z"
               },
               "key_points": {
-                "zeros": "x = kpi, k in Z",
-                "maximum_points": "(pi/2 + 2kpi, 1), k in Z",
-                "minimum_points": "(3pi/2 + 2kpi, -1), k in Z"
+                "zeros": "x = kπ, k ∈ Z",
+                "maximum_points": "(π/2 + 2kπ, 1), k ∈ Z",
+                "minimum_points": "(-π/2 + 2kπ, -1), k ∈ Z；等价写法为 (3π/2 + 2kπ, -1), k ∈ Z"
               },
               "out_of_scope": [
                 "余弦函数性质的系统归纳",
                 "正切函数图像与性质",
-                "y = A sin(omega x + phi) 的参数变换",
+                "y = A sin(ωx + φ) 的参数变换",
                 "用导数证明正弦函数单调性"
               ]
             },
             "representations": [
               {
                 "id": "sine_graph",
-                "role": "显示 -2pi 到 4pi 上的正弦曲线和当前动点。"
+                "role": "显示 -2π 到 4π 上的正弦曲线和当前动点。"
               },
               {
                 "id": "period_comparison",
-                "role": "比较 x 与 x + 2pi 或 x - 2pi 的同高点。"
+                "role": "比较 x 与 x + 2π 或 x - 2π 的同高点。"
               },
               {
                 "id": "monotonic_segments",
@@ -15593,7 +15593,7 @@
                 },
                 {
                   "step": "period_compare",
-                  "description": "显示相隔 2pi 的同高点，比较周期段。"
+                  "description": "显示相隔 2π 的同高点，比较周期段。"
                 },
                 {
                   "step": "monotonic_compare",
@@ -15643,7 +15643,7 @@
                   "name": "period_compare_visible",
                   "value_type": "boolean",
                   "default": false,
-                  "description": "是否显示相隔 2pi 的周期比较点。",
+                  "description": "是否显示相隔 2π 的周期比较点。",
                   "persistence": "snapshot"
                 },
                 {
@@ -15730,15 +15730,15 @@
             },
             "feedbackAndDiagnosis": {
               "success_evidence": [
-                "学生能说明周期性来自图像相隔 2pi 的同高点，并写出 sin(x + 2kpi) = sin x。",
-                "学生能写出完整的单调递增区间和递减区间，并保留 2kpi。",
-                "学生能把对称轴 x = pi/2 + kpi 和对称中心 (kpi, 0) 分开表达。",
-                "学生能用 k 属于整数的形式写出零点和最值点。"
+                "学生能说明周期性来自图像相隔 2π 的同高点，并写出 sin(x + 2kπ) = sin x, k ∈ Z。",
+                "学生能写出完整的单调递增区间和递减区间，并保留 2kπ 与 k ∈ Z。",
+                "学生能把对称轴 x = π/2 + kπ 和对称中心 (kπ, 0) 分开表达。",
+                "学生能用 k ∈ Z 的形式写出零点和最值点。"
               ],
               "common_error_tags": [
                 {
                   "id": "period_omission",
-                  "label": "只写一个周期，遗漏加 2kpi 的一般形式"
+                  "label": "只写一个周期，遗漏加 2kπ 的一般形式"
                 },
                 {
                   "id": "monotonic_endpoint_confusion",
@@ -15763,7 +15763,7 @@
             "visualSemantics": {
               "sine_curve": "正弦函数 y = sin x 的图像。",
               "current_point": "当前观察点 (x, sin x)。",
-              "period_twin": "与当前点相隔 2pi 且函数值相同的周期比较点。",
+              "period_twin": "与当前点相隔 2π 且函数值相同的周期比较点。",
               "increasing_segment": "选定 k 下的递增区间。",
               "decreasing_segment": "选定 k 下的递减区间。",
               "symmetry_axis": "正弦图像的竖直对称轴。",
@@ -17694,7 +17694,7 @@
           "id": "SH-HS-MATH-HJ-B2-C07-L05-A01",
           "resourceType": "applet",
           "title": "三角函数参数变化实验室",
-          "subtitle": "分离观察 A、omega、phi 对 y = A sin(omega x + phi) 图像的影响",
+          "subtitle": "分离观察 A、ω、φ 对 y = A sin(ωx + φ) 图像的影响",
           "cognitiveAction": "变换",
           "note": "滑块控制 A、omega、phi，支持单参数锁定、变换顺序切换和关键点追踪；k 可作为平台扩展开关，默认对齐教材的无竖直平移形式。",
           "availability": "metadata_ready",
@@ -17706,7 +17706,7 @@
             "status": "draft",
             "resourceType": "applet",
             "title": "三角函数参数变化实验室",
-            "subtitle": "分离观察 A、omega、phi 对 y = A sin(omega x + phi) 图像的影响",
+            "subtitle": "分离观察 A、ω、φ 对 y = A sin(ωx + φ) 图像的影响",
             "curriculum": {
               "region": "上海",
               "stage": "高中",
@@ -17725,12 +17725,12 @@
             "pedagogy": {
               "cognitiveAction": "变换",
               "estimatedClassroomMinutes": 25,
-              "primaryTeachingProblem": "学生容易把横向伸缩、相位平移和括号内符号的关系搞反；多参数同时变化时认知负荷过高，难以从图像反推 A、omega、phi。",
+              "primaryTeachingProblem": "学生容易把横向伸缩、相位平移和括号内符号的关系搞反；多参数同时变化时认知负荷过高，难以从图像反推 A、ω、φ。",
               "learningGoals": [
-                "分别说明 A、omega、phi 对振幅、周期和相位平移的影响。",
-                "解释 y = A sin(omega x + phi) 的相位平移量为 -phi / omega。",
+                "分别说明 A、ω、φ 对振幅、周期和相位平移的影响。",
+                "解释 y = A sin(ωx + φ) 的相位平移量为 -φ / ω。",
                 "通过单参数锁定和变换顺序比较，降低多参数同时变化的认知负荷。",
-                "根据关键点追踪，从图像反推 A、omega、phi 的可能取值。"
+                "根据关键点追踪，从图像反推 A、ω、φ 的可能取值。"
               ],
               "prerequisites": [
                 "正弦函数图像与性质",
@@ -17750,10 +17750,10 @@
               ]
             },
             "mathematicalScope": {
-              "function": "y = A sin(omega x + phi)",
+              "function": "y = A sin(ωx + φ)",
               "independent_variable": "角 x 的弧度量",
               "dependent_variable": "函数值 y",
-              "default_x_range": "-2pi <= x <= 2pi",
+              "default_x_range": "-2π <= x <= 2π",
               "parameter_defaults": {
                 "A": 1,
                 "omega": 1,
@@ -17761,21 +17761,21 @@
               },
               "parameter_ranges": {
                 "A": "-2 <= A <= 2, A != 0 in discussion",
-                "omega": "0.5 <= omega <= 3, classroom default assumes omega > 0",
-                "phi": "-pi <= phi <= pi"
+                "omega": "0.5 <= ω <= 3；本资源主线限制 ω > 0，暂不讨论 ω < 0 的等价改写",
+                "phi": "-π <= φ <= π"
               },
               "derived_quantities": {
                 "amplitude": "|A|",
-                "period": "2pi / omega",
-                "phase_shift": "-phi / omega"
+                "period": "2π / |ω|；本资源 ω > 0 时显示为 2π / ω",
+                "phase_shift": "-φ / ω（本资源 ω > 0）"
               },
               "key_points": {
-                "zeros": "omega x + phi = kpi",
-                "extrema": "omega x + phi = pi/2 + kpi"
+                "zeros": "ωx + φ = kπ",
+                "extrema": "ωx + φ = π/2 + kπ；A < 0 时最大值点和最小值点对调"
               },
               "transformation_sequence": {
-                "scale_then_shift": "y = sin x -> y = sin(omega x) -> y = sin(omega x + phi) -> y = A sin(omega x + phi)",
-                "shift_then_scale": "y = sin x -> y = sin(x + phi) -> y = sin(omega x + phi) -> y = A sin(omega x + phi)"
+                "scale_then_shift": "y = sin x -> y = sin(ωx) -> y = sin(ωx + φ) -> y = A sin(ωx + φ)",
+                "shift_then_scale": "y = sin x -> y = sin(x + φ) -> y = sin(ωx + φ) -> y = A sin(ωx + φ)"
               },
               "out_of_scope": [
                 "加入竖直平移 k 的系统讨论",
@@ -17791,11 +17791,11 @@
               },
               {
                 "id": "transformed_curve",
-                "role": "显示 y = A sin(omega x + phi) 的当前图像。"
+                "role": "显示 y = A sin(ωx + φ) 的当前图像。"
               },
               {
                 "id": "parameter_controls",
-                "role": "通过 A、omega、phi 滑块分离观察参数影响。"
+                "role": "通过 A、ω、φ 滑块分离观察参数影响。"
               },
               {
                 "id": "sequence_trace",
@@ -17815,19 +17815,19 @@
               "pausePoints": []
             },
             "interactionDesign": {
-              "primaryControl": "拖动图像上的观察点或调节 A、omega、phi 滑块，观察基本正弦曲线如何变成参数函数图像。",
+              "primaryControl": "拖动图像上的观察点或调节 A、ω、φ 滑块，观察基本正弦曲线如何变成参数函数图像。",
               "teacherControls": [
                 "播放或暂停观察点沿当前图像移动",
-                "重置到 A = 1, omega = 1, phi = 0",
-                "选择单参数观察模式：A、omega、phi 或自由组合",
+                "重置到 A = 1, ω = 1, φ = 0",
+                "选择单参数观察模式：A、ω、φ 或自由组合",
                 "切换变换顺序：先横向伸缩后平移，或先平移后横向伸缩",
                 "显示或隐藏基本曲线、中间曲线、关键点和结论面板",
-                "调节 A、omega、phi 并同步显示振幅、周期、相位平移"
+                "调节 A、ω、φ 并同步显示振幅、周期、相位平移"
               ],
               "studentControls": [
                 "先锁定一个参数，预测图像变化后再移动滑块验证",
-                "拖动观察点，记录当前相位 omega x + phi 与函数值",
-                "根据关键点位置反推 A、omega、phi"
+                "拖动观察点，记录当前相位 ωx + φ 与函数值",
+                "根据关键点位置反推 A、ω、φ"
               ],
               "stagedReveal": [
                 {
@@ -17836,11 +17836,11 @@
                 },
                 {
                   "step": "single_parameter",
-                  "description": "依次锁定 A、omega、phi，分离观察振幅、周期和相位平移。"
+                  "description": "依次锁定 A、ω、φ，分离观察振幅、周期和相位平移。"
                 },
                 {
                   "step": "sequence_compare",
-                  "description": "切换变换顺序，比较 phi 和 -phi / omega 的不同角色。"
+                  "description": "切换变换顺序，比较 φ 和 -φ / ω 的不同角色。"
                 },
                 {
                   "step": "key_point_tracking",
@@ -17848,7 +17848,7 @@
                 },
                 {
                   "step": "summary",
-                  "description": "归纳 A、omega、phi 对图像的作用和常见误区。"
+                  "description": "归纳 A、ω、φ 对图像的作用和常见误区。"
                 }
               ]
             },
@@ -17867,7 +17867,7 @@
                   "unit": "unitless",
                   "value_type": "number",
                   "default": 1,
-                  "description": "参数 omega，控制周期 2pi / omega。",
+                  "description": "参数 ω；本资源限制 ω > 0，控制周期 2π / ω（一般式 2π / |ω|）。",
                   "persistence": "snapshot"
                 },
                 {
@@ -17875,7 +17875,7 @@
                   "unit": "radian",
                   "value_type": "number",
                   "default": 0,
-                  "description": "参数 phi，参与相位 omega x + phi。",
+                  "description": "参数 φ，参与相位 ωx + φ。",
                   "persistence": "snapshot"
                 },
                 {
@@ -17883,7 +17883,7 @@
                   "unit": "radian",
                   "value_type": "number",
                   "default": 0,
-                  "description": "相位平移量 -phi / omega。",
+                  "description": "相位平移量 -φ / ω。",
                   "persistence": "snapshot"
                 },
                 {
@@ -17906,7 +17906,7 @@
                   "name": "focus_mode",
                   "value_type": "string",
                   "default": "free",
-                  "description": "当前单参数观察模式：free、a、omega 或 phi。",
+                  "description": "当前单参数观察模式：free、a、ω 或 φ；状态值仍使用 API 枚举。",
                   "persistence": "snapshot"
                 },
                 {
@@ -17949,7 +17949,7 @@
                 {
                   "name": "parameters_changed",
                   "direction": "applet_to_player",
-                  "description": "A、omega 或 phi 发生变化。",
+                  "description": "A、ω 或 φ 发生变化。",
                   "payload": [
                     "amplitude_a",
                     "omega",
@@ -18010,22 +18010,22 @@
             "feedbackAndDiagnosis": {
               "success_evidence": [
                 "学生能说明 A 改变振幅，A 为负时图像关于 x 轴翻折。",
-                "学生能从周期 T 反推 omega = 2pi / T。",
-                "学生能解释相位平移量是 -phi / omega，而不是简单地把 phi 当作右移量。",
+                "学生能从周期 T 反推 |ω| = 2π / T；在本资源 ω > 0 范围内即 ω = 2π / T。",
+                "学生能解释相位平移量是 -φ / ω，而不是简单地把 φ 当作右移量。",
                 "学生能在多参数同时变化时先分离参数，再综合判断图像。"
               ],
               "common_error_tags": [
                 {
                   "id": "horizontal_scale_inverse",
-                  "label": "把 omega 变大误认为周期变大"
+                  "label": "把 ω 变大误认为周期变大"
                 },
                 {
                   "id": "phase_direction_confusion",
-                  "label": "把 phi 的符号与图像平移方向搞反"
+                  "label": "把 φ 的符号与图像平移方向搞反"
                 },
                 {
                   "id": "phase_shift_denominator_missing",
-                  "label": "计算平移量时遗漏除以 omega"
+                  "label": "计算平移量时遗漏除以 ω"
                 },
                 {
                   "id": "amplitude_reflection_ignored",
@@ -18038,20 +18038,20 @@
               ],
               "feedback_principles": [
                 "反馈先锁定单一参数，再回到复合函数。",
-                "omega 的反馈必须回到周期 T = 2pi / omega。",
-                "phi 的反馈必须同时呈现括号内符号和最终平移量 -phi / omega。",
+                "ω 的反馈必须回到周期 T = 2π / |ω|；本资源 ω > 0 时用 T = 2π / ω。",
+                "φ 的反馈必须同时呈现括号内符号和最终平移量 -φ / ω。",
                 "从图像反推解析式时，先找振幅和周期，再用关键点判断相位。"
               ]
             },
             "visualSemantics": {
               "base_curve": "灰蓝色虚线表示 y = sin x。",
               "intermediate_curve": "浅绿色曲线表示当前变换顺序下的中间曲线。",
-              "transformed_curve": "深蓝色粗曲线表示 y = A sin(omega x + phi)。",
+              "transformed_curve": "深蓝色粗曲线表示 y = A sin(ωx + φ)。",
               "current_point": "橙色动点表示当前观察点。",
               "zero_points": "空心点表示当前图像零点。",
               "extrema_points": "实心紫色点表示当前图像最值点。",
               "amplitude_band": "淡蓝水平带表示振幅范围 [-|A|, |A|]。",
-              "phase_marker": "竖直标记表示相位平移量 -phi / omega。",
+              "phase_marker": "竖直标记表示相位平移量 -φ / ω。",
               "rule": "颜色只用于区分数学对象和变换阶段，不作装饰。"
             },
             "implementation": {
@@ -18091,7 +18091,7 @@
               "kind": "teacher_script",
               "path": "content/applets/SH-HS-MATH-HJ-B2-C07-L05-A01/teacher-script.md",
               "title": "教师脚本：三角函数参数变化实验室",
-              "summary": "适用课时：必修第二册 7.3“函数 y = A sin(omega x + phi) 的图像” 建议时长：25 分钟 资源状态：`draft`",
+              "summary": "适用课时：必修第二册 7.3“函数 y = A sin(ωx + φ) 的图像” 建议时长：25 分钟 资源状态：`draft`",
               "sections": [
                 "教学目标",
                 "课前准备",
@@ -18108,8 +18108,8 @@
               "sections": [
                 "活动目标",
                 "任务一：单独改变 A",
-                "任务二：单独改变 omega",
-                "任务三：单独改变 phi",
+                "任务二：单独改变 ω",
+                "任务三：单独改变 φ",
                 "任务四：变换顺序比较",
                 "任务五：从图像反推参数",
                 "快速诊断",
@@ -18422,7 +18422,7 @@
           "id": "SH-HS-MATH-HJ-B2-C07-L05-D01",
           "resourceType": "diagnosis",
           "title": "参数识别诊断任务",
-          "subtitle": "围绕 A、omega、phi 的图像读数和错因分流",
+          "subtitle": "围绕 A、ω、φ 的图像读数和错因分流",
           "cognitiveAction": "比较",
           "note": "给出图像关键点，要求判断 A、omega、phi 的可能取值并解释理由。",
           "availability": "item_bank_ready",
@@ -18434,7 +18434,7 @@
             "status": "draft",
             "resourceType": "diagnosis",
             "title": "参数识别诊断任务",
-            "subtitle": "围绕 A、omega、phi 的图像读数和错因分流",
+            "subtitle": "围绕 A、ω、φ 的图像读数和错因分流",
             "curriculum": {
               "region": "上海",
               "stage": "高中",
@@ -18453,17 +18453,17 @@
             "pedagogy": {
               "cognitiveAction": "比较",
               "estimatedClassroomMinutes": 8,
-              "primaryTeachingProblem": "学生能分别说出振幅、周期和平移的结论，但从一张图像反推解析式时，常把周期与 omega、phi 与实际平移量、A 的负号与横向变化混在一起。",
+              "primaryTeachingProblem": "学生能分别说出振幅、周期和平移的结论，但从一张图像反推解析式时，常把周期与 ω、φ 与实际平移量、A 的负号与横向变化混在一起。",
               "learningGoals": [
                 "根据图像最大值和最小值判断振幅 |A|，并在必要时处理 A 的负号。",
-                "根据相邻关键点间距读出周期 T，并用 omega = 2pi / T 求 omega。",
-                "通过 omega x + phi = omega(x + phi / omega) 解释实际相位平移量。",
+                "根据相邻关键点间距读出周期 T，并在 ω > 0 的约定下用 ω = 2π / T 求 ω。",
+                "通过 ωx + φ = ω(x + φ / ω) 解释实际水平平移量 h = -φ / ω。",
                 "用一个关键点验证候选解析式，而不是只凭单个参数猜测。"
               ],
               "prerequisites": [
                 "正弦函数图像与关键点",
                 "函数图像平移、伸缩和翻折",
-                "y = A sin(omega x + phi) 的变换顺序"
+                "y = A sin(ωx + φ) 的变换顺序"
               ],
               "successors": [
                 "SH-HS-MATH-HJ-B2-C07-L06",
@@ -18489,21 +18489,21 @@
             },
             "diagnosisDesign": {
               "diagnosticFocus": [
-                "能否从图像周期求出 omega，而不是把周期本身当作 omega。",
-                "能否解释相位平移方向和距离，尤其是 phi 需要除以 omega。",
+                "能否从图像周期求出 ω，而不是把周期本身当作 ω。",
+                "能否解释相位平移方向和距离，尤其是实际水平平移量为 h = -φ / ω。",
                 "能否在 A 为负时正确处理关于 x 轴的翻折。",
                 "能否用关键点检验候选解析式，避免只看一个参数。"
               ],
               "misconceptionTags": [
                 {
                   "id": "period_to_omega_inversion",
-                  "title": "周期与 omega 互换",
-                  "description": "把周期 T 当成 omega，或忘记 omega = 2pi / T。"
+                  "title": "周期与 ω 互换",
+                  "description": "把周期 T 当成 ω，或忘记 ω = 2π / T。"
                 },
                 {
                   "id": "phase_shift_scale_omission",
-                  "title": "平移量未除以 omega",
-                  "description": "把 phi 直接看成实际平移量，忽略 omega(x + phi / omega)。"
+                  "title": "平移量未除以 ω",
+                  "description": "把 φ 直接看成实际平移量，忽略 ωx + φ = ω(x + φ / ω) 和 h = -φ / ω。"
                 },
                 {
                   "id": "phase_shift_sign_error",
@@ -18533,7 +18533,7 @@
               },
               "feedbackStrategy": {
                 "immediate_feedback": "每题返回命中的参数错因标签，并给出一个回看动作：周期读数、括号改写、A 的翻折或关键点代入。",
-                "teacher_dashboard_notes": "若 period_to_omega_inversion 集中出现，先回到周期标尺；若 phase_shift_scale_omission 或 phase_shift_sign_error 集中出现，回放 L05-M01 的公式改写；若 amplitude_reflection_mixup 集中出现，回到 Applet 固定 omega、phi 只调 A。",
+                "teacher_dashboard_notes": "若 period_to_omega_inversion 集中出现，先回到周期标尺；若 phase_shift_scale_omission 或 phase_shift_sign_error 集中出现，回放 L05-M01 的公式改写；若 amplitude_reflection_mixup 集中出现，回到 Applet 固定 ω、φ 只调 A。",
                 "remediation_links": [
                   "content/applets/SH-HS-MATH-HJ-B2-C07-L05-A01",
                   "content/manim/SH-HS-MATH-HJ-B2-C07-L05-M01"
