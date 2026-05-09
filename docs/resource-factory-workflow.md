@@ -109,6 +109,14 @@ docs/resource-review-rounds/2026-05-08-round-4.md
 
 第四轮选择正弦性质探究 Applet、参数变化 Applet 和参数识别 Diagnosis，目标是复核正弦性质归纳、`y = A sin(ωx + φ)` 参数变换口径、参数反推和诊断题错因标签。该轮仍不新增资源，不 scaffold，不修改课程图谱。
 
+第五轮任务单：
+
+```text
+docs/resource-review-rounds/2026-05-09-round-5.md
+```
+
+第五轮选择正弦与余弦相位对照 Applet、图像变换顺序 Manim 和正切性质分段观察 Applet，目标是复核相位方向、参数变换视频口径、正切定义域断裂下的性质表达，以及课堂可见数学符号。该轮仍不新增资源，不 scaffold，不修改课程图谱。
+
 ## 分支分派规则
 
 ```text
@@ -164,5 +172,5 @@ npm run verify
 
 我们已经跑通了“课程图谱 -> Applet / Manim / Diagnosis 资源包 -> 平台预览 -> 内容校验 -> backlog -> scaffold”的闭环。第 7 章三角函数样板资源已阶段性完成，第 8 章平面向量已完成 planned backlog 的必要性筛选和收窄，下一阶段有两条主线：
 
-- 质量线：围绕第 7 章已有 15 个资源推进数学审校、课堂节奏试读、浏览器复核和状态升级；第一轮已完成正切链条 Applet / Manim / Diagnosis 审校，第二轮已完成正弦链条 Applet / Manim / Diagnosis 审校，第三轮已完成余弦链条 Applet / Applet / Diagnosis 审校，第四轮已完成正弦性质与参数变换链条 Applet / Applet / Diagnosis 审校。
+- 质量线：围绕第 7 章已有 15 个资源推进数学审校、课堂节奏试读、浏览器复核和状态升级；第一轮已完成正切链条 Applet / Manim / Diagnosis 审校，第二轮已完成正弦链条 Applet / Manim / Diagnosis 审校，第三轮已完成余弦链条 Applet / Applet / Diagnosis 审校，第四轮已完成正弦性质与参数变换链条 Applet / Applet / Diagnosis 审校，第五轮已形成相位对照 / 变换顺序 Manim / 正切性质 Applet 审校任务单。
 - 扩展线：按 `docs/parallel-chapter-factory.md` 并行推进 3 到 5 个新章节的来源核对、课程图谱和数字化必要性筛选；通过总控验收后，再小批量 scaffold。
