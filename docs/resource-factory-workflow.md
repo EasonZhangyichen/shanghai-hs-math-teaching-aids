@@ -101,6 +101,14 @@ docs/resource-review-rounds/2026-05-08-round-3.md
 
 第三轮选择余弦链条的两个 Applet 和一个 Diagnosis，目标是复核单位圆横坐标生成余弦图像、正弦/余弦性质对照、余弦迁移误区诊断和 `k ∈ Z` 一般式表达。该轮仍不新增资源，不 scaffold，不修改课程图谱。
 
+第四轮任务单：
+
+```text
+docs/resource-review-rounds/2026-05-08-round-4.md
+```
+
+第四轮选择正弦性质探究 Applet、参数变化 Applet 和参数识别 Diagnosis，目标是复核正弦性质归纳、`y = A sin(ωx + φ)` 参数变换口径、参数反推和诊断题错因标签。该轮仍不新增资源，不 scaffold，不修改课程图谱。
+
 ## 分支分派规则
 
 ```text
@@ -156,5 +164,5 @@ npm run verify
 
 我们已经跑通了“课程图谱 -> Applet / Manim / Diagnosis 资源包 -> 平台预览 -> 内容校验 -> backlog -> scaffold”的闭环。第 7 章三角函数样板资源已阶段性完成，第 8 章平面向量已完成 planned backlog 的必要性筛选和收窄，下一阶段有两条主线：
 
-- 质量线：围绕第 7 章已有 15 个资源推进数学审校、课堂节奏试读、浏览器复核和状态升级；第一轮已完成正切链条 Applet / Manim / Diagnosis 审校，第二轮已完成正弦链条 Applet / Manim / Diagnosis 审校，第三轮已完成余弦链条 Applet / Applet / Diagnosis 审校。
+- 质量线：围绕第 7 章已有 15 个资源推进数学审校、课堂节奏试读、浏览器复核和状态升级；第一轮已完成正切链条 Applet / Manim / Diagnosis 审校，第二轮已完成正弦链条 Applet / Manim / Diagnosis 审校，第三轮已完成余弦链条 Applet / Applet / Diagnosis 审校，第四轮已完成正弦性质与参数变换链条 Applet / Applet / Diagnosis 审校。
 - 扩展线：按 `docs/parallel-chapter-factory.md` 并行推进 3 到 5 个新章节的来源核对、课程图谱和数字化必要性筛选；通过总控验收后，再小批量 scaffold。

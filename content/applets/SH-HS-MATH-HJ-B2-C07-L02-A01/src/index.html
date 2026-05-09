@@ -270,6 +270,10 @@
         border-left-color: var(--curve);
       }
 
+      .formula-list li.is-muted {
+        color: var(--muted);
+      }
+
       .formula-list code {
         font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
         font-size: 0.86rem;
@@ -506,7 +510,7 @@
           <section class="formula-card">
             <p class="feedback" id="feedbackText">当前点在原点，既是零点，也是对称中心。</p>
             <ul class="formula-list" id="formulaList"></ul>
-            <p class="formula-note">k in Z</p>
+            <p class="formula-note">k ∈ Z</p>
           </section>
         </aside>
       </section>
@@ -683,9 +687,9 @@
           return;
         }
         const ranges = [
-          [-TAU, 0, "周期 -1"],
-          [0, TAU, "周期 0"],
-          [TAU, TAU * 2, "周期 1"],
+          [-TAU, 0, "k = -1"],
+          [0, TAU, "k = 0"],
+          [TAU, TAU * 2, "k = 1"],
         ];
         ranges.forEach(([start, end, label], index) => {
           layers.bands.appendChild(
@@ -791,12 +795,12 @@
           const maxX = PI / 2 + k * TAU;
           if (maxX >= graphBox.xMin && maxX <= graphBox.xMax) {
             addCircle(layers.key, sx(maxX), sy(1), 8, "key-max");
-            addText(layers.key, sx(maxX), sy(1) - 14, "max", "point-label");
+            addText(layers.key, sx(maxX), sy(1) - 14, "最大值", "point-label");
           }
           const minX = (3 * PI) / 2 + k * TAU;
           if (minX >= graphBox.xMin && minX <= graphBox.xMax) {
             addCircle(layers.key, sx(minX), sy(-1), 8, "key-min");
-            addText(layers.key, sx(minX), sy(-1) + 24, "min", "point-label");
+            addText(layers.key, sx(minX), sy(-1) + 24, "最小值", "point-label");
           }
         }
       }
@@ -831,7 +835,7 @@
           return "当前点接近最大值点，横坐标可写成 π/2 + 2kπ。";
         }
         if (nearMin) {
-          return "当前点接近最小值点，横坐标可写成 3π/2 + 2kπ。";
+          return "当前点接近最小值点，横坐标可写成 -π/2 + 2kπ。";
         }
         if (nearZero) {
           return "当前点接近零点，也是一个对称中心，横坐标可写成 kπ。";
@@ -845,32 +849,48 @@
 
       function updateFormulaList() {
         const { incStart, incEnd, decStart, decEnd } = selectedIntervals();
+        const selectedK = state.periodShiftK;
         const items = [
           {
+            active: state.summaryVisible,
+            html: "<code>定义域 R；值域 [-1, 1]；最小正周期 2π</code>",
+          },
+          {
             active: state.periodCompareVisible || state.summaryVisible,
-            html: "<code>sin(x + 2kπ) = sin x</code>",
+            html: "<code>sin(x + 2kπ) = sin x，k ∈ Z</code>",
           },
           {
             active: state.monotonicSegmentsVisible || state.summaryVisible,
-            html: `<code>递增 [${formatPi(incStart)}, ${formatPi(incEnd)}]</code>`,
+            html: `<code>当前 k = ${selectedK}：递增 [${formatPi(incStart)}, ${formatPi(incEnd)}]</code>`,
           },
           {
             active: state.monotonicSegmentsVisible || state.summaryVisible,
-            html: `<code>递减 [${formatPi(decStart)}, ${formatPi(decEnd)}]</code>`,
+            html: `<code>当前 k = ${selectedK}：递减 [${formatPi(decStart)}, ${formatPi(decEnd)}]</code>`,
+          },
+          {
+            active: state.monotonicSegmentsVisible || state.summaryVisible,
+            html: "<code>一般式：递增 [-π/2 + 2kπ, π/2 + 2kπ]；递减 [π/2 + 2kπ, 3π/2 + 2kπ]，k ∈ Z</code>",
           },
           {
             active: state.symmetryVisible || state.summaryVisible,
-            html: "<code>对称轴 x = π/2 + kπ；中心 (kπ, 0)</code>",
+            html: "<code>对称轴 x = π/2 + kπ；对称中心 (kπ, 0)，k ∈ Z</code>",
           },
           {
             active: state.keyPointsVisible || state.summaryVisible,
-            html: "<code>零点 kπ；最大 π/2 + 2kπ；最小 3π/2 + 2kπ</code>",
+            html: "<code>零点 x = kπ；最大值点 (π/2 + 2kπ, 1)；最小值点 (-π/2 + 2kπ, -1)，k ∈ Z</code>",
           },
         ];
         formulaList.replaceChildren();
-        items.forEach((item) => {
+        const visibleItems = items.filter((item) => item.active);
+        if (visibleItems.length === 0) {
+          visibleItems.push({
+            active: false,
+            html: "<span>先拖动图像上的点，再逐层打开周期、单调、对称和关键点。</span>",
+          });
+        }
+        visibleItems.forEach((item) => {
           const li = document.createElement("li");
-          li.className = item.active ? "is-active" : "";
+          li.className = item.active ? "is-active" : "is-muted";
           li.innerHTML = item.html;
           formulaList.appendChild(li);
         });

@@ -25,10 +25,10 @@ pedagogy:
   estimated_classroom_minutes: 20
   primary_teaching_problem: "学生会背正弦函数性质，但常把单调区间端点、对称轴、对称中心、零点和最值点的一般形式混在一起。"
   learning_goals:
-    - "从图像比较 x 与 x + 2pi 的函数值，解释正弦函数的周期性。"
+    - "从图像比较 x 与 x + 2π 的函数值，解释正弦函数的周期性。"
     - "比较相邻上升段和下降段，写出完整的单调区间一般形式。"
-    - "区分正弦图像的对称轴 x = pi/2 + kpi 与对称中心 (kpi, 0)。"
-    - "用 k 属于整数的形式表达零点、最大值点和最小值点。"
+    - "区分正弦图像的对称轴 x = π/2 + kπ 与对称中心 (kπ, 0)。"
+    - "用 k ∈ Z 的形式表达零点、最大值点和最小值点。"
   prerequisites:
     - "正弦函数图像的生成过程"
     - "函数定义域、值域、单调性和奇偶性的语言表达"
@@ -48,30 +48,30 @@ mathematical_scope:
   dependent_variable: "sin x"
   domain: "R"
   range: "[-1, 1]"
-  fundamental_period: "2pi"
-  default_x_range: "-2pi <= x <= 4pi"
+  fundamental_period: "2π"
+  default_x_range: "-2π <= x <= 4π"
   monotonicity:
-    increasing: "[-pi/2 + 2kpi, pi/2 + 2kpi], k in Z"
-    decreasing: "[pi/2 + 2kpi, 3pi/2 + 2kpi], k in Z"
+    increasing: "[-π/2 + 2kπ, π/2 + 2kπ], k ∈ Z"
+    decreasing: "[π/2 + 2kπ, 3π/2 + 2kπ], k ∈ Z"
   symmetry:
     odd_function: "sin(-x) = -sin x"
-    axes: "x = pi/2 + kpi, k in Z"
-    centers: "(kpi, 0), k in Z"
+    axes: "x = π/2 + kπ, k ∈ Z"
+    centers: "(kπ, 0), k ∈ Z"
   key_points:
-    zeros: "x = kpi, k in Z"
-    maximum_points: "(pi/2 + 2kpi, 1), k in Z"
-    minimum_points: "(3pi/2 + 2kpi, -1), k in Z"
+    zeros: "x = kπ, k ∈ Z"
+    maximum_points: "(π/2 + 2kπ, 1), k ∈ Z"
+    minimum_points: "(-π/2 + 2kπ, -1), k ∈ Z；等价写法为 (3π/2 + 2kπ, -1), k ∈ Z"
   out_of_scope:
     - "余弦函数性质的系统归纳"
     - "正切函数图像与性质"
-    - "y = A sin(omega x + phi) 的参数变换"
+    - "y = A sin(ωx + φ) 的参数变换"
     - "用导数证明正弦函数单调性"
 
 representations:
   - id: "sine_graph"
-    role: "显示 -2pi 到 4pi 上的正弦曲线和当前动点。"
+    role: "显示 -2π 到 4π 上的正弦曲线和当前动点。"
   - id: "period_comparison"
-    role: "比较 x 与 x + 2pi 或 x - 2pi 的同高点。"
+    role: "比较 x 与 x + 2π 或 x - 2π 的同高点。"
   - id: "monotonic_segments"
     role: "突出一个周期内的上升段和下降段。"
   - id: "symmetry_elements"
@@ -100,7 +100,7 @@ interaction_design:
     - step: "graph_only"
       description: "只显示正弦曲线、坐标轴和当前动点。"
     - step: "period_compare"
-      description: "显示相隔 2pi 的同高点，比较周期段。"
+      description: "显示相隔 2π 的同高点，比较周期段。"
     - step: "monotonic_compare"
       description: "显示选定 k 下的上升段和下降段，比较端点。"
     - step: "symmetry_compare"
@@ -133,7 +133,7 @@ data_contract:
     - name: "period_compare_visible"
       value_type: "boolean"
       default: false
-      description: "是否显示相隔 2pi 的周期比较点。"
+      description: "是否显示相隔 2π 的周期比较点。"
       persistence: "snapshot"
     - name: "monotonic_segments_visible"
       value_type: "boolean"
@@ -175,13 +175,13 @@ data_contract:
 
 feedback_and_diagnosis:
   success_evidence:
-    - "学生能说明周期性来自图像相隔 2pi 的同高点，并写出 sin(x + 2kpi) = sin x。"
-    - "学生能写出完整的单调递增区间和递减区间，并保留 2kpi。"
-    - "学生能把对称轴 x = pi/2 + kpi 和对称中心 (kpi, 0) 分开表达。"
-    - "学生能用 k 属于整数的形式写出零点和最值点。"
+    - "学生能说明周期性来自图像相隔 2π 的同高点，并写出 sin(x + 2kπ) = sin x, k ∈ Z。"
+    - "学生能写出完整的单调递增区间和递减区间，并保留 2kπ 与 k ∈ Z。"
+    - "学生能把对称轴 x = π/2 + kπ 和对称中心 (kπ, 0) 分开表达。"
+    - "学生能用 k ∈ Z 的形式写出零点和最值点。"
   common_error_tags:
     - id: "period_omission"
-      label: "只写一个周期，遗漏加 2kpi 的一般形式"
+      label: "只写一个周期，遗漏加 2kπ 的一般形式"
     - id: "monotonic_endpoint_confusion"
       label: "单调区间端点或上升下降方向混淆"
     - id: "axis_center_mixup"
@@ -197,7 +197,7 @@ feedback_and_diagnosis:
 visual_semantics:
   sine_curve: "正弦函数 y = sin x 的图像。"
   current_point: "当前观察点 (x, sin x)。"
-  period_twin: "与当前点相隔 2pi 且函数值相同的周期比较点。"
+  period_twin: "与当前点相隔 2π 且函数值相同的周期比较点。"
   increasing_segment: "选定 k 下的递增区间。"
   decreasing_segment: "选定 k 下的递减区间。"
   symmetry_axis: "正弦图像的竖直对称轴。"
