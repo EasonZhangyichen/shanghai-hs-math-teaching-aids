@@ -414,7 +414,7 @@
         display: none;
       }
 
-      @media (max-width: 920px) {
+      @media (max-width: 820px) {
         .topbar,
         .formula-strip {
           grid-template-columns: 1fr;
@@ -530,17 +530,18 @@
               <input id="aSlider" type="range" min="-2" max="2" step="0.25" value="1" />
             </label>
             <label class="slider-block" id="blockOmega">
-              <span class="slider-head">omega <output id="omegaOutput">1</output></span>
+              <span class="slider-head">ω <output id="omegaOutput">1</output></span>
               <input id="omegaSlider" type="range" min="0.5" max="3" step="0.25" value="1" />
             </label>
             <label class="slider-block" id="blockPhi">
-              <span class="slider-head">phi <output id="phiOutput">0</output></span>
+              <span class="slider-head">φ <output id="phiOutput">0</output></span>
               <input id="phiSlider" type="range" min="-1" max="1" step="0.25" value="0" />
             </label>
             <label class="slider-block">
               <span class="slider-head">观察点 x <output id="xOutput">0</output></span>
               <input id="xSlider" type="range" min="-6.28318" max="6.28318" step="0.02" value="0" />
             </label>
+            <p class="panel-note">本实验限制 ω &gt; 0，因此周期按 2π / ω 显示；一般式为 2π / |ω|。</p>
           </section>
 
           <section class="panel-section">
@@ -553,7 +554,7 @@
                 平移后伸缩
               </button>
             </div>
-            <p class="panel-note" id="sequenceNote">先得到 y = sin(omega x)，再平移到最终图像。</p>
+            <p class="panel-note" id="sequenceNote">先得到 y = sin(ωx)，再按 -φ / ω 平移到最终图像。</p>
           </section>
 
           <section class="panel-section">
@@ -570,8 +571,8 @@
             <p class="section-title">参数归纳</p>
             <ul class="summary-list">
               <li><strong>A</strong>：振幅为 <span id="summaryA">1</span>，负值表示关于 x 轴翻折。</li>
-              <li><strong>omega</strong>：周期 <span id="summaryOmega">2π</span>，omega 越大周期越短。</li>
-              <li><strong>phi</strong>：平移量 <span id="summaryPhi">0</span>，必须除以 omega。</li>
+              <li><strong>ω</strong>：周期 <span id="summaryOmega">2π</span>，ω 越大周期越短。</li>
+              <li><strong>φ</strong>：平移量 <span id="summaryPhi">0</span>，必须除以 ω。</li>
             </ul>
           </section>
 
@@ -579,8 +580,8 @@
             <p class="section-title">课堂收束</p>
             <ul class="checkpoint-list">
               <li>先看 <strong>|A|</strong> 判断振幅和翻折。</li>
-              <li>再用 <strong>T = 2π / omega</strong> 判断横向伸缩。</li>
-              <li>最后用 <strong>x = -phi / omega</strong> 判断相位平移。</li>
+              <li>再用 <strong>T = 2π / ω</strong> 判断横向伸缩。</li>
+              <li>最后用 <strong>x = -φ / ω</strong> 判断相位平移。</li>
             </ul>
           </section>
         </aside>
@@ -682,9 +683,9 @@
 
       function middleY(x) {
         if (state.sequenceMode === "scale_then_shift") {
-          return Math.sin(state.omega * x + phi());
+          return Math.sin(state.omega * x);
         }
-        return Math.sin(state.omega * x + phi());
+        return Math.sin(x + phi());
       }
 
       function phaseShift() {
@@ -692,7 +693,7 @@
       }
 
       function period() {
-        return (2 * Math.PI) / state.omega;
+        return (2 * Math.PI) / Math.abs(state.omega);
       }
 
       function createSvgElement(tag, attrs = {}) {
@@ -857,8 +858,8 @@
         elements.summaryPhi.textContent = formatPiValue(shift);
         elements.sequenceNote.textContent =
           state.sequenceMode === "scale_then_shift"
-            ? "先得到 y = sin(omega x)，再按 -phi / omega 平移到最终图像。"
-            : "先得到 y = sin(x + phi)，再做横向伸缩；最终曲线相同，中间曲线不同。";
+            ? "先得到 y = sin(ωx)，再按 -φ / ω 平移到最终图像。"
+            : "先得到 y = sin(x + φ)，再做横向伸缩；最终平移量仍是 -φ / ω。";
         elements.summaryPanel.classList.toggle("is-hidden", !state.summaryVisible);
       }
 
@@ -941,7 +942,7 @@
 
       function sliderChanged() {
         state.a = sanitizeA(Number(elements.aSlider.value));
-        state.omega = Number(elements.omegaSlider.value);
+        state.omega = sanitizeOmega(Number(elements.omegaSlider.value));
         state.phiPi = Number(elements.phiSlider.value);
         setCurrentX(Number(elements.xSlider.value));
         render();
@@ -953,6 +954,13 @@
           return value < 0 ? -0.25 : 0.25;
         }
         return value;
+      }
+
+      function sanitizeOmega(value) {
+        if (!Number.isFinite(value)) {
+          return 1;
+        }
+        return Math.max(0.5, Math.min(3, Math.abs(value)));
       }
 
       function toggleLayer(key) {
@@ -1159,7 +1167,7 @@
         const incoming = event.data.payload?.state;
         if (incoming) {
           state.a = typeof incoming.amplitude_a === "number" ? incoming.amplitude_a : state.a;
-          state.omega = typeof incoming.omega === "number" ? incoming.omega : state.omega;
+          state.omega = typeof incoming.omega === "number" ? sanitizeOmega(incoming.omega) : state.omega;
           state.phiPi = typeof incoming.phi === "number" ? incoming.phi / Math.PI : state.phiPi;
           state.currentX = typeof incoming.current_x === "number" ? incoming.current_x : state.currentX;
           state.focusMode = incoming.focus_mode ?? state.focusMode;
