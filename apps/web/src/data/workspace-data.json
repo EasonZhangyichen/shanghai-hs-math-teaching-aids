@@ -5589,7 +5589,8 @@
               "learningGoals": [
                 "在同一角 x 下区分 sin x 来自单位圆动点纵坐标，cos x 来自单位圆动点横坐标。",
                 "用同步游标比较 y = sin x 与 y = cos x 在关键角处的函数值顺序。",
-                "从图像位置解释 cos x = sin(x + pi/2)，并用 x = 0 的值检查平移方向。",
+                "从图像位置解释 cos x = sin(x + π/2)，并用 x = 0 的值检查平移方向。",
+                "用平移语言时说明 y = sin x 向左平移 π/2 得到 y = cos x。",
                 "说明相位关系是两条曲线之间的关系，不替代余弦函数的单位圆来源。"
               ],
               "prerequisites": [
@@ -5612,44 +5613,44 @@
               "functions": "y = sin x and y = cos x",
               "independent_variable": "角 x 的弧度量",
               "dependent_variable": "函数值 y",
-              "default_x_range": "0 <= x <= 2pi",
-              "comparison_range": "-pi/2 <= x <= 2pi",
+              "default_x_range": "0 <= x <= 2π",
+              "comparison_range": "-π/2 <= x <= 2π",
               "key_angles": [
                 {
                   "x": "0",
                   "sine": "0",
                   "cosine": "1",
-                  "phase_check": "cos 0 = sin(pi/2)"
+                  "phase_check": "cos 0 = sin(π/2)"
                 },
                 {
-                  "x": "pi/2",
+                  "x": "π/2",
                   "sine": "1",
                   "cosine": "0",
-                  "phase_check": "cos(pi/2) = sin(pi)"
+                  "phase_check": "cos(π/2) = sin(π)"
                 },
                 {
-                  "x": "pi",
+                  "x": "π",
                   "sine": "0",
                   "cosine": "-1",
-                  "phase_check": "cos pi = sin(3pi/2)"
+                  "phase_check": "cos π = sin(3π/2)"
                 },
                 {
-                  "x": "3pi/2",
+                  "x": "3π/2",
                   "sine": "-1",
                   "cosine": "0",
-                  "phase_check": "cos(3pi/2) = sin(2pi)"
+                  "phase_check": "cos(3π/2) = sin(2π)"
                 },
                 {
-                  "x": "2pi",
+                  "x": "2π",
                   "sine": "0",
                   "cosine": "1",
-                  "phase_check": "cos(2pi) = sin(5pi/2)"
+                  "phase_check": "cos(2π) = sin(5π/2)"
                 }
               ],
-              "relation": "cos x = sin(x + pi/2)",
+              "relation": "cos x = sin(x + π/2)",
               "out_of_scope": [
                 "余弦函数性质的完整系统归纳",
-                "参数函数 y = A sin(omega x + phi) 的一般变换",
+                "参数函数 y = A sin(ωx + φ) 的一般变换",
                 "用诱导公式进行严格代数证明",
                 "正切函数图像和性质"
               ]
@@ -5669,7 +5670,7 @@
               },
               {
                 "id": "phase_marker",
-                "role": "显示 sin 曲线上 x + pi/2 处与 cos x 对应的参照点。"
+                "role": "显示 sin 曲线上 x + π/2 处与 cos x 对应的参照点。"
               },
               {
                 "id": "comparison_table",
@@ -5681,12 +5682,12 @@
               "pausePoints": []
             },
             "interactionDesign": {
-              "primaryControl": "拖动单位圆动点或调节 x 滑块，同步比较 sin x、cos x 和 sin(x + pi/2)。",
+              "primaryControl": "拖动单位圆动点或调节 x 滑块，同步比较 sin x、cos x 和 sin(x + π/2)。",
               "teacherControls": [
                 "播放/暂停同一角 x 的变化",
                 "重置到 x = 0",
                 "显示或隐藏单位圆坐标投影",
-                "显示或隐藏相位参照点 sin(x + pi/2)",
+                "显示或隐藏相位参照点 sin(x + π/2)",
                 "显示或隐藏关键角表",
                 "显示或隐藏平移结论",
                 "在关键角之间跳转"
@@ -5711,11 +5712,11 @@
                 },
                 {
                   "step": "phase_reference",
-                  "description": "显示 sin(x + pi/2) 参照点，验证 cos x 与正弦曲线的相位关系。"
+                  "description": "显示 sin(x + π/2) 参照点，验证 cos x 与正弦曲线的相位关系。"
                 },
                 {
                   "step": "phase_summary",
-                  "description": "揭示 cos x = sin(x + pi/2)，并用 x = 0 检查方向。"
+                  "description": "揭示 cos x = sin(x + π/2)，并用 x = 0 检查方向。"
                 }
               ]
             },
@@ -5750,7 +5751,7 @@
                   "unit": "radian",
                   "value_type": "number",
                   "default": 1.5708,
-                  "description": "与 cos x 对应的正弦参照角 x + pi/2。",
+                  "description": "与 cos x 对应的正弦参照角 x + π/2。",
                   "persistence": "snapshot"
                 },
                 {
@@ -5770,7 +5771,7 @@
                   "name": "phase_reference_visible",
                   "value_type": "boolean",
                   "default": false,
-                  "description": "是否显示 sin(x + pi/2) 相位参照点。",
+                  "description": "是否显示 sin(x + π/2) 相位参照点。",
                   "persistence": "snapshot"
                 },
                 {
@@ -5825,7 +5826,7 @@
                 {
                   "name": "phase_reference_checked",
                   "direction": "applet_to_player",
-                  "description": "学生或教师显示相位参照后验证 cos x = sin(x + pi/2)。",
+                  "description": "学生或教师显示相位参照后验证 cos x = sin(x + π/2)。",
                   "payload": [
                     "x",
                     "cosine_value",
@@ -5850,7 +5851,7 @@
               "success_evidence": [
                 "学生能指出同一角 x 下 sin x 取纵坐标，cos x 取横坐标。",
                 "学生能按关键角分别读出 sin x 与 cos x 的值序列。",
-                "学生能用 x = 0 处 cos 0 = 1、sin(pi/2) = 1 检查 cos x = sin(x + pi/2) 的方向。",
+                "学生能用 x = 0 处 cos 0 = 1、sin(π/2) = 1 检查 cos x = sin(x + π/2) 的方向。",
                 "学生能说明相位关系不等于忘记余弦的横坐标来源。"
               ],
               "common_error_tags": [
@@ -5860,7 +5861,7 @@
                 },
                 {
                   "id": "phase_direction_confusion",
-                  "label": "把 cos x 与 sin(x - pi/2) 误作同一关系"
+                  "label": "把 cos x 与 sin(x - π/2) 误作同一关系"
                 },
                 {
                   "id": "key_point_order_mixup",
@@ -5881,7 +5882,7 @@
               "sine_curve": "表示 y = sin x，使用暖色。",
               "cosine_curve": "表示 y = cos x，使用冷色。",
               "same_angle_cursor": "表示同一角 x 在两条曲线上的读值位置。",
-              "phase_reference": "表示正弦曲线上 x + pi/2 处与 cos x 对应的参照点。",
+              "phase_reference": "表示正弦曲线上 x + π/2 处与 cos x 对应的参照点。",
               "unit_point": "表示单位圆上同一角 x 的动点 P。",
               "rule": "颜色只用于区分正弦、余弦和相位参照，不作为装饰。"
             },
@@ -7169,7 +7170,7 @@
           "id": "SH-HS-MATH-HJ-B2-C07-L05-M01",
           "resourceType": "manim_clip",
           "title": "图像变换顺序解释",
-          "subtitle": "把 y = A sin(omega x + phi) 拆成横向伸缩、相位平移和纵向伸缩",
+          "subtitle": "把 y = A sin(ωx + φ) 拆成横向伸缩、相位平移和纵向伸缩",
           "cognitiveAction": "分解",
           "note": "把横向伸缩、平移和纵向伸缩拆成可暂停的连续变换。",
           "availability": "video_ready",
@@ -7181,7 +7182,7 @@
             "status": "draft",
             "resourceType": "manim_clip",
             "title": "图像变换顺序解释",
-            "subtitle": "把 y = A sin(omega x + phi) 拆成横向伸缩、相位平移和纵向伸缩",
+            "subtitle": "把 y = A sin(ωx + φ) 拆成横向伸缩、相位平移和纵向伸缩",
             "curriculum": {
               "region": "上海",
               "stage": "高中",
@@ -7200,10 +7201,10 @@
             "pedagogy": {
               "cognitiveAction": "分解",
               "estimatedClassroomMinutes": 5,
-              "primaryTeachingProblem": "学生容易把 omega x + phi 中的平移量看成 phi，忽略 omega 对输入轴的共同作用，导致横向伸缩、相位平移和振幅变化相互干扰。",
+              "primaryTeachingProblem": "学生容易把 ωx + φ 中的平移量看成 φ，忽略 ω 对输入轴的共同作用，导致横向伸缩、相位平移和振幅变化相互干扰。",
               "learningGoals": [
-                "把 omega x + phi 改写为 omega(x + phi / omega)，解释相位平移量来自 -phi / omega。",
-                "区分输入变换和输出变换：omega 与 phi 作用在横轴方向，A 作用在纵轴方向。",
+                "把 ωx + φ 改写为 ω(x + φ / ω)，解释相位平移量来自 -φ / ω。",
+                "区分输入变换和输出变换：ω 与 φ 作用在横轴方向，A 作用在纵轴方向。",
                 "用一个样例图像读出振幅、周期和相位平移，并说明每一步变换的数学理由。"
               ],
               "prerequisites": [
@@ -7223,26 +7224,26 @@
               ]
             },
             "mathematicalScope": {
-              "function": "y = A sin(omega x + phi)",
-              "sample_function": "y = -1.5 sin(2x + pi/2)",
-              "equivalent_form": "y = -1.5 sin(2(x + pi/4))",
+              "function": "y = A sin(ωx + φ)",
+              "sample_function": "y = -1.5 sin(2x + π/2)",
+              "equivalent_form": "y = -1.5 sin(2(x + π/4))",
               "independent_variable": "x",
               "dependent_variable": "y",
-              "parameter_constraints": "omega > 0 的首版课堂样例；A 可为负以展示关于 x 轴翻折。",
+              "parameter_constraints": "一般读数为振幅 |A|、周期 2π/|ω|、相位平移 -φ/ω；本视频主线使用 ω > 0 的课堂样例，A 可为负以展示关于 x 轴翻折。",
               "target_transform_sequence": [
                 "从 y = sin x 出发。",
-                "omega = 2 使周期从 2pi 变为 pi。",
-                "phi = pi/2 与 omega 共同决定向左平移 pi/4。",
+                "ω = 2 使周期从 2π 变为 π。",
+                "φ = π/2 与 ω 共同决定向左平移 π/4。",
                 "A = -1.5 先纵向放大到 1.5 倍，再关于 x 轴翻折。"
               ],
               "key_readouts": {
-                "amplitude": "1.5",
-                "period": "pi",
-                "phase_shift": "left pi/4"
+                "amplitude": "|A| = 1.5",
+                "period": "π",
+                "phase_shift": "左移 π/4"
               },
               "out_of_scope": [
                 "竖直平移 k 的图像影响",
-                "omega < 0 时的等价化简",
+                "ω < 0 时的等价化简",
                 "从任意图像唯一反求所有参数的完整算法"
               ]
             },
@@ -7253,15 +7254,15 @@
               },
               {
                 "id": "inside_factorization",
-                "role": "把 2x + pi/2 改写为 2(x + pi/4)，突出平移量。"
+                "role": "把 2x + π/2 改写为 2(x + π/4)，突出平移量。"
               },
               {
                 "id": "horizontal_scale",
-                "role": "显示 omega 改变周期和关键点间距。"
+                "role": "显示 ω 改变周期和关键点间距。"
               },
               {
                 "id": "phase_shift",
-                "role": "显示向左 pi/4 的相位平移。"
+                "role": "显示向左 π/4 的相位平移。"
               },
               {
                 "id": "amplitude_reflection",
@@ -7278,37 +7279,37 @@
                 {
                   "id": "name_the_problem",
                   "title": "先拆括号里的输入",
-                  "purpose": "提醒学生不要把 phi 直接当作平移量。",
+                  "purpose": "提醒学生不要把 φ 直接当作平移量。",
                   "visuals": [
-                    "同时显示 y = sin x 与目标 y = -1.5 sin(2x + pi/2)。",
-                    "把 2x + pi/2 高亮为输入变换区域。"
+                    "同时显示 y = sin x 与目标 y = -1.5 sin(2x + π/2)。",
+                    "把 2x + π/2 高亮为输入变换区域。"
                   ],
                   "estimated_seconds": 7
                 },
                 {
                   "id": "factor_phase_shift",
-                  "title": "把 2x + pi/2 改写",
-                  "purpose": "用 2(x + pi/4) 说明平移量是 -phi / omega。",
+                  "title": "把 2x + π/2 改写",
+                  "purpose": "用 2(x + π/4) 说明平移量是 -φ / ω。",
                   "visuals": [
-                    "公式从 2x + pi/2 变为 2(x + pi/4)。",
-                    "平移箭头标注 left pi/4，而不是 left pi/2。"
+                    "公式从 y = -1.5 sin(2x + π/2) 变为 y = -1.5 sin(2(x + π/4))。",
+                    "平移箭头标注左移 π/4，而不是左移 π/2。"
                   ],
                   "estimated_seconds": 10
                 },
                 {
                   "id": "compress_period",
-                  "title": "先看 omega 的横向伸缩",
-                  "purpose": "让学生看见周期由 2pi 变为 pi。",
+                  "title": "先看 ω 的横向伸缩",
+                  "purpose": "让学生看见周期由 2π 变为 π。",
                   "visuals": [
                     "基础正弦曲线横向压缩。",
-                    "关键点间距缩短，一周期标注为 pi。"
+                    "关键点间距缩短，一周期标注为 π。"
                   ],
                   "estimated_seconds": 12
                 },
                 {
                   "id": "shift_phase",
                   "title": "再看相位平移",
-                  "purpose": "把压缩后的曲线整体向左平移 pi/4。",
+                  "purpose": "把压缩后的曲线整体向左平移 π/4。",
                   "visuals": [
                     "曲线沿 x 轴向左移动。",
                     "虚线显示平移前后同一关键点的位置。"
@@ -7330,7 +7331,7 @@
                   "title": "从图像读回参数",
                   "purpose": "收束到参数识别：振幅、周期、平移量分别来自哪里。",
                   "visuals": [
-                    "右侧读数面板显示 amplitude = 1.5, period = pi, shift = left pi/4。",
+                    "右侧读数面板显示振幅 |A| = 1.5、周期 2π/|ω| = π、平移 -φ/ω = -π/4。",
                     "提示接到 Applet 中自行调参验证。"
                   ],
                   "estimated_seconds": 5
@@ -7339,7 +7340,7 @@
               "pausePoints": [
                 {
                   "after_beat": "factor_phase_shift",
-                  "teacher_prompt": "为什么这里向左移动 pi/4，而不是 pi/2？"
+                  "teacher_prompt": "为什么这里向左移动 π/4，而不是 π/2？"
                 },
                 {
                   "after_beat": "shift_phase",
@@ -7374,7 +7375,9 @@
                 "webm": "ffmpeg -y -i dist/final/SH-HS-MATH-HJ-B2-C07-L05-M01.mp4 -c:v libvpx-vp9 -b:v 0 -crf 32 -an dist/final/SH-HS-MATH-HJ-B2-C07-L05-M01.webm"
               },
               "notes": [
-                "已完成首版 1080p30 渲染，视频时长约 53.5 秒，可用于平台预览和内部教研复核。",
+                "2026-05-09 审校后重新渲染 1080p30，视频时长 54.0 秒，可用于平台预览和内部教研复核。",
+                "画面文字已改为中文课堂表达，并显式展示 y = -1.5 sin(2(x + π/4))、周期 2π/|ω| = π 和平移 -φ/ω = -π/4。",
+                "poster 已改用 52 秒完整读数画面，避免封面停在淡入空白帧或局部公式画面。",
                 "进入 stable 前仍需教师确认分镜节奏和相位平移讲法。"
               ]
             },
@@ -7405,13 +7408,13 @@
               "base_curve": "蓝色表示 y = sin x 的基准图像。",
               "transformed_curve": "红色表示当前已经完成的变换结果。",
               "guide_lines": "灰色虚线只用于标记周期、平移量和振幅读数。",
-              "input_block": "公式中的 omega x + phi 用同一种强调色，表示它们共同作用在输入 x 上。",
+              "input_block": "公式中的 ωx + φ 用同一种强调色，表示它们共同作用在输入 x 上。",
               "output_block": "公式前的 A 单独强调，表示它作用在输出 y 上。",
               "rule": "颜色只表达数学对象和变换步骤，不作为装饰。"
             },
             "compliance": {
               "copyright_note": "本资源包为原创 Manim 分镜和场景脚本草稿，不复制教材正文、官方课件、教案或商业平台资源。",
-              "review_status": "self_checked_draft"
+              "review_status": "math_review_passed"
             }
           },
           "player": {
@@ -8505,7 +8508,7 @@
           "id": "SH-HS-MATH-HJ-B2-C07-L07-A01",
           "resourceType": "applet",
           "title": "正切性质分段观察",
-          "subtitle": "比较分段单调、pi 周期、奇对称和值域",
+          "subtitle": "比较分段单调、π 周期、奇对称和值域",
           "cognitiveAction": "比较",
           "note": "按相邻定义区间分段高亮单调性、周期平移和奇对称。",
           "availability": "metadata_ready",
@@ -8517,7 +8520,7 @@
             "status": "draft",
             "resourceType": "applet",
             "title": "正切性质分段观察",
-            "subtitle": "比较分段单调、pi 周期、奇对称和值域",
+            "subtitle": "比较分段单调、π 周期、奇对称和值域",
             "curriculum": {
               "region": "上海",
               "stage": "高中",
@@ -8536,10 +8539,10 @@
             "pedagogy": {
               "cognitiveAction": "比较",
               "estimatedClassroomMinutes": 18,
-              "primaryTeachingProblem": "学生容易把正切函数在每个定义区间内递增误说成在整个定义域上递增，也容易把值域、渐近线、pi 周期和奇函数结论割裂记忆。",
+              "primaryTeachingProblem": "学生容易把正切函数在每个定义区间内递增误说成在整个定义域上递增，也容易把值域、渐近线、π 周期和奇函数结论割裂记忆。",
               "learningGoals": [
-                "把正切函数的单调性限定在每个连续定义区间 ( -pi/2 + kpi, pi/2 + kpi ) 内。",
-                "用相邻分支平移比较说明 tan(x + pi) = tan x，周期为 pi。",
+                "把正切函数的单调性限定在每个连续定义区间 (-π/2 + kπ, π/2 + kπ), k ∈ Z 上。",
+                "用相邻分支平移比较说明 tan(x + π) = tan x，周期为 π。",
                 "用原点对称的点对说明 tan(-x) = -tan x，正切函数是奇函数。",
                 "解释值域为 R 与存在竖直渐近线并不矛盾：每个分支都从负无穷延伸到正无穷。"
               ],
@@ -8562,32 +8565,32 @@
               "function": "y = tan x",
               "independent_variable": "角 x 的弧度量",
               "dependent_variable": "正切值",
-              "default_x_range": "-3pi/2 < x < 3pi/2, excluding x = pi/2 + kpi",
+              "default_x_range": "-3π/2 < x < 3π/2, 排除 x = π/2 + kπ",
               "visible_y_range": "-4 <= y <= 4",
-              "domain": "x != pi/2 + kpi, k in Z",
+              "domain": "x ≠ π/2 + kπ, k ∈ Z",
               "range": "R",
-              "period": "pi",
+              "period": "π",
               "parity": "odd, tan(-x) = -tan x",
-              "monotonicity": "strictly increasing on every interval (-pi/2 + kpi, pi/2 + kpi), k in Z",
+              "monotonicity": "strictly increasing on every interval (-π/2 + kπ, π/2 + kπ), k ∈ Z",
               "warning": "不能说 y = tan x 在整个定义域上单调递增，因为定义域被渐近线分成多个不连续区间。",
               "key_intervals": [
                 {
-                  "interval": "(-pi/2, pi/2)",
+                  "interval": "(-π/2, π/2)",
                   "note": "主值区间，函数值从负无穷增至正无穷。"
                 },
                 {
-                  "interval": "(pi/2, 3pi/2)",
-                  "note": "向右平移 pi 得到的相邻分支。"
+                  "interval": "(π/2, 3π/2)",
+                  "note": "向右平移 π 得到的相邻分支。"
                 },
                 {
-                  "interval": "(-3pi/2, -pi/2)",
-                  "note": "向左平移 pi 得到的相邻分支。"
+                  "interval": "(-3π/2, -π/2)",
+                  "note": "向左平移 π 得到的相邻分支。"
                 }
               ],
               "out_of_scope": [
                 "用导数证明正切函数单调性",
                 "反正切函数",
-                "y = A tan(omega x + phi) 的参数变换"
+                "y = A tan(ωx + φ) 的参数变换"
               ]
             },
             "representations": [
@@ -8601,7 +8604,7 @@
               },
               {
                 "id": "period_compare",
-                "role": "显示 x 与 x + pi 两个点的同值对照。"
+                "role": "显示 x 与 x + π 两个点的同值对照。"
               },
               {
                 "id": "odd_symmetry",
@@ -8623,15 +8626,15 @@
             "interactionDesign": {
               "primaryControl": "拖动 x 滑块或点击关键角，在同一张分段图像中比较当前点、相邻周期点和奇对称点。",
               "teacherControls": [
-                "切换观察焦点：分段单调、周期 pi、奇函数、值域与渐近线",
+                "切换观察焦点：分段单调、周期 π、奇函数、值域与渐近线",
                 "选择高亮的定义区间 k = -1, 0, 1",
                 "显示或隐藏相邻周期点、奇对称点、性质归纳和渐近线说明",
-                "播放或暂停观察点在当前定义区间内移动",
-                "重置到 x = pi/4"
+                "播放或暂停观察点在当前连续定义区间内移动",
+                "重置到 x = π/4"
               ],
               "studentControls": [
                 "拖动观察点，比较同一分支内 x 增大时 tan x 的变化。",
-                "记录 x 与 x + pi、x 与 -x 的函数值关系。",
+                "记录 x 与 x + π、x 与 -x 的函数值关系。",
                 "判断给定单调性说法是否遗漏了定义区间限制。"
               ],
               "stagedReveal": [
@@ -8641,7 +8644,7 @@
                 },
                 {
                   "step": "period_compare",
-                  "description": "打开 x 与 x + pi 的点对，比较相邻分支重复。"
+                  "description": "打开 x 与 x + π 的点对，比较相邻分支重复。"
                 },
                 {
                   "step": "odd_symmetry",
@@ -8692,7 +8695,7 @@
                   "name": "period_compare_visible",
                   "value_type": "boolean",
                   "default": false,
-                  "description": "是否显示 x 与 x + pi 的周期对照点。",
+                  "description": "是否显示 x 与 x + π 的周期对照点。",
                   "persistence": "snapshot"
                 },
                 {
@@ -8764,9 +8767,9 @@
             },
             "feedbackAndDiagnosis": {
               "success_evidence": [
-                "学生能写出定义域 x != pi/2 + kpi。",
-                "学生能把单调性表述为在每个区间 (-pi/2 + kpi, pi/2 + kpi) 上递增。",
-                "学生能用 tan(x + pi) = tan x 解释周期 pi。",
+                "学生能写出定义域 x ≠ π/2 + kπ, k ∈ Z。",
+                "学生能把单调性表述为在每个区间 (-π/2 + kπ, π/2 + kπ), k ∈ Z 上递增。",
+                "学生能用 tan(x + π) = tan x 解释周期 π。",
                 "学生能用 tan(-x) = -tan x 解释奇函数。",
                 "学生能说明值域为 R 与渐近线不矛盾。"
               ],
@@ -8785,7 +8788,7 @@
                 },
                 {
                   "id": "domain_interval_omission",
-                  "label": "遗漏 x = pi/2 + kpi 的定义域断点"
+                  "label": "遗漏 x = π/2 + kπ 的定义域断点"
                 }
               ],
               "feedback_principles": [
@@ -8799,9 +8802,9 @@
               "tan_curve": "深蓝色分段曲线表示 y = tan x。",
               "selected_interval": "淡绿色背景表示当前连续定义区间。",
               "current_point": "橙色点表示当前 x。",
-              "period_compare": "紫色点表示 x + pi 的周期对照。",
+              "period_compare": "紫色点表示 x + π 的周期对照。",
               "odd_symmetry": "玫红色点表示 -x 的奇对称对照。",
-              "asymptote": "红色虚线表示 x = pi/2 + kpi 的渐近线。",
+              "asymptote": "红色虚线表示 x = π/2 + kπ 的渐近线。",
               "rule": "颜色只用于区分数学对象和性质线索，不作装饰。"
             },
             "implementation": {
@@ -16542,7 +16545,8 @@
               "learningGoals": [
                 "在同一角 x 下区分 sin x 来自单位圆动点纵坐标，cos x 来自单位圆动点横坐标。",
                 "用同步游标比较 y = sin x 与 y = cos x 在关键角处的函数值顺序。",
-                "从图像位置解释 cos x = sin(x + pi/2)，并用 x = 0 的值检查平移方向。",
+                "从图像位置解释 cos x = sin(x + π/2)，并用 x = 0 的值检查平移方向。",
+                "用平移语言时说明 y = sin x 向左平移 π/2 得到 y = cos x。",
                 "说明相位关系是两条曲线之间的关系，不替代余弦函数的单位圆来源。"
               ],
               "prerequisites": [
@@ -16565,44 +16569,44 @@
               "functions": "y = sin x and y = cos x",
               "independent_variable": "角 x 的弧度量",
               "dependent_variable": "函数值 y",
-              "default_x_range": "0 <= x <= 2pi",
-              "comparison_range": "-pi/2 <= x <= 2pi",
+              "default_x_range": "0 <= x <= 2π",
+              "comparison_range": "-π/2 <= x <= 2π",
               "key_angles": [
                 {
                   "x": "0",
                   "sine": "0",
                   "cosine": "1",
-                  "phase_check": "cos 0 = sin(pi/2)"
+                  "phase_check": "cos 0 = sin(π/2)"
                 },
                 {
-                  "x": "pi/2",
+                  "x": "π/2",
                   "sine": "1",
                   "cosine": "0",
-                  "phase_check": "cos(pi/2) = sin(pi)"
+                  "phase_check": "cos(π/2) = sin(π)"
                 },
                 {
-                  "x": "pi",
+                  "x": "π",
                   "sine": "0",
                   "cosine": "-1",
-                  "phase_check": "cos pi = sin(3pi/2)"
+                  "phase_check": "cos π = sin(3π/2)"
                 },
                 {
-                  "x": "3pi/2",
+                  "x": "3π/2",
                   "sine": "-1",
                   "cosine": "0",
-                  "phase_check": "cos(3pi/2) = sin(2pi)"
+                  "phase_check": "cos(3π/2) = sin(2π)"
                 },
                 {
-                  "x": "2pi",
+                  "x": "2π",
                   "sine": "0",
                   "cosine": "1",
-                  "phase_check": "cos(2pi) = sin(5pi/2)"
+                  "phase_check": "cos(2π) = sin(5π/2)"
                 }
               ],
-              "relation": "cos x = sin(x + pi/2)",
+              "relation": "cos x = sin(x + π/2)",
               "out_of_scope": [
                 "余弦函数性质的完整系统归纳",
-                "参数函数 y = A sin(omega x + phi) 的一般变换",
+                "参数函数 y = A sin(ωx + φ) 的一般变换",
                 "用诱导公式进行严格代数证明",
                 "正切函数图像和性质"
               ]
@@ -16622,7 +16626,7 @@
               },
               {
                 "id": "phase_marker",
-                "role": "显示 sin 曲线上 x + pi/2 处与 cos x 对应的参照点。"
+                "role": "显示 sin 曲线上 x + π/2 处与 cos x 对应的参照点。"
               },
               {
                 "id": "comparison_table",
@@ -16634,12 +16638,12 @@
               "pausePoints": []
             },
             "interactionDesign": {
-              "primaryControl": "拖动单位圆动点或调节 x 滑块，同步比较 sin x、cos x 和 sin(x + pi/2)。",
+              "primaryControl": "拖动单位圆动点或调节 x 滑块，同步比较 sin x、cos x 和 sin(x + π/2)。",
               "teacherControls": [
                 "播放/暂停同一角 x 的变化",
                 "重置到 x = 0",
                 "显示或隐藏单位圆坐标投影",
-                "显示或隐藏相位参照点 sin(x + pi/2)",
+                "显示或隐藏相位参照点 sin(x + π/2)",
                 "显示或隐藏关键角表",
                 "显示或隐藏平移结论",
                 "在关键角之间跳转"
@@ -16664,11 +16668,11 @@
                 },
                 {
                   "step": "phase_reference",
-                  "description": "显示 sin(x + pi/2) 参照点，验证 cos x 与正弦曲线的相位关系。"
+                  "description": "显示 sin(x + π/2) 参照点，验证 cos x 与正弦曲线的相位关系。"
                 },
                 {
                   "step": "phase_summary",
-                  "description": "揭示 cos x = sin(x + pi/2)，并用 x = 0 检查方向。"
+                  "description": "揭示 cos x = sin(x + π/2)，并用 x = 0 检查方向。"
                 }
               ]
             },
@@ -16703,7 +16707,7 @@
                   "unit": "radian",
                   "value_type": "number",
                   "default": 1.5708,
-                  "description": "与 cos x 对应的正弦参照角 x + pi/2。",
+                  "description": "与 cos x 对应的正弦参照角 x + π/2。",
                   "persistence": "snapshot"
                 },
                 {
@@ -16723,7 +16727,7 @@
                   "name": "phase_reference_visible",
                   "value_type": "boolean",
                   "default": false,
-                  "description": "是否显示 sin(x + pi/2) 相位参照点。",
+                  "description": "是否显示 sin(x + π/2) 相位参照点。",
                   "persistence": "snapshot"
                 },
                 {
@@ -16778,7 +16782,7 @@
                 {
                   "name": "phase_reference_checked",
                   "direction": "applet_to_player",
-                  "description": "学生或教师显示相位参照后验证 cos x = sin(x + pi/2)。",
+                  "description": "学生或教师显示相位参照后验证 cos x = sin(x + π/2)。",
                   "payload": [
                     "x",
                     "cosine_value",
@@ -16803,7 +16807,7 @@
               "success_evidence": [
                 "学生能指出同一角 x 下 sin x 取纵坐标，cos x 取横坐标。",
                 "学生能按关键角分别读出 sin x 与 cos x 的值序列。",
-                "学生能用 x = 0 处 cos 0 = 1、sin(pi/2) = 1 检查 cos x = sin(x + pi/2) 的方向。",
+                "学生能用 x = 0 处 cos 0 = 1、sin(π/2) = 1 检查 cos x = sin(x + π/2) 的方向。",
                 "学生能说明相位关系不等于忘记余弦的横坐标来源。"
               ],
               "common_error_tags": [
@@ -16813,7 +16817,7 @@
                 },
                 {
                   "id": "phase_direction_confusion",
-                  "label": "把 cos x 与 sin(x - pi/2) 误作同一关系"
+                  "label": "把 cos x 与 sin(x - π/2) 误作同一关系"
                 },
                 {
                   "id": "key_point_order_mixup",
@@ -16834,7 +16838,7 @@
               "sine_curve": "表示 y = sin x，使用暖色。",
               "cosine_curve": "表示 y = cos x，使用冷色。",
               "same_angle_cursor": "表示同一角 x 在两条曲线上的读值位置。",
-              "phase_reference": "表示正弦曲线上 x + pi/2 处与 cos x 对应的参照点。",
+              "phase_reference": "表示正弦曲线上 x + π/2 处与 cos x 对应的参照点。",
               "unit_point": "表示单位圆上同一角 x 的动点 P。",
               "rule": "颜色只用于区分正弦、余弦和相位参照，不作为装饰。"
             },
@@ -18122,7 +18126,7 @@
           "id": "SH-HS-MATH-HJ-B2-C07-L05-M01",
           "resourceType": "manim_clip",
           "title": "图像变换顺序解释",
-          "subtitle": "把 y = A sin(omega x + phi) 拆成横向伸缩、相位平移和纵向伸缩",
+          "subtitle": "把 y = A sin(ωx + φ) 拆成横向伸缩、相位平移和纵向伸缩",
           "cognitiveAction": "分解",
           "note": "把横向伸缩、平移和纵向伸缩拆成可暂停的连续变换。",
           "availability": "video_ready",
@@ -18134,7 +18138,7 @@
             "status": "draft",
             "resourceType": "manim_clip",
             "title": "图像变换顺序解释",
-            "subtitle": "把 y = A sin(omega x + phi) 拆成横向伸缩、相位平移和纵向伸缩",
+            "subtitle": "把 y = A sin(ωx + φ) 拆成横向伸缩、相位平移和纵向伸缩",
             "curriculum": {
               "region": "上海",
               "stage": "高中",
@@ -18153,10 +18157,10 @@
             "pedagogy": {
               "cognitiveAction": "分解",
               "estimatedClassroomMinutes": 5,
-              "primaryTeachingProblem": "学生容易把 omega x + phi 中的平移量看成 phi，忽略 omega 对输入轴的共同作用，导致横向伸缩、相位平移和振幅变化相互干扰。",
+              "primaryTeachingProblem": "学生容易把 ωx + φ 中的平移量看成 φ，忽略 ω 对输入轴的共同作用，导致横向伸缩、相位平移和振幅变化相互干扰。",
               "learningGoals": [
-                "把 omega x + phi 改写为 omega(x + phi / omega)，解释相位平移量来自 -phi / omega。",
-                "区分输入变换和输出变换：omega 与 phi 作用在横轴方向，A 作用在纵轴方向。",
+                "把 ωx + φ 改写为 ω(x + φ / ω)，解释相位平移量来自 -φ / ω。",
+                "区分输入变换和输出变换：ω 与 φ 作用在横轴方向，A 作用在纵轴方向。",
                 "用一个样例图像读出振幅、周期和相位平移，并说明每一步变换的数学理由。"
               ],
               "prerequisites": [
@@ -18176,26 +18180,26 @@
               ]
             },
             "mathematicalScope": {
-              "function": "y = A sin(omega x + phi)",
-              "sample_function": "y = -1.5 sin(2x + pi/2)",
-              "equivalent_form": "y = -1.5 sin(2(x + pi/4))",
+              "function": "y = A sin(ωx + φ)",
+              "sample_function": "y = -1.5 sin(2x + π/2)",
+              "equivalent_form": "y = -1.5 sin(2(x + π/4))",
               "independent_variable": "x",
               "dependent_variable": "y",
-              "parameter_constraints": "omega > 0 的首版课堂样例；A 可为负以展示关于 x 轴翻折。",
+              "parameter_constraints": "一般读数为振幅 |A|、周期 2π/|ω|、相位平移 -φ/ω；本视频主线使用 ω > 0 的课堂样例，A 可为负以展示关于 x 轴翻折。",
               "target_transform_sequence": [
                 "从 y = sin x 出发。",
-                "omega = 2 使周期从 2pi 变为 pi。",
-                "phi = pi/2 与 omega 共同决定向左平移 pi/4。",
+                "ω = 2 使周期从 2π 变为 π。",
+                "φ = π/2 与 ω 共同决定向左平移 π/4。",
                 "A = -1.5 先纵向放大到 1.5 倍，再关于 x 轴翻折。"
               ],
               "key_readouts": {
-                "amplitude": "1.5",
-                "period": "pi",
-                "phase_shift": "left pi/4"
+                "amplitude": "|A| = 1.5",
+                "period": "π",
+                "phase_shift": "左移 π/4"
               },
               "out_of_scope": [
                 "竖直平移 k 的图像影响",
-                "omega < 0 时的等价化简",
+                "ω < 0 时的等价化简",
                 "从任意图像唯一反求所有参数的完整算法"
               ]
             },
@@ -18206,15 +18210,15 @@
               },
               {
                 "id": "inside_factorization",
-                "role": "把 2x + pi/2 改写为 2(x + pi/4)，突出平移量。"
+                "role": "把 2x + π/2 改写为 2(x + π/4)，突出平移量。"
               },
               {
                 "id": "horizontal_scale",
-                "role": "显示 omega 改变周期和关键点间距。"
+                "role": "显示 ω 改变周期和关键点间距。"
               },
               {
                 "id": "phase_shift",
-                "role": "显示向左 pi/4 的相位平移。"
+                "role": "显示向左 π/4 的相位平移。"
               },
               {
                 "id": "amplitude_reflection",
@@ -18231,37 +18235,37 @@
                 {
                   "id": "name_the_problem",
                   "title": "先拆括号里的输入",
-                  "purpose": "提醒学生不要把 phi 直接当作平移量。",
+                  "purpose": "提醒学生不要把 φ 直接当作平移量。",
                   "visuals": [
-                    "同时显示 y = sin x 与目标 y = -1.5 sin(2x + pi/2)。",
-                    "把 2x + pi/2 高亮为输入变换区域。"
+                    "同时显示 y = sin x 与目标 y = -1.5 sin(2x + π/2)。",
+                    "把 2x + π/2 高亮为输入变换区域。"
                   ],
                   "estimated_seconds": 7
                 },
                 {
                   "id": "factor_phase_shift",
-                  "title": "把 2x + pi/2 改写",
-                  "purpose": "用 2(x + pi/4) 说明平移量是 -phi / omega。",
+                  "title": "把 2x + π/2 改写",
+                  "purpose": "用 2(x + π/4) 说明平移量是 -φ / ω。",
                   "visuals": [
-                    "公式从 2x + pi/2 变为 2(x + pi/4)。",
-                    "平移箭头标注 left pi/4，而不是 left pi/2。"
+                    "公式从 y = -1.5 sin(2x + π/2) 变为 y = -1.5 sin(2(x + π/4))。",
+                    "平移箭头标注左移 π/4，而不是左移 π/2。"
                   ],
                   "estimated_seconds": 10
                 },
                 {
                   "id": "compress_period",
-                  "title": "先看 omega 的横向伸缩",
-                  "purpose": "让学生看见周期由 2pi 变为 pi。",
+                  "title": "先看 ω 的横向伸缩",
+                  "purpose": "让学生看见周期由 2π 变为 π。",
                   "visuals": [
                     "基础正弦曲线横向压缩。",
-                    "关键点间距缩短，一周期标注为 pi。"
+                    "关键点间距缩短，一周期标注为 π。"
                   ],
                   "estimated_seconds": 12
                 },
                 {
                   "id": "shift_phase",
                   "title": "再看相位平移",
-                  "purpose": "把压缩后的曲线整体向左平移 pi/4。",
+                  "purpose": "把压缩后的曲线整体向左平移 π/4。",
                   "visuals": [
                     "曲线沿 x 轴向左移动。",
                     "虚线显示平移前后同一关键点的位置。"
@@ -18283,7 +18287,7 @@
                   "title": "从图像读回参数",
                   "purpose": "收束到参数识别：振幅、周期、平移量分别来自哪里。",
                   "visuals": [
-                    "右侧读数面板显示 amplitude = 1.5, period = pi, shift = left pi/4。",
+                    "右侧读数面板显示振幅 |A| = 1.5、周期 2π/|ω| = π、平移 -φ/ω = -π/4。",
                     "提示接到 Applet 中自行调参验证。"
                   ],
                   "estimated_seconds": 5
@@ -18292,7 +18296,7 @@
               "pausePoints": [
                 {
                   "after_beat": "factor_phase_shift",
-                  "teacher_prompt": "为什么这里向左移动 pi/4，而不是 pi/2？"
+                  "teacher_prompt": "为什么这里向左移动 π/4，而不是 π/2？"
                 },
                 {
                   "after_beat": "shift_phase",
@@ -18327,7 +18331,9 @@
                 "webm": "ffmpeg -y -i dist/final/SH-HS-MATH-HJ-B2-C07-L05-M01.mp4 -c:v libvpx-vp9 -b:v 0 -crf 32 -an dist/final/SH-HS-MATH-HJ-B2-C07-L05-M01.webm"
               },
               "notes": [
-                "已完成首版 1080p30 渲染，视频时长约 53.5 秒，可用于平台预览和内部教研复核。",
+                "2026-05-09 审校后重新渲染 1080p30，视频时长 54.0 秒，可用于平台预览和内部教研复核。",
+                "画面文字已改为中文课堂表达，并显式展示 y = -1.5 sin(2(x + π/4))、周期 2π/|ω| = π 和平移 -φ/ω = -π/4。",
+                "poster 已改用 52 秒完整读数画面，避免封面停在淡入空白帧或局部公式画面。",
                 "进入 stable 前仍需教师确认分镜节奏和相位平移讲法。"
               ]
             },
@@ -18358,13 +18364,13 @@
               "base_curve": "蓝色表示 y = sin x 的基准图像。",
               "transformed_curve": "红色表示当前已经完成的变换结果。",
               "guide_lines": "灰色虚线只用于标记周期、平移量和振幅读数。",
-              "input_block": "公式中的 omega x + phi 用同一种强调色，表示它们共同作用在输入 x 上。",
+              "input_block": "公式中的 ωx + φ 用同一种强调色，表示它们共同作用在输入 x 上。",
               "output_block": "公式前的 A 单独强调，表示它作用在输出 y 上。",
               "rule": "颜色只表达数学对象和变换步骤，不作为装饰。"
             },
             "compliance": {
               "copyright_note": "本资源包为原创 Manim 分镜和场景脚本草稿，不复制教材正文、官方课件、教案或商业平台资源。",
-              "review_status": "self_checked_draft"
+              "review_status": "math_review_passed"
             }
           },
           "player": {
@@ -19458,7 +19464,7 @@
           "id": "SH-HS-MATH-HJ-B2-C07-L07-A01",
           "resourceType": "applet",
           "title": "正切性质分段观察",
-          "subtitle": "比较分段单调、pi 周期、奇对称和值域",
+          "subtitle": "比较分段单调、π 周期、奇对称和值域",
           "cognitiveAction": "比较",
           "note": "按相邻定义区间分段高亮单调性、周期平移和奇对称。",
           "availability": "metadata_ready",
@@ -19470,7 +19476,7 @@
             "status": "draft",
             "resourceType": "applet",
             "title": "正切性质分段观察",
-            "subtitle": "比较分段单调、pi 周期、奇对称和值域",
+            "subtitle": "比较分段单调、π 周期、奇对称和值域",
             "curriculum": {
               "region": "上海",
               "stage": "高中",
@@ -19489,10 +19495,10 @@
             "pedagogy": {
               "cognitiveAction": "比较",
               "estimatedClassroomMinutes": 18,
-              "primaryTeachingProblem": "学生容易把正切函数在每个定义区间内递增误说成在整个定义域上递增，也容易把值域、渐近线、pi 周期和奇函数结论割裂记忆。",
+              "primaryTeachingProblem": "学生容易把正切函数在每个定义区间内递增误说成在整个定义域上递增，也容易把值域、渐近线、π 周期和奇函数结论割裂记忆。",
               "learningGoals": [
-                "把正切函数的单调性限定在每个连续定义区间 ( -pi/2 + kpi, pi/2 + kpi ) 内。",
-                "用相邻分支平移比较说明 tan(x + pi) = tan x，周期为 pi。",
+                "把正切函数的单调性限定在每个连续定义区间 (-π/2 + kπ, π/2 + kπ), k ∈ Z 上。",
+                "用相邻分支平移比较说明 tan(x + π) = tan x，周期为 π。",
                 "用原点对称的点对说明 tan(-x) = -tan x，正切函数是奇函数。",
                 "解释值域为 R 与存在竖直渐近线并不矛盾：每个分支都从负无穷延伸到正无穷。"
               ],
@@ -19515,32 +19521,32 @@
               "function": "y = tan x",
               "independent_variable": "角 x 的弧度量",
               "dependent_variable": "正切值",
-              "default_x_range": "-3pi/2 < x < 3pi/2, excluding x = pi/2 + kpi",
+              "default_x_range": "-3π/2 < x < 3π/2, 排除 x = π/2 + kπ",
               "visible_y_range": "-4 <= y <= 4",
-              "domain": "x != pi/2 + kpi, k in Z",
+              "domain": "x ≠ π/2 + kπ, k ∈ Z",
               "range": "R",
-              "period": "pi",
+              "period": "π",
               "parity": "odd, tan(-x) = -tan x",
-              "monotonicity": "strictly increasing on every interval (-pi/2 + kpi, pi/2 + kpi), k in Z",
+              "monotonicity": "strictly increasing on every interval (-π/2 + kπ, π/2 + kπ), k ∈ Z",
               "warning": "不能说 y = tan x 在整个定义域上单调递增，因为定义域被渐近线分成多个不连续区间。",
               "key_intervals": [
                 {
-                  "interval": "(-pi/2, pi/2)",
+                  "interval": "(-π/2, π/2)",
                   "note": "主值区间，函数值从负无穷增至正无穷。"
                 },
                 {
-                  "interval": "(pi/2, 3pi/2)",
-                  "note": "向右平移 pi 得到的相邻分支。"
+                  "interval": "(π/2, 3π/2)",
+                  "note": "向右平移 π 得到的相邻分支。"
                 },
                 {
-                  "interval": "(-3pi/2, -pi/2)",
-                  "note": "向左平移 pi 得到的相邻分支。"
+                  "interval": "(-3π/2, -π/2)",
+                  "note": "向左平移 π 得到的相邻分支。"
                 }
               ],
               "out_of_scope": [
                 "用导数证明正切函数单调性",
                 "反正切函数",
-                "y = A tan(omega x + phi) 的参数变换"
+                "y = A tan(ωx + φ) 的参数变换"
               ]
             },
             "representations": [
@@ -19554,7 +19560,7 @@
               },
               {
                 "id": "period_compare",
-                "role": "显示 x 与 x + pi 两个点的同值对照。"
+                "role": "显示 x 与 x + π 两个点的同值对照。"
               },
               {
                 "id": "odd_symmetry",
@@ -19576,15 +19582,15 @@
             "interactionDesign": {
               "primaryControl": "拖动 x 滑块或点击关键角，在同一张分段图像中比较当前点、相邻周期点和奇对称点。",
               "teacherControls": [
-                "切换观察焦点：分段单调、周期 pi、奇函数、值域与渐近线",
+                "切换观察焦点：分段单调、周期 π、奇函数、值域与渐近线",
                 "选择高亮的定义区间 k = -1, 0, 1",
                 "显示或隐藏相邻周期点、奇对称点、性质归纳和渐近线说明",
-                "播放或暂停观察点在当前定义区间内移动",
-                "重置到 x = pi/4"
+                "播放或暂停观察点在当前连续定义区间内移动",
+                "重置到 x = π/4"
               ],
               "studentControls": [
                 "拖动观察点，比较同一分支内 x 增大时 tan x 的变化。",
-                "记录 x 与 x + pi、x 与 -x 的函数值关系。",
+                "记录 x 与 x + π、x 与 -x 的函数值关系。",
                 "判断给定单调性说法是否遗漏了定义区间限制。"
               ],
               "stagedReveal": [
@@ -19594,7 +19600,7 @@
                 },
                 {
                   "step": "period_compare",
-                  "description": "打开 x 与 x + pi 的点对，比较相邻分支重复。"
+                  "description": "打开 x 与 x + π 的点对，比较相邻分支重复。"
                 },
                 {
                   "step": "odd_symmetry",
@@ -19645,7 +19651,7 @@
                   "name": "period_compare_visible",
                   "value_type": "boolean",
                   "default": false,
-                  "description": "是否显示 x 与 x + pi 的周期对照点。",
+                  "description": "是否显示 x 与 x + π 的周期对照点。",
                   "persistence": "snapshot"
                 },
                 {
@@ -19717,9 +19723,9 @@
             },
             "feedbackAndDiagnosis": {
               "success_evidence": [
-                "学生能写出定义域 x != pi/2 + kpi。",
-                "学生能把单调性表述为在每个区间 (-pi/2 + kpi, pi/2 + kpi) 上递增。",
-                "学生能用 tan(x + pi) = tan x 解释周期 pi。",
+                "学生能写出定义域 x ≠ π/2 + kπ, k ∈ Z。",
+                "学生能把单调性表述为在每个区间 (-π/2 + kπ, π/2 + kπ), k ∈ Z 上递增。",
+                "学生能用 tan(x + π) = tan x 解释周期 π。",
                 "学生能用 tan(-x) = -tan x 解释奇函数。",
                 "学生能说明值域为 R 与渐近线不矛盾。"
               ],
@@ -19738,7 +19744,7 @@
                 },
                 {
                   "id": "domain_interval_omission",
-                  "label": "遗漏 x = pi/2 + kpi 的定义域断点"
+                  "label": "遗漏 x = π/2 + kπ 的定义域断点"
                 }
               ],
               "feedback_principles": [
@@ -19752,9 +19758,9 @@
               "tan_curve": "深蓝色分段曲线表示 y = tan x。",
               "selected_interval": "淡绿色背景表示当前连续定义区间。",
               "current_point": "橙色点表示当前 x。",
-              "period_compare": "紫色点表示 x + pi 的周期对照。",
+              "period_compare": "紫色点表示 x + π 的周期对照。",
               "odd_symmetry": "玫红色点表示 -x 的奇对称对照。",
-              "asymptote": "红色虚线表示 x = pi/2 + kpi 的渐近线。",
+              "asymptote": "红色虚线表示 x = π/2 + kπ 的渐近线。",
               "rule": "颜色只用于区分数学对象和性质线索，不作装饰。"
             },
             "implementation": {

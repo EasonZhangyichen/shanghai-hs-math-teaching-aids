@@ -27,7 +27,8 @@ pedagogy:
   learning_goals:
     - "在同一角 x 下区分 sin x 来自单位圆动点纵坐标，cos x 来自单位圆动点横坐标。"
     - "用同步游标比较 y = sin x 与 y = cos x 在关键角处的函数值顺序。"
-    - "从图像位置解释 cos x = sin(x + pi/2)，并用 x = 0 的值检查平移方向。"
+    - "从图像位置解释 cos x = sin(x + π/2)，并用 x = 0 的值检查平移方向。"
+    - "用平移语言时说明 y = sin x 向左平移 π/2 得到 y = cos x。"
     - "说明相位关系是两条曲线之间的关系，不替代余弦函数的单位圆来源。"
   prerequisites:
     - "单位圆中的正弦、余弦定义"
@@ -46,33 +47,33 @@ mathematical_scope:
   functions: "y = sin x and y = cos x"
   independent_variable: "角 x 的弧度量"
   dependent_variable: "函数值 y"
-  default_x_range: "0 <= x <= 2pi"
-  comparison_range: "-pi/2 <= x <= 2pi"
+  default_x_range: "0 <= x <= 2π"
+  comparison_range: "-π/2 <= x <= 2π"
   key_angles:
     - x: "0"
       sine: "0"
       cosine: "1"
-      phase_check: "cos 0 = sin(pi/2)"
-    - x: "pi/2"
+      phase_check: "cos 0 = sin(π/2)"
+    - x: "π/2"
       sine: "1"
       cosine: "0"
-      phase_check: "cos(pi/2) = sin(pi)"
-    - x: "pi"
+      phase_check: "cos(π/2) = sin(π)"
+    - x: "π"
       sine: "0"
       cosine: "-1"
-      phase_check: "cos pi = sin(3pi/2)"
-    - x: "3pi/2"
+      phase_check: "cos π = sin(3π/2)"
+    - x: "3π/2"
       sine: "-1"
       cosine: "0"
-      phase_check: "cos(3pi/2) = sin(2pi)"
-    - x: "2pi"
+      phase_check: "cos(3π/2) = sin(2π)"
+    - x: "2π"
       sine: "0"
       cosine: "1"
-      phase_check: "cos(2pi) = sin(5pi/2)"
-  relation: "cos x = sin(x + pi/2)"
+      phase_check: "cos(2π) = sin(5π/2)"
+  relation: "cos x = sin(x + π/2)"
   out_of_scope:
     - "余弦函数性质的完整系统归纳"
-    - "参数函数 y = A sin(omega x + phi) 的一般变换"
+    - "参数函数 y = A sin(ωx + φ) 的一般变换"
     - "用诱导公式进行严格代数证明"
     - "正切函数图像和性质"
 
@@ -84,17 +85,17 @@ representations:
   - id: "synchronized_cursor"
     role: "用同一条竖直游标读取两条曲线在同一 x 处的值。"
   - id: "phase_marker"
-    role: "显示 sin 曲线上 x + pi/2 处与 cos x 对应的参照点。"
+    role: "显示 sin 曲线上 x + π/2 处与 cos x 对应的参照点。"
   - id: "comparison_table"
     role: "记录关键角处 sin x、cos x 和相位检查式。"
 
 interaction_design:
-  primary_control: "拖动单位圆动点或调节 x 滑块，同步比较 sin x、cos x 和 sin(x + pi/2)。"
+  primary_control: "拖动单位圆动点或调节 x 滑块，同步比较 sin x、cos x 和 sin(x + π/2)。"
   teacher_controls:
     - "播放/暂停同一角 x 的变化"
     - "重置到 x = 0"
     - "显示或隐藏单位圆坐标投影"
-    - "显示或隐藏相位参照点 sin(x + pi/2)"
+    - "显示或隐藏相位参照点 sin(x + π/2)"
     - "显示或隐藏关键角表"
     - "显示或隐藏平移结论"
     - "在关键角之间跳转"
@@ -110,9 +111,9 @@ interaction_design:
     - step: "key_angle_table"
       description: "停在关键角，记录 sin x 与 cos x 的值序列。"
     - step: "phase_reference"
-      description: "显示 sin(x + pi/2) 参照点，验证 cos x 与正弦曲线的相位关系。"
+      description: "显示 sin(x + π/2) 参照点，验证 cos x 与正弦曲线的相位关系。"
     - step: "phase_summary"
-      description: "揭示 cos x = sin(x + pi/2)，并用 x = 0 检查方向。"
+      description: "揭示 cos x = sin(x + π/2)，并用 x = 0 检查方向。"
 
 data_contract:
   state_variables:
@@ -138,7 +139,7 @@ data_contract:
       unit: "radian"
       value_type: "number"
       default: 1.5708
-      description: "与 cos x 对应的正弦参照角 x + pi/2。"
+      description: "与 cos x 对应的正弦参照角 x + π/2。"
       persistence: "snapshot"
     - name: "unit_point"
       value_type: "point2d"
@@ -152,7 +153,7 @@ data_contract:
     - name: "phase_reference_visible"
       value_type: "boolean"
       default: false
-      description: "是否显示 sin(x + pi/2) 相位参照点。"
+      description: "是否显示 sin(x + π/2) 相位参照点。"
       persistence: "snapshot"
     - name: "key_table_visible"
       value_type: "boolean"
@@ -179,20 +180,20 @@ data_contract:
       payload: ["projection_visible", "phase_reference_visible", "key_table_visible", "summary_visible"]
     - name: "phase_reference_checked"
       direction: "applet_to_player"
-      description: "学生或教师显示相位参照后验证 cos x = sin(x + pi/2)。"
+      description: "学生或教师显示相位参照后验证 cos x = sin(x + π/2)。"
       payload: ["x", "cosine_value", "phase_x"]
 
 feedback_and_diagnosis:
   success_evidence:
     - "学生能指出同一角 x 下 sin x 取纵坐标，cos x 取横坐标。"
     - "学生能按关键角分别读出 sin x 与 cos x 的值序列。"
-    - "学生能用 x = 0 处 cos 0 = 1、sin(pi/2) = 1 检查 cos x = sin(x + pi/2) 的方向。"
+    - "学生能用 x = 0 处 cos 0 = 1、sin(π/2) = 1 检查 cos x = sin(x + π/2) 的方向。"
     - "学生能说明相位关系不等于忘记余弦的横坐标来源。"
   common_error_tags:
     - id: "same_angle_value_mixup"
       label: "把同一角下的正弦值和余弦值混用"
     - id: "phase_direction_confusion"
-      label: "把 cos x 与 sin(x - pi/2) 误作同一关系"
+      label: "把 cos x 与 sin(x - π/2) 误作同一关系"
     - id: "key_point_order_mixup"
       label: "把余弦关键点顺序套成正弦关键点顺序"
     - id: "phase_shift_only_memory"
@@ -206,7 +207,7 @@ visual_semantics:
   sine_curve: "表示 y = sin x，使用暖色。"
   cosine_curve: "表示 y = cos x，使用冷色。"
   same_angle_cursor: "表示同一角 x 在两条曲线上的读值位置。"
-  phase_reference: "表示正弦曲线上 x + pi/2 处与 cos x 对应的参照点。"
+  phase_reference: "表示正弦曲线上 x + π/2 处与 cos x 对应的参照点。"
   unit_point: "表示单位圆上同一角 x 的动点 P。"
   rule: "颜色只用于区分正弦、余弦和相位参照，不作为装饰。"
 

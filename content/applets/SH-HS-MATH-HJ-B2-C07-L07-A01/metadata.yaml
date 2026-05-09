@@ -3,7 +3,7 @@ version: "0.1.0"
 status: "draft"
 resource_type: "applet"
 title: "正切性质分段观察"
-subtitle: "比较分段单调、pi 周期、奇对称和值域"
+subtitle: "比较分段单调、π 周期、奇对称和值域"
 
 curriculum:
   region: "上海"
@@ -23,10 +23,10 @@ curriculum:
 pedagogy:
   cognitive_action: "比较"
   estimated_classroom_minutes: 18
-  primary_teaching_problem: "学生容易把正切函数在每个定义区间内递增误说成在整个定义域上递增，也容易把值域、渐近线、pi 周期和奇函数结论割裂记忆。"
+  primary_teaching_problem: "学生容易把正切函数在每个定义区间内递增误说成在整个定义域上递增，也容易把值域、渐近线、π 周期和奇函数结论割裂记忆。"
   learning_goals:
-    - "把正切函数的单调性限定在每个连续定义区间 ( -pi/2 + kpi, pi/2 + kpi ) 内。"
-    - "用相邻分支平移比较说明 tan(x + pi) = tan x，周期为 pi。"
+    - "把正切函数的单调性限定在每个连续定义区间 (-π/2 + kπ, π/2 + kπ), k ∈ Z 上。"
+    - "用相邻分支平移比较说明 tan(x + π) = tan x，周期为 π。"
     - "用原点对称的点对说明 tan(-x) = -tan x，正切函数是奇函数。"
     - "解释值域为 R 与存在竖直渐近线并不矛盾：每个分支都从负无穷延伸到正无穷。"
   prerequisites:
@@ -45,25 +45,25 @@ mathematical_scope:
   function: "y = tan x"
   independent_variable: "角 x 的弧度量"
   dependent_variable: "正切值"
-  default_x_range: "-3pi/2 < x < 3pi/2, excluding x = pi/2 + kpi"
+  default_x_range: "-3π/2 < x < 3π/2, 排除 x = π/2 + kπ"
   visible_y_range: "-4 <= y <= 4"
-  domain: "x != pi/2 + kpi, k in Z"
+  domain: "x ≠ π/2 + kπ, k ∈ Z"
   range: "R"
-  period: "pi"
+  period: "π"
   parity: "odd, tan(-x) = -tan x"
-  monotonicity: "strictly increasing on every interval (-pi/2 + kpi, pi/2 + kpi), k in Z"
+  monotonicity: "strictly increasing on every interval (-π/2 + kπ, π/2 + kπ), k ∈ Z"
   warning: "不能说 y = tan x 在整个定义域上单调递增，因为定义域被渐近线分成多个不连续区间。"
   key_intervals:
-    - interval: "(-pi/2, pi/2)"
+    - interval: "(-π/2, π/2)"
       note: "主值区间，函数值从负无穷增至正无穷。"
-    - interval: "(pi/2, 3pi/2)"
-      note: "向右平移 pi 得到的相邻分支。"
-    - interval: "(-3pi/2, -pi/2)"
-      note: "向左平移 pi 得到的相邻分支。"
+    - interval: "(π/2, 3π/2)"
+      note: "向右平移 π 得到的相邻分支。"
+    - interval: "(-3π/2, -π/2)"
+      note: "向左平移 π 得到的相邻分支。"
   out_of_scope:
     - "用导数证明正切函数单调性"
     - "反正切函数"
-    - "y = A tan(omega x + phi) 的参数变换"
+    - "y = A tan(ωx + φ) 的参数变换"
 
 representations:
   - id: "segmented_tan_graph"
@@ -71,7 +71,7 @@ representations:
   - id: "interval_highlight"
     role: "高亮一个连续定义区间，限定单调性的讨论范围。"
   - id: "period_compare"
-    role: "显示 x 与 x + pi 两个点的同值对照。"
+    role: "显示 x 与 x + π 两个点的同值对照。"
   - id: "odd_symmetry"
     role: "显示 x 与 -x 两个点关于原点对称。"
   - id: "range_probe"
@@ -82,20 +82,20 @@ representations:
 interaction_design:
   primary_control: "拖动 x 滑块或点击关键角，在同一张分段图像中比较当前点、相邻周期点和奇对称点。"
   teacher_controls:
-    - "切换观察焦点：分段单调、周期 pi、奇函数、值域与渐近线"
+    - "切换观察焦点：分段单调、周期 π、奇函数、值域与渐近线"
     - "选择高亮的定义区间 k = -1, 0, 1"
     - "显示或隐藏相邻周期点、奇对称点、性质归纳和渐近线说明"
-    - "播放或暂停观察点在当前定义区间内移动"
-    - "重置到 x = pi/4"
+    - "播放或暂停观察点在当前连续定义区间内移动"
+    - "重置到 x = π/4"
   student_controls:
     - "拖动观察点，比较同一分支内 x 增大时 tan x 的变化。"
-    - "记录 x 与 x + pi、x 与 -x 的函数值关系。"
+    - "记录 x 与 x + π、x 与 -x 的函数值关系。"
     - "判断给定单调性说法是否遗漏了定义区间限制。"
   staged_reveal:
     - step: "interval_first"
       description: "先只高亮一个连续定义区间，讨论分支内单调递增。"
     - step: "period_compare"
-      description: "打开 x 与 x + pi 的点对，比较相邻分支重复。"
+      description: "打开 x 与 x + π 的点对，比较相邻分支重复。"
     - step: "odd_symmetry"
       description: "打开 x 与 -x 的点对，比较原点对称。"
     - step: "range_probe"
@@ -129,7 +129,7 @@ data_contract:
     - name: "period_compare_visible"
       value_type: "boolean"
       default: false
-      description: "是否显示 x 与 x + pi 的周期对照点。"
+      description: "是否显示 x 与 x + π 的周期对照点。"
       persistence: "snapshot"
     - name: "odd_symmetry_visible"
       value_type: "boolean"
@@ -161,9 +161,9 @@ data_contract:
 
 feedback_and_diagnosis:
   success_evidence:
-    - "学生能写出定义域 x != pi/2 + kpi。"
-    - "学生能把单调性表述为在每个区间 (-pi/2 + kpi, pi/2 + kpi) 上递增。"
-    - "学生能用 tan(x + pi) = tan x 解释周期 pi。"
+    - "学生能写出定义域 x ≠ π/2 + kπ, k ∈ Z。"
+    - "学生能把单调性表述为在每个区间 (-π/2 + kπ, π/2 + kπ), k ∈ Z 上递增。"
+    - "学生能用 tan(x + π) = tan x 解释周期 π。"
     - "学生能用 tan(-x) = -tan x 解释奇函数。"
     - "学生能说明值域为 R 与渐近线不矛盾。"
   common_error_tags:
@@ -174,7 +174,7 @@ feedback_and_diagnosis:
     - id: "period_parity_formula_mixed"
       label: "周期、奇偶性和单调区间一般式混淆"
     - id: "domain_interval_omission"
-      label: "遗漏 x = pi/2 + kpi 的定义域断点"
+      label: "遗漏 x = π/2 + kπ 的定义域断点"
   feedback_principles:
     - "反馈先要求补全定义域，再讨论性质。"
     - "单调性错误必须回到单个连续定义区间。"
@@ -185,9 +185,9 @@ visual_semantics:
   tan_curve: "深蓝色分段曲线表示 y = tan x。"
   selected_interval: "淡绿色背景表示当前连续定义区间。"
   current_point: "橙色点表示当前 x。"
-  period_compare: "紫色点表示 x + pi 的周期对照。"
+  period_compare: "紫色点表示 x + π 的周期对照。"
   odd_symmetry: "玫红色点表示 -x 的奇对称对照。"
-  asymptote: "红色虚线表示 x = pi/2 + kpi 的渐近线。"
+  asymptote: "红色虚线表示 x = π/2 + kπ 的渐近线。"
   rule: "颜色只用于区分数学对象和性质线索，不作装饰。"
 
 implementation:
