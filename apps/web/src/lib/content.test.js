@@ -264,19 +264,20 @@ test("lists the B2 C09 complex-number draft applet candidates as planned resourc
   assert.equal(complexPlaneLesson.status, "draft");
   assert.equal(complexPlaneLesson.title, "复平面、复数的向量表示与加法几何意义");
   assert.equal(complexPlaneLesson.resources.length, 1);
-  assert.deepEqual(complexPlaneLesson.resources[0], {
-    id: "SH-HS-MATH-HJ-B2-C09-L03-A01",
-    resourceType: "applet",
-    title: "复平面点向量对应与加法构造板",
-    cognitiveAction: "对应",
-    note: "拖动复平面上的点，同步显示复数代数形式、原点向量、坐标分量和加法平行四边形；只覆盖表示对应与加法几何意义，不做通用复数计算器。",
-    availability: "proposed",
-    status: "planned",
-    version: null,
-    metadataPreview: null,
-    player: null,
-    package: null,
-  });
+  assert.equal(complexPlaneLesson.resources[0].id, "SH-HS-MATH-HJ-B2-C09-L03-A01");
+  assert.equal(complexPlaneLesson.resources[0].resourceType, "applet");
+  assert.equal(complexPlaneLesson.resources[0].title, "复平面点向量对应与加法构造板");
+  assert.equal(complexPlaneLesson.resources[0].cognitiveAction, "对应");
+  assert.equal(
+    complexPlaneLesson.resources[0].note,
+    "拖动复平面上的点，同步显示复数代数形式、原点向量、坐标分量和加法平行四边形；只覆盖表示对应与加法几何意义，不做通用复数计算器。",
+  );
+  assert.equal(complexPlaneLesson.resources[0].availability, "proposed");
+  assert.equal(complexPlaneLesson.resources[0].status, "planned");
+  assert.equal(complexPlaneLesson.resources[0].quality.reviewStatus, "planned");
+  assert.equal(complexPlaneLesson.resources[0].metadataPreview, null);
+  assert.equal(complexPlaneLesson.resources[0].player, null);
+  assert.equal(complexPlaneLesson.resources[0].package, null);
 
   assert.equal(modulusLesson.resources[0].id, "SH-HS-MATH-HJ-B2-C09-L04-A01");
   assert.equal(modulusLesson.resources[0].availability, "proposed");
@@ -384,4 +385,64 @@ test("links the tangent properties applet to lesson L07", async () => {
   assert.equal(diagnosis.metadataPreview.diagnosisDesign.itemSummary.totalItems, 6);
   assert.equal(diagnosis.package.files.itemBank, "content/diagnosis/SH-HS-MATH-HJ-B2-C07-L07-D01/item-bank.yaml");
   assert.equal(diagnosis.player, null);
+});
+
+test("builds resource filter facets for teacher preparation searches", async () => {
+  const workspace = await loadTeacherWorkspace({ rootDir: repoRoot });
+
+  assert.ok(workspace.resourceFacets, "workspace should expose resource filter facets");
+  assert.ok(workspace.resourceIndex, "workspace should expose a flat resource search index");
+  assert.equal(workspace.resourceIndex.length, 44);
+  assert.equal(workspace.resourceFacets.volumes.some((option) => option.id === "B2" && option.count > 0), true);
+  assert.equal(
+    workspace.resourceFacets.chapters.some(
+      (option) => option.id === "SH-HS-MATH-HJ-B2-C08" && option.volumeId === "B2" && option.count === 10,
+    ),
+    true,
+  );
+  assert.equal(
+    workspace.resourceFacets.lessons.some(
+      (option) =>
+        option.id === "SH-HS-MATH-HJ-B2-C08-L04" &&
+        option.chapterId === "SH-HS-MATH-HJ-B2-C08" &&
+        option.count === 2,
+    ),
+    true,
+  );
+  assert.deepEqual(
+    workspace.resourceFacets.resourceTypes.map((option) => option.id).sort(),
+    ["applet", "diagnosis", "manim_clip"],
+  );
+  assert.equal(
+    workspace.resourceFacets.reviewStatuses.some(
+      (option) => option.id === "self_checked_draft" && option.label === "自检草稿" && option.count > 0,
+    ),
+    true,
+  );
+});
+
+test("marks B2 C08 scaffold resources as draft scaffold work only", async () => {
+  const workspace = await loadTeacherWorkspace({ rootDir: repoRoot });
+  const vectorResources = workspace.resourceIndex.filter((resource) => resource.chapterId === "SH-HS-MATH-HJ-B2-C08");
+
+  assert.equal(vectorResources.length, 10);
+  assert.equal(vectorResources.some((resource) => resource.id === "SH-HS-MATH-HJ-B2-C08-L04-M01"), true);
+  assert.equal(vectorResources.some((resource) => resource.resourceType === "diagnosis"), true);
+
+  for (const resource of vectorResources) {
+    assert.equal(resource.quality.contentStatus, "draft");
+    assert.equal(resource.quality.reviewStatus, "self_checked_draft");
+    assert.notEqual(resource.quality.reviewStatus, "published");
+    assert.notEqual(resource.quality.reviewStatus, "release_candidate");
+    assert.notEqual(resource.quality.reviewStatus, "math_review_passed");
+    assert.ok(
+      resource.quality.displayStates.every((state) => ["draft", "scaffold", "self_checked_draft"].includes(state)),
+      `${resource.id} should only display draft/scaffold/self_checked_draft states`,
+    );
+  }
+
+  const scaffoldApplet = workspace.resourceIndex.find((resource) => resource.id === "SH-HS-MATH-HJ-B2-C08-L01-A01");
+  assert.equal(scaffoldApplet.quality.implementationStage, "scaffold");
+  assert.equal(scaffoldApplet.quality.readinessLabel, "骨架待精修");
+  assert.equal(scaffoldApplet.player, null);
 });

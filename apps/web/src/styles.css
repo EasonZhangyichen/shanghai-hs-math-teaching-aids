@@ -310,6 +310,105 @@ button {
   font-weight: 750;
 }
 
+.search-panel {
+  margin-top: 18px;
+}
+
+.filter-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(132px, 1fr)) auto;
+  gap: 10px;
+  align-items: end;
+}
+
+.filter-field {
+  display: grid;
+  gap: 5px;
+  color: #344054;
+  font-size: 0.76rem;
+  font-weight: 800;
+}
+
+.filter-field select {
+  width: 100%;
+  min-height: 38px;
+  padding: 7px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: #1f2933;
+  background: #ffffff;
+  font: inherit;
+  font-size: 0.82rem;
+}
+
+.filter-field select:focus {
+  border-color: var(--teal);
+  outline: 2px solid #b9e6df;
+  outline-offset: 1px;
+}
+
+.filter-reset {
+  min-height: 38px;
+  padding: 7px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: #344054;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.filter-reset:hover {
+  border-color: var(--teal);
+  color: var(--teal);
+}
+
+.search-results {
+  display: grid;
+  gap: 8px;
+  max-height: 360px;
+  margin-top: 14px;
+  overflow: auto;
+  padding-right: 4px;
+}
+
+.search-result {
+  width: 100%;
+  min-height: 64px;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) minmax(180px, auto);
+  gap: 12px;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--ink);
+  background: #ffffff;
+  text-align: left;
+  cursor: pointer;
+}
+
+.search-result:hover,
+.search-result.is-selected {
+  border-color: #54bdb2;
+  background: #f2fbf9;
+}
+
+.search-result-main {
+  min-width: 0;
+  display: grid;
+  gap: 2px;
+}
+
+.search-result-main strong {
+  overflow-wrap: anywhere;
+  font-size: 0.92rem;
+}
+
+.search-result-main span {
+  color: var(--muted);
+  font-size: 0.76rem;
+}
+
 .workspace-grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(340px, 0.78fr);
@@ -465,6 +564,47 @@ li {
   gap: 10px;
   color: var(--muted);
   font-size: 0.78rem;
+}
+
+.quality-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.quality-chip {
+  width: fit-content;
+  padding: 3px 7px;
+  border-radius: 999px;
+  color: #344054;
+  background: #edf1f5;
+  font-size: 0.7rem;
+  font-weight: 800;
+}
+
+.quality-chip.scaffold {
+  color: #7a4c00;
+  background: #fff0c2;
+}
+
+.quality-chip.self_checked_draft,
+.quality-chip.draft {
+  color: #0f3f3a;
+  background: #dff3ef;
+}
+
+.quality-chip.math_review,
+.quality-chip.math_review_passed,
+.quality-chip.browser_review,
+.quality-chip.classroom_trial {
+  color: #2f2a85;
+  background: #e8e7ff;
+}
+
+.quality-chip.published,
+.quality-chip.release_candidate {
+  color: #7f1d1d;
+  background: #ffe4e6;
 }
 
 .metadata-summary {
@@ -687,6 +827,11 @@ li {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
+  }
+
+  .filter-grid,
+  .search-result {
+    grid-template-columns: 1fr;
   }
 
   .workspace-grid {
