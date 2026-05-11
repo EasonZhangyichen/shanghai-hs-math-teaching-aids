@@ -236,4 +236,4 @@ npm run verify
 
 - 质量线：围绕第 7 章已有 15 个资源推进数学审校、课堂节奏试读、浏览器复核和状态升级；第一轮已完成正切链条 Applet / Manim / Diagnosis 审校，第二轮已完成正弦链条 Applet / Manim / Diagnosis 审校，第三轮已完成余弦链条 Applet / Applet / Diagnosis 审校，第四轮已完成正弦性质与参数变换链条 Applet / Applet / Diagnosis 审校，第五轮已完成相位对照 / 变换顺序 Manim / 正切性质 Applet 审校。
 - 扩展线：按 `docs/parallel-chapter-factory.md` 并行推进 3 到 5 个新章节的来源核对、课程图谱和数字化必要性筛选；通过总控验收后，再小批量 scaffold。
-- 生产线：第六轮首批已验证“平台筛选能力 + 第 8 章单资源精修 + 资源工厂批次规划器”可以并行推进；第二批已将第 8 章 L02/L03/L04 Applet 从 scaffold 推进为可运行自检草稿。第 8 章资源仍保持 `draft` / `self_checked_draft`，只有总控在教材终核、数学审校、浏览器复核和教师试读完成后才可决定更高状态。
+- 生产线：第六轮首批已验证“平台筛选能力 + 第 8 章单资源精修 + 资源工厂批次规划器”可以并行推进；第二批已将第 8 章 L02/L03/L04 Applet 从 scaffold 推进为可运行自检草稿，第三批已将 L05/L10 Applet 推进为可运行自检草稿，并为 L04-M01 Manim 导出 `mp4` / `webm` / poster。第 8 章资源仍保持 `draft` / `self_checked_draft` 或 `metadata_ready`，只有总控在教材终核、数学审校、浏览器/视频复核和教师试读完成后才可决定更高状态。

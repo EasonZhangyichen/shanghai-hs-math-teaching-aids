@@ -11392,7 +11392,7 @@
           "id": "SH-HS-MATH-HJ-B2-C08-L04-M01",
           "resourceType": "manim_clip",
           "title": "投影有向长度导入动画",
-          "subtitle": "从作垂线到读有向投影长度的 Manim 场景骨架",
+          "subtitle": "把投影长度的正、零、负看成有向读数",
           "cognitiveAction": "投影",
           "note": "30-45 秒短动画，只串联作垂线、读有向投影、解释 a cos theta 的正负，不替代后续交互探索。",
           "availability": "metadata_ready",
@@ -11404,7 +11404,7 @@
             "status": "draft",
             "resourceType": "manim_clip",
             "title": "投影有向长度导入动画",
-            "subtitle": "从作垂线到读有向投影长度的 Manim 场景骨架",
+            "subtitle": "把投影长度的正、零、负看成有向读数",
             "curriculum": {
               "region": "上海",
               "stage": "高中",
@@ -11423,16 +11423,16 @@
             "pedagogy": {
               "cognitiveAction": "投影",
               "estimatedClassroomMinutes": 6,
-              "primaryTeachingProblem": "学生容易把投影长度看成普通线段长度，忽略它是有方向符号的量。",
+              "primaryTeachingProblem": "学生容易把投影长度看成普通线段长，忽略它是有方向符号的量。",
               "learningGoals": [
-                "看见向量端点向基准方向作垂线后，投影点在有向轴上的位置。",
-                "区分普通线段长度与有向投影长度，解释锐角、直角、钝角时符号不同。",
-                "把有向投影长度与 |a| cos theta 及数量积公式的符号来源连接起来。"
+                "看见向量 a 的终点向向量 b 所在直线作垂线后，投影点在有向轴上的位置。",
+                "区分普通线段长与有向投影长度，解释锐角、直角、钝角时符号不同。",
+                "把有向投影长度与 |a|cosθ 的正、零、负连接起来，并轻微衔接数量积符号。"
               ],
               "prerequisites": [
                 "向量的几何表示与夹角",
                 "余弦值的正负",
-                "垂线与直角投影"
+                "垂线、垂足和直角三角形"
               ],
               "successors": [
                 "SH-HS-MATH-HJ-B2-C08-L04-A01",
@@ -11445,16 +11445,34 @@
               ]
             },
             "mathematicalScope": {
-              "focus": "30-45 秒短动画，只串联作垂线、读有向投影、解释 |a| cos theta 的正负，不替代后续交互探索。",
+              "focus": "短动画只串联定方向、作垂线、读有向投影、解释 |a|cosθ 的正零负，不替代后续交互探索。",
               "lesson": "向量的投影",
               "projected_vector": "向量 a",
               "baseline_vector": "向量 b 的方向作为有向轴",
-              "directed_length": "|a| cos theta",
-              "theta_range": "0 <= theta <= pi；锐角为正，直角为 0，钝角为负。",
+              "directed_length": "|a|cosθ",
+              "angle_range": "0 ≤ θ ≤ π；锐角投影长度为正，直角为零，钝角为负。",
+              "dot_product_bridge": "只出现 a·b = |b| × 投影长度，作为下一课数量积定义的入口。",
+              "key_angles": [
+                {
+                  "label": "锐角",
+                  "projection_position": "投影点 H 在 b 的正方向",
+                  "directed_length_sign": "投影长度 = |a|cosθ > 0"
+                },
+                {
+                  "label": "直角",
+                  "projection_position": "投影点 H 与 O 重合",
+                  "directed_length_sign": "投影长度 = 0"
+                },
+                {
+                  "label": "钝角",
+                  "projection_position": "投影点 H 在 b 的反方向",
+                  "directed_length_sign": "投影长度 = |a|cosθ < 0"
+                }
+              ],
               "out_of_scope": [
-                "不展开完整数量积运算律证明。",
+                "不展开完整数量积定义、运算律或应用题。",
                 "不替代 SH-HS-MATH-HJ-B2-C08-L04-A01 的交互探索。",
-                "本 scaffold 只定义分镜和场景骨架，具体动画需在资源生产对话中补齐。"
+                "不处理第 8 章 8.3 暂缓资源或课时边界问题。"
               ]
             },
             "representations": [
@@ -11464,66 +11482,66 @@
               },
               {
                 "id": "vector_a",
-                "role": "表示被投影的向量 a。"
+                "role": "表示被投影的向量 a，随夹角从锐角转到直角再转到钝角。"
               },
               {
                 "id": "perpendicular_drop",
-                "role": "从向量 a 的端点向基准方向作垂线，生成投影点。"
+                "role": "从向量 a 的终点向基准方向作垂线，生成投影点 H。"
               },
               {
                 "id": "directed_segment",
-                "role": "用带方向的线段表示 |a| cos theta 的正、零、负。"
+                "role": "用带方向的线段表示投影长度的正、零、负。"
               }
             ],
             "narrativeDesign": {
-              "targetDurationSeconds": 45,
+              "targetDurationSeconds": 37,
               "beats": [
                 {
                   "id": "set_direction",
                   "title": "先定方向",
                   "purpose": "让学生先把向量 b 的方向看作有正负的读取轴，而不是普通线段。",
                   "visuals": [
-                    "水平有向轴与向量 b。",
-                    "向量 a 从同一起点出发，夹角 theta 标在两向量之间。"
+                    "水平有向轴、向量 b 和反方向提示。",
+                    "向量 a 从同一起点出发，夹角 θ 标在两向量之间。"
                   ],
-                  "estimated_seconds": 10
+                  "estimated_seconds": 8
                 },
                 {
                   "id": "drop_perpendicular",
                   "title": "作垂线读投影点",
-                  "purpose": "从 a 的端点向 b 的方向作垂线，强调投影点落在有向轴上。",
+                  "purpose": "从 a 的终点向 b 的方向作垂线，强调投影点 H 落在有向轴上。",
                   "visuals": [
-                    "从 a 的端点落下垂线。",
+                    "从 a 的终点落下垂线。",
                     "投影点 H 在有向轴上出现，并显示有向线段 OH。"
                   ],
-                  "estimated_seconds": 15
+                  "estimated_seconds": 9
                 },
                 {
                   "id": "compare_signs",
                   "title": "比较正零负",
-                  "purpose": "用锐角、直角、钝角三个占位状态提示有向投影长度的符号变化。",
+                  "purpose": "用锐角、直角、钝角三种状态解释投影长度的符号变化。",
                   "visuals": [
-                    "锐角：H 在正方向，|a| cos theta > 0。",
-                    "直角：H 回到原点，|a| cos theta = 0。",
-                    "钝角：H 在反方向，|a| cos theta < 0。"
+                    "锐角：H 在正方向，投影长度 = |a|cosθ > 0。",
+                    "直角：H 与 O 重合，投影长度 = 0。",
+                    "钝角：H 在反方向，投影长度 = |a|cosθ < 0。"
                   ],
-                  "estimated_seconds": 14
+                  "estimated_seconds": 15
                 },
                 {
                   "id": "connect_formula",
-                  "title": "收束到公式",
-                  "purpose": "把有向长度的正负和数量积 a dot b = |a||b| cos theta 的符号来源相连。",
+                  "title": "轻微衔接数量积",
+                  "purpose": "只把投影长度和数量积符号相连，不展开下一课完整教学。",
                   "visuals": [
-                    "|a| cos theta 标注在有向投影线段上。",
-                    "数量积公式只作为下一课衔接口径出现。"
+                    "保留有向投影线段。",
+                    "出现 a·b = |b| × 投影长度。"
                   ],
-                  "estimated_seconds": 6
+                  "estimated_seconds": 4
                 }
               ],
               "pausePoints": [
                 {
                   "after_beat": "drop_perpendicular",
-                  "teacher_prompt": "如果只看线段长度，哪里会丢掉方向信息？"
+                  "teacher_prompt": "如果只看普通线段长，哪里会丢掉方向信息？"
                 },
                 {
                   "after_beat": "compare_signs",
@@ -11538,23 +11556,26 @@
             },
             "renderPlan": {
               "phase": "scene_draft",
+              "manim_version": "Manim Community v0.20.1 via uvx",
               "scene_class": "DirectedProjectionLengthScene",
               "aspect_ratio": "16:9",
               "resolution": "1920x1080",
               "fps": 30,
-              "background": "white",
+              "background": "light classroom background",
               "output_formats": [
                 "mp4",
                 "webm"
               ],
               "commands": {
-                "preview": "manim -pql scene.py DirectedProjectionLengthScene",
-                "mp4": "manim -qh scene.py DirectedProjectionLengthScene",
-                "webm": "manim -qh --format=webm scene.py DirectedProjectionLengthScene"
+                "preview": "uvx manim -ql --media_dir dist scene.py DirectedProjectionLengthScene",
+                "mp4": "uvx manim -r 1920,1080 --fps 30 --format=mp4 --media_dir dist scene.py DirectedProjectionLengthScene",
+                "webm": "ffmpeg -y -i dist/final/SH-HS-MATH-HJ-B2-C08-L04-M01.mp4 -c:v libvpx-vp9 -b:v 0 -crf 32 -an dist/final/SH-HS-MATH-HJ-B2-C08-L04-M01.webm"
               },
               "notes": [
-                "首版场景为 scaffold，占位动画需由资源生产对话补齐。",
-                "本次不渲染 mp4、webm 或 poster，因此 files 中不填写 dist/final 产物。"
+                "本轮将场景从静态占位推进为可审看的动态草稿，最终视频时长 36.8 秒。",
+                "画面文字使用 θ、cosθ、投影长度、正方向、反方向等中文课堂表达。",
+                "已生成 dist/final 下的 mp4、webm 和 poster；为不改平台/测试文件，平台卡片暂保留 metadata_ready，建议总控后续统一提升为 video_ready。",
+                "poster 选用 34 秒处的钝角读数和最终衔接画面。"
               ]
             },
             "diagnosisDesign": {
@@ -11565,7 +11586,7 @@
             "platformCard": {
               "availability": "metadata_ready",
               "preview_behavior": "metadata_placeholder",
-              "embed_strategy": "先展示 metadata 与 storyboard 摘要；视频渲染通过后再升级为 video_ready。",
+              "embed_strategy": "先展示 metadata 与 storyboard 摘要；本轮已生成 dist/final 视频产物，待总控统一调整平台测试与状态流后再升级为 video_ready。",
               "paired_resources": [
                 "SH-HS-MATH-HJ-B2-C08-L04-A01"
               ]
@@ -11577,15 +11598,15 @@
               "review_record": "review.md"
             },
             "visualSemantics": {
-              "background": "light",
-              "baseline_axis": "基准方向用稳定深色箭头表示。",
-              "vector_a": "被投影向量用强调色表示。",
-              "perpendicular_drop": "垂线用低饱和虚线表示，只承担构造作用。",
-              "directed_segment": "正向投影与负向投影使用同一色系，通过箭头方向和符号区分。",
-              "emphasis_rule": "只高亮 a、b、theta、投影点 H 和有向线段 OH；避免提前铺开完整数量积推导。"
+              "background": "light classroom background",
+              "baseline_axis": "基准方向用稳定深色箭头表示，向量 b 用蓝色表示。",
+              "vector_a": "被投影向量用红色表示，随夹角连续转动。",
+              "perpendicular_drop": "垂线用灰色虚线表示，只承担构造作用。",
+              "directed_segment": "正向投影用绿色，零投影用灰色，负向投影用紫色，并通过箭头方向区分。",
+              "emphasis_rule": "只高亮 a、b、θ、投影点 H 和有向投影线段；数量积只作为末尾衔接。"
             },
             "compliance": {
-              "copyright_note": "本 scaffold 仅生成原创资源骨架，不复制教材正文、官方课件、教案或商业题库。",
+              "copyright_note": "本资源包为原创 Manim 分镜和场景脚本草稿，不复制教材正文、官方课件、教案或商业平台资源。",
               "review_status": "self_checked_draft"
             }
           },
@@ -11632,8 +11653,8 @@
                 "核心叙事",
                 "第 1 幕：先定方向",
                 "第 2 幕：作垂线读投影点",
-                "第 3 幕：比较正零负",
-                "第 4 幕：收束到公式衔接",
+                "第 3 幕：锐角、直角、钝角比较",
+                "第 4 幕：轻微衔接数量积符号",
                 "与 Applet 的衔接"
               ]
             }
@@ -11711,8 +11732,8 @@
           "id": "SH-HS-MATH-HJ-B2-C08-L05-A01",
           "resourceType": "applet",
           "title": "数量积动态解释器",
-          "subtitle": "围绕向量的数量积的定义与运算律的交互式数字教具骨架",
-          "cognitiveAction": "比较",
+          "subtitle": "用夹角、余弦和有向投影解释平面向量数量积的符号",
+          "cognitiveAction": "投影",
           "note": "同步展示两个向量、夹角、投影和数量积数值，突出正、零、负三种区域。",
           "availability": "metadata_ready",
           "status": "draft",
@@ -11723,7 +11744,7 @@
             "status": "draft",
             "resourceType": "applet",
             "title": "数量积动态解释器",
-            "subtitle": "围绕向量的数量积的定义与运算律的交互式数字教具骨架",
+            "subtitle": "用夹角、余弦和有向投影解释平面向量数量积的符号",
             "curriculum": {
               "region": "上海",
               "stage": "高中",
@@ -11740,41 +11761,68 @@
               "lesson_title": "向量的数量积的定义与运算律"
             },
             "pedagogy": {
-              "cognitiveAction": "比较",
+              "cognitiveAction": "投影",
               "estimatedClassroomMinutes": 12,
-              "primaryTeachingProblem": "学生容易把数量积误认为仍是向量，忽略结果是数量。",
+              "primaryTeachingProblem": "学生容易把数量积只当成代数公式，不能用夹角、余弦和投影解释结果为何是正、零或负。",
               "learningGoals": [
-                "围绕向量的数量积的定义与运算律建立可观察、可解释的数学表征。",
-                "用“比较”方式处理关键变量、边界条件和典型错因。",
-                "把交互观察转化为可板书、可追问、可迁移的课堂结论。"
+                "用 a·b = |a||b|cosθ 解释数量积是一个数量，而不是新的向量。",
+                "通过拖动两个向量观察锐角、直角、钝角时 cosθ 和 a·b 的符号变化。",
+                "用 a 在 b 方向上的有向投影长度说明数量积符号来自投影方向。",
+                "区分 a·b = 0 的直角情形和零向量边界，不把零值机械等同于两个非零向量垂直。"
               ],
               "prerequisites": [
-                "向量的数量积的定义与运算律相关先修知识"
+                "向量的夹角",
+                "向量的投影",
+                "锐角、直角、钝角的余弦符号"
               ],
               "successors": [
-                "后续课时学习与综合应用"
+                "SH-HS-MATH-HJ-B2-C08-L06",
+                "SH-HS-MATH-HJ-B2-C08-L09",
+                "SH-HS-MATH-HJ-B2-C08-L10"
               ],
               "coreCompetencies": [
                 "直观想象",
+                "数学抽象",
                 "逻辑推理",
                 "数学运算"
               ]
             },
             "mathematicalScope": {
-              "focus": "同步展示两个向量、夹角、投影和数量积数值，突出正、零、负三种区域。",
+              "focus": "拖动两个共起点向量 a、b，同步显示 θ、cosθ、a 在 b 方向上的有向投影、a·b 和正零负判断。",
               "lesson": "向量的数量积的定义与运算律",
+              "definition": "a·b = |a||b|cosθ",
+              "projection_reading": "当 b 不是零向量时，a·b 等于 |b| 乘以 a 在 b 方向上的有向投影长度。",
+              "sign_rule": "锐角时 a·b > 0，直角时 a·b = 0，钝角时 a·b < 0；零向量时 a·b = 0 但夹角不作为判定依据。",
+              "typical_angles": [
+                "30°",
+                "60°",
+                "90°",
+                "120°",
+                "150°"
+              ],
               "out_of_scope": [
-                "本 scaffold 只定义首版交互骨架，数学细节需在资源生产对话中补齐。"
+                "8.3 向量的坐标表示及坐标公式训练",
+                "数量积运算律的代数证明或题组训练",
+                "向量应用中的距离、垂直或夹角综合题",
+                "暂缓资源或课程图谱调整"
               ]
             },
             "representations": [
               {
-                "id": "interactive_canvas",
-                "role": "承载可拖拽、可观察、可复现的核心数学表征。"
+                "id": "vector_canvas",
+                "role": "在网格中显示共起点向量 a、b、夹角 θ 和可拖拽端点。"
               },
               {
-                "id": "teacher_readout",
-                "role": "为教师提供课堂追问所需的关键状态读数。"
+                "id": "projection_segment",
+                "role": "显示 a 在 b 方向上的有向投影段，区分正方向、零点和反方向。"
+              },
+              {
+                "id": "measurement_readout",
+                "role": "同步显示 |a|、|b|、θ、cosθ、投影长度和 a·b。"
+              },
+              {
+                "id": "sign_explanation",
+                "role": "用锐角、直角、钝角和零向量边界解释数量积符号。"
               }
             ],
             "narrativeDesign": {
@@ -11782,45 +11830,143 @@
               "pausePoints": []
             },
             "interactionDesign": {
-              "primaryControl": "预留一个核心滑块或拖拽控制，后续按知识点定制。",
+              "primaryControl": "拖动向量 a 或 b 的端点，或点击典型角按钮固定 θ。",
               "teacherControls": [
                 "重置",
-                "分步显示",
-                "重点标注"
+                "上一步",
+                "下一步",
+                "典型角切换"
               ],
               "studentControls": [
-                "拖动观察",
-                "记录猜想",
-                "对照结论"
+                "拖动两个向量观察夹角和投影变化",
+                "点击 30°、60°、90°、120°、150° 对照符号",
+                "根据读数判断 a·b 的正、零、负"
               ],
               "stagedReveal": [
                 {
-                  "step": "observe",
-                  "description": "先让学生观察变量变化和图像响应。"
+                  "step": "observe_angle",
+                  "description": "先拖动两个向量，只观察夹角 θ 和数量积是数量这一事实。"
                 },
                 {
-                  "step": "explain",
-                  "description": "再引导学生用符号语言解释观察结果。"
+                  "step": "reveal_projection",
+                  "description": "再显示投影段，观察投影在 b 的正方向、零点或反方向。"
+                },
+                {
+                  "step": "connect_formula",
+                  "description": "揭示 a·b = |a||b|cosθ，把 |a|、|b|、cosθ 和数量积读数对应起来。"
+                },
+                {
+                  "step": "summarize_sign",
+                  "description": "归纳锐角、直角、钝角和零向量边界下的符号判断。"
                 }
               ]
             },
             "dataContract": {
               "state_variables": [
                 {
-                  "name": "current_value",
+                  "name": "vector_a",
+                  "value_type": "point2d",
+                  "description": "共起点向量 a 的终点位置。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "vector_b",
+                  "value_type": "point2d",
+                  "description": "共起点向量 b 的终点位置。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "length_a",
                   "value_type": "number",
-                  "default": 0,
-                  "description": "首版 scaffold 的占位状态变量，后续替换为真实数学变量。",
+                  "default": 4,
+                  "description": "向量 a 的长度 |a|。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "length_b",
+                  "value_type": "number",
+                  "default": 3,
+                  "description": "向量 b 的长度 |b|。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "angle_degrees",
+                  "unit": "degree",
+                  "value_type": "number",
+                  "default": 60,
+                  "description": "两个非零向量的夹角 θ；零向量边界时为空。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "cos_value",
+                  "value_type": "number",
+                  "default": 0.5,
+                  "description": "夹角 θ 的余弦值 cosθ。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "projection_length",
+                  "value_type": "number",
+                  "default": 2,
+                  "description": "a 在 b 方向上的有向投影长度。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "dot_product",
+                  "value_type": "number",
+                  "default": 6,
+                  "description": "当前数量积 a·b 的值。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "sign",
+                  "value_type": "string",
+                  "default": "positive",
+                  "description": "数量积符号，取 positive、zero 或 negative。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "reveal_step",
+                  "value_type": "number",
+                  "default": 1,
+                  "description": "当前分步揭示阶段。",
                   "persistence": "snapshot"
                 }
               ],
               "events": [
                 {
+                  "name": "ready",
+                  "direction": "applet_to_player",
+                  "description": "课件完成初始渲染。",
+                  "payload": [
+                    "vector_a",
+                    "vector_b",
+                    "length_a",
+                    "length_b",
+                    "angle_degrees",
+                    "cos_value",
+                    "projection_length",
+                    "dot_product",
+                    "sign",
+                    "reveal_step"
+                  ],
+                  "required_for_player": true
+                },
+                {
                   "name": "state_changed",
                   "direction": "applet_to_player",
-                  "description": "交互状态变化时通知平台播放器。",
+                  "description": "拖动向量、切换典型角或切换揭示阶段时通知播放器。",
                   "payload": [
-                    "current_value"
+                    "vector_a",
+                    "vector_b",
+                    "length_a",
+                    "length_b",
+                    "angle_degrees",
+                    "cos_value",
+                    "projection_length",
+                    "dot_product",
+                    "sign",
+                    "reveal_step"
                   ],
                   "required_for_player": true
                 }
@@ -11840,25 +11986,47 @@
             },
             "feedbackAndDiagnosis": {
               "success_evidence": [
-                "学生能说清楚观察变量、图像变化和数学结论之间的对应关系。"
+                "学生能用 a·b = |a||b|cosθ 说明数量积结果是数量。",
+                "学生能根据 θ 是锐角、直角或钝角判断 cosθ 与 a·b 的符号。",
+                "学生能指着投影段解释为什么投影在 b 的反方向时数量积为负。",
+                "学生能说出两个非零向量垂直时 a·b = 0，并补充零向量边界不能混同。"
               ],
               "common_error_tags": [
                 {
-                  "id": "representation_gap",
-                  "label": "表征对应断裂"
+                  "id": "dot_product_as_vector",
+                  "label": "把数量积误认为向量"
+                },
+                {
+                  "id": "sign_without_angle",
+                  "label": "脱离夹角判断数量积符号"
+                },
+                {
+                  "id": "projection_sign_gap",
+                  "label": "不能用有向投影解释正负"
+                },
+                {
+                  "id": "zero_product_boundary",
+                  "label": "混淆零向量边界和非零向量垂直"
                 }
               ],
               "feedback_principles": [
-                "反馈先指向可视化证据，再回到符号表达。"
+                "先读 θ 与 cosθ，再判断数量积符号。",
+                "解释负值时回到投影段落在 b 的反方向这一几何证据。",
+                "处理 a·b = 0 时要求学生说明是直角还是零向量边界。"
               ]
             },
             "visualSemantics": {
-              "primary_color": "teal",
-              "emphasis_rule": "当前变量用高对比色标注，历史轨迹和辅助线降低透明度。"
+              "vector_a": "蓝色表示向量 a。",
+              "vector_b": "橙色表示向量 b 及投影方向参照。",
+              "projection_positive": "绿色表示投影在 b 的正方向上。",
+              "projection_zero": "灰色表示投影长度为 0。",
+              "projection_negative": "红色表示投影在 b 的反方向上。",
+              "angle_arc": "青绿色表示两个非零向量的夹角 θ。",
+              "rule": "颜色只承载数学对象和符号含义，不作为装饰。"
             },
             "implementation": {
-              "phase": "content_spec_only",
-              "html_src_status": "scaffolded",
+              "phase": "runnable_prototype",
+              "html_src_status": "runnable",
               "planned_engine": "native-canvas-svg",
               "create_src_in_later_task": false,
               "classroom_device_targets": [
@@ -11868,27 +12036,33 @@
               ]
             },
             "compliance": {
-              "copyright_note": "本 scaffold 仅生成原创资源骨架，不复制教材正文、官方课件、教案或商业题库。",
+              "copyright_note": "本资源为原创交互草稿，不复制教材正文、官方课件、教案或商业题库；第 8 章课时边界仍需纸质教材或已登录平台终核。",
               "review_status": "self_checked_draft"
             }
           },
           "quality": {
             "contentStatus": "draft",
-            "implementationStage": "scaffold",
+            "implementationStage": "runnable",
             "reviewStatus": "self_checked_draft",
-            "readinessLabel": "骨架待精修",
+            "readinessLabel": "可运行预览",
             "displayStates": [
               "draft",
-              "scaffold",
+              "runnable",
               "self_checked_draft"
             ],
             "labels": {
               "contentStatus": "草稿",
-              "implementationStage": "骨架",
+              "implementationStage": "可运行",
               "reviewStatus": "自检草稿"
             }
           },
-          "player": null,
+          "player": {
+            "kind": "iframe",
+            "isRunnable": true,
+            "src": "content/applets/SH-HS-MATH-HJ-B2-C08-L05-A01/src/index.html",
+            "title": "数量积动态解释器",
+            "sandbox": "allow-scripts allow-same-origin"
+          },
           "package": {
             "path": "content/applets/SH-HS-MATH-HJ-B2-C08-L05-A01",
             "files": {
@@ -11906,8 +12080,8 @@
               "summary": "",
               "sections": [
                 "使用时机",
-                "追问方向",
-                "待补充"
+                "课堂流程",
+                "使用建议"
               ]
             },
             "studentTask": {
@@ -11916,8 +12090,10 @@
               "title": "学生活动：数量积动态解释器",
               "summary": "",
               "sections": [
-                "任务",
-                "记录"
+                "任务 1：观察数量积的符号",
+                "任务 2：用投影解释",
+                "任务 3：判断边界",
+                "归纳句"
               ]
             }
           }
@@ -12376,7 +12552,7 @@
           "id": "SH-HS-MATH-HJ-B2-C08-L10-A01",
           "resourceType": "applet",
           "title": "向量法路径比较板",
-          "subtitle": "围绕向量的应用的交互式数字教具骨架",
+          "subtitle": "比较几何路径如何转化为同一个向量等式",
           "cognitiveAction": "分解",
           "note": "限定 1-2 个典型几何问题，只比较基底法、坐标法、数量积法的第一步建模路径，不做通用解题器。",
           "availability": "metadata_ready",
@@ -12388,7 +12564,7 @@
             "status": "draft",
             "resourceType": "applet",
             "title": "向量法路径比较板",
-            "subtitle": "围绕向量的应用的交互式数字教具骨架",
+            "subtitle": "比较几何路径如何转化为同一个向量等式",
             "curriculum": {
               "region": "上海",
               "stage": "高中",
@@ -12406,40 +12582,70 @@
             },
             "pedagogy": {
               "cognitiveAction": "分解",
-              "estimatedClassroomMinutes": 12,
-              "primaryTeachingProblem": "学生面对几何题时不知道先选基底、建坐标还是使用数量积。",
+              "estimatedClassroomMinutes": 16,
+              "primaryTeachingProblem": "学生面对几何题时常急于套公式，缺少先选基向量、再把路径写成向量等式的策略。",
               "learningGoals": [
-                "围绕向量的应用建立可观察、可解释的数学表征。",
-                "用“分解”方式处理关键变量、边界条件和典型错因。",
-                "把交互观察转化为可板书、可追问、可迁移的课堂结论。"
+                "在三角形情境中选择一组基向量，并用它们表示边上点的位置向量。",
+                "比较 D 到 E 的三条几何路径，说明路径不同但向量和相同。",
+                "把 AD/AB、AE/AC 这样的几何关系转化为系数形式的向量等式。",
+                "判断什么时候应先用基向量和路径分解，而不是立即进入坐标法或复杂解析几何。"
               ],
               "prerequisites": [
-                "向量的应用相关先修知识"
+                "向量加法、减法和数乘的几何意义",
+                "用有向线段表示平面向量",
+                "三角形边、分点和中点等基本几何关系",
+                "数量积和坐标表示的基本认识"
               ],
               "successors": [
-                "后续课时学习与综合应用"
+                "SH-HS-MATH-HJ-B2-C09-K01",
+                "SH-HS-MATH-HJ-XB1-SPACEVEC-K01",
+                "SH-HS-MATH-HJ-XB1-ANALYTIC-K01"
               ],
               "coreCompetencies": [
                 "直观想象",
                 "逻辑推理",
-                "数学运算"
+                "数学运算",
+                "数学建模"
               ]
             },
             "mathematicalScope": {
-              "focus": "限定 1-2 个典型几何问题，只比较基底法、坐标法、数量积法的第一步建模路径，不做通用解题器。",
+              "focus": "以三角形 ABC 中 D 在 AB 上、E 在 AC 上为典型情境，比较向量 DE 的不同路径分解。",
               "lesson": "向量的应用",
+              "problem_model": "设 D 在 AB 上，AD/AB = m；E 在 AC 上，AE/AC = n。目标是把向量 DE 写成选定基向量的线性组合。",
+              "primary_basis": "p = AB, q = AC，此时 D = m p，E = n q，DE = -m p + n q。",
+              "alternate_basis": "p = AB, r = BC，此时 AC = p + r，DE = (n - m)p + n r。",
+              "compared_paths": [
+                "D -> A -> E：先回到共同基点 A，再到 E。",
+                "D -> B -> C -> E：沿已知边绕行，用边向量验证同一结果。",
+                "D -> B -> E：先到已知顶点 B，再表达 BE。"
+              ],
               "out_of_scope": [
-                "本 scaffold 只定义首版交互骨架，数学细节需在资源生产对话中补齐。"
+                "不做通用几何题库或完整证明批改器",
+                "不进入 8.3 坐标法的系统训练",
+                "不强行展开复杂解析几何或坐标建系计算",
+                "不处理数量积求角、求长度的完整应用链"
               ]
             },
             "representations": [
               {
-                "id": "interactive_canvas",
-                "role": "承载可拖拽、可观察、可复现的核心数学表征。"
+                "id": "geometry_board",
+                "role": "显示三角形 ABC、分点 D/E、所选基向量和当前路径。"
               },
               {
-                "id": "teacher_readout",
-                "role": "为教师提供课堂追问所需的关键状态读数。"
+                "id": "basis_selector",
+                "role": "比较 AB/AC 与 AB/BC 两种基向量选择对等式表达的影响。"
+              },
+              {
+                "id": "path_trace",
+                "role": "高亮 D 到 E 的不同路径，并把每一段对应到向量和。"
+              },
+              {
+                "id": "equation_readout",
+                "role": "同步显示题设关系、路径等式和化简后的目标向量。"
+              },
+              {
+                "id": "strategy_panel",
+                "role": "帮助教师把“选基向量、选路径、化简比较”作为课堂策略总结。"
               }
             ],
             "narrativeDesign": {
@@ -12447,45 +12653,128 @@
               "pausePoints": []
             },
             "interactionDesign": {
-              "primaryControl": "预留一个核心滑块或拖拽控制，后续按知识点定制。",
+              "primaryControl": "拖动 D、E 或使用比例滑块改变 m = AD/AB 与 n = AE/AC，观察不同路径等式如何同步变化。",
               "teacherControls": [
-                "重置",
-                "分步显示",
-                "重点标注"
+                "重置到默认分点",
+                "切换基向量组",
+                "切换三条路径",
+                "按题设、选基、选路径、化简比较四步揭示",
+                "使用典型分点预设控制课堂节奏"
               ],
               "studentControls": [
-                "拖动观察",
-                "记录猜想",
-                "对照结论"
+                "拖动 D 点改变 m",
+                "拖动 E 点改变 n",
+                "选择不同路径并记录对应的向量等式",
+                "比较不同路径化简后是否得到同一个向量"
               ],
               "stagedReveal": [
                 {
-                  "step": "observe",
-                  "description": "先让学生观察变量变化和图像响应。"
+                  "step": "read_conditions",
+                  "description": "先读 D、E 的分点关系，只确定 m 和 n，不急于计算。"
                 },
                 {
-                  "step": "explain",
-                  "description": "再引导学生用符号语言解释观察结果。"
+                  "step": "choose_basis",
+                  "description": "选择基向量，并把 D、E 的位置写成基向量表达。"
+                },
+                {
+                  "step": "trace_path",
+                  "description": "选择 D 到 E 的一条路径，把每段几何移动翻译成向量和。"
+                },
+                {
+                  "step": "compare_equations",
+                  "description": "化简并比较不同路径，归纳“路径可变，向量和不变”的策略。"
                 }
               ]
             },
             "dataContract": {
               "state_variables": [
                 {
-                  "name": "current_value",
+                  "name": "ratio_m",
                   "value_type": "number",
-                  "default": 0,
-                  "description": "首版 scaffold 的占位状态变量，后续替换为真实数学变量。",
+                  "default": 0.4,
+                  "description": "D 在 AB 上的位置比例，m = AD/AB。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "ratio_n",
+                  "value_type": "number",
+                  "default": 0.65,
+                  "description": "E 在 AC 上的位置比例，n = AE/AC。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "basis_mode",
+                  "value_type": "string",
+                  "default": "ab_ac",
+                  "description": "当前基向量组，ab_ac 表示 AB/AC，ab_bc 表示 AB/BC。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "route_id",
+                  "value_type": "string",
+                  "default": "via_a",
+                  "description": "当前比较路径，via_a、via_edges 或 via_b。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "basis_equation",
+                  "value_type": "string",
+                  "description": "当前基向量选择下 D、E 与 DE 的表达。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "path_delta",
+                  "value_type": "string",
+                  "description": "当前路径对应的向量和及其化简结果。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "reveal_step",
+                  "value_type": "number",
+                  "default": 1,
+                  "description": "当前教师分步揭示阶段。",
                   "persistence": "snapshot"
                 }
               ],
               "events": [
                 {
+                  "name": "ready",
+                  "direction": "applet_to_player",
+                  "description": "课件完成初始渲染。",
+                  "payload": [
+                    "ratio_m",
+                    "ratio_n",
+                    "basis_mode",
+                    "route_id",
+                    "basis_equation",
+                    "path_delta",
+                    "reveal_step"
+                  ],
+                  "required_for_player": true
+                },
+                {
                   "name": "state_changed",
                   "direction": "applet_to_player",
-                  "description": "交互状态变化时通知平台播放器。",
+                  "description": "拖动分点、切换基向量、切换路径或切换揭示阶段时通知播放器。",
                   "payload": [
-                    "current_value"
+                    "ratio_m",
+                    "ratio_n",
+                    "basis_mode",
+                    "route_id",
+                    "basis_equation",
+                    "path_delta",
+                    "reveal_step"
+                  ],
+                  "required_for_player": true
+                },
+                {
+                  "name": "path_selected",
+                  "direction": "applet_to_player",
+                  "description": "教师或学生选择新的路径时单独记录路径比较动作。",
+                  "payload": [
+                    "route_id",
+                    "basis_mode",
+                    "path_delta"
                   ],
                   "required_for_player": true
                 }
@@ -12505,25 +12794,51 @@
             },
             "feedbackAndDiagnosis": {
               "success_evidence": [
-                "学生能说清楚观察变量、图像变化和数学结论之间的对应关系。"
+                "学生能先写出选定基向量，再写 D、E 的位置表达。",
+                "学生能解释 D -> A -> E、D -> B -> C -> E 等不同路径化简后为什么一致。",
+                "学生能把“点在边上”的几何语言转化为 m p、n q 等向量等式。",
+                "学生能说明坐标法可以作为后续工具，但本题第一步更适合先用路径分解。"
               ],
               "common_error_tags": [
+                {
+                  "id": "basis_not_chosen",
+                  "label": "未先选定基向量就开始写式子"
+                },
+                {
+                  "id": "route_sum_gap",
+                  "label": "路径段没有逐段翻译成向量和"
+                },
+                {
+                  "id": "ratio_direction_error",
+                  "label": "分点比例方向写反"
+                },
+                {
+                  "id": "coordinate_overuse",
+                  "label": "不必要地提前进入坐标建系"
+                },
                 {
                   "id": "representation_gap",
                   "label": "表征对应断裂"
                 }
               ],
               "feedback_principles": [
-                "反馈先指向可视化证据，再回到符号表达。"
+                "先让学生用图中路径说出每一段移动，再写符号表达。",
+                "对比例方向错误，回到 AD/AB 和 AE/AC 的起点方向检查。",
+                "对坐标法冲动，先追问“选哪两个向量能表示图中所有点”。",
+                "只比较建模路径，不把本板扩展成完整解题器。"
               ]
             },
             "visualSemantics": {
-              "primary_color": "teal",
-              "emphasis_rule": "当前变量用高对比色标注，历史轨迹和辅助线降低透明度。"
+              "basis_ab": "蓝色表示基向量 AB。",
+              "basis_ac_or_bc": "青绿色表示第二个基向量 AC 或 BC。",
+              "route_trace": "琥珀色表示当前 D 到 E 的路径。",
+              "target_vector": "深红色表示目标向量 DE。",
+              "side_lines": "灰色表示原三角形边和未选路径。",
+              "rule": "颜色只承载数学对象或策略含义，不作为装饰。"
             },
             "implementation": {
-              "phase": "content_spec_only",
-              "html_src_status": "scaffolded",
+              "phase": "runnable_prototype",
+              "html_src_status": "runnable",
               "planned_engine": "native-canvas-svg",
               "create_src_in_later_task": false,
               "classroom_device_targets": [
@@ -12533,27 +12848,33 @@
               ]
             },
             "compliance": {
-              "copyright_note": "本 scaffold 仅生成原创资源骨架，不复制教材正文、官方课件、教案或商业题库。",
+              "copyright_note": "本资源为原创交互草稿，不复制教材正文、官方课件、教案或商业题库；第 8 章课时边界仍需纸质教材或已登录平台终核。",
               "review_status": "self_checked_draft"
             }
           },
           "quality": {
             "contentStatus": "draft",
-            "implementationStage": "scaffold",
+            "implementationStage": "runnable",
             "reviewStatus": "self_checked_draft",
-            "readinessLabel": "骨架待精修",
+            "readinessLabel": "可运行预览",
             "displayStates": [
               "draft",
-              "scaffold",
+              "runnable",
               "self_checked_draft"
             ],
             "labels": {
               "contentStatus": "草稿",
-              "implementationStage": "骨架",
+              "implementationStage": "可运行",
               "reviewStatus": "自检草稿"
             }
           },
-          "player": null,
+          "player": {
+            "kind": "iframe",
+            "isRunnable": true,
+            "src": "content/applets/SH-HS-MATH-HJ-B2-C08-L10-A01/src/index.html",
+            "title": "向量法路径比较板",
+            "sandbox": "allow-scripts allow-same-origin"
+          },
           "package": {
             "path": "content/applets/SH-HS-MATH-HJ-B2-C08-L10-A01",
             "files": {
@@ -12571,8 +12892,9 @@
               "summary": "",
               "sections": [
                 "使用时机",
-                "追问方向",
-                "待补充"
+                "课堂流程",
+                "常见停顿点",
+                "状态边界"
               ]
             },
             "studentTask": {
@@ -12581,8 +12903,12 @@
               "title": "学生活动：向量法路径比较板",
               "summary": "",
               "sections": [
-                "任务",
-                "记录"
+                "活动目标",
+                "1. 读图设元",
+                "2. 路径比较",
+                "3. 换一组基向量",
+                "4. 口头表达",
+                "反思"
               ]
             }
           }
@@ -23575,7 +23901,7 @@
           "id": "SH-HS-MATH-HJ-B2-C08-L04-M01",
           "resourceType": "manim_clip",
           "title": "投影有向长度导入动画",
-          "subtitle": "从作垂线到读有向投影长度的 Manim 场景骨架",
+          "subtitle": "把投影长度的正、零、负看成有向读数",
           "cognitiveAction": "投影",
           "note": "30-45 秒短动画，只串联作垂线、读有向投影、解释 a cos theta 的正负，不替代后续交互探索。",
           "availability": "metadata_ready",
@@ -23587,7 +23913,7 @@
             "status": "draft",
             "resourceType": "manim_clip",
             "title": "投影有向长度导入动画",
-            "subtitle": "从作垂线到读有向投影长度的 Manim 场景骨架",
+            "subtitle": "把投影长度的正、零、负看成有向读数",
             "curriculum": {
               "region": "上海",
               "stage": "高中",
@@ -23606,16 +23932,16 @@
             "pedagogy": {
               "cognitiveAction": "投影",
               "estimatedClassroomMinutes": 6,
-              "primaryTeachingProblem": "学生容易把投影长度看成普通线段长度，忽略它是有方向符号的量。",
+              "primaryTeachingProblem": "学生容易把投影长度看成普通线段长，忽略它是有方向符号的量。",
               "learningGoals": [
-                "看见向量端点向基准方向作垂线后，投影点在有向轴上的位置。",
-                "区分普通线段长度与有向投影长度，解释锐角、直角、钝角时符号不同。",
-                "把有向投影长度与 |a| cos theta 及数量积公式的符号来源连接起来。"
+                "看见向量 a 的终点向向量 b 所在直线作垂线后，投影点在有向轴上的位置。",
+                "区分普通线段长与有向投影长度，解释锐角、直角、钝角时符号不同。",
+                "把有向投影长度与 |a|cosθ 的正、零、负连接起来，并轻微衔接数量积符号。"
               ],
               "prerequisites": [
                 "向量的几何表示与夹角",
                 "余弦值的正负",
-                "垂线与直角投影"
+                "垂线、垂足和直角三角形"
               ],
               "successors": [
                 "SH-HS-MATH-HJ-B2-C08-L04-A01",
@@ -23628,16 +23954,34 @@
               ]
             },
             "mathematicalScope": {
-              "focus": "30-45 秒短动画，只串联作垂线、读有向投影、解释 |a| cos theta 的正负，不替代后续交互探索。",
+              "focus": "短动画只串联定方向、作垂线、读有向投影、解释 |a|cosθ 的正零负，不替代后续交互探索。",
               "lesson": "向量的投影",
               "projected_vector": "向量 a",
               "baseline_vector": "向量 b 的方向作为有向轴",
-              "directed_length": "|a| cos theta",
-              "theta_range": "0 <= theta <= pi；锐角为正，直角为 0，钝角为负。",
+              "directed_length": "|a|cosθ",
+              "angle_range": "0 ≤ θ ≤ π；锐角投影长度为正，直角为零，钝角为负。",
+              "dot_product_bridge": "只出现 a·b = |b| × 投影长度，作为下一课数量积定义的入口。",
+              "key_angles": [
+                {
+                  "label": "锐角",
+                  "projection_position": "投影点 H 在 b 的正方向",
+                  "directed_length_sign": "投影长度 = |a|cosθ > 0"
+                },
+                {
+                  "label": "直角",
+                  "projection_position": "投影点 H 与 O 重合",
+                  "directed_length_sign": "投影长度 = 0"
+                },
+                {
+                  "label": "钝角",
+                  "projection_position": "投影点 H 在 b 的反方向",
+                  "directed_length_sign": "投影长度 = |a|cosθ < 0"
+                }
+              ],
               "out_of_scope": [
-                "不展开完整数量积运算律证明。",
+                "不展开完整数量积定义、运算律或应用题。",
                 "不替代 SH-HS-MATH-HJ-B2-C08-L04-A01 的交互探索。",
-                "本 scaffold 只定义分镜和场景骨架，具体动画需在资源生产对话中补齐。"
+                "不处理第 8 章 8.3 暂缓资源或课时边界问题。"
               ]
             },
             "representations": [
@@ -23647,66 +23991,66 @@
               },
               {
                 "id": "vector_a",
-                "role": "表示被投影的向量 a。"
+                "role": "表示被投影的向量 a，随夹角从锐角转到直角再转到钝角。"
               },
               {
                 "id": "perpendicular_drop",
-                "role": "从向量 a 的端点向基准方向作垂线，生成投影点。"
+                "role": "从向量 a 的终点向基准方向作垂线，生成投影点 H。"
               },
               {
                 "id": "directed_segment",
-                "role": "用带方向的线段表示 |a| cos theta 的正、零、负。"
+                "role": "用带方向的线段表示投影长度的正、零、负。"
               }
             ],
             "narrativeDesign": {
-              "targetDurationSeconds": 45,
+              "targetDurationSeconds": 37,
               "beats": [
                 {
                   "id": "set_direction",
                   "title": "先定方向",
                   "purpose": "让学生先把向量 b 的方向看作有正负的读取轴，而不是普通线段。",
                   "visuals": [
-                    "水平有向轴与向量 b。",
-                    "向量 a 从同一起点出发，夹角 theta 标在两向量之间。"
+                    "水平有向轴、向量 b 和反方向提示。",
+                    "向量 a 从同一起点出发，夹角 θ 标在两向量之间。"
                   ],
-                  "estimated_seconds": 10
+                  "estimated_seconds": 8
                 },
                 {
                   "id": "drop_perpendicular",
                   "title": "作垂线读投影点",
-                  "purpose": "从 a 的端点向 b 的方向作垂线，强调投影点落在有向轴上。",
+                  "purpose": "从 a 的终点向 b 的方向作垂线，强调投影点 H 落在有向轴上。",
                   "visuals": [
-                    "从 a 的端点落下垂线。",
+                    "从 a 的终点落下垂线。",
                     "投影点 H 在有向轴上出现，并显示有向线段 OH。"
                   ],
-                  "estimated_seconds": 15
+                  "estimated_seconds": 9
                 },
                 {
                   "id": "compare_signs",
                   "title": "比较正零负",
-                  "purpose": "用锐角、直角、钝角三个占位状态提示有向投影长度的符号变化。",
+                  "purpose": "用锐角、直角、钝角三种状态解释投影长度的符号变化。",
                   "visuals": [
-                    "锐角：H 在正方向，|a| cos theta > 0。",
-                    "直角：H 回到原点，|a| cos theta = 0。",
-                    "钝角：H 在反方向，|a| cos theta < 0。"
+                    "锐角：H 在正方向，投影长度 = |a|cosθ > 0。",
+                    "直角：H 与 O 重合，投影长度 = 0。",
+                    "钝角：H 在反方向，投影长度 = |a|cosθ < 0。"
                   ],
-                  "estimated_seconds": 14
+                  "estimated_seconds": 15
                 },
                 {
                   "id": "connect_formula",
-                  "title": "收束到公式",
-                  "purpose": "把有向长度的正负和数量积 a dot b = |a||b| cos theta 的符号来源相连。",
+                  "title": "轻微衔接数量积",
+                  "purpose": "只把投影长度和数量积符号相连，不展开下一课完整教学。",
                   "visuals": [
-                    "|a| cos theta 标注在有向投影线段上。",
-                    "数量积公式只作为下一课衔接口径出现。"
+                    "保留有向投影线段。",
+                    "出现 a·b = |b| × 投影长度。"
                   ],
-                  "estimated_seconds": 6
+                  "estimated_seconds": 4
                 }
               ],
               "pausePoints": [
                 {
                   "after_beat": "drop_perpendicular",
-                  "teacher_prompt": "如果只看线段长度，哪里会丢掉方向信息？"
+                  "teacher_prompt": "如果只看普通线段长，哪里会丢掉方向信息？"
                 },
                 {
                   "after_beat": "compare_signs",
@@ -23721,23 +24065,26 @@
             },
             "renderPlan": {
               "phase": "scene_draft",
+              "manim_version": "Manim Community v0.20.1 via uvx",
               "scene_class": "DirectedProjectionLengthScene",
               "aspect_ratio": "16:9",
               "resolution": "1920x1080",
               "fps": 30,
-              "background": "white",
+              "background": "light classroom background",
               "output_formats": [
                 "mp4",
                 "webm"
               ],
               "commands": {
-                "preview": "manim -pql scene.py DirectedProjectionLengthScene",
-                "mp4": "manim -qh scene.py DirectedProjectionLengthScene",
-                "webm": "manim -qh --format=webm scene.py DirectedProjectionLengthScene"
+                "preview": "uvx manim -ql --media_dir dist scene.py DirectedProjectionLengthScene",
+                "mp4": "uvx manim -r 1920,1080 --fps 30 --format=mp4 --media_dir dist scene.py DirectedProjectionLengthScene",
+                "webm": "ffmpeg -y -i dist/final/SH-HS-MATH-HJ-B2-C08-L04-M01.mp4 -c:v libvpx-vp9 -b:v 0 -crf 32 -an dist/final/SH-HS-MATH-HJ-B2-C08-L04-M01.webm"
               },
               "notes": [
-                "首版场景为 scaffold，占位动画需由资源生产对话补齐。",
-                "本次不渲染 mp4、webm 或 poster，因此 files 中不填写 dist/final 产物。"
+                "本轮将场景从静态占位推进为可审看的动态草稿，最终视频时长 36.8 秒。",
+                "画面文字使用 θ、cosθ、投影长度、正方向、反方向等中文课堂表达。",
+                "已生成 dist/final 下的 mp4、webm 和 poster；为不改平台/测试文件，平台卡片暂保留 metadata_ready，建议总控后续统一提升为 video_ready。",
+                "poster 选用 34 秒处的钝角读数和最终衔接画面。"
               ]
             },
             "diagnosisDesign": {
@@ -23748,7 +24095,7 @@
             "platformCard": {
               "availability": "metadata_ready",
               "preview_behavior": "metadata_placeholder",
-              "embed_strategy": "先展示 metadata 与 storyboard 摘要；视频渲染通过后再升级为 video_ready。",
+              "embed_strategy": "先展示 metadata 与 storyboard 摘要；本轮已生成 dist/final 视频产物，待总控统一调整平台测试与状态流后再升级为 video_ready。",
               "paired_resources": [
                 "SH-HS-MATH-HJ-B2-C08-L04-A01"
               ]
@@ -23760,15 +24107,15 @@
               "review_record": "review.md"
             },
             "visualSemantics": {
-              "background": "light",
-              "baseline_axis": "基准方向用稳定深色箭头表示。",
-              "vector_a": "被投影向量用强调色表示。",
-              "perpendicular_drop": "垂线用低饱和虚线表示，只承担构造作用。",
-              "directed_segment": "正向投影与负向投影使用同一色系，通过箭头方向和符号区分。",
-              "emphasis_rule": "只高亮 a、b、theta、投影点 H 和有向线段 OH；避免提前铺开完整数量积推导。"
+              "background": "light classroom background",
+              "baseline_axis": "基准方向用稳定深色箭头表示，向量 b 用蓝色表示。",
+              "vector_a": "被投影向量用红色表示，随夹角连续转动。",
+              "perpendicular_drop": "垂线用灰色虚线表示，只承担构造作用。",
+              "directed_segment": "正向投影用绿色，零投影用灰色，负向投影用紫色，并通过箭头方向区分。",
+              "emphasis_rule": "只高亮 a、b、θ、投影点 H 和有向投影线段；数量积只作为末尾衔接。"
             },
             "compliance": {
-              "copyright_note": "本 scaffold 仅生成原创资源骨架，不复制教材正文、官方课件、教案或商业题库。",
+              "copyright_note": "本资源包为原创 Manim 分镜和场景脚本草稿，不复制教材正文、官方课件、教案或商业平台资源。",
               "review_status": "self_checked_draft"
             }
           },
@@ -23815,8 +24162,8 @@
                 "核心叙事",
                 "第 1 幕：先定方向",
                 "第 2 幕：作垂线读投影点",
-                "第 3 幕：比较正零负",
-                "第 4 幕：收束到公式衔接",
+                "第 3 幕：锐角、直角、钝角比较",
+                "第 4 幕：轻微衔接数量积符号",
                 "与 Applet 的衔接"
               ]
             }
@@ -23894,8 +24241,8 @@
           "id": "SH-HS-MATH-HJ-B2-C08-L05-A01",
           "resourceType": "applet",
           "title": "数量积动态解释器",
-          "subtitle": "围绕向量的数量积的定义与运算律的交互式数字教具骨架",
-          "cognitiveAction": "比较",
+          "subtitle": "用夹角、余弦和有向投影解释平面向量数量积的符号",
+          "cognitiveAction": "投影",
           "note": "同步展示两个向量、夹角、投影和数量积数值，突出正、零、负三种区域。",
           "availability": "metadata_ready",
           "status": "draft",
@@ -23906,7 +24253,7 @@
             "status": "draft",
             "resourceType": "applet",
             "title": "数量积动态解释器",
-            "subtitle": "围绕向量的数量积的定义与运算律的交互式数字教具骨架",
+            "subtitle": "用夹角、余弦和有向投影解释平面向量数量积的符号",
             "curriculum": {
               "region": "上海",
               "stage": "高中",
@@ -23923,41 +24270,68 @@
               "lesson_title": "向量的数量积的定义与运算律"
             },
             "pedagogy": {
-              "cognitiveAction": "比较",
+              "cognitiveAction": "投影",
               "estimatedClassroomMinutes": 12,
-              "primaryTeachingProblem": "学生容易把数量积误认为仍是向量，忽略结果是数量。",
+              "primaryTeachingProblem": "学生容易把数量积只当成代数公式，不能用夹角、余弦和投影解释结果为何是正、零或负。",
               "learningGoals": [
-                "围绕向量的数量积的定义与运算律建立可观察、可解释的数学表征。",
-                "用“比较”方式处理关键变量、边界条件和典型错因。",
-                "把交互观察转化为可板书、可追问、可迁移的课堂结论。"
+                "用 a·b = |a||b|cosθ 解释数量积是一个数量，而不是新的向量。",
+                "通过拖动两个向量观察锐角、直角、钝角时 cosθ 和 a·b 的符号变化。",
+                "用 a 在 b 方向上的有向投影长度说明数量积符号来自投影方向。",
+                "区分 a·b = 0 的直角情形和零向量边界，不把零值机械等同于两个非零向量垂直。"
               ],
               "prerequisites": [
-                "向量的数量积的定义与运算律相关先修知识"
+                "向量的夹角",
+                "向量的投影",
+                "锐角、直角、钝角的余弦符号"
               ],
               "successors": [
-                "后续课时学习与综合应用"
+                "SH-HS-MATH-HJ-B2-C08-L06",
+                "SH-HS-MATH-HJ-B2-C08-L09",
+                "SH-HS-MATH-HJ-B2-C08-L10"
               ],
               "coreCompetencies": [
                 "直观想象",
+                "数学抽象",
                 "逻辑推理",
                 "数学运算"
               ]
             },
             "mathematicalScope": {
-              "focus": "同步展示两个向量、夹角、投影和数量积数值，突出正、零、负三种区域。",
+              "focus": "拖动两个共起点向量 a、b，同步显示 θ、cosθ、a 在 b 方向上的有向投影、a·b 和正零负判断。",
               "lesson": "向量的数量积的定义与运算律",
+              "definition": "a·b = |a||b|cosθ",
+              "projection_reading": "当 b 不是零向量时，a·b 等于 |b| 乘以 a 在 b 方向上的有向投影长度。",
+              "sign_rule": "锐角时 a·b > 0，直角时 a·b = 0，钝角时 a·b < 0；零向量时 a·b = 0 但夹角不作为判定依据。",
+              "typical_angles": [
+                "30°",
+                "60°",
+                "90°",
+                "120°",
+                "150°"
+              ],
               "out_of_scope": [
-                "本 scaffold 只定义首版交互骨架，数学细节需在资源生产对话中补齐。"
+                "8.3 向量的坐标表示及坐标公式训练",
+                "数量积运算律的代数证明或题组训练",
+                "向量应用中的距离、垂直或夹角综合题",
+                "暂缓资源或课程图谱调整"
               ]
             },
             "representations": [
               {
-                "id": "interactive_canvas",
-                "role": "承载可拖拽、可观察、可复现的核心数学表征。"
+                "id": "vector_canvas",
+                "role": "在网格中显示共起点向量 a、b、夹角 θ 和可拖拽端点。"
               },
               {
-                "id": "teacher_readout",
-                "role": "为教师提供课堂追问所需的关键状态读数。"
+                "id": "projection_segment",
+                "role": "显示 a 在 b 方向上的有向投影段，区分正方向、零点和反方向。"
+              },
+              {
+                "id": "measurement_readout",
+                "role": "同步显示 |a|、|b|、θ、cosθ、投影长度和 a·b。"
+              },
+              {
+                "id": "sign_explanation",
+                "role": "用锐角、直角、钝角和零向量边界解释数量积符号。"
               }
             ],
             "narrativeDesign": {
@@ -23965,45 +24339,143 @@
               "pausePoints": []
             },
             "interactionDesign": {
-              "primaryControl": "预留一个核心滑块或拖拽控制，后续按知识点定制。",
+              "primaryControl": "拖动向量 a 或 b 的端点，或点击典型角按钮固定 θ。",
               "teacherControls": [
                 "重置",
-                "分步显示",
-                "重点标注"
+                "上一步",
+                "下一步",
+                "典型角切换"
               ],
               "studentControls": [
-                "拖动观察",
-                "记录猜想",
-                "对照结论"
+                "拖动两个向量观察夹角和投影变化",
+                "点击 30°、60°、90°、120°、150° 对照符号",
+                "根据读数判断 a·b 的正、零、负"
               ],
               "stagedReveal": [
                 {
-                  "step": "observe",
-                  "description": "先让学生观察变量变化和图像响应。"
+                  "step": "observe_angle",
+                  "description": "先拖动两个向量，只观察夹角 θ 和数量积是数量这一事实。"
                 },
                 {
-                  "step": "explain",
-                  "description": "再引导学生用符号语言解释观察结果。"
+                  "step": "reveal_projection",
+                  "description": "再显示投影段，观察投影在 b 的正方向、零点或反方向。"
+                },
+                {
+                  "step": "connect_formula",
+                  "description": "揭示 a·b = |a||b|cosθ，把 |a|、|b|、cosθ 和数量积读数对应起来。"
+                },
+                {
+                  "step": "summarize_sign",
+                  "description": "归纳锐角、直角、钝角和零向量边界下的符号判断。"
                 }
               ]
             },
             "dataContract": {
               "state_variables": [
                 {
-                  "name": "current_value",
+                  "name": "vector_a",
+                  "value_type": "point2d",
+                  "description": "共起点向量 a 的终点位置。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "vector_b",
+                  "value_type": "point2d",
+                  "description": "共起点向量 b 的终点位置。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "length_a",
                   "value_type": "number",
-                  "default": 0,
-                  "description": "首版 scaffold 的占位状态变量，后续替换为真实数学变量。",
+                  "default": 4,
+                  "description": "向量 a 的长度 |a|。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "length_b",
+                  "value_type": "number",
+                  "default": 3,
+                  "description": "向量 b 的长度 |b|。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "angle_degrees",
+                  "unit": "degree",
+                  "value_type": "number",
+                  "default": 60,
+                  "description": "两个非零向量的夹角 θ；零向量边界时为空。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "cos_value",
+                  "value_type": "number",
+                  "default": 0.5,
+                  "description": "夹角 θ 的余弦值 cosθ。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "projection_length",
+                  "value_type": "number",
+                  "default": 2,
+                  "description": "a 在 b 方向上的有向投影长度。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "dot_product",
+                  "value_type": "number",
+                  "default": 6,
+                  "description": "当前数量积 a·b 的值。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "sign",
+                  "value_type": "string",
+                  "default": "positive",
+                  "description": "数量积符号，取 positive、zero 或 negative。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "reveal_step",
+                  "value_type": "number",
+                  "default": 1,
+                  "description": "当前分步揭示阶段。",
                   "persistence": "snapshot"
                 }
               ],
               "events": [
                 {
+                  "name": "ready",
+                  "direction": "applet_to_player",
+                  "description": "课件完成初始渲染。",
+                  "payload": [
+                    "vector_a",
+                    "vector_b",
+                    "length_a",
+                    "length_b",
+                    "angle_degrees",
+                    "cos_value",
+                    "projection_length",
+                    "dot_product",
+                    "sign",
+                    "reveal_step"
+                  ],
+                  "required_for_player": true
+                },
+                {
                   "name": "state_changed",
                   "direction": "applet_to_player",
-                  "description": "交互状态变化时通知平台播放器。",
+                  "description": "拖动向量、切换典型角或切换揭示阶段时通知播放器。",
                   "payload": [
-                    "current_value"
+                    "vector_a",
+                    "vector_b",
+                    "length_a",
+                    "length_b",
+                    "angle_degrees",
+                    "cos_value",
+                    "projection_length",
+                    "dot_product",
+                    "sign",
+                    "reveal_step"
                   ],
                   "required_for_player": true
                 }
@@ -24023,25 +24495,47 @@
             },
             "feedbackAndDiagnosis": {
               "success_evidence": [
-                "学生能说清楚观察变量、图像变化和数学结论之间的对应关系。"
+                "学生能用 a·b = |a||b|cosθ 说明数量积结果是数量。",
+                "学生能根据 θ 是锐角、直角或钝角判断 cosθ 与 a·b 的符号。",
+                "学生能指着投影段解释为什么投影在 b 的反方向时数量积为负。",
+                "学生能说出两个非零向量垂直时 a·b = 0，并补充零向量边界不能混同。"
               ],
               "common_error_tags": [
                 {
-                  "id": "representation_gap",
-                  "label": "表征对应断裂"
+                  "id": "dot_product_as_vector",
+                  "label": "把数量积误认为向量"
+                },
+                {
+                  "id": "sign_without_angle",
+                  "label": "脱离夹角判断数量积符号"
+                },
+                {
+                  "id": "projection_sign_gap",
+                  "label": "不能用有向投影解释正负"
+                },
+                {
+                  "id": "zero_product_boundary",
+                  "label": "混淆零向量边界和非零向量垂直"
                 }
               ],
               "feedback_principles": [
-                "反馈先指向可视化证据，再回到符号表达。"
+                "先读 θ 与 cosθ，再判断数量积符号。",
+                "解释负值时回到投影段落在 b 的反方向这一几何证据。",
+                "处理 a·b = 0 时要求学生说明是直角还是零向量边界。"
               ]
             },
             "visualSemantics": {
-              "primary_color": "teal",
-              "emphasis_rule": "当前变量用高对比色标注，历史轨迹和辅助线降低透明度。"
+              "vector_a": "蓝色表示向量 a。",
+              "vector_b": "橙色表示向量 b 及投影方向参照。",
+              "projection_positive": "绿色表示投影在 b 的正方向上。",
+              "projection_zero": "灰色表示投影长度为 0。",
+              "projection_negative": "红色表示投影在 b 的反方向上。",
+              "angle_arc": "青绿色表示两个非零向量的夹角 θ。",
+              "rule": "颜色只承载数学对象和符号含义，不作为装饰。"
             },
             "implementation": {
-              "phase": "content_spec_only",
-              "html_src_status": "scaffolded",
+              "phase": "runnable_prototype",
+              "html_src_status": "runnable",
               "planned_engine": "native-canvas-svg",
               "create_src_in_later_task": false,
               "classroom_device_targets": [
@@ -24051,27 +24545,33 @@
               ]
             },
             "compliance": {
-              "copyright_note": "本 scaffold 仅生成原创资源骨架，不复制教材正文、官方课件、教案或商业题库。",
+              "copyright_note": "本资源为原创交互草稿，不复制教材正文、官方课件、教案或商业题库；第 8 章课时边界仍需纸质教材或已登录平台终核。",
               "review_status": "self_checked_draft"
             }
           },
           "quality": {
             "contentStatus": "draft",
-            "implementationStage": "scaffold",
+            "implementationStage": "runnable",
             "reviewStatus": "self_checked_draft",
-            "readinessLabel": "骨架待精修",
+            "readinessLabel": "可运行预览",
             "displayStates": [
               "draft",
-              "scaffold",
+              "runnable",
               "self_checked_draft"
             ],
             "labels": {
               "contentStatus": "草稿",
-              "implementationStage": "骨架",
+              "implementationStage": "可运行",
               "reviewStatus": "自检草稿"
             }
           },
-          "player": null,
+          "player": {
+            "kind": "iframe",
+            "isRunnable": true,
+            "src": "content/applets/SH-HS-MATH-HJ-B2-C08-L05-A01/src/index.html",
+            "title": "数量积动态解释器",
+            "sandbox": "allow-scripts allow-same-origin"
+          },
           "package": {
             "path": "content/applets/SH-HS-MATH-HJ-B2-C08-L05-A01",
             "files": {
@@ -24089,8 +24589,8 @@
               "summary": "",
               "sections": [
                 "使用时机",
-                "追问方向",
-                "待补充"
+                "课堂流程",
+                "使用建议"
               ]
             },
             "studentTask": {
@@ -24099,8 +24599,10 @@
               "title": "学生活动：数量积动态解释器",
               "summary": "",
               "sections": [
-                "任务",
-                "记录"
+                "任务 1：观察数量积的符号",
+                "任务 2：用投影解释",
+                "任务 3：判断边界",
+                "归纳句"
               ]
             }
           }
@@ -24559,7 +25061,7 @@
           "id": "SH-HS-MATH-HJ-B2-C08-L10-A01",
           "resourceType": "applet",
           "title": "向量法路径比较板",
-          "subtitle": "围绕向量的应用的交互式数字教具骨架",
+          "subtitle": "比较几何路径如何转化为同一个向量等式",
           "cognitiveAction": "分解",
           "note": "限定 1-2 个典型几何问题，只比较基底法、坐标法、数量积法的第一步建模路径，不做通用解题器。",
           "availability": "metadata_ready",
@@ -24571,7 +25073,7 @@
             "status": "draft",
             "resourceType": "applet",
             "title": "向量法路径比较板",
-            "subtitle": "围绕向量的应用的交互式数字教具骨架",
+            "subtitle": "比较几何路径如何转化为同一个向量等式",
             "curriculum": {
               "region": "上海",
               "stage": "高中",
@@ -24589,40 +25091,70 @@
             },
             "pedagogy": {
               "cognitiveAction": "分解",
-              "estimatedClassroomMinutes": 12,
-              "primaryTeachingProblem": "学生面对几何题时不知道先选基底、建坐标还是使用数量积。",
+              "estimatedClassroomMinutes": 16,
+              "primaryTeachingProblem": "学生面对几何题时常急于套公式，缺少先选基向量、再把路径写成向量等式的策略。",
               "learningGoals": [
-                "围绕向量的应用建立可观察、可解释的数学表征。",
-                "用“分解”方式处理关键变量、边界条件和典型错因。",
-                "把交互观察转化为可板书、可追问、可迁移的课堂结论。"
+                "在三角形情境中选择一组基向量，并用它们表示边上点的位置向量。",
+                "比较 D 到 E 的三条几何路径，说明路径不同但向量和相同。",
+                "把 AD/AB、AE/AC 这样的几何关系转化为系数形式的向量等式。",
+                "判断什么时候应先用基向量和路径分解，而不是立即进入坐标法或复杂解析几何。"
               ],
               "prerequisites": [
-                "向量的应用相关先修知识"
+                "向量加法、减法和数乘的几何意义",
+                "用有向线段表示平面向量",
+                "三角形边、分点和中点等基本几何关系",
+                "数量积和坐标表示的基本认识"
               ],
               "successors": [
-                "后续课时学习与综合应用"
+                "SH-HS-MATH-HJ-B2-C09-K01",
+                "SH-HS-MATH-HJ-XB1-SPACEVEC-K01",
+                "SH-HS-MATH-HJ-XB1-ANALYTIC-K01"
               ],
               "coreCompetencies": [
                 "直观想象",
                 "逻辑推理",
-                "数学运算"
+                "数学运算",
+                "数学建模"
               ]
             },
             "mathematicalScope": {
-              "focus": "限定 1-2 个典型几何问题，只比较基底法、坐标法、数量积法的第一步建模路径，不做通用解题器。",
+              "focus": "以三角形 ABC 中 D 在 AB 上、E 在 AC 上为典型情境，比较向量 DE 的不同路径分解。",
               "lesson": "向量的应用",
+              "problem_model": "设 D 在 AB 上，AD/AB = m；E 在 AC 上，AE/AC = n。目标是把向量 DE 写成选定基向量的线性组合。",
+              "primary_basis": "p = AB, q = AC，此时 D = m p，E = n q，DE = -m p + n q。",
+              "alternate_basis": "p = AB, r = BC，此时 AC = p + r，DE = (n - m)p + n r。",
+              "compared_paths": [
+                "D -> A -> E：先回到共同基点 A，再到 E。",
+                "D -> B -> C -> E：沿已知边绕行，用边向量验证同一结果。",
+                "D -> B -> E：先到已知顶点 B，再表达 BE。"
+              ],
               "out_of_scope": [
-                "本 scaffold 只定义首版交互骨架，数学细节需在资源生产对话中补齐。"
+                "不做通用几何题库或完整证明批改器",
+                "不进入 8.3 坐标法的系统训练",
+                "不强行展开复杂解析几何或坐标建系计算",
+                "不处理数量积求角、求长度的完整应用链"
               ]
             },
             "representations": [
               {
-                "id": "interactive_canvas",
-                "role": "承载可拖拽、可观察、可复现的核心数学表征。"
+                "id": "geometry_board",
+                "role": "显示三角形 ABC、分点 D/E、所选基向量和当前路径。"
               },
               {
-                "id": "teacher_readout",
-                "role": "为教师提供课堂追问所需的关键状态读数。"
+                "id": "basis_selector",
+                "role": "比较 AB/AC 与 AB/BC 两种基向量选择对等式表达的影响。"
+              },
+              {
+                "id": "path_trace",
+                "role": "高亮 D 到 E 的不同路径，并把每一段对应到向量和。"
+              },
+              {
+                "id": "equation_readout",
+                "role": "同步显示题设关系、路径等式和化简后的目标向量。"
+              },
+              {
+                "id": "strategy_panel",
+                "role": "帮助教师把“选基向量、选路径、化简比较”作为课堂策略总结。"
               }
             ],
             "narrativeDesign": {
@@ -24630,45 +25162,128 @@
               "pausePoints": []
             },
             "interactionDesign": {
-              "primaryControl": "预留一个核心滑块或拖拽控制，后续按知识点定制。",
+              "primaryControl": "拖动 D、E 或使用比例滑块改变 m = AD/AB 与 n = AE/AC，观察不同路径等式如何同步变化。",
               "teacherControls": [
-                "重置",
-                "分步显示",
-                "重点标注"
+                "重置到默认分点",
+                "切换基向量组",
+                "切换三条路径",
+                "按题设、选基、选路径、化简比较四步揭示",
+                "使用典型分点预设控制课堂节奏"
               ],
               "studentControls": [
-                "拖动观察",
-                "记录猜想",
-                "对照结论"
+                "拖动 D 点改变 m",
+                "拖动 E 点改变 n",
+                "选择不同路径并记录对应的向量等式",
+                "比较不同路径化简后是否得到同一个向量"
               ],
               "stagedReveal": [
                 {
-                  "step": "observe",
-                  "description": "先让学生观察变量变化和图像响应。"
+                  "step": "read_conditions",
+                  "description": "先读 D、E 的分点关系，只确定 m 和 n，不急于计算。"
                 },
                 {
-                  "step": "explain",
-                  "description": "再引导学生用符号语言解释观察结果。"
+                  "step": "choose_basis",
+                  "description": "选择基向量，并把 D、E 的位置写成基向量表达。"
+                },
+                {
+                  "step": "trace_path",
+                  "description": "选择 D 到 E 的一条路径，把每段几何移动翻译成向量和。"
+                },
+                {
+                  "step": "compare_equations",
+                  "description": "化简并比较不同路径，归纳“路径可变，向量和不变”的策略。"
                 }
               ]
             },
             "dataContract": {
               "state_variables": [
                 {
-                  "name": "current_value",
+                  "name": "ratio_m",
                   "value_type": "number",
-                  "default": 0,
-                  "description": "首版 scaffold 的占位状态变量，后续替换为真实数学变量。",
+                  "default": 0.4,
+                  "description": "D 在 AB 上的位置比例，m = AD/AB。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "ratio_n",
+                  "value_type": "number",
+                  "default": 0.65,
+                  "description": "E 在 AC 上的位置比例，n = AE/AC。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "basis_mode",
+                  "value_type": "string",
+                  "default": "ab_ac",
+                  "description": "当前基向量组，ab_ac 表示 AB/AC，ab_bc 表示 AB/BC。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "route_id",
+                  "value_type": "string",
+                  "default": "via_a",
+                  "description": "当前比较路径，via_a、via_edges 或 via_b。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "basis_equation",
+                  "value_type": "string",
+                  "description": "当前基向量选择下 D、E 与 DE 的表达。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "path_delta",
+                  "value_type": "string",
+                  "description": "当前路径对应的向量和及其化简结果。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "reveal_step",
+                  "value_type": "number",
+                  "default": 1,
+                  "description": "当前教师分步揭示阶段。",
                   "persistence": "snapshot"
                 }
               ],
               "events": [
                 {
+                  "name": "ready",
+                  "direction": "applet_to_player",
+                  "description": "课件完成初始渲染。",
+                  "payload": [
+                    "ratio_m",
+                    "ratio_n",
+                    "basis_mode",
+                    "route_id",
+                    "basis_equation",
+                    "path_delta",
+                    "reveal_step"
+                  ],
+                  "required_for_player": true
+                },
+                {
                   "name": "state_changed",
                   "direction": "applet_to_player",
-                  "description": "交互状态变化时通知平台播放器。",
+                  "description": "拖动分点、切换基向量、切换路径或切换揭示阶段时通知播放器。",
                   "payload": [
-                    "current_value"
+                    "ratio_m",
+                    "ratio_n",
+                    "basis_mode",
+                    "route_id",
+                    "basis_equation",
+                    "path_delta",
+                    "reveal_step"
+                  ],
+                  "required_for_player": true
+                },
+                {
+                  "name": "path_selected",
+                  "direction": "applet_to_player",
+                  "description": "教师或学生选择新的路径时单独记录路径比较动作。",
+                  "payload": [
+                    "route_id",
+                    "basis_mode",
+                    "path_delta"
                   ],
                   "required_for_player": true
                 }
@@ -24688,25 +25303,51 @@
             },
             "feedbackAndDiagnosis": {
               "success_evidence": [
-                "学生能说清楚观察变量、图像变化和数学结论之间的对应关系。"
+                "学生能先写出选定基向量，再写 D、E 的位置表达。",
+                "学生能解释 D -> A -> E、D -> B -> C -> E 等不同路径化简后为什么一致。",
+                "学生能把“点在边上”的几何语言转化为 m p、n q 等向量等式。",
+                "学生能说明坐标法可以作为后续工具，但本题第一步更适合先用路径分解。"
               ],
               "common_error_tags": [
+                {
+                  "id": "basis_not_chosen",
+                  "label": "未先选定基向量就开始写式子"
+                },
+                {
+                  "id": "route_sum_gap",
+                  "label": "路径段没有逐段翻译成向量和"
+                },
+                {
+                  "id": "ratio_direction_error",
+                  "label": "分点比例方向写反"
+                },
+                {
+                  "id": "coordinate_overuse",
+                  "label": "不必要地提前进入坐标建系"
+                },
                 {
                   "id": "representation_gap",
                   "label": "表征对应断裂"
                 }
               ],
               "feedback_principles": [
-                "反馈先指向可视化证据，再回到符号表达。"
+                "先让学生用图中路径说出每一段移动，再写符号表达。",
+                "对比例方向错误，回到 AD/AB 和 AE/AC 的起点方向检查。",
+                "对坐标法冲动，先追问“选哪两个向量能表示图中所有点”。",
+                "只比较建模路径，不把本板扩展成完整解题器。"
               ]
             },
             "visualSemantics": {
-              "primary_color": "teal",
-              "emphasis_rule": "当前变量用高对比色标注，历史轨迹和辅助线降低透明度。"
+              "basis_ab": "蓝色表示基向量 AB。",
+              "basis_ac_or_bc": "青绿色表示第二个基向量 AC 或 BC。",
+              "route_trace": "琥珀色表示当前 D 到 E 的路径。",
+              "target_vector": "深红色表示目标向量 DE。",
+              "side_lines": "灰色表示原三角形边和未选路径。",
+              "rule": "颜色只承载数学对象或策略含义，不作为装饰。"
             },
             "implementation": {
-              "phase": "content_spec_only",
-              "html_src_status": "scaffolded",
+              "phase": "runnable_prototype",
+              "html_src_status": "runnable",
               "planned_engine": "native-canvas-svg",
               "create_src_in_later_task": false,
               "classroom_device_targets": [
@@ -24716,27 +25357,33 @@
               ]
             },
             "compliance": {
-              "copyright_note": "本 scaffold 仅生成原创资源骨架，不复制教材正文、官方课件、教案或商业题库。",
+              "copyright_note": "本资源为原创交互草稿，不复制教材正文、官方课件、教案或商业题库；第 8 章课时边界仍需纸质教材或已登录平台终核。",
               "review_status": "self_checked_draft"
             }
           },
           "quality": {
             "contentStatus": "draft",
-            "implementationStage": "scaffold",
+            "implementationStage": "runnable",
             "reviewStatus": "self_checked_draft",
-            "readinessLabel": "骨架待精修",
+            "readinessLabel": "可运行预览",
             "displayStates": [
               "draft",
-              "scaffold",
+              "runnable",
               "self_checked_draft"
             ],
             "labels": {
               "contentStatus": "草稿",
-              "implementationStage": "骨架",
+              "implementationStage": "可运行",
               "reviewStatus": "自检草稿"
             }
           },
-          "player": null,
+          "player": {
+            "kind": "iframe",
+            "isRunnable": true,
+            "src": "content/applets/SH-HS-MATH-HJ-B2-C08-L10-A01/src/index.html",
+            "title": "向量法路径比较板",
+            "sandbox": "allow-scripts allow-same-origin"
+          },
           "package": {
             "path": "content/applets/SH-HS-MATH-HJ-B2-C08-L10-A01",
             "files": {
@@ -24754,8 +25401,9 @@
               "summary": "",
               "sections": [
                 "使用时机",
-                "追问方向",
-                "待补充"
+                "课堂流程",
+                "常见停顿点",
+                "状态边界"
               ]
             },
             "studentTask": {
@@ -24764,8 +25412,12 @@
               "title": "学生活动：向量法路径比较板",
               "summary": "",
               "sections": [
-                "任务",
-                "记录"
+                "活动目标",
+                "1. 读图设元",
+                "2. 路径比较",
+                "3. 换一组基向量",
+                "4. 口头表达",
+                "反思"
               ]
             }
           }
@@ -26934,7 +27586,7 @@
       "id": "SH-HS-MATH-HJ-B2-C08-L04-M01",
       "resourceType": "manim_clip",
       "title": "投影有向长度导入动画",
-      "subtitle": "从作垂线到读有向投影长度的 Manim 场景骨架",
+      "subtitle": "把投影长度的正、零、负看成有向读数",
       "note": "30-45 秒短动画，只串联作垂线、读有向投影、解释 a cos theta 的正负，不替代后续交互探索。",
       "cognitiveAction": "投影",
       "availability": "metadata_ready",
@@ -26974,9 +27626,9 @@
       "id": "SH-HS-MATH-HJ-B2-C08-L05-A01",
       "resourceType": "applet",
       "title": "数量积动态解释器",
-      "subtitle": "围绕向量的数量积的定义与运算律的交互式数字教具骨架",
+      "subtitle": "用夹角、余弦和有向投影解释平面向量数量积的符号",
       "note": "同步展示两个向量、夹角、投影和数量积数值，突出正、零、负三种区域。",
-      "cognitiveAction": "比较",
+      "cognitiveAction": "投影",
       "availability": "metadata_ready",
       "status": "draft",
       "version": "0.1.0",
@@ -26993,21 +27645,27 @@
       "sectionTextbookLabel": "8.2",
       "quality": {
         "contentStatus": "draft",
-        "implementationStage": "scaffold",
+        "implementationStage": "runnable",
         "reviewStatus": "self_checked_draft",
-        "readinessLabel": "骨架待精修",
+        "readinessLabel": "可运行预览",
         "displayStates": [
           "draft",
-          "scaffold",
+          "runnable",
           "self_checked_draft"
         ],
         "labels": {
           "contentStatus": "草稿",
-          "implementationStage": "骨架",
+          "implementationStage": "可运行",
           "reviewStatus": "自检草稿"
         }
       },
-      "player": null,
+      "player": {
+        "kind": "iframe",
+        "isRunnable": true,
+        "src": "content/applets/SH-HS-MATH-HJ-B2-C08-L05-A01/src/index.html",
+        "title": "数量积动态解释器",
+        "sandbox": "allow-scripts allow-same-origin"
+      },
       "packagePath": "content/applets/SH-HS-MATH-HJ-B2-C08-L05-A01"
     },
     {
@@ -27054,7 +27712,7 @@
       "id": "SH-HS-MATH-HJ-B2-C08-L10-A01",
       "resourceType": "applet",
       "title": "向量法路径比较板",
-      "subtitle": "围绕向量的应用的交互式数字教具骨架",
+      "subtitle": "比较几何路径如何转化为同一个向量等式",
       "note": "限定 1-2 个典型几何问题，只比较基底法、坐标法、数量积法的第一步建模路径，不做通用解题器。",
       "cognitiveAction": "分解",
       "availability": "metadata_ready",
@@ -27073,21 +27731,27 @@
       "sectionTextbookLabel": "8.4",
       "quality": {
         "contentStatus": "draft",
-        "implementationStage": "scaffold",
+        "implementationStage": "runnable",
         "reviewStatus": "self_checked_draft",
-        "readinessLabel": "骨架待精修",
+        "readinessLabel": "可运行预览",
         "displayStates": [
           "draft",
-          "scaffold",
+          "runnable",
           "self_checked_draft"
         ],
         "labels": {
           "contentStatus": "草稿",
-          "implementationStage": "骨架",
+          "implementationStage": "可运行",
           "reviewStatus": "自检草稿"
         }
       },
-      "player": null,
+      "player": {
+        "kind": "iframe",
+        "isRunnable": true,
+        "src": "content/applets/SH-HS-MATH-HJ-B2-C08-L10-A01/src/index.html",
+        "title": "向量法路径比较板",
+        "sandbox": "allow-scripts allow-same-origin"
+      },
       "packagePath": "content/applets/SH-HS-MATH-HJ-B2-C08-L10-A01"
     },
     {
