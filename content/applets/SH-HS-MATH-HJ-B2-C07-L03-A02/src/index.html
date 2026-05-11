@@ -86,7 +86,7 @@
 
       main {
         display: grid;
-        grid-template-columns: minmax(310px, 0.76fr) minmax(470px, 1.24fr);
+        grid-template-columns: minmax(300px, 0.76fr) minmax(430px, 1.24fr);
         gap: 10px;
         min-height: 0;
       }
@@ -146,7 +146,7 @@
 
       .controls {
         display: grid;
-        grid-template-columns: minmax(290px, 0.9fr) minmax(420px, 1.1fr);
+        grid-template-columns: minmax(300px, 0.9fr) minmax(0, 1.1fr);
         gap: 10px;
         min-height: 0;
       }
@@ -169,6 +169,7 @@
         grid-template-columns: auto 1fr auto;
         gap: 8px;
         align-items: center;
+        min-height: 42px;
         margin-bottom: 8px;
       }
 
@@ -180,19 +181,23 @@
 
       input[type="range"] {
         width: 100%;
+        height: 34px;
         accent-color: var(--cosine);
+        cursor: pointer;
       }
 
       button {
-        min-height: 31px;
+        min-width: 44px;
+        min-height: 40px;
         border: 1px solid #cbd5e1;
         border-radius: 8px;
         background: #ffffff;
         color: #1f2937;
-        padding: 5px 9px;
+        padding: 8px 11px;
         font: inherit;
         font-size: 13px;
         cursor: pointer;
+        touch-action: manipulation;
       }
 
       button:hover {
@@ -245,11 +250,13 @@
         border: 1px solid var(--line);
         border-radius: 8px;
         overflow: hidden;
+        min-width: 0;
       }
 
       table {
         width: 100%;
         border-collapse: collapse;
+        table-layout: fixed;
         font-size: 12px;
       }
 
@@ -258,6 +265,13 @@
         border-bottom: 1px solid var(--line);
         padding: 5px 6px;
         text-align: center;
+        line-height: 1.25;
+        overflow-wrap: anywhere;
+      }
+
+      th:nth-child(4),
+      td:nth-child(4) {
+        width: 42%;
       }
 
       th {
@@ -285,7 +299,7 @@
 
       .controls .control-panel:last-child {
         display: grid;
-        grid-template-columns: minmax(230px, 0.68fr) minmax(350px, 1.32fr);
+        grid-template-columns: minmax(180px, 0.66fr) minmax(0, 1.34fr);
         gap: 8px;
         align-content: start;
       }
@@ -341,16 +355,98 @@
         stroke: var(--phase);
       }
 
-      @media (max-width: 900px) {
+      @media (max-width: 1100px) {
         .applet-shell {
-          padding: 12px;
+          padding: 10px;
+          gap: 8px;
+        }
+
+        h1 {
+          font-size: 21px;
+        }
+
+        .subtitle {
+          font-size: 12px;
+        }
+
+        .badge {
+          padding: 5px 7px;
+          font-size: 11px;
+        }
+
+        main {
+          grid-template-columns: minmax(280px, 0.78fr) minmax(390px, 1.22fr);
+          gap: 8px;
+        }
+
+        .controls {
+          grid-template-columns: minmax(300px, 0.9fr) minmax(0, 1.1fr);
+          gap: 8px;
+        }
+
+        .panel-title {
+          padding: 8px 10px;
+        }
+
+        .panel-title h2 {
+          font-size: 14px;
+        }
+
+        .math-readout {
+          font-size: 12px;
+        }
+
+        .control-panel {
+          padding: 8px 10px;
+        }
+
+        .control-row {
+          gap: 8px;
+        }
+
+        .status-grid {
+          gap: 6px;
+        }
+
+        .status-card {
+          padding: 6px;
+        }
+
+        .status-card span {
+          font-size: 13px;
+        }
+
+        table {
+          font-size: 11.5px;
+        }
+
+        th,
+        td {
+          padding: 4px 5px;
+        }
+
+        .controls .control-panel:last-child {
+          grid-template-columns: minmax(170px, 0.62fr) minmax(0, 1.38fr);
+          gap: 7px;
+        }
+
+        .controls .control-panel:last-child .summary {
+          max-height: 62px;
+        }
+      }
+
+      @media (max-width: 760px) {
+        .applet-shell {
+          height: auto;
+          min-height: 100vh;
+          overflow: auto;
         }
 
         header,
         main,
         .controls {
-          grid-template-columns: 1fr;
           display: grid;
+          grid-template-columns: 1fr;
         }
 
         .badge-row {
