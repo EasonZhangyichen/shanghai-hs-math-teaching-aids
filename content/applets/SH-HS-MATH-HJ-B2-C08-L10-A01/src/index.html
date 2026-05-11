@@ -76,6 +76,7 @@
       .stepbar,
       .segmented,
       .presetbar,
+      .method-list,
       .route-list {
         display: flex;
         flex-wrap: wrap;
@@ -88,10 +89,11 @@
 
       .step-button,
       .basis-button,
+      .method-option,
       .route-option,
       .preset-button,
       .tool-button {
-        min-height: 38px;
+        min-height: 40px;
         border: 1px solid var(--line);
         border-radius: 8px;
         background: #f7faf5;
@@ -102,6 +104,7 @@
 
       .step-button[aria-pressed="true"],
       .basis-button[aria-pressed="true"],
+      .method-option[aria-pressed="true"],
       .route-option[aria-pressed="true"],
       .tool-button[aria-pressed="true"] {
         border-color: var(--basis-b);
@@ -124,8 +127,9 @@
 
       .workspace {
         display: grid;
-        grid-template-columns: minmax(560px, 1fr) minmax(330px, 410px);
+        grid-template-columns: minmax(440px, 1fr) minmax(320px, 390px);
         gap: 12px;
+        align-items: start;
         min-height: 0;
       }
 
@@ -140,14 +144,14 @@
 
       .board-wrap {
         display: grid;
-        grid-template-rows: minmax(440px, 1fr) auto;
+        grid-template-rows: minmax(360px, 1fr) auto;
         overflow: hidden;
       }
 
       svg {
         width: 100%;
-        height: 100%;
-        min-height: 500px;
+        height: clamp(340px, 50svh, 430px);
+        min-height: 0;
         touch-action: none;
         user-select: none;
         background:
@@ -188,15 +192,16 @@
       .panel {
         display: grid;
         align-content: start;
-        gap: 12px;
-        padding: 14px;
+        gap: 8px;
+        padding: 10px;
+        max-height: calc(100svh - 100px);
         overflow: auto;
       }
 
       .section {
         display: grid;
-        gap: 8px;
-        padding-bottom: 12px;
+        gap: 6px;
+        padding-bottom: 8px;
         border-bottom: 1px solid var(--line);
       }
 
@@ -240,11 +245,11 @@
 
       .formula-box,
       .strategy-box {
-        padding: 10px 12px;
+        padding: 8px 10px;
         border: 1px solid var(--line);
         border-radius: 8px;
         background: #fbfcf8;
-        line-height: 1.65;
+        line-height: 1.48;
       }
 
       .formula-box strong,
@@ -358,7 +363,7 @@
         stroke-width: 2;
       }
 
-      @media (max-width: 960px) {
+      @media (max-width: 780px) {
         .topbar,
         .workspace {
           grid-template-columns: 1fr;
@@ -384,7 +389,7 @@
         }
 
         svg {
-          min-height: 440px;
+          height: 360px;
         }
       }
     </style>
@@ -421,22 +426,20 @@
 
         <aside class="panel">
           <section class="section">
-            <h2>基向量组</h2>
-            <div class="segmented" aria-label="选择基向量">
-              <button class="basis-button" data-basis="ab_ac" aria-pressed="true">AB / AC</button>
-              <button class="basis-button" data-basis="ab_bc" aria-pressed="false">AB / BC</button>
+            <h2>第一步选择与路径</h2>
+            <div class="strategy-box">
+              已知 D 在 AB 上，E 在 AC 上，AD/AB = m，AE/AC = n。先判断怎样表达目标向量 DE。
             </div>
-            <div id="basis_equation" class="formula-box"></div>
-          </section>
-
-          <section class="section">
-            <h2>路径选择</h2>
+            <div class="method-list" aria-label="选择第一步建模方法">
+              <button class="method-option" data-method="basis" aria-pressed="true">基底法</button>
+              <button class="method-option" data-method="path" aria-pressed="false">路径法</button>
+              <button class="method-option" data-method="metric" aria-pressed="false">数量积/坐标法</button>
+            </div>
             <div class="route-list" aria-label="选择 D 到 E 的路径">
               <button class="route-option" data-route="via_a" aria-pressed="true">D → A → E</button>
               <button class="route-option" data-route="via_edges" aria-pressed="false">D → B → C → E</button>
               <button class="route-option" data-route="via_b" aria-pressed="false">D → B → E</button>
             </div>
-            <div id="path_delta" class="formula-box"></div>
           </section>
 
           <section class="section">
@@ -454,6 +457,25 @@
           </section>
 
           <section class="section">
+            <h2>第一步提示</h2>
+            <div id="method_strategy" class="formula-box"></div>
+          </section>
+
+          <section class="section">
+            <h2>基向量组</h2>
+            <div class="segmented" aria-label="选择基向量">
+              <button class="basis-button" data-basis="ab_ac" aria-pressed="true">AB / AC</button>
+              <button class="basis-button" data-basis="ab_bc" aria-pressed="false">AB / BC</button>
+            </div>
+            <div id="basis_equation" class="formula-box"></div>
+          </section>
+
+          <section class="section">
+            <h2>路径等式</h2>
+            <div id="path_delta" class="formula-box"></div>
+          </section>
+
+          <section class="section">
             <h2>典型分点</h2>
             <div class="presetbar">
               <button class="preset-button" data-m="0.5" data-n="0.5">中位线型</button>
@@ -466,7 +488,7 @@
           <section class="section">
             <h2>课堂策略</h2>
             <div id="stageNote" class="strategy-box stage-note"></div>
-            <p class="muted">坐标法可作为后续复核工具；本板只比较向量路径建模的第一步。</p>
+            <p class="muted">本题第一步优先比较建模选择；坐标法和数量积法只作为 8.3、8.2 已学工具的后续判断。</p>
           </section>
         </aside>
       </main>
@@ -483,8 +505,10 @@
       const eReadout = document.querySelector("#eReadout");
       const basisBox = document.querySelector("#basis_equation");
       const pathBox = document.querySelector("#path_delta");
+      const methodBox = document.querySelector("#method_strategy");
       const stageNote = document.querySelector("#stageNote");
       const stepButtons = [...document.querySelectorAll(".step-button")];
+      const methodButtons = [...document.querySelectorAll(".method-option")];
       const basisButtons = [...document.querySelectorAll(".basis-button")];
       const routeButtons = [...document.querySelectorAll(".route-option")];
       const presetButtons = [...document.querySelectorAll(".preset-button")];
@@ -498,6 +522,7 @@
       const state = {
         m: 0.4,
         n: 0.65,
+        method: "basis",
         basis: "ab_ac",
         route: "via_a",
         step: 1
@@ -587,6 +612,30 @@
           targetText: `DE = ${joinTerms([term(-m, "p", true), term(n, "q")])}`,
           routeText: routeFormula("ab_ac")
         };
+      }
+
+      function methodStrategy() {
+        const strategies = {
+          basis: {
+            title: "基底法的第一步",
+            first: "先取 p = AB，q = AC，因为 D、E 都落在从 A 出发的两条边上。",
+            follow: "接着写 D = mp，E = nq，再由 DE = E - D 得到目标向量。",
+            warning: "适合分点、共线、中点、平行等线性关系明显的问题。"
+          },
+          path: {
+            title: "路径法的第一步",
+            first: "先选一条可解释的路线，如 D → A → E 或 D → B → C → E。",
+            follow: "每一段移动先说成几何路径，再翻译成向量和，最后合并同类向量。",
+            warning: "适合训练 8.1 线性运算的“首尾相接”和“路径和不变”。"
+          },
+          metric: {
+            title: "数量积/坐标法的第一步",
+            first: "先判断题目是否真的要求长度、夹角、垂直或数值坐标。",
+            follow: "若需要，再调用 8.2 数量积或 8.3 坐标表示；本题只求 DE 的表达，暂不把它作为起手。",
+            warning: "避免把向量应用课做成坐标计算或数量积套公式。"
+          }
+        };
+        return strategies[state.method];
       }
 
       function routeFormula(basis) {
@@ -765,9 +814,10 @@
 
       function stageMessage() {
         const route = routeFormula(state.basis);
+        const strategy = methodStrategy();
         const messages = {
-          1: `<strong>读条件：</strong>先确认 D、E 分别由 m、n 定位，目标是向量 DE。`,
-          2: `<strong>选基：</strong>先决定用哪两个向量表达图中所有关键移动，再写 D 和 E。`,
+          1: `<strong>读条件：</strong>先确认 D、E 分别由 m、n 定位，目标是向量 DE，不急于套公式。`,
+          2: `<strong>选基：</strong>${strategy.title}：${strategy.first}`,
           3: `<strong>走路径：</strong>当前路径是 ${route.label}，每一段都要翻译成向量和。`,
           4: `<strong>比较：</strong>路径可以不同，化简后都应回到同一个 DE。`
         };
@@ -798,6 +848,14 @@
           <p class="formula-line muted">${route.note}</p>
         `;
 
+        const strategy = methodStrategy();
+        methodBox.innerHTML = `
+          <p class="formula-line"><strong>${strategy.title}</strong></p>
+          <p class="formula-line">${strategy.first}</p>
+          <p class="formula-line">${strategy.follow}</p>
+          <p class="formula-line muted">${strategy.warning}</p>
+        `;
+
         stageNote.innerHTML = stageMessage();
 
         stepButtons.forEach((button) => {
@@ -805,6 +863,9 @@
         });
         basisButtons.forEach((button) => {
           button.setAttribute("aria-pressed", String(button.dataset.basis === state.basis));
+        });
+        methodButtons.forEach((button) => {
+          button.setAttribute("aria-pressed", String(button.dataset.method === state.method));
         });
         routeButtons.forEach((button) => {
           button.setAttribute("aria-pressed", String(button.dataset.route === state.route));
@@ -822,6 +883,7 @@
         return {
           ratio_m: Number(state.m.toFixed(2)),
           ratio_n: Number(state.n.toFixed(2)),
+          first_step_choice: state.method,
           basis_mode: state.basis,
           route_id: state.route,
           basis_equation: `${formula.basisText} ${formula.pointText} ${formula.targetText}`,
@@ -874,6 +936,14 @@
         });
       });
 
+      methodButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          state.method = button.dataset.method;
+          state.step = Math.max(state.step, 2);
+          render();
+        });
+      });
+
       basisButtons.forEach((button) => {
         button.addEventListener("click", () => {
           state.basis = button.dataset.basis;
@@ -895,6 +965,7 @@
           if (button.dataset.reset) {
             setRatios(0.4, 0.65);
             state.basis = "ab_ac";
+            state.method = "basis";
             state.route = "via_a";
             state.step = 1;
           } else {
