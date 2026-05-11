@@ -5,35 +5,941 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>数量积动态解释器</title>
     <style>
+      :root {
+        --ink: #16201c;
+        --muted: #5b665f;
+        --paper: #f7f8f3;
+        --panel: #ffffff;
+        --line: #d9ded7;
+        --grid: #e8ece6;
+        --axis: #89948d;
+        --a: #2563eb;
+        --a-soft: rgba(37, 99, 235, 0.13);
+        --b: #d97706;
+        --b-soft: rgba(217, 119, 6, 0.15);
+        --positive: #15803d;
+        --positive-soft: rgba(21, 128, 61, 0.12);
+        --zero: #475569;
+        --zero-soft: rgba(71, 85, 105, 0.12);
+        --negative: #b91c1c;
+        --negative-soft: rgba(185, 28, 28, 0.12);
+        --measure: #0f766e;
+        --measure-soft: rgba(15, 118, 110, 0.12);
+        --shadow: 0 16px 42px rgba(22, 32, 28, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
       body {
         margin: 0;
         min-height: 100svh;
-        display: grid;
-        place-items: center;
-        background: #f6faf8;
-        color: #17231f;
+        background: var(--paper);
+        color: var(--ink);
         font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
       }
 
-      main {
-        width: min(720px, calc(100vw - 32px));
-        padding: 24px;
-        border: 1px solid #d7e0dc;
+      button {
+        font: inherit;
+      }
+
+      .applet {
+        min-height: 100svh;
+        padding: 14px;
+        display: grid;
+        grid-template-rows: auto 1fr;
+        gap: 12px;
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 12px 14px;
+        border: 1px solid var(--line);
         border-radius: 8px;
-        background: #ffffff;
+        background: var(--panel);
+        box-shadow: 0 8px 22px rgba(22, 32, 28, 0.08);
+      }
+
+      .title-block {
+        min-width: 230px;
+      }
+
+      .eyebrow {
+        margin: 0 0 2px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 22px;
+        line-height: 1.2;
+        font-weight: 760;
+        letter-spacing: 0;
+      }
+
+      .stepbar,
+      .button-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .stepbar {
+        justify-content: flex-end;
+      }
+
+      .tool-button,
+      .angle-button {
+        min-height: 38px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fbfcf9;
+        color: var(--ink);
+        padding: 7px 10px;
+        cursor: pointer;
+      }
+
+      .tool-button:hover,
+      .angle-button:hover,
+      .tool-button:focus-visible,
+      .angle-button:focus-visible {
+        border-color: var(--measure);
+        outline: 2px solid rgba(15, 118, 110, 0.18);
+        outline-offset: 2px;
+      }
+
+      .angle-button[aria-pressed="true"] {
+        border-color: var(--measure);
+        background: var(--measure-soft);
+        color: #0f4f49;
+        font-weight: 720;
+      }
+
+      .workspace {
+        display: grid;
+        grid-template-columns: minmax(560px, 1fr) minmax(320px, 390px);
+        gap: 12px;
+        min-height: 0;
+      }
+
+      .board-wrap,
+      .panel {
+        min-width: 0;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+        box-shadow: var(--shadow);
+      }
+
+      .board-wrap {
+        position: relative;
+        overflow: hidden;
+        display: grid;
+        min-height: 540px;
+      }
+
+      svg {
+        width: 100%;
+        height: 100%;
+        min-height: 540px;
+        user-select: none;
+        touch-action: none;
+      }
+
+      .grid-line {
+        stroke: var(--grid);
+        stroke-width: 1;
+      }
+
+      .axis-line {
+        stroke: var(--axis);
+        stroke-width: 1.5;
+      }
+
+      .axis-label,
+      .point-label,
+      .vector-label,
+      .arc-label,
+      .projection-label {
+        fill: var(--ink);
+        font-size: 13px;
+        font-weight: 720;
+      }
+
+      .axis-label {
+        fill: var(--muted);
+        font-size: 12px;
+        font-weight: 600;
+      }
+
+      .vector-a,
+      .vector-b {
+        stroke-width: 5.5;
+        stroke-linecap: round;
+        cursor: grab;
+      }
+
+      .vector-a {
+        stroke: var(--a);
+      }
+
+      .vector-b {
+        stroke: var(--b);
+      }
+
+      .axis-guide {
+        stroke: var(--b);
+        stroke-width: 2;
+        stroke-dasharray: 8 7;
+        opacity: 0.45;
+      }
+
+      .projection-segment {
+        stroke-width: 7;
+        stroke-linecap: round;
+      }
+
+      .projection-segment.positive {
+        stroke: var(--positive);
+      }
+
+      .projection-segment.zero {
+        stroke: var(--zero);
+      }
+
+      .projection-segment.negative {
+        stroke: var(--negative);
+      }
+
+      .perpendicular {
+        stroke: #64748b;
+        stroke-width: 2;
+        stroke-dasharray: 6 5;
+        opacity: 0.75;
+      }
+
+      .angle-arc {
+        fill: none;
+        stroke: var(--measure);
+        stroke-width: 3;
+      }
+
+      .point-handle {
+        stroke: #ffffff;
+        stroke-width: 3;
+        cursor: grab;
+      }
+
+      .point-handle.a {
+        fill: var(--a);
+      }
+
+      .point-handle.b {
+        fill: var(--b);
+      }
+
+      .point-handle.projection {
+        fill: var(--measure);
+        pointer-events: none;
+      }
+
+      .dragging .vector-a,
+      .dragging .vector-b,
+      .dragging .point-handle {
+        cursor: grabbing;
+      }
+
+      .stage-note {
+        position: absolute;
+        left: 16px;
+        bottom: 16px;
+        max-width: min(590px, calc(100% - 32px));
+        padding: 10px 12px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.94);
+        color: var(--ink);
+        line-height: 1.48;
+        box-shadow: 0 10px 24px rgba(22, 32, 28, 0.12);
+      }
+
+      .stage-note strong {
+        color: #0f4f49;
+      }
+
+      .panel {
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .panel-section {
+        padding: 14px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .panel-section:last-child {
+        border-bottom: 0;
+      }
+
+      .section-title {
+        margin: 0 0 10px;
+        color: var(--muted);
+        font-size: 14px;
+        font-weight: 720;
+      }
+
+      .formula-box {
+        border: 1px solid rgba(15, 118, 110, 0.28);
+        border-radius: 8px;
+        background: var(--measure-soft);
+        padding: 12px;
+        line-height: 1.55;
+      }
+
+      .formula {
+        margin: 0 0 5px;
+        color: #0f4f49;
+        font-size: 20px;
+        font-weight: 820;
+      }
+
+      .formula-note {
+        margin: 0;
+        color: var(--ink);
+      }
+
+      .readout-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+
+      .readout {
+        min-height: 74px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fbfcf9;
+        padding: 10px;
+      }
+
+      .readout strong {
+        display: block;
+        margin-bottom: 4px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .readout span {
+        display: block;
+        font-size: 19px;
+        line-height: 1.25;
+        font-weight: 780;
+      }
+
+      .sign-box {
+        display: grid;
+        gap: 8px;
+      }
+
+      .sign-badge {
+        display: inline-flex;
+        width: fit-content;
+        min-height: 34px;
+        align-items: center;
+        border-radius: 8px;
+        padding: 6px 10px;
+        font-weight: 780;
+      }
+
+      .sign-badge.positive {
+        background: var(--positive-soft);
+        color: var(--positive);
+      }
+
+      .sign-badge.zero {
+        background: var(--zero-soft);
+        color: var(--zero);
+      }
+
+      .sign-badge.negative {
+        background: var(--negative-soft);
+        color: var(--negative);
+      }
+
+      .sign-explain {
+        margin: 0;
+        line-height: 1.5;
+      }
+
+      .summary-list {
+        display: grid;
+        gap: 8px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .summary-list li {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fbfcf9;
+        padding: 9px 10px;
+        line-height: 1.45;
+      }
+
+      .summary-list b {
+        color: #0f4f49;
+      }
+
+      @media (max-width: 980px) {
+        .workspace {
+          grid-template-columns: 1fr;
+        }
+
+        .board-wrap,
+        svg {
+          min-height: 500px;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .applet {
+          padding: 10px;
+        }
+
+        .topbar {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .stepbar {
+          justify-content: flex-start;
+        }
+
+        .readout-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .board-wrap,
+        svg {
+          min-height: 440px;
+        }
       }
     </style>
   </head>
   <body>
-    <main>
-      <p>sh-hs-math-applet-sdk</p>
-      <h1>数量积动态解释器</h1>
-      <p>同步展示两个向量、夹角、投影和数量积数值，突出正、零、负三种区域。</p>
-      <p>资源 ID：SH-HS-MATH-HJ-B2-C08-L05-A01</p>
+    <main class="applet" aria-label="数量积动态解释器">
+      <header class="topbar">
+        <div class="title-block">
+          <p class="eyebrow">必修第二册 8.2.2 向量的数量积</p>
+          <h1>数量积动态解释器</h1>
+        </div>
+        <nav class="stepbar" aria-label="分步揭示">
+          <button class="tool-button" id="prev-step" type="button">上一步</button>
+          <button class="tool-button" id="next-step" type="button">下一步</button>
+          <button class="tool-button" id="reset-button" type="button">重置</button>
+        </nav>
+      </header>
+
+      <section class="workspace">
+        <div class="board-wrap">
+          <svg id="board" viewBox="0 0 760 540" role="img" aria-label="两个共起点向量、夹角和投影段"></svg>
+          <div class="stage-note" id="stage-note" data-testid="stage-note"></div>
+        </div>
+
+        <aside class="panel" aria-label="数量积读数与课堂控制">
+          <section class="panel-section">
+            <p class="section-title">定义读法</p>
+            <div class="formula-box">
+              <p class="formula" data-testid="formula-readout">a·b = |a||b|cosθ</p>
+              <p class="formula-note">数量积的结果是数量；当 b 不是零向量时，也可读作 |b| 乘以 a 在 b 方向上的有向投影长度。</p>
+            </div>
+          </section>
+
+          <section class="panel-section">
+            <p class="section-title">典型角</p>
+            <div class="button-row" aria-label="典型角按钮">
+              <button class="angle-button" type="button" data-angle="30">30°</button>
+              <button class="angle-button" type="button" data-angle="60" aria-pressed="true">60°</button>
+              <button class="angle-button" type="button" data-angle="90">90°</button>
+              <button class="angle-button" type="button" data-angle="120">120°</button>
+              <button class="angle-button" type="button" data-angle="150">150°</button>
+            </div>
+          </section>
+
+          <section class="panel-section">
+            <p class="section-title">同步读数</p>
+            <div class="readout-grid">
+              <div class="readout">
+                <strong>长度</strong>
+                <span id="length-readout">|a| = 4, |b| = 3</span>
+              </div>
+              <div class="readout">
+                <strong>夹角</strong>
+                <span id="angle-readout" data-testid="angle-readout">θ = 60° = π/3</span>
+              </div>
+              <div class="readout">
+                <strong>余弦</strong>
+                <span id="cos-readout" data-testid="cos-readout">cosθ = 0.50</span>
+              </div>
+              <div class="readout">
+                <strong>数量积</strong>
+                <span id="dot-readout" data-testid="dot-readout">a·b = 6.00</span>
+              </div>
+              <div class="readout">
+                <strong>投影长度</strong>
+                <span id="projection-readout" data-testid="projection-readout">a 在 b 方向上的投影 = 2.00</span>
+              </div>
+              <div class="readout">
+                <strong>关系</strong>
+                <span id="relation-readout">锐角：数量积为正</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel-section">
+            <p class="section-title">符号判断</p>
+            <div class="sign-box">
+              <span id="sign-badge" class="sign-badge positive" data-testid="sign-badge">正：a·b &gt; 0</span>
+              <p id="sign-explain" class="sign-explain">θ 为锐角，cosθ &gt; 0，投影段落在 b 的正方向上。</p>
+            </div>
+          </section>
+
+          <section class="panel-section">
+            <p class="section-title">课堂收束</p>
+            <ul class="summary-list">
+              <li><b>锐角：</b>0 &lt; θ &lt; π/2，cosθ &gt; 0，所以 a·b &gt; 0。</li>
+              <li><b>直角：</b>θ = π/2，cosθ = 0，所以 a·b = 0。</li>
+              <li><b>钝角：</b>π/2 &lt; θ &lt; π，cosθ &lt; 0，所以 a·b &lt; 0。</li>
+              <li><b>投影：</b>a 在 b 方向上的有向投影与 cosθ 同号，决定数量积的符号。</li>
+            </ul>
+          </section>
+        </aside>
+      </section>
     </main>
+
     <script>
       const RESOURCE_ID = "SH-HS-MATH-HJ-B2-C08-L05-A01";
-      window.parent?.postMessage({ type: "applet:ready", resourceId: RESOURCE_ID, payload: { current_value: 0 } }, "*");
+      const svg = document.querySelector("#board");
+      const stageNote = document.querySelector("#stage-note");
+      const lengthReadout = document.querySelector("#length-readout");
+      const angleReadout = document.querySelector("#angle-readout");
+      const cosReadout = document.querySelector("#cos-readout");
+      const dotReadout = document.querySelector("#dot-readout");
+      const projectionReadout = document.querySelector("#projection-readout");
+      const relationReadout = document.querySelector("#relation-readout");
+      const signBadge = document.querySelector("#sign-badge");
+      const signExplain = document.querySelector("#sign-explain");
+      const resetButton = document.querySelector("#reset-button");
+      const prevStepButton = document.querySelector("#prev-step");
+      const nextStepButton = document.querySelector("#next-step");
+      const angleButtons = Array.from(document.querySelectorAll(".angle-button"));
+
+      const view = {
+        width: 760,
+        height: 540,
+        unit: 52,
+        originX: 380,
+        originY: 282,
+        minX: -6,
+        maxX: 6,
+        minY: -4.5,
+        maxY: 4.5
+      };
+
+      const initialState = {
+        step: 1,
+        a: { x: 4, y: 0 },
+        b: { x: 1.5, y: 2.598076211 },
+        selectedAngle: 60
+      };
+
+      const state = clone(initialState);
+      let drag = null;
+
+      const stageNotes = [
+        "<strong>第 1 步：</strong>拖动 a 或 b 的端点，先观察两个向量的夹角 θ。数量积不是一个新向量，而是一个数量。",
+        "<strong>第 2 步：</strong>看投影：把 a 垂直投到 b 所在直线上，投影段在 b 的正方向、零点或反方向，会改变符号。",
+        "<strong>第 3 步：</strong>读公式 a·b = |a||b|cosθ。|a|、|b| 固定时，cosθ 的正、零、负直接决定数量积符号。",
+        "<strong>第 4 步：</strong>归纳：锐角为正，直角为零，钝角为负；若其中一个向量为零，a·b = 0，但夹角不再作为判定依据。"
+      ];
+
+      function clone(value) {
+        return JSON.parse(JSON.stringify(value));
+      }
+
+      function toScreen(point) {
+        return {
+          x: view.originX + point.x * view.unit,
+          y: view.originY - point.y * view.unit
+        };
+      }
+
+      function toMath(clientX, clientY) {
+        const rect = svg.getBoundingClientRect();
+        const sx = ((clientX - rect.left) / rect.width) * view.width;
+        const sy = ((clientY - rect.top) / rect.height) * view.height;
+        return {
+          x: (sx - view.originX) / view.unit,
+          y: (view.originY - sy) / view.unit
+        };
+      }
+
+      function clamp(value, min, max) {
+        return Math.max(min, Math.min(max, value));
+      }
+
+      function snap(value) {
+        return Math.round(value * 20) / 20;
+      }
+
+      function clampPoint(point) {
+        return {
+          x: clamp(snap(point.x), view.minX, view.maxX),
+          y: clamp(snap(point.y), view.minY, view.maxY)
+        };
+      }
+
+      function clampFreePoint(point) {
+        return {
+          x: clamp(point.x, view.minX, view.maxX),
+          y: clamp(point.y, view.minY, view.maxY)
+        };
+      }
+
+      function length(vector) {
+        return Math.hypot(vector.x, vector.y);
+      }
+
+      function dotProduct() {
+        return state.a.x * state.b.x + state.a.y * state.b.y;
+      }
+
+      function metrics() {
+        const lenA = length(state.a);
+        const lenB = length(state.b);
+        const dot = dotProduct();
+        if (lenA < 0.0001 || lenB < 0.0001) {
+          return {
+            lenA,
+            lenB,
+            dot: 0,
+            cos: 0,
+            angleDeg: null,
+            projectionLength: 0,
+            projectionPoint: { x: 0, y: 0 },
+            sign: "zero",
+            relation: "零向量边界"
+          };
+        }
+        const rawCos = clamp(dot / (lenA * lenB), -1, 1);
+        const angleDeg = (Math.acos(rawCos) * 180) / Math.PI;
+        const projectionLength = dot / lenB;
+        const unitB = { x: state.b.x / lenB, y: state.b.y / lenB };
+        const projectionPoint = {
+          x: unitB.x * projectionLength,
+          y: unitB.y * projectionLength
+        };
+        const sign = Math.abs(dot) < 0.0001 ? "zero" : dot > 0 ? "positive" : "negative";
+        const relation = sign === "positive" ? "锐角" : sign === "negative" ? "钝角" : "直角";
+        return { lenA, lenB, dot, cos: rawCos, angleDeg, projectionLength, projectionPoint, sign, relation };
+      }
+
+      function fmt(value, digits = 2) {
+        if (Math.abs(value) < 0.0001) return "0";
+        if (Math.abs(value - Math.round(value)) < 0.0001) return String(Math.round(value));
+        return value.toFixed(digits);
+      }
+
+      function fmtSigned(value) {
+        if (Math.abs(value) < 0.0001) return "0";
+        return value > 0 ? fmt(value) : `-${fmt(Math.abs(value))}`;
+      }
+
+      function angleExactText(angleDeg) {
+        if (angleDeg === null) return "夹角不规定";
+        const rounded = Math.round(angleDeg);
+        const table = new Map([
+          [0, "0"],
+          [30, "π/6"],
+          [45, "π/4"],
+          [60, "π/3"],
+          [90, "π/2"],
+          [120, "2π/3"],
+          [135, "3π/4"],
+          [150, "5π/6"],
+          [180, "π"]
+        ]);
+        const radText = table.get(rounded);
+        return radText ? `θ = ${rounded}° = ${radText}` : `θ = ${angleDeg.toFixed(1)}°`;
+      }
+
+      function createSvg(tag, attrs = {}) {
+        const node = document.createElementNS("http://www.w3.org/2000/svg", tag);
+        Object.entries(attrs).forEach(([key, value]) => node.setAttribute(key, String(value)));
+        return node;
+      }
+
+      function addText(parent, text, point, className, anchor = "middle") {
+        const screen = toScreen(point);
+        const label = createSvg("text", {
+          x: screen.x,
+          y: screen.y,
+          class: className,
+          "text-anchor": anchor
+        });
+        label.textContent = text;
+        parent.appendChild(label);
+        return label;
+      }
+
+      function addVector(parent, end, className, markerId, dragType, testId) {
+        const o = toScreen({ x: 0, y: 0 });
+        const p = toScreen(end);
+        const line = createSvg("line", {
+          x1: o.x,
+          y1: o.y,
+          x2: p.x,
+          y2: p.y,
+          class: className,
+          "marker-end": `url(#${markerId})`,
+          "data-drag": dragType,
+          "data-testid": testId
+        });
+        parent.appendChild(line);
+      }
+
+      function addHandle(parent, point, label, className, dragType, testId) {
+        const screen = toScreen(point);
+        const circle = createSvg("circle", {
+          cx: screen.x,
+          cy: screen.y,
+          r: 10,
+          class: `point-handle ${className}`,
+          "data-drag": dragType,
+          "data-testid": testId,
+          "aria-label": label
+        });
+        parent.appendChild(circle);
+        addText(parent, label, { x: point.x, y: point.y + 0.38 }, "point-label");
+      }
+
+      function drawGrid(root) {
+        const grid = createSvg("g");
+        for (let x = view.minX; x <= view.maxX; x += 1) {
+          const a = toScreen({ x, y: view.minY });
+          const b = toScreen({ x, y: view.maxY });
+          grid.appendChild(createSvg("line", { x1: a.x, y1: a.y, x2: b.x, y2: b.y, class: x === 0 ? "axis-line" : "grid-line" }));
+          if (x !== 0) addText(grid, String(x), { x, y: -0.22 }, "axis-label");
+        }
+        for (let y = view.minY; y <= view.maxY; y += 1) {
+          const a = toScreen({ x: view.minX, y });
+          const b = toScreen({ x: view.maxX, y });
+          grid.appendChild(createSvg("line", { x1: a.x, y1: a.y, x2: b.x, y2: b.y, class: y === 0 ? "axis-line" : "grid-line" }));
+          if (y !== 0) addText(grid, String(y), { x: 0.24, y }, "axis-label", "start");
+        }
+        addText(grid, "O", { x: -0.28, y: -0.28 }, "axis-label");
+        addText(grid, "x", { x: view.maxX - 0.25, y: -0.32 }, "axis-label");
+        addText(grid, "y", { x: 0.32, y: view.maxY - 0.28 }, "axis-label", "start");
+        root.appendChild(grid);
+      }
+
+      function drawAngleArc(root, data) {
+        if (data.angleDeg === null) return;
+        const lenA = length(state.a);
+        const lenB = length(state.b);
+        if (lenA < 0.0001 || lenB < 0.0001) return;
+        const radius = 0.9;
+        const dirA = Math.atan2(state.a.y, state.a.x);
+        const dirB = Math.atan2(state.b.y, state.b.x);
+        let diff = dirB - dirA;
+        while (diff <= -Math.PI) diff += 2 * Math.PI;
+        while (diff > Math.PI) diff -= 2 * Math.PI;
+        const start = dirA;
+        const end = dirA + diff;
+        const startPoint = { x: Math.cos(start) * radius, y: Math.sin(start) * radius };
+        const endPoint = { x: Math.cos(end) * radius, y: Math.sin(end) * radius };
+        const s = toScreen(startPoint);
+        const e = toScreen(endPoint);
+        const sweep = diff >= 0 ? 0 : 1;
+        const large = Math.abs(diff) > Math.PI ? 1 : 0;
+        const arc = createSvg("path", {
+          d: `M ${s.x} ${s.y} A ${radius * view.unit} ${radius * view.unit} 0 ${large} ${sweep} ${e.x} ${e.y}`,
+          class: "angle-arc"
+        });
+        root.appendChild(arc);
+        const mid = start + diff / 2;
+        addText(root, "θ", { x: Math.cos(mid) * 1.13, y: Math.sin(mid) * 1.13 }, "arc-label");
+      }
+
+      function drawProjection(root, data) {
+        const lenB = length(state.b);
+        if (lenB < 0.0001) return;
+        const unitB = { x: state.b.x / lenB, y: state.b.y / lenB };
+        const guideStart = { x: unitB.x * -6, y: unitB.y * -6 };
+        const guideEnd = { x: unitB.x * 6, y: unitB.y * 6 };
+        const g0 = toScreen(guideStart);
+        const g1 = toScreen(guideEnd);
+        root.appendChild(createSvg("line", { x1: g0.x, y1: g0.y, x2: g1.x, y2: g1.y, class: "axis-guide" }));
+
+        const origin = toScreen({ x: 0, y: 0 });
+        const proj = toScreen(data.projectionPoint);
+        const className = `projection-segment ${data.sign}`;
+        root.appendChild(createSvg("line", { x1: origin.x, y1: origin.y, x2: proj.x, y2: proj.y, class: className }));
+        root.appendChild(createSvg("line", { x1: toScreen(state.a).x, y1: toScreen(state.a).y, x2: proj.x, y2: proj.y, class: "perpendicular" }));
+        root.appendChild(createSvg("circle", { cx: proj.x, cy: proj.y, r: 6, class: "point-handle projection" }));
+        addText(root, "投影段", { x: data.projectionPoint.x + 0.18, y: data.projectionPoint.y - 0.24 }, "projection-label", "start");
+      }
+
+      function render() {
+        const data = metrics();
+        svg.innerHTML = "";
+        svg.classList.toggle("dragging", Boolean(drag));
+
+        const defs = createSvg("defs");
+        const markerA = createSvg("marker", { id: "arrow-a", viewBox: "0 0 10 10", refX: 8.5, refY: 5, markerWidth: 7, markerHeight: 7, orient: "auto-start-reverse" });
+        markerA.appendChild(createSvg("path", { d: "M 0 0 L 10 5 L 0 10 z", fill: "#2563eb" }));
+        const markerB = createSvg("marker", { id: "arrow-b", viewBox: "0 0 10 10", refX: 8.5, refY: 5, markerWidth: 7, markerHeight: 7, orient: "auto-start-reverse" });
+        markerB.appendChild(createSvg("path", { d: "M 0 0 L 10 5 L 0 10 z", fill: "#d97706" }));
+        defs.append(markerA, markerB);
+        svg.appendChild(defs);
+
+        drawGrid(svg);
+        if (state.step >= 2) drawProjection(svg, data);
+        drawAngleArc(svg, data);
+        addVector(svg, state.a, "vector-a", "arrow-a", "a", "vector-a");
+        addVector(svg, state.b, "vector-b", "arrow-b", "b", "vector-b");
+        addHandle(svg, state.a, "a", "a", "a", "vector-a-handle");
+        addHandle(svg, state.b, "b", "b", "b", "vector-b-handle");
+        addText(svg, "向量 a", { x: state.a.x * 0.55, y: state.a.y * 0.55 + 0.34 }, "vector-label");
+        addText(svg, "向量 b", { x: state.b.x * 0.56, y: state.b.y * 0.56 + 0.34 }, "vector-label");
+
+        lengthReadout.textContent = `|a| = ${fmt(data.lenA)}, |b| = ${fmt(data.lenB)}`;
+        angleReadout.textContent = angleExactText(data.angleDeg);
+        cosReadout.textContent = data.angleDeg === null ? "cosθ 不用于零向量边界" : `cosθ = ${fmt(data.cos)}`;
+        dotReadout.textContent = `a·b = ${fmtSigned(data.dot)}`;
+        projectionReadout.textContent = `a 在 b 方向上的投影 = ${fmtSigned(data.projectionLength)}`;
+
+        const signText = {
+          positive: "正：a·b > 0",
+          zero: data.angleDeg === null ? "零：a·b = 0" : "零：a·b = 0",
+          negative: "负：a·b < 0"
+        };
+        const relationText = {
+          positive: "锐角：数量积为正",
+          zero: data.angleDeg === null ? "零向量：数量积为零" : "直角：数量积为零",
+          negative: "钝角：数量积为负"
+        };
+        const explainText = {
+          positive: "θ 为锐角，cosθ > 0，投影段落在 b 的正方向上。",
+          zero: data.angleDeg === null ? "其中一个向量为零，a·b = 0；此时不靠夹角判定垂直。" : "θ 为直角，cosθ = 0，投影长度为 0。",
+          negative: "θ 为钝角，cosθ < 0，投影段落在 b 的反方向上。"
+        };
+        signBadge.className = `sign-badge ${data.sign}`;
+        signBadge.textContent = signText[data.sign];
+        relationReadout.textContent = relationText[data.sign];
+        signExplain.textContent = explainText[data.sign];
+        stageNote.innerHTML = stageNotes[state.step - 1];
+
+        updateAngleButtons(data.angleDeg);
+        emitState("state_changed", data);
+      }
+
+      function updateAngleButtons(angleDeg) {
+        angleButtons.forEach((button) => {
+          const target = Number(button.dataset.angle);
+          const active = angleDeg !== null && Math.abs(Math.round(angleDeg) - target) <= 1;
+          button.setAttribute("aria-pressed", String(active));
+        });
+      }
+
+      function emitState(name, data = metrics()) {
+        window.parent?.postMessage(
+          {
+            type: `applet:${name}`,
+            resourceId: RESOURCE_ID,
+            payload: {
+              vector_a: state.a,
+              vector_b: state.b,
+              length_a: data.lenA,
+              length_b: data.lenB,
+              angle_degrees: data.angleDeg,
+              cos_value: data.cos,
+              projection_length: data.projectionLength,
+              dot_product: data.dot,
+              sign: data.sign,
+              reveal_step: state.step
+            }
+          },
+          "*"
+        );
+      }
+
+      function rotateToAngle(targetDeg) {
+        const lenB = Math.max(length(state.b), 1);
+        const base = Math.atan2(state.a.y, state.a.x);
+        const target = base + (targetDeg * Math.PI) / 180;
+        state.b = clampFreePoint({ x: Math.cos(target) * lenB, y: Math.sin(target) * lenB });
+        state.selectedAngle = targetDeg;
+        render();
+      }
+
+      function startDrag(event) {
+        const target = event.target.closest("[data-drag]");
+        if (!target) return;
+        drag = target.dataset.drag;
+        svg.setPointerCapture(event.pointerId);
+        moveDrag(event);
+      }
+
+      function moveDrag(event) {
+        if (!drag) return;
+        const point = clampPoint(toMath(event.clientX, event.clientY));
+        if (drag === "a") state.a = point;
+        if (drag === "b") state.b = point;
+        state.selectedAngle = null;
+        render();
+      }
+
+      function endDrag(event) {
+        if (!drag) return;
+        drag = null;
+        svg.releasePointerCapture(event.pointerId);
+        render();
+      }
+
+      svg.addEventListener("pointerdown", startDrag);
+      svg.addEventListener("pointermove", moveDrag);
+      svg.addEventListener("pointerup", endDrag);
+      svg.addEventListener("pointercancel", endDrag);
+
+      resetButton.addEventListener("click", () => {
+        Object.assign(state, clone(initialState));
+        render();
+      });
+
+      prevStepButton.addEventListener("click", () => {
+        state.step = Math.max(1, state.step - 1);
+        render();
+      });
+
+      nextStepButton.addEventListener("click", () => {
+        state.step = Math.min(stageNotes.length, state.step + 1);
+        render();
+      });
+
+      angleButtons.forEach((button) => {
+        button.addEventListener("click", () => rotateToAngle(Number(button.dataset.angle)));
+      });
+
+      render();
+      emitState("ready");
     </script>
   </body>
 </html>
