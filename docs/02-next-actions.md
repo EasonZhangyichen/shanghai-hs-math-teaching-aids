@@ -132,7 +132,9 @@
 - [x] 先 dry-run 并生成必修第二册第 8 章 3 个 Diagnosis 骨架：`SH-HS-MATH-HJ-B2-C08-L02-D01`、`SH-HS-MATH-HJ-B2-C08-L05-D01`、`SH-HS-MATH-HJ-B2-C08-L10-D01`；本批未深入编写完整题组，未处理 8.3 暂缓项。
 - [x] 先 dry-run 并生成必修第二册第 8 章剩余 Manim 骨架：`SH-HS-MATH-HJ-B2-C08-L04-M01`；本批未深入编写完整动画，未渲染视频，未处理 8.3 暂缓项。
 - [ ] 对 `SH-HS-MATH-HJ-B2-C08-L04-M01` 开启单资源精修对话，补齐真实 Manim 场景、数学符号、动画节奏、预览渲染和审校记录。
-- [ ] 对 `SH-HS-MATH-HJ-B2-C08-L01-A01`、`SH-HS-MATH-HJ-B2-C08-L02-A01`、`SH-HS-MATH-HJ-B2-C08-L03-A01`、`SH-HS-MATH-HJ-B2-C08-L04-A01`、`SH-HS-MATH-HJ-B2-C08-L05-A01`、`SH-HS-MATH-HJ-B2-C08-L10-A01` 分别开启单资源精修对话，补齐真实数学模型、交互状态和课堂脚本。
+- [x] 对 `SH-HS-MATH-HJ-B2-C08-L01-A01`、`SH-HS-MATH-HJ-B2-C08-L02-A01`、`SH-HS-MATH-HJ-B2-C08-L03-A01`、`SH-HS-MATH-HJ-B2-C08-L04-A01` 开启单资源精修对话，补齐真实数学模型、交互状态和课堂脚本；四个资源均保持 `draft` / `self_checked_draft`。
+- [ ] 对 `SH-HS-MATH-HJ-B2-C08-L05-A01`、`SH-HS-MATH-HJ-B2-C08-L10-A01` 分别开启单资源精修对话，补齐真实数学模型、交互状态和课堂脚本。
+- [ ] 对 `SH-HS-MATH-HJ-B2-C08-L01-A01` 至 `SH-HS-MATH-HJ-B2-C08-L04-A01` 安排独立数学审校、浏览器大屏触控复核和教师限时试读；第 8 章教材/平台目录终核前不进入发布链路。
 - [ ] 对 `SH-HS-MATH-HJ-B2-C08-L02-D01`、`SH-HS-MATH-HJ-B2-C08-L05-D01`、`SH-HS-MATH-HJ-B2-C08-L10-D01` 分别开启单资源精修对话，补齐真实题组、错因标签、评分反馈和教师说明。
 - [ ] 在必修第一册第 4、5 章来源终核后，再按总控决定处理 `SH-HS-MATH-HJ-B1-C04-L02-A01`、`SH-HS-MATH-HJ-B1-C04-L04-A01`、`SH-HS-MATH-HJ-B1-C04-L06-A01`、`SH-HS-MATH-HJ-B1-C04-L06-A02`、`SH-HS-MATH-HJ-B1-C05-L02-A01`、`SH-HS-MATH-HJ-B1-C05-L03-D01`、`SH-HS-MATH-HJ-B1-C05-L04-A01`、`SH-HS-MATH-HJ-B1-C05-L08-A01`；当前不得直接 scaffold 或制作完整资源包。
 - [ ] 为 backlog item 增加更细的审核状态和课堂试用状态聚合。
@@ -173,7 +175,9 @@
 - [x] 形成质量优先双线并行制度文档：`docs/parallel-quality-system.md`。
 - [x] 开启第六轮双线并行：生产线 3 个对话、审核线 3 个对话，但按生产线一批 3 条反馈、审核线一批 3 条反馈交回总控。
 - [x] 生产线首批已完成并由总控核对分支与改动范围：平台框架筛选能力、第 8 章 `SH-HS-MATH-HJ-B2-C08-L01-A01` 单资源精修、资源工厂 dry-run 批次规划均未碰 8.3 暂缓项或未终核章节正式生产。
-- [ ] 总控合并生产线首批后，确认 `SH-HS-MATH-HJ-B2-C08-L01-A01` 仍保持 `draft` / `self_checked_draft`，后续只进入数学审校、浏览器复核和教师试读准备，不直接进入发布流程。
+- [x] 总控合并生产线首批后，确认 `SH-HS-MATH-HJ-B2-C08-L01-A01` 仍保持 `draft` / `self_checked_draft`，后续只进入数学审校、浏览器复核和教师试读准备，不直接进入发布流程。
+- [x] 生产线第二批已完成并由总控核对分支与改动范围：`SH-HS-MATH-HJ-B2-C08-L02-A01`、`SH-HS-MATH-HJ-B2-C08-L03-A01`、`SH-HS-MATH-HJ-B2-C08-L04-A01` 均只修改各自资源包，并由总控统一再生平台数据。
+- [x] 总控合并生产线第二批后，确认 L02/L03/L04 均仍保持 `draft` / `self_checked_draft`；下一步只进入数学审校、浏览器触控复核和教师试读准备，不直接进入发布流程。
 - [ ] 审核线优先处理第 7 章已实现资源的数学/沪教版一致性、课堂试读准备度、浏览器大屏触控 QA；只给状态建议，不直接进入 `published`。
 - [ ] 总控收到每批 3 条反馈后，使用 `git branch --contains <commit>` 和 `git show --stat <commit>` 核对分支与改动范围，再决定是否合并、再生 generated files、运行 `npm run verify`、推送并同步长期分支。
 - [x] 第六轮审核线首批 3 个报告已完成并由总控核对分支与改动范围：数学/沪教版一致性、课堂试读准备度、浏览器大屏触控 QA 均只新增 docs 报告，未越界修改资源包、课程图谱、平台源码或 generated files。
@@ -191,4 +195,5 @@
 - [x] 完成第六轮审核线首批三三反馈的总控验收流程：逐条核对 `git branch --contains <commit>`、`git show --stat <commit>` 和报告内容后再集成。
 - [x] 完成第六轮生产线首批三三反馈的总控验收流程：逐条核对 `git branch --contains <commit>`、`git show --stat <commit>`、资源状态、生成文件边界和验证结果后再集成。
 - [x] 完成第六轮质量修复线首批三三反馈的总控验收流程：逐条核对分支、commit、改动范围、浏览器/课堂/符号修复结果和 generated files 后再集成。
+- [x] 完成第六轮生产线第二批三三反馈的总控验收流程：逐条核对 L02/L03/L04 分支、commit、改动范围和生成文件边界后再集成。
 - [ ] 在第六轮双线并行后复盘：如果 6 线程仍能保持低冲突和高质量，再考虑扩展到“5 个生产/审核混合对话 + 1 个总控”的更大批次；否则维持 3+3。

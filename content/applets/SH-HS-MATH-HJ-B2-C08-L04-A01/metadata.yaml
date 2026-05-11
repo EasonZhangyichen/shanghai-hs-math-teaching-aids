@@ -4,7 +4,7 @@ version: 0.1.0
 status: draft
 resource_type: applet
 title: 投影长度与夹角实验室
-subtitle: 围绕向量的投影的交互式数字教具骨架
+subtitle: 拖动两个向量观察夹角、垂足、有向投影长度和数量积符号
 curriculum:
   region: 上海
   stage: 高中
@@ -21,72 +21,163 @@ curriculum:
   lesson_title: 向量的投影
 pedagogy:
   cognitive_action: 投影
-  estimated_classroom_minutes: 12
-  primary_teaching_problem: 学生容易把投影长度看成普通线段长度，忽略它是有方向符号的量。
+  estimated_classroom_minutes: 14
+  primary_teaching_problem: 学生容易把投影长度看成普通线段长度，忽略它是沿投影方向读取的有符号量。
   learning_goals:
-    - 围绕向量的投影建立可观察、可解释的数学表征。
-    - 用“投影”方式处理关键变量、边界条件和典型错因。
-    - 把交互观察转化为可板书、可追问、可迁移的课堂结论。
+    - 通过拖动两个向量观察夹角从锐角、直角到钝角变化时的投影位置。
+    - 用垂足 F 解释“投影点在同向一侧、原点处或反向一侧”的几何意义。
+    - 读出有向投影长度与 cos 值的同号关系，建立数量积正负的直观来源。
+    - 区分本课的投影直观和后续完整数量积公式训练。
   prerequisites:
-    - 向量的投影相关先修知识
+    - 向量的大小、方向和夹角
+    - 直角三角形中的余弦
+    - 垂线、垂足和有向线段读数
   successors:
-    - 后续课时学习与综合应用
+    - SH-HS-MATH-HJ-B2-C08-L05
+    - SH-HS-MATH-HJ-B2-C08-L09
   core_competencies:
     - 直观想象
+    - 数学抽象
     - 逻辑推理
-    - 数学运算
 mathematical_scope:
-  focus: 拖动两个向量改变夹角，联动显示垂足、有向投影长度、cos 值和正负变化。
+  focus: 拖动被投影向量 a 和投影方向向量 b，联动显示夹角、垂足、有向投影长度、cos 值和数量积符号。
   lesson: 向量的投影
+  vector_model: 两个向量均从原点 O 出发，蓝色向量 a 被投影到橙色向量 b 的方向上。
+  projection_model: 设 b 为非零向量，沿 b 的单位方向读取 a 的有向投影长度；垂足 F 在 b 的同向射线、原点或反向射线上分别对应正、零、负。
+  sign_rule: 在 b 非零时，数量积符号与 a 在 b 方向上的有向投影长度同号。
+  default_points:
+    vector_a_end: A(3.5, 2.4)
+    vector_b_end: B(4.4, 0.8)
   out_of_scope:
-    - 本 scaffold 只定义首版交互骨架，数学细节需在资源生产对话中补齐。
+    - 完整数量积公式推导和代数计算训练
+    - 坐标形式数量积的系统练习
+    - 向量坐标表示 8.3 的课时边界讨论
+    - 题库式判断投影或数量积正负
 representations:
-  - id: interactive_canvas
-    role: 承载可拖拽、可观察、可复现的核心数学表征。
-  - id: teacher_readout
-    role: 为教师提供课堂追问所需的关键状态读数。
+  - id: coordinate_grid
+    role: 显示共享起点、方向直线、垂足和投影段。
+  - id: vector_a
+    role: 蓝色向量 a，表示被投影对象，可拖动终点改变大小和方向。
+  - id: vector_b
+    role: 橙色向量 b，表示投影方向，可拖动终点改变夹角。
+  - id: projection_foot
+    role: 垂足 F，连接向量 a 的端点到 b 所在直线。
+  - id: measurement_readout
+    role: 同步显示 angle_degrees、cos_theta、signed_projection 和 dot_sign。
+  - id: staged_summary
+    role: 供教师按夹角、垂足、有向长度、正负联系四步揭示。
 interaction_design:
-  primary_control: 预留一个核心滑块或拖拽控制，后续按知识点定制。
+  primary_control: 拖动蓝色 A 点和橙色 B 点改变两个向量，从而连续改变夹角和投影位置。
   teacher_controls:
-    - 重置
-    - 分步显示
-    - 重点标注
+    - 重置到默认位置
+    - 锐角、直角、钝角三个典型状态
+    - 按夹角、垂足、有向长度、正负联系四步揭示
+    - 显示或隐藏投影方向轴
+    - 显示或隐藏有向投影段
   student_controls:
-    - 拖动观察
-    - 记录猜想
-    - 对照结论
+    - 拖动 A 点改变被投影向量
+    - 拖动 B 点改变投影方向向量
+    - 切换典型夹角，对照有向投影的正负变化
   staged_reveal:
-    - step: observe
-      description: 先让学生观察变量变化和图像响应。
-    - step: explain
-      description: 再引导学生用符号语言解释观察结果。
+    - step: observe_angle
+      description: 先显示两条向量和夹角，观察锐角、直角、钝角边界。
+    - step: drop_perpendicular
+      description: 显示从 A 到 b 所在直线的垂线和垂足 F。
+    - step: read_signed_projection
+      description: 显示从 O 到 F 的有向投影段，并读出 signed_projection 与 cos_theta。
+    - step: connect_sign
+      description: 归纳 cos 值、有向投影长度和数量积符号的正负联系。
 data_contract:
   state_variables:
-    - name: current_value
+    - name: vector_a
+      value_type: point2d
+      description: 蓝色被投影向量 a 的终点坐标，起点固定为 O。
+      persistence: snapshot
+    - name: vector_b
+      value_type: point2d
+      description: 橙色投影方向向量 b 的终点坐标，起点固定为 O。
+      persistence: snapshot
+    - name: projection_foot
+      value_type: point2d
+      description: 从 a 的终点向 b 所在直线作垂线得到的垂足 F。
+      persistence: snapshot
+    - name: angle_degrees
+      unit: degree
       value_type: number
-      default: 0
-      description: 首版 scaffold 的占位状态变量，后续替换为真实数学变量。
+      description: 非零向量 a 与非零向量 b 的夹角，范围为 0 到 180 度。
+      persistence: snapshot
+    - name: cos_theta
+      value_type: number
+      description: 当前夹角的余弦值，用于观察正负变化。
+      persistence: snapshot
+    - name: signed_projection
+      value_type: number
+      description: 向量 a 在向量 b 方向上的有向投影长度。
+      persistence: snapshot
+    - name: dot_sign
+      value_type: string
+      description: 数量积符号的直观状态：positive、zero、negative 或 undefined。
+      persistence: snapshot
+    - name: reveal_step
+      value_type: number
+      default: 1
+      description: 当前教师分步揭示阶段。
       persistence: snapshot
   events:
+    - name: ready
+      direction: applet_to_player
+      description: 课件完成初始渲染。
+      payload:
+        - vector_a
+        - vector_b
+        - projection_foot
+        - angle_degrees
+        - cos_theta
+        - signed_projection
+        - dot_sign
+        - reveal_step
+      required_for_player: true
     - name: state_changed
       direction: applet_to_player
-      description: 交互状态变化时通知平台播放器。
+      description: 拖动向量端点、切换典型状态或切换揭示阶段时通知播放器。
       payload:
-        - current_value
+        - vector_a
+        - vector_b
+        - projection_foot
+        - angle_degrees
+        - cos_theta
+        - signed_projection
+        - dot_sign
+        - reveal_step
       required_for_player: true
 feedback_and_diagnosis:
   success_evidence:
-    - 学生能说清楚观察变量、图像变化和数学结论之间的对应关系。
+    - 学生能指出垂足 F 在 b 的同向一侧时有向投影为正，在反向一侧时为负。
+    - 学生能解释夹角为直角时 cos 值为 0，投影点落在 O，数量积符号为 0。
+    - 学生能用拖动得到的图形证据说明钝角时投影为负不是“长度为负”，而是方向读数为负。
+    - 学生能说明本资源只建立投影和符号直观，完整数量积公式需在后续课时继续学习。
   common_error_tags:
-    - id: representation_gap
-      label: 表征对应断裂
+    - id: unsigned_projection_length
+      label: 把投影长度当成普通无向线段长度
+    - id: obtuse_projection_sign
+      label: 不理解钝角投影为负
+    - id: perpendicular_foot_gap
+      label: 垂足、投影点和原向量端点混淆
+    - id: dot_sign_formula_memory
+      label: 只背数量积正负结论，缺少投影解释
   feedback_principles:
-    - 反馈先指向可视化证据，再回到符号表达。
+    - 先让学生看垂足位置，再读有向投影长度。
+    - 通过锐角、直角、钝角三个状态建立正、零、负边界。
+    - 数量积只谈符号直观，不在本资源中展开完整公式训练。
 visual_semantics:
-  primary_color: teal
-  emphasis_rule: 当前变量用高对比色标注，历史轨迹和辅助线降低透明度。
+  vector_a: 蓝色表示被投影向量 a。
+  vector_b: 橙色表示投影方向向量 b。
+  projection_positive: 绿色表示与 b 同向的有向投影。
+  projection_negative: 红色表示与 b 反向的有向投影。
+  perpendicular: 青绿色虚线表示向 b 所在直线作垂线。
+  rule: 颜色只承载数学对象含义，不作为装饰。
 implementation:
-  phase: content_spec_only
+  phase: runnable_prototype
   html_src_status: scaffolded
   planned_engine: native-canvas-svg
   create_src_in_later_task: false
@@ -101,6 +192,5 @@ files:
   review_record: review.md
   src_entry: src/index.html
 compliance:
-  copyright_note: 本 scaffold 仅生成原创资源骨架，不复制教材正文、官方课件、教案或商业题库。
+  copyright_note: 本资源为原创交互草稿，不复制教材正文、官方课件、教案或商业题库；第 8 章课时边界仍需纸质教材或已登录平台终核。
   review_status: self_checked_draft
-

@@ -5,35 +5,1002 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>投影长度与夹角实验室</title>
     <style>
+      :root {
+        --ink: #17211d;
+        --muted: #596860;
+        --paper: #fbfcf8;
+        --panel: #ffffff;
+        --line: #d9e2dc;
+        --grid: #e8eee9;
+        --axis: #8d9b93;
+        --vector: #2563eb;
+        --vector-soft: rgba(37, 99, 235, 0.14);
+        --direction: #d97706;
+        --direction-soft: rgba(217, 119, 6, 0.16);
+        --projection: #0f766e;
+        --projection-soft: rgba(15, 118, 110, 0.14);
+        --negative: #b42318;
+        --negative-soft: rgba(180, 35, 24, 0.12);
+        --zero: #475569;
+        --shadow: 0 18px 48px rgba(24, 35, 31, 0.13);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
       body {
         margin: 0;
         min-height: 100svh;
-        display: grid;
-        place-items: center;
-        background: #f6faf8;
-        color: #17231f;
+        background: var(--paper);
+        color: var(--ink);
         font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
       }
 
-      main {
-        width: min(720px, calc(100vw - 32px));
-        padding: 24px;
-        border: 1px solid #d7e0dc;
+      button {
+        font: inherit;
+      }
+
+      .applet {
+        min-height: 100svh;
+        padding: 14px;
+        display: grid;
+        grid-template-rows: auto 1fr;
+        gap: 12px;
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 12px 14px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+        box-shadow: 0 8px 24px rgba(24, 35, 31, 0.08);
+      }
+
+      .title-block {
+        min-width: 240px;
+      }
+
+      .eyebrow {
+        margin: 0 0 2px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 22px;
+        line-height: 1.2;
+        font-weight: 750;
+        letter-spacing: 0;
+      }
+
+      .stepbar,
+      .presetbar {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 8px;
+      }
+
+      .step-button,
+      .tool-button,
+      .preset-button {
+        min-height: 38px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #f7faf7;
+        color: var(--ink);
+        padding: 7px 10px;
+        cursor: pointer;
+      }
+
+      .step-button[aria-pressed="true"],
+      .tool-button[aria-pressed="true"] {
+        border-color: var(--projection);
+        background: var(--projection-soft);
+        color: #0f4f49;
+        font-weight: 700;
+      }
+
+      .preset-button:focus-visible,
+      .step-button:focus-visible,
+      .tool-button:focus-visible {
+        outline: 3px solid rgba(15, 118, 110, 0.28);
+        outline-offset: 2px;
+      }
+
+      .workspace {
+        display: grid;
+        grid-template-columns: minmax(560px, 1fr) minmax(310px, 390px);
+        gap: 12px;
+        min-height: 0;
+      }
+
+      .board-wrap,
+      .panel {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+        box-shadow: var(--shadow);
+        min-width: 0;
+      }
+
+      .board-wrap {
+        position: relative;
+        overflow: hidden;
+        display: grid;
+        min-height: 520px;
+      }
+
+      svg {
+        width: 100%;
+        height: 100%;
+        min-height: 520px;
+        touch-action: none;
+        user-select: none;
+      }
+
+      .grid-line {
+        stroke: var(--grid);
+        stroke-width: 1;
+      }
+
+      .axis-line {
+        stroke: var(--axis);
+        stroke-width: 1.5;
+      }
+
+      .axis-label,
+      .point-label,
+      .vector-label,
+      .measure-label {
+        fill: var(--ink);
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      .axis-label {
+        fill: var(--muted);
+        font-size: 12px;
+      }
+
+      .direction-axis {
+        stroke: #9aa6a0;
+        stroke-width: 1.8;
+        stroke-dasharray: 8 7;
+      }
+
+      .vector-line {
+        stroke: var(--vector);
+        stroke-width: 5;
+        stroke-linecap: round;
+        cursor: grab;
+      }
+
+      .direction-line {
+        stroke: var(--direction);
+        stroke-width: 5;
+        stroke-linecap: round;
+        cursor: grab;
+      }
+
+      .projection-line {
+        stroke: var(--projection);
+        stroke-width: 6;
+        stroke-linecap: round;
+      }
+
+      .projection-line.negative {
+        stroke: var(--negative);
+      }
+
+      .perpendicular-line {
+        stroke: var(--projection);
+        stroke-width: 2.2;
+        stroke-dasharray: 6 5;
+      }
+
+      .angle-arc {
+        fill: none;
+        stroke: #7c3aed;
+        stroke-width: 3;
+        stroke-linecap: round;
+      }
+
+      .point-handle {
+        stroke: #ffffff;
+        stroke-width: 3;
+        cursor: grab;
+      }
+
+      .point-handle.vector {
+        fill: var(--vector);
+      }
+
+      .point-handle.direction {
+        fill: var(--direction);
+      }
+
+      .point-handle.projection {
+        fill: var(--projection);
+        cursor: default;
+      }
+
+      .dragging .point-handle,
+      .dragging .vector-line,
+      .dragging .direction-line {
+        cursor: grabbing;
+      }
+
+      .panel {
+        display: flex;
+        flex-direction: column;
+        min-height: 0;
+        overflow: hidden;
+      }
+
+      .panel-inner {
+        padding: 14px;
+        overflow: auto;
+      }
+
+      .controls {
+        display: grid;
+        gap: 10px;
+        margin-bottom: 12px;
+      }
+
+      .tool-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .readout-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .readout-card {
+        min-height: 80px;
+        padding: 10px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #f8fbf8;
+      }
+
+      .readout-label {
+        margin: 0 0 5px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .readout-value {
+        margin: 0;
+        font-size: 22px;
+        line-height: 1.15;
+        font-weight: 780;
+      }
+
+      .readout-card.positive .readout-value {
+        color: var(--projection);
+      }
+
+      .readout-card.negative {
+        background: var(--negative-soft);
+      }
+
+      .readout-card.negative .readout-value {
+        color: var(--negative);
+      }
+
+      .readout-card.zero .readout-value {
+        color: var(--zero);
+      }
+
+      .relation-box,
+      .summary-box {
+        margin-top: 12px;
+        padding: 12px;
+        border: 1px solid var(--line);
         border-radius: 8px;
         background: #ffffff;
+      }
+
+      .relation-box p,
+      .summary-box p {
+        margin: 0;
+        line-height: 1.65;
+      }
+
+      .relation-box p + p,
+      .summary-box p + p {
+        margin-top: 8px;
+      }
+
+      .formula {
+        color: #0f4f49;
+        font-weight: 750;
+      }
+
+      .warning {
+        color: var(--negative);
+        font-weight: 700;
+      }
+
+      .legend {
+        display: grid;
+        gap: 6px;
+        margin: 12px 0 0;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .legend span {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+      }
+
+      .swatch {
+        width: 22px;
+        height: 4px;
+        border-radius: 999px;
+        background: currentColor;
+      }
+
+      .swatch.vector {
+        color: var(--vector);
+      }
+
+      .swatch.direction {
+        color: var(--direction);
+      }
+
+      .swatch.projection {
+        color: var(--projection);
+      }
+
+      .swatch.negative {
+        color: var(--negative);
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      @media (max-width: 920px) {
+        .topbar {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .stepbar,
+        .presetbar {
+          justify-content: flex-start;
+        }
+
+        .workspace {
+          grid-template-columns: 1fr;
+        }
+
+        .board-wrap,
+        svg {
+          min-height: 460px;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .applet {
+          padding: 10px;
+        }
+
+        h1 {
+          font-size: 19px;
+        }
+
+        .readout-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .step-button,
+        .tool-button,
+        .preset-button {
+          flex: 1 1 136px;
+        }
       }
     </style>
   </head>
   <body>
-    <main>
-      <p>sh-hs-math-applet-sdk</p>
-      <h1>投影长度与夹角实验室</h1>
-      <p>拖动两个向量改变夹角，联动显示垂足、有向投影长度、cos 值和正负变化。</p>
-      <p>资源 ID：SH-HS-MATH-HJ-B2-C08-L04-A01</p>
+    <main class="applet">
+      <header class="topbar">
+        <div class="title-block">
+          <p class="eyebrow">沪教版必修第二册 8.2.1</p>
+          <h1>投影长度与夹角实验室</h1>
+        </div>
+        <div class="stepbar" aria-label="分步揭示">
+          <button class="step-button" type="button" data-step="1">1 夹角</button>
+          <button class="step-button" type="button" data-step="2">2 垂足</button>
+          <button class="step-button" type="button" data-step="3">3 有向长度</button>
+          <button class="step-button" type="button" data-step="4">4 正负联系</button>
+        </div>
+      </header>
+
+      <section class="workspace">
+        <div class="board-wrap">
+          <template id="drag-markers"><circle data-drag="vector-end"></circle><circle data-drag="direction-end"></circle></template>
+          <svg id="board" viewBox="0 0 960 620" role="img" aria-label="两个可拖动向量和投影图形"></svg>
+        </div>
+
+        <aside class="panel" aria-label="投影读数与课堂控制">
+          <div class="panel-inner">
+            <div class="controls">
+              <div class="presetbar" aria-label="典型夹角">
+                <button class="preset-button" type="button" data-preset="acute">锐角例</button>
+                <button class="preset-button" type="button" data-preset="right">直角例</button>
+                <button class="preset-button" type="button" data-preset="obtuse">钝角例</button>
+              </div>
+              <div class="tool-row">
+                <button id="axisButton" class="tool-button" type="button" aria-pressed="true">方向轴</button>
+                <button id="projectionButton" class="tool-button" type="button" aria-pressed="true">投影段</button>
+                <button id="resetButton" class="tool-button" type="button">重置</button>
+              </div>
+            </div>
+
+            <div class="readout-grid">
+              <div class="readout-card" id="angleCard">
+                <p class="readout-label">夹角 angle_degrees</p>
+                <p class="readout-value" id="angleReadout">--</p>
+              </div>
+              <div class="readout-card" id="cosCard">
+                <p class="readout-label">cos_theta</p>
+                <p class="readout-value" id="cosReadout">--</p>
+              </div>
+              <div class="readout-card" id="projectionCard">
+                <p class="readout-label">有向投影 signed_projection</p>
+                <p class="readout-value" id="projectionReadout">--</p>
+              </div>
+              <div class="readout-card" id="dotCard">
+                <p class="readout-label">数量积符号 dot_sign</p>
+                <p class="readout-value" id="dotReadout">--</p>
+              </div>
+            </div>
+
+            <div id="relationBox" class="relation-box"></div>
+
+            <div class="summary-box" id="summaryBox" hidden>
+              <p class="formula">观察链：夹角变大，cos 值从正到 0 再到负；有向投影长度随之从正到 0 再到负。</p>
+              <p>这里先用图形理解“符号来自方向”，不做完整数量积公式训练。</p>
+            </div>
+
+            <div class="legend" aria-label="颜色含义">
+              <span><i class="swatch vector"></i>蓝色：被投影向量 a</span>
+              <span><i class="swatch direction"></i>橙色：投影方向向量 b</span>
+              <span><i class="swatch projection"></i>绿色：同向有向投影</span>
+              <span><i class="swatch negative"></i>红色：反向有向投影</span>
+            </div>
+          </div>
+        </aside>
+      </section>
     </main>
+
     <script>
       const RESOURCE_ID = "SH-HS-MATH-HJ-B2-C08-L04-A01";
-      window.parent?.postMessage({ type: "applet:ready", resourceId: RESOURCE_ID, payload: { current_value: 0 } }, "*");
+      const svg = document.getElementById("board");
+      const stepButtons = Array.from(document.querySelectorAll(".step-button"));
+      const presetButtons = Array.from(document.querySelectorAll(".preset-button"));
+      const axisButton = document.getElementById("axisButton");
+      const projectionButton = document.getElementById("projectionButton");
+      const resetButton = document.getElementById("resetButton");
+      const angleReadout = document.getElementById("angleReadout");
+      const cosReadout = document.getElementById("cosReadout");
+      const projectionReadout = document.getElementById("projectionReadout");
+      const dotReadout = document.getElementById("dotReadout");
+      const angleCard = document.getElementById("angleCard");
+      const cosCard = document.getElementById("cosCard");
+      const projectionCard = document.getElementById("projectionCard");
+      const dotCard = document.getElementById("dotCard");
+      const relationBox = document.getElementById("relationBox");
+      const summaryBox = document.getElementById("summaryBox");
+
+      const boardSize = { width: 960, height: 620 };
+      const view = { minX: -6, maxX: 6, minY: -4, maxY: 4 };
+      const origin = { x: 0, y: 0 };
+      const initialState = {
+        vectorEnd: { x: 3.5, y: 2.4 },
+        directionEnd: { x: 4.4, y: 0.8 },
+        step: 1,
+        showAxis: true,
+        showProjection: true
+      };
+      const presets = {
+        acute: {
+          vectorEnd: { x: 3.6, y: 2.4 },
+          directionEnd: { x: 4.6, y: 0.8 },
+          step: 4
+        },
+        right: {
+          vectorEnd: { x: -1.8, y: 3.2 },
+          directionEnd: { x: 4, y: 2.25 },
+          step: 4
+        },
+        obtuse: {
+          vectorEnd: { x: -2.4, y: 2.7 },
+          directionEnd: { x: 4.4, y: 0.8 },
+          step: 4
+        }
+      };
+      let state = clone(initialState);
+      let drag = null;
+
+      function clone(value) {
+        return JSON.parse(JSON.stringify(value));
+      }
+
+      function clamp(value, min, max) {
+        return Math.max(min, Math.min(max, value));
+      }
+
+      function snap(value) {
+        return Math.round(value * 4) / 4;
+      }
+
+      function clampPoint(point) {
+        return {
+          x: clamp(point.x, view.minX, view.maxX),
+          y: clamp(point.y, view.minY, view.maxY)
+        };
+      }
+
+      function toScreen(point) {
+        const x = ((point.x - view.minX) / (view.maxX - view.minX)) * boardSize.width;
+        const y = boardSize.height - ((point.y - view.minY) / (view.maxY - view.minY)) * boardSize.height;
+        return { x, y };
+      }
+
+      function toMath(clientX, clientY) {
+        const rect = svg.getBoundingClientRect();
+        const sx = ((clientX - rect.left) / rect.width) * boardSize.width;
+        const sy = ((clientY - rect.top) / rect.height) * boardSize.height;
+        return {
+          x: view.minX + (sx / boardSize.width) * (view.maxX - view.minX),
+          y: view.minY + ((boardSize.height - sy) / boardSize.height) * (view.maxY - view.minY)
+        };
+      }
+
+      function vectorStats() {
+        const a = state.vectorEnd;
+        const b = state.directionEnd;
+        const aLen = Math.hypot(a.x, a.y);
+        const bLen = Math.hypot(b.x, b.y);
+        const hasVector = aLen > 0.001;
+        const hasDirection = bLen > 0.001;
+
+        if (!hasVector || !hasDirection) {
+          return {
+            a,
+            b,
+            aLen,
+            bLen,
+            hasVector,
+            hasDirection,
+            unit: null,
+            foot: origin,
+            signedProjection: null,
+            cosTheta: null,
+            angleDegrees: null,
+            dotSign: hasDirection && !hasVector ? "zero" : "undefined"
+          };
+        }
+
+        const unit = { x: b.x / bLen, y: b.y / bLen };
+        const dot = a.x * b.x + a.y * b.y;
+        const signedProjection = a.x * unit.x + a.y * unit.y;
+        const foot = { x: unit.x * signedProjection, y: unit.y * signedProjection };
+        const cosTheta = clamp(dot / (aLen * bLen), -1, 1);
+        const angleDegrees = (Math.acos(cosTheta) * 180) / Math.PI;
+        const dotSign = Math.abs(signedProjection) < 0.001 ? "zero" : signedProjection > 0 ? "positive" : "negative";
+        return { a, b, aLen, bLen, hasVector, hasDirection, unit, foot, signedProjection, cosTheta, angleDegrees, dotSign };
+      }
+
+      function fmtNumber(value, digits = 2) {
+        if (value === null || Number.isNaN(value)) return "--";
+        if (Math.abs(value) < 0.0001) return "0";
+        if (Number.isInteger(value)) return String(value);
+        return value.toFixed(digits);
+      }
+
+      function fmtPoint(point) {
+        return `(${fmtNumber(point.x, 1)}, ${fmtNumber(point.y, 1)})`;
+      }
+
+      function fmtAngle(value) {
+        if (value === null) return "不规定";
+        return `${Math.round(value)}°`;
+      }
+
+      function signText(sign) {
+        if (sign === "positive") return "正";
+        if (sign === "negative") return "负";
+        if (sign === "zero") return "0";
+        return "不规定";
+      }
+
+      function signClass(sign) {
+        if (sign === "negative") return "negative";
+        if (sign === "zero") return "zero";
+        if (sign === "positive") return "positive";
+        return "zero";
+      }
+
+      function createSvg(tag, attrs = {}) {
+        const node = document.createElementNS("http://www.w3.org/2000/svg", tag);
+        Object.entries(attrs).forEach(([key, value]) => node.setAttribute(key, String(value)));
+        return node;
+      }
+
+      function addText(parent, text, point, className, anchor = "middle") {
+        const screen = toScreen(point);
+        const label = createSvg("text", {
+          x: screen.x,
+          y: screen.y,
+          class: className,
+          "text-anchor": anchor
+        });
+        label.textContent = text;
+        parent.appendChild(label);
+        return label;
+      }
+
+      function addLine(parent, start, end, className, attrs = {}) {
+        const a = toScreen(start);
+        const b = toScreen(end);
+        const line = createSvg("line", {
+          x1: a.x,
+          y1: a.y,
+          x2: b.x,
+          y2: b.y,
+          class: className,
+          ...attrs
+        });
+        parent.appendChild(line);
+        return line;
+      }
+
+      function addHandle(parent, point, label, dragType, className) {
+        const screen = toScreen(point);
+        const circle = createSvg("circle", {
+          cx: screen.x,
+          cy: screen.y,
+          r: 11,
+          class: `point-handle ${className}`,
+          "data-drag": dragType,
+          "aria-label": label
+        });
+        parent.appendChild(circle);
+        addText(parent, label, { x: point.x, y: point.y + 0.34 }, "point-label");
+      }
+
+      function drawGrid(root) {
+        const grid = createSvg("g");
+        for (let x = view.minX; x <= view.maxX; x += 1) {
+          const a = toScreen({ x, y: view.minY });
+          const b = toScreen({ x, y: view.maxY });
+          grid.appendChild(createSvg("line", { x1: a.x, y1: a.y, x2: b.x, y2: b.y, class: x === 0 ? "axis-line" : "grid-line" }));
+          if (x !== 0) addText(grid, String(x), { x, y: -0.22 }, "axis-label");
+        }
+        for (let y = view.minY; y <= view.maxY; y += 1) {
+          const a = toScreen({ x: view.minX, y });
+          const b = toScreen({ x: view.maxX, y });
+          grid.appendChild(createSvg("line", { x1: a.x, y1: a.y, x2: b.x, y2: b.y, class: y === 0 ? "axis-line" : "grid-line" }));
+          if (y !== 0) addText(grid, String(y), { x: 0.18, y }, "axis-label", "start");
+        }
+        addText(grid, "O", { x: -0.22, y: -0.22 }, "axis-label", "end");
+        root.appendChild(grid);
+      }
+
+      function drawArrowMarkers(root) {
+        const defs = createSvg("defs");
+        const vectorMarker = createSvg("marker", {
+          id: "arrow-vector",
+          viewBox: "0 0 10 10",
+          refX: 8.4,
+          refY: 5,
+          markerWidth: 7,
+          markerHeight: 7,
+          orient: "auto-start-reverse"
+        });
+        vectorMarker.appendChild(createSvg("path", { d: "M 0 0 L 10 5 L 0 10 z", fill: "#2563eb" }));
+
+        const directionMarker = createSvg("marker", {
+          id: "arrow-direction",
+          viewBox: "0 0 10 10",
+          refX: 8.4,
+          refY: 5,
+          markerWidth: 7,
+          markerHeight: 7,
+          orient: "auto-start-reverse"
+        });
+        directionMarker.appendChild(createSvg("path", { d: "M 0 0 L 10 5 L 0 10 z", fill: "#d97706" }));
+
+        const projectionMarker = createSvg("marker", {
+          id: "arrow-projection",
+          viewBox: "0 0 10 10",
+          refX: 8.2,
+          refY: 5,
+          markerWidth: 7,
+          markerHeight: 7,
+          orient: "auto-start-reverse"
+        });
+        projectionMarker.appendChild(createSvg("path", { d: "M 0 0 L 10 5 L 0 10 z", fill: "#0f766e" }));
+
+        const negativeMarker = createSvg("marker", {
+          id: "arrow-negative",
+          viewBox: "0 0 10 10",
+          refX: 8.2,
+          refY: 5,
+          markerWidth: 7,
+          markerHeight: 7,
+          orient: "auto-start-reverse"
+        });
+        negativeMarker.appendChild(createSvg("path", { d: "M 0 0 L 10 5 L 0 10 z", fill: "#b42318" }));
+
+        defs.append(vectorMarker, directionMarker, projectionMarker, negativeMarker);
+        root.appendChild(defs);
+      }
+
+      function angleArcPath(stats) {
+        if (!stats.hasVector || !stats.hasDirection || stats.angleDegrees === null) return "";
+        const startAngle = Math.atan2(stats.b.y, stats.b.x);
+        const endAngleRaw = Math.atan2(stats.a.y, stats.a.x);
+        let diff = endAngleRaw - startAngle;
+        while (diff > Math.PI) diff -= Math.PI * 2;
+        while (diff < -Math.PI) diff += Math.PI * 2;
+        const endAngle = startAngle + diff;
+        const radius = 1.15;
+        const start = toScreen({ x: Math.cos(startAngle) * radius, y: Math.sin(startAngle) * radius });
+        const end = toScreen({ x: Math.cos(endAngle) * radius, y: Math.sin(endAngle) * radius });
+        const sweep = diff < 0 ? 1 : 0;
+        return `M ${start.x} ${start.y} A ${radius * 80} ${radius * 80} 0 0 ${sweep} ${end.x} ${end.y}`;
+      }
+
+      function axisEndpoints(stats) {
+        if (!stats.hasDirection) return null;
+        return {
+          start: { x: -stats.unit.x * 6, y: -stats.unit.y * 6 },
+          end: { x: stats.unit.x * 6, y: stats.unit.y * 6 }
+        };
+      }
+
+      function drawProjection(root, stats) {
+        if (!stats.hasDirection || !stats.hasVector) return;
+        if (state.showAxis) {
+          const axis = axisEndpoints(stats);
+          addLine(root, axis.start, axis.end, "direction-axis");
+        }
+        if (state.step >= 2) {
+          addLine(root, stats.a, stats.foot, "perpendicular-line");
+          const footScreen = toScreen(stats.foot);
+          root.appendChild(createSvg("circle", {
+            id: "projection-foot",
+            cx: footScreen.x,
+            cy: footScreen.y,
+            r: 8,
+            class: "point-handle projection"
+          }));
+          addText(root, "F", { x: stats.foot.x, y: stats.foot.y - 0.34 }, "point-label");
+        }
+        if (state.step >= 3 && state.showProjection) {
+          const projectionClass = stats.dotSign === "negative" ? "projection-line negative" : "projection-line";
+          const marker = stats.dotSign === "negative" ? "arrow-negative" : "arrow-projection";
+          addLine(root, origin, stats.foot, projectionClass, { "marker-end": `url(#${marker})` });
+          const label = stats.dotSign === "negative" ? "有向投影 < 0" : stats.dotSign === "zero" ? "有向投影 = 0" : "有向投影 > 0";
+          addText(root, label, projectionLabelPoint(stats), "measure-label");
+        }
+      }
+
+      function projectionLabelPoint(stats) {
+        const foot = stats.foot;
+        const normal = stats.unit ? { x: -stats.unit.y, y: stats.unit.x } : { x: 0, y: 1 };
+        return {
+          x: foot.x / 2 + normal.x * 0.38,
+          y: foot.y / 2 + normal.y * 0.38
+        };
+      }
+
+      function render() {
+        const stats = vectorStats();
+        svg.innerHTML = "";
+        svg.classList.toggle("dragging", Boolean(drag));
+        drawArrowMarkers(svg);
+        drawGrid(svg);
+
+        if (state.step >= 1 && stats.hasVector && stats.hasDirection) {
+          const path = angleArcPath(stats);
+          if (path) svg.appendChild(createSvg("path", { d: path, class: "angle-arc" }));
+          addText(svg, `θ = ${fmtAngle(stats.angleDegrees)}`, { x: 1.22, y: 0.76 }, "measure-label", "start");
+        }
+
+        drawProjection(svg, stats);
+
+        addLine(svg, origin, state.vectorEnd, "vector-line", { "marker-end": "url(#arrow-vector)", "data-drag": "vector-body" });
+        addLine(svg, origin, state.directionEnd, "direction-line", { "marker-end": "url(#arrow-direction)", "data-drag": "direction-body" });
+        addHandle(svg, origin, "O", "origin", "projection");
+        addHandle(svg, state.vectorEnd, "A", "vector-end", "vector");
+        addHandle(svg, state.directionEnd, "B", "direction-end", "direction");
+        addText(svg, "向量 a", { x: state.vectorEnd.x * 0.55, y: state.vectorEnd.y * 0.55 + 0.35 }, "vector-label");
+        addText(svg, "方向 b", { x: state.directionEnd.x * 0.58, y: state.directionEnd.y * 0.58 - 0.35 }, "vector-label");
+
+        updatePanel(stats);
+        postState("state_changed", stats);
+      }
+
+      function updatePanel(stats) {
+        angleReadout.textContent = fmtAngle(stats.angleDegrees);
+        cosReadout.textContent = fmtNumber(stats.cosTheta, 2);
+        projectionReadout.textContent = stats.signedProjection === null ? "不规定" : fmtNumber(stats.signedProjection, 2);
+        dotReadout.textContent = signText(stats.dotSign);
+
+        [cosCard, projectionCard, dotCard].forEach((card) => {
+          card.classList.remove("positive", "negative", "zero");
+          card.classList.add(signClass(stats.dotSign));
+        });
+        angleCard.classList.toggle("zero", stats.angleDegrees === null);
+
+        summaryBox.hidden = state.step < 4;
+        stepButtons.forEach((button) => {
+          button.setAttribute("aria-pressed", String(Number(button.dataset.step) === state.step));
+        });
+        axisButton.setAttribute("aria-pressed", String(state.showAxis));
+        projectionButton.setAttribute("aria-pressed", String(state.showProjection));
+        relationBox.innerHTML = relationMessage(stats);
+      }
+
+      function relationMessage(stats) {
+        if (!stats.hasDirection) {
+          return `<p class="warning">橙色方向向量 b 为零时，投影方向不确定。请先拖动 B 离开 O。</p>`;
+        }
+        if (!stats.hasVector) {
+          return `<p class="warning">蓝色向量 a 为零向量，夹角不规定；投影读作 0。</p><p class="formula">有向投影 = 0，数量积符号为 0。</p>`;
+        }
+        if (state.step === 1) {
+          return `<p>当前只观察两条向量的夹角：θ = ${fmtAngle(stats.angleDegrees)}。</p><p>继续拖动 A 或 B，注意 θ 小于、等于或大于 90° 时读数怎样换边界。</p>`;
+        }
+        if (state.step === 2) {
+          return `<p>从 A 向橙色方向所在直线作垂线，垂足为 F。</p><p class="formula">F ${fmtPoint(stats.foot)} 是投影点，不只是普通线段端点。</p>`;
+        }
+        if (state.step === 3) {
+          const directionText = stats.dotSign === "negative" ? "落在 O 的反向一侧" : stats.dotSign === "zero" ? "正好落在 O 点" : "落在 b 的同向一侧";
+          return `<p>垂足 F ${directionText}，所以投影要读成有方向的长度。</p><p class="formula">有向投影 = |a| cosθ = ${fmtNumber(stats.signedProjection, 2)}</p>`;
+        }
+        const signReason = stats.dotSign === "negative"
+          ? "钝角时 cosθ < 0，投影落在反向一侧，数量积符号也为负。"
+          : stats.dotSign === "zero"
+            ? "直角时 cosθ = 0，投影收缩到 O，数量积符号为 0。"
+            : "锐角时 cosθ > 0，投影落在同向一侧，数量积符号也为正。";
+        return `<p>${signReason}</p><p class="formula">本页只建立符号直观：投影同号，数量积同号。</p>`;
+      }
+
+      function postState(type, stats = vectorStats()) {
+        const payload = {
+          vector_a: state.vectorEnd,
+          vector_b: state.directionEnd,
+          projection_foot: stats.foot,
+          angle_degrees: stats.angleDegrees === null ? null : Number(stats.angleDegrees.toFixed(2)),
+          cos_theta: stats.cosTheta === null ? null : Number(stats.cosTheta.toFixed(4)),
+          signed_projection: stats.signedProjection === null ? null : Number(stats.signedProjection.toFixed(4)),
+          dot_sign: stats.dotSign,
+          reveal_step: state.step
+        };
+        window.parent?.postMessage({ type: `applet:${type}`, resourceId: RESOURCE_ID, payload }, "*");
+      }
+
+      function startDrag(event) {
+        const target = event.target.closest("[data-drag]");
+        if (!target || target.dataset.drag === "origin") return;
+        event.preventDefault();
+        drag = {
+          type: target.dataset.drag,
+          startPointer: toMath(event.clientX, event.clientY),
+          startState: clone(state)
+        };
+        svg.setPointerCapture(event.pointerId);
+        render();
+      }
+
+      function moveDrag(event) {
+        if (!drag) return;
+        const pointer = clampPoint({ x: snap(toMath(event.clientX, event.clientY).x), y: snap(toMath(event.clientX, event.clientY).y) });
+        const dx = snap(toMath(event.clientX, event.clientY).x - drag.startPointer.x);
+        const dy = snap(toMath(event.clientX, event.clientY).y - drag.startPointer.y);
+
+        if (drag.type === "vector-end") {
+          state.vectorEnd = pointer;
+        }
+        if (drag.type === "direction-end") {
+          state.directionEnd = pointer;
+        }
+        if (drag.type === "vector-body") {
+          state.vectorEnd = clampPoint({
+            x: snap(drag.startState.vectorEnd.x + dx),
+            y: snap(drag.startState.vectorEnd.y + dy)
+          });
+        }
+        if (drag.type === "direction-body") {
+          state.directionEnd = clampPoint({
+            x: snap(drag.startState.directionEnd.x + dx),
+            y: snap(drag.startState.directionEnd.y + dy)
+          });
+        }
+        render();
+      }
+
+      function stopDrag(event) {
+        if (!drag) return;
+        try {
+          svg.releasePointerCapture(event.pointerId);
+        } catch (error) {
+          // Pointer capture may already be released when the pointer leaves the SVG.
+        }
+        drag = null;
+        render();
+      }
+
+      stepButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          state.step = Number(button.dataset.step);
+          render();
+        });
+      });
+
+      presetButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const preset = presets[button.dataset.preset];
+          state.vectorEnd = clone(preset.vectorEnd);
+          state.directionEnd = clone(preset.directionEnd);
+          state.step = preset.step;
+          render();
+        });
+      });
+
+      axisButton.addEventListener("click", () => {
+        state.showAxis = !state.showAxis;
+        render();
+      });
+
+      projectionButton.addEventListener("click", () => {
+        state.showProjection = !state.showProjection;
+        state.step = Math.max(state.step, 3);
+        render();
+      });
+
+      resetButton.addEventListener("click", () => {
+        state = clone(initialState);
+        render();
+      });
+
+      svg.addEventListener("pointerdown", startDrag);
+      svg.addEventListener("pointermove", moveDrag);
+      svg.addEventListener("pointerup", stopDrag);
+      svg.addEventListener("pointercancel", stopDrag);
+      svg.addEventListener("pointerleave", stopDrag);
+
+      render();
+      postState("ready");
     </script>
   </body>
 </html>

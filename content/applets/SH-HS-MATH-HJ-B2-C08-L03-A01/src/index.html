@@ -4,36 +4,958 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>数乘伸缩实验室</title>
+    <link rel="icon" href="data:," />
     <style>
+      :root {
+        --ink: #17211d;
+        --muted: #5c6b63;
+        --paper: #f8faf7;
+        --panel: #ffffff;
+        --line: #d8e1da;
+        --grid: #e7ece8;
+        --axis: #8e9c94;
+        --base: #2563eb;
+        --base-soft: rgba(37, 99, 235, 0.13);
+        --scaled: #d97706;
+        --scaled-soft: rgba(217, 119, 6, 0.16);
+        --measure: #0f766e;
+        --measure-soft: rgba(15, 118, 110, 0.13);
+        --negative: #b91c1c;
+        --negative-soft: rgba(185, 28, 28, 0.11);
+        --zero: #475569;
+        --zero-soft: rgba(71, 85, 105, 0.12);
+        --shadow: 0 18px 48px rgba(24, 35, 31, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
       body {
         margin: 0;
         min-height: 100svh;
-        display: grid;
-        place-items: center;
-        background: #f6faf8;
-        color: #17231f;
+        background: var(--paper);
+        color: var(--ink);
         font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
       }
 
-      main {
-        width: min(720px, calc(100vw - 32px));
-        padding: 24px;
-        border: 1px solid #d7e0dc;
+      button,
+      input {
+        font: inherit;
+      }
+
+      .applet {
+        min-height: 100svh;
+        padding: 14px;
+        display: grid;
+        grid-template-rows: auto 1fr;
+        gap: 12px;
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 12px 14px;
+        border: 1px solid var(--line);
         border-radius: 8px;
-        background: #ffffff;
+        background: var(--panel);
+        box-shadow: 0 8px 24px rgba(24, 35, 31, 0.08);
+      }
+
+      .title-block {
+        min-width: 240px;
+      }
+
+      .eyebrow {
+        margin: 0 0 3px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      h1,
+      h2,
+      p {
+        margin: 0;
+      }
+
+      h1 {
+        font-size: 22px;
+        line-height: 1.2;
+        font-weight: 760;
+        letter-spacing: 0;
+      }
+
+      h2 {
+        font-size: 15px;
+        line-height: 1.3;
+      }
+
+      .toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 8px;
+      }
+
+      .step-button,
+      .tool-button,
+      .lambda-button {
+        min-height: 38px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #f8faf8;
+        color: var(--ink);
+        padding: 7px 10px;
+        cursor: pointer;
+      }
+
+      .step-button[aria-pressed="true"],
+      .tool-button[aria-pressed="true"] {
+        border-color: var(--measure);
+        background: var(--measure-soft);
+        color: #0f4f49;
+        font-weight: 700;
+      }
+
+      .lambda-button {
+        min-width: 48px;
+        padding-inline: 8px;
+      }
+
+      .workspace {
+        display: grid;
+        grid-template-columns: minmax(560px, 1fr) minmax(320px, 390px);
+        gap: 12px;
+        min-height: 0;
+      }
+
+      .board-wrap,
+      .panel {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+        box-shadow: var(--shadow);
+        min-width: 0;
+      }
+
+      .board-wrap {
+        position: relative;
+        overflow: hidden;
+        display: grid;
+        min-height: 540px;
+      }
+
+      svg {
+        width: 100%;
+        height: 100%;
+        min-height: 540px;
+        touch-action: none;
+        user-select: none;
+      }
+
+      .grid-line {
+        stroke: var(--grid);
+        stroke-width: 1;
+      }
+
+      .axis-line {
+        stroke: var(--axis);
+        stroke-width: 1.4;
+      }
+
+      .axis-label,
+      .point-label,
+      .vector-label,
+      .measure-label {
+        fill: var(--ink);
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      .axis-label {
+        fill: var(--muted);
+        font-size: 12px;
+      }
+
+      .base-vector,
+      .scaled-vector {
+        stroke-width: 5;
+        stroke-linecap: round;
+        cursor: grab;
+      }
+
+      .base-vector {
+        stroke: var(--base);
+      }
+
+      .scaled-vector {
+        stroke: var(--scaled);
+      }
+
+      .base-guide,
+      .negative-guide {
+        stroke: #64748b;
+        stroke-width: 1.6;
+        stroke-dasharray: 7 6;
+        opacity: 0.48;
+      }
+
+      .scale-tick {
+        stroke: var(--measure);
+        stroke-width: 2;
+      }
+
+      .length-arc {
+        fill: none;
+        stroke: var(--measure);
+        stroke-width: 2;
+        stroke-dasharray: 5 4;
+      }
+
+      .point-handle {
+        fill: var(--base);
+        stroke: #ffffff;
+        stroke-width: 3;
+        cursor: grab;
+      }
+
+      .scaled-point {
+        fill: var(--scaled);
+        stroke: #ffffff;
+        stroke-width: 3;
+      }
+
+      .origin-point {
+        fill: var(--ink);
+        stroke: #ffffff;
+        stroke-width: 3;
+      }
+
+      .zero-ring {
+        fill: none;
+        stroke: var(--zero);
+        stroke-width: 3;
+        opacity: 0;
+      }
+
+      .is-zero .zero-ring {
+        opacity: 1;
+      }
+
+      .dragging .point-handle,
+      .dragging .base-vector {
+        cursor: grabbing;
+      }
+
+      .board-note {
+        position: absolute;
+        left: 14px;
+        bottom: 14px;
+        max-width: min(460px, calc(100% - 28px));
+        padding: 10px 12px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.92);
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.5;
+      }
+
+      .panel {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        min-height: 0;
+      }
+
+      .panel-section {
+        padding: 14px;
+        border-bottom: 1px solid var(--line);
+        display: grid;
+        gap: 10px;
+      }
+
+      .panel-section:last-child {
+        border-bottom: 0;
+      }
+
+      .lambda-row {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .lambda-value {
+        min-width: 78px;
+        padding: 8px 10px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #f8faf8;
+        text-align: center;
+        font-weight: 760;
+        color: var(--measure);
+      }
+
+      input[type="range"] {
+        width: 100%;
+        accent-color: var(--measure);
+      }
+
+      .quick-values {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+      }
+
+      .readout-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .readout {
+        min-height: 68px;
+        padding: 10px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fbfcfb;
+      }
+
+      .readout strong {
+        display: block;
+        margin-bottom: 4px;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 650;
+      }
+
+      .readout span {
+        font-size: 18px;
+        font-weight: 760;
+        line-height: 1.25;
+      }
+
+      .sign-grid {
+        display: grid;
+        gap: 8px;
+      }
+
+      .sign-card {
+        padding: 10px 11px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fbfcfb;
+        display: grid;
+        gap: 3px;
+      }
+
+      .sign-card strong {
+        font-size: 14px;
+      }
+
+      .sign-card p {
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.45;
+      }
+
+      .sign-card.active.positive {
+        border-color: var(--measure);
+        background: var(--measure-soft);
+      }
+
+      .sign-card.active.zero {
+        border-color: var(--zero);
+        background: var(--zero-soft);
+      }
+
+      .sign-card.active.negative {
+        border-color: var(--negative);
+        background: var(--negative-soft);
+      }
+
+      .summary-box {
+        padding: 11px 12px;
+        border-radius: 8px;
+        background: var(--base-soft);
+        color: #14315f;
+        line-height: 1.55;
+        font-size: 14px;
+      }
+
+      .summary-box.negative {
+        background: var(--negative-soft);
+        color: #7f1d1d;
+      }
+
+      .summary-box.zero {
+        background: var(--zero-soft);
+        color: #334155;
+      }
+
+      .muted {
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.5;
+      }
+
+      @media (max-width: 920px) {
+        .topbar,
+        .workspace {
+          grid-template-columns: 1fr;
+        }
+
+        .topbar {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .toolbar {
+          justify-content: flex-start;
+        }
+
+        .workspace {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .board-wrap,
+        svg {
+          min-height: 430px;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .applet {
+          padding: 10px;
+        }
+
+        .readout-grid {
+          grid-template-columns: 1fr;
+        }
+
+        h1 {
+          font-size: 20px;
+        }
       }
     </style>
   </head>
   <body>
-    <main>
-      <p>sh-hs-math-applet-sdk</p>
-      <h1>数乘伸缩实验室</h1>
-      <p>用滑块控制实数 lambda，联动显示长度倍率、方向翻转、零向量和共线判定。</p>
-      <p>资源 ID：SH-HS-MATH-HJ-B2-C08-L03-A01</p>
+    <main class="applet">
+      <section class="topbar" aria-label="课件标题和教师控制">
+        <div class="title-block">
+          <p class="eyebrow">8.1.3 · 实数与向量的乘法</p>
+          <h1>数乘伸缩实验室</h1>
+        </div>
+        <div class="toolbar" aria-label="分步揭示">
+          <button class="step-button" type="button" data-step="1" aria-pressed="true">1 观察 a</button>
+          <button class="step-button" type="button" data-step="2" aria-pressed="false">2 调节 λ</button>
+          <button class="step-button" type="button" data-step="3" aria-pressed="false">3 看边界</button>
+          <button class="step-button" type="button" data-step="4" aria-pressed="false">4 归纳</button>
+          <button class="tool-button" id="reset-button" type="button">重置</button>
+        </div>
+      </section>
+
+      <section class="workspace">
+        <div class="board-wrap" id="board-shell">
+          <svg
+            id="vector-board"
+            data-testid="vector-board"
+            viewBox="0 0 760 540"
+            role="img"
+            aria-label="拖动原向量 a 并观察 lambda 乘以 a 后的方向和长度"
+          >
+            <defs>
+              <marker id="arrow-base" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+                <path d="M 0 0 L 12 6 L 0 12 z" fill="#2563eb"></path>
+              </marker>
+              <marker id="arrow-scaled" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+                <path d="M 0 0 L 12 6 L 0 12 z" fill="#d97706"></path>
+              </marker>
+            </defs>
+            <g id="grid-layer"></g>
+            <g id="guide-layer">
+              <line id="positive-guide" class="base-guide"></line>
+              <line id="negative-guide" class="negative-guide"></line>
+              <path id="length-arc" class="length-arc"></path>
+              <g id="tick-layer"></g>
+            </g>
+            <g id="vector-layer">
+              <line id="scaled-vector" class="scaled-vector" marker-end="url(#arrow-scaled)"></line>
+              <line id="base-vector" class="base-vector" data-testid="drag-base-vector" marker-end="url(#arrow-base)"></line>
+              <circle id="origin" class="origin-point" r="6"></circle>
+              <circle id="zero-ring" class="zero-ring" r="18"></circle>
+              <circle id="scaled-tip" class="scaled-point" r="7"></circle>
+              <circle id="base-tip" class="point-handle" data-testid="drag-base-vector" r="8"></circle>
+            </g>
+            <g id="label-layer">
+              <text id="origin-label" class="point-label">O</text>
+              <text id="base-label" class="vector-label">a</text>
+              <text id="scaled-label" class="vector-label">λa</text>
+              <text id="guide-label" class="measure-label"></text>
+            </g>
+          </svg>
+          <p class="board-note" id="board-note">
+            拖动蓝色原向量 a 的箭头端点，再移动 λ。橙色向量始终从同一起点出发表示 λa。
+          </p>
+        </div>
+
+        <aside class="panel" aria-label="数乘读数和结论">
+          <section class="panel-section">
+            <div class="lambda-row">
+              <label for="lambda-slider">
+                <h2>实数 λ</h2>
+                <p class="muted">连续穿过 0，观察方向与长度的变化。</p>
+              </label>
+              <output class="lambda-value" id="lambda-output" for="lambda-slider">1.50</output>
+            </div>
+            <input
+              id="lambda-slider"
+              data-testid="lambda-slider"
+              type="range"
+              min="-2"
+              max="2"
+              step="0.1"
+              value="1.5"
+              aria-label="调节实数 lambda"
+            />
+            <div class="quick-values" aria-label="快速设置 lambda">
+              <button class="lambda-button" type="button" data-lambda="-1">-1</button>
+              <button class="lambda-button" type="button" data-lambda="-0.5">-0.5</button>
+              <button class="lambda-button" type="button" data-lambda="0">0</button>
+              <button class="lambda-button" type="button" data-lambda="0.5">0.5</button>
+              <button class="lambda-button" type="button" data-lambda="1">1</button>
+              <button class="lambda-button" type="button" data-lambda="2">2</button>
+            </div>
+          </section>
+
+          <section class="panel-section">
+            <h2>即时读数</h2>
+            <div class="readout-grid">
+              <div class="readout">
+                <strong>原向量 a</strong>
+                <span id="base-readout">|a| = 2.78</span>
+              </div>
+              <div class="readout">
+                <strong>数乘向量 λa</strong>
+                <span id="scaled-readout">|λa| = 4.17</span>
+              </div>
+              <div class="readout">
+                <strong>长度倍率</strong>
+                <span id="scale-readout">1.50 倍</span>
+              </div>
+              <div class="readout">
+                <strong>方向关系</strong>
+                <span id="direction-readout">同向</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel-section">
+            <h2>三种几何含义</h2>
+            <div class="sign-grid">
+              <div class="sign-card positive active" id="lambda-sign-positive">
+                <strong>λ &gt; 0</strong>
+                <p>λa 与 a 同向，长度变为 λ 倍。</p>
+              </div>
+              <div class="sign-card zero" id="lambda-sign-zero">
+                <strong>λ = 0</strong>
+                <p>λa 是零向量，长度为 0，方向不规定。</p>
+              </div>
+              <div class="sign-card negative" id="lambda-sign-negative">
+                <strong>λ &lt; 0</strong>
+                <p>λa 与 a 方向相反，长度变为 |λ| 倍。</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel-section">
+            <h2>课堂结论</h2>
+            <p class="summary-box" id="summary-box">
+              当前 λ &gt; 0：橙色 λa 沿着蓝色 a 的方向伸长或缩短，长度为 |λ||a|。
+            </p>
+            <p class="muted" id="stage-note">
+              先让学生只描述“橙色箭头相对蓝色箭头怎样变”，再回到 λ 的符号。
+            </p>
+          </section>
+        </aside>
+      </section>
     </main>
+
     <script>
       const RESOURCE_ID = "SH-HS-MATH-HJ-B2-C08-L03-A01";
-      window.parent?.postMessage({ type: "applet:ready", resourceId: RESOURCE_ID, payload: { current_value: 0 } }, "*");
+      const svg = document.querySelector("#vector-board");
+      const boardShell = document.querySelector("#board-shell");
+      const gridLayer = document.querySelector("#grid-layer");
+      const tickLayer = document.querySelector("#tick-layer");
+      const lambdaSlider = document.querySelector("#lambda-slider");
+      const lambdaOutput = document.querySelector("#lambda-output");
+      const baseVector = document.querySelector("#base-vector");
+      const scaledVector = document.querySelector("#scaled-vector");
+      const baseTip = document.querySelector("#base-tip");
+      const scaledTip = document.querySelector("#scaled-tip");
+      const originPoint = document.querySelector("#origin");
+      const zeroRing = document.querySelector("#zero-ring");
+      const positiveGuide = document.querySelector("#positive-guide");
+      const negativeGuide = document.querySelector("#negative-guide");
+      const lengthArc = document.querySelector("#length-arc");
+      const originLabel = document.querySelector("#origin-label");
+      const baseLabel = document.querySelector("#base-label");
+      const scaledLabel = document.querySelector("#scaled-label");
+      const guideLabel = document.querySelector("#guide-label");
+      const baseReadout = document.querySelector("#base-readout");
+      const scaledReadout = document.querySelector("#scaled-readout");
+      const scaleReadout = document.querySelector("#scale-readout");
+      const directionReadout = document.querySelector("#direction-readout");
+      const summaryBox = document.querySelector("#summary-box");
+      const stageNote = document.querySelector("#stage-note");
+      const signCards = {
+        positive: document.querySelector("#lambda-sign-positive"),
+        zero: document.querySelector("#lambda-sign-zero"),
+        negative: document.querySelector("#lambda-sign-negative"),
+      };
+
+      const view = {
+        width: 760,
+        height: 540,
+        xMin: -7,
+        xMax: 7,
+        yMin: -5,
+        yMax: 5,
+      };
+
+      const state = {
+        lambda: 1.5,
+        a: { x: 2.4, y: 1.4 },
+        step: 1,
+      };
+
+      function cleanNumber(value) {
+        if (Math.abs(value) < 0.0001) return "0";
+        const fixed = value.toFixed(2);
+        return fixed.replace(/\.?0+$/, "");
+      }
+
+      function pointLength(point) {
+        return Math.hypot(point.x, point.y);
+      }
+
+      function scaledPoint() {
+        return {
+          x: state.lambda * state.a.x,
+          y: state.lambda * state.a.y,
+        };
+      }
+
+      function toScreen(point) {
+        const x = ((point.x - view.xMin) / (view.xMax - view.xMin)) * view.width;
+        const y = view.height - ((point.y - view.yMin) / (view.yMax - view.yMin)) * view.height;
+        return { x, y };
+      }
+
+      function fromScreen(x, y) {
+        const point = svg.createSVGPoint();
+        point.x = x;
+        point.y = y;
+        const svgPoint = point.matrixTransform(svg.getScreenCTM().inverse());
+        return {
+          x: view.xMin + (svgPoint.x / view.width) * (view.xMax - view.xMin),
+          y: view.yMin + ((view.height - svgPoint.y) / view.height) * (view.yMax - view.yMin),
+        };
+      }
+
+      function clampBase(point) {
+        return {
+          x: Math.max(-3.4, Math.min(3.4, point.x)),
+          y: Math.max(-2.4, Math.min(2.4, point.y)),
+        };
+      }
+
+      function setLine(line, start, end) {
+        line.setAttribute("x1", start.x);
+        line.setAttribute("y1", start.y);
+        line.setAttribute("x2", end.x);
+        line.setAttribute("y2", end.y);
+      }
+
+      function setCircle(circle, point) {
+        circle.setAttribute("cx", point.x);
+        circle.setAttribute("cy", point.y);
+      }
+
+      function setText(text, point, value) {
+        text.setAttribute("x", point.x);
+        text.setAttribute("y", point.y);
+        text.textContent = value;
+      }
+
+      function buildGrid() {
+        const origin = toScreen({ x: 0, y: 0 });
+        for (let x = view.xMin; x <= view.xMax; x += 1) {
+          const start = toScreen({ x, y: view.yMin });
+          const end = toScreen({ x, y: view.yMax });
+          const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+          line.setAttribute("x1", start.x);
+          line.setAttribute("y1", start.y);
+          line.setAttribute("x2", end.x);
+          line.setAttribute("y2", end.y);
+          line.setAttribute("class", x === 0 ? "axis-line" : "grid-line");
+          gridLayer.append(line);
+        }
+        for (let y = view.yMin; y <= view.yMax; y += 1) {
+          const start = toScreen({ x: view.xMin, y });
+          const end = toScreen({ x: view.xMax, y });
+          const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+          line.setAttribute("x1", start.x);
+          line.setAttribute("y1", start.y);
+          line.setAttribute("x2", end.x);
+          line.setAttribute("y2", end.y);
+          line.setAttribute("class", y === 0 ? "axis-line" : "grid-line");
+          gridLayer.append(line);
+        }
+
+        const xLabel = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        xLabel.setAttribute("x", view.width - 28);
+        xLabel.setAttribute("y", origin.y - 8);
+        xLabel.setAttribute("class", "axis-label");
+        xLabel.textContent = "x";
+        gridLayer.append(xLabel);
+
+        const yLabel = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        yLabel.setAttribute("x", origin.x + 8);
+        yLabel.setAttribute("y", 20);
+        yLabel.setAttribute("class", "axis-label");
+        yLabel.textContent = "y";
+        gridLayer.append(yLabel);
+      }
+
+      function signKey() {
+        if (Math.abs(state.lambda) < 0.0001) return "zero";
+        return state.lambda > 0 ? "positive" : "negative";
+      }
+
+      function directionText(baseLength) {
+        if (baseLength < 0.0001 || Math.abs(state.lambda) < 0.0001) return "不规定";
+        return state.lambda > 0 ? "同向" : "方向相反";
+      }
+
+      function updateTickMarks(origin, base, scaled, baseLength) {
+        tickLayer.replaceChildren();
+        if (baseLength < 0.0001 || Math.abs(state.lambda) < 0.0001) return;
+
+        const unit = {
+          x: (base.x - origin.x) / baseLength,
+          y: (base.y - origin.y) / baseLength,
+        };
+        const normal = { x: -unit.y, y: unit.x };
+        const tickCount = Math.min(4, Math.floor(Math.abs(state.lambda)));
+        for (let index = 1; index <= tickCount; index += 1) {
+          const signedStep = state.lambda > 0 ? index : -index;
+          const center = {
+            x: origin.x + unit.x * baseLength * signedStep,
+            y: origin.y + unit.y * baseLength * signedStep,
+          };
+          const start = { x: center.x - normal.x * 7, y: center.y - normal.y * 7 };
+          const end = { x: center.x + normal.x * 7, y: center.y + normal.y * 7 };
+          const tick = document.createElementNS("http://www.w3.org/2000/svg", "line");
+          tick.setAttribute("class", "scale-tick");
+          setLine(tick, start, end);
+          tickLayer.append(tick);
+        }
+
+        const arcRadius = 28;
+        const sweep = state.lambda >= 0 ? 1 : 0;
+        const arcEnd = {
+          x: origin.x + (scaled.x - origin.x === 0 && scaled.y - origin.y === 0 ? 0 : Math.sign(state.lambda)) * arcRadius,
+          y: origin.y,
+        };
+        const d = `M ${origin.x + arcRadius} ${origin.y} A ${arcRadius} ${arcRadius} 0 0 ${sweep} ${arcEnd.x} ${arcEnd.y}`;
+        lengthArc.setAttribute("d", d);
+      }
+
+      function updateCards(activeKey) {
+        Object.entries(signCards).forEach(([key, card]) => {
+          card.classList.toggle("active", key === activeKey);
+        });
+      }
+
+      function updateSummary(activeKey, baseLength, scaledLength) {
+        summaryBox.classList.remove("negative", "zero");
+        if (activeKey === "positive") {
+          summaryBox.textContent = `当前 λ > 0：橙色 λa 与蓝色 a 同向，长度为 |λ||a| = ${cleanNumber(scaledLength)}。`;
+        } else if (activeKey === "zero") {
+          summaryBox.classList.add("zero");
+          summaryBox.textContent = "当前 λ = 0：λa 是零向量，长度为 0，方向不规定。这里是数乘最容易被忽略的边界。";
+        } else {
+          summaryBox.classList.add("negative");
+          summaryBox.textContent = `当前 λ < 0：橙色 λa 与蓝色 a 方向相反，长度仍按 |λ||a| 计算，为 ${cleanNumber(scaledLength)}。`;
+        }
+
+        const stageText = [
+          "先让学生只描述“橙色箭头相对蓝色箭头怎样变”，再回到 λ 的符号。",
+          "拖动 a 后再调节 λ，确认方向和长度规律不是某一幅图的特例。",
+          "停在 λ = 0、λ = -1 和分数倍处，让学生说清零向量、反向和缩短。",
+          "板书落点：λ > 0 同向，λ = 0 得零向量，λ < 0 反向，长度为 |λ||a|。",
+        ];
+        stageNote.textContent = stageText[state.step - 1];
+
+        if (baseLength < 0.0001) {
+          summaryBox.classList.add("zero");
+          summaryBox.textContent = "当前 a 本身是零向量：无论 λ 怎样变化，λa 仍是零向量，方向不规定。";
+        }
+      }
+
+      function updateBoard() {
+        const origin = toScreen({ x: 0, y: 0 });
+        const base = toScreen(state.a);
+        const scaled = toScreen(scaledPoint());
+        const baseLength = Math.hypot(base.x - origin.x, base.y - origin.y);
+        const baseMathLength = pointLength(state.a);
+        const scaledMathLength = Math.abs(state.lambda) * baseMathLength;
+        const activeKey = signKey();
+        const isZeroVector = baseMathLength < 0.0001 || Math.abs(state.lambda) < 0.0001;
+
+        setLine(baseVector, origin, base);
+        setLine(scaledVector, origin, scaled);
+        setLine(positiveGuide, origin, {
+          x: origin.x + (base.x - origin.x) * 2.5,
+          y: origin.y + (base.y - origin.y) * 2.5,
+        });
+        setLine(negativeGuide, origin, {
+          x: origin.x - (base.x - origin.x) * 2.5,
+          y: origin.y - (base.y - origin.y) * 2.5,
+        });
+
+        setCircle(originPoint, origin);
+        setCircle(zeroRing, scaled);
+        setCircle(baseTip, base);
+        setCircle(scaledTip, scaled);
+
+        baseVector.style.opacity = baseMathLength < 0.0001 ? "0.3" : "1";
+        scaledVector.style.opacity = isZeroVector ? "0.2" : "1";
+        scaledTip.style.opacity = "1";
+        svg.classList.toggle("is-zero", isZeroVector);
+
+        updateTickMarks(origin, base, scaled, baseLength);
+
+        const labelOffset = (point, dx, dy) => ({ x: point.x + dx, y: point.y + dy });
+        setText(originLabel, labelOffset(origin, 9, -9), "O");
+        setText(baseLabel, labelOffset(base, 10, -12), "a");
+        setText(scaledLabel, labelOffset(scaled, 10, state.lambda < 0 ? 18 : -12), isZeroVector ? "λa = 0" : "λa");
+        guideLabel.textContent =
+          activeKey === "positive"
+            ? "同向伸缩"
+            : activeKey === "zero"
+              ? "零向量边界"
+              : "反向伸缩";
+        setText(guideLabel, labelOffset(scaled, -22, state.lambda < 0 ? -18 : 24), guideLabel.textContent);
+
+        lambdaOutput.textContent = cleanNumber(state.lambda);
+        baseReadout.textContent = `|a| = ${cleanNumber(baseMathLength)}`;
+        scaledReadout.textContent = `|λa| = ${cleanNumber(scaledMathLength)}`;
+        scaleReadout.textContent = `${cleanNumber(Math.abs(state.lambda))} 倍`;
+        directionReadout.textContent = directionText(baseMathLength);
+
+        updateCards(activeKey);
+        updateSummary(activeKey, baseMathLength, scaledMathLength);
+
+        postState("applet:state_changed");
+      }
+
+      function postState(type) {
+        const product = scaledPoint();
+        window.parent?.postMessage(
+          {
+            type,
+            resourceId: RESOURCE_ID,
+            payload: {
+              lambda: Number(state.lambda.toFixed(2)),
+              base_vector: {
+                x: Number(state.a.x.toFixed(2)),
+                y: Number(state.a.y.toFixed(2)),
+                length: Number(pointLength(state.a).toFixed(2)),
+              },
+              scaled_vector: {
+                x: Number(product.x.toFixed(2)),
+                y: Number(product.y.toFixed(2)),
+                length: Number((Math.abs(state.lambda) * pointLength(state.a)).toFixed(2)),
+              },
+              lambda_sign: signKey(),
+              direction_relation: directionText(pointLength(state.a)),
+              reveal_step: state.step,
+            },
+          },
+          "*",
+        );
+      }
+
+      function setStep(step) {
+        state.step = step;
+        document.querySelectorAll(".step-button").forEach((button) => {
+          button.setAttribute("aria-pressed", String(Number(button.dataset.step) === step));
+        });
+        updateBoard();
+      }
+
+      function reset() {
+        state.lambda = 1.5;
+        state.a = { x: 2.4, y: 1.4 };
+        lambdaSlider.value = state.lambda;
+        setStep(1);
+      }
+
+      function startDrag(event) {
+        event.preventDefault();
+        boardShell.classList.add("dragging");
+        baseTip.setPointerCapture(event.pointerId);
+        dragTo(event);
+      }
+
+      function dragTo(event) {
+        const point = clampBase(fromScreen(event.clientX, event.clientY));
+        state.a = point;
+        updateBoard();
+      }
+
+      function endDrag(event) {
+        boardShell.classList.remove("dragging");
+        if (baseTip.hasPointerCapture(event.pointerId)) {
+          baseTip.releasePointerCapture(event.pointerId);
+        }
+      }
+
+      buildGrid();
+      updateBoard();
+      postState("applet:ready");
+
+      lambdaSlider.addEventListener("input", () => {
+        state.lambda = Number(lambdaSlider.value);
+        updateBoard();
+      });
+
+      document.querySelectorAll("[data-lambda]").forEach((button) => {
+        button.addEventListener("click", () => {
+          state.lambda = Number(button.dataset.lambda);
+          lambdaSlider.value = state.lambda;
+          updateBoard();
+        });
+      });
+
+      document.querySelectorAll(".step-button").forEach((button) => {
+        button.addEventListener("click", () => setStep(Number(button.dataset.step)));
+      });
+
+      document.querySelector("#reset-button").addEventListener("click", reset);
+      baseTip.addEventListener("pointerdown", startDrag);
+      baseVector.addEventListener("pointerdown", startDrag);
+      svg.addEventListener("pointermove", (event) => {
+        if (boardShell.classList.contains("dragging")) dragTo(event);
+      });
+      svg.addEventListener("pointerup", endDrag);
+      svg.addEventListener("pointercancel", endDrag);
     </script>
   </body>
 </html>
