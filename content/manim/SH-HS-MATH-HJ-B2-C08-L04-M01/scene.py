@@ -169,9 +169,9 @@ class DirectedProjectionLengthScene(Scene):
         obtuse_readout.move_to(acute_readout)
 
         bridge = VGroup(
-            label("只作衔接", 24, ink),
-            label("a·b = |b| × 投影长度", 25, ink),
-            label("完整定义和运算留到下一课", 21, guide_color),
+            label("本课收束", 24, ink),
+            label("有向投影长度 = |a|cosθ", 25, ink),
+            label("下一课：用它理解数量积", 21, guide_color),
         ).arrange(DOWN, aligned_edge=LEFT, buff=0.13)
         bridge.to_corner(UR, buff=0.55).shift(DOWN * 1.3)
 
