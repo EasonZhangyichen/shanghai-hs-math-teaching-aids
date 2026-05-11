@@ -5,35 +5,1040 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>向量加减法构造器</title>
     <style>
+      :root {
+        --ink: #16211d;
+        --muted: #5a6862;
+        --paper: #fbfcf7;
+        --panel: #ffffff;
+        --line: #d8e1da;
+        --grid: #e5ebe7;
+        --axis: #8e9b94;
+        --vector-a: #2563eb;
+        --vector-a-soft: rgba(37, 99, 235, 0.12);
+        --vector-b: #d97706;
+        --vector-b-soft: rgba(217, 119, 6, 0.14);
+        --result: #0f766e;
+        --result-soft: rgba(15, 118, 110, 0.13);
+        --reverse: #be123c;
+        --reverse-soft: rgba(190, 18, 60, 0.11);
+        --violet: #6d28d9;
+        --shadow: 0 16px 42px rgba(24, 35, 31, 0.13);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
       body {
         margin: 0;
         min-height: 100svh;
-        display: grid;
-        place-items: center;
-        background: #f6faf8;
-        color: #17231f;
+        background: var(--paper);
+        color: var(--ink);
         font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
       }
 
-      main {
-        width: min(720px, calc(100vw - 32px));
-        padding: 24px;
-        border: 1px solid #d7e0dc;
+      button {
+        font: inherit;
+      }
+
+      .applet {
+        min-height: 100svh;
+        display: grid;
+        grid-template-rows: auto 1fr;
+        gap: 12px;
+        padding: 14px;
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        padding: 12px 14px;
+        border: 1px solid var(--line);
         border-radius: 8px;
-        background: #ffffff;
+        background: var(--panel);
+        box-shadow: 0 8px 22px rgba(24, 35, 31, 0.08);
+      }
+
+      .title-block {
+        min-width: 250px;
+      }
+
+      .eyebrow {
+        margin: 0 0 3px;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.3;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 22px;
+        line-height: 1.2;
+        font-weight: 760;
+        letter-spacing: 0;
+      }
+
+      .modebar,
+      .stepbar,
+      .tool-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .modebar {
+        justify-content: center;
+      }
+
+      .mode-button,
+      .step-button,
+      .tool-button {
+        min-height: 38px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #f7faf7;
+        color: var(--ink);
+        padding: 7px 10px;
+        cursor: pointer;
+      }
+
+      .mode-button[aria-pressed="true"],
+      .step-button[aria-pressed="true"],
+      .tool-button[aria-pressed="true"] {
+        border-color: var(--result);
+        background: var(--result-soft);
+        color: #0f4f49;
+        font-weight: 700;
+      }
+
+      .workspace {
+        display: grid;
+        grid-template-columns: minmax(580px, 1fr) minmax(310px, 390px);
+        gap: 12px;
+        min-height: 0;
+      }
+
+      .board-wrap,
+      .panel {
+        min-width: 0;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+        box-shadow: var(--shadow);
+      }
+
+      .board-wrap {
+        position: relative;
+        overflow: hidden;
+        display: grid;
+        min-height: 540px;
+      }
+
+      canvas {
+        width: 100%;
+        height: 100%;
+        min-height: 540px;
+        display: block;
+        cursor: grab;
+        touch-action: none;
+        user-select: none;
+      }
+
+      canvas.dragging {
+        cursor: grabbing;
+      }
+
+      .stage-note {
+        position: absolute;
+        left: 16px;
+        bottom: 16px;
+        max-width: min(620px, calc(100% - 32px));
+        padding: 10px 12px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.94);
+        line-height: 1.5;
+        box-shadow: 0 10px 28px rgba(24, 35, 31, 0.12);
+      }
+
+      .stage-note strong {
+        color: #0f4f49;
+      }
+
+      .panel {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+
+      .panel-section {
+        padding: 14px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .panel-section:last-child {
+        border-bottom: 0;
+      }
+
+      .section-title {
+        margin: 0 0 10px;
+        color: var(--muted);
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      .readout-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+
+      .readout {
+        min-height: 78px;
+        padding: 10px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fbfdfb;
+      }
+
+      .readout strong {
+        display: block;
+        margin-bottom: 5px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .readout span {
+        display: block;
+        font-size: 20px;
+        line-height: 1.25;
+        font-weight: 760;
+      }
+
+      .relation {
+        border: 1px solid rgba(15, 118, 110, 0.28);
+        border-radius: 8px;
+        padding: 12px;
+        background: var(--result-soft);
+      }
+
+      .relation p {
+        margin: 0;
+        line-height: 1.55;
+      }
+
+      .relation .formula {
+        margin-top: 7px;
+        color: #0f4f49;
+        font-size: 20px;
+        font-weight: 820;
+      }
+
+      .legend {
+        display: grid;
+        gap: 8px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .legend li {
+        display: grid;
+        grid-template-columns: 18px 1fr;
+        gap: 8px;
+        align-items: start;
+        line-height: 1.45;
+      }
+
+      .swatch {
+        width: 18px;
+        height: 4px;
+        margin-top: 8px;
+        border-radius: 999px;
+        background: var(--result);
+      }
+
+      .swatch.a {
+        background: var(--vector-a);
+      }
+
+      .swatch.b {
+        background: var(--vector-b);
+      }
+
+      .swatch.reverse {
+        background: var(--reverse);
+      }
+
+      .swatch.path {
+        background: var(--violet);
+      }
+
+      .summary-list {
+        display: grid;
+        gap: 8px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .summary-list li {
+        padding: 9px 10px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fbfdfb;
+        line-height: 1.45;
+      }
+
+      .summary-list b {
+        color: #0f4f49;
+      }
+
+      [hidden] {
+        display: none !important;
+      }
+
+      @media (max-width: 1050px) {
+        .workspace {
+          grid-template-columns: 1fr;
+        }
+
+        .board-wrap,
+        canvas {
+          min-height: 500px;
+        }
+      }
+
+      @media (max-width: 680px) {
+        .applet {
+          padding: 10px;
+        }
+
+        .topbar {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .modebar,
+        .stepbar {
+          justify-content: flex-start;
+        }
+
+        .readout-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .board-wrap,
+        canvas {
+          min-height: 440px;
+        }
+
+        h1 {
+          font-size: 20px;
+        }
       }
     </style>
   </head>
   <body>
-    <main>
-      <p>sh-hs-math-applet-sdk</p>
-      <h1>向量加减法构造器</h1>
-      <p>拖动两个向量并切换三角形法则、平行四边形法则和减法模式，同步显示合向量与路径解释。</p>
-      <p>资源 ID：SH-HS-MATH-HJ-B2-C08-L02-A01</p>
+    <main class="applet" aria-label="向量加减法构造器" data-self-check="vector-addition-ready">
+      <header class="topbar">
+        <div class="title-block">
+          <p class="eyebrow">必修第二册 8.1.2 向量的加法和减法</p>
+          <h1>向量加减法构造器</h1>
+        </div>
+
+        <nav class="modebar" aria-label="构造模式">
+          <button class="mode-button" data-mode="triangle" aria-pressed="true">首尾相接</button>
+          <button class="mode-button" data-mode="parallelogram" aria-pressed="false">平行四边形</button>
+          <button class="mode-button" data-mode="subtraction" aria-pressed="false">减法与相反向量</button>
+        </nav>
+
+        <nav class="stepbar" aria-label="分步揭示">
+          <button class="step-button" data-step="1" aria-pressed="true">1 观察</button>
+          <button class="step-button" data-step="2" aria-pressed="false">2 构造</button>
+          <button class="step-button" data-step="3" aria-pressed="false">3 读数</button>
+          <button class="step-button" data-step="4" aria-pressed="false">4 归纳</button>
+        </nav>
+      </header>
+
+      <section class="workspace">
+        <div class="board-wrap">
+          <canvas id="board" aria-label="可拖拽向量 a 和向量 b 的加减法构造画板"></canvas>
+          <div class="stage-note" id="stage-note" aria-live="polite"></div>
+        </div>
+
+        <aside class="panel" aria-label="向量读数与课堂控制">
+          <section class="panel-section">
+            <p class="section-title">教师控制</p>
+            <div class="tool-row">
+              <button class="tool-button" id="reset-button">重置</button>
+              <button class="tool-button" id="guide-button" aria-pressed="true">辅助线</button>
+              <button class="tool-button" id="snap-button" aria-pressed="true">半格吸附</button>
+            </div>
+          </section>
+
+          <section class="panel-section">
+            <p class="section-title">当前读数</p>
+            <div class="readout-grid">
+              <div class="readout">
+                <strong>向量 a</strong>
+                <span id="vector-a-readout">a = (3, 2)</span>
+              </div>
+              <div class="readout">
+                <strong>向量 b</strong>
+                <span id="vector-b-readout">b = (2, -1.5)</span>
+              </div>
+              <div class="readout">
+                <strong>加法结果</strong>
+                <span id="sum-readout">a + b = (5, 0.5)</span>
+              </div>
+              <div class="readout">
+                <strong>减法结果</strong>
+                <span id="diff-readout">a - b = (1, 3.5)</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel-section">
+            <p class="section-title">构造解释</p>
+            <div class="relation" id="relation-box"></div>
+          </section>
+
+          <section class="panel-section">
+            <p class="section-title">颜色含义</p>
+            <ul class="legend">
+              <li><span class="swatch a"></span><span>蓝色：向量 a，可拖动终点 A 改变。</span></li>
+              <li><span class="swatch b"></span><span>橙色：向量 b，可拖动终点 B 改变。</span></li>
+              <li><span class="swatch"></span><span>绿色：当前模式下的结果向量。</span></li>
+              <li><span class="swatch reverse"></span><span>红色：减法模式中的相反向量 -b。</span></li>
+              <li><span class="swatch path"></span><span>紫色：B 到 A 的端点路径，帮助检查方向。</span></li>
+            </ul>
+          </section>
+
+          <section class="panel-section" id="summary-section" hidden>
+            <p class="section-title">课堂归纳</p>
+            <ul class="summary-list">
+              <li><b>三角形法则：</b>把 b 的起点平移到 a 的终点，首尾相接得到 a + b。</li>
+              <li><b>平行四边形法则：</b>a、b 共起点时，对角线仍是 a + b。</li>
+              <li><b>减法：</b>a - b 可以看成 a + (-b)，也可看成从 B 指向 A 的向量。</li>
+              <li><b>方向检查：</b>端点顺序变了，向量方向也会变，不能只看同一条线段。</li>
+            </ul>
+          </section>
+        </aside>
+      </section>
     </main>
+
     <script>
       const RESOURCE_ID = "SH-HS-MATH-HJ-B2-C08-L02-A01";
-      window.parent?.postMessage({ type: "applet:ready", resourceId: RESOURCE_ID, payload: { current_value: 0 } }, "*");
+      const canvas = document.querySelector("#board");
+      const context = canvas.getContext("2d");
+      const stageNote = document.querySelector("#stage-note");
+      const relationBox = document.querySelector("#relation-box");
+      const summarySection = document.querySelector("#summary-section");
+      const vectorAReadout = document.querySelector("#vector-a-readout");
+      const vectorBReadout = document.querySelector("#vector-b-readout");
+      const sumReadout = document.querySelector("#sum-readout");
+      const diffReadout = document.querySelector("#diff-readout");
+      const resetButton = document.querySelector("#reset-button");
+      const guideButton = document.querySelector("#guide-button");
+      const snapButton = document.querySelector("#snap-button");
+      const modeButtons = Array.from(document.querySelectorAll(".mode-button"));
+      const stepButtons = Array.from(document.querySelectorAll(".step-button"));
+
+      const colors = {
+        ink: "#16211d",
+        muted: "#5a6862",
+        grid: "#e5ebe7",
+        axis: "#8e9b94",
+        a: "#2563eb",
+        aSoft: "rgba(37, 99, 235, 0.13)",
+        b: "#d97706",
+        bSoft: "rgba(217, 119, 6, 0.14)",
+        result: "#0f766e",
+        resultSoft: "rgba(15, 118, 110, 0.13)",
+        reverse: "#be123c",
+        violet: "#6d28d9",
+        white: "#ffffff"
+      };
+
+      const bounds = {
+        minX: -8,
+        maxX: 8,
+        minY: -5,
+        maxY: 5
+      };
+
+      const initialState = {
+        mode: "triangle",
+        step: 1,
+        showGuides: true,
+        snapToHalfGrid: true,
+        origin: { x: -3, y: -1.5 },
+        vectorA: { x: 3, y: 2 },
+        vectorB: { x: 2, y: -1.5 }
+      };
+
+      const state = clone(initialState);
+      let metrics = { width: 820, height: 540, unit: 48, originX: 410, originY: 278 };
+      let drag = null;
+
+      function clone(value) {
+        return JSON.parse(JSON.stringify(value));
+      }
+
+      function add(left, right) {
+        return { x: left.x + right.x, y: left.y + right.y };
+      }
+
+      function subtract(left, right) {
+        return { x: left.x - right.x, y: left.y - right.y };
+      }
+
+      function scale(vector, factor) {
+        return { x: vector.x * factor, y: vector.y * factor };
+      }
+
+      function vectorSum() {
+        return add(state.vectorA, state.vectorB);
+      }
+
+      function vectorDifference() {
+        return subtract(state.vectorA, state.vectorB);
+      }
+
+      function pointA() {
+        return add(state.origin, state.vectorA);
+      }
+
+      function pointB() {
+        return add(state.origin, state.vectorB);
+      }
+
+      function pointSum() {
+        return add(state.origin, vectorSum());
+      }
+
+      function pointDifference() {
+        return add(state.origin, vectorDifference());
+      }
+
+      function setupCanvas() {
+        const rect = canvas.getBoundingClientRect();
+        const dpr = window.devicePixelRatio || 1;
+        const width = Math.max(320, rect.width);
+        const height = Math.max(360, rect.height);
+        canvas.width = Math.round(width * dpr);
+        canvas.height = Math.round(height * dpr);
+        context.setTransform(dpr, 0, 0, dpr, 0, 0);
+        metrics = {
+          width,
+          height,
+          unit: Math.min(width / 17, height / 11),
+          originX: width / 2,
+          originY: height / 2 + 8
+        };
+        render();
+      }
+
+      function toScreen(point) {
+        return {
+          x: metrics.originX + point.x * metrics.unit,
+          y: metrics.originY - point.y * metrics.unit
+        };
+      }
+
+      function toMath(screenPoint) {
+        return {
+          x: (screenPoint.x - metrics.originX) / metrics.unit,
+          y: (metrics.originY - screenPoint.y) / metrics.unit
+        };
+      }
+
+      function eventScreenPoint(event) {
+        const rect = canvas.getBoundingClientRect();
+        return { x: event.clientX - rect.left, y: event.clientY - rect.top };
+      }
+
+      function distance(left, right) {
+        return Math.hypot(left.x - right.x, left.y - right.y);
+      }
+
+      function snap(value) {
+        if (!state.snapToHalfGrid) return value;
+        return Math.round(value * 2) / 2;
+      }
+
+      function snapPoint(point) {
+        return { x: snap(point.x), y: snap(point.y) };
+      }
+
+      function clamp(value, min, max) {
+        return Math.max(min, Math.min(max, value));
+      }
+
+      function clampPoint(point) {
+        return {
+          x: clamp(point.x, bounds.minX, bounds.maxX),
+          y: clamp(point.y, bounds.minY, bounds.maxY)
+        };
+      }
+
+      function clampOrigin(origin) {
+        const xs = [0, state.vectorA.x, state.vectorB.x, vectorSum().x, vectorDifference().x];
+        const ys = [0, state.vectorA.y, state.vectorB.y, vectorSum().y, vectorDifference().y];
+        return {
+          x: clamp(origin.x, bounds.minX - Math.min(...xs), bounds.maxX - Math.max(...xs)),
+          y: clamp(origin.y, bounds.minY - Math.min(...ys), bounds.maxY - Math.max(...ys))
+        };
+      }
+
+      function fmtNumber(value) {
+        if (Math.abs(value) < 0.001) return "0";
+        if (Number.isInteger(value)) return String(value);
+        return value.toFixed(1);
+      }
+
+      function fmtVector(vector) {
+        return `(${fmtNumber(vector.x)}, ${fmtNumber(vector.y)})`;
+      }
+
+      function drawGrid() {
+        context.save();
+        context.lineWidth = 1;
+        context.strokeStyle = colors.grid;
+        context.fillStyle = colors.muted;
+        context.font = "12px PingFang SC, Microsoft YaHei, sans-serif";
+
+        for (let x = bounds.minX; x <= bounds.maxX; x += 1) {
+          const top = toScreen({ x, y: bounds.maxY });
+          const bottom = toScreen({ x, y: bounds.minY });
+          context.beginPath();
+          context.moveTo(top.x, top.y);
+          context.lineTo(bottom.x, bottom.y);
+          context.strokeStyle = x === 0 ? colors.axis : colors.grid;
+          context.lineWidth = x === 0 ? 1.5 : 1;
+          context.stroke();
+          if (x !== 0) {
+            const label = toScreen({ x, y: -0.22 });
+            context.fillText(String(x), label.x - 4, label.y + 15);
+          }
+        }
+
+        for (let y = bounds.minY; y <= bounds.maxY; y += 1) {
+          const left = toScreen({ x: bounds.minX, y });
+          const right = toScreen({ x: bounds.maxX, y });
+          context.beginPath();
+          context.moveTo(left.x, left.y);
+          context.lineTo(right.x, right.y);
+          context.strokeStyle = y === 0 ? colors.axis : colors.grid;
+          context.lineWidth = y === 0 ? 1.5 : 1;
+          context.stroke();
+          if (y !== 0) {
+            const label = toScreen({ x: 0.16, y });
+            context.fillText(String(y), label.x + 4, label.y + 4);
+          }
+        }
+
+        context.fillText("x", toScreen({ x: bounds.maxX - 0.35, y: -0.32 }).x, toScreen({ x: bounds.maxX - 0.35, y: -0.32 }).y);
+        context.fillText("y", toScreen({ x: 0.28, y: bounds.maxY - 0.35 }).x, toScreen({ x: 0.28, y: bounds.maxY - 0.35 }).y);
+        context.restore();
+      }
+
+      function drawArrow(start, end, color, options = {}) {
+        const from = toScreen(start);
+        const to = toScreen(end);
+        const length = Math.hypot(to.x - from.x, to.y - from.y);
+        const width = options.width ?? 5;
+        const alpha = options.alpha ?? 1;
+        const dash = options.dash ?? [];
+        const label = options.label;
+        const labelOffset = options.labelOffset ?? 18;
+
+        context.save();
+        context.globalAlpha = alpha;
+        context.strokeStyle = color;
+        context.fillStyle = color;
+        context.lineWidth = width;
+        context.lineCap = "round";
+        context.setLineDash(dash);
+
+        if (length < 2) {
+          context.beginPath();
+          context.arc(from.x, from.y, 9, 0, Math.PI * 2);
+          context.stroke();
+        } else {
+          const angle = Math.atan2(to.y - from.y, to.x - from.x);
+          const headLength = Math.max(12, width * 3);
+          const lineEnd = {
+            x: to.x - Math.cos(angle) * headLength * 0.55,
+            y: to.y - Math.sin(angle) * headLength * 0.55
+          };
+          context.beginPath();
+          context.moveTo(from.x, from.y);
+          context.lineTo(lineEnd.x, lineEnd.y);
+          context.stroke();
+          context.setLineDash([]);
+          context.beginPath();
+          context.moveTo(to.x, to.y);
+          context.lineTo(to.x - headLength * Math.cos(angle - Math.PI / 7), to.y - headLength * Math.sin(angle - Math.PI / 7));
+          context.lineTo(to.x - headLength * Math.cos(angle + Math.PI / 7), to.y - headLength * Math.sin(angle + Math.PI / 7));
+          context.closePath();
+          context.fill();
+        }
+
+        if (label) {
+          drawArrowLabel(label, start, end, color, labelOffset);
+        }
+        context.restore();
+      }
+
+      function drawArrowLabel(text, start, end, color, offset) {
+        const from = toScreen(start);
+        const to = toScreen(end);
+        const dx = to.x - from.x;
+        const dy = to.y - from.y;
+        const len = Math.hypot(dx, dy) || 1;
+        const mid = { x: (from.x + to.x) / 2, y: (from.y + to.y) / 2 };
+        const labelPoint = {
+          x: mid.x - (dy / len) * offset,
+          y: mid.y + (dx / len) * offset
+        };
+        context.save();
+        context.font = "700 14px PingFang SC, Microsoft YaHei, sans-serif";
+        context.textAlign = "center";
+        context.textBaseline = "middle";
+        const width = context.measureText(text).width + 12;
+        context.fillStyle = "rgba(255, 255, 255, 0.92)";
+        roundRect(labelPoint.x - width / 2, labelPoint.y - 12, width, 24, 7);
+        context.fill();
+        context.fillStyle = color;
+        context.fillText(text, labelPoint.x, labelPoint.y + 1);
+        context.restore();
+      }
+
+      function roundRect(x, y, width, height, radius) {
+        context.beginPath();
+        context.moveTo(x + radius, y);
+        context.arcTo(x + width, y, x + width, y + height, radius);
+        context.arcTo(x + width, y + height, x, y + height, radius);
+        context.arcTo(x, y + height, x, y, radius);
+        context.arcTo(x, y, x + width, y, radius);
+        context.closePath();
+      }
+
+      function drawHandle(point, label, color, fill = colors.white) {
+        const screen = toScreen(point);
+        context.save();
+        context.fillStyle = fill;
+        context.strokeStyle = color;
+        context.lineWidth = 4;
+        context.beginPath();
+        context.arc(screen.x, screen.y, 10, 0, Math.PI * 2);
+        context.fill();
+        context.stroke();
+        context.fillStyle = colors.ink;
+        context.font = "800 14px PingFang SC, Microsoft YaHei, sans-serif";
+        context.textAlign = "center";
+        context.textBaseline = "middle";
+        context.fillText(label, screen.x, screen.y - 19);
+        context.restore();
+      }
+
+      function drawGuideLine(start, end, color, dash = [7, 6]) {
+        const from = toScreen(start);
+        const to = toScreen(end);
+        context.save();
+        context.strokeStyle = color;
+        context.lineWidth = 1.6;
+        context.setLineDash(dash);
+        context.globalAlpha = 0.58;
+        context.beginPath();
+        context.moveTo(from.x, from.y);
+        context.lineTo(to.x, to.y);
+        context.stroke();
+        context.restore();
+      }
+
+      function drawComponentGuides(start, vector) {
+        if (!state.showGuides || state.step < 3) return;
+        const corner = { x: start.x + vector.x, y: start.y };
+        const end = add(start, vector);
+        drawGuideLine(start, corner, colors.result, [5, 5]);
+        drawGuideLine(corner, end, colors.result, [5, 5]);
+      }
+
+      function renderTriangleMode() {
+        const origin = state.origin;
+        const aEnd = pointA();
+        const sumEnd = pointSum();
+
+        if (state.step >= 2 && state.showGuides) {
+          drawGuideLine(pointB(), sumEnd, colors.b, [6, 5]);
+        }
+        if (state.step >= 2) {
+          drawArrow(aEnd, sumEnd, colors.b, { width: 4, label: "平移后的 b", labelOffset: -20 });
+        }
+        if (state.step >= 2) {
+          drawArrow(origin, sumEnd, colors.result, { width: 5.5, label: "a + b", labelOffset: 26 });
+        }
+        if (state.step >= 3) {
+          drawComponentGuides(origin, vectorSum());
+        }
+      }
+
+      function renderParallelogramMode() {
+        const origin = state.origin;
+        const aEnd = pointA();
+        const bEnd = pointB();
+        const sumEnd = pointSum();
+
+        if (state.step >= 2) {
+          drawArrow(aEnd, sumEnd, colors.b, { width: 4, dash: [9, 7], label: "b 的平移", labelOffset: -20 });
+          drawArrow(bEnd, sumEnd, colors.a, { width: 4, dash: [9, 7], label: "a 的平移", labelOffset: 20 });
+        }
+        if (state.step >= 2) {
+          drawArrow(origin, sumEnd, colors.result, { width: 5.5, label: "对角线 a + b", labelOffset: 27 });
+        }
+        if (state.step >= 3 && state.showGuides) {
+          drawComponentGuides(origin, vectorSum());
+        }
+      }
+
+      function renderSubtractionMode() {
+        const origin = state.origin;
+        const aEnd = pointA();
+        const bEnd = pointB();
+        const diffEnd = pointDifference();
+
+        if (state.step >= 2) {
+          drawArrow(aEnd, diffEnd, colors.reverse, { width: 4.8, label: "相反向量 -b", labelOffset: -22 });
+          drawArrow(origin, diffEnd, colors.result, { width: 5.5, label: "a - b", labelOffset: 26 });
+        }
+        if (state.step >= 3) {
+          drawArrow(bEnd, aEnd, colors.violet, { width: 3.7, dash: [8, 7], label: "B 到 A", labelOffset: 28 });
+          if (state.showGuides) {
+            drawComponentGuides(origin, vectorDifference());
+          }
+        }
+      }
+
+      function render() {
+        context.clearRect(0, 0, metrics.width, metrics.height);
+        context.fillStyle = "#fbfcf7";
+        context.fillRect(0, 0, metrics.width, metrics.height);
+        canvas.classList.toggle("dragging", Boolean(drag));
+
+        drawGrid();
+
+        const origin = state.origin;
+        const aEnd = pointA();
+        const bEnd = pointB();
+
+        if (state.showGuides && state.step >= 2) {
+          drawGuideLine(origin, pointSum(), colors.result, [4, 6]);
+          if (state.mode === "subtraction") {
+            drawGuideLine(origin, pointDifference(), colors.reverse, [4, 6]);
+          }
+        }
+
+        drawArrow(origin, aEnd, colors.a, { label: "a", labelOffset: 20 });
+        drawArrow(origin, bEnd, colors.b, { label: "b", labelOffset: -20 });
+
+        if (state.mode === "triangle") renderTriangleMode();
+        if (state.mode === "parallelogram") renderParallelogramMode();
+        if (state.mode === "subtraction") renderSubtractionMode();
+
+        drawHandle(origin, "O", colors.ink);
+        drawHandle(aEnd, "A", colors.a, colors.aSoft);
+        drawHandle(bEnd, "B", colors.b, colors.bSoft);
+
+        if (state.mode !== "subtraction" && state.step >= 2) {
+          drawHandle(pointSum(), "S", colors.result, colors.resultSoft);
+        }
+        if (state.mode === "subtraction" && state.step >= 2) {
+          drawHandle(pointDifference(), "D", colors.result, colors.resultSoft);
+        }
+
+        updatePanel();
+        postState("state_changed");
+      }
+
+      function updatePanel() {
+        const a = state.vectorA;
+        const b = state.vectorB;
+        const sum = vectorSum();
+        const diff = vectorDifference();
+        vectorAReadout.textContent = `a = ${fmtVector(a)}`;
+        vectorBReadout.textContent = `b = ${fmtVector(b)}`;
+        sumReadout.textContent = `a + b = ${fmtVector(sum)}`;
+        diffReadout.textContent = `a - b = ${fmtVector(diff)}`;
+
+        const relation = {
+          triangle: {
+            text: "先走向量 a，再把向量 b 平移到 a 的终点，终点 S 与起点 O 连成结果向量。",
+            formula: `a + b = ${fmtVector(a)} + ${fmtVector(b)} = ${fmtVector(sum)}`
+          },
+          parallelogram: {
+            text: "让 a 和 b 共起点，补出平行四边形后，从共同起点出发的对角线就是同一个和向量。",
+            formula: `对角线 OS = a + b = ${fmtVector(sum)}`
+          },
+          subtraction: {
+            text: "减去 b 等于加上 b 的相反向量。共起点时，从 B 指向 A 的向量也表示 a - b。",
+            formula: `a - b = a + (-b) = ${fmtVector(diff)}`
+          }
+        }[state.mode];
+
+        relationBox.innerHTML = `<p>${relation.text}</p><p class="formula">${relation.formula}</p>`;
+        stageNote.innerHTML = stageMessage();
+        summarySection.hidden = state.step < 4;
+
+        modeButtons.forEach((button) => {
+          button.setAttribute("aria-pressed", String(button.dataset.mode === state.mode));
+        });
+        stepButtons.forEach((button) => {
+          button.setAttribute("aria-pressed", String(Number(button.dataset.step) === state.step));
+        });
+        guideButton.setAttribute("aria-pressed", String(state.showGuides));
+        snapButton.setAttribute("aria-pressed", String(state.snapToHalfGrid));
+      }
+
+      function stageMessage() {
+        if (state.mode === "triangle") {
+          return {
+            1: "<strong>观察：</strong>拖动 O、A、B，先读出向量 a 和向量 b 的方向与分量。",
+            2: "<strong>构造：</strong>把 b 的起点平移到 A，形成 O -> A -> S 的首尾相接路径。",
+            3: "<strong>读数：</strong>结果向量 OS 的分量等于 a、b 两个分量分别相加。",
+            4: "<strong>归纳：</strong>三角形法则关注路径方向，第二个向量必须接在第一个向量的终点。"
+          }[state.step];
+        }
+
+        if (state.mode === "parallelogram") {
+          return {
+            1: "<strong>观察：</strong>a 与 b 共起点时，两个终点 A、B 决定一个平行四边形。",
+            2: "<strong>构造：</strong>分别平移 a 和 b，第四个顶点 S 由两条路径共同到达。",
+            3: "<strong>读数：</strong>对角线 OS 与首尾相接的结果相同，都是 a + b。",
+            4: "<strong>归纳：</strong>平行四边形法则不是画图模板，它和首尾相接给出同一个和向量。"
+          }[state.step];
+        }
+
+        return {
+          1: "<strong>观察：</strong>先把 a 与 b 放在同一起点，注意 A、B 两个终点的顺序。",
+          2: "<strong>构造：</strong>从 A 出发接上相反向量 -b，得到 a + (-b)。",
+          3: "<strong>读数：</strong>从 B 指向 A 的端点路径与 a - b 分量相同，方向不能反写。",
+          4: "<strong>归纳：</strong>减法的核心是相反向量，a - b 与 b - a 方向相反。"
+        }[state.step];
+      }
+
+      function postState(kind) {
+        const payload = {
+          construction_mode: state.mode,
+          reveal_step: state.step,
+          origin: state.origin,
+          vector_a: state.vectorA,
+          vector_b: state.vectorB,
+          sum_vector: vectorSum(),
+          difference_vector: vectorDifference(),
+          show_guides: state.showGuides
+        };
+        window.parent?.postMessage({ type: `applet:${kind}`, resourceId: RESOURCE_ID, payload }, "*");
+      }
+
+      function hitTest(screenPoint) {
+        const handles = [
+          { type: "origin", point: state.origin },
+          { type: "vector_a", point: pointA() },
+          { type: "vector_b", point: pointB() }
+        ];
+        return handles.find((handle) => distance(screenPoint, toScreen(handle.point)) <= 18);
+      }
+
+      function pointerDown(event) {
+        const screenPoint = eventScreenPoint(event);
+        const hit = hitTest(screenPoint);
+        if (!hit) return;
+        event.preventDefault();
+        drag = {
+          type: hit.type,
+          startMath: toMath(screenPoint),
+          startState: clone(state)
+        };
+        canvas.setPointerCapture(event.pointerId);
+        render();
+      }
+
+      function pointerMove(event) {
+        if (!drag) return;
+        const pointerMath = snapPoint(toMath(eventScreenPoint(event)));
+        const start = drag.startState;
+        const delta = subtract(pointerMath, drag.startMath);
+
+        if (drag.type === "origin") {
+          const target = add(start.origin, delta);
+          state.origin = clampOrigin(state.snapToHalfGrid ? snapPoint(target) : target);
+        }
+
+        if (drag.type === "vector_a") {
+          const endpoint = clampPoint(pointerMath);
+          state.vectorA = subtract(endpoint, state.origin);
+          state.origin = clampOrigin(state.origin);
+        }
+
+        if (drag.type === "vector_b") {
+          const endpoint = clampPoint(pointerMath);
+          state.vectorB = subtract(endpoint, state.origin);
+          state.origin = clampOrigin(state.origin);
+        }
+
+        render();
+      }
+
+      function pointerUp(event) {
+        if (!drag) return;
+        canvas.releasePointerCapture(event.pointerId);
+        drag = null;
+        render();
+      }
+
+      modeButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          state.mode = button.dataset.mode;
+          state.step = Math.max(state.step, 2);
+          render();
+        });
+      });
+
+      stepButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          state.step = Number(button.dataset.step);
+          render();
+        });
+      });
+
+      guideButton.addEventListener("click", () => {
+        state.showGuides = !state.showGuides;
+        render();
+      });
+
+      snapButton.addEventListener("click", () => {
+        state.snapToHalfGrid = !state.snapToHalfGrid;
+        render();
+      });
+
+      resetButton.addEventListener("click", () => {
+        Object.assign(state, clone(initialState));
+        render();
+      });
+
+      canvas.addEventListener("pointerdown", pointerDown);
+      canvas.addEventListener("pointermove", pointerMove);
+      canvas.addEventListener("pointerup", pointerUp);
+      canvas.addEventListener("pointercancel", pointerUp);
+      window.addEventListener("resize", setupCanvas);
+
+      setupCanvas();
+      postState("ready");
     </script>
   </body>
 </html>
