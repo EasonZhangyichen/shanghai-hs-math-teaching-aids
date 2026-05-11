@@ -22,17 +22,18 @@ curriculum:
 pedagogy:
   cognitive_action: 分解
   estimated_classroom_minutes: 16
-  primary_teaching_problem: 学生面对几何题时常急于套公式，缺少先选基向量、再把路径写成向量等式的策略。
+  primary_teaching_problem: 学生面对几何题时常急于套公式，缺少先判断基底法、路径法、数量积/坐标法哪一种适合作为第一步的策略。
   learning_goals:
+    - 说清 8.4 向量应用调用的前置知识来自 8.1 线性运算、8.2 数量积和 8.3 坐标表示。
+    - 围绕同一个三角形分点问题，比较基底法、路径法、数量积/坐标法的第一步建模选择。
     - 在三角形情境中选择一组基向量，并用它们表示边上点的位置向量。
     - 比较 D 到 E 的三条几何路径，说明路径不同但向量和相同。
-    - 把 AD/AB、AE/AC 这样的几何关系转化为系数形式的向量等式。
-    - 判断什么时候应先用基向量和路径分解，而不是立即进入坐标法或复杂解析几何。
+    - 把 AD/AB、AE/AC 这样的几何关系转化为系数形式的向量等式，但不展开完整解题器。
   prerequisites:
-    - 向量加法、减法和数乘的几何意义
-    - 用有向线段表示平面向量
-    - 三角形边、分点和中点等基本几何关系
-    - 数量积和坐标表示的基本认识
+    - "8.1 向量的概念和线性运算：有向线段、相等向量、向量加减法和数乘的几何意义"
+    - "8.2 向量的数量积：知道数量积适合处理长度、夹角和垂直判断"
+    - "8.3 向量的坐标表示：知道坐标法适合数值化表示点、向量和运算"
+    - "平面几何中的三角形边、分点、中点、平行和垂直关系"
   successors:
     - SH-HS-MATH-HJ-B2-C09-K01
     - SH-HS-MATH-HJ-XB1-SPACEVEC-K01
@@ -43,11 +44,15 @@ pedagogy:
     - 数学运算
     - 数学建模
 mathematical_scope:
-  focus: 以三角形 ABC 中 D 在 AB 上、E 在 AC 上为典型情境，比较向量 DE 的不同路径分解。
+  focus: 以三角形 ABC 中 D 在 AB 上、E 在 AC 上为典型情境，比较向量应用题的第一步建模选择。
   lesson: 向量的应用
-  problem_model: "设 D 在 AB 上，AD/AB = m；E 在 AC 上，AE/AC = n。目标是把向量 DE 写成选定基向量的线性组合。"
+  problem_model: "设 D 在 AB 上，AD/AB = m；E 在 AC 上，AE/AC = n。目标是判断第一步应如何建模，并把向量 DE 写成选定基向量的线性组合。"
   primary_basis: "p = AB, q = AC，此时 D = m p，E = n q，DE = -m p + n q。"
   alternate_basis: "p = AB, r = BC，此时 AC = p + r，DE = (n - m)p + n r。"
+  first_step_methods:
+    - "基底法：先选 p = AB、q = AC，因为 D、E 都落在从 A 出发的两条边上。"
+    - "路径法：先选 D -> A -> E、D -> B -> C -> E 或 D -> B -> E，把每段移动翻译为向量和。"
+    - "数量积/坐标法：先判断是否要求长度、夹角、垂直或数值坐标；本题只求 DE 的表达时暂不作为起手。"
   compared_paths:
     - "D -> A -> E：先回到共同基点 A，再到 E。"
     - "D -> B -> C -> E：沿已知边绕行，用边向量验证同一结果。"
@@ -55,6 +60,7 @@ mathematical_scope:
   out_of_scope:
     - 不做通用几何题库或完整证明批改器
     - 不进入 8.3 坐标法的系统训练
+    - 不把数量积/坐标法扩展成全能向量应用工具箱
     - 不强行展开复杂解析几何或坐标建系计算
     - 不处理数量积求角、求长度的完整应用链
 representations:
@@ -62,6 +68,8 @@ representations:
     role: 显示三角形 ABC、分点 D/E、所选基向量和当前路径。
   - id: basis_selector
     role: 比较 AB/AC 与 AB/BC 两种基向量选择对等式表达的影响。
+  - id: first_step_strategy
+    role: 明确比较基底法、路径法、数量积/坐标法的第一步建模选择。
   - id: path_trace
     role: 高亮 D 到 E 的不同路径，并把每一段对应到向量和。
   - id: equation_readout
@@ -72,11 +80,13 @@ interaction_design:
   primary_control: 拖动 D、E 或使用比例滑块改变 m = AD/AB 与 n = AE/AC，观察不同路径等式如何同步变化。
   teacher_controls:
     - 重置到默认分点
+    - 切换基底法、路径法、数量积/坐标法的第一步提示
     - 切换基向量组
     - 切换三条路径
     - 按题设、选基、选路径、化简比较四步揭示
     - 使用典型分点预设控制课堂节奏
   student_controls:
+    - 先选择一种第一步建模方法并说明理由
     - 拖动 D 点改变 m
     - 拖动 E 点改变 n
     - 选择不同路径并记录对应的向量等式
@@ -85,7 +95,7 @@ interaction_design:
     - step: read_conditions
       description: 先读 D、E 的分点关系，只确定 m 和 n，不急于计算。
     - step: choose_basis
-      description: 选择基向量，并把 D、E 的位置写成基向量表达。
+      description: 比较基底法、路径法、数量积/坐标法的第一步，再选择基向量写 D、E 的位置表达。
     - step: trace_path
       description: 选择 D 到 E 的一条路径，把每段几何移动翻译成向量和。
     - step: compare_equations
@@ -106,6 +116,11 @@ data_contract:
       value_type: string
       default: ab_ac
       description: 当前基向量组，ab_ac 表示 AB/AC，ab_bc 表示 AB/BC。
+      persistence: snapshot
+    - name: first_step_choice
+      value_type: string
+      default: basis
+      description: 当前第一步建模选择，basis、path 或 metric。
       persistence: snapshot
     - name: route_id
       value_type: string
@@ -133,6 +148,7 @@ data_contract:
         - ratio_m
         - ratio_n
         - basis_mode
+        - first_step_choice
         - route_id
         - basis_equation
         - path_delta
@@ -145,6 +161,7 @@ data_contract:
         - ratio_m
         - ratio_n
         - basis_mode
+        - first_step_choice
         - route_id
         - basis_equation
         - path_delta
@@ -160,6 +177,8 @@ data_contract:
       required_for_player: true
 feedback_and_diagnosis:
   success_evidence:
+    - 学生能说出 8.4 本题调用了 8.1 线性运算、8.2 数量积和 8.3 坐标表示中的哪些工具，但不混成一个万能工具箱。
+    - 学生能比较基底法、路径法、数量积/坐标法的第一步选择，并说明本题为什么优先用基底法或路径法。
     - 学生能先写出选定基向量，再写 D、E 的位置表达。
     - 学生能解释 D -> A -> E、D -> B -> C -> E 等不同路径化简后为什么一致。
     - 学生能把“点在边上”的几何语言转化为 m p、n q 等向量等式。
@@ -172,13 +191,13 @@ feedback_and_diagnosis:
     - id: ratio_direction_error
       label: 分点比例方向写反
     - id: coordinate_overuse
-      label: 不必要地提前进入坐标建系
+      label: 不必要地提前进入坐标建系或数量积套公式
     - id: representation_gap
       label: 表征对应断裂
   feedback_principles:
     - 先让学生用图中路径说出每一段移动，再写符号表达。
     - 对比例方向错误，回到 AD/AB 和 AE/AC 的起点方向检查。
-    - 对坐标法冲动，先追问“选哪两个向量能表示图中所有点”。
+    - 对坐标法或数量积法冲动，先追问“题目第一问是否真的要求长度、夹角、垂直或坐标数值”。
     - 只比较建模路径，不把本板扩展成完整解题器。
 visual_semantics:
   basis_ab: 蓝色表示基向量 AB。
