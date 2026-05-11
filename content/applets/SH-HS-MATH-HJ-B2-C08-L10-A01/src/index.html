@@ -3,37 +3,930 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="data:," />
     <title>向量法路径比较板</title>
     <style>
+      :root {
+        --ink: #17211d;
+        --muted: #5c6961;
+        --paper: #f8faf5;
+        --panel: #ffffff;
+        --line: #d8e0d8;
+        --soft: #edf3ec;
+        --basis-a: #2563eb;
+        --basis-b: #0f766e;
+        --route: #d97706;
+        --target: #b42318;
+        --target-soft: rgba(180, 35, 24, 0.11);
+        --basis-soft: rgba(15, 118, 110, 0.11);
+        --route-soft: rgba(217, 119, 6, 0.14);
+        --shadow: 0 18px 48px rgba(24, 35, 31, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
       body {
         margin: 0;
         min-height: 100svh;
-        display: grid;
-        place-items: center;
-        background: #f6faf8;
-        color: #17231f;
+        background: var(--paper);
+        color: var(--ink);
         font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
       }
 
-      main {
-        width: min(720px, calc(100vw - 32px));
-        padding: 24px;
-        border: 1px solid #d7e0dc;
+      button,
+      input {
+        font: inherit;
+      }
+
+      .applet {
+        min-height: 100svh;
+        padding: 14px;
+        display: grid;
+        grid-template-rows: auto 1fr;
+        gap: 12px;
+      }
+
+      .topbar {
+        display: grid;
+        grid-template-columns: minmax(250px, 1fr) auto;
+        gap: 12px;
+        align-items: center;
+        padding: 12px 14px;
+        border: 1px solid var(--line);
         border-radius: 8px;
-        background: #ffffff;
+        background: var(--panel);
+        box-shadow: 0 8px 24px rgba(24, 35, 31, 0.08);
+      }
+
+      .eyebrow {
+        margin: 0 0 2px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 22px;
+        line-height: 1.18;
+        letter-spacing: 0;
+      }
+
+      .stepbar,
+      .segmented,
+      .presetbar,
+      .route-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .stepbar {
+        justify-content: flex-end;
+      }
+
+      .step-button,
+      .basis-button,
+      .route-option,
+      .preset-button,
+      .tool-button {
+        min-height: 38px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #f7faf5;
+        color: var(--ink);
+        padding: 7px 10px;
+        cursor: pointer;
+      }
+
+      .step-button[aria-pressed="true"],
+      .basis-button[aria-pressed="true"],
+      .route-option[aria-pressed="true"],
+      .tool-button[aria-pressed="true"] {
+        border-color: var(--basis-b);
+        background: var(--basis-soft);
+        color: #0d514d;
+        font-weight: 700;
+      }
+
+      .route-option[aria-pressed="true"] {
+        border-color: var(--route);
+        background: var(--route-soft);
+        color: #7c3f00;
+      }
+
+      button:focus-visible,
+      input:focus-visible {
+        outline: 3px solid rgba(15, 118, 110, 0.28);
+        outline-offset: 2px;
+      }
+
+      .workspace {
+        display: grid;
+        grid-template-columns: minmax(560px, 1fr) minmax(330px, 410px);
+        gap: 12px;
+        min-height: 0;
+      }
+
+      .board-wrap,
+      .panel {
+        min-width: 0;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+        box-shadow: var(--shadow);
+      }
+
+      .board-wrap {
+        display: grid;
+        grid-template-rows: minmax(440px, 1fr) auto;
+        overflow: hidden;
+      }
+
+      svg {
+        width: 100%;
+        height: 100%;
+        min-height: 500px;
+        touch-action: none;
+        user-select: none;
+        background:
+          linear-gradient(rgba(216, 224, 216, 0.34) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(216, 224, 216, 0.34) 1px, transparent 1px),
+          #fbfcf7;
+        background-size: 34px 34px;
+      }
+
+      .slider-panel {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        padding: 12px;
+        border-top: 1px solid var(--line);
+        background: #fbfcf8;
+      }
+
+      .slider-row {
+        display: grid;
+        gap: 6px;
+      }
+
+      .slider-label {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 8px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      input[type="range"] {
+        width: 100%;
+        accent-color: var(--basis-b);
+      }
+
+      .panel {
+        display: grid;
+        align-content: start;
+        gap: 12px;
+        padding: 14px;
+        overflow: auto;
+      }
+
+      .section {
+        display: grid;
+        gap: 8px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .section:last-child {
+        border-bottom: 0;
+        padding-bottom: 0;
+      }
+
+      h2 {
+        margin: 0;
+        font-size: 15px;
+        line-height: 1.25;
+      }
+
+      .readout-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .readout {
+        min-height: 66px;
+        padding: 10px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fbfcf8;
+      }
+
+      .readout span {
+        display: block;
+        color: var(--muted);
+        font-size: 12px;
+        margin-bottom: 4px;
+      }
+
+      .readout strong {
+        display: block;
+        font-size: 18px;
+        line-height: 1.22;
+      }
+
+      .formula-box,
+      .strategy-box {
+        padding: 10px 12px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fbfcf8;
+        line-height: 1.65;
+      }
+
+      .formula-box strong,
+      .strategy-box strong {
+        color: #0f514b;
+      }
+
+      .formula-line {
+        margin: 0;
+      }
+
+      .target-line {
+        color: var(--target);
+        font-weight: 750;
+      }
+
+      .stage-note {
+        border-color: rgba(217, 119, 6, 0.28);
+        background: #fff8ed;
+      }
+
+      .muted {
+        color: var(--muted);
+      }
+
+      .side-line {
+        stroke: #8d9b93;
+        stroke-width: 3;
+        stroke-linecap: round;
+      }
+
+      .side-line.soft {
+        stroke: #c5cec6;
+        stroke-width: 2;
+        stroke-dasharray: 8 8;
+      }
+
+      .basis-line-a {
+        stroke: var(--basis-a);
+        stroke-width: 5;
+        stroke-linecap: round;
+      }
+
+      .basis-line-b {
+        stroke: var(--basis-b);
+        stroke-width: 5;
+        stroke-linecap: round;
+      }
+
+      .target-line-svg {
+        stroke: var(--target);
+        stroke-width: 5;
+        stroke-linecap: round;
+      }
+
+      .route-line {
+        stroke: var(--route);
+        stroke-width: 5;
+        stroke-linecap: round;
+        fill: none;
+      }
+
+      .route-ghost {
+        stroke: rgba(217, 119, 6, 0.22);
+        stroke-width: 8;
+        stroke-linecap: round;
+        fill: none;
+      }
+
+      .point {
+        fill: #ffffff;
+        stroke: var(--ink);
+        stroke-width: 3;
+      }
+
+      .handle {
+        cursor: grab;
+      }
+
+      .handle[data-drag="d"] {
+        stroke: var(--basis-a);
+        fill: #eff6ff;
+      }
+
+      .handle[data-drag="e"] {
+        stroke: var(--basis-b);
+        fill: #ecfdf5;
+      }
+
+      .label {
+        fill: var(--ink);
+        font-size: 15px;
+        font-weight: 750;
+      }
+
+      .basis-label {
+        fill: var(--basis-b);
+        font-size: 14px;
+        font-weight: 750;
+      }
+
+      .route-label {
+        fill: #8a4b05;
+        font-size: 13px;
+        font-weight: 750;
+      }
+
+      .target-fill {
+        fill: var(--target-soft);
+        stroke: var(--target);
+        stroke-width: 2;
+      }
+
+      @media (max-width: 960px) {
+        .topbar,
+        .workspace {
+          grid-template-columns: 1fr;
+        }
+
+        .stepbar {
+          justify-content: flex-start;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .applet {
+          padding: 10px;
+        }
+
+        h1 {
+          font-size: 19px;
+        }
+
+        .slider-panel,
+        .readout-grid {
+          grid-template-columns: 1fr;
+        }
+
+        svg {
+          min-height: 440px;
+        }
       }
     </style>
   </head>
   <body>
-    <main>
-      <p>sh-hs-math-applet-sdk</p>
-      <h1>向量法路径比较板</h1>
-      <p>限定 1-2 个典型几何问题，只比较基底法、坐标法、数量积法的第一步建模路径，不做通用解题器。</p>
-      <p>资源 ID：SH-HS-MATH-HJ-B2-C08-L10-A01</p>
-    </main>
+    <div class="applet" data-resource-id="SH-HS-MATH-HJ-B2-C08-L10-A01">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">sh-hs-math-applet-sdk · SH-HS-MATH-HJ-B2-C08-L10-A01</p>
+          <h1>向量法路径比较板</h1>
+        </div>
+        <div class="stepbar" aria-label="分步揭示">
+          <button class="step-button" data-step="1" aria-pressed="true">1 读条件</button>
+          <button class="step-button" data-step="2" aria-pressed="false">2 选基</button>
+          <button class="step-button" data-step="3" aria-pressed="false">3 走路径</button>
+          <button class="step-button" data-step="4" aria-pressed="false">4 比较</button>
+        </div>
+      </header>
+
+      <main class="workspace">
+        <section class="board-wrap" aria-label="几何路径比较画板">
+          <svg id="board" viewBox="0 0 900 620" role="img" aria-label="三角形 ABC 中不同路径表示向量 DE"></svg>
+          <div class="slider-panel">
+            <label class="slider-row">
+              <span class="slider-label"><span>m = AD/AB</span><strong id="mValue">0.40</strong></span>
+              <input id="mSlider" type="range" min="0.1" max="0.9" value="0.4" step="0.05" />
+            </label>
+            <label class="slider-row">
+              <span class="slider-label"><span>n = AE/AC</span><strong id="nValue">0.65</strong></span>
+              <input id="nSlider" type="range" min="0.1" max="0.9" value="0.65" step="0.05" />
+            </label>
+          </div>
+        </section>
+
+        <aside class="panel">
+          <section class="section">
+            <h2>基向量组</h2>
+            <div class="segmented" aria-label="选择基向量">
+              <button class="basis-button" data-basis="ab_ac" aria-pressed="true">AB / AC</button>
+              <button class="basis-button" data-basis="ab_bc" aria-pressed="false">AB / BC</button>
+            </div>
+            <div id="basis_equation" class="formula-box"></div>
+          </section>
+
+          <section class="section">
+            <h2>路径选择</h2>
+            <div class="route-list" aria-label="选择 D 到 E 的路径">
+              <button class="route-option" data-route="via_a" aria-pressed="true">D → A → E</button>
+              <button class="route-option" data-route="via_edges" aria-pressed="false">D → B → C → E</button>
+              <button class="route-option" data-route="via_b" aria-pressed="false">D → B → E</button>
+            </div>
+            <div id="path_delta" class="formula-box"></div>
+          </section>
+
+          <section class="section">
+            <h2>当前读数</h2>
+            <div class="readout-grid">
+              <div class="readout">
+                <span>D 点比例</span>
+                <strong id="dReadout">AD = 0.40 AB</strong>
+              </div>
+              <div class="readout">
+                <span>E 点比例</span>
+                <strong id="eReadout">AE = 0.65 AC</strong>
+              </div>
+            </div>
+          </section>
+
+          <section class="section">
+            <h2>典型分点</h2>
+            <div class="presetbar">
+              <button class="preset-button" data-m="0.5" data-n="0.5">中位线型</button>
+              <button class="preset-button" data-m="0.65" data-n="0.35">非对称</button>
+              <button class="preset-button" data-m="0.25" data-n="0.75">靠近顶点</button>
+              <button class="preset-button" data-reset="true">重置</button>
+            </div>
+          </section>
+
+          <section class="section">
+            <h2>课堂策略</h2>
+            <div id="stageNote" class="strategy-box stage-note"></div>
+            <p class="muted">坐标法可作为后续复核工具；本板只比较向量路径建模的第一步。</p>
+          </section>
+        </aside>
+      </main>
+    </div>
+
     <script>
       const RESOURCE_ID = "SH-HS-MATH-HJ-B2-C08-L10-A01";
-      window.parent?.postMessage({ type: "applet:ready", resourceId: RESOURCE_ID, payload: { current_value: 0 } }, "*");
+      const svg = document.querySelector("#board");
+      const mSlider = document.querySelector("#mSlider");
+      const nSlider = document.querySelector("#nSlider");
+      const mValue = document.querySelector("#mValue");
+      const nValue = document.querySelector("#nValue");
+      const dReadout = document.querySelector("#dReadout");
+      const eReadout = document.querySelector("#eReadout");
+      const basisBox = document.querySelector("#basis_equation");
+      const pathBox = document.querySelector("#path_delta");
+      const stageNote = document.querySelector("#stageNote");
+      const stepButtons = [...document.querySelectorAll(".step-button")];
+      const basisButtons = [...document.querySelectorAll(".basis-button")];
+      const routeButtons = [...document.querySelectorAll(".route-option")];
+      const presetButtons = [...document.querySelectorAll(".preset-button")];
+
+      const points = {
+        A: { x: 150, y: 455 },
+        B: { x: 720, y: 455 },
+        C: { x: 305, y: 115 }
+      };
+
+      const state = {
+        m: 0.4,
+        n: 0.65,
+        basis: "ab_ac",
+        route: "via_a",
+        step: 1
+      };
+
+      let dragTarget = null;
+
+      function createSvg(tag, attrs = {}) {
+        const node = document.createElementNS("http://www.w3.org/2000/svg", tag);
+        Object.entries(attrs).forEach(([key, value]) => node.setAttribute(key, String(value)));
+        return node;
+      }
+
+      function lerp(start, end, t) {
+        return {
+          x: start.x + (end.x - start.x) * t,
+          y: start.y + (end.y - start.y) * t
+        };
+      }
+
+      function ratioAlong(point, start, end) {
+        const vx = end.x - start.x;
+        const vy = end.y - start.y;
+        const len2 = vx * vx + vy * vy;
+        const raw = ((point.x - start.x) * vx + (point.y - start.y) * vy) / len2;
+        return clamp(raw, 0.1, 0.9);
+      }
+
+      function clamp(value, min, max) {
+        return Math.max(min, Math.min(max, value));
+      }
+
+      function toSvgPoint(event) {
+        const point = svg.createSVGPoint();
+        point.x = event.clientX;
+        point.y = event.clientY;
+        return point.matrixTransform(svg.getScreenCTM().inverse());
+      }
+
+      function fmt(value) {
+        if (Math.abs(value) < 0.0001) return "0";
+        return Number(value.toFixed(2)).toString();
+      }
+
+      function fmtRatio(value) {
+        const common = [
+          [0.25, "1/4"],
+          [0.33, "1/3"],
+          [0.5, "1/2"],
+          [0.67, "2/3"],
+          [0.75, "3/4"]
+        ];
+        const hit = common.find(([decimal]) => Math.abs(value - decimal) < 0.015);
+        return hit ? hit[1] : fmt(value);
+      }
+
+      function term(coef, symbol, first = false) {
+        if (Math.abs(coef) < 0.0001) return "";
+        const sign = coef < 0 ? (first ? "-" : "- ") : first ? "" : "+ ";
+        const abs = Math.abs(coef);
+        const scalar = Math.abs(abs - 1) < 0.0001 ? "" : fmt(abs);
+        return `${sign}${scalar}${symbol}`;
+      }
+
+      function joinTerms(terms) {
+        const compact = terms.filter(Boolean);
+        return compact.length ? compact.join(" ") : "0";
+      }
+
+      function formulaForCurrentBasis() {
+        const m = state.m;
+        const n = state.n;
+
+        if (state.basis === "ab_bc") {
+          const first = n - m;
+          return {
+            basisText: "设 p = AB，r = BC；因为 AC = p + r。",
+            pointText: `D = ${fmt(m)}p，E = ${fmt(n)}(p + r)`,
+            targetText: `DE = ${joinTerms([term(first, "p", true), term(n, "r")])}`,
+            routeText: routeFormula("ab_bc")
+          };
+        }
+
+        return {
+          basisText: "设 p = AB，q = AC。",
+          pointText: `D = ${fmt(m)}p，E = ${fmt(n)}q`,
+          targetText: `DE = ${joinTerms([term(-m, "p", true), term(n, "q")])}`,
+          routeText: routeFormula("ab_ac")
+        };
+      }
+
+      function routeFormula(basis) {
+        const route = state.route;
+        const formulas = {
+          ab_ac: {
+            via_a: {
+              label: "D → A → E",
+              raw: "DA + AE = -m p + n q",
+              note: "先回到共同基点 A，表达最短。"
+            },
+            via_edges: {
+              label: "D → B → C → E",
+              raw: "DB + BC + CE = (1 - m)p + (q - p) - (1 - n)q",
+              note: "沿已知边绕行，可检验路径和不变。"
+            },
+            via_b: {
+              label: "D → B → E",
+              raw: "DB + BE = (1 - m)p + (-p + n q)",
+              note: "先到顶点 B，再把 BE 转成基向量。"
+            }
+          },
+          ab_bc: {
+            via_a: {
+              label: "D → A → E",
+              raw: "DA + AE = -m p + n(p + r)",
+              note: "先用 AC = p + r 替换第二个方向。"
+            },
+            via_edges: {
+              label: "D → B → C → E",
+              raw: "DB + BC + CE = (1 - m)p + r - (1 - n)(p + r)",
+              note: "这组基向量下，绕边路径最贴合图形。"
+            },
+            via_b: {
+              label: "D → B → E",
+              raw: "DB + BE = (1 - m)p + ((n - 1)p + n r)",
+              note: "关键是先把 BE 写成 AB 与 BC 的组合。"
+            }
+          }
+        };
+        return formulas[basis][route];
+      }
+
+      function routePoints() {
+        const A = points.A;
+        const B = points.B;
+        const C = points.C;
+        const D = lerp(A, B, state.m);
+        const E = lerp(A, C, state.n);
+        const routes = {
+          via_a: [D, A, E],
+          via_edges: [D, B, C, E],
+          via_b: [D, B, E]
+        };
+        return { A, B, C, D, E, path: routes[state.route] };
+      }
+
+      function marker(id, color) {
+        const markerNode = createSvg("marker", {
+          id,
+          viewBox: "0 0 10 10",
+          refX: 8.5,
+          refY: 5,
+          markerWidth: 7,
+          markerHeight: 7,
+          orient: "auto-start-reverse"
+        });
+        markerNode.appendChild(createSvg("path", { d: "M 0 0 L 10 5 L 0 10 z", fill: color }));
+        return markerNode;
+      }
+
+      function line(parent, from, to, className, attrs = {}) {
+        const node = createSvg("line", {
+          x1: from.x,
+          y1: from.y,
+          x2: to.x,
+          y2: to.y,
+          class: className,
+          ...attrs
+        });
+        parent.appendChild(node);
+        return node;
+      }
+
+      function text(parent, content, point, className, anchor = "middle") {
+        const node = createSvg("text", {
+          x: point.x,
+          y: point.y,
+          class: className,
+          "text-anchor": anchor
+        });
+        node.textContent = content;
+        parent.appendChild(node);
+        return node;
+      }
+
+      function drawPoint(parent, point, label, drag = null, dx = 0, dy = -16) {
+        const circle = createSvg("circle", {
+          cx: point.x,
+          cy: point.y,
+          r: drag ? 12 : 8,
+          class: drag ? "point handle" : "point",
+          "data-drag": drag || ""
+        });
+        parent.appendChild(circle);
+        text(parent, label, { x: point.x + dx, y: point.y + dy }, "label");
+      }
+
+      function drawPath(parent, path) {
+        if (state.step < 3) return;
+
+        for (let i = 0; i < path.length - 1; i += 1) {
+          line(parent, path[i], path[i + 1], "route-ghost");
+          line(parent, path[i], path[i + 1], "route-line", { "marker-end": "url(#arrow-route)" });
+          const mid = {
+            x: (path[i].x + path[i + 1].x) / 2,
+            y: (path[i].y + path[i + 1].y) / 2
+          };
+          text(parent, String(i + 1), { x: mid.x, y: mid.y - 10 }, "route-label");
+        }
+      }
+
+      function drawBasis(parent, A, B, C) {
+        if (state.step < 2) return;
+
+        line(parent, A, B, "basis-line-a", { "marker-end": "url(#arrow-basis-a)" });
+        text(parent, "p = AB", { x: (A.x + B.x) / 2, y: A.y + 32 }, "basis-label");
+
+        if (state.basis === "ab_bc") {
+          line(parent, B, C, "basis-line-b", { "marker-end": "url(#arrow-basis-b)" });
+          line(parent, A, C, "side-line soft");
+          text(parent, "r = BC", { x: (B.x + C.x) / 2 + 34, y: (B.y + C.y) / 2 - 8 }, "basis-label", "start");
+          text(parent, "AC = p + r", { x: (A.x + C.x) / 2 - 18, y: (A.y + C.y) / 2 - 12 }, "basis-label", "end");
+        } else {
+          line(parent, A, C, "basis-line-b", { "marker-end": "url(#arrow-basis-b)" });
+          text(parent, "q = AC", { x: (A.x + C.x) / 2 - 28, y: (A.y + C.y) / 2 - 6 }, "basis-label", "end");
+        }
+      }
+
+      function renderSvg() {
+        const { A, B, C, D, E, path } = routePoints();
+        svg.innerHTML = "";
+
+        const defs = createSvg("defs");
+        defs.append(
+          marker("arrow-basis-a", "#2563eb"),
+          marker("arrow-basis-b", "#0f766e"),
+          marker("arrow-route", "#d97706"),
+          marker("arrow-target", "#b42318")
+        );
+        svg.appendChild(defs);
+
+        const shape = createSvg("path", {
+          d: `M ${A.x} ${A.y} L ${B.x} ${B.y} L ${C.x} ${C.y} Z`,
+          class: "target-fill"
+        });
+        svg.appendChild(shape);
+        line(svg, A, B, "side-line");
+        line(svg, B, C, "side-line");
+        line(svg, C, A, "side-line");
+
+        drawBasis(svg, A, B, C);
+        drawPath(svg, path);
+
+        if (state.step >= 4) {
+          line(svg, D, E, "target-line-svg", { "marker-end": "url(#arrow-target)" });
+          text(svg, "目标向量 DE", { x: (D.x + E.x) / 2 + 16, y: (D.y + E.y) / 2 - 20 }, "route-label", "start");
+        }
+
+        drawPoint(svg, A, "A", null, -12, 28);
+        drawPoint(svg, B, "B", null, 12, 28);
+        drawPoint(svg, C, "C", null, 0, -18);
+        drawPoint(svg, D, "D", "d", 0, 30);
+        drawPoint(svg, E, "E", "e", -18, -12);
+      }
+
+      function stageMessage() {
+        const route = routeFormula(state.basis);
+        const messages = {
+          1: `<strong>读条件：</strong>先确认 D、E 分别由 m、n 定位，目标是向量 DE。`,
+          2: `<strong>选基：</strong>先决定用哪两个向量表达图中所有关键移动，再写 D 和 E。`,
+          3: `<strong>走路径：</strong>当前路径是 ${route.label}，每一段都要翻译成向量和。`,
+          4: `<strong>比较：</strong>路径可以不同，化简后都应回到同一个 DE。`
+        };
+        return messages[state.step];
+      }
+
+      function renderText() {
+        const formula = formulaForCurrentBasis();
+        const route = formula.routeText;
+
+        mValue.textContent = fmtRatio(state.m);
+        nValue.textContent = fmtRatio(state.n);
+        mSlider.value = state.m;
+        nSlider.value = state.n;
+        dReadout.textContent = `AD = ${fmtRatio(state.m)} AB`;
+        eReadout.textContent = `AE = ${fmtRatio(state.n)} AC`;
+
+        basisBox.innerHTML = `
+          <p class="formula-line"><strong>${formula.basisText}</strong></p>
+          <p class="formula-line">${formula.pointText}</p>
+          <p class="formula-line target-line">${formula.targetText}</p>
+        `;
+
+        pathBox.innerHTML = `
+          <p class="formula-line"><strong>${route.label}</strong></p>
+          <p class="formula-line">${route.raw}</p>
+          <p class="formula-line target-line">化简：${formula.targetText}</p>
+          <p class="formula-line muted">${route.note}</p>
+        `;
+
+        stageNote.innerHTML = stageMessage();
+
+        stepButtons.forEach((button) => {
+          button.setAttribute("aria-pressed", String(Number(button.dataset.step) === state.step));
+        });
+        basisButtons.forEach((button) => {
+          button.setAttribute("aria-pressed", String(button.dataset.basis === state.basis));
+        });
+        routeButtons.forEach((button) => {
+          button.setAttribute("aria-pressed", String(button.dataset.route === state.route));
+        });
+      }
+
+      function render(eventType = "state_changed") {
+        renderSvg();
+        renderText();
+        postState(eventType);
+      }
+
+      function payload() {
+        const formula = formulaForCurrentBasis();
+        return {
+          ratio_m: Number(state.m.toFixed(2)),
+          ratio_n: Number(state.n.toFixed(2)),
+          basis_mode: state.basis,
+          route_id: state.route,
+          basis_equation: `${formula.basisText} ${formula.pointText} ${formula.targetText}`,
+          path_delta: `${formula.routeText.raw}; ${formula.targetText}`,
+          reveal_step: state.step
+        };
+      }
+
+      function postState(eventType) {
+        const messageType = eventType === "path_selected" ? "applet:path:selected" : `applet:${eventType}`;
+        window.parent?.postMessage({ type: messageType, resourceId: RESOURCE_ID, payload: payload() }, "*");
+      }
+
+      function setRatios(m, n) {
+        state.m = Number(clamp(m, 0.1, 0.9).toFixed(2));
+        state.n = Number(clamp(n, 0.1, 0.9).toFixed(2));
+      }
+
+      function startDrag(event) {
+        const target = event.target.closest("[data-drag]");
+        if (!target) return;
+        event.preventDefault();
+        dragTarget = target.dataset.drag;
+        svg.setPointerCapture(event.pointerId);
+      }
+
+      function moveDrag(event) {
+        if (!dragTarget) return;
+        const point = toSvgPoint(event);
+        if (dragTarget === "d") {
+          state.m = Number(ratioAlong(point, points.A, points.B).toFixed(2));
+        }
+        if (dragTarget === "e") {
+          state.n = Number(ratioAlong(point, points.A, points.C).toFixed(2));
+        }
+        render();
+      }
+
+      function stopDrag(event) {
+        if (!dragTarget) return;
+        svg.releasePointerCapture(event.pointerId);
+        dragTarget = null;
+        render();
+      }
+
+      stepButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          state.step = Number(button.dataset.step);
+          render();
+        });
+      });
+
+      basisButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          state.basis = button.dataset.basis;
+          state.step = Math.max(state.step, 2);
+          render();
+        });
+      });
+
+      routeButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          state.route = button.dataset.route;
+          state.step = Math.max(state.step, 3);
+          render("path_selected");
+        });
+      });
+
+      presetButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          if (button.dataset.reset) {
+            setRatios(0.4, 0.65);
+            state.basis = "ab_ac";
+            state.route = "via_a";
+            state.step = 1;
+          } else {
+            setRatios(Number(button.dataset.m), Number(button.dataset.n));
+            state.step = Math.max(state.step, 2);
+          }
+          render();
+        });
+      });
+
+      mSlider.addEventListener("input", () => {
+        state.m = Number(mSlider.value);
+        render();
+      });
+
+      nSlider.addEventListener("input", () => {
+        state.n = Number(nSlider.value);
+        render();
+      });
+
+      svg.addEventListener("pointerdown", startDrag);
+      svg.addEventListener("pointermove", moveDrag);
+      svg.addEventListener("pointerup", stopDrag);
+      svg.addEventListener("pointercancel", stopDrag);
+
+      window.addEventListener("message", (event) => {
+        if (event.data?.type === "player:init") {
+          postState("ready");
+        }
+      });
+
+      render("ready");
     </script>
   </body>
 </html>
