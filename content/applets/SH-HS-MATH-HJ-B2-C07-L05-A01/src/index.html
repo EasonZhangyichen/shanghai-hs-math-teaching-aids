@@ -39,7 +39,8 @@
       body {
         margin: 0;
         min-width: 320px;
-        min-height: 100vh;
+        height: 100vh;
+        overflow: hidden;
         color: var(--ink);
         background: var(--surface);
       }
@@ -50,9 +51,11 @@
       }
 
       .applet-shell {
-        min-height: 100vh;
+        height: 100vh;
+        min-height: 0;
         display: grid;
         grid-template-rows: auto minmax(0, 1fr);
+        overflow: hidden;
         background:
           linear-gradient(90deg, rgba(46, 93, 138, 0.05) 0 1px, transparent 1px 100%),
           linear-gradient(0deg, rgba(27, 39, 51, 0.035) 0 1px, transparent 1px 100%),
@@ -63,8 +66,8 @@
       .topbar {
         display: flex;
         justify-content: space-between;
-        gap: 18px;
-        padding: 15px 22px;
+        gap: 12px;
+        padding: 10px 16px;
         border-bottom: 1px solid var(--border);
         background: rgba(255, 255, 255, 0.94);
       }
@@ -89,7 +92,7 @@
 
       h1 {
         margin: 0;
-        font-size: 1.45rem;
+        font-size: 1.32rem;
         line-height: 1.15;
         letter-spacing: 0;
       }
@@ -98,15 +101,15 @@
         flex: 0 0 auto;
         display: grid;
         grid-template-columns: repeat(4, auto);
-        gap: 8px;
+        gap: 6px;
         align-content: start;
       }
 
       .state-readout span {
-        min-width: 88px;
-        padding: 7px 9px;
+        min-width: 76px;
+        padding: 5px 7px;
         border: 1px solid var(--border);
-        border-radius: 8px;
+        border-radius: 6px;
         background: #fbfdfe;
         text-align: center;
       }
@@ -114,15 +117,16 @@
       .state-readout strong {
         display: block;
         color: var(--ink);
-        font-size: 0.96rem;
+        font-size: 0.9rem;
       }
 
       .workspace {
         min-height: 0;
         display: grid;
-        grid-template-columns: minmax(430px, 1fr) 350px;
-        gap: 16px;
-        padding: 16px;
+        grid-template-columns: minmax(400px, 1fr) 340px;
+        gap: 12px;
+        padding: 10px;
+        overflow: hidden;
       }
 
       .visual-panel,
@@ -136,14 +140,15 @@
 
       .visual-panel {
         align-self: start;
+        max-height: 100%;
         overflow: hidden;
       }
 
       .formula-strip {
         display: grid;
         grid-template-columns: minmax(0, 1fr) auto;
-        gap: 12px;
-        padding: 13px 16px;
+        gap: 10px;
+        padding: 9px 12px;
         border-bottom: 1px solid var(--border);
         background: #fbfdfe;
       }
@@ -151,11 +156,12 @@
       .formula-main {
         margin: 0;
         font-family: Georgia, "Times New Roman", serif;
-        font-size: 1.28rem;
+        font-size: 1.18rem;
         font-weight: 700;
       }
 
       .formula-note {
+        margin: 0;
         align-self: center;
         text-align: right;
       }
@@ -172,14 +178,17 @@
       .control-panel {
         display: flex;
         flex-direction: column;
-        gap: 16px;
-        padding: 16px;
+        gap: 10px;
+        height: 100%;
+        max-height: 100%;
+        padding: 10px;
         overflow: auto;
+        overscroll-behavior: contain;
       }
 
       .panel-section {
         display: grid;
-        gap: 10px;
+        gap: 7px;
       }
 
       .section-title {
@@ -193,7 +202,7 @@
       .mode-grid,
       .toggle-grid {
         display: grid;
-        gap: 8px;
+        gap: 6px;
       }
 
       .button-row {
@@ -211,12 +220,13 @@
       .control-button,
       .mode-button,
       .toggle-button {
-        min-height: 40px;
+        min-height: 36px;
         border: 1px solid var(--border);
         border-radius: 8px;
         color: var(--ink);
         background: #ffffff;
         cursor: pointer;
+        font-size: 0.9rem;
       }
 
       .control-button:hover,
@@ -242,8 +252,8 @@
 
       .slider-block {
         display: grid;
-        gap: 6px;
-        padding: 10px;
+        gap: 4px;
+        padding: 7px;
         border: 1px solid var(--border);
         border-radius: 8px;
         background: #ffffff;
@@ -259,25 +269,30 @@
         align-items: center;
         justify-content: space-between;
         gap: 12px;
-        font-size: 0.9rem;
+        font-size: 0.86rem;
         font-weight: 800;
       }
 
       .slider-head output {
         color: var(--curve);
         font-family: Georgia, "Times New Roman", serif;
-        font-size: 1rem;
+        font-size: 0.95rem;
       }
 
       input[type="range"] {
         width: 100%;
+        min-height: 20px;
         accent-color: var(--curve);
+      }
+
+      .panel-note {
+        margin: 0;
       }
 
       .summary-list,
       .checkpoint-list {
         display: grid;
-        gap: 8px;
+        gap: 6px;
         margin: 0;
         padding: 0;
         list-style: none;
@@ -285,11 +300,11 @@
 
       .summary-list li,
       .checkpoint-list li {
-        padding: 8px 10px;
+        padding: 6px 8px;
         border: 1px solid var(--border);
         border-radius: 8px;
         background: var(--surface-soft);
-        font-size: 0.9rem;
+        font-size: 0.86rem;
       }
 
       .summary-list strong,
@@ -300,10 +315,11 @@
       .legend {
         display: flex;
         flex-wrap: wrap;
-        gap: 10px;
-        padding: 10px 16px 14px;
+        gap: 8px;
+        padding: 7px 12px 9px;
         border-top: 1px solid var(--border);
         background: #fbfdfe;
+        line-height: 1.2;
       }
 
       .legend span {
@@ -415,6 +431,17 @@
       }
 
       @media (max-width: 820px) {
+        body {
+          height: auto;
+          overflow: auto;
+        }
+
+        .applet-shell {
+          height: auto;
+          min-height: 100vh;
+          overflow: visible;
+        }
+
         .topbar,
         .formula-strip {
           grid-template-columns: 1fr;
@@ -430,10 +457,13 @@
 
         .workspace {
           grid-template-columns: 1fr;
+          overflow: visible;
         }
 
         .control-panel {
+          height: auto;
           max-height: none;
+          overflow: visible;
         }
       }
 
@@ -479,7 +509,7 @@
             <p class="formula-main" id="formulaReadout">y = sin x</p>
             <p class="formula-note" id="phaseReadout">相位：x</p>
           </div>
-          <svg id="graph" viewBox="0 0 1200 580" role="img" aria-label="参数函数图像实验区">
+          <svg id="graph" viewBox="0 0 1200 520" role="img" aria-label="参数函数图像实验区">
             <g id="gridLayer"></g>
             <rect id="bandLayer" class="amplitude-band" x="0" y="0" width="0" height="0" />
             <line id="phaseMarker" class="phase-marker" x1="0" y1="0" x2="0" y2="0" />
@@ -592,8 +622,8 @@
     <script>
       const RESOURCE_ID = "SH-HS-MATH-HJ-B2-C07-L05-A01";
       const SVG_WIDTH = 1200;
-      const SVG_HEIGHT = 580;
-      const PADDING = { left: 72, right: 36, top: 36, bottom: 58 };
+      const SVG_HEIGHT = 520;
+      const PADDING = { left: 72, right: 36, top: 30, bottom: 50 };
       const X_MIN = -2 * Math.PI;
       const X_MAX = 2 * Math.PI;
       const Y_MIN = -2.4;

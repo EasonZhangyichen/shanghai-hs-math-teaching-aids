@@ -16,10 +16,10 @@ curriculum:
   chapter_id: "SH-HS-MATH-HJ-B2-C07"
   chapter_title: "三角函数"
   section_id: "SH-HS-MATH-HJ-B2-C07-S03"
-  section_title: "函数 y = A sin(omega x + phi) 的图像"
+  section_title: "函数 y = A sin(ωx + φ) 的图像"
   lesson_id: "SH-HS-MATH-HJ-B2-C07-L05"
   textbook_ref: "7.3"
-  lesson_title: "函数 y = A sin(omega x + phi) 的图像"
+  lesson_title: "函数 y = A sin(ωx + φ) 的图像"
 
 pedagogy:
   cognitive_action: "比较"

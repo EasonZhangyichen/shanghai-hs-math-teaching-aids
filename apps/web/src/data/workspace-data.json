@@ -720,12 +720,12 @@
               {
                 "id": "SH-HS-MATH-HJ-B2-C07-S03",
                 "textbookLabel": "7.3",
-                "title": "函数 y = A sin(omega x + phi) 的图像",
+                "title": "函数 y = A sin(ωx + φ) 的图像",
                 "lessons": [
                   {
                     "id": "SH-HS-MATH-HJ-B2-C07-L05",
                     "textbookRef": "7.3",
-                    "title": "函数 y = A sin(omega x + phi) 的图像",
+                    "title": "函数 y = A sin(ωx + φ) 的图像",
                     "status": "draft",
                     "resourceCount": 3,
                     "hasImplementedApplet": true
@@ -4727,7 +4727,7 @@
       "teachingPainPoints": [
         "学生会背周期和值域，但难以用定义域、值域和图像语言说明单调区间端点。",
         "奇偶性、对称轴、对称中心容易混淆，尤其容易跳过定义域关于原点对称的前提。",
-        "最值点和零点的弧度表达容易出现 pi 分数和周期项遗漏。"
+        "最值点和零点的弧度表达容易出现 π 分数和周期项遗漏。"
       ],
       "digitalEntryPoints": [
         {
@@ -7017,7 +7017,7 @@
     {
       "id": "SH-HS-MATH-HJ-B2-C07-L05",
       "textbookRef": "7.3",
-      "title": "函数 y = A sin(omega x + phi) 的图像",
+      "title": "函数 y = A sin(ωx + φ) 的图像",
       "status": "draft",
       "estimatedPeriods": 2,
       "volume": {
@@ -7032,10 +7032,10 @@
       "section": {
         "id": "SH-HS-MATH-HJ-B2-C07-S03",
         "textbookLabel": "7.3",
-        "title": "函数 y = A sin(omega x + phi) 的图像"
+        "title": "函数 y = A sin(ωx + φ) 的图像"
       },
       "coreKnowledge": [
-        "参数 A、omega、phi 对振幅、周期和相位的影响",
+        "参数 A、ω、φ 对振幅、周期和相位的影响",
         "从基本正弦曲线到复合参数图像的变换顺序",
         "根据图像识别解析式中的关键参数"
       ],
@@ -7061,7 +7061,7 @@
           "proposed_resource_id": "SH-HS-MATH-HJ-B2-C07-L05-A01",
           "title": "三角函数参数变化实验室",
           "cognitive_action": "变换",
-          "note": "滑块控制 A、omega、phi，支持单参数锁定、变换顺序切换和关键点追踪；k 可作为平台扩展开关，默认对齐教材的无竖直平移形式。"
+          "note": "滑块控制 A、ω、φ，支持单参数锁定、变换顺序切换和关键点追踪；k 可作为平台扩展开关，默认对齐教材的无竖直平移形式。"
         },
         {
           "type": "manim_clip",
@@ -7075,11 +7075,11 @@
           "proposed_resource_id": "SH-HS-MATH-HJ-B2-C07-L05-D01",
           "title": "参数识别诊断任务",
           "cognitive_action": "比较",
-          "note": "给出图像关键点，要求判断 A、omega、phi 的可能取值并解释理由。"
+          "note": "给出图像关键点，要求判断 A、ω、φ 的可能取值并解释理由。"
         }
       ],
       "diagnosisFocus": [
-        "能否从周期求出 omega 的绝对值。",
+        "能否从周期求出 ω 的绝对值。",
         "能否解释相位平移方向而不是只套公式。",
         "能否在 A 为负时正确处理图像翻折。"
       ],
@@ -7096,7 +7096,7 @@
           "title": "三角函数参数变化实验室",
           "subtitle": "分离观察 A、ω、φ 对 y = A sin(ωx + φ) 图像的影响",
           "cognitiveAction": "变换",
-          "note": "滑块控制 A、omega、phi，支持单参数锁定、变换顺序切换和关键点追踪；k 可作为平台扩展开关，默认对齐教材的无竖直平移形式。",
+          "note": "滑块控制 A、ω、φ，支持单参数锁定、变换顺序切换和关键点追踪；k 可作为平台扩展开关，默认对齐教材的无竖直平移形式。",
           "availability": "metadata_ready",
           "status": "draft",
           "version": "0.1.0",
@@ -7117,14 +7117,14 @@
               "chapter_id": "SH-HS-MATH-HJ-B2-C07",
               "chapter_title": "三角函数",
               "section_id": "SH-HS-MATH-HJ-B2-C07-S03",
-              "section_title": "函数 y = A sin(omega x + phi) 的图像",
+              "section_title": "函数 y = A sin(ωx + φ) 的图像",
               "lesson_id": "SH-HS-MATH-HJ-B2-C07-L05",
               "textbook_ref": "7.3",
-              "lesson_title": "函数 y = A sin(omega x + phi) 的图像"
+              "lesson_title": "函数 y = A sin(ωx + φ) 的图像"
             },
             "pedagogy": {
               "cognitiveAction": "变换",
-              "estimatedClassroomMinutes": 25,
+              "estimatedClassroomMinutes": 18,
               "primaryTeachingProblem": "学生容易把横向伸缩、相位平移和括号内符号的关系搞反；多参数同时变化时认知负荷过高，难以从图像反推 A、ω、φ。",
               "learningGoals": [
                 "分别说明 A、ω、φ 对振幅、周期和相位平移的影响。",
@@ -7507,11 +7507,12 @@
               "kind": "teacher_script",
               "path": "content/applets/SH-HS-MATH-HJ-B2-C07-L05-A01/teacher-script.md",
               "title": "教师脚本：三角函数参数变化实验室",
-              "summary": "适用课时：必修第二册 7.3“函数 y = A sin(ωx + φ) 的图像” 建议时长：25 分钟 资源状态：`draft`",
+              "summary": "适用课时：必修第二册 7.3“函数 y = A sin(ωx + φ) 的图像” 建议时长：18 分钟主试读片段；如需展开“变换顺序比较”，另设 12 到 15 分钟第二片段 资源状态：`draft`",
               "sections": [
                 "教学目标",
                 "课前准备",
-                "课堂流程",
+                "课堂片段 A：18 分钟试读主线",
+                "课堂片段 B：12 到 15 分钟可选延伸",
                 "常见误区与处理",
                 "本节不展开"
               ]
@@ -7520,14 +7521,14 @@
               "kind": "student_task",
               "path": "content/applets/SH-HS-MATH-HJ-B2-C07-L05-A01/student-task.md",
               "title": "学生活动：参数变化实验室",
-              "summary": "适用资源：`SH-HS-MATH-HJ-B2-C07-L05-A01` 完成方式：课堂观察记录、小组讨论、个人短答",
+              "summary": "适用资源：`SH-HS-MATH-HJ-B2-C07-L05-A01` 完成方式：课堂观察记录、小组讨论、个人短答 建议使用：18 分钟主片段只完成“必做任务”；“可选延伸”用于第二个 12 到 15 分钟片段",
               "sections": [
                 "活动目标",
-                "任务一：单独改变 A",
-                "任务二：单独改变 ω",
-                "任务三：单独改变 φ",
-                "任务四：变换顺序比较",
-                "任务五：从图像反推参数",
+                "必做任务一：A 控制振幅与翻折",
+                "必做任务二：ω 控制周期",
+                "必做任务三：φ 的平移量要除以 ω",
+                "必做任务四：出口反推",
+                "可选延伸：变换顺序比较",
                 "快速诊断",
                 "提交要求"
               ]
@@ -7561,10 +7562,10 @@
               "chapter_id": "SH-HS-MATH-HJ-B2-C07",
               "chapter_title": "三角函数",
               "section_id": "SH-HS-MATH-HJ-B2-C07-S03",
-              "section_title": "函数 y = A sin(omega x + phi) 的图像",
+              "section_title": "函数 y = A sin(ωx + φ) 的图像",
               "lesson_id": "SH-HS-MATH-HJ-B2-C07-L05",
               "textbook_ref": "7.3",
-              "lesson_title": "函数 y = A sin(omega x + phi) 的图像"
+              "lesson_title": "函数 y = A sin(ωx + φ) 的图像"
             },
             "pedagogy": {
               "cognitiveAction": "分解",
@@ -7858,7 +7859,7 @@
           "title": "参数识别诊断任务",
           "subtitle": "围绕 A、ω、φ 的图像读数和错因分流",
           "cognitiveAction": "比较",
-          "note": "给出图像关键点，要求判断 A、omega、phi 的可能取值并解释理由。",
+          "note": "给出图像关键点，要求判断 A、ω、φ 的可能取值并解释理由。",
           "availability": "item_bank_ready",
           "status": "draft",
           "version": "0.1.0",
@@ -7879,10 +7880,10 @@
               "chapter_id": "SH-HS-MATH-HJ-B2-C07",
               "chapter_title": "三角函数",
               "section_id": "SH-HS-MATH-HJ-B2-C07-S03",
-              "section_title": "函数 y = A sin(omega x + phi) 的图像",
+              "section_title": "函数 y = A sin(ωx + φ) 的图像",
               "lesson_id": "SH-HS-MATH-HJ-B2-C07-L05",
               "textbook_ref": "7.3",
-              "lesson_title": "函数 y = A sin(omega x + phi) 的图像"
+              "lesson_title": "函数 y = A sin(ωx + φ) 的图像"
             },
             "pedagogy": {
               "cognitiveAction": "比较",
@@ -8102,9 +8103,9 @@
         "SH-HS-MATH-HJ-XB1-DERIV-K01"
       ],
       "teachingPainPoints": [
-        "学生容易忽略 x = pi/2 + kpi 的定义域限制，把图像画成连续曲线。",
+        "学生容易忽略 x = π/2 + kπ 的定义域限制，把图像画成连续曲线。",
         "渐近线来自 cos x = 0 的原因不清楚。",
-        "正切曲线的周期为 pi 容易被正弦余弦的 2pi 干扰。"
+        "正切曲线的周期为 π 容易被正弦余弦的 2π 干扰。"
       ],
       "digitalEntryPoints": [
         {
@@ -8906,9 +8907,9 @@
         "SH-HS-MATH-HJ-MODEL-K01"
       ],
       "teachingPainPoints": [
-        "学生容易说正切函数在整个定义域上单调递增，忽略只能在每个 (-pi/2 + kpi, pi/2 + kpi) 上讨论。",
+        "学生容易说正切函数在整个定义域上单调递增，忽略只能在每个 (-π/2 + kπ, π/2 + kπ) 上讨论。",
         "值域为全体实数与渐近线限制看似矛盾，需用局部区间解释。",
-        "周期 pi、奇函数和单调区间的一般表达容易混淆。"
+        "周期 π、奇函数和单调区间的一般表达容易混淆。"
       ],
       "digitalEntryPoints": [
         {
@@ -16498,7 +16499,7 @@
       "teachingPainPoints": [
         "学生会背周期和值域，但难以用定义域、值域和图像语言说明单调区间端点。",
         "奇偶性、对称轴、对称中心容易混淆，尤其容易跳过定义域关于原点对称的前提。",
-        "最值点和零点的弧度表达容易出现 pi 分数和周期项遗漏。"
+        "最值点和零点的弧度表达容易出现 π 分数和周期项遗漏。"
       ],
       "digitalEntryPoints": [
         {
@@ -18788,7 +18789,7 @@
     "SH-HS-MATH-HJ-B2-C07-L05": {
       "id": "SH-HS-MATH-HJ-B2-C07-L05",
       "textbookRef": "7.3",
-      "title": "函数 y = A sin(omega x + phi) 的图像",
+      "title": "函数 y = A sin(ωx + φ) 的图像",
       "status": "draft",
       "estimatedPeriods": 2,
       "volume": {
@@ -18803,10 +18804,10 @@
       "section": {
         "id": "SH-HS-MATH-HJ-B2-C07-S03",
         "textbookLabel": "7.3",
-        "title": "函数 y = A sin(omega x + phi) 的图像"
+        "title": "函数 y = A sin(ωx + φ) 的图像"
       },
       "coreKnowledge": [
-        "参数 A、omega、phi 对振幅、周期和相位的影响",
+        "参数 A、ω、φ 对振幅、周期和相位的影响",
         "从基本正弦曲线到复合参数图像的变换顺序",
         "根据图像识别解析式中的关键参数"
       ],
@@ -18832,7 +18833,7 @@
           "proposed_resource_id": "SH-HS-MATH-HJ-B2-C07-L05-A01",
           "title": "三角函数参数变化实验室",
           "cognitive_action": "变换",
-          "note": "滑块控制 A、omega、phi，支持单参数锁定、变换顺序切换和关键点追踪；k 可作为平台扩展开关，默认对齐教材的无竖直平移形式。"
+          "note": "滑块控制 A、ω、φ，支持单参数锁定、变换顺序切换和关键点追踪；k 可作为平台扩展开关，默认对齐教材的无竖直平移形式。"
         },
         {
           "type": "manim_clip",
@@ -18846,11 +18847,11 @@
           "proposed_resource_id": "SH-HS-MATH-HJ-B2-C07-L05-D01",
           "title": "参数识别诊断任务",
           "cognitive_action": "比较",
-          "note": "给出图像关键点，要求判断 A、omega、phi 的可能取值并解释理由。"
+          "note": "给出图像关键点，要求判断 A、ω、φ 的可能取值并解释理由。"
         }
       ],
       "diagnosisFocus": [
-        "能否从周期求出 omega 的绝对值。",
+        "能否从周期求出 ω 的绝对值。",
         "能否解释相位平移方向而不是只套公式。",
         "能否在 A 为负时正确处理图像翻折。"
       ],
@@ -18867,7 +18868,7 @@
           "title": "三角函数参数变化实验室",
           "subtitle": "分离观察 A、ω、φ 对 y = A sin(ωx + φ) 图像的影响",
           "cognitiveAction": "变换",
-          "note": "滑块控制 A、omega、phi，支持单参数锁定、变换顺序切换和关键点追踪；k 可作为平台扩展开关，默认对齐教材的无竖直平移形式。",
+          "note": "滑块控制 A、ω、φ，支持单参数锁定、变换顺序切换和关键点追踪；k 可作为平台扩展开关，默认对齐教材的无竖直平移形式。",
           "availability": "metadata_ready",
           "status": "draft",
           "version": "0.1.0",
@@ -18888,14 +18889,14 @@
               "chapter_id": "SH-HS-MATH-HJ-B2-C07",
               "chapter_title": "三角函数",
               "section_id": "SH-HS-MATH-HJ-B2-C07-S03",
-              "section_title": "函数 y = A sin(omega x + phi) 的图像",
+              "section_title": "函数 y = A sin(ωx + φ) 的图像",
               "lesson_id": "SH-HS-MATH-HJ-B2-C07-L05",
               "textbook_ref": "7.3",
-              "lesson_title": "函数 y = A sin(omega x + phi) 的图像"
+              "lesson_title": "函数 y = A sin(ωx + φ) 的图像"
             },
             "pedagogy": {
               "cognitiveAction": "变换",
-              "estimatedClassroomMinutes": 25,
+              "estimatedClassroomMinutes": 18,
               "primaryTeachingProblem": "学生容易把横向伸缩、相位平移和括号内符号的关系搞反；多参数同时变化时认知负荷过高，难以从图像反推 A、ω、φ。",
               "learningGoals": [
                 "分别说明 A、ω、φ 对振幅、周期和相位平移的影响。",
@@ -19278,11 +19279,12 @@
               "kind": "teacher_script",
               "path": "content/applets/SH-HS-MATH-HJ-B2-C07-L05-A01/teacher-script.md",
               "title": "教师脚本：三角函数参数变化实验室",
-              "summary": "适用课时：必修第二册 7.3“函数 y = A sin(ωx + φ) 的图像” 建议时长：25 分钟 资源状态：`draft`",
+              "summary": "适用课时：必修第二册 7.3“函数 y = A sin(ωx + φ) 的图像” 建议时长：18 分钟主试读片段；如需展开“变换顺序比较”，另设 12 到 15 分钟第二片段 资源状态：`draft`",
               "sections": [
                 "教学目标",
                 "课前准备",
-                "课堂流程",
+                "课堂片段 A：18 分钟试读主线",
+                "课堂片段 B：12 到 15 分钟可选延伸",
                 "常见误区与处理",
                 "本节不展开"
               ]
@@ -19291,14 +19293,14 @@
               "kind": "student_task",
               "path": "content/applets/SH-HS-MATH-HJ-B2-C07-L05-A01/student-task.md",
               "title": "学生活动：参数变化实验室",
-              "summary": "适用资源：`SH-HS-MATH-HJ-B2-C07-L05-A01` 完成方式：课堂观察记录、小组讨论、个人短答",
+              "summary": "适用资源：`SH-HS-MATH-HJ-B2-C07-L05-A01` 完成方式：课堂观察记录、小组讨论、个人短答 建议使用：18 分钟主片段只完成“必做任务”；“可选延伸”用于第二个 12 到 15 分钟片段",
               "sections": [
                 "活动目标",
-                "任务一：单独改变 A",
-                "任务二：单独改变 ω",
-                "任务三：单独改变 φ",
-                "任务四：变换顺序比较",
-                "任务五：从图像反推参数",
+                "必做任务一：A 控制振幅与翻折",
+                "必做任务二：ω 控制周期",
+                "必做任务三：φ 的平移量要除以 ω",
+                "必做任务四：出口反推",
+                "可选延伸：变换顺序比较",
                 "快速诊断",
                 "提交要求"
               ]
@@ -19332,10 +19334,10 @@
               "chapter_id": "SH-HS-MATH-HJ-B2-C07",
               "chapter_title": "三角函数",
               "section_id": "SH-HS-MATH-HJ-B2-C07-S03",
-              "section_title": "函数 y = A sin(omega x + phi) 的图像",
+              "section_title": "函数 y = A sin(ωx + φ) 的图像",
               "lesson_id": "SH-HS-MATH-HJ-B2-C07-L05",
               "textbook_ref": "7.3",
-              "lesson_title": "函数 y = A sin(omega x + phi) 的图像"
+              "lesson_title": "函数 y = A sin(ωx + φ) 的图像"
             },
             "pedagogy": {
               "cognitiveAction": "分解",
@@ -19629,7 +19631,7 @@
           "title": "参数识别诊断任务",
           "subtitle": "围绕 A、ω、φ 的图像读数和错因分流",
           "cognitiveAction": "比较",
-          "note": "给出图像关键点，要求判断 A、omega、phi 的可能取值并解释理由。",
+          "note": "给出图像关键点，要求判断 A、ω、φ 的可能取值并解释理由。",
           "availability": "item_bank_ready",
           "status": "draft",
           "version": "0.1.0",
@@ -19650,10 +19652,10 @@
               "chapter_id": "SH-HS-MATH-HJ-B2-C07",
               "chapter_title": "三角函数",
               "section_id": "SH-HS-MATH-HJ-B2-C07-S03",
-              "section_title": "函数 y = A sin(omega x + phi) 的图像",
+              "section_title": "函数 y = A sin(ωx + φ) 的图像",
               "lesson_id": "SH-HS-MATH-HJ-B2-C07-L05",
               "textbook_ref": "7.3",
-              "lesson_title": "函数 y = A sin(omega x + phi) 的图像"
+              "lesson_title": "函数 y = A sin(ωx + φ) 的图像"
             },
             "pedagogy": {
               "cognitiveAction": "比较",
@@ -19873,9 +19875,9 @@
         "SH-HS-MATH-HJ-XB1-DERIV-K01"
       ],
       "teachingPainPoints": [
-        "学生容易忽略 x = pi/2 + kpi 的定义域限制，把图像画成连续曲线。",
+        "学生容易忽略 x = π/2 + kπ 的定义域限制，把图像画成连续曲线。",
         "渐近线来自 cos x = 0 的原因不清楚。",
-        "正切曲线的周期为 pi 容易被正弦余弦的 2pi 干扰。"
+        "正切曲线的周期为 π 容易被正弦余弦的 2π 干扰。"
       ],
       "digitalEntryPoints": [
         {
@@ -20677,9 +20679,9 @@
         "SH-HS-MATH-HJ-MODEL-K01"
       ],
       "teachingPainPoints": [
-        "学生容易说正切函数在整个定义域上单调递增，忽略只能在每个 (-pi/2 + kpi, pi/2 + kpi) 上讨论。",
+        "学生容易说正切函数在整个定义域上单调递增，忽略只能在每个 (-π/2 + kπ, π/2 + kπ) 上讨论。",
         "值域为全体实数与渐近线限制看似矛盾，需用局部区间解释。",
-        "周期 pi、奇函数和单调区间的一般表达容易混淆。"
+        "周期 π、奇函数和单调区间的一般表达容易混淆。"
       ],
       "digitalEntryPoints": [
         {
@@ -25565,13 +25567,13 @@
       "resourceType": "applet",
       "title": "三角函数参数变化实验室",
       "subtitle": "分离观察 A、ω、φ 对 y = A sin(ωx + φ) 图像的影响",
-      "note": "滑块控制 A、omega、phi，支持单参数锁定、变换顺序切换和关键点追踪；k 可作为平台扩展开关，默认对齐教材的无竖直平移形式。",
+      "note": "滑块控制 A、ω、φ，支持单参数锁定、变换顺序切换和关键点追踪；k 可作为平台扩展开关，默认对齐教材的无竖直平移形式。",
       "cognitiveAction": "变换",
       "availability": "metadata_ready",
       "status": "draft",
       "version": "0.1.0",
       "lessonId": "SH-HS-MATH-HJ-B2-C07-L05",
-      "lessonTitle": "函数 y = A sin(omega x + phi) 的图像",
+      "lessonTitle": "函数 y = A sin(ωx + φ) 的图像",
       "textbookRef": "7.3",
       "volumeId": "B2",
       "volumeTitle": "必修第二册",
@@ -25579,7 +25581,7 @@
       "chapterNumber": 7,
       "chapterTitle": "三角函数",
       "sectionId": "SH-HS-MATH-HJ-B2-C07-S03",
-      "sectionTitle": "函数 y = A sin(omega x + phi) 的图像",
+      "sectionTitle": "函数 y = A sin(ωx + φ) 的图像",
       "sectionTextbookLabel": "7.3",
       "quality": {
         "contentStatus": "draft",
@@ -25617,7 +25619,7 @@
       "status": "draft",
       "version": "0.1.0",
       "lessonId": "SH-HS-MATH-HJ-B2-C07-L05",
-      "lessonTitle": "函数 y = A sin(omega x + phi) 的图像",
+      "lessonTitle": "函数 y = A sin(ωx + φ) 的图像",
       "textbookRef": "7.3",
       "volumeId": "B2",
       "volumeTitle": "必修第二册",
@@ -25625,7 +25627,7 @@
       "chapterNumber": 7,
       "chapterTitle": "三角函数",
       "sectionId": "SH-HS-MATH-HJ-B2-C07-S03",
-      "sectionTitle": "函数 y = A sin(omega x + phi) 的图像",
+      "sectionTitle": "函数 y = A sin(ωx + φ) 的图像",
       "sectionTextbookLabel": "7.3",
       "quality": {
         "contentStatus": "draft",
@@ -25666,13 +25668,13 @@
       "resourceType": "diagnosis",
       "title": "参数识别诊断任务",
       "subtitle": "围绕 A、ω、φ 的图像读数和错因分流",
-      "note": "给出图像关键点，要求判断 A、omega、phi 的可能取值并解释理由。",
+      "note": "给出图像关键点，要求判断 A、ω、φ 的可能取值并解释理由。",
       "cognitiveAction": "比较",
       "availability": "item_bank_ready",
       "status": "draft",
       "version": "0.1.0",
       "lessonId": "SH-HS-MATH-HJ-B2-C07-L05",
-      "lessonTitle": "函数 y = A sin(omega x + phi) 的图像",
+      "lessonTitle": "函数 y = A sin(ωx + φ) 的图像",
       "textbookRef": "7.3",
       "volumeId": "B2",
       "volumeTitle": "必修第二册",
@@ -25680,7 +25682,7 @@
       "chapterNumber": 7,
       "chapterTitle": "三角函数",
       "sectionId": "SH-HS-MATH-HJ-B2-C07-S03",
-      "sectionTitle": "函数 y = A sin(omega x + phi) 的图像",
+      "sectionTitle": "函数 y = A sin(ωx + φ) 的图像",
       "sectionTextbookLabel": "7.3",
       "quality": {
         "contentStatus": "draft",
@@ -26602,7 +26604,7 @@
       },
       {
         "id": "SH-HS-MATH-HJ-B2-C07-L05",
-        "label": "7.3 函数 y = A sin(omega x + phi) 的图像",
+        "label": "7.3 函数 y = A sin(ωx + φ) 的图像",
         "volumeId": "B2",
         "chapterId": "SH-HS-MATH-HJ-B2-C07",
         "count": 3
@@ -26736,7 +26738,7 @@
       },
       {
         "id": "SH-HS-MATH-HJ-B2-C07-L05",
-        "title": "函数 y = A sin(omega x + phi) 的图像",
+        "title": "函数 y = A sin(ωx + φ) 的图像",
         "target_resources": [
           "三角函数参数变化实验室 Applet（可选 k 扩展）",
           "图像变换顺序 Manim Clip",
