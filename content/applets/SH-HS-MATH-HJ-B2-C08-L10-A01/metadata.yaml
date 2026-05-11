@@ -4,7 +4,7 @@ version: 0.1.0
 status: draft
 resource_type: applet
 title: 向量法路径比较板
-subtitle: 围绕向量的应用的交互式数字教具骨架
+subtitle: 比较几何路径如何转化为同一个向量等式
 curriculum:
   region: 上海
   stage: 高中
@@ -21,73 +21,175 @@ curriculum:
   lesson_title: 向量的应用
 pedagogy:
   cognitive_action: 分解
-  estimated_classroom_minutes: 12
-  primary_teaching_problem: 学生面对几何题时不知道先选基底、建坐标还是使用数量积。
+  estimated_classroom_minutes: 16
+  primary_teaching_problem: 学生面对几何题时常急于套公式，缺少先选基向量、再把路径写成向量等式的策略。
   learning_goals:
-    - 围绕向量的应用建立可观察、可解释的数学表征。
-    - 用“分解”方式处理关键变量、边界条件和典型错因。
-    - 把交互观察转化为可板书、可追问、可迁移的课堂结论。
+    - 在三角形情境中选择一组基向量，并用它们表示边上点的位置向量。
+    - 比较 D 到 E 的三条几何路径，说明路径不同但向量和相同。
+    - 把 AD/AB、AE/AC 这样的几何关系转化为系数形式的向量等式。
+    - 判断什么时候应先用基向量和路径分解，而不是立即进入坐标法或复杂解析几何。
   prerequisites:
-    - 向量的应用相关先修知识
+    - 向量加法、减法和数乘的几何意义
+    - 用有向线段表示平面向量
+    - 三角形边、分点和中点等基本几何关系
+    - 数量积和坐标表示的基本认识
   successors:
-    - 后续课时学习与综合应用
+    - SH-HS-MATH-HJ-B2-C09-K01
+    - SH-HS-MATH-HJ-XB1-SPACEVEC-K01
+    - SH-HS-MATH-HJ-XB1-ANALYTIC-K01
   core_competencies:
     - 直观想象
     - 逻辑推理
     - 数学运算
+    - 数学建模
 mathematical_scope:
-  focus: 限定 1-2 个典型几何问题，只比较基底法、坐标法、数量积法的第一步建模路径，不做通用解题器。
+  focus: 以三角形 ABC 中 D 在 AB 上、E 在 AC 上为典型情境，比较向量 DE 的不同路径分解。
   lesson: 向量的应用
+  problem_model: "设 D 在 AB 上，AD/AB = m；E 在 AC 上，AE/AC = n。目标是把向量 DE 写成选定基向量的线性组合。"
+  primary_basis: "p = AB, q = AC，此时 D = m p，E = n q，DE = -m p + n q。"
+  alternate_basis: "p = AB, r = BC，此时 AC = p + r，DE = (n - m)p + n r。"
+  compared_paths:
+    - "D -> A -> E：先回到共同基点 A，再到 E。"
+    - "D -> B -> C -> E：沿已知边绕行，用边向量验证同一结果。"
+    - "D -> B -> E：先到已知顶点 B，再表达 BE。"
   out_of_scope:
-    - 本 scaffold 只定义首版交互骨架，数学细节需在资源生产对话中补齐。
+    - 不做通用几何题库或完整证明批改器
+    - 不进入 8.3 坐标法的系统训练
+    - 不强行展开复杂解析几何或坐标建系计算
+    - 不处理数量积求角、求长度的完整应用链
 representations:
-  - id: interactive_canvas
-    role: 承载可拖拽、可观察、可复现的核心数学表征。
-  - id: teacher_readout
-    role: 为教师提供课堂追问所需的关键状态读数。
+  - id: geometry_board
+    role: 显示三角形 ABC、分点 D/E、所选基向量和当前路径。
+  - id: basis_selector
+    role: 比较 AB/AC 与 AB/BC 两种基向量选择对等式表达的影响。
+  - id: path_trace
+    role: 高亮 D 到 E 的不同路径，并把每一段对应到向量和。
+  - id: equation_readout
+    role: 同步显示题设关系、路径等式和化简后的目标向量。
+  - id: strategy_panel
+    role: 帮助教师把“选基向量、选路径、化简比较”作为课堂策略总结。
 interaction_design:
-  primary_control: 预留一个核心滑块或拖拽控制，后续按知识点定制。
+  primary_control: 拖动 D、E 或使用比例滑块改变 m = AD/AB 与 n = AE/AC，观察不同路径等式如何同步变化。
   teacher_controls:
-    - 重置
-    - 分步显示
-    - 重点标注
+    - 重置到默认分点
+    - 切换基向量组
+    - 切换三条路径
+    - 按题设、选基、选路径、化简比较四步揭示
+    - 使用典型分点预设控制课堂节奏
   student_controls:
-    - 拖动观察
-    - 记录猜想
-    - 对照结论
+    - 拖动 D 点改变 m
+    - 拖动 E 点改变 n
+    - 选择不同路径并记录对应的向量等式
+    - 比较不同路径化简后是否得到同一个向量
   staged_reveal:
-    - step: observe
-      description: 先让学生观察变量变化和图像响应。
-    - step: explain
-      description: 再引导学生用符号语言解释观察结果。
+    - step: read_conditions
+      description: 先读 D、E 的分点关系，只确定 m 和 n，不急于计算。
+    - step: choose_basis
+      description: 选择基向量，并把 D、E 的位置写成基向量表达。
+    - step: trace_path
+      description: 选择 D 到 E 的一条路径，把每段几何移动翻译成向量和。
+    - step: compare_equations
+      description: 化简并比较不同路径，归纳“路径可变，向量和不变”的策略。
 data_contract:
   state_variables:
-    - name: current_value
+    - name: ratio_m
       value_type: number
-      default: 0
-      description: 首版 scaffold 的占位状态变量，后续替换为真实数学变量。
+      default: 0.4
+      description: D 在 AB 上的位置比例，m = AD/AB。
+      persistence: snapshot
+    - name: ratio_n
+      value_type: number
+      default: 0.65
+      description: E 在 AC 上的位置比例，n = AE/AC。
+      persistence: snapshot
+    - name: basis_mode
+      value_type: string
+      default: ab_ac
+      description: 当前基向量组，ab_ac 表示 AB/AC，ab_bc 表示 AB/BC。
+      persistence: snapshot
+    - name: route_id
+      value_type: string
+      default: via_a
+      description: 当前比较路径，via_a、via_edges 或 via_b。
+      persistence: snapshot
+    - name: basis_equation
+      value_type: string
+      description: 当前基向量选择下 D、E 与 DE 的表达。
+      persistence: snapshot
+    - name: path_delta
+      value_type: string
+      description: 当前路径对应的向量和及其化简结果。
+      persistence: snapshot
+    - name: reveal_step
+      value_type: number
+      default: 1
+      description: 当前教师分步揭示阶段。
       persistence: snapshot
   events:
+    - name: ready
+      direction: applet_to_player
+      description: 课件完成初始渲染。
+      payload:
+        - ratio_m
+        - ratio_n
+        - basis_mode
+        - route_id
+        - basis_equation
+        - path_delta
+        - reveal_step
+      required_for_player: true
     - name: state_changed
       direction: applet_to_player
-      description: 交互状态变化时通知平台播放器。
+      description: 拖动分点、切换基向量、切换路径或切换揭示阶段时通知播放器。
       payload:
-        - current_value
+        - ratio_m
+        - ratio_n
+        - basis_mode
+        - route_id
+        - basis_equation
+        - path_delta
+        - reveal_step
+      required_for_player: true
+    - name: path_selected
+      direction: applet_to_player
+      description: 教师或学生选择新的路径时单独记录路径比较动作。
+      payload:
+        - route_id
+        - basis_mode
+        - path_delta
       required_for_player: true
 feedback_and_diagnosis:
   success_evidence:
-    - 学生能说清楚观察变量、图像变化和数学结论之间的对应关系。
+    - 学生能先写出选定基向量，再写 D、E 的位置表达。
+    - 学生能解释 D -> A -> E、D -> B -> C -> E 等不同路径化简后为什么一致。
+    - 学生能把“点在边上”的几何语言转化为 m p、n q 等向量等式。
+    - 学生能说明坐标法可以作为后续工具，但本题第一步更适合先用路径分解。
   common_error_tags:
+    - id: basis_not_chosen
+      label: 未先选定基向量就开始写式子
+    - id: route_sum_gap
+      label: 路径段没有逐段翻译成向量和
+    - id: ratio_direction_error
+      label: 分点比例方向写反
+    - id: coordinate_overuse
+      label: 不必要地提前进入坐标建系
     - id: representation_gap
       label: 表征对应断裂
   feedback_principles:
-    - 反馈先指向可视化证据，再回到符号表达。
+    - 先让学生用图中路径说出每一段移动，再写符号表达。
+    - 对比例方向错误，回到 AD/AB 和 AE/AC 的起点方向检查。
+    - 对坐标法冲动，先追问“选哪两个向量能表示图中所有点”。
+    - 只比较建模路径，不把本板扩展成完整解题器。
 visual_semantics:
-  primary_color: teal
-  emphasis_rule: 当前变量用高对比色标注，历史轨迹和辅助线降低透明度。
+  basis_ab: 蓝色表示基向量 AB。
+  basis_ac_or_bc: 青绿色表示第二个基向量 AC 或 BC。
+  route_trace: 琥珀色表示当前 D 到 E 的路径。
+  target_vector: 深红色表示目标向量 DE。
+  side_lines: 灰色表示原三角形边和未选路径。
+  rule: 颜色只承载数学对象或策略含义，不作为装饰。
 implementation:
-  phase: content_spec_only
-  html_src_status: scaffolded
+  phase: runnable_prototype
+  html_src_status: runnable
   planned_engine: native-canvas-svg
   create_src_in_later_task: false
   classroom_device_targets:
@@ -101,6 +203,5 @@ files:
   review_record: review.md
   src_entry: src/index.html
 compliance:
-  copyright_note: 本 scaffold 仅生成原创资源骨架，不复制教材正文、官方课件、教案或商业题库。
+  copyright_note: 本资源为原创交互草稿，不复制教材正文、官方课件、教案或商业题库；第 8 章课时边界仍需纸质教材或已登录平台终核。
   review_status: self_checked_draft
-
