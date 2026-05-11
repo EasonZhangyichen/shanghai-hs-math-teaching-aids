@@ -4,7 +4,7 @@ version: "0.1.0"
 status: "draft"
 resource_type: "manim_clip"
 title: "投影有向长度导入动画"
-subtitle: "从作垂线到读有向投影长度的 Manim 场景骨架"
+subtitle: "把投影长度的正、零、负看成有向读数"
 curriculum:
   region: "上海"
   stage: "高中"
@@ -22,15 +22,15 @@ curriculum:
 pedagogy:
   cognitive_action: "投影"
   estimated_classroom_minutes: 6
-  primary_teaching_problem: "学生容易把投影长度看成普通线段长度，忽略它是有方向符号的量。"
+  primary_teaching_problem: "学生容易把投影长度看成普通线段长，忽略它是有方向符号的量。"
   learning_goals:
-    - "看见向量端点向基准方向作垂线后，投影点在有向轴上的位置。"
-    - "区分普通线段长度与有向投影长度，解释锐角、直角、钝角时符号不同。"
-    - "把有向投影长度与 |a| cos theta 及数量积公式的符号来源连接起来。"
+    - "看见向量 a 的终点向向量 b 所在直线作垂线后，投影点在有向轴上的位置。"
+    - "区分普通线段长与有向投影长度，解释锐角、直角、钝角时符号不同。"
+    - "把有向投影长度与 |a|cosθ 的正、零、负连接起来，并轻微衔接数量积符号。"
   prerequisites:
     - "向量的几何表示与夹角"
     - "余弦值的正负"
-    - "垂线与直角投影"
+    - "垂线、垂足和直角三角形"
   successors:
     - "SH-HS-MATH-HJ-B2-C08-L04-A01"
     - "SH-HS-MATH-HJ-B2-C08-L05"
@@ -38,88 +38,102 @@ pedagogy:
     - "直观想象"
     - "逻辑推理"
     - "数学运算"
-  classroom_use: "建议在「向量的投影」课堂开头播放 30 到 45 秒，只建立有向投影长度的直觉，再切到 Applet 做拖动验证。"
+  classroom_use: "建议在「向量的投影」课堂开头播放约 37 秒，只建立有向投影长度的直觉，再切到 Applet 做拖动验证。"
 mathematical_scope:
-  focus: "30-45 秒短动画，只串联作垂线、读有向投影、解释 |a| cos theta 的正负，不替代后续交互探索。"
+  focus: "短动画只串联定方向、作垂线、读有向投影、解释 |a|cosθ 的正零负，不替代后续交互探索。"
   lesson: "向量的投影"
   projected_vector: "向量 a"
   baseline_vector: "向量 b 的方向作为有向轴"
-  directed_length: "|a| cos theta"
-  theta_range: "0 <= theta <= pi；锐角为正，直角为 0，钝角为负。"
+  directed_length: "|a|cosθ"
+  angle_range: "0 ≤ θ ≤ π；锐角投影长度为正，直角为零，钝角为负。"
+  dot_product_bridge: "只出现 a·b = |b| × 投影长度，作为下一课数量积定义的入口。"
+  key_angles:
+    - label: "锐角"
+      projection_position: "投影点 H 在 b 的正方向"
+      directed_length_sign: "投影长度 = |a|cosθ > 0"
+    - label: "直角"
+      projection_position: "投影点 H 与 O 重合"
+      directed_length_sign: "投影长度 = 0"
+    - label: "钝角"
+      projection_position: "投影点 H 在 b 的反方向"
+      directed_length_sign: "投影长度 = |a|cosθ < 0"
   out_of_scope:
-    - "不展开完整数量积运算律证明。"
+    - "不展开完整数量积定义、运算律或应用题。"
     - "不替代 SH-HS-MATH-HJ-B2-C08-L04-A01 的交互探索。"
-    - "本 scaffold 只定义分镜和场景骨架，具体动画需在资源生产对话中补齐。"
+    - "不处理第 8 章 8.3 暂缓资源或课时边界问题。"
 representations:
   - id: baseline_axis
     role: "表示向量 b 的方向，也是读取有向投影长度的正方向。"
   - id: vector_a
-    role: "表示被投影的向量 a。"
+    role: "表示被投影的向量 a，随夹角从锐角转到直角再转到钝角。"
   - id: perpendicular_drop
-    role: "从向量 a 的端点向基准方向作垂线，生成投影点。"
+    role: "从向量 a 的终点向基准方向作垂线，生成投影点 H。"
   - id: directed_segment
-    role: "用带方向的线段表示 |a| cos theta 的正、零、负。"
+    role: "用带方向的线段表示投影长度的正、零、负。"
 narrative_design:
-  target_duration_seconds: 45
+  target_duration_seconds: 37
   beats:
     - id: set_direction
       title: "先定方向"
       purpose: "让学生先把向量 b 的方向看作有正负的读取轴，而不是普通线段。"
       visuals:
-        - "水平有向轴与向量 b。"
-        - "向量 a 从同一起点出发，夹角 theta 标在两向量之间。"
-      estimated_seconds: 10
+        - "水平有向轴、向量 b 和反方向提示。"
+        - "向量 a 从同一起点出发，夹角 θ 标在两向量之间。"
+      estimated_seconds: 8
     - id: drop_perpendicular
       title: "作垂线读投影点"
-      purpose: "从 a 的端点向 b 的方向作垂线，强调投影点落在有向轴上。"
+      purpose: "从 a 的终点向 b 的方向作垂线，强调投影点 H 落在有向轴上。"
       visuals:
-        - "从 a 的端点落下垂线。"
+        - "从 a 的终点落下垂线。"
         - "投影点 H 在有向轴上出现，并显示有向线段 OH。"
-      estimated_seconds: 15
+      estimated_seconds: 9
     - id: compare_signs
       title: "比较正零负"
-      purpose: "用锐角、直角、钝角三个占位状态提示有向投影长度的符号变化。"
+      purpose: "用锐角、直角、钝角三种状态解释投影长度的符号变化。"
       visuals:
-        - "锐角：H 在正方向，|a| cos theta > 0。"
-        - "直角：H 回到原点，|a| cos theta = 0。"
-        - "钝角：H 在反方向，|a| cos theta < 0。"
-      estimated_seconds: 14
+        - "锐角：H 在正方向，投影长度 = |a|cosθ > 0。"
+        - "直角：H 与 O 重合，投影长度 = 0。"
+        - "钝角：H 在反方向，投影长度 = |a|cosθ < 0。"
+      estimated_seconds: 15
     - id: connect_formula
-      title: "收束到公式"
-      purpose: "把有向长度的正负和数量积 a dot b = |a||b| cos theta 的符号来源相连。"
+      title: "轻微衔接数量积"
+      purpose: "只把投影长度和数量积符号相连，不展开下一课完整教学。"
       visuals:
-        - "|a| cos theta 标注在有向投影线段上。"
-        - "数量积公式只作为下一课衔接口径出现。"
-      estimated_seconds: 6
+        - "保留有向投影线段。"
+        - "出现 a·b = |b| × 投影长度。"
+      estimated_seconds: 4
   pause_points:
     - after_beat: drop_perpendicular
-      teacher_prompt: "如果只看线段长度，哪里会丢掉方向信息？"
+      teacher_prompt: "如果只看普通线段长，哪里会丢掉方向信息？"
     - after_beat: compare_signs
       teacher_prompt: "为什么夹角变成钝角后，投影不是更长或更短的问题，而是符号变成负？"
 visual_semantics:
-  background: "light"
-  baseline_axis: "基准方向用稳定深色箭头表示。"
-  vector_a: "被投影向量用强调色表示。"
-  perpendicular_drop: "垂线用低饱和虚线表示，只承担构造作用。"
-  directed_segment: "正向投影与负向投影使用同一色系，通过箭头方向和符号区分。"
-  emphasis_rule: "只高亮 a、b、theta、投影点 H 和有向线段 OH；避免提前铺开完整数量积推导。"
+  background: "light classroom background"
+  baseline_axis: "基准方向用稳定深色箭头表示，向量 b 用蓝色表示。"
+  vector_a: "被投影向量用红色表示，随夹角连续转动。"
+  perpendicular_drop: "垂线用灰色虚线表示，只承担构造作用。"
+  directed_segment: "正向投影用绿色，零投影用灰色，负向投影用紫色，并通过箭头方向区分。"
+  emphasis_rule: "只高亮 a、b、θ、投影点 H 和有向投影线段；数量积只作为末尾衔接。"
 render_plan:
   phase: "scene_draft"
+  manim_version: "Manim Community v0.20.1 via uvx"
   scene_class: "DirectedProjectionLengthScene"
   aspect_ratio: "16:9"
   resolution: "1920x1080"
   fps: 30
-  background: "white"
+  background: "light classroom background"
   output_formats:
     - "mp4"
     - "webm"
   commands:
-    preview: "manim -pql scene.py DirectedProjectionLengthScene"
-    mp4: "manim -qh scene.py DirectedProjectionLengthScene"
-    webm: "manim -qh --format=webm scene.py DirectedProjectionLengthScene"
+    preview: "uvx manim -ql --media_dir dist scene.py DirectedProjectionLengthScene"
+    mp4: "uvx manim -r 1920,1080 --fps 30 --format=mp4 --media_dir dist scene.py DirectedProjectionLengthScene"
+    webm: "ffmpeg -y -i dist/final/SH-HS-MATH-HJ-B2-C08-L04-M01.mp4 -c:v libvpx-vp9 -b:v 0 -crf 32 -an dist/final/SH-HS-MATH-HJ-B2-C08-L04-M01.webm"
   notes:
-    - "首版场景为 scaffold，占位动画需由资源生产对话补齐。"
-    - "本次不渲染 mp4、webm 或 poster，因此 files 中不填写 dist/final 产物。"
+    - "本轮将场景从静态占位推进为可审看的动态草稿，最终视频时长 36.8 秒。"
+    - "画面文字使用 θ、cosθ、投影长度、正方向、反方向等中文课堂表达。"
+    - "已生成 dist/final 下的 mp4、webm 和 poster；为不改平台/测试文件，平台卡片暂保留 metadata_ready，建议总控后续统一提升为 video_ready。"
+    - "poster 选用 34 秒处的钝角读数和最终衔接画面。"
 files:
   readme: "README.md"
   storyboard: "storyboard.md"
@@ -128,9 +142,9 @@ files:
 platform_card:
   availability: "metadata_ready"
   preview_behavior: "metadata_placeholder"
-  embed_strategy: "先展示 metadata 与 storyboard 摘要；视频渲染通过后再升级为 video_ready。"
+  embed_strategy: "先展示 metadata 与 storyboard 摘要；本轮已生成 dist/final 视频产物，待总控统一调整平台测试与状态流后再升级为 video_ready。"
   paired_resources:
     - "SH-HS-MATH-HJ-B2-C08-L04-A01"
 compliance:
-  copyright_note: "本 scaffold 仅生成原创资源骨架，不复制教材正文、官方课件、教案或商业题库。"
+  copyright_note: "本资源包为原创 Manim 分镜和场景脚本草稿，不复制教材正文、官方课件、教案或商业平台资源。"
   review_status: "self_checked_draft"

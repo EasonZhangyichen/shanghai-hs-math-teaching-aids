@@ -4,7 +4,7 @@ version: 0.1.0
 status: draft
 resource_type: applet
 title: 数量积动态解释器
-subtitle: 围绕向量的数量积的定义与运算律的交互式数字教具骨架
+subtitle: 用夹角、余弦和有向投影解释平面向量数量积的符号
 curriculum:
   region: 上海
   stage: 高中
@@ -20,74 +20,185 @@ curriculum:
   textbook_ref: 8.2.2
   lesson_title: 向量的数量积的定义与运算律
 pedagogy:
-  cognitive_action: 比较
+  cognitive_action: 投影
   estimated_classroom_minutes: 12
-  primary_teaching_problem: 学生容易把数量积误认为仍是向量，忽略结果是数量。
+  primary_teaching_problem: 学生容易把数量积只当成代数公式，不能用夹角、余弦和投影解释结果为何是正、零或负。
   learning_goals:
-    - 围绕向量的数量积的定义与运算律建立可观察、可解释的数学表征。
-    - 用“比较”方式处理关键变量、边界条件和典型错因。
-    - 把交互观察转化为可板书、可追问、可迁移的课堂结论。
+    - 用 a·b = |a||b|cosθ 解释数量积是一个数量，而不是新的向量。
+    - 通过拖动两个向量观察锐角、直角、钝角时 cosθ 和 a·b 的符号变化。
+    - 用 a 在 b 方向上的有向投影长度说明数量积符号来自投影方向。
+    - 区分 a·b = 0 的直角情形和零向量边界，不把零值机械等同于两个非零向量垂直。
   prerequisites:
-    - 向量的数量积的定义与运算律相关先修知识
+    - 向量的夹角
+    - 向量的投影
+    - 锐角、直角、钝角的余弦符号
   successors:
-    - 后续课时学习与综合应用
+    - SH-HS-MATH-HJ-B2-C08-L06
+    - SH-HS-MATH-HJ-B2-C08-L09
+    - SH-HS-MATH-HJ-B2-C08-L10
   core_competencies:
     - 直观想象
+    - 数学抽象
     - 逻辑推理
     - 数学运算
 mathematical_scope:
-  focus: 同步展示两个向量、夹角、投影和数量积数值，突出正、零、负三种区域。
+  focus: 拖动两个共起点向量 a、b，同步显示 θ、cosθ、a 在 b 方向上的有向投影、a·b 和正零负判断。
   lesson: 向量的数量积的定义与运算律
+  definition: a·b = |a||b|cosθ
+  projection_reading: 当 b 不是零向量时，a·b 等于 |b| 乘以 a 在 b 方向上的有向投影长度。
+  sign_rule: 锐角时 a·b > 0，直角时 a·b = 0，钝角时 a·b < 0；零向量时 a·b = 0 但夹角不作为判定依据。
+  typical_angles:
+    - 30°
+    - 60°
+    - 90°
+    - 120°
+    - 150°
   out_of_scope:
-    - 本 scaffold 只定义首版交互骨架，数学细节需在资源生产对话中补齐。
+    - 8.3 向量的坐标表示及坐标公式训练
+    - 数量积运算律的代数证明或题组训练
+    - 向量应用中的距离、垂直或夹角综合题
+    - 暂缓资源或课程图谱调整
 representations:
-  - id: interactive_canvas
-    role: 承载可拖拽、可观察、可复现的核心数学表征。
-  - id: teacher_readout
-    role: 为教师提供课堂追问所需的关键状态读数。
+  - id: vector_canvas
+    role: 在网格中显示共起点向量 a、b、夹角 θ 和可拖拽端点。
+  - id: projection_segment
+    role: 显示 a 在 b 方向上的有向投影段，区分正方向、零点和反方向。
+  - id: measurement_readout
+    role: 同步显示 |a|、|b|、θ、cosθ、投影长度和 a·b。
+  - id: sign_explanation
+    role: 用锐角、直角、钝角和零向量边界解释数量积符号。
 interaction_design:
-  primary_control: 预留一个核心滑块或拖拽控制，后续按知识点定制。
+  primary_control: 拖动向量 a 或 b 的端点，或点击典型角按钮固定 θ。
   teacher_controls:
     - 重置
-    - 分步显示
-    - 重点标注
+    - 上一步
+    - 下一步
+    - 典型角切换
   student_controls:
-    - 拖动观察
-    - 记录猜想
-    - 对照结论
+    - 拖动两个向量观察夹角和投影变化
+    - 点击 30°、60°、90°、120°、150° 对照符号
+    - 根据读数判断 a·b 的正、零、负
   staged_reveal:
-    - step: observe
-      description: 先让学生观察变量变化和图像响应。
-    - step: explain
-      description: 再引导学生用符号语言解释观察结果。
+    - step: observe_angle
+      description: 先拖动两个向量，只观察夹角 θ 和数量积是数量这一事实。
+    - step: reveal_projection
+      description: 再显示投影段，观察投影在 b 的正方向、零点或反方向。
+    - step: connect_formula
+      description: 揭示 a·b = |a||b|cosθ，把 |a|、|b|、cosθ 和数量积读数对应起来。
+    - step: summarize_sign
+      description: 归纳锐角、直角、钝角和零向量边界下的符号判断。
 data_contract:
   state_variables:
-    - name: current_value
+    - name: vector_a
+      value_type: point2d
+      description: 共起点向量 a 的终点位置。
+      persistence: snapshot
+    - name: vector_b
+      value_type: point2d
+      description: 共起点向量 b 的终点位置。
+      persistence: snapshot
+    - name: length_a
       value_type: number
-      default: 0
-      description: 首版 scaffold 的占位状态变量，后续替换为真实数学变量。
+      default: 4
+      description: 向量 a 的长度 |a|。
+      persistence: snapshot
+    - name: length_b
+      value_type: number
+      default: 3
+      description: 向量 b 的长度 |b|。
+      persistence: snapshot
+    - name: angle_degrees
+      unit: degree
+      value_type: number
+      default: 60
+      description: 两个非零向量的夹角 θ；零向量边界时为空。
+      persistence: snapshot
+    - name: cos_value
+      value_type: number
+      default: 0.5
+      description: 夹角 θ 的余弦值 cosθ。
+      persistence: snapshot
+    - name: projection_length
+      value_type: number
+      default: 2
+      description: a 在 b 方向上的有向投影长度。
+      persistence: snapshot
+    - name: dot_product
+      value_type: number
+      default: 6
+      description: 当前数量积 a·b 的值。
+      persistence: snapshot
+    - name: sign
+      value_type: string
+      default: positive
+      description: 数量积符号，取 positive、zero 或 negative。
+      persistence: snapshot
+    - name: reveal_step
+      value_type: number
+      default: 1
+      description: 当前分步揭示阶段。
       persistence: snapshot
   events:
+    - name: ready
+      direction: applet_to_player
+      description: 课件完成初始渲染。
+      payload:
+        - vector_a
+        - vector_b
+        - length_a
+        - length_b
+        - angle_degrees
+        - cos_value
+        - projection_length
+        - dot_product
+        - sign
+        - reveal_step
+      required_for_player: true
     - name: state_changed
       direction: applet_to_player
-      description: 交互状态变化时通知平台播放器。
+      description: 拖动向量、切换典型角或切换揭示阶段时通知播放器。
       payload:
-        - current_value
+        - vector_a
+        - vector_b
+        - length_a
+        - length_b
+        - angle_degrees
+        - cos_value
+        - projection_length
+        - dot_product
+        - sign
+        - reveal_step
       required_for_player: true
 feedback_and_diagnosis:
   success_evidence:
-    - 学生能说清楚观察变量、图像变化和数学结论之间的对应关系。
+    - 学生能用 a·b = |a||b|cosθ 说明数量积结果是数量。
+    - 学生能根据 θ 是锐角、直角或钝角判断 cosθ 与 a·b 的符号。
+    - 学生能指着投影段解释为什么投影在 b 的反方向时数量积为负。
+    - 学生能说出两个非零向量垂直时 a·b = 0，并补充零向量边界不能混同。
   common_error_tags:
-    - id: representation_gap
-      label: 表征对应断裂
+    - id: dot_product_as_vector
+      label: 把数量积误认为向量
+    - id: sign_without_angle
+      label: 脱离夹角判断数量积符号
+    - id: projection_sign_gap
+      label: 不能用有向投影解释正负
+    - id: zero_product_boundary
+      label: 混淆零向量边界和非零向量垂直
   feedback_principles:
-    - 反馈先指向可视化证据，再回到符号表达。
+    - 先读 θ 与 cosθ，再判断数量积符号。
+    - 解释负值时回到投影段落在 b 的反方向这一几何证据。
+    - 处理 a·b = 0 时要求学生说明是直角还是零向量边界。
 visual_semantics:
-  primary_color: teal
-  emphasis_rule: 当前变量用高对比色标注，历史轨迹和辅助线降低透明度。
+  vector_a: 蓝色表示向量 a。
+  vector_b: 橙色表示向量 b 及投影方向参照。
+  projection_positive: 绿色表示投影在 b 的正方向上。
+  projection_zero: 灰色表示投影长度为 0。
+  projection_negative: 红色表示投影在 b 的反方向上。
+  angle_arc: 青绿色表示两个非零向量的夹角 θ。
+  rule: 颜色只承载数学对象和符号含义，不作为装饰。
 implementation:
-  phase: content_spec_only
-  html_src_status: scaffolded
+  phase: runnable_prototype
+  html_src_status: runnable
   planned_engine: native-canvas-svg
   create_src_in_later_task: false
   classroom_device_targets:
@@ -101,6 +212,5 @@ files:
   review_record: review.md
   src_entry: src/index.html
 compliance:
-  copyright_note: 本 scaffold 仅生成原创资源骨架，不复制教材正文、官方课件、教案或商业题库。
+  copyright_note: 本资源为原创交互草稿，不复制教材正文、官方课件、教案或商业题库；第 8 章课时边界仍需纸质教材或已登录平台终核。
   review_status: self_checked_draft
-
