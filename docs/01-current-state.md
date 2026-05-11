@@ -195,6 +195,11 @@
   - 新增 `docs/browser-audits/b2-c08-l05-l10-l04m01-browser-video.md`，记录 L05-A01 的首屏高度、平台 iframe 裁切和触控目标偏小风险；L10-A01 与 L04-M01 的部分“仍为 scaffold / 无视频产物”判断来自较旧工作树，总控以当前 `develop` 为准：L10-A01 已是 runnable prototype，L04-M01 已有 `mp4` / `webm` / poster，但二者仍不得提升发布状态。
   - 新增 `docs/classroom-trials/b2-c08-l05-l10-l04m01-classroom-readiness.md`，建议 L05-A01 可作为教师限时试读准备的候选，但由于数学和浏览器审核仍有阻塞，总控不提升到 `classroom_trial`；L10-A01 与 L04-M01 继续回修复线。
   - 本批只新增审核报告，未修改资源包、平台源码、课程图谱、backlog 或 generated files；第 8 章仍保持 `draft` / `self_checked_draft` / `metadata_ready`，所有资源均不得进入 `release_candidate` 或 `published`。
+- 已完成第 8 章 L05 / L10 / L04-M01 质量修复线 3 个任务并进入总控集成：
+  - `SH-HS-MATH-HJ-B2-C08-L05-A01` 已修正零向量投影边界、弱化 8.3 坐标读数误导，并压缩首屏布局；资源仍保持 `draft` / `self_checked_draft`，只可重新送数学和浏览器复核。
+  - `SH-HS-MATH-HJ-B2-C08-L10-A01` 已补实 8.1 / 8.2 / 8.3 到 8.4 的先修链、第一步建模选择和三条路径比较模型；资源仍保持 `draft` / `self_checked_draft`，不进入课堂试用或发布。
+  - `SH-HS-MATH-HJ-B2-C08-L04-M01` 已收束为“有向投影长度”导入动画，清理数量积定义提前展示，并重新生成 1080p30 `mp4`、`webm` 和 poster；顶层仍保持 `draft`，平台卡片仍保持 `metadata_ready`。
+  - 本批只合并三个目标资源包和统一生成的平台数据；未修改课程图谱，未恢复 8.3 暂缓项，未提升任何资源到 `math_review`、`browser_review`、`classroom_trial`、`release_candidate` 或 `published`。
 - 已完成双线并行质量修复线首批 3 个任务并进入总控集成：
   - `SH-HS-MATH-HJ-B2-C07-L01-A01` 与 `SH-HS-MATH-HJ-B2-C07-L06-A01` README 中的 `theta`、`pi/2`、`kpi`、`2pi` 等旧口径已清理；第 7 章课程图谱、L05 Applet / Manim / Diagnosis metadata 中的 7.3 标题已统一为 `y = A sin(ωx + φ)`。
   - `SH-HS-MATH-HJ-B2-C07-L03-A02` 已优化平台 iframe 下的窄宽裁切和触控目标尺寸，浏览器复测建议可进入 `browser_review`，但仍需真实教室触控屏确认拖动手感。
