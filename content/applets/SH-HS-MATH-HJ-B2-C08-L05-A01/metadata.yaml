@@ -45,8 +45,8 @@ mathematical_scope:
   focus: 拖动两个共起点向量 a、b，同步显示 θ、cosθ、a 在 b 方向上的有向投影、a·b 和正零负判断。
   lesson: 向量的数量积的定义与运算律
   definition: a·b = |a||b|cosθ
-  projection_reading: 当 b 不是零向量时，a·b 等于 |b| 乘以 a 在 b 方向上的有向投影长度。
-  sign_rule: 锐角时 a·b > 0，直角时 a·b = 0，钝角时 a·b < 0；零向量时 a·b = 0 但夹角不作为判定依据。
+  projection_reading: 当 b 不是零向量时，a·b 等于 |b| 乘以 a 在 b 方向上的有向投影长度；当 b 为零向量时，投影方向未规定。
+  sign_rule: 锐角时 a·b > 0，直角时 a·b = 0，钝角时 a·b < 0；a 为零向量且 b 非零时 a·b = 0 但不归为垂直，b 为零向量时不使用投影方向解释。
   typical_angles:
     - 30°
     - 60°
@@ -60,7 +60,7 @@ mathematical_scope:
     - 暂缓资源或课程图谱调整
 representations:
   - id: vector_canvas
-    role: 在网格中显示共起点向量 a、b、夹角 θ 和可拖拽端点。
+    role: 在淡网格拖拽背景中显示共起点向量 a、b、夹角 θ 和可拖拽端点；网格只作视觉参照，不作为坐标公式来源。
   - id: projection_segment
     role: 显示 a 在 b 方向上的有向投影段，区分正方向、零点和反方向。
   - id: measurement_readout
