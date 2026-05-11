@@ -26,7 +26,7 @@ pedagogy:
   learning_goals:
     - "看见向量 a 的终点向向量 b 所在直线作垂线后，投影点在有向轴上的位置。"
     - "区分普通线段长与有向投影长度，解释锐角、直角、钝角时符号不同。"
-    - "把有向投影长度与 |a|cosθ 的正、零、负连接起来，并轻微衔接数量积符号。"
+    - "把有向投影长度与 |a|cosθ 的正、零、负连接起来，并预告下一课会与数量积联系。"
   prerequisites:
     - "向量的几何表示与夹角"
     - "余弦值的正负"
@@ -46,7 +46,7 @@ mathematical_scope:
   baseline_vector: "向量 b 的方向作为有向轴"
   directed_length: "|a|cosθ"
   angle_range: "0 ≤ θ ≤ π；锐角投影长度为正，直角为零，钝角为负。"
-  dot_product_bridge: "只出现 a·b = |b| × 投影长度，作为下一课数量积定义的入口。"
+  dot_product_bridge: "只预告下一课会把有向投影长度与数量积联系起来，不展示数量积定义式。"
   key_angles:
     - label: "锐角"
       projection_position: "投影点 H 在 b 的正方向"
@@ -95,12 +95,12 @@ narrative_design:
         - "直角：H 与 O 重合，投影长度 = 0。"
         - "钝角：H 在反方向，投影长度 = |a|cosθ < 0。"
       estimated_seconds: 15
-    - id: connect_formula
-      title: "轻微衔接数量积"
-      purpose: "只把投影长度和数量积符号相连，不展开下一课完整教学。"
+    - id: preview_next_lesson
+      title: "预告下一课联系"
+      purpose: "只预告下一课会用有向投影长度理解数量积，不展开下一课完整教学。"
       visuals:
         - "保留有向投影线段。"
-        - "出现 a·b = |b| × 投影长度。"
+        - "出现“下一课：用有向投影理解数量积”的文字预告。"
       estimated_seconds: 4
   pause_points:
     - after_beat: drop_perpendicular
