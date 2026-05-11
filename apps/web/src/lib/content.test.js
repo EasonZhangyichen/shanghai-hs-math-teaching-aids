@@ -436,13 +436,13 @@ test("marks B2 C08 scaffold resources as draft scaffold work only", async () => 
     assert.notEqual(resource.quality.reviewStatus, "release_candidate");
     assert.notEqual(resource.quality.reviewStatus, "math_review_passed");
     assert.ok(
-      resource.quality.displayStates.every((state) => ["draft", "scaffold", "self_checked_draft"].includes(state)),
-      `${resource.id} should only display draft/scaffold/self_checked_draft states`,
+      resource.quality.displayStates.every((state) => ["draft", "scaffold", "runnable", "self_checked_draft"].includes(state)),
+      `${resource.id} should only display draft/scaffold/runnable/self_checked_draft states`,
     );
   }
 
-  const scaffoldApplet = workspace.resourceIndex.find((resource) => resource.id === "SH-HS-MATH-HJ-B2-C08-L01-A01");
-  assert.equal(scaffoldApplet.quality.implementationStage, "scaffold");
-  assert.equal(scaffoldApplet.quality.readinessLabel, "骨架待精修");
-  assert.equal(scaffoldApplet.player, null);
+  const runnableApplet = workspace.resourceIndex.find((resource) => resource.id === "SH-HS-MATH-HJ-B2-C08-L01-A01");
+  assert.equal(runnableApplet.quality.implementationStage, "runnable");
+  assert.equal(runnableApplet.quality.readinessLabel, "可运行预览");
+  assert.equal(runnableApplet.player.kind, "iframe");
 });

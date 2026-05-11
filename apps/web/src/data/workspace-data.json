@@ -1624,6 +1624,20 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "quality": {
+            "contentStatus": "planned",
+            "implementationStage": "planned",
+            "reviewStatus": "planned",
+            "readinessLabel": "规划中",
+            "displayStates": [
+              "planned"
+            ],
+            "labels": {
+              "contentStatus": "规划中",
+              "implementationStage": "规划中",
+              "reviewStatus": "规划中"
+            }
+          },
           "player": null,
           "package": null
         }
@@ -1698,6 +1712,20 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "quality": {
+            "contentStatus": "planned",
+            "implementationStage": "planned",
+            "reviewStatus": "planned",
+            "readinessLabel": "规划中",
+            "displayStates": [
+              "planned"
+            ],
+            "labels": {
+              "contentStatus": "规划中",
+              "implementationStage": "规划中",
+              "reviewStatus": "规划中"
+            }
+          },
           "player": null,
           "package": null
         }
@@ -1875,6 +1903,20 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "quality": {
+            "contentStatus": "planned",
+            "implementationStage": "planned",
+            "reviewStatus": "planned",
+            "readinessLabel": "规划中",
+            "displayStates": [
+              "planned"
+            ],
+            "labels": {
+              "contentStatus": "规划中",
+              "implementationStage": "规划中",
+              "reviewStatus": "规划中"
+            }
+          },
           "player": null,
           "package": null
         }
@@ -2255,6 +2297,20 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "quality": {
+            "contentStatus": "planned",
+            "implementationStage": "planned",
+            "reviewStatus": "planned",
+            "readinessLabel": "规划中",
+            "displayStates": [
+              "planned"
+            ],
+            "labels": {
+              "contentStatus": "规划中",
+              "implementationStage": "规划中",
+              "reviewStatus": "规划中"
+            }
+          },
           "player": null,
           "package": null
         }
@@ -2380,6 +2436,20 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "quality": {
+            "contentStatus": "planned",
+            "implementationStage": "planned",
+            "reviewStatus": "planned",
+            "readinessLabel": "规划中",
+            "displayStates": [
+              "planned"
+            ],
+            "labels": {
+              "contentStatus": "规划中",
+              "implementationStage": "规划中",
+              "reviewStatus": "规划中"
+            }
+          },
           "player": null,
           "package": null
         }
@@ -2514,6 +2584,20 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "quality": {
+            "contentStatus": "planned",
+            "implementationStage": "planned",
+            "reviewStatus": "planned",
+            "readinessLabel": "规划中",
+            "displayStates": [
+              "planned"
+            ],
+            "labels": {
+              "contentStatus": "规划中",
+              "implementationStage": "规划中",
+              "reviewStatus": "规划中"
+            }
+          },
           "player": null,
           "package": null
         },
@@ -2527,6 +2611,20 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "quality": {
+            "contentStatus": "planned",
+            "implementationStage": "planned",
+            "reviewStatus": "planned",
+            "readinessLabel": "规划中",
+            "displayStates": [
+              "planned"
+            ],
+            "labels": {
+              "contentStatus": "规划中",
+              "implementationStage": "规划中",
+              "reviewStatus": "规划中"
+            }
+          },
           "player": null,
           "package": null
         }
@@ -2652,6 +2750,20 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "quality": {
+            "contentStatus": "planned",
+            "implementationStage": "planned",
+            "reviewStatus": "planned",
+            "readinessLabel": "规划中",
+            "displayStates": [
+              "planned"
+            ],
+            "labels": {
+              "contentStatus": "规划中",
+              "implementationStage": "规划中",
+              "reviewStatus": "规划中"
+            }
+          },
           "player": null,
           "package": null
         }
@@ -2725,6 +2837,20 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "quality": {
+            "contentStatus": "planned",
+            "implementationStage": "planned",
+            "reviewStatus": "planned",
+            "readinessLabel": "规划中",
+            "displayStates": [
+              "planned"
+            ],
+            "labels": {
+              "contentStatus": "规划中",
+              "implementationStage": "规划中",
+              "reviewStatus": "规划中"
+            }
+          },
           "player": null,
           "package": null
         }
@@ -2799,6 +2925,20 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "quality": {
+            "contentStatus": "planned",
+            "implementationStage": "planned",
+            "reviewStatus": "planned",
+            "readinessLabel": "规划中",
+            "displayStates": [
+              "planned"
+            ],
+            "labels": {
+              "contentStatus": "规划中",
+              "implementationStage": "规划中",
+              "reviewStatus": "规划中"
+            }
+          },
           "player": null,
           "package": null
         }
@@ -3026,6 +3166,20 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "quality": {
+            "contentStatus": "planned",
+            "implementationStage": "planned",
+            "reviewStatus": "planned",
+            "readinessLabel": "规划中",
+            "displayStates": [
+              "planned"
+            ],
+            "labels": {
+              "contentStatus": "规划中",
+              "implementationStage": "规划中",
+              "reviewStatus": "规划中"
+            }
+          },
           "player": null,
           "package": null
         }
@@ -3248,6 +3402,20 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "quality": {
+            "contentStatus": "planned",
+            "implementationStage": "planned",
+            "reviewStatus": "planned",
+            "readinessLabel": "规划中",
+            "displayStates": [
+              "planned"
+            ],
+            "labels": {
+              "contentStatus": "规划中",
+              "implementationStage": "规划中",
+              "reviewStatus": "规划中"
+            }
+          },
           "player": null,
           "package": null
         }
@@ -3331,6 +3499,20 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "quality": {
+            "contentStatus": "planned",
+            "implementationStage": "planned",
+            "reviewStatus": "planned",
+            "readinessLabel": "规划中",
+            "displayStates": [
+              "planned"
+            ],
+            "labels": {
+              "contentStatus": "规划中",
+              "implementationStage": "规划中",
+              "reviewStatus": "规划中"
+            }
+          },
           "player": null,
           "package": null
         },
@@ -3344,6 +3526,20 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "quality": {
+            "contentStatus": "planned",
+            "implementationStage": "planned",
+            "reviewStatus": "planned",
+            "readinessLabel": "规划中",
+            "displayStates": [
+              "planned"
+            ],
+            "labels": {
+              "contentStatus": "规划中",
+              "implementationStage": "规划中",
+              "reviewStatus": "规划中"
+            }
+          },
           "player": null,
           "package": null
         }
@@ -3419,6 +3615,20 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "quality": {
+            "contentStatus": "planned",
+            "implementationStage": "planned",
+            "reviewStatus": "planned",
+            "readinessLabel": "规划中",
+            "displayStates": [
+              "planned"
+            ],
+            "labels": {
+              "contentStatus": "规划中",
+              "implementationStage": "规划中",
+              "reviewStatus": "规划中"
+            }
+          },
           "player": null,
           "package": null
         }
@@ -3492,6 +3702,20 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "quality": {
+            "contentStatus": "planned",
+            "implementationStage": "planned",
+            "reviewStatus": "planned",
+            "readinessLabel": "规划中",
+            "displayStates": [
+              "planned"
+            ],
+            "labels": {
+              "contentStatus": "规划中",
+              "implementationStage": "规划中",
+              "reviewStatus": "规划中"
+            }
+          },
           "player": null,
           "package": null
         }
@@ -4089,6 +4313,22 @@
               "review_status": "self_checked_draft"
             }
           },
+          "quality": {
+            "contentStatus": "draft",
+            "implementationStage": "runnable",
+            "reviewStatus": "self_checked_draft",
+            "readinessLabel": "可运行预览",
+            "displayStates": [
+              "draft",
+              "runnable",
+              "self_checked_draft"
+            ],
+            "labels": {
+              "contentStatus": "草稿",
+              "implementationStage": "可运行",
+              "reviewStatus": "自检草稿"
+            }
+          },
           "player": {
             "kind": "iframe",
             "isRunnable": true,
@@ -4379,6 +4619,22 @@
             "compliance": {
               "copyright_note": "本资源包为原创 Manim 场景脚本与教学分镜，不复制教材正文、官方课件、教案或商业平台资源。",
               "review_status": "math_review_passed"
+            }
+          },
+          "quality": {
+            "contentStatus": "draft",
+            "implementationStage": "video_ready",
+            "reviewStatus": "math_review_passed",
+            "readinessLabel": "视频已就绪",
+            "displayStates": [
+              "draft",
+              "video_ready",
+              "math_review_passed"
+            ],
+            "labels": {
+              "contentStatus": "草稿",
+              "implementationStage": "视频已就绪",
+              "reviewStatus": "数学审校通过"
             }
           },
           "player": {
@@ -4834,6 +5090,22 @@
               "review_status": "self_checked_draft"
             }
           },
+          "quality": {
+            "contentStatus": "draft",
+            "implementationStage": "runnable",
+            "reviewStatus": "self_checked_draft",
+            "readinessLabel": "可运行预览",
+            "displayStates": [
+              "draft",
+              "runnable",
+              "self_checked_draft"
+            ],
+            "labels": {
+              "contentStatus": "草稿",
+              "implementationStage": "可运行",
+              "reviewStatus": "自检草稿"
+            }
+          },
           "player": {
             "kind": "iframe",
             "isRunnable": true,
@@ -5028,6 +5300,22 @@
             "compliance": {
               "copyright_note": "本诊断包为原创题组与反馈设计，不复制教材正文、官方课件、教案或商业题库。",
               "review_status": "self_checked_draft"
+            }
+          },
+          "quality": {
+            "contentStatus": "draft",
+            "implementationStage": "item_bank_ready",
+            "reviewStatus": "self_checked_draft",
+            "readinessLabel": "题组已就绪",
+            "displayStates": [
+              "draft",
+              "item_bank_ready",
+              "self_checked_draft"
+            ],
+            "labels": {
+              "contentStatus": "草稿",
+              "implementationStage": "题组已就绪",
+              "reviewStatus": "自检草稿"
             }
           },
           "player": null,
@@ -5503,6 +5791,22 @@
               "review_status": "self_checked_draft"
             }
           },
+          "quality": {
+            "contentStatus": "draft",
+            "implementationStage": "runnable",
+            "reviewStatus": "self_checked_draft",
+            "readinessLabel": "可运行预览",
+            "displayStates": [
+              "draft",
+              "runnable",
+              "self_checked_draft"
+            ],
+            "labels": {
+              "contentStatus": "草稿",
+              "implementationStage": "可运行",
+              "reviewStatus": "自检草稿"
+            }
+          },
           "player": {
             "kind": "iframe",
             "isRunnable": true,
@@ -5900,6 +6204,22 @@
             "compliance": {
               "copyright_note": "本资源包为原创教学脚本与交互实现，不复制教材正文、官方课件、教案或商业平台资源。",
               "review_status": "self_checked_draft"
+            }
+          },
+          "quality": {
+            "contentStatus": "draft",
+            "implementationStage": "runnable",
+            "reviewStatus": "self_checked_draft",
+            "readinessLabel": "可运行预览",
+            "displayStates": [
+              "draft",
+              "runnable",
+              "self_checked_draft"
+            ],
+            "labels": {
+              "contentStatus": "草稿",
+              "implementationStage": "可运行",
+              "reviewStatus": "自检草稿"
             }
           },
           "player": {
@@ -6402,6 +6722,22 @@
               "review_status": "self_checked_draft"
             }
           },
+          "quality": {
+            "contentStatus": "draft",
+            "implementationStage": "runnable",
+            "reviewStatus": "self_checked_draft",
+            "readinessLabel": "可运行预览",
+            "displayStates": [
+              "draft",
+              "runnable",
+              "self_checked_draft"
+            ],
+            "labels": {
+              "contentStatus": "草稿",
+              "implementationStage": "可运行",
+              "reviewStatus": "自检草稿"
+            }
+          },
           "player": {
             "kind": "iframe",
             "isRunnable": true,
@@ -6603,6 +6939,22 @@
             "compliance": {
               "copyright_note": "本诊断包为原创题组与反馈设计，不复制教材正文、官方课件、教案或商业题库。",
               "review_status": "self_checked_draft"
+            }
+          },
+          "quality": {
+            "contentStatus": "draft",
+            "implementationStage": "item_bank_ready",
+            "reviewStatus": "self_checked_draft",
+            "readinessLabel": "题组已就绪",
+            "displayStates": [
+              "draft",
+              "item_bank_ready",
+              "self_checked_draft"
+            ],
+            "labels": {
+              "contentStatus": "草稿",
+              "implementationStage": "题组已就绪",
+              "reviewStatus": "自检草稿"
             }
           },
           "player": null,
@@ -7118,6 +7470,22 @@
               "review_status": "self_checked_draft"
             }
           },
+          "quality": {
+            "contentStatus": "draft",
+            "implementationStage": "runnable",
+            "reviewStatus": "self_checked_draft",
+            "readinessLabel": "可运行预览",
+            "displayStates": [
+              "draft",
+              "runnable",
+              "self_checked_draft"
+            ],
+            "labels": {
+              "contentStatus": "草稿",
+              "implementationStage": "可运行",
+              "reviewStatus": "自检草稿"
+            }
+          },
           "player": {
             "kind": "iframe",
             "isRunnable": true,
@@ -7417,6 +7785,22 @@
               "review_status": "math_review_passed"
             }
           },
+          "quality": {
+            "contentStatus": "draft",
+            "implementationStage": "video_ready",
+            "reviewStatus": "math_review_passed",
+            "readinessLabel": "视频已就绪",
+            "displayStates": [
+              "draft",
+              "video_ready",
+              "math_review_passed"
+            ],
+            "labels": {
+              "contentStatus": "草稿",
+              "implementationStage": "视频已就绪",
+              "reviewStatus": "数学审校通过"
+            }
+          },
           "player": {
             "kind": "video",
             "isRunnable": true,
@@ -7610,6 +7994,22 @@
             "compliance": {
               "copyright_note": "本诊断包为原创题组与反馈设计，不复制教材正文、官方课件、教案或商业题库。",
               "review_status": "self_checked_draft"
+            }
+          },
+          "quality": {
+            "contentStatus": "draft",
+            "implementationStage": "item_bank_ready",
+            "reviewStatus": "self_checked_draft",
+            "readinessLabel": "题组已就绪",
+            "displayStates": [
+              "draft",
+              "item_bank_ready",
+              "self_checked_draft"
+            ],
+            "labels": {
+              "contentStatus": "草稿",
+              "implementationStage": "题组已就绪",
+              "reviewStatus": "自检草稿"
             }
           },
           "player": null,
@@ -8081,6 +8481,22 @@
               "review_status": "self_checked_draft"
             }
           },
+          "quality": {
+            "contentStatus": "draft",
+            "implementationStage": "runnable",
+            "reviewStatus": "self_checked_draft",
+            "readinessLabel": "可运行预览",
+            "displayStates": [
+              "draft",
+              "runnable",
+              "self_checked_draft"
+            ],
+            "labels": {
+              "contentStatus": "草稿",
+              "implementationStage": "可运行",
+              "reviewStatus": "自检草稿"
+            }
+          },
           "player": {
             "kind": "iframe",
             "isRunnable": true,
@@ -8383,6 +8799,22 @@
             "compliance": {
               "copyright_note": "本资源包为原创 Manim 分镜和场景脚本，不复制教材正文、官方课件、教案或商业平台资源。",
               "review_status": "math_review_passed"
+            }
+          },
+          "quality": {
+            "contentStatus": "draft",
+            "implementationStage": "video_ready",
+            "reviewStatus": "math_review_passed",
+            "readinessLabel": "视频已就绪",
+            "displayStates": [
+              "draft",
+              "video_ready",
+              "math_review_passed"
+            ],
+            "labels": {
+              "contentStatus": "草稿",
+              "implementationStage": "视频已就绪",
+              "reviewStatus": "数学审校通过"
             }
           },
           "player": {
@@ -8823,6 +9255,22 @@
               "review_status": "self_checked_draft"
             }
           },
+          "quality": {
+            "contentStatus": "draft",
+            "implementationStage": "runnable",
+            "reviewStatus": "self_checked_draft",
+            "readinessLabel": "可运行预览",
+            "displayStates": [
+              "draft",
+              "runnable",
+              "self_checked_draft"
+            ],
+            "labels": {
+              "contentStatus": "草稿",
+              "implementationStage": "可运行",
+              "reviewStatus": "自检草稿"
+            }
+          },
           "player": {
             "kind": "iframe",
             "isRunnable": true,
@@ -9017,6 +9465,22 @@
               "review_status": "self_checked_draft"
             }
           },
+          "quality": {
+            "contentStatus": "draft",
+            "implementationStage": "item_bank_ready",
+            "reviewStatus": "self_checked_draft",
+            "readinessLabel": "题组已就绪",
+            "displayStates": [
+              "draft",
+              "item_bank_ready",
+              "self_checked_draft"
+            ],
+            "labels": {
+              "contentStatus": "草稿",
+              "implementationStage": "题组已就绪",
+              "reviewStatus": "自检草稿"
+            }
+          },
           "player": null,
           "package": {
             "path": "content/diagnosis/SH-HS-MATH-HJ-B2-C07-L07-D01",
@@ -9135,7 +9599,7 @@
           "id": "SH-HS-MATH-HJ-B2-C08-L01-A01",
           "resourceType": "applet",
           "title": "向量表示与等价拖拽板",
-          "subtitle": "围绕向量的概念的交互式数字教具骨架",
+          "subtitle": "用平移后的有向线段比较向量的大小、方向和位置无关性",
           "cognitiveAction": "比较",
           "note": "拖动多个有向线段的起点和终点，实时判断相等、相反、平行和共线关系，突出向量的位置无关性。",
           "availability": "metadata_ready",
@@ -9147,7 +9611,7 @@
             "status": "draft",
             "resourceType": "applet",
             "title": "向量表示与等价拖拽板",
-            "subtitle": "围绕向量的概念的交互式数字教具骨架",
+            "subtitle": "用平移后的有向线段比较向量的大小、方向和位置无关性",
             "curriculum": {
               "region": "上海",
               "stage": "高中",
@@ -9165,40 +9629,69 @@
             },
             "pedagogy": {
               "cognitiveAction": "比较",
-              "estimatedClassroomMinutes": 12,
+              "estimatedClassroomMinutes": 14,
               "primaryTeachingProblem": "学生容易把向量绑定到起点位置，难以理解只要大小和方向相同就是同一向量。",
               "learningGoals": [
-                "围绕向量的概念建立可观察、可解释的数学表征。",
-                "用“比较”方式处理关键变量、边界条件和典型错因。",
-                "把交互观察转化为可板书、可追问、可迁移的课堂结论。"
+                "用有向线段 AB 的位移分量、长度和方向刻画一个平面向量。",
+                "通过平移后的 CD 说明起点不同但位移分量相同的有向线段表示相等向量。",
+                "同时读取 Δx、Δy、长度和方向角，避免只看线段所在位置或只看长度。",
+                "在零向量情形下说明长度为 0，方向不规定。"
               ],
               "prerequisites": [
-                "向量的概念相关先修知识"
+                "平面直角坐标系中的点和坐标读数",
+                "线段长度、方向、平行和共线关系",
+                "有向线段可以表示从起点到终点的位移"
               ],
               "successors": [
-                "后续课时学习与综合应用"
+                "SH-HS-MATH-HJ-B2-C08-L02",
+                "SH-HS-MATH-HJ-B2-C08-L03",
+                "SH-HS-MATH-HJ-B2-C08-L06"
               ],
               "coreCompetencies": [
                 "直观想象",
-                "逻辑推理",
-                "数学运算"
+                "数学抽象",
+                "逻辑推理"
               ]
             },
             "mathematicalScope": {
-              "focus": "拖动多个有向线段的起点和终点，实时判断相等、相反、平行和共线关系，突出向量的位置无关性。",
+              "focus": "在平面网格中比较有向线段 AB 与平移后的 CD，突出向量由大小和方向决定，与起点位置无关。",
               "lesson": "向量的概念",
+              "vector_model": "AB = (x_B - x_A, y_B - y_A)",
+              "equality_rule": "两个非零向量大小相等且方向相同则相等；在本课件中等价为位移分量 Δx、Δy 相同。",
+              "zero_vector_rule": "起点和终点重合时得到零向量，长度为 0，方向不规定。",
+              "default_points": {
+                "base_start": "A(-4, -1)",
+                "base_end": "B(-1, 2)",
+                "translated_start": "C(2, -2)",
+                "translated_end": "D(5, 1)"
+              },
               "out_of_scope": [
-                "本 scaffold 只定义首版交互骨架，数学细节需在资源生产对话中补齐。"
+                "向量加法、减法和数乘的运算法则",
+                "向量坐标运算的系统训练",
+                "8.3 向量坐标表示的课时边界讨论",
+                "用题库形式训练平行、共线和相反向量判定"
               ]
             },
             "representations": [
               {
-                "id": "interactive_canvas",
-                "role": "承载可拖拽、可观察、可复现的核心数学表征。"
+                "id": "coordinate_grid",
+                "role": "显示点的位置、位移分量和起点变化。"
               },
               {
-                "id": "teacher_readout",
-                "role": "为教师提供课堂追问所需的关键状态读数。"
+                "id": "base_vector",
+                "role": "用蓝色有向线段 AB 表示当前向量的大小和方向。"
+              },
+              {
+                "id": "translated_vector",
+                "role": "用橙色有向线段 CD 表示平移后的相等向量。"
+              },
+              {
+                "id": "measurement_readout",
+                "role": "同步显示 Δx、Δy、长度、方向角和起点对照。"
+              },
+              {
+                "id": "staged_summary",
+                "role": "供教师按观察、平移、读数、归纳四步揭示课堂结论。"
               }
             ],
             "narrativeDesign": {
@@ -9206,45 +9699,132 @@
               "pausePoints": []
             },
             "interactionDesign": {
-              "primaryControl": "预留一个核心滑块或拖拽控制，后续按知识点定制。",
+              "primaryControl": "拖动 A 或 B 改变向量，拖动 AB 整体或 CD 整体改变起点但保持位移不变。",
               "teacherControls": [
-                "重置",
-                "分步显示",
-                "重点标注"
+                "重置到默认位置",
+                "按观察、平移、读数、归纳四步揭示",
+                "显示或隐藏分量辅助线",
+                "显示或隐藏平移痕迹"
               ],
               "studentControls": [
-                "拖动观察",
-                "记录猜想",
-                "对照结论"
+                "拖动 A、B 观察大小和方向如何改变",
+                "拖动 C、D 或橙色向量整体观察起点变化",
+                "用读数判断 AB 与 CD 是否表示相同向量"
               ],
               "stagedReveal": [
                 {
-                  "step": "observe",
-                  "description": "先让学生观察变量变化和图像响应。"
+                  "step": "observe_base_vector",
+                  "description": "只呈现 AB 和网格，先让学生说出从 A 到 B 的位移。"
                 },
                 {
-                  "step": "explain",
-                  "description": "再引导学生用符号语言解释观察结果。"
+                  "step": "translate_equivalent_vector",
+                  "description": "显示 CD，把同一位移搬到不同起点，形成位置对照。"
+                },
+                {
+                  "step": "read_components_length_direction",
+                  "description": "揭示 Δx、Δy、长度和方向角，建立相等向量的证据链。"
+                },
+                {
+                  "step": "summarize_position_independence",
+                  "description": "归纳向量相等只看大小和方向，不看起点位置，并补充零向量边界。"
                 }
               ]
             },
             "dataContract": {
               "state_variables": [
                 {
-                  "name": "current_value",
+                  "name": "base_start",
+                  "value_type": "point2d",
+                  "description": "蓝色有向线段 AB 的起点 A。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "base_end",
+                  "value_type": "point2d",
+                  "description": "蓝色有向线段 AB 的终点 B。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "translated_start",
+                  "value_type": "point2d",
+                  "description": "橙色平移向量 CD 的起点 C。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "translated_end",
+                  "value_type": "point2d",
+                  "description": "橙色平移向量 CD 的终点 D，由 C 加上 AB 的位移得到。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "delta_x",
                   "value_type": "number",
-                  "default": 0,
-                  "description": "首版 scaffold 的占位状态变量，后续替换为真实数学变量。",
+                  "default": 3,
+                  "description": "当前向量的横向位移分量。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "delta_y",
+                  "value_type": "number",
+                  "default": 3,
+                  "description": "当前向量的纵向位移分量。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "length",
+                  "value_type": "number",
+                  "default": 4.2426,
+                  "description": "当前向量的长度。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "angle_degrees",
+                  "unit": "degree",
+                  "value_type": "number",
+                  "default": 45,
+                  "description": "当前非零向量相对 x 轴正方向的方向角；零向量时为空。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "reveal_step",
+                  "value_type": "number",
+                  "default": 1,
+                  "description": "当前教师分步揭示阶段。",
                   "persistence": "snapshot"
                 }
               ],
               "events": [
                 {
+                  "name": "ready",
+                  "direction": "applet_to_player",
+                  "description": "课件完成初始渲染。",
+                  "payload": [
+                    "base_start",
+                    "base_end",
+                    "translated_start",
+                    "translated_end",
+                    "delta_x",
+                    "delta_y",
+                    "length",
+                    "angle_degrees",
+                    "reveal_step"
+                  ],
+                  "required_for_player": true
+                },
+                {
                   "name": "state_changed",
                   "direction": "applet_to_player",
-                  "description": "交互状态变化时通知平台播放器。",
+                  "description": "拖拽点、平移向量或切换揭示阶段时通知播放器。",
                   "payload": [
-                    "current_value"
+                    "base_start",
+                    "base_end",
+                    "translated_start",
+                    "translated_end",
+                    "delta_x",
+                    "delta_y",
+                    "length",
+                    "angle_degrees",
+                    "reveal_step"
                   ],
                   "required_for_player": true
                 }
@@ -9264,25 +9844,50 @@
             },
             "feedbackAndDiagnosis": {
               "success_evidence": [
-                "学生能说清楚观察变量、图像变化和数学结论之间的对应关系。"
+                "学生能用 Δx 和 Δy 说明 AB 与 CD 表示同一向量。",
+                "学生能解释起点 A 和 C 不同，但大小和方向不变，所以向量相等。",
+                "学生能指出只看长度不足以判断向量相等，还必须看方向。",
+                "学生能在 A 与 B 重合时说明这是零向量且方向不规定。"
               ],
               "common_error_tags": [
                 {
+                  "id": "vector_bound_to_start",
+                  "label": "把向量误认为固定在某个起点上"
+                },
+                {
+                  "id": "magnitude_only_judgment",
+                  "label": "只看长度，不看方向"
+                },
+                {
+                  "id": "direction_only_judgment",
+                  "label": "只看方向，不看大小"
+                },
+                {
                   "id": "representation_gap",
-                  "label": "表征对应断裂"
+                  "label": "有向线段、分量和向量记号之间断裂"
+                },
+                {
+                  "id": "zero_vector_direction_error",
+                  "label": "误给零向量指定方向"
                 }
               ],
               "feedback_principles": [
-                "反馈先指向可视化证据，再回到符号表达。"
+                "先让学生读位移分量，再判断大小和方向。",
+                "纠正位置误区时拖动 CD 的起点，而不改变 Δx 和 Δy。",
+                "纠正只看长度的误区时保留相同长度但改变方向的反例追问。",
+                "遇到零向量时单独说明长度和方向边界。"
               ]
             },
             "visualSemantics": {
-              "primary_color": "teal",
-              "emphasis_rule": "当前变量用高对比色标注，历史轨迹和辅助线降低透明度。"
+              "base_vector": "蓝色表示用于定义当前向量的 AB。",
+              "translated_vector": "橙色表示平移后的等价向量 CD。",
+              "component_guides": "青绿色虚线表示 Δx 和 Δy 分量读数。",
+              "parallel_guides": "灰色虚线连接对应起点和终点，帮助观察整条有向线段的平移。",
+              "rule": "颜色只承载数学对象含义，不作为装饰。"
             },
             "implementation": {
-              "phase": "content_spec_only",
-              "html_src_status": "scaffolded",
+              "phase": "runnable_prototype",
+              "html_src_status": "runnable",
               "planned_engine": "native-canvas-svg",
               "create_src_in_later_task": false,
               "classroom_device_targets": [
@@ -9292,11 +9897,33 @@
               ]
             },
             "compliance": {
-              "copyright_note": "本 scaffold 仅生成原创资源骨架，不复制教材正文、官方课件、教案或商业题库。",
+              "copyright_note": "本资源为原创交互草稿，不复制教材正文、官方课件、教案或商业题库；第 8 章课时边界仍需纸质教材或已登录平台终核。",
               "review_status": "self_checked_draft"
             }
           },
-          "player": null,
+          "quality": {
+            "contentStatus": "draft",
+            "implementationStage": "runnable",
+            "reviewStatus": "self_checked_draft",
+            "readinessLabel": "可运行预览",
+            "displayStates": [
+              "draft",
+              "runnable",
+              "self_checked_draft"
+            ],
+            "labels": {
+              "contentStatus": "草稿",
+              "implementationStage": "可运行",
+              "reviewStatus": "自检草稿"
+            }
+          },
+          "player": {
+            "kind": "iframe",
+            "isRunnable": true,
+            "src": "content/applets/SH-HS-MATH-HJ-B2-C08-L01-A01/src/index.html",
+            "title": "向量表示与等价拖拽板",
+            "sandbox": "allow-scripts allow-same-origin"
+          },
           "package": {
             "path": "content/applets/SH-HS-MATH-HJ-B2-C08-L01-A01",
             "files": {
@@ -9314,8 +9941,8 @@
               "summary": "",
               "sections": [
                 "使用时机",
-                "追问方向",
-                "待补充"
+                "课堂流程",
+                "教师试读关注点"
               ]
             },
             "studentTask": {
@@ -9324,8 +9951,10 @@
               "title": "学生活动：向量表示与等价拖拽板",
               "summary": "",
               "sections": [
-                "任务",
-                "记录"
+                "任务 1：读出一个向量",
+                "任务 2：判断平移后的向量",
+                "任务 3：找一个反例",
+                "课后口头表达"
               ]
             }
           }
@@ -9563,6 +10192,22 @@
               "review_status": "self_checked_draft"
             }
           },
+          "quality": {
+            "contentStatus": "draft",
+            "implementationStage": "scaffold",
+            "reviewStatus": "self_checked_draft",
+            "readinessLabel": "骨架待精修",
+            "displayStates": [
+              "draft",
+              "scaffold",
+              "self_checked_draft"
+            ],
+            "labels": {
+              "contentStatus": "草稿",
+              "implementationStage": "骨架",
+              "reviewStatus": "自检草稿"
+            }
+          },
           "player": null,
           "package": {
             "path": "content/applets/SH-HS-MATH-HJ-B2-C08-L02-A01",
@@ -9711,6 +10356,22 @@
             "compliance": {
               "copyright_note": "本 scaffold 仅生成原创资源骨架，不复制教材正文、官方课件、教案或商业题库。",
               "review_status": "self_checked_draft"
+            }
+          },
+          "quality": {
+            "contentStatus": "draft",
+            "implementationStage": "scaffold",
+            "reviewStatus": "self_checked_draft",
+            "readinessLabel": "骨架待精修",
+            "displayStates": [
+              "draft",
+              "scaffold",
+              "self_checked_draft"
+            ],
+            "labels": {
+              "contentStatus": "草稿",
+              "implementationStage": "骨架",
+              "reviewStatus": "自检草稿"
             }
           },
           "player": null,
@@ -9983,6 +10644,22 @@
               "review_status": "self_checked_draft"
             }
           },
+          "quality": {
+            "contentStatus": "draft",
+            "implementationStage": "scaffold",
+            "reviewStatus": "self_checked_draft",
+            "readinessLabel": "骨架待精修",
+            "displayStates": [
+              "draft",
+              "scaffold",
+              "self_checked_draft"
+            ],
+            "labels": {
+              "contentStatus": "草稿",
+              "implementationStage": "骨架",
+              "reviewStatus": "自检草稿"
+            }
+          },
           "player": null,
           "package": {
             "path": "content/applets/SH-HS-MATH-HJ-B2-C08-L03-A01",
@@ -10249,6 +10926,22 @@
               "review_status": "self_checked_draft"
             }
           },
+          "quality": {
+            "contentStatus": "draft",
+            "implementationStage": "scaffold",
+            "reviewStatus": "self_checked_draft",
+            "readinessLabel": "骨架待精修",
+            "displayStates": [
+              "draft",
+              "scaffold",
+              "self_checked_draft"
+            ],
+            "labels": {
+              "contentStatus": "草稿",
+              "implementationStage": "骨架",
+              "reviewStatus": "自检草稿"
+            }
+          },
           "player": null,
           "package": {
             "path": "content/applets/SH-HS-MATH-HJ-B2-C08-L04-A01",
@@ -10482,6 +11175,22 @@
             "compliance": {
               "copyright_note": "本 scaffold 仅生成原创资源骨架，不复制教材正文、官方课件、教案或商业题库。",
               "review_status": "self_checked_draft"
+            }
+          },
+          "quality": {
+            "contentStatus": "draft",
+            "implementationStage": "scaffold",
+            "reviewStatus": "self_checked_draft",
+            "readinessLabel": "骨架待精修",
+            "displayStates": [
+              "draft",
+              "scaffold",
+              "self_checked_draft"
+            ],
+            "labels": {
+              "contentStatus": "草稿",
+              "implementationStage": "骨架",
+              "reviewStatus": "自检草稿"
             }
           },
           "player": null,
@@ -10751,6 +11460,22 @@
               "review_status": "self_checked_draft"
             }
           },
+          "quality": {
+            "contentStatus": "draft",
+            "implementationStage": "scaffold",
+            "reviewStatus": "self_checked_draft",
+            "readinessLabel": "骨架待精修",
+            "displayStates": [
+              "draft",
+              "scaffold",
+              "self_checked_draft"
+            ],
+            "labels": {
+              "contentStatus": "草稿",
+              "implementationStage": "骨架",
+              "reviewStatus": "自检草稿"
+            }
+          },
           "player": null,
           "package": {
             "path": "content/applets/SH-HS-MATH-HJ-B2-C08-L05-A01",
@@ -10899,6 +11624,22 @@
             "compliance": {
               "copyright_note": "本 scaffold 仅生成原创资源骨架，不复制教材正文、官方课件、教案或商业题库。",
               "review_status": "self_checked_draft"
+            }
+          },
+          "quality": {
+            "contentStatus": "draft",
+            "implementationStage": "scaffold",
+            "reviewStatus": "self_checked_draft",
+            "readinessLabel": "骨架待精修",
+            "displayStates": [
+              "draft",
+              "scaffold",
+              "self_checked_draft"
+            ],
+            "labels": {
+              "contentStatus": "草稿",
+              "implementationStage": "骨架",
+              "reviewStatus": "自检草稿"
             }
           },
           "player": null,
@@ -11384,6 +12125,22 @@
               "review_status": "self_checked_draft"
             }
           },
+          "quality": {
+            "contentStatus": "draft",
+            "implementationStage": "scaffold",
+            "reviewStatus": "self_checked_draft",
+            "readinessLabel": "骨架待精修",
+            "displayStates": [
+              "draft",
+              "scaffold",
+              "self_checked_draft"
+            ],
+            "labels": {
+              "contentStatus": "草稿",
+              "implementationStage": "骨架",
+              "reviewStatus": "自检草稿"
+            }
+          },
           "player": null,
           "package": {
             "path": "content/applets/SH-HS-MATH-HJ-B2-C08-L10-A01",
@@ -11532,6 +12289,22 @@
             "compliance": {
               "copyright_note": "本 scaffold 仅生成原创资源骨架，不复制教材正文、官方课件、教案或商业题库。",
               "review_status": "self_checked_draft"
+            }
+          },
+          "quality": {
+            "contentStatus": "draft",
+            "implementationStage": "scaffold",
+            "reviewStatus": "self_checked_draft",
+            "readinessLabel": "骨架待精修",
+            "displayStates": [
+              "draft",
+              "scaffold",
+              "self_checked_draft"
+            ],
+            "labels": {
+              "contentStatus": "草稿",
+              "implementationStage": "骨架",
+              "reviewStatus": "自检草稿"
             }
           },
           "player": null,
@@ -11750,6 +12523,20 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "quality": {
+            "contentStatus": "planned",
+            "implementationStage": "planned",
+            "reviewStatus": "planned",
+            "readinessLabel": "规划中",
+            "displayStates": [
+              "planned"
+            ],
+            "labels": {
+              "contentStatus": "规划中",
+              "implementationStage": "规划中",
+              "reviewStatus": "规划中"
+            }
+          },
           "player": null,
           "package": null
         }
@@ -11823,6 +12610,20 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "quality": {
+            "contentStatus": "planned",
+            "implementationStage": "planned",
+            "reviewStatus": "planned",
+            "readinessLabel": "规划中",
+            "displayStates": [
+              "planned"
+            ],
+            "labels": {
+              "contentStatus": "规划中",
+              "implementationStage": "规划中",
+              "reviewStatus": "规划中"
+            }
+          },
           "player": null,
           "package": null
         }
@@ -11994,6 +12795,20 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "quality": {
+            "contentStatus": "planned",
+            "implementationStage": "planned",
+            "reviewStatus": "planned",
+            "readinessLabel": "规划中",
+            "displayStates": [
+              "planned"
+            ],
+            "labels": {
+              "contentStatus": "规划中",
+              "implementationStage": "规划中",
+              "reviewStatus": "规划中"
+            }
+          },
           "player": null,
           "package": null
         }
@@ -12580,6 +13395,20 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "quality": {
+            "contentStatus": "planned",
+            "implementationStage": "planned",
+            "reviewStatus": "planned",
+            "readinessLabel": "规划中",
+            "displayStates": [
+              "planned"
+            ],
+            "labels": {
+              "contentStatus": "规划中",
+              "implementationStage": "规划中",
+              "reviewStatus": "规划中"
+            }
+          },
           "player": null,
           "package": null
         }
@@ -12654,6 +13483,20 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "quality": {
+            "contentStatus": "planned",
+            "implementationStage": "planned",
+            "reviewStatus": "planned",
+            "readinessLabel": "规划中",
+            "displayStates": [
+              "planned"
+            ],
+            "labels": {
+              "contentStatus": "规划中",
+              "implementationStage": "规划中",
+              "reviewStatus": "规划中"
+            }
+          },
           "player": null,
           "package": null
         }
@@ -12831,6 +13674,20 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "quality": {
+            "contentStatus": "planned",
+            "implementationStage": "planned",
+            "reviewStatus": "planned",
+            "readinessLabel": "规划中",
+            "displayStates": [
+              "planned"
+            ],
+            "labels": {
+              "contentStatus": "规划中",
+              "implementationStage": "规划中",
+              "reviewStatus": "规划中"
+            }
+          },
           "player": null,
           "package": null
         }
@@ -13211,6 +14068,20 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "quality": {
+            "contentStatus": "planned",
+            "implementationStage": "planned",
+            "reviewStatus": "planned",
+            "readinessLabel": "规划中",
+            "displayStates": [
+              "planned"
+            ],
+            "labels": {
+              "contentStatus": "规划中",
+              "implementationStage": "规划中",
+              "reviewStatus": "规划中"
+            }
+          },
           "player": null,
           "package": null
         }
@@ -13336,6 +14207,20 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "quality": {
+            "contentStatus": "planned",
+            "implementationStage": "planned",
+            "reviewStatus": "planned",
+            "readinessLabel": "规划中",
+            "displayStates": [
+              "planned"
+            ],
+            "labels": {
+              "contentStatus": "规划中",
+              "implementationStage": "规划中",
+              "reviewStatus": "规划中"
+            }
+          },
           "player": null,
           "package": null
         }
@@ -13470,6 +14355,20 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "quality": {
+            "contentStatus": "planned",
+            "implementationStage": "planned",
+            "reviewStatus": "planned",
+            "readinessLabel": "规划中",
+            "displayStates": [
+              "planned"
+            ],
+            "labels": {
+              "contentStatus": "规划中",
+              "implementationStage": "规划中",
+              "reviewStatus": "规划中"
+            }
+          },
           "player": null,
           "package": null
         },
@@ -13483,6 +14382,20 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "quality": {
+            "contentStatus": "planned",
+            "implementationStage": "planned",
+            "reviewStatus": "planned",
+            "readinessLabel": "规划中",
+            "displayStates": [
+              "planned"
+            ],
+            "labels": {
+              "contentStatus": "规划中",
+              "implementationStage": "规划中",
+              "reviewStatus": "规划中"
+            }
+          },
           "player": null,
           "package": null
         }
@@ -13608,6 +14521,20 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "quality": {
+            "contentStatus": "planned",
+            "implementationStage": "planned",
+            "reviewStatus": "planned",
+            "readinessLabel": "规划中",
+            "displayStates": [
+              "planned"
+            ],
+            "labels": {
+              "contentStatus": "规划中",
+              "implementationStage": "规划中",
+              "reviewStatus": "规划中"
+            }
+          },
           "player": null,
           "package": null
         }
@@ -13681,6 +14608,20 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "quality": {
+            "contentStatus": "planned",
+            "implementationStage": "planned",
+            "reviewStatus": "planned",
+            "readinessLabel": "规划中",
+            "displayStates": [
+              "planned"
+            ],
+            "labels": {
+              "contentStatus": "规划中",
+              "implementationStage": "规划中",
+              "reviewStatus": "规划中"
+            }
+          },
           "player": null,
           "package": null
         }
@@ -13755,6 +14696,20 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "quality": {
+            "contentStatus": "planned",
+            "implementationStage": "planned",
+            "reviewStatus": "planned",
+            "readinessLabel": "规划中",
+            "displayStates": [
+              "planned"
+            ],
+            "labels": {
+              "contentStatus": "规划中",
+              "implementationStage": "规划中",
+              "reviewStatus": "规划中"
+            }
+          },
           "player": null,
           "package": null
         }
@@ -13982,6 +14937,20 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "quality": {
+            "contentStatus": "planned",
+            "implementationStage": "planned",
+            "reviewStatus": "planned",
+            "readinessLabel": "规划中",
+            "displayStates": [
+              "planned"
+            ],
+            "labels": {
+              "contentStatus": "规划中",
+              "implementationStage": "规划中",
+              "reviewStatus": "规划中"
+            }
+          },
           "player": null,
           "package": null
         }
@@ -14204,6 +15173,20 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "quality": {
+            "contentStatus": "planned",
+            "implementationStage": "planned",
+            "reviewStatus": "planned",
+            "readinessLabel": "规划中",
+            "displayStates": [
+              "planned"
+            ],
+            "labels": {
+              "contentStatus": "规划中",
+              "implementationStage": "规划中",
+              "reviewStatus": "规划中"
+            }
+          },
           "player": null,
           "package": null
         }
@@ -14287,6 +15270,20 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "quality": {
+            "contentStatus": "planned",
+            "implementationStage": "planned",
+            "reviewStatus": "planned",
+            "readinessLabel": "规划中",
+            "displayStates": [
+              "planned"
+            ],
+            "labels": {
+              "contentStatus": "规划中",
+              "implementationStage": "规划中",
+              "reviewStatus": "规划中"
+            }
+          },
           "player": null,
           "package": null
         },
@@ -14300,6 +15297,20 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "quality": {
+            "contentStatus": "planned",
+            "implementationStage": "planned",
+            "reviewStatus": "planned",
+            "readinessLabel": "规划中",
+            "displayStates": [
+              "planned"
+            ],
+            "labels": {
+              "contentStatus": "规划中",
+              "implementationStage": "规划中",
+              "reviewStatus": "规划中"
+            }
+          },
           "player": null,
           "package": null
         }
@@ -14375,6 +15386,20 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "quality": {
+            "contentStatus": "planned",
+            "implementationStage": "planned",
+            "reviewStatus": "planned",
+            "readinessLabel": "规划中",
+            "displayStates": [
+              "planned"
+            ],
+            "labels": {
+              "contentStatus": "规划中",
+              "implementationStage": "规划中",
+              "reviewStatus": "规划中"
+            }
+          },
           "player": null,
           "package": null
         }
@@ -14448,6 +15473,20 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "quality": {
+            "contentStatus": "planned",
+            "implementationStage": "planned",
+            "reviewStatus": "planned",
+            "readinessLabel": "规划中",
+            "displayStates": [
+              "planned"
+            ],
+            "labels": {
+              "contentStatus": "规划中",
+              "implementationStage": "规划中",
+              "reviewStatus": "规划中"
+            }
+          },
           "player": null,
           "package": null
         }
@@ -15045,6 +16084,22 @@
               "review_status": "self_checked_draft"
             }
           },
+          "quality": {
+            "contentStatus": "draft",
+            "implementationStage": "runnable",
+            "reviewStatus": "self_checked_draft",
+            "readinessLabel": "可运行预览",
+            "displayStates": [
+              "draft",
+              "runnable",
+              "self_checked_draft"
+            ],
+            "labels": {
+              "contentStatus": "草稿",
+              "implementationStage": "可运行",
+              "reviewStatus": "自检草稿"
+            }
+          },
           "player": {
             "kind": "iframe",
             "isRunnable": true,
@@ -15335,6 +16390,22 @@
             "compliance": {
               "copyright_note": "本资源包为原创 Manim 场景脚本与教学分镜，不复制教材正文、官方课件、教案或商业平台资源。",
               "review_status": "math_review_passed"
+            }
+          },
+          "quality": {
+            "contentStatus": "draft",
+            "implementationStage": "video_ready",
+            "reviewStatus": "math_review_passed",
+            "readinessLabel": "视频已就绪",
+            "displayStates": [
+              "draft",
+              "video_ready",
+              "math_review_passed"
+            ],
+            "labels": {
+              "contentStatus": "草稿",
+              "implementationStage": "视频已就绪",
+              "reviewStatus": "数学审校通过"
             }
           },
           "player": {
@@ -15790,6 +16861,22 @@
               "review_status": "self_checked_draft"
             }
           },
+          "quality": {
+            "contentStatus": "draft",
+            "implementationStage": "runnable",
+            "reviewStatus": "self_checked_draft",
+            "readinessLabel": "可运行预览",
+            "displayStates": [
+              "draft",
+              "runnable",
+              "self_checked_draft"
+            ],
+            "labels": {
+              "contentStatus": "草稿",
+              "implementationStage": "可运行",
+              "reviewStatus": "自检草稿"
+            }
+          },
           "player": {
             "kind": "iframe",
             "isRunnable": true,
@@ -15984,6 +17071,22 @@
             "compliance": {
               "copyright_note": "本诊断包为原创题组与反馈设计，不复制教材正文、官方课件、教案或商业题库。",
               "review_status": "self_checked_draft"
+            }
+          },
+          "quality": {
+            "contentStatus": "draft",
+            "implementationStage": "item_bank_ready",
+            "reviewStatus": "self_checked_draft",
+            "readinessLabel": "题组已就绪",
+            "displayStates": [
+              "draft",
+              "item_bank_ready",
+              "self_checked_draft"
+            ],
+            "labels": {
+              "contentStatus": "草稿",
+              "implementationStage": "题组已就绪",
+              "reviewStatus": "自检草稿"
             }
           },
           "player": null,
@@ -16459,6 +17562,22 @@
               "review_status": "self_checked_draft"
             }
           },
+          "quality": {
+            "contentStatus": "draft",
+            "implementationStage": "runnable",
+            "reviewStatus": "self_checked_draft",
+            "readinessLabel": "可运行预览",
+            "displayStates": [
+              "draft",
+              "runnable",
+              "self_checked_draft"
+            ],
+            "labels": {
+              "contentStatus": "草稿",
+              "implementationStage": "可运行",
+              "reviewStatus": "自检草稿"
+            }
+          },
           "player": {
             "kind": "iframe",
             "isRunnable": true,
@@ -16856,6 +17975,22 @@
             "compliance": {
               "copyright_note": "本资源包为原创教学脚本与交互实现，不复制教材正文、官方课件、教案或商业平台资源。",
               "review_status": "self_checked_draft"
+            }
+          },
+          "quality": {
+            "contentStatus": "draft",
+            "implementationStage": "runnable",
+            "reviewStatus": "self_checked_draft",
+            "readinessLabel": "可运行预览",
+            "displayStates": [
+              "draft",
+              "runnable",
+              "self_checked_draft"
+            ],
+            "labels": {
+              "contentStatus": "草稿",
+              "implementationStage": "可运行",
+              "reviewStatus": "自检草稿"
             }
           },
           "player": {
@@ -17358,6 +18493,22 @@
               "review_status": "self_checked_draft"
             }
           },
+          "quality": {
+            "contentStatus": "draft",
+            "implementationStage": "runnable",
+            "reviewStatus": "self_checked_draft",
+            "readinessLabel": "可运行预览",
+            "displayStates": [
+              "draft",
+              "runnable",
+              "self_checked_draft"
+            ],
+            "labels": {
+              "contentStatus": "草稿",
+              "implementationStage": "可运行",
+              "reviewStatus": "自检草稿"
+            }
+          },
           "player": {
             "kind": "iframe",
             "isRunnable": true,
@@ -17559,6 +18710,22 @@
             "compliance": {
               "copyright_note": "本诊断包为原创题组与反馈设计，不复制教材正文、官方课件、教案或商业题库。",
               "review_status": "self_checked_draft"
+            }
+          },
+          "quality": {
+            "contentStatus": "draft",
+            "implementationStage": "item_bank_ready",
+            "reviewStatus": "self_checked_draft",
+            "readinessLabel": "题组已就绪",
+            "displayStates": [
+              "draft",
+              "item_bank_ready",
+              "self_checked_draft"
+            ],
+            "labels": {
+              "contentStatus": "草稿",
+              "implementationStage": "题组已就绪",
+              "reviewStatus": "自检草稿"
             }
           },
           "player": null,
@@ -18074,6 +19241,22 @@
               "review_status": "self_checked_draft"
             }
           },
+          "quality": {
+            "contentStatus": "draft",
+            "implementationStage": "runnable",
+            "reviewStatus": "self_checked_draft",
+            "readinessLabel": "可运行预览",
+            "displayStates": [
+              "draft",
+              "runnable",
+              "self_checked_draft"
+            ],
+            "labels": {
+              "contentStatus": "草稿",
+              "implementationStage": "可运行",
+              "reviewStatus": "自检草稿"
+            }
+          },
           "player": {
             "kind": "iframe",
             "isRunnable": true,
@@ -18373,6 +19556,22 @@
               "review_status": "math_review_passed"
             }
           },
+          "quality": {
+            "contentStatus": "draft",
+            "implementationStage": "video_ready",
+            "reviewStatus": "math_review_passed",
+            "readinessLabel": "视频已就绪",
+            "displayStates": [
+              "draft",
+              "video_ready",
+              "math_review_passed"
+            ],
+            "labels": {
+              "contentStatus": "草稿",
+              "implementationStage": "视频已就绪",
+              "reviewStatus": "数学审校通过"
+            }
+          },
           "player": {
             "kind": "video",
             "isRunnable": true,
@@ -18566,6 +19765,22 @@
             "compliance": {
               "copyright_note": "本诊断包为原创题组与反馈设计，不复制教材正文、官方课件、教案或商业题库。",
               "review_status": "self_checked_draft"
+            }
+          },
+          "quality": {
+            "contentStatus": "draft",
+            "implementationStage": "item_bank_ready",
+            "reviewStatus": "self_checked_draft",
+            "readinessLabel": "题组已就绪",
+            "displayStates": [
+              "draft",
+              "item_bank_ready",
+              "self_checked_draft"
+            ],
+            "labels": {
+              "contentStatus": "草稿",
+              "implementationStage": "题组已就绪",
+              "reviewStatus": "自检草稿"
             }
           },
           "player": null,
@@ -19037,6 +20252,22 @@
               "review_status": "self_checked_draft"
             }
           },
+          "quality": {
+            "contentStatus": "draft",
+            "implementationStage": "runnable",
+            "reviewStatus": "self_checked_draft",
+            "readinessLabel": "可运行预览",
+            "displayStates": [
+              "draft",
+              "runnable",
+              "self_checked_draft"
+            ],
+            "labels": {
+              "contentStatus": "草稿",
+              "implementationStage": "可运行",
+              "reviewStatus": "自检草稿"
+            }
+          },
           "player": {
             "kind": "iframe",
             "isRunnable": true,
@@ -19339,6 +20570,22 @@
             "compliance": {
               "copyright_note": "本资源包为原创 Manim 分镜和场景脚本，不复制教材正文、官方课件、教案或商业平台资源。",
               "review_status": "math_review_passed"
+            }
+          },
+          "quality": {
+            "contentStatus": "draft",
+            "implementationStage": "video_ready",
+            "reviewStatus": "math_review_passed",
+            "readinessLabel": "视频已就绪",
+            "displayStates": [
+              "draft",
+              "video_ready",
+              "math_review_passed"
+            ],
+            "labels": {
+              "contentStatus": "草稿",
+              "implementationStage": "视频已就绪",
+              "reviewStatus": "数学审校通过"
             }
           },
           "player": {
@@ -19779,6 +21026,22 @@
               "review_status": "self_checked_draft"
             }
           },
+          "quality": {
+            "contentStatus": "draft",
+            "implementationStage": "runnable",
+            "reviewStatus": "self_checked_draft",
+            "readinessLabel": "可运行预览",
+            "displayStates": [
+              "draft",
+              "runnable",
+              "self_checked_draft"
+            ],
+            "labels": {
+              "contentStatus": "草稿",
+              "implementationStage": "可运行",
+              "reviewStatus": "自检草稿"
+            }
+          },
           "player": {
             "kind": "iframe",
             "isRunnable": true,
@@ -19973,6 +21236,22 @@
               "review_status": "self_checked_draft"
             }
           },
+          "quality": {
+            "contentStatus": "draft",
+            "implementationStage": "item_bank_ready",
+            "reviewStatus": "self_checked_draft",
+            "readinessLabel": "题组已就绪",
+            "displayStates": [
+              "draft",
+              "item_bank_ready",
+              "self_checked_draft"
+            ],
+            "labels": {
+              "contentStatus": "草稿",
+              "implementationStage": "题组已就绪",
+              "reviewStatus": "自检草稿"
+            }
+          },
           "player": null,
           "package": {
             "path": "content/diagnosis/SH-HS-MATH-HJ-B2-C07-L07-D01",
@@ -20091,7 +21370,7 @@
           "id": "SH-HS-MATH-HJ-B2-C08-L01-A01",
           "resourceType": "applet",
           "title": "向量表示与等价拖拽板",
-          "subtitle": "围绕向量的概念的交互式数字教具骨架",
+          "subtitle": "用平移后的有向线段比较向量的大小、方向和位置无关性",
           "cognitiveAction": "比较",
           "note": "拖动多个有向线段的起点和终点，实时判断相等、相反、平行和共线关系，突出向量的位置无关性。",
           "availability": "metadata_ready",
@@ -20103,7 +21382,7 @@
             "status": "draft",
             "resourceType": "applet",
             "title": "向量表示与等价拖拽板",
-            "subtitle": "围绕向量的概念的交互式数字教具骨架",
+            "subtitle": "用平移后的有向线段比较向量的大小、方向和位置无关性",
             "curriculum": {
               "region": "上海",
               "stage": "高中",
@@ -20121,40 +21400,69 @@
             },
             "pedagogy": {
               "cognitiveAction": "比较",
-              "estimatedClassroomMinutes": 12,
+              "estimatedClassroomMinutes": 14,
               "primaryTeachingProblem": "学生容易把向量绑定到起点位置，难以理解只要大小和方向相同就是同一向量。",
               "learningGoals": [
-                "围绕向量的概念建立可观察、可解释的数学表征。",
-                "用“比较”方式处理关键变量、边界条件和典型错因。",
-                "把交互观察转化为可板书、可追问、可迁移的课堂结论。"
+                "用有向线段 AB 的位移分量、长度和方向刻画一个平面向量。",
+                "通过平移后的 CD 说明起点不同但位移分量相同的有向线段表示相等向量。",
+                "同时读取 Δx、Δy、长度和方向角，避免只看线段所在位置或只看长度。",
+                "在零向量情形下说明长度为 0，方向不规定。"
               ],
               "prerequisites": [
-                "向量的概念相关先修知识"
+                "平面直角坐标系中的点和坐标读数",
+                "线段长度、方向、平行和共线关系",
+                "有向线段可以表示从起点到终点的位移"
               ],
               "successors": [
-                "后续课时学习与综合应用"
+                "SH-HS-MATH-HJ-B2-C08-L02",
+                "SH-HS-MATH-HJ-B2-C08-L03",
+                "SH-HS-MATH-HJ-B2-C08-L06"
               ],
               "coreCompetencies": [
                 "直观想象",
-                "逻辑推理",
-                "数学运算"
+                "数学抽象",
+                "逻辑推理"
               ]
             },
             "mathematicalScope": {
-              "focus": "拖动多个有向线段的起点和终点，实时判断相等、相反、平行和共线关系，突出向量的位置无关性。",
+              "focus": "在平面网格中比较有向线段 AB 与平移后的 CD，突出向量由大小和方向决定，与起点位置无关。",
               "lesson": "向量的概念",
+              "vector_model": "AB = (x_B - x_A, y_B - y_A)",
+              "equality_rule": "两个非零向量大小相等且方向相同则相等；在本课件中等价为位移分量 Δx、Δy 相同。",
+              "zero_vector_rule": "起点和终点重合时得到零向量，长度为 0，方向不规定。",
+              "default_points": {
+                "base_start": "A(-4, -1)",
+                "base_end": "B(-1, 2)",
+                "translated_start": "C(2, -2)",
+                "translated_end": "D(5, 1)"
+              },
               "out_of_scope": [
-                "本 scaffold 只定义首版交互骨架，数学细节需在资源生产对话中补齐。"
+                "向量加法、减法和数乘的运算法则",
+                "向量坐标运算的系统训练",
+                "8.3 向量坐标表示的课时边界讨论",
+                "用题库形式训练平行、共线和相反向量判定"
               ]
             },
             "representations": [
               {
-                "id": "interactive_canvas",
-                "role": "承载可拖拽、可观察、可复现的核心数学表征。"
+                "id": "coordinate_grid",
+                "role": "显示点的位置、位移分量和起点变化。"
               },
               {
-                "id": "teacher_readout",
-                "role": "为教师提供课堂追问所需的关键状态读数。"
+                "id": "base_vector",
+                "role": "用蓝色有向线段 AB 表示当前向量的大小和方向。"
+              },
+              {
+                "id": "translated_vector",
+                "role": "用橙色有向线段 CD 表示平移后的相等向量。"
+              },
+              {
+                "id": "measurement_readout",
+                "role": "同步显示 Δx、Δy、长度、方向角和起点对照。"
+              },
+              {
+                "id": "staged_summary",
+                "role": "供教师按观察、平移、读数、归纳四步揭示课堂结论。"
               }
             ],
             "narrativeDesign": {
@@ -20162,45 +21470,132 @@
               "pausePoints": []
             },
             "interactionDesign": {
-              "primaryControl": "预留一个核心滑块或拖拽控制，后续按知识点定制。",
+              "primaryControl": "拖动 A 或 B 改变向量，拖动 AB 整体或 CD 整体改变起点但保持位移不变。",
               "teacherControls": [
-                "重置",
-                "分步显示",
-                "重点标注"
+                "重置到默认位置",
+                "按观察、平移、读数、归纳四步揭示",
+                "显示或隐藏分量辅助线",
+                "显示或隐藏平移痕迹"
               ],
               "studentControls": [
-                "拖动观察",
-                "记录猜想",
-                "对照结论"
+                "拖动 A、B 观察大小和方向如何改变",
+                "拖动 C、D 或橙色向量整体观察起点变化",
+                "用读数判断 AB 与 CD 是否表示相同向量"
               ],
               "stagedReveal": [
                 {
-                  "step": "observe",
-                  "description": "先让学生观察变量变化和图像响应。"
+                  "step": "observe_base_vector",
+                  "description": "只呈现 AB 和网格，先让学生说出从 A 到 B 的位移。"
                 },
                 {
-                  "step": "explain",
-                  "description": "再引导学生用符号语言解释观察结果。"
+                  "step": "translate_equivalent_vector",
+                  "description": "显示 CD，把同一位移搬到不同起点，形成位置对照。"
+                },
+                {
+                  "step": "read_components_length_direction",
+                  "description": "揭示 Δx、Δy、长度和方向角，建立相等向量的证据链。"
+                },
+                {
+                  "step": "summarize_position_independence",
+                  "description": "归纳向量相等只看大小和方向，不看起点位置，并补充零向量边界。"
                 }
               ]
             },
             "dataContract": {
               "state_variables": [
                 {
-                  "name": "current_value",
+                  "name": "base_start",
+                  "value_type": "point2d",
+                  "description": "蓝色有向线段 AB 的起点 A。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "base_end",
+                  "value_type": "point2d",
+                  "description": "蓝色有向线段 AB 的终点 B。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "translated_start",
+                  "value_type": "point2d",
+                  "description": "橙色平移向量 CD 的起点 C。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "translated_end",
+                  "value_type": "point2d",
+                  "description": "橙色平移向量 CD 的终点 D，由 C 加上 AB 的位移得到。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "delta_x",
                   "value_type": "number",
-                  "default": 0,
-                  "description": "首版 scaffold 的占位状态变量，后续替换为真实数学变量。",
+                  "default": 3,
+                  "description": "当前向量的横向位移分量。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "delta_y",
+                  "value_type": "number",
+                  "default": 3,
+                  "description": "当前向量的纵向位移分量。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "length",
+                  "value_type": "number",
+                  "default": 4.2426,
+                  "description": "当前向量的长度。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "angle_degrees",
+                  "unit": "degree",
+                  "value_type": "number",
+                  "default": 45,
+                  "description": "当前非零向量相对 x 轴正方向的方向角；零向量时为空。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "reveal_step",
+                  "value_type": "number",
+                  "default": 1,
+                  "description": "当前教师分步揭示阶段。",
                   "persistence": "snapshot"
                 }
               ],
               "events": [
                 {
+                  "name": "ready",
+                  "direction": "applet_to_player",
+                  "description": "课件完成初始渲染。",
+                  "payload": [
+                    "base_start",
+                    "base_end",
+                    "translated_start",
+                    "translated_end",
+                    "delta_x",
+                    "delta_y",
+                    "length",
+                    "angle_degrees",
+                    "reveal_step"
+                  ],
+                  "required_for_player": true
+                },
+                {
                   "name": "state_changed",
                   "direction": "applet_to_player",
-                  "description": "交互状态变化时通知平台播放器。",
+                  "description": "拖拽点、平移向量或切换揭示阶段时通知播放器。",
                   "payload": [
-                    "current_value"
+                    "base_start",
+                    "base_end",
+                    "translated_start",
+                    "translated_end",
+                    "delta_x",
+                    "delta_y",
+                    "length",
+                    "angle_degrees",
+                    "reveal_step"
                   ],
                   "required_for_player": true
                 }
@@ -20220,25 +21615,50 @@
             },
             "feedbackAndDiagnosis": {
               "success_evidence": [
-                "学生能说清楚观察变量、图像变化和数学结论之间的对应关系。"
+                "学生能用 Δx 和 Δy 说明 AB 与 CD 表示同一向量。",
+                "学生能解释起点 A 和 C 不同，但大小和方向不变，所以向量相等。",
+                "学生能指出只看长度不足以判断向量相等，还必须看方向。",
+                "学生能在 A 与 B 重合时说明这是零向量且方向不规定。"
               ],
               "common_error_tags": [
                 {
+                  "id": "vector_bound_to_start",
+                  "label": "把向量误认为固定在某个起点上"
+                },
+                {
+                  "id": "magnitude_only_judgment",
+                  "label": "只看长度，不看方向"
+                },
+                {
+                  "id": "direction_only_judgment",
+                  "label": "只看方向，不看大小"
+                },
+                {
                   "id": "representation_gap",
-                  "label": "表征对应断裂"
+                  "label": "有向线段、分量和向量记号之间断裂"
+                },
+                {
+                  "id": "zero_vector_direction_error",
+                  "label": "误给零向量指定方向"
                 }
               ],
               "feedback_principles": [
-                "反馈先指向可视化证据，再回到符号表达。"
+                "先让学生读位移分量，再判断大小和方向。",
+                "纠正位置误区时拖动 CD 的起点，而不改变 Δx 和 Δy。",
+                "纠正只看长度的误区时保留相同长度但改变方向的反例追问。",
+                "遇到零向量时单独说明长度和方向边界。"
               ]
             },
             "visualSemantics": {
-              "primary_color": "teal",
-              "emphasis_rule": "当前变量用高对比色标注，历史轨迹和辅助线降低透明度。"
+              "base_vector": "蓝色表示用于定义当前向量的 AB。",
+              "translated_vector": "橙色表示平移后的等价向量 CD。",
+              "component_guides": "青绿色虚线表示 Δx 和 Δy 分量读数。",
+              "parallel_guides": "灰色虚线连接对应起点和终点，帮助观察整条有向线段的平移。",
+              "rule": "颜色只承载数学对象含义，不作为装饰。"
             },
             "implementation": {
-              "phase": "content_spec_only",
-              "html_src_status": "scaffolded",
+              "phase": "runnable_prototype",
+              "html_src_status": "runnable",
               "planned_engine": "native-canvas-svg",
               "create_src_in_later_task": false,
               "classroom_device_targets": [
@@ -20248,11 +21668,33 @@
               ]
             },
             "compliance": {
-              "copyright_note": "本 scaffold 仅生成原创资源骨架，不复制教材正文、官方课件、教案或商业题库。",
+              "copyright_note": "本资源为原创交互草稿，不复制教材正文、官方课件、教案或商业题库；第 8 章课时边界仍需纸质教材或已登录平台终核。",
               "review_status": "self_checked_draft"
             }
           },
-          "player": null,
+          "quality": {
+            "contentStatus": "draft",
+            "implementationStage": "runnable",
+            "reviewStatus": "self_checked_draft",
+            "readinessLabel": "可运行预览",
+            "displayStates": [
+              "draft",
+              "runnable",
+              "self_checked_draft"
+            ],
+            "labels": {
+              "contentStatus": "草稿",
+              "implementationStage": "可运行",
+              "reviewStatus": "自检草稿"
+            }
+          },
+          "player": {
+            "kind": "iframe",
+            "isRunnable": true,
+            "src": "content/applets/SH-HS-MATH-HJ-B2-C08-L01-A01/src/index.html",
+            "title": "向量表示与等价拖拽板",
+            "sandbox": "allow-scripts allow-same-origin"
+          },
           "package": {
             "path": "content/applets/SH-HS-MATH-HJ-B2-C08-L01-A01",
             "files": {
@@ -20270,8 +21712,8 @@
               "summary": "",
               "sections": [
                 "使用时机",
-                "追问方向",
-                "待补充"
+                "课堂流程",
+                "教师试读关注点"
               ]
             },
             "studentTask": {
@@ -20280,8 +21722,10 @@
               "title": "学生活动：向量表示与等价拖拽板",
               "summary": "",
               "sections": [
-                "任务",
-                "记录"
+                "任务 1：读出一个向量",
+                "任务 2：判断平移后的向量",
+                "任务 3：找一个反例",
+                "课后口头表达"
               ]
             }
           }
@@ -20519,6 +21963,22 @@
               "review_status": "self_checked_draft"
             }
           },
+          "quality": {
+            "contentStatus": "draft",
+            "implementationStage": "scaffold",
+            "reviewStatus": "self_checked_draft",
+            "readinessLabel": "骨架待精修",
+            "displayStates": [
+              "draft",
+              "scaffold",
+              "self_checked_draft"
+            ],
+            "labels": {
+              "contentStatus": "草稿",
+              "implementationStage": "骨架",
+              "reviewStatus": "自检草稿"
+            }
+          },
           "player": null,
           "package": {
             "path": "content/applets/SH-HS-MATH-HJ-B2-C08-L02-A01",
@@ -20667,6 +22127,22 @@
             "compliance": {
               "copyright_note": "本 scaffold 仅生成原创资源骨架，不复制教材正文、官方课件、教案或商业题库。",
               "review_status": "self_checked_draft"
+            }
+          },
+          "quality": {
+            "contentStatus": "draft",
+            "implementationStage": "scaffold",
+            "reviewStatus": "self_checked_draft",
+            "readinessLabel": "骨架待精修",
+            "displayStates": [
+              "draft",
+              "scaffold",
+              "self_checked_draft"
+            ],
+            "labels": {
+              "contentStatus": "草稿",
+              "implementationStage": "骨架",
+              "reviewStatus": "自检草稿"
             }
           },
           "player": null,
@@ -20939,6 +22415,22 @@
               "review_status": "self_checked_draft"
             }
           },
+          "quality": {
+            "contentStatus": "draft",
+            "implementationStage": "scaffold",
+            "reviewStatus": "self_checked_draft",
+            "readinessLabel": "骨架待精修",
+            "displayStates": [
+              "draft",
+              "scaffold",
+              "self_checked_draft"
+            ],
+            "labels": {
+              "contentStatus": "草稿",
+              "implementationStage": "骨架",
+              "reviewStatus": "自检草稿"
+            }
+          },
           "player": null,
           "package": {
             "path": "content/applets/SH-HS-MATH-HJ-B2-C08-L03-A01",
@@ -21205,6 +22697,22 @@
               "review_status": "self_checked_draft"
             }
           },
+          "quality": {
+            "contentStatus": "draft",
+            "implementationStage": "scaffold",
+            "reviewStatus": "self_checked_draft",
+            "readinessLabel": "骨架待精修",
+            "displayStates": [
+              "draft",
+              "scaffold",
+              "self_checked_draft"
+            ],
+            "labels": {
+              "contentStatus": "草稿",
+              "implementationStage": "骨架",
+              "reviewStatus": "自检草稿"
+            }
+          },
           "player": null,
           "package": {
             "path": "content/applets/SH-HS-MATH-HJ-B2-C08-L04-A01",
@@ -21438,6 +22946,22 @@
             "compliance": {
               "copyright_note": "本 scaffold 仅生成原创资源骨架，不复制教材正文、官方课件、教案或商业题库。",
               "review_status": "self_checked_draft"
+            }
+          },
+          "quality": {
+            "contentStatus": "draft",
+            "implementationStage": "scaffold",
+            "reviewStatus": "self_checked_draft",
+            "readinessLabel": "骨架待精修",
+            "displayStates": [
+              "draft",
+              "scaffold",
+              "self_checked_draft"
+            ],
+            "labels": {
+              "contentStatus": "草稿",
+              "implementationStage": "骨架",
+              "reviewStatus": "自检草稿"
             }
           },
           "player": null,
@@ -21707,6 +23231,22 @@
               "review_status": "self_checked_draft"
             }
           },
+          "quality": {
+            "contentStatus": "draft",
+            "implementationStage": "scaffold",
+            "reviewStatus": "self_checked_draft",
+            "readinessLabel": "骨架待精修",
+            "displayStates": [
+              "draft",
+              "scaffold",
+              "self_checked_draft"
+            ],
+            "labels": {
+              "contentStatus": "草稿",
+              "implementationStage": "骨架",
+              "reviewStatus": "自检草稿"
+            }
+          },
           "player": null,
           "package": {
             "path": "content/applets/SH-HS-MATH-HJ-B2-C08-L05-A01",
@@ -21855,6 +23395,22 @@
             "compliance": {
               "copyright_note": "本 scaffold 仅生成原创资源骨架，不复制教材正文、官方课件、教案或商业题库。",
               "review_status": "self_checked_draft"
+            }
+          },
+          "quality": {
+            "contentStatus": "draft",
+            "implementationStage": "scaffold",
+            "reviewStatus": "self_checked_draft",
+            "readinessLabel": "骨架待精修",
+            "displayStates": [
+              "draft",
+              "scaffold",
+              "self_checked_draft"
+            ],
+            "labels": {
+              "contentStatus": "草稿",
+              "implementationStage": "骨架",
+              "reviewStatus": "自检草稿"
             }
           },
           "player": null,
@@ -22340,6 +23896,22 @@
               "review_status": "self_checked_draft"
             }
           },
+          "quality": {
+            "contentStatus": "draft",
+            "implementationStage": "scaffold",
+            "reviewStatus": "self_checked_draft",
+            "readinessLabel": "骨架待精修",
+            "displayStates": [
+              "draft",
+              "scaffold",
+              "self_checked_draft"
+            ],
+            "labels": {
+              "contentStatus": "草稿",
+              "implementationStage": "骨架",
+              "reviewStatus": "自检草稿"
+            }
+          },
           "player": null,
           "package": {
             "path": "content/applets/SH-HS-MATH-HJ-B2-C08-L10-A01",
@@ -22488,6 +24060,22 @@
             "compliance": {
               "copyright_note": "本 scaffold 仅生成原创资源骨架，不复制教材正文、官方课件、教案或商业题库。",
               "review_status": "self_checked_draft"
+            }
+          },
+          "quality": {
+            "contentStatus": "draft",
+            "implementationStage": "scaffold",
+            "reviewStatus": "self_checked_draft",
+            "readinessLabel": "骨架待精修",
+            "displayStates": [
+              "draft",
+              "scaffold",
+              "self_checked_draft"
+            ],
+            "labels": {
+              "contentStatus": "草稿",
+              "implementationStage": "骨架",
+              "reviewStatus": "自检草稿"
             }
           },
           "player": null,
@@ -22706,6 +24294,20 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "quality": {
+            "contentStatus": "planned",
+            "implementationStage": "planned",
+            "reviewStatus": "planned",
+            "readinessLabel": "规划中",
+            "displayStates": [
+              "planned"
+            ],
+            "labels": {
+              "contentStatus": "规划中",
+              "implementationStage": "规划中",
+              "reviewStatus": "规划中"
+            }
+          },
           "player": null,
           "package": null
         }
@@ -22779,6 +24381,20 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "quality": {
+            "contentStatus": "planned",
+            "implementationStage": "planned",
+            "reviewStatus": "planned",
+            "readinessLabel": "规划中",
+            "displayStates": [
+              "planned"
+            ],
+            "labels": {
+              "contentStatus": "规划中",
+              "implementationStage": "规划中",
+              "reviewStatus": "规划中"
+            }
+          },
           "player": null,
           "package": null
         }
@@ -22950,11 +24566,2152 @@
           "status": "planned",
           "version": null,
           "metadataPreview": null,
+          "quality": {
+            "contentStatus": "planned",
+            "implementationStage": "planned",
+            "reviewStatus": "planned",
+            "readinessLabel": "规划中",
+            "displayStates": [
+              "planned"
+            ],
+            "labels": {
+              "contentStatus": "规划中",
+              "implementationStage": "规划中",
+              "reviewStatus": "规划中"
+            }
+          },
           "player": null,
           "package": null
         }
       ]
     }
+  },
+  "resourceIndex": [
+    {
+      "id": "SH-HS-MATH-HJ-B1-C02-L04-A01",
+      "resourceType": "applet",
+      "title": "参数不等式解集数轴实验室",
+      "subtitle": null,
+      "note": "拖动参数并同步显示不等式、数轴阴影、端点开闭、区间记号和空集/全集情形；数字化价值在于连续呈现参数过零时不等号方向和解集形态的变化，也能巩固数轴上解集与区间语言。不做常规移项、一元一次不等式刷题或机械化简。仅为 draft planned，未终核前禁止 scaffold。",
+      "cognitiveAction": "对应",
+      "availability": "proposed",
+      "status": "planned",
+      "version": null,
+      "lessonId": "SH-HS-MATH-HJ-B1-C02-L04",
+      "lessonTitle": "一元一次不等式及一元一次不等式组的求解",
+      "textbookRef": "2.2.1",
+      "volumeId": "B1",
+      "volumeTitle": "必修第一册",
+      "chapterId": "SH-HS-MATH-HJ-B1-C02",
+      "chapterNumber": 2,
+      "chapterTitle": "等式与不等式",
+      "sectionId": "SH-HS-MATH-HJ-B1-C02-S02",
+      "sectionTitle": "不等式的求解",
+      "sectionTextbookLabel": "2.2",
+      "quality": {
+        "contentStatus": "planned",
+        "implementationStage": "planned",
+        "reviewStatus": "planned",
+        "readinessLabel": "规划中",
+        "displayStates": [
+          "planned"
+        ],
+        "labels": {
+          "contentStatus": "规划中",
+          "implementationStage": "规划中",
+          "reviewStatus": "规划中"
+        }
+      },
+      "player": null,
+      "packagePath": null
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B1-C02-L05-A01",
+      "resourceType": "applet",
+      "title": "二次不等式与函数符号区间联动板",
+      "subtitle": null,
+      "note": "调节二次项系数、判别式和零点位置，同步观察抛物线开口、与x轴交点、符号区间和解集表示；数字化比板书更能呈现从两个实根、重根到无实根时解集形态的变化，并为第5章函数观点求解作桥接。不做因式分解刷题、套表格或机械解二次不等式。仅为 draft planned，未终核前禁止 scaffold。",
+      "cognitiveAction": "对应",
+      "availability": "proposed",
+      "status": "planned",
+      "version": null,
+      "lessonId": "SH-HS-MATH-HJ-B1-C02-L05",
+      "lessonTitle": "一元二次不等式的求解",
+      "textbookRef": "2.2.2",
+      "volumeId": "B1",
+      "volumeTitle": "必修第一册",
+      "chapterId": "SH-HS-MATH-HJ-B1-C02",
+      "chapterNumber": 2,
+      "chapterTitle": "等式与不等式",
+      "sectionId": "SH-HS-MATH-HJ-B1-C02-S02",
+      "sectionTitle": "不等式的求解",
+      "sectionTextbookLabel": "2.2",
+      "quality": {
+        "contentStatus": "planned",
+        "implementationStage": "planned",
+        "reviewStatus": "planned",
+        "readinessLabel": "规划中",
+        "displayStates": [
+          "planned"
+        ],
+        "labels": {
+          "contentStatus": "规划中",
+          "implementationStage": "规划中",
+          "reviewStatus": "规划中"
+        }
+      },
+      "player": null,
+      "packagePath": null
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B1-C02-L08-M01",
+      "resourceType": "manim_clip",
+      "title": "平均值不等式面积直观导入动画",
+      "subtitle": null,
+      "note": "用矩形与正方形面积、定周长面积最大和定面积周长最小的连续构造解释平均值不等式与等号条件；数字化价值在于把公式、面积和形状趋近正方形的过程连成一条直观叙事。不做基本不等式套公式求最值题库。仅为 draft planned，未终核前禁止 scaffold。",
+      "cognitiveAction": "构造",
+      "availability": "proposed",
+      "status": "planned",
+      "version": null,
+      "lessonId": "SH-HS-MATH-HJ-B1-C02-L08",
+      "lessonTitle": "平均值不等式及其应用",
+      "textbookRef": "2.3.1",
+      "volumeId": "B1",
+      "volumeTitle": "必修第一册",
+      "chapterId": "SH-HS-MATH-HJ-B1-C02",
+      "chapterNumber": 2,
+      "chapterTitle": "等式与不等式",
+      "sectionId": "SH-HS-MATH-HJ-B1-C02-S03",
+      "sectionTitle": "基本不等式及其应用",
+      "sectionTextbookLabel": "2.3",
+      "quality": {
+        "contentStatus": "planned",
+        "implementationStage": "planned",
+        "reviewStatus": "planned",
+        "readinessLabel": "规划中",
+        "displayStates": [
+          "planned"
+        ],
+        "labels": {
+          "contentStatus": "规划中",
+          "implementationStage": "规划中",
+          "reviewStatus": "规划中"
+        }
+      },
+      "player": null,
+      "packagePath": null
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B1-C04-L02-A01",
+      "resourceType": "applet",
+      "title": "幂函数指数变化图像实验室",
+      "subtitle": null,
+      "note": "通过切换或调节指数类型，同步观察定义域、单调性、对称性和坐标轴附近边界；数字化价值在于动态比较指数变化导致的性质差异，不做常规求定义域题库。仅为 draft planned，纸质教材或已登录平台终核前禁止 scaffold。",
+      "cognitiveAction": "比较",
+      "availability": "proposed",
+      "status": "planned",
+      "version": null,
+      "lessonId": "SH-HS-MATH-HJ-B1-C04-L02",
+      "lessonTitle": "幂函数的性质",
+      "textbookRef": "4.1.2",
+      "volumeId": "B1",
+      "volumeTitle": "必修第一册",
+      "chapterId": "SH-HS-MATH-HJ-B1-C04",
+      "chapterNumber": 4,
+      "chapterTitle": "幂函数、指数函数与对数函数",
+      "sectionId": "SH-HS-MATH-HJ-B1-C04-S01",
+      "sectionTitle": "幂函数",
+      "sectionTextbookLabel": "4.1",
+      "quality": {
+        "contentStatus": "planned",
+        "implementationStage": "planned",
+        "reviewStatus": "planned",
+        "readinessLabel": "规划中",
+        "displayStates": [
+          "planned"
+        ],
+        "labels": {
+          "contentStatus": "规划中",
+          "implementationStage": "规划中",
+          "reviewStatus": "规划中"
+        }
+      },
+      "player": null,
+      "packagePath": null
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B1-C04-L04-A01",
+      "resourceType": "applet",
+      "title": "指数函数底数变化与增长比较器",
+      "subtitle": null,
+      "note": "拖动底数 a，同步比较 a > 1 与 0 < a < 1 时的图像、表格、定点、单调方向和增长速度；数字化比板书更能呈现连续底数变化和增长差异。不做定义背诵、常规比较大小或指数不等式求解。仅为 draft planned，纸质教材或已登录平台终核前禁止 scaffold。",
+      "cognitiveAction": "变换",
+      "availability": "proposed",
+      "status": "planned",
+      "version": null,
+      "lessonId": "SH-HS-MATH-HJ-B1-C04-L04",
+      "lessonTitle": "指数函数的性质",
+      "textbookRef": "4.2.2",
+      "volumeId": "B1",
+      "volumeTitle": "必修第一册",
+      "chapterId": "SH-HS-MATH-HJ-B1-C04",
+      "chapterNumber": 4,
+      "chapterTitle": "幂函数、指数函数与对数函数",
+      "sectionId": "SH-HS-MATH-HJ-B1-C04-S02",
+      "sectionTitle": "指数函数",
+      "sectionTextbookLabel": "4.2",
+      "quality": {
+        "contentStatus": "planned",
+        "implementationStage": "planned",
+        "reviewStatus": "planned",
+        "readinessLabel": "规划中",
+        "displayStates": [
+          "planned"
+        ],
+        "labels": {
+          "contentStatus": "规划中",
+          "implementationStage": "规划中",
+          "reviewStatus": "规划中"
+        }
+      },
+      "player": null,
+      "packagePath": null
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B1-C04-L06-A01",
+      "resourceType": "applet",
+      "title": "指数对数互反图像镜像板",
+      "subtitle": null,
+      "note": "拖动指数函数图像上的点，同步交换坐标生成对数函数点，展示定义域/值域互换和关于 y = x 的对称；数字化比板书更能显化点的动态对应。不做对数定义背诵或换底公式练习。仅为 draft planned，纸质教材或已登录平台终核前禁止 scaffold。",
+      "cognitiveAction": "对应",
+      "availability": "proposed",
+      "status": "planned",
+      "version": null,
+      "lessonId": "SH-HS-MATH-HJ-B1-C04-L06",
+      "lessonTitle": "对数函数的性质",
+      "textbookRef": "4.3.2",
+      "volumeId": "B1",
+      "volumeTitle": "必修第一册",
+      "chapterId": "SH-HS-MATH-HJ-B1-C04",
+      "chapterNumber": 4,
+      "chapterTitle": "幂函数、指数函数与对数函数",
+      "sectionId": "SH-HS-MATH-HJ-B1-C04-S03",
+      "sectionTitle": "对数函数",
+      "sectionTextbookLabel": "4.3",
+      "quality": {
+        "contentStatus": "planned",
+        "implementationStage": "planned",
+        "reviewStatus": "planned",
+        "readinessLabel": "规划中",
+        "displayStates": [
+          "planned"
+        ],
+        "labels": {
+          "contentStatus": "规划中",
+          "implementationStage": "规划中",
+          "reviewStatus": "规划中"
+        }
+      },
+      "player": null,
+      "packagePath": null
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B1-C04-L06-A02",
+      "resourceType": "applet",
+      "title": "幂指数对数增长模型对比板",
+      "subtitle": null,
+      "note": "在同一图像、表格和观察点中比较幂函数、指数函数和对数函数的增长差异，可切换尺度避免远端差异被压扁；数字化价值在于多表征和尺度联动。若价值与第5章函数应用资源重叠，生产前应合并或取消。仅为 draft planned，纸质教材或已登录平台终核前禁止 scaffold。",
+      "cognitiveAction": "比较",
+      "availability": "proposed",
+      "status": "planned",
+      "version": null,
+      "lessonId": "SH-HS-MATH-HJ-B1-C04-L06",
+      "lessonTitle": "对数函数的性质",
+      "textbookRef": "4.3.2",
+      "volumeId": "B1",
+      "volumeTitle": "必修第一册",
+      "chapterId": "SH-HS-MATH-HJ-B1-C04",
+      "chapterNumber": 4,
+      "chapterTitle": "幂函数、指数函数与对数函数",
+      "sectionId": "SH-HS-MATH-HJ-B1-C04-S03",
+      "sectionTitle": "对数函数",
+      "sectionTextbookLabel": "4.3",
+      "quality": {
+        "contentStatus": "planned",
+        "implementationStage": "planned",
+        "reviewStatus": "planned",
+        "readinessLabel": "规划中",
+        "displayStates": [
+          "planned"
+        ],
+        "labels": {
+          "contentStatus": "规划中",
+          "implementationStage": "规划中",
+          "reviewStatus": "规划中"
+        }
+      },
+      "player": null,
+      "packagePath": null
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B1-C05-L02-A01",
+      "resourceType": "applet",
+      "title": "函数多表征联动板",
+      "subtitle": null,
+      "note": "同步联动解析式、表格和图像，突出定义域限制、离散点和连续曲线的差异；不替代纸笔作图。",
+      "cognitiveAction": "比较",
+      "availability": "proposed",
+      "status": "planned",
+      "version": null,
+      "lessonId": "SH-HS-MATH-HJ-B1-C05-L02",
+      "lessonTitle": "函数的表示方法",
+      "textbookRef": "5.1.2",
+      "volumeId": "B1",
+      "volumeTitle": "必修第一册",
+      "chapterId": "SH-HS-MATH-HJ-B1-C05",
+      "chapterNumber": 5,
+      "chapterTitle": "函数的概念、性质及应用",
+      "sectionId": "SH-HS-MATH-HJ-B1-C05-S01",
+      "sectionTitle": "函数",
+      "sectionTextbookLabel": "5.1",
+      "quality": {
+        "contentStatus": "planned",
+        "implementationStage": "planned",
+        "reviewStatus": "planned",
+        "readinessLabel": "规划中",
+        "displayStates": [
+          "planned"
+        ],
+        "labels": {
+          "contentStatus": "规划中",
+          "implementationStage": "规划中",
+          "reviewStatus": "规划中"
+        }
+      },
+      "player": null,
+      "packagePath": null
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B1-C05-L03-D01",
+      "resourceType": "diagnosis",
+      "title": "奇偶性前提与对称误区诊断",
+      "subtitle": null,
+      "note": "即时反馈定义域不对称、只看半边图像、轴对称/中心对称混淆等错因；不把定义背诵做成动画。",
+      "cognitiveAction": "比较",
+      "availability": "proposed",
+      "status": "planned",
+      "version": null,
+      "lessonId": "SH-HS-MATH-HJ-B1-C05-L03",
+      "lessonTitle": "函数的奇偶性",
+      "textbookRef": "5.2.1",
+      "volumeId": "B1",
+      "volumeTitle": "必修第一册",
+      "chapterId": "SH-HS-MATH-HJ-B1-C05",
+      "chapterNumber": 5,
+      "chapterTitle": "函数的概念、性质及应用",
+      "sectionId": "SH-HS-MATH-HJ-B1-C05-S02",
+      "sectionTitle": "函数的基本性质",
+      "sectionTextbookLabel": "5.2",
+      "quality": {
+        "contentStatus": "planned",
+        "implementationStage": "planned",
+        "reviewStatus": "planned",
+        "readinessLabel": "规划中",
+        "displayStates": [
+          "planned"
+        ],
+        "labels": {
+          "contentStatus": "规划中",
+          "implementationStage": "规划中",
+          "reviewStatus": "规划中"
+        }
+      },
+      "player": null,
+      "packagePath": null
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B1-C05-L04-A01",
+      "resourceType": "applet",
+      "title": "单调性区间比较器",
+      "subtitle": null,
+      "note": "拖动同一区间内两个自变量点，同步比较 x1、x2 与 f(x1)、f(x2)，突出单调性定义中的全称比较。",
+      "cognitiveAction": "比较",
+      "availability": "proposed",
+      "status": "planned",
+      "version": null,
+      "lessonId": "SH-HS-MATH-HJ-B1-C05-L04",
+      "lessonTitle": "函数的单调性",
+      "textbookRef": "5.2.2",
+      "volumeId": "B1",
+      "volumeTitle": "必修第一册",
+      "chapterId": "SH-HS-MATH-HJ-B1-C05",
+      "chapterNumber": 5,
+      "chapterTitle": "函数的概念、性质及应用",
+      "sectionId": "SH-HS-MATH-HJ-B1-C05-S02",
+      "sectionTitle": "函数的基本性质",
+      "sectionTextbookLabel": "5.2",
+      "quality": {
+        "contentStatus": "planned",
+        "implementationStage": "planned",
+        "reviewStatus": "planned",
+        "readinessLabel": "规划中",
+        "displayStates": [
+          "planned"
+        ],
+        "labels": {
+          "contentStatus": "规划中",
+          "implementationStage": "规划中",
+          "reviewStatus": "规划中"
+        }
+      },
+      "player": null,
+      "packagePath": null
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B1-C05-L08-A01",
+      "resourceType": "applet",
+      "title": "二分法零点逼近实验室",
+      "subtitle": null,
+      "note": "动态展示端点符号、中点、保留区间和区间长度递减，帮助学生理解算法步骤和近似精度。",
+      "cognitiveAction": "逼近",
+      "availability": "proposed",
+      "status": "planned",
+      "version": null,
+      "lessonId": "SH-HS-MATH-HJ-B1-C05-L08",
+      "lessonTitle": "用二分法求函数的零点",
+      "textbookRef": "5.3.3",
+      "volumeId": "B1",
+      "volumeTitle": "必修第一册",
+      "chapterId": "SH-HS-MATH-HJ-B1-C05",
+      "chapterNumber": 5,
+      "chapterTitle": "函数的概念、性质及应用",
+      "sectionId": "SH-HS-MATH-HJ-B1-C05-S03",
+      "sectionTitle": "函数的应用",
+      "sectionTextbookLabel": "5.3",
+      "quality": {
+        "contentStatus": "planned",
+        "implementationStage": "planned",
+        "reviewStatus": "planned",
+        "readinessLabel": "规划中",
+        "displayStates": [
+          "planned"
+        ],
+        "labels": {
+          "contentStatus": "规划中",
+          "implementationStage": "规划中",
+          "reviewStatus": "规划中"
+        }
+      },
+      "player": null,
+      "packagePath": null
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B2-C06-L02-A01",
+      "resourceType": "applet",
+      "title": "任意角与弧度动态量角器",
+      "subtitle": null,
+      "note": "拖动终边显示正负旋转、终边相同角、角度制和弧度制，并把单位圆弧长与弧度量同步联动；只服务任意角和弧度意义，不做普通换算刷题。",
+      "cognitiveAction": "旋转",
+      "availability": "proposed",
+      "status": "planned",
+      "version": null,
+      "lessonId": "SH-HS-MATH-HJ-B2-C06-L02",
+      "lessonTitle": "任意角及其度量",
+      "textbookRef": "6.1.2",
+      "volumeId": "B2",
+      "volumeTitle": "必修第二册",
+      "chapterId": "SH-HS-MATH-HJ-B2-C06",
+      "chapterNumber": 6,
+      "chapterTitle": "三角",
+      "sectionId": "SH-HS-MATH-HJ-B2-C06-S01",
+      "sectionTitle": "正弦、余弦、正切、余切",
+      "sectionTextbookLabel": "6.1",
+      "quality": {
+        "contentStatus": "planned",
+        "implementationStage": "planned",
+        "reviewStatus": "planned",
+        "readinessLabel": "规划中",
+        "displayStates": [
+          "planned"
+        ],
+        "labels": {
+          "contentStatus": "规划中",
+          "implementationStage": "规划中",
+          "reviewStatus": "规划中"
+        }
+      },
+      "player": null,
+      "packagePath": null
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B2-C06-L03-A01",
+      "resourceType": "applet",
+      "title": "单位圆三角比与终边联动板",
+      "subtitle": null,
+      "note": "拖动单位圆终边，同步显示坐标、四个三角比、象限符号和无定义状态，突出三角比几何意义与第7章函数值来源。",
+      "cognitiveAction": "投影",
+      "availability": "proposed",
+      "status": "planned",
+      "version": null,
+      "lessonId": "SH-HS-MATH-HJ-B2-C06-L03",
+      "lessonTitle": "任意角的正弦、余弦、正切、余切",
+      "textbookRef": "6.1.3",
+      "volumeId": "B2",
+      "volumeTitle": "必修第二册",
+      "chapterId": "SH-HS-MATH-HJ-B2-C06",
+      "chapterNumber": 6,
+      "chapterTitle": "三角",
+      "sectionId": "SH-HS-MATH-HJ-B2-C06-S01",
+      "sectionTitle": "正弦、余弦、正切、余切",
+      "sectionTextbookLabel": "6.1",
+      "quality": {
+        "contentStatus": "planned",
+        "implementationStage": "planned",
+        "reviewStatus": "planned",
+        "readinessLabel": "规划中",
+        "displayStates": [
+          "planned"
+        ],
+        "labels": {
+          "contentStatus": "规划中",
+          "implementationStage": "规划中",
+          "reviewStatus": "规划中"
+        }
+      },
+      "player": null,
+      "packagePath": null
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B2-C06-L03-D01",
+      "resourceType": "diagnosis",
+      "title": "任意角三角比符号与定义域诊断",
+      "subtitle": null,
+      "note": "围绕象限符号、轴上角、正切/余切无定义和坐标比值来源给即时错因反馈；不替代纸笔求值训练。",
+      "cognitiveAction": "比较",
+      "availability": "proposed",
+      "status": "planned",
+      "version": null,
+      "lessonId": "SH-HS-MATH-HJ-B2-C06-L03",
+      "lessonTitle": "任意角的正弦、余弦、正切、余切",
+      "textbookRef": "6.1.3",
+      "volumeId": "B2",
+      "volumeTitle": "必修第二册",
+      "chapterId": "SH-HS-MATH-HJ-B2-C06",
+      "chapterNumber": 6,
+      "chapterTitle": "三角",
+      "sectionId": "SH-HS-MATH-HJ-B2-C06-S01",
+      "sectionTitle": "正弦、余弦、正切、余切",
+      "sectionTextbookLabel": "6.1",
+      "quality": {
+        "contentStatus": "planned",
+        "implementationStage": "planned",
+        "reviewStatus": "planned",
+        "readinessLabel": "规划中",
+        "displayStates": [
+          "planned"
+        ],
+        "labels": {
+          "contentStatus": "规划中",
+          "implementationStage": "规划中",
+          "reviewStatus": "规划中"
+        }
+      },
+      "player": null,
+      "packagePath": null
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B2-C06-L04-A01",
+      "resourceType": "applet",
+      "title": "诱导公式单位圆对称板",
+      "subtitle": null,
+      "note": "只用单位圆上的对称映射解释公式来源，支持教师切换 alpha、pi-alpha、pi+alpha、2pi-alpha 等关系；不把纯公式记忆做成动画。",
+      "cognitiveAction": "比较",
+      "availability": "proposed",
+      "status": "planned",
+      "version": null,
+      "lessonId": "SH-HS-MATH-HJ-B2-C06-L04",
+      "lessonTitle": "诱导公式",
+      "textbookRef": "6.1.4",
+      "volumeId": "B2",
+      "volumeTitle": "必修第二册",
+      "chapterId": "SH-HS-MATH-HJ-B2-C06",
+      "chapterNumber": 6,
+      "chapterTitle": "三角",
+      "sectionId": "SH-HS-MATH-HJ-B2-C06-S01",
+      "sectionTitle": "正弦、余弦、正切、余切",
+      "sectionTextbookLabel": "6.1",
+      "quality": {
+        "contentStatus": "planned",
+        "implementationStage": "planned",
+        "reviewStatus": "planned",
+        "readinessLabel": "规划中",
+        "displayStates": [
+          "planned"
+        ],
+        "labels": {
+          "contentStatus": "规划中",
+          "implementationStage": "规划中",
+          "reviewStatus": "规划中"
+        }
+      },
+      "player": null,
+      "packagePath": null
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B2-C06-L05-D01",
+      "resourceType": "diagnosis",
+      "title": "已知三角值求角多解诊断",
+      "subtitle": null,
+      "note": "用短题即时标注象限遗漏、周期遗漏、主值误用和正切周期误判；不做完整代数解题器。",
+      "cognitiveAction": "比较",
+      "availability": "proposed",
+      "status": "planned",
+      "version": null,
+      "lessonId": "SH-HS-MATH-HJ-B2-C06-L05",
+      "lessonTitle": "已知正弦、余弦或正切值求角",
+      "textbookRef": "6.1.5",
+      "volumeId": "B2",
+      "volumeTitle": "必修第二册",
+      "chapterId": "SH-HS-MATH-HJ-B2-C06",
+      "chapterNumber": 6,
+      "chapterTitle": "三角",
+      "sectionId": "SH-HS-MATH-HJ-B2-C06-S01",
+      "sectionTitle": "正弦、余弦、正切、余切",
+      "sectionTextbookLabel": "6.1",
+      "quality": {
+        "contentStatus": "planned",
+        "implementationStage": "planned",
+        "reviewStatus": "planned",
+        "readinessLabel": "规划中",
+        "displayStates": [
+          "planned"
+        ],
+        "labels": {
+          "contentStatus": "规划中",
+          "implementationStage": "规划中",
+          "reviewStatus": "规划中"
+        }
+      },
+      "player": null,
+      "packagePath": null
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B2-C07-L01-A01",
+      "resourceType": "applet",
+      "title": "单位圆到正弦曲线",
+      "subtitle": "从单位圆动点的纵坐标生成 y = sin x 的函数图像",
+      "note": "拖动单位圆动点，同步生成横坐标为角、纵坐标为正弦值的轨迹。",
+      "cognitiveAction": "投影",
+      "availability": "metadata_ready",
+      "status": "draft",
+      "version": "0.1.0",
+      "lessonId": "SH-HS-MATH-HJ-B2-C07-L01",
+      "lessonTitle": "正弦函数的图像",
+      "textbookRef": "7.1.1",
+      "volumeId": "B2",
+      "volumeTitle": "必修第二册",
+      "chapterId": "SH-HS-MATH-HJ-B2-C07",
+      "chapterNumber": 7,
+      "chapterTitle": "三角函数",
+      "sectionId": "SH-HS-MATH-HJ-B2-C07-S01",
+      "sectionTitle": "正弦函数的图像与性质",
+      "sectionTextbookLabel": "7.1",
+      "quality": {
+        "contentStatus": "draft",
+        "implementationStage": "runnable",
+        "reviewStatus": "self_checked_draft",
+        "readinessLabel": "可运行预览",
+        "displayStates": [
+          "draft",
+          "runnable",
+          "self_checked_draft"
+        ],
+        "labels": {
+          "contentStatus": "草稿",
+          "implementationStage": "可运行",
+          "reviewStatus": "自检草稿"
+        }
+      },
+      "player": {
+        "kind": "iframe",
+        "isRunnable": true,
+        "src": "content/applets/SH-HS-MATH-HJ-B2-C07-L01-A01/src/index.html",
+        "title": "单位圆到正弦曲线",
+        "sandbox": "allow-scripts allow-same-origin"
+      },
+      "packagePath": "content/applets/SH-HS-MATH-HJ-B2-C07-L01-A01"
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B2-C07-L01-M01",
+      "resourceType": "manim_clip",
+      "title": "正弦曲线的来源",
+      "subtitle": "从单位圆旋转到 y = sin x 的连续生成动画",
+      "note": "用一段短动画展示圆周运动展开为波形的过程。",
+      "cognitiveAction": "投影",
+      "availability": "video_ready",
+      "status": "draft",
+      "version": "0.1.0",
+      "lessonId": "SH-HS-MATH-HJ-B2-C07-L01",
+      "lessonTitle": "正弦函数的图像",
+      "textbookRef": "7.1.1",
+      "volumeId": "B2",
+      "volumeTitle": "必修第二册",
+      "chapterId": "SH-HS-MATH-HJ-B2-C07",
+      "chapterNumber": 7,
+      "chapterTitle": "三角函数",
+      "sectionId": "SH-HS-MATH-HJ-B2-C07-S01",
+      "sectionTitle": "正弦函数的图像与性质",
+      "sectionTextbookLabel": "7.1",
+      "quality": {
+        "contentStatus": "draft",
+        "implementationStage": "video_ready",
+        "reviewStatus": "math_review_passed",
+        "readinessLabel": "视频已就绪",
+        "displayStates": [
+          "draft",
+          "video_ready",
+          "math_review_passed"
+        ],
+        "labels": {
+          "contentStatus": "草稿",
+          "implementationStage": "视频已就绪",
+          "reviewStatus": "数学审校通过"
+        }
+      },
+      "player": {
+        "kind": "video",
+        "isRunnable": true,
+        "title": "正弦曲线的来源",
+        "poster": "content/manim/SH-HS-MATH-HJ-B2-C07-L01-M01/dist/final/SH-HS-MATH-HJ-B2-C07-L01-M01-poster.png",
+        "sources": [
+          {
+            "src": "content/manim/SH-HS-MATH-HJ-B2-C07-L01-M01/dist/final/SH-HS-MATH-HJ-B2-C07-L01-M01.webm",
+            "type": "video/webm"
+          },
+          {
+            "src": "content/manim/SH-HS-MATH-HJ-B2-C07-L01-M01/dist/final/SH-HS-MATH-HJ-B2-C07-L01-M01.mp4",
+            "type": "video/mp4"
+          }
+        ]
+      },
+      "packagePath": "content/manim/SH-HS-MATH-HJ-B2-C07-L01-M01"
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B2-C07-L02-A01",
+      "resourceType": "applet",
+      "title": "正弦函数性质探究",
+      "subtitle": "比较周期段、单调段、对称元素和关键点，归纳 y = sin x 的性质",
+      "note": "显示或隐藏周期段、单调段、对称元素和关键点，支持教师分步揭示。",
+      "cognitiveAction": "比较",
+      "availability": "metadata_ready",
+      "status": "draft",
+      "version": "0.1.0",
+      "lessonId": "SH-HS-MATH-HJ-B2-C07-L02",
+      "lessonTitle": "正弦函数的性质",
+      "textbookRef": "7.1.2",
+      "volumeId": "B2",
+      "volumeTitle": "必修第二册",
+      "chapterId": "SH-HS-MATH-HJ-B2-C07",
+      "chapterNumber": 7,
+      "chapterTitle": "三角函数",
+      "sectionId": "SH-HS-MATH-HJ-B2-C07-S01",
+      "sectionTitle": "正弦函数的图像与性质",
+      "sectionTextbookLabel": "7.1",
+      "quality": {
+        "contentStatus": "draft",
+        "implementationStage": "runnable",
+        "reviewStatus": "self_checked_draft",
+        "readinessLabel": "可运行预览",
+        "displayStates": [
+          "draft",
+          "runnable",
+          "self_checked_draft"
+        ],
+        "labels": {
+          "contentStatus": "草稿",
+          "implementationStage": "可运行",
+          "reviewStatus": "自检草稿"
+        }
+      },
+      "player": {
+        "kind": "iframe",
+        "isRunnable": true,
+        "src": "content/applets/SH-HS-MATH-HJ-B2-C07-L02-A01/src/index.html",
+        "title": "正弦函数性质探究",
+        "sandbox": "allow-scripts allow-same-origin"
+      },
+      "packagePath": "content/applets/SH-HS-MATH-HJ-B2-C07-L02-A01"
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B2-C07-L02-D01",
+      "resourceType": "diagnosis",
+      "title": "正弦函数性质诊断",
+      "subtitle": "围绕周期、单调区间、对称性和关键点一般式的课堂即时诊断",
+      "note": "围绕周期遗漏、区间端点和对称性误判生成即时反馈。",
+      "cognitiveAction": "比较",
+      "availability": "item_bank_ready",
+      "status": "draft",
+      "version": "0.1.0",
+      "lessonId": "SH-HS-MATH-HJ-B2-C07-L02",
+      "lessonTitle": "正弦函数的性质",
+      "textbookRef": "7.1.2",
+      "volumeId": "B2",
+      "volumeTitle": "必修第二册",
+      "chapterId": "SH-HS-MATH-HJ-B2-C07",
+      "chapterNumber": 7,
+      "chapterTitle": "三角函数",
+      "sectionId": "SH-HS-MATH-HJ-B2-C07-S01",
+      "sectionTitle": "正弦函数的图像与性质",
+      "sectionTextbookLabel": "7.1",
+      "quality": {
+        "contentStatus": "draft",
+        "implementationStage": "item_bank_ready",
+        "reviewStatus": "self_checked_draft",
+        "readinessLabel": "题组已就绪",
+        "displayStates": [
+          "draft",
+          "item_bank_ready",
+          "self_checked_draft"
+        ],
+        "labels": {
+          "contentStatus": "草稿",
+          "implementationStage": "题组已就绪",
+          "reviewStatus": "自检草稿"
+        }
+      },
+      "player": null,
+      "packagePath": "content/diagnosis/SH-HS-MATH-HJ-B2-C07-L02-D01"
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B2-C07-L03-A01",
+      "resourceType": "applet",
+      "title": "单位圆到余弦曲线",
+      "subtitle": "从单位圆动点的横坐标生成 y = cos x 的函数图像",
+      "note": "把单位圆横坐标投影到函数图像，并与正弦投影形成可切换对照。",
+      "cognitiveAction": "投影",
+      "availability": "metadata_ready",
+      "status": "draft",
+      "version": "0.1.0",
+      "lessonId": "SH-HS-MATH-HJ-B2-C07-L03",
+      "lessonTitle": "余弦函数的图像",
+      "textbookRef": "7.2.1",
+      "volumeId": "B2",
+      "volumeTitle": "必修第二册",
+      "chapterId": "SH-HS-MATH-HJ-B2-C07",
+      "chapterNumber": 7,
+      "chapterTitle": "三角函数",
+      "sectionId": "SH-HS-MATH-HJ-B2-C07-S02",
+      "sectionTitle": "余弦函数的图像与性质",
+      "sectionTextbookLabel": "7.2",
+      "quality": {
+        "contentStatus": "draft",
+        "implementationStage": "runnable",
+        "reviewStatus": "self_checked_draft",
+        "readinessLabel": "可运行预览",
+        "displayStates": [
+          "draft",
+          "runnable",
+          "self_checked_draft"
+        ],
+        "labels": {
+          "contentStatus": "草稿",
+          "implementationStage": "可运行",
+          "reviewStatus": "自检草稿"
+        }
+      },
+      "player": {
+        "kind": "iframe",
+        "isRunnable": true,
+        "src": "content/applets/SH-HS-MATH-HJ-B2-C07-L03-A01/src/index.html",
+        "title": "单位圆到余弦曲线",
+        "sandbox": "allow-scripts allow-same-origin"
+      },
+      "packagePath": "content/applets/SH-HS-MATH-HJ-B2-C07-L03-A01"
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B2-C07-L03-A02",
+      "resourceType": "applet",
+      "title": "正弦与余弦相位对照",
+      "subtitle": "用同一角度的单位圆坐标和函数图像位置比较 sin x 与 cos x",
+      "note": "用同步游标展示 sin 与 cos 在同一角度下的坐标来源和图像位置。",
+      "cognitiveAction": "比较",
+      "availability": "metadata_ready",
+      "status": "draft",
+      "version": "0.1.0",
+      "lessonId": "SH-HS-MATH-HJ-B2-C07-L03",
+      "lessonTitle": "余弦函数的图像",
+      "textbookRef": "7.2.1",
+      "volumeId": "B2",
+      "volumeTitle": "必修第二册",
+      "chapterId": "SH-HS-MATH-HJ-B2-C07",
+      "chapterNumber": 7,
+      "chapterTitle": "三角函数",
+      "sectionId": "SH-HS-MATH-HJ-B2-C07-S02",
+      "sectionTitle": "余弦函数的图像与性质",
+      "sectionTextbookLabel": "7.2",
+      "quality": {
+        "contentStatus": "draft",
+        "implementationStage": "runnable",
+        "reviewStatus": "self_checked_draft",
+        "readinessLabel": "可运行预览",
+        "displayStates": [
+          "draft",
+          "runnable",
+          "self_checked_draft"
+        ],
+        "labels": {
+          "contentStatus": "草稿",
+          "implementationStage": "可运行",
+          "reviewStatus": "自检草稿"
+        }
+      },
+      "player": {
+        "kind": "iframe",
+        "isRunnable": true,
+        "src": "content/applets/SH-HS-MATH-HJ-B2-C07-L03-A02/src/index.html",
+        "title": "正弦与余弦相位对照",
+        "sandbox": "allow-scripts allow-same-origin"
+      },
+      "packagePath": "content/applets/SH-HS-MATH-HJ-B2-C07-L03-A02"
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B2-C07-L04-A01",
+      "resourceType": "applet",
+      "title": "正弦余弦性质对照板",
+      "subtitle": "并列比较关键点、单调段和对称元素，归纳 sin x 与 cos x 的性质差异",
+      "note": "并列联动关键点、单调段和对称元素，支持教师切换问题焦点。",
+      "cognitiveAction": "比较",
+      "availability": "metadata_ready",
+      "status": "draft",
+      "version": "0.1.0",
+      "lessonId": "SH-HS-MATH-HJ-B2-C07-L04",
+      "lessonTitle": "余弦函数的性质",
+      "textbookRef": "7.2.2",
+      "volumeId": "B2",
+      "volumeTitle": "必修第二册",
+      "chapterId": "SH-HS-MATH-HJ-B2-C07",
+      "chapterNumber": 7,
+      "chapterTitle": "三角函数",
+      "sectionId": "SH-HS-MATH-HJ-B2-C07-S02",
+      "sectionTitle": "余弦函数的图像与性质",
+      "sectionTextbookLabel": "7.2",
+      "quality": {
+        "contentStatus": "draft",
+        "implementationStage": "runnable",
+        "reviewStatus": "self_checked_draft",
+        "readinessLabel": "可运行预览",
+        "displayStates": [
+          "draft",
+          "runnable",
+          "self_checked_draft"
+        ],
+        "labels": {
+          "contentStatus": "草稿",
+          "implementationStage": "可运行",
+          "reviewStatus": "自检草稿"
+        }
+      },
+      "player": {
+        "kind": "iframe",
+        "isRunnable": true,
+        "src": "content/applets/SH-HS-MATH-HJ-B2-C07-L04-A01/src/index.html",
+        "title": "正弦余弦性质对照板",
+        "sandbox": "allow-scripts allow-same-origin"
+      },
+      "packagePath": "content/applets/SH-HS-MATH-HJ-B2-C07-L04-A01"
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B2-C07-L04-D01",
+      "resourceType": "diagnosis",
+      "title": "余弦性质误区诊断",
+      "subtitle": "围绕奇偶性、单调区间和关键点一般式的课堂即时诊断",
+      "note": "检测奇偶性、单调区间和关键点一般式的典型混淆。",
+      "cognitiveAction": "比较",
+      "availability": "item_bank_ready",
+      "status": "draft",
+      "version": "0.1.0",
+      "lessonId": "SH-HS-MATH-HJ-B2-C07-L04",
+      "lessonTitle": "余弦函数的性质",
+      "textbookRef": "7.2.2",
+      "volumeId": "B2",
+      "volumeTitle": "必修第二册",
+      "chapterId": "SH-HS-MATH-HJ-B2-C07",
+      "chapterNumber": 7,
+      "chapterTitle": "三角函数",
+      "sectionId": "SH-HS-MATH-HJ-B2-C07-S02",
+      "sectionTitle": "余弦函数的图像与性质",
+      "sectionTextbookLabel": "7.2",
+      "quality": {
+        "contentStatus": "draft",
+        "implementationStage": "item_bank_ready",
+        "reviewStatus": "self_checked_draft",
+        "readinessLabel": "题组已就绪",
+        "displayStates": [
+          "draft",
+          "item_bank_ready",
+          "self_checked_draft"
+        ],
+        "labels": {
+          "contentStatus": "草稿",
+          "implementationStage": "题组已就绪",
+          "reviewStatus": "自检草稿"
+        }
+      },
+      "player": null,
+      "packagePath": "content/diagnosis/SH-HS-MATH-HJ-B2-C07-L04-D01"
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B2-C07-L05-A01",
+      "resourceType": "applet",
+      "title": "三角函数参数变化实验室",
+      "subtitle": "分离观察 A、ω、φ 对 y = A sin(ωx + φ) 图像的影响",
+      "note": "滑块控制 A、omega、phi，支持单参数锁定、变换顺序切换和关键点追踪；k 可作为平台扩展开关，默认对齐教材的无竖直平移形式。",
+      "cognitiveAction": "变换",
+      "availability": "metadata_ready",
+      "status": "draft",
+      "version": "0.1.0",
+      "lessonId": "SH-HS-MATH-HJ-B2-C07-L05",
+      "lessonTitle": "函数 y = A sin(omega x + phi) 的图像",
+      "textbookRef": "7.3",
+      "volumeId": "B2",
+      "volumeTitle": "必修第二册",
+      "chapterId": "SH-HS-MATH-HJ-B2-C07",
+      "chapterNumber": 7,
+      "chapterTitle": "三角函数",
+      "sectionId": "SH-HS-MATH-HJ-B2-C07-S03",
+      "sectionTitle": "函数 y = A sin(omega x + phi) 的图像",
+      "sectionTextbookLabel": "7.3",
+      "quality": {
+        "contentStatus": "draft",
+        "implementationStage": "runnable",
+        "reviewStatus": "self_checked_draft",
+        "readinessLabel": "可运行预览",
+        "displayStates": [
+          "draft",
+          "runnable",
+          "self_checked_draft"
+        ],
+        "labels": {
+          "contentStatus": "草稿",
+          "implementationStage": "可运行",
+          "reviewStatus": "自检草稿"
+        }
+      },
+      "player": {
+        "kind": "iframe",
+        "isRunnable": true,
+        "src": "content/applets/SH-HS-MATH-HJ-B2-C07-L05-A01/src/index.html",
+        "title": "三角函数参数变化实验室",
+        "sandbox": "allow-scripts allow-same-origin"
+      },
+      "packagePath": "content/applets/SH-HS-MATH-HJ-B2-C07-L05-A01"
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B2-C07-L05-M01",
+      "resourceType": "manim_clip",
+      "title": "图像变换顺序解释",
+      "subtitle": "把 y = A sin(ωx + φ) 拆成横向伸缩、相位平移和纵向伸缩",
+      "note": "把横向伸缩、平移和纵向伸缩拆成可暂停的连续变换。",
+      "cognitiveAction": "分解",
+      "availability": "video_ready",
+      "status": "draft",
+      "version": "0.1.0",
+      "lessonId": "SH-HS-MATH-HJ-B2-C07-L05",
+      "lessonTitle": "函数 y = A sin(omega x + phi) 的图像",
+      "textbookRef": "7.3",
+      "volumeId": "B2",
+      "volumeTitle": "必修第二册",
+      "chapterId": "SH-HS-MATH-HJ-B2-C07",
+      "chapterNumber": 7,
+      "chapterTitle": "三角函数",
+      "sectionId": "SH-HS-MATH-HJ-B2-C07-S03",
+      "sectionTitle": "函数 y = A sin(omega x + phi) 的图像",
+      "sectionTextbookLabel": "7.3",
+      "quality": {
+        "contentStatus": "draft",
+        "implementationStage": "video_ready",
+        "reviewStatus": "math_review_passed",
+        "readinessLabel": "视频已就绪",
+        "displayStates": [
+          "draft",
+          "video_ready",
+          "math_review_passed"
+        ],
+        "labels": {
+          "contentStatus": "草稿",
+          "implementationStage": "视频已就绪",
+          "reviewStatus": "数学审校通过"
+        }
+      },
+      "player": {
+        "kind": "video",
+        "isRunnable": true,
+        "title": "图像变换顺序解释",
+        "poster": "content/manim/SH-HS-MATH-HJ-B2-C07-L05-M01/dist/final/SH-HS-MATH-HJ-B2-C07-L05-M01-poster.png",
+        "sources": [
+          {
+            "src": "content/manim/SH-HS-MATH-HJ-B2-C07-L05-M01/dist/final/SH-HS-MATH-HJ-B2-C07-L05-M01.webm",
+            "type": "video/webm"
+          },
+          {
+            "src": "content/manim/SH-HS-MATH-HJ-B2-C07-L05-M01/dist/final/SH-HS-MATH-HJ-B2-C07-L05-M01.mp4",
+            "type": "video/mp4"
+          }
+        ]
+      },
+      "packagePath": "content/manim/SH-HS-MATH-HJ-B2-C07-L05-M01"
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B2-C07-L05-D01",
+      "resourceType": "diagnosis",
+      "title": "参数识别诊断任务",
+      "subtitle": "围绕 A、ω、φ 的图像读数和错因分流",
+      "note": "给出图像关键点，要求判断 A、omega、phi 的可能取值并解释理由。",
+      "cognitiveAction": "比较",
+      "availability": "item_bank_ready",
+      "status": "draft",
+      "version": "0.1.0",
+      "lessonId": "SH-HS-MATH-HJ-B2-C07-L05",
+      "lessonTitle": "函数 y = A sin(omega x + phi) 的图像",
+      "textbookRef": "7.3",
+      "volumeId": "B2",
+      "volumeTitle": "必修第二册",
+      "chapterId": "SH-HS-MATH-HJ-B2-C07",
+      "chapterNumber": 7,
+      "chapterTitle": "三角函数",
+      "sectionId": "SH-HS-MATH-HJ-B2-C07-S03",
+      "sectionTitle": "函数 y = A sin(omega x + phi) 的图像",
+      "sectionTextbookLabel": "7.3",
+      "quality": {
+        "contentStatus": "draft",
+        "implementationStage": "item_bank_ready",
+        "reviewStatus": "self_checked_draft",
+        "readinessLabel": "题组已就绪",
+        "displayStates": [
+          "draft",
+          "item_bank_ready",
+          "self_checked_draft"
+        ],
+        "labels": {
+          "contentStatus": "草稿",
+          "implementationStage": "题组已就绪",
+          "reviewStatus": "自检草稿"
+        }
+      },
+      "player": null,
+      "packagePath": "content/diagnosis/SH-HS-MATH-HJ-B2-C07-L05-D01"
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B2-C07-L06-A01",
+      "resourceType": "applet",
+      "title": "正切函数图像生成器",
+      "subtitle": "联动单位圆斜率、渐近线和 y = tan x 的分段逼近",
+      "note": "联动单位圆、斜率线和正切图像，突出渐近线两侧的变化趋势。",
+      "cognitiveAction": "逼近",
+      "availability": "metadata_ready",
+      "status": "draft",
+      "version": "0.1.0",
+      "lessonId": "SH-HS-MATH-HJ-B2-C07-L06",
+      "lessonTitle": "正切函数的图像",
+      "textbookRef": "7.4.1",
+      "volumeId": "B2",
+      "volumeTitle": "必修第二册",
+      "chapterId": "SH-HS-MATH-HJ-B2-C07",
+      "chapterNumber": 7,
+      "chapterTitle": "三角函数",
+      "sectionId": "SH-HS-MATH-HJ-B2-C07-S04",
+      "sectionTitle": "正切函数的图像与性质",
+      "sectionTextbookLabel": "7.4",
+      "quality": {
+        "contentStatus": "draft",
+        "implementationStage": "runnable",
+        "reviewStatus": "self_checked_draft",
+        "readinessLabel": "可运行预览",
+        "displayStates": [
+          "draft",
+          "runnable",
+          "self_checked_draft"
+        ],
+        "labels": {
+          "contentStatus": "草稿",
+          "implementationStage": "可运行",
+          "reviewStatus": "自检草稿"
+        }
+      },
+      "player": {
+        "kind": "iframe",
+        "isRunnable": true,
+        "src": "content/applets/SH-HS-MATH-HJ-B2-C07-L06-A01/src/index.html",
+        "title": "正切函数图像生成器",
+        "sandbox": "allow-scripts allow-same-origin"
+      },
+      "packagePath": "content/applets/SH-HS-MATH-HJ-B2-C07-L06-A01"
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B2-C07-L06-M01",
+      "resourceType": "manim_clip",
+      "title": "为什么正切图像有渐近线",
+      "subtitle": "从终边斜率逼近 y 轴解释 y = tan x 的定义域断裂",
+      "note": "从终边接近 y 轴时斜率变化解释图像趋向无穷。",
+      "cognitiveAction": "逼近",
+      "availability": "video_ready",
+      "status": "draft",
+      "version": "0.1.0",
+      "lessonId": "SH-HS-MATH-HJ-B2-C07-L06",
+      "lessonTitle": "正切函数的图像",
+      "textbookRef": "7.4.1",
+      "volumeId": "B2",
+      "volumeTitle": "必修第二册",
+      "chapterId": "SH-HS-MATH-HJ-B2-C07",
+      "chapterNumber": 7,
+      "chapterTitle": "三角函数",
+      "sectionId": "SH-HS-MATH-HJ-B2-C07-S04",
+      "sectionTitle": "正切函数的图像与性质",
+      "sectionTextbookLabel": "7.4",
+      "quality": {
+        "contentStatus": "draft",
+        "implementationStage": "video_ready",
+        "reviewStatus": "math_review_passed",
+        "readinessLabel": "视频已就绪",
+        "displayStates": [
+          "draft",
+          "video_ready",
+          "math_review_passed"
+        ],
+        "labels": {
+          "contentStatus": "草稿",
+          "implementationStage": "视频已就绪",
+          "reviewStatus": "数学审校通过"
+        }
+      },
+      "player": {
+        "kind": "video",
+        "isRunnable": true,
+        "title": "为什么正切图像有渐近线",
+        "poster": "content/manim/SH-HS-MATH-HJ-B2-C07-L06-M01/dist/final/SH-HS-MATH-HJ-B2-C07-L06-M01-poster.png",
+        "sources": [
+          {
+            "src": "content/manim/SH-HS-MATH-HJ-B2-C07-L06-M01/dist/final/SH-HS-MATH-HJ-B2-C07-L06-M01.webm",
+            "type": "video/webm"
+          },
+          {
+            "src": "content/manim/SH-HS-MATH-HJ-B2-C07-L06-M01/dist/final/SH-HS-MATH-HJ-B2-C07-L06-M01.mp4",
+            "type": "video/mp4"
+          }
+        ]
+      },
+      "packagePath": "content/manim/SH-HS-MATH-HJ-B2-C07-L06-M01"
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B2-C07-L07-A01",
+      "resourceType": "applet",
+      "title": "正切性质分段观察",
+      "subtitle": "比较分段单调、π 周期、奇对称和值域",
+      "note": "按相邻定义区间分段高亮单调性、周期平移和奇对称。",
+      "cognitiveAction": "比较",
+      "availability": "metadata_ready",
+      "status": "draft",
+      "version": "0.1.0",
+      "lessonId": "SH-HS-MATH-HJ-B2-C07-L07",
+      "lessonTitle": "正切函数的性质",
+      "textbookRef": "7.4.2",
+      "volumeId": "B2",
+      "volumeTitle": "必修第二册",
+      "chapterId": "SH-HS-MATH-HJ-B2-C07",
+      "chapterNumber": 7,
+      "chapterTitle": "三角函数",
+      "sectionId": "SH-HS-MATH-HJ-B2-C07-S04",
+      "sectionTitle": "正切函数的图像与性质",
+      "sectionTextbookLabel": "7.4",
+      "quality": {
+        "contentStatus": "draft",
+        "implementationStage": "runnable",
+        "reviewStatus": "self_checked_draft",
+        "readinessLabel": "可运行预览",
+        "displayStates": [
+          "draft",
+          "runnable",
+          "self_checked_draft"
+        ],
+        "labels": {
+          "contentStatus": "草稿",
+          "implementationStage": "可运行",
+          "reviewStatus": "自检草稿"
+        }
+      },
+      "player": {
+        "kind": "iframe",
+        "isRunnable": true,
+        "src": "content/applets/SH-HS-MATH-HJ-B2-C07-L07-A01/src/index.html",
+        "title": "正切性质分段观察",
+        "sandbox": "allow-scripts allow-same-origin"
+      },
+      "packagePath": "content/applets/SH-HS-MATH-HJ-B2-C07-L07-A01"
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B2-C07-L07-D01",
+      "resourceType": "diagnosis",
+      "title": "正切函数性质诊断",
+      "subtitle": "围绕定义域断裂、分段单调和性质一般式的课堂即时诊断",
+      "note": "重点检测定义域、单调区间、周期和渐近线的综合判断。",
+      "cognitiveAction": "比较",
+      "availability": "item_bank_ready",
+      "status": "draft",
+      "version": "0.1.0",
+      "lessonId": "SH-HS-MATH-HJ-B2-C07-L07",
+      "lessonTitle": "正切函数的性质",
+      "textbookRef": "7.4.2",
+      "volumeId": "B2",
+      "volumeTitle": "必修第二册",
+      "chapterId": "SH-HS-MATH-HJ-B2-C07",
+      "chapterNumber": 7,
+      "chapterTitle": "三角函数",
+      "sectionId": "SH-HS-MATH-HJ-B2-C07-S04",
+      "sectionTitle": "正切函数的图像与性质",
+      "sectionTextbookLabel": "7.4",
+      "quality": {
+        "contentStatus": "draft",
+        "implementationStage": "item_bank_ready",
+        "reviewStatus": "self_checked_draft",
+        "readinessLabel": "题组已就绪",
+        "displayStates": [
+          "draft",
+          "item_bank_ready",
+          "self_checked_draft"
+        ],
+        "labels": {
+          "contentStatus": "草稿",
+          "implementationStage": "题组已就绪",
+          "reviewStatus": "自检草稿"
+        }
+      },
+      "player": null,
+      "packagePath": "content/diagnosis/SH-HS-MATH-HJ-B2-C07-L07-D01"
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B2-C08-L01-A01",
+      "resourceType": "applet",
+      "title": "向量表示与等价拖拽板",
+      "subtitle": "用平移后的有向线段比较向量的大小、方向和位置无关性",
+      "note": "拖动多个有向线段的起点和终点，实时判断相等、相反、平行和共线关系，突出向量的位置无关性。",
+      "cognitiveAction": "比较",
+      "availability": "metadata_ready",
+      "status": "draft",
+      "version": "0.1.0",
+      "lessonId": "SH-HS-MATH-HJ-B2-C08-L01",
+      "lessonTitle": "向量的概念",
+      "textbookRef": "8.1.1",
+      "volumeId": "B2",
+      "volumeTitle": "必修第二册",
+      "chapterId": "SH-HS-MATH-HJ-B2-C08",
+      "chapterNumber": 8,
+      "chapterTitle": "平面向量",
+      "sectionId": "SH-HS-MATH-HJ-B2-C08-S01",
+      "sectionTitle": "向量的概念和线性运算",
+      "sectionTextbookLabel": "8.1",
+      "quality": {
+        "contentStatus": "draft",
+        "implementationStage": "runnable",
+        "reviewStatus": "self_checked_draft",
+        "readinessLabel": "可运行预览",
+        "displayStates": [
+          "draft",
+          "runnable",
+          "self_checked_draft"
+        ],
+        "labels": {
+          "contentStatus": "草稿",
+          "implementationStage": "可运行",
+          "reviewStatus": "自检草稿"
+        }
+      },
+      "player": {
+        "kind": "iframe",
+        "isRunnable": true,
+        "src": "content/applets/SH-HS-MATH-HJ-B2-C08-L01-A01/src/index.html",
+        "title": "向量表示与等价拖拽板",
+        "sandbox": "allow-scripts allow-same-origin"
+      },
+      "packagePath": "content/applets/SH-HS-MATH-HJ-B2-C08-L01-A01"
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B2-C08-L02-A01",
+      "resourceType": "applet",
+      "title": "向量加减法构造器",
+      "subtitle": "围绕向量的加法和减法的交互式数字教具骨架",
+      "note": "拖动两个向量并切换三角形法则、平行四边形法则和减法模式，同步显示合向量与路径解释。",
+      "cognitiveAction": "分解",
+      "availability": "metadata_ready",
+      "status": "draft",
+      "version": "0.1.0",
+      "lessonId": "SH-HS-MATH-HJ-B2-C08-L02",
+      "lessonTitle": "向量的加法和减法",
+      "textbookRef": "8.1.2",
+      "volumeId": "B2",
+      "volumeTitle": "必修第二册",
+      "chapterId": "SH-HS-MATH-HJ-B2-C08",
+      "chapterNumber": 8,
+      "chapterTitle": "平面向量",
+      "sectionId": "SH-HS-MATH-HJ-B2-C08-S01",
+      "sectionTitle": "向量的概念和线性运算",
+      "sectionTextbookLabel": "8.1",
+      "quality": {
+        "contentStatus": "draft",
+        "implementationStage": "scaffold",
+        "reviewStatus": "self_checked_draft",
+        "readinessLabel": "骨架待精修",
+        "displayStates": [
+          "draft",
+          "scaffold",
+          "self_checked_draft"
+        ],
+        "labels": {
+          "contentStatus": "草稿",
+          "implementationStage": "骨架",
+          "reviewStatus": "自检草稿"
+        }
+      },
+      "player": null,
+      "packagePath": "content/applets/SH-HS-MATH-HJ-B2-C08-L02-A01"
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B2-C08-L02-D01",
+      "resourceType": "diagnosis",
+      "title": "加减法方向四类短诊断",
+      "subtitle": "围绕向量的加法和减法的课堂即时诊断草稿",
+      "note": "只覆盖首尾相接、相反向量、闭合路径、端点顺序四类错因，用即时反馈提示方向来源；不做构造演示。",
+      "cognitiveAction": "比较",
+      "availability": "metadata_ready",
+      "status": "draft",
+      "version": "0.1.0",
+      "lessonId": "SH-HS-MATH-HJ-B2-C08-L02",
+      "lessonTitle": "向量的加法和减法",
+      "textbookRef": "8.1.2",
+      "volumeId": "B2",
+      "volumeTitle": "必修第二册",
+      "chapterId": "SH-HS-MATH-HJ-B2-C08",
+      "chapterNumber": 8,
+      "chapterTitle": "平面向量",
+      "sectionId": "SH-HS-MATH-HJ-B2-C08-S01",
+      "sectionTitle": "向量的概念和线性运算",
+      "sectionTextbookLabel": "8.1",
+      "quality": {
+        "contentStatus": "draft",
+        "implementationStage": "scaffold",
+        "reviewStatus": "self_checked_draft",
+        "readinessLabel": "骨架待精修",
+        "displayStates": [
+          "draft",
+          "scaffold",
+          "self_checked_draft"
+        ],
+        "labels": {
+          "contentStatus": "草稿",
+          "implementationStage": "骨架",
+          "reviewStatus": "自检草稿"
+        }
+      },
+      "player": null,
+      "packagePath": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L02-D01"
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B2-C08-L03-A01",
+      "resourceType": "applet",
+      "title": "数乘伸缩实验室",
+      "subtitle": "围绕实数与向量的乘法的交互式数字教具骨架",
+      "note": "用滑块控制实数 lambda，联动显示长度倍率、方向翻转、零向量和共线判定。",
+      "cognitiveAction": "缩放",
+      "availability": "metadata_ready",
+      "status": "draft",
+      "version": "0.1.0",
+      "lessonId": "SH-HS-MATH-HJ-B2-C08-L03",
+      "lessonTitle": "实数与向量的乘法",
+      "textbookRef": "8.1.3",
+      "volumeId": "B2",
+      "volumeTitle": "必修第二册",
+      "chapterId": "SH-HS-MATH-HJ-B2-C08",
+      "chapterNumber": 8,
+      "chapterTitle": "平面向量",
+      "sectionId": "SH-HS-MATH-HJ-B2-C08-S01",
+      "sectionTitle": "向量的概念和线性运算",
+      "sectionTextbookLabel": "8.1",
+      "quality": {
+        "contentStatus": "draft",
+        "implementationStage": "scaffold",
+        "reviewStatus": "self_checked_draft",
+        "readinessLabel": "骨架待精修",
+        "displayStates": [
+          "draft",
+          "scaffold",
+          "self_checked_draft"
+        ],
+        "labels": {
+          "contentStatus": "草稿",
+          "implementationStage": "骨架",
+          "reviewStatus": "自检草稿"
+        }
+      },
+      "player": null,
+      "packagePath": "content/applets/SH-HS-MATH-HJ-B2-C08-L03-A01"
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B2-C08-L04-A01",
+      "resourceType": "applet",
+      "title": "投影长度与夹角实验室",
+      "subtitle": "围绕向量的投影的交互式数字教具骨架",
+      "note": "拖动两个向量改变夹角，联动显示垂足、有向投影长度、cos 值和正负变化。",
+      "cognitiveAction": "投影",
+      "availability": "metadata_ready",
+      "status": "draft",
+      "version": "0.1.0",
+      "lessonId": "SH-HS-MATH-HJ-B2-C08-L04",
+      "lessonTitle": "向量的投影",
+      "textbookRef": "8.2.1",
+      "volumeId": "B2",
+      "volumeTitle": "必修第二册",
+      "chapterId": "SH-HS-MATH-HJ-B2-C08",
+      "chapterNumber": 8,
+      "chapterTitle": "平面向量",
+      "sectionId": "SH-HS-MATH-HJ-B2-C08-S02",
+      "sectionTitle": "向量的数量积",
+      "sectionTextbookLabel": "8.2",
+      "quality": {
+        "contentStatus": "draft",
+        "implementationStage": "scaffold",
+        "reviewStatus": "self_checked_draft",
+        "readinessLabel": "骨架待精修",
+        "displayStates": [
+          "draft",
+          "scaffold",
+          "self_checked_draft"
+        ],
+        "labels": {
+          "contentStatus": "草稿",
+          "implementationStage": "骨架",
+          "reviewStatus": "自检草稿"
+        }
+      },
+      "player": null,
+      "packagePath": "content/applets/SH-HS-MATH-HJ-B2-C08-L04-A01"
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B2-C08-L04-M01",
+      "resourceType": "manim_clip",
+      "title": "投影有向长度导入动画",
+      "subtitle": "从作垂线到读有向投影长度的 Manim 场景骨架",
+      "note": "30-45 秒短动画，只串联作垂线、读有向投影、解释 a cos theta 的正负，不替代后续交互探索。",
+      "cognitiveAction": "投影",
+      "availability": "metadata_ready",
+      "status": "draft",
+      "version": "0.1.0",
+      "lessonId": "SH-HS-MATH-HJ-B2-C08-L04",
+      "lessonTitle": "向量的投影",
+      "textbookRef": "8.2.1",
+      "volumeId": "B2",
+      "volumeTitle": "必修第二册",
+      "chapterId": "SH-HS-MATH-HJ-B2-C08",
+      "chapterNumber": 8,
+      "chapterTitle": "平面向量",
+      "sectionId": "SH-HS-MATH-HJ-B2-C08-S02",
+      "sectionTitle": "向量的数量积",
+      "sectionTextbookLabel": "8.2",
+      "quality": {
+        "contentStatus": "draft",
+        "implementationStage": "scaffold",
+        "reviewStatus": "self_checked_draft",
+        "readinessLabel": "骨架待精修",
+        "displayStates": [
+          "draft",
+          "scaffold",
+          "self_checked_draft"
+        ],
+        "labels": {
+          "contentStatus": "草稿",
+          "implementationStage": "骨架",
+          "reviewStatus": "自检草稿"
+        }
+      },
+      "player": null,
+      "packagePath": "content/manim/SH-HS-MATH-HJ-B2-C08-L04-M01"
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B2-C08-L05-A01",
+      "resourceType": "applet",
+      "title": "数量积动态解释器",
+      "subtitle": "围绕向量的数量积的定义与运算律的交互式数字教具骨架",
+      "note": "同步展示两个向量、夹角、投影和数量积数值，突出正、零、负三种区域。",
+      "cognitiveAction": "比较",
+      "availability": "metadata_ready",
+      "status": "draft",
+      "version": "0.1.0",
+      "lessonId": "SH-HS-MATH-HJ-B2-C08-L05",
+      "lessonTitle": "向量的数量积的定义与运算律",
+      "textbookRef": "8.2.2",
+      "volumeId": "B2",
+      "volumeTitle": "必修第二册",
+      "chapterId": "SH-HS-MATH-HJ-B2-C08",
+      "chapterNumber": 8,
+      "chapterTitle": "平面向量",
+      "sectionId": "SH-HS-MATH-HJ-B2-C08-S02",
+      "sectionTitle": "向量的数量积",
+      "sectionTextbookLabel": "8.2",
+      "quality": {
+        "contentStatus": "draft",
+        "implementationStage": "scaffold",
+        "reviewStatus": "self_checked_draft",
+        "readinessLabel": "骨架待精修",
+        "displayStates": [
+          "draft",
+          "scaffold",
+          "self_checked_draft"
+        ],
+        "labels": {
+          "contentStatus": "草稿",
+          "implementationStage": "骨架",
+          "reviewStatus": "自检草稿"
+        }
+      },
+      "player": null,
+      "packagePath": "content/applets/SH-HS-MATH-HJ-B2-C08-L05-A01"
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B2-C08-L05-D01",
+      "resourceType": "diagnosis",
+      "title": "数量积正负误区诊断",
+      "subtitle": "围绕向量的数量积的定义与运算律的课堂即时诊断草稿",
+      "note": "检测结果类型、垂直判定、零向量边界和运算律误用。",
+      "cognitiveAction": "比较",
+      "availability": "metadata_ready",
+      "status": "draft",
+      "version": "0.1.0",
+      "lessonId": "SH-HS-MATH-HJ-B2-C08-L05",
+      "lessonTitle": "向量的数量积的定义与运算律",
+      "textbookRef": "8.2.2",
+      "volumeId": "B2",
+      "volumeTitle": "必修第二册",
+      "chapterId": "SH-HS-MATH-HJ-B2-C08",
+      "chapterNumber": 8,
+      "chapterTitle": "平面向量",
+      "sectionId": "SH-HS-MATH-HJ-B2-C08-S02",
+      "sectionTitle": "向量的数量积",
+      "sectionTextbookLabel": "8.2",
+      "quality": {
+        "contentStatus": "draft",
+        "implementationStage": "scaffold",
+        "reviewStatus": "self_checked_draft",
+        "readinessLabel": "骨架待精修",
+        "displayStates": [
+          "draft",
+          "scaffold",
+          "self_checked_draft"
+        ],
+        "labels": {
+          "contentStatus": "草稿",
+          "implementationStage": "骨架",
+          "reviewStatus": "自检草稿"
+        }
+      },
+      "player": null,
+      "packagePath": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L05-D01"
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B2-C08-L10-A01",
+      "resourceType": "applet",
+      "title": "向量法路径比较板",
+      "subtitle": "围绕向量的应用的交互式数字教具骨架",
+      "note": "限定 1-2 个典型几何问题，只比较基底法、坐标法、数量积法的第一步建模路径，不做通用解题器。",
+      "cognitiveAction": "分解",
+      "availability": "metadata_ready",
+      "status": "draft",
+      "version": "0.1.0",
+      "lessonId": "SH-HS-MATH-HJ-B2-C08-L10",
+      "lessonTitle": "向量的应用",
+      "textbookRef": "8.4",
+      "volumeId": "B2",
+      "volumeTitle": "必修第二册",
+      "chapterId": "SH-HS-MATH-HJ-B2-C08",
+      "chapterNumber": 8,
+      "chapterTitle": "平面向量",
+      "sectionId": "SH-HS-MATH-HJ-B2-C08-S04",
+      "sectionTitle": "向量的应用",
+      "sectionTextbookLabel": "8.4",
+      "quality": {
+        "contentStatus": "draft",
+        "implementationStage": "scaffold",
+        "reviewStatus": "self_checked_draft",
+        "readinessLabel": "骨架待精修",
+        "displayStates": [
+          "draft",
+          "scaffold",
+          "self_checked_draft"
+        ],
+        "labels": {
+          "contentStatus": "草稿",
+          "implementationStage": "骨架",
+          "reviewStatus": "自检草稿"
+        }
+      },
+      "player": null,
+      "packagePath": "content/applets/SH-HS-MATH-HJ-B2-C08-L10-A01"
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B2-C08-L10-D01",
+      "resourceType": "diagnosis",
+      "title": "向量应用第一步诊断",
+      "subtitle": "围绕向量的应用的课堂即时诊断草稿",
+      "note": "围绕几何条件选择基底法、坐标法或数量积法的第一步理由给反馈，不批改完整证明过程。",
+      "cognitiveAction": "比较",
+      "availability": "metadata_ready",
+      "status": "draft",
+      "version": "0.1.0",
+      "lessonId": "SH-HS-MATH-HJ-B2-C08-L10",
+      "lessonTitle": "向量的应用",
+      "textbookRef": "8.4",
+      "volumeId": "B2",
+      "volumeTitle": "必修第二册",
+      "chapterId": "SH-HS-MATH-HJ-B2-C08",
+      "chapterNumber": 8,
+      "chapterTitle": "平面向量",
+      "sectionId": "SH-HS-MATH-HJ-B2-C08-S04",
+      "sectionTitle": "向量的应用",
+      "sectionTextbookLabel": "8.4",
+      "quality": {
+        "contentStatus": "draft",
+        "implementationStage": "scaffold",
+        "reviewStatus": "self_checked_draft",
+        "readinessLabel": "骨架待精修",
+        "displayStates": [
+          "draft",
+          "scaffold",
+          "self_checked_draft"
+        ],
+        "labels": {
+          "contentStatus": "草稿",
+          "implementationStage": "骨架",
+          "reviewStatus": "自检草稿"
+        }
+      },
+      "player": null,
+      "packagePath": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L10-D01"
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B2-C09-L03-A01",
+      "resourceType": "applet",
+      "title": "复平面点向量对应与加法构造板",
+      "subtitle": null,
+      "note": "拖动复平面上的点，同步显示复数代数形式、原点向量、坐标分量和加法平行四边形；只覆盖表示对应与加法几何意义，不做通用复数计算器。",
+      "cognitiveAction": "对应",
+      "availability": "proposed",
+      "status": "planned",
+      "version": null,
+      "lessonId": "SH-HS-MATH-HJ-B2-C09-L03",
+      "lessonTitle": "复平面、复数的向量表示与加法几何意义",
+      "textbookRef": "9.2.1-9.2.3",
+      "volumeId": "B2",
+      "volumeTitle": "必修第二册",
+      "chapterId": "SH-HS-MATH-HJ-B2-C09",
+      "chapterNumber": 9,
+      "chapterTitle": "复数",
+      "sectionId": "SH-HS-MATH-HJ-B2-C09-S02",
+      "sectionTitle": "复数的几何意义",
+      "sectionTextbookLabel": "9.2",
+      "quality": {
+        "contentStatus": "planned",
+        "implementationStage": "planned",
+        "reviewStatus": "planned",
+        "readinessLabel": "规划中",
+        "displayStates": [
+          "planned"
+        ],
+        "labels": {
+          "contentStatus": "规划中",
+          "implementationStage": "规划中",
+          "reviewStatus": "规划中"
+        }
+      },
+      "player": null,
+      "packagePath": null
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B2-C09-L04-A01",
+      "resourceType": "applet",
+      "title": "模与共轭几何对照板",
+      "subtitle": null,
+      "note": "拖动复平面点，同步显示到原点距离、共轭点关于实轴对称和模不变关系；纯代数化简仍保留为纸笔练习。",
+      "cognitiveAction": "比较",
+      "availability": "proposed",
+      "status": "planned",
+      "version": null,
+      "lessonId": "SH-HS-MATH-HJ-B2-C09-L04",
+      "lessonTitle": "复数的模",
+      "textbookRef": "9.2.4",
+      "volumeId": "B2",
+      "volumeTitle": "必修第二册",
+      "chapterId": "SH-HS-MATH-HJ-B2-C09",
+      "chapterNumber": 9,
+      "chapterTitle": "复数",
+      "sectionId": "SH-HS-MATH-HJ-B2-C09-S02",
+      "sectionTitle": "复数的几何意义",
+      "sectionTextbookLabel": "9.2",
+      "quality": {
+        "contentStatus": "planned",
+        "implementationStage": "planned",
+        "reviewStatus": "planned",
+        "readinessLabel": "规划中",
+        "displayStates": [
+          "planned"
+        ],
+        "labels": {
+          "contentStatus": "规划中",
+          "implementationStage": "规划中",
+          "reviewStatus": "规划中"
+        }
+      },
+      "player": null,
+      "packagePath": null
+    },
+    {
+      "id": "SH-HS-MATH-HJ-B2-C09-L07-A01",
+      "resourceType": "applet",
+      "title": "复数乘法旋转缩放实验室",
+      "subtitle": null,
+      "note": "调节两个复数的模和辐角，观察乘积点如何旋转和缩放；仅在 *9.4 确认进入教学进度后生产，先聚焦乘除法几何意义，乘方与开方作为后续模式。",
+      "cognitiveAction": "变换",
+      "availability": "proposed",
+      "status": "planned",
+      "version": null,
+      "lessonId": "SH-HS-MATH-HJ-B2-C09-L07",
+      "lessonTitle": "三角形式下复数的乘除、乘方与开方运算",
+      "textbookRef": "*9.4.2-*9.4.3",
+      "volumeId": "B2",
+      "volumeTitle": "必修第二册",
+      "chapterId": "SH-HS-MATH-HJ-B2-C09",
+      "chapterNumber": 9,
+      "chapterTitle": "复数",
+      "sectionId": "SH-HS-MATH-HJ-B2-C09-S04",
+      "sectionTitle": "复数的三角形式",
+      "sectionTextbookLabel": "*9.4",
+      "quality": {
+        "contentStatus": "planned",
+        "implementationStage": "planned",
+        "reviewStatus": "planned",
+        "readinessLabel": "规划中",
+        "displayStates": [
+          "planned"
+        ],
+        "labels": {
+          "contentStatus": "规划中",
+          "implementationStage": "规划中",
+          "reviewStatus": "规划中"
+        }
+      },
+      "player": null,
+      "packagePath": null
+    }
+  ],
+  "resourceFacets": {
+    "volumes": [
+      {
+        "id": "B2",
+        "label": "必修第二册",
+        "count": 33
+      },
+      {
+        "id": "B1",
+        "label": "必修第一册",
+        "count": 11
+      }
+    ],
+    "chapters": [
+      {
+        "id": "SH-HS-MATH-HJ-B1-C02",
+        "label": "第 2 章 等式与不等式",
+        "volumeId": "B1",
+        "count": 3
+      },
+      {
+        "id": "SH-HS-MATH-HJ-B1-C04",
+        "label": "第 4 章 幂函数、指数函数与对数函数",
+        "volumeId": "B1",
+        "count": 4
+      },
+      {
+        "id": "SH-HS-MATH-HJ-B1-C05",
+        "label": "第 5 章 函数的概念、性质及应用",
+        "volumeId": "B1",
+        "count": 4
+      },
+      {
+        "id": "SH-HS-MATH-HJ-B2-C06",
+        "label": "第 6 章 三角",
+        "volumeId": "B2",
+        "count": 5
+      },
+      {
+        "id": "SH-HS-MATH-HJ-B2-C07",
+        "label": "第 7 章 三角函数",
+        "volumeId": "B2",
+        "count": 15
+      },
+      {
+        "id": "SH-HS-MATH-HJ-B2-C08",
+        "label": "第 8 章 平面向量",
+        "volumeId": "B2",
+        "count": 10
+      },
+      {
+        "id": "SH-HS-MATH-HJ-B2-C09",
+        "label": "第 9 章 复数",
+        "volumeId": "B2",
+        "count": 3
+      }
+    ],
+    "lessons": [
+      {
+        "id": "SH-HS-MATH-HJ-B2-C09-L07",
+        "label": "*9.4.2-*9.4.3 三角形式下复数的乘除、乘方与开方运算",
+        "volumeId": "B2",
+        "chapterId": "SH-HS-MATH-HJ-B2-C09",
+        "count": 1
+      },
+      {
+        "id": "SH-HS-MATH-HJ-B1-C02-L04",
+        "label": "2.2.1 一元一次不等式及一元一次不等式组的求解",
+        "volumeId": "B1",
+        "chapterId": "SH-HS-MATH-HJ-B1-C02",
+        "count": 1
+      },
+      {
+        "id": "SH-HS-MATH-HJ-B1-C02-L05",
+        "label": "2.2.2 一元二次不等式的求解",
+        "volumeId": "B1",
+        "chapterId": "SH-HS-MATH-HJ-B1-C02",
+        "count": 1
+      },
+      {
+        "id": "SH-HS-MATH-HJ-B1-C02-L08",
+        "label": "2.3.1 平均值不等式及其应用",
+        "volumeId": "B1",
+        "chapterId": "SH-HS-MATH-HJ-B1-C02",
+        "count": 1
+      },
+      {
+        "id": "SH-HS-MATH-HJ-B1-C04-L02",
+        "label": "4.1.2 幂函数的性质",
+        "volumeId": "B1",
+        "chapterId": "SH-HS-MATH-HJ-B1-C04",
+        "count": 1
+      },
+      {
+        "id": "SH-HS-MATH-HJ-B1-C04-L04",
+        "label": "4.2.2 指数函数的性质",
+        "volumeId": "B1",
+        "chapterId": "SH-HS-MATH-HJ-B1-C04",
+        "count": 1
+      },
+      {
+        "id": "SH-HS-MATH-HJ-B1-C04-L06",
+        "label": "4.3.2 对数函数的性质",
+        "volumeId": "B1",
+        "chapterId": "SH-HS-MATH-HJ-B1-C04",
+        "count": 2
+      },
+      {
+        "id": "SH-HS-MATH-HJ-B1-C05-L02",
+        "label": "5.1.2 函数的表示方法",
+        "volumeId": "B1",
+        "chapterId": "SH-HS-MATH-HJ-B1-C05",
+        "count": 1
+      },
+      {
+        "id": "SH-HS-MATH-HJ-B1-C05-L03",
+        "label": "5.2.1 函数的奇偶性",
+        "volumeId": "B1",
+        "chapterId": "SH-HS-MATH-HJ-B1-C05",
+        "count": 1
+      },
+      {
+        "id": "SH-HS-MATH-HJ-B1-C05-L04",
+        "label": "5.2.2 函数的单调性",
+        "volumeId": "B1",
+        "chapterId": "SH-HS-MATH-HJ-B1-C05",
+        "count": 1
+      },
+      {
+        "id": "SH-HS-MATH-HJ-B1-C05-L08",
+        "label": "5.3.3 用二分法求函数的零点",
+        "volumeId": "B1",
+        "chapterId": "SH-HS-MATH-HJ-B1-C05",
+        "count": 1
+      },
+      {
+        "id": "SH-HS-MATH-HJ-B2-C06-L02",
+        "label": "6.1.2 任意角及其度量",
+        "volumeId": "B2",
+        "chapterId": "SH-HS-MATH-HJ-B2-C06",
+        "count": 1
+      },
+      {
+        "id": "SH-HS-MATH-HJ-B2-C06-L03",
+        "label": "6.1.3 任意角的正弦、余弦、正切、余切",
+        "volumeId": "B2",
+        "chapterId": "SH-HS-MATH-HJ-B2-C06",
+        "count": 2
+      },
+      {
+        "id": "SH-HS-MATH-HJ-B2-C06-L04",
+        "label": "6.1.4 诱导公式",
+        "volumeId": "B2",
+        "chapterId": "SH-HS-MATH-HJ-B2-C06",
+        "count": 1
+      },
+      {
+        "id": "SH-HS-MATH-HJ-B2-C06-L05",
+        "label": "6.1.5 已知正弦、余弦或正切值求角",
+        "volumeId": "B2",
+        "chapterId": "SH-HS-MATH-HJ-B2-C06",
+        "count": 1
+      },
+      {
+        "id": "SH-HS-MATH-HJ-B2-C07-L01",
+        "label": "7.1.1 正弦函数的图像",
+        "volumeId": "B2",
+        "chapterId": "SH-HS-MATH-HJ-B2-C07",
+        "count": 2
+      },
+      {
+        "id": "SH-HS-MATH-HJ-B2-C07-L02",
+        "label": "7.1.2 正弦函数的性质",
+        "volumeId": "B2",
+        "chapterId": "SH-HS-MATH-HJ-B2-C07",
+        "count": 2
+      },
+      {
+        "id": "SH-HS-MATH-HJ-B2-C07-L03",
+        "label": "7.2.1 余弦函数的图像",
+        "volumeId": "B2",
+        "chapterId": "SH-HS-MATH-HJ-B2-C07",
+        "count": 2
+      },
+      {
+        "id": "SH-HS-MATH-HJ-B2-C07-L04",
+        "label": "7.2.2 余弦函数的性质",
+        "volumeId": "B2",
+        "chapterId": "SH-HS-MATH-HJ-B2-C07",
+        "count": 2
+      },
+      {
+        "id": "SH-HS-MATH-HJ-B2-C07-L05",
+        "label": "7.3 函数 y = A sin(omega x + phi) 的图像",
+        "volumeId": "B2",
+        "chapterId": "SH-HS-MATH-HJ-B2-C07",
+        "count": 3
+      },
+      {
+        "id": "SH-HS-MATH-HJ-B2-C07-L06",
+        "label": "7.4.1 正切函数的图像",
+        "volumeId": "B2",
+        "chapterId": "SH-HS-MATH-HJ-B2-C07",
+        "count": 2
+      },
+      {
+        "id": "SH-HS-MATH-HJ-B2-C07-L07",
+        "label": "7.4.2 正切函数的性质",
+        "volumeId": "B2",
+        "chapterId": "SH-HS-MATH-HJ-B2-C07",
+        "count": 2
+      },
+      {
+        "id": "SH-HS-MATH-HJ-B2-C08-L01",
+        "label": "8.1.1 向量的概念",
+        "volumeId": "B2",
+        "chapterId": "SH-HS-MATH-HJ-B2-C08",
+        "count": 1
+      },
+      {
+        "id": "SH-HS-MATH-HJ-B2-C08-L02",
+        "label": "8.1.2 向量的加法和减法",
+        "volumeId": "B2",
+        "chapterId": "SH-HS-MATH-HJ-B2-C08",
+        "count": 2
+      },
+      {
+        "id": "SH-HS-MATH-HJ-B2-C08-L03",
+        "label": "8.1.3 实数与向量的乘法",
+        "volumeId": "B2",
+        "chapterId": "SH-HS-MATH-HJ-B2-C08",
+        "count": 1
+      },
+      {
+        "id": "SH-HS-MATH-HJ-B2-C08-L04",
+        "label": "8.2.1 向量的投影",
+        "volumeId": "B2",
+        "chapterId": "SH-HS-MATH-HJ-B2-C08",
+        "count": 2
+      },
+      {
+        "id": "SH-HS-MATH-HJ-B2-C08-L05",
+        "label": "8.2.2 向量的数量积的定义与运算律",
+        "volumeId": "B2",
+        "chapterId": "SH-HS-MATH-HJ-B2-C08",
+        "count": 2
+      },
+      {
+        "id": "SH-HS-MATH-HJ-B2-C08-L10",
+        "label": "8.4 向量的应用",
+        "volumeId": "B2",
+        "chapterId": "SH-HS-MATH-HJ-B2-C08",
+        "count": 2
+      },
+      {
+        "id": "SH-HS-MATH-HJ-B2-C09-L03",
+        "label": "9.2.1-9.2.3 复平面、复数的向量表示与加法几何意义",
+        "volumeId": "B2",
+        "chapterId": "SH-HS-MATH-HJ-B2-C09",
+        "count": 1
+      },
+      {
+        "id": "SH-HS-MATH-HJ-B2-C09-L04",
+        "label": "9.2.4 复数的模",
+        "volumeId": "B2",
+        "chapterId": "SH-HS-MATH-HJ-B2-C09",
+        "count": 1
+      }
+    ],
+    "resourceTypes": [
+      {
+        "id": "diagnosis",
+        "label": "诊断任务",
+        "count": 10
+      },
+      {
+        "id": "applet",
+        "label": "HTML Applet",
+        "count": 29
+      },
+      {
+        "id": "manim_clip",
+        "label": "Manim 动画",
+        "count": 5
+      }
+    ],
+    "reviewStatuses": [
+      {
+        "id": "planned",
+        "label": "规划中",
+        "count": 19
+      },
+      {
+        "id": "math_review_passed",
+        "label": "数学审校通过",
+        "count": 3
+      },
+      {
+        "id": "self_checked_draft",
+        "label": "自检草稿",
+        "count": 22
+      }
+    ]
   },
   "mvp": {
     "volume": "B2",
