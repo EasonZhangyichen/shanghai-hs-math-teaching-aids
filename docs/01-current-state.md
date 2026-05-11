@@ -177,6 +177,10 @@
   - `SH-HS-MATH-HJ-B2-C08-L01-A01`“向量表示与等价拖拽板”已从占位骨架精修为可运行 Applet 原型，metadata 仍保持 `status: draft` 与 `compliance.review_status: self_checked_draft`，只建议后续进入数学审校、浏览器复核和教师试读，不直接进入发布流程。
   - 新增只读批次规划器 `scripts/plan-resource-batch.js` 与 `docs/resource-factory-batch-planner.md`，可输出生产线、审核线、来源终核和暂缓队列；工具不写入课程图谱、backlog、generated files 或资源包。
   - 本批集成时总控修正了平台测试的旧假设：第 8 章可以存在“可运行但仍为自检草稿”的资源，但不得显示为已审校或已发布。
+- 已完成第 8 章 Applet 生产线第二批 3 个任务并进入总控集成：
+  - `SH-HS-MATH-HJ-B2-C08-L02-A01`“向量加减法构造器”、`SH-HS-MATH-HJ-B2-C08-L03-A01`“数乘伸缩实验室”和 `SH-HS-MATH-HJ-B2-C08-L04-A01`“投影长度与夹角实验室”已由 scaffold 升级为可直接打开的 HTML Applet 自检草稿。
+  - 三个资源均保持 `metadata.status: draft` 与 `compliance.review_status: self_checked_draft`；总控未恢复 8.3 暂缓项，未修改课程图谱，未提升到 `math_review`、`browser_review`、`classroom_trial`、`release_candidate` 或 `published`。
+  - 本批集成后由总控统一再生 `apps/web/src/data/workspace-data.json` 并运行 `npm run verify`；后续仍需第 8 章教材/平台目录终核、独立数学审校、浏览器大屏触控复核和教师限时试读。
 - 已完成双线并行质量修复线首批 3 个任务并进入总控集成：
   - `SH-HS-MATH-HJ-B2-C07-L01-A01` 与 `SH-HS-MATH-HJ-B2-C07-L06-A01` README 中的 `theta`、`pi/2`、`kpi`、`2pi` 等旧口径已清理；第 7 章课程图谱、L05 Applet / Manim / Diagnosis metadata 中的 7.3 标题已统一为 `y = A sin(ωx + φ)`。
   - `SH-HS-MATH-HJ-B2-C07-L03-A02` 已优化平台 iframe 下的窄宽裁切和触控目标尺寸，浏览器复测建议可进入 `browser_review`，但仍需真实教室触控屏确认拖动手感。
@@ -255,7 +259,7 @@
 - 必修第二册第 8 章“平面向量”已完成首版结构化整理、dolearning 来源核对记录和 planned resource 数字化必要性筛选落地，但尚未完成纸质教材/已登录 dolearning 终核；尤其需要确认 8.3 是教材四小节拆分，还是 dolearning 三课时分组。第 8 章 6 个筛选后保留的 Applet 资源包、3 个 Diagnosis 资源包和 1 个 Manim Clip 资源包均已生成骨架；8.3 暂缓资源仍不进入 scaffold 生产队列。
 - 第 7 章的第 6 章前置节点已 draft 展开，但仍需人工终核；第 9 章“复数”已新增 draft 图谱和数字化必要性初筛，但尚未完成纸质教材/已登录 dolearning 终核。
 - 尚未创建独立课件播放器；教师工作台内已完成样板 Applet iframe 预览接入，但尚未沉淀为独立 `apps/player`。
-- 已创建八个第 7 章可运行 HTML Applet 原型，并已接入平台壳 iframe 预览；`L01-A01`、`L02-A01`、`L03-A01`、`L03-A02`、`L04-A01`、`L05-A01`、`L06-A01` 和 `L07-A01` 均已完成一轮数学/浏览器审校但仍需教师试读，另有六个第 8 章 Applet 处于 scaffolded 骨架状态。
+- 已创建八个第 7 章可运行 HTML Applet 原型，并已接入平台壳 iframe 预览；`L01-A01`、`L02-A01`、`L03-A01`、`L03-A02`、`L04-A01`、`L05-A01`、`L06-A01` 和 `L07-A01` 均已完成一轮数学/浏览器审校但仍需教师试读。第 8 章 Applet 中，`L01-A01`、`L02-A01`、`L03-A01` 和 `L04-A01` 已推进为可运行自检草稿，`L05-A01` 与 `L10-A01` 仍处于 scaffolded 骨架状态。
 - 已创建四个 Manim 场景脚本：`L01-M01`、`L05-M01` 与 `L06-M01` 均已导出可播放 `mp4` / `webm` / poster，`SH-HS-MATH-HJ-B2-C08-L04-M01` 当前仅为 `scene_draft` / `metadata_ready` 骨架；`L01-M01`、`L05-M01` 和 `L06-M01` 已完成数学审校和重渲染，仍需教研观看确认课堂节奏。
 - 已将 Applet、Manim 和 Diagnosis metadata JSON Schema 接入首版自动校验脚本。
 - 已建立首版资源生产 backlog，可按单个资源工作单元开启新对话，避免全高中内容挤在一个上下文中；当前必修第二册第 7 章 15 个资源工作单元和第 8 章 10 个筛选后候选均已落地，新增的 B1-C02、B1-C04、B1-C05、B2-C06、B2-C09 planned 候选仅用于记录数字化必要性，不应立即 scaffold，并已补充 Applet / Manim / Diagnosis 全类型 scaffold 命令以减少后续手工建目录成本。
