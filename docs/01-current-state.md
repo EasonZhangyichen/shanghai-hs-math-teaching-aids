@@ -172,6 +172,11 @@
   - 新增 `docs/classroom-trials/b2-c07-classroom-trial-readiness.md`，建议 `L01-A01` 与 `L06-A01` 可进入真实教师限时试读准备，`L05-A01` 因 25 分钟脚本过长暂建议 `hold_for_revision`，需要先压缩或拆分课堂片段。
   - 新增 `docs/browser-audits/b2-c07-browser-touch-audit.md`，建议 `L07-A01` 可进入带风险记录的 `browser_review`；`L03-A02` 存在平台 iframe 窄宽裁切和触控目标偏小，`L05-A01` 存在直达页和 iframe 首屏高度过高风险，均不建议无条件进入 `browser_review`。
   - 本批只新增审核报告，未修改资源包、平台源码、课程图谱或 generated files；三项报告均不建议任何资源进入 `classroom_trial`、`release_candidate` 或 `published`。
+- 已完成双线并行生产线首批 3 个任务并进入总控集成：
+  - 平台框架新增教师备课筛选能力，支持按资源类型、审核状态、资源就绪状态、册别、章节、课时和关键词筛选资源；第 8 章资源在平台中仍显示为 `draft` / `scaffold` / `self_checked_draft` 或可运行自检草稿，不提升为 `math_review`、`release_candidate` 或 `published`。
+  - `SH-HS-MATH-HJ-B2-C08-L01-A01`“向量表示与等价拖拽板”已从占位骨架精修为可运行 Applet 原型，metadata 仍保持 `status: draft` 与 `compliance.review_status: self_checked_draft`，只建议后续进入数学审校、浏览器复核和教师试读，不直接进入发布流程。
+  - 新增只读批次规划器 `scripts/plan-resource-batch.js` 与 `docs/resource-factory-batch-planner.md`，可输出生产线、审核线、来源终核和暂缓队列；工具不写入课程图谱、backlog、generated files 或资源包。
+  - 本批集成时总控修正了平台测试的旧假设：第 8 章可以存在“可运行但仍为自检草稿”的资源，但不得显示为已审校或已发布。
 - 已完成首轮数学符号与布局统一修正：
   - 平台侧和课件侧已接入富数学文本渲染，常见的 `π/2`、`-3π/2` 等会以竖式分数显示，避免 `pi/2`、`Theta` 或横向斜杠破坏数学语言。
   - `content/shared/math-text-normalizer.js` 已覆盖普通 HTML 文本、动态 DOM 更新和 SVG `<text>` 中的简单 π 分数标签。

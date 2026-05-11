@@ -1,6 +1,6 @@
 # 资源工厂工作流
 
-更新时间：2026-05-09
+更新时间：2026-05-11
 
 ## 为什么需要它
 
@@ -14,6 +14,7 @@
 content/curriculum/index.yaml
   -> npm run generate:backlog
   -> content/production/resource-backlog.json
+  -> node scripts/plan-resource-batch.js --production-limit 3 --review-limit 3
   -> 选择一个 backlog item / 筛选同类型 planned item
   -> 批量 scaffold 资源骨架，或开新对话复核已实现资源
   -> 切对应 track 分支
@@ -72,6 +73,30 @@ npm run scaffold:backlog -- --id SH-HS-MATH-HJ-B2-C07-L04-D01 --write
 scaffold 只负责创建可校验的草稿骨架，不代表题组、数学表达或课堂节奏已经完成。已存在的资源包会被跳过，不会覆盖。
 
 当前必修第二册第 7 章和第 8 章都已经没有 `planned` item；新增的 `planned` item 来自必修第一册第 2、4、5 章，第 6 章和第 9 章 draft 图谱候选。下一轮 scaffold 应等待总控确认来源核对、课时边界和数字化必要性后再开始。对已实现资源，下一步不是重复 scaffold，而是进入单资源精修、数学审校、课堂试读、浏览器复核和状态升级。
+
+## 批次规划 dry-run
+
+生产线和审核线并行前，可以先运行只读批次规划器：
+
+```bash
+node scripts/plan-resource-batch.js --production-limit 3 --review-limit 3
+```
+
+该工具读取 `content/production/resource-backlog.json`、资源 metadata 和 `content/curriculum/index.yaml` 的来源可信度，只输出候选报告，不写入 backlog、课程图谱、平台生成数据或任何资源包。
+
+分流原则：
+
+- 已 scaffold 但未深入精修的资源进入生产线候选，最高只建议到 `self_checked_draft`。
+- 已落地且不再是骨架的资源进入审核线候选，用于数学审校、课堂试读准备度或浏览器复核。
+- `scaffoldPolicy: blocked_until_source_verified`、章节/课时仍需人工终核的 planned item 只进入来源终核队列。
+- 第 8 章 `8.3` 边界待确认项保持暂缓，不进入 scaffold 或完整制作建议。
+- 如果普通板书、纸笔任务或静态讲解更合适，输出低优先级或暂不数字化。
+
+详细说明见：
+
+```text
+docs/resource-factory-batch-planner.md
+```
 
 ## 已实现资源审校
 
@@ -211,3 +236,4 @@ npm run verify
 
 - 质量线：围绕第 7 章已有 15 个资源推进数学审校、课堂节奏试读、浏览器复核和状态升级；第一轮已完成正切链条 Applet / Manim / Diagnosis 审校，第二轮已完成正弦链条 Applet / Manim / Diagnosis 审校，第三轮已完成余弦链条 Applet / Applet / Diagnosis 审校，第四轮已完成正弦性质与参数变换链条 Applet / Applet / Diagnosis 审校，第五轮已完成相位对照 / 变换顺序 Manim / 正切性质 Applet 审校。
 - 扩展线：按 `docs/parallel-chapter-factory.md` 并行推进 3 到 5 个新章节的来源核对、课程图谱和数字化必要性筛选；通过总控验收后，再小批量 scaffold。
+- 生产线：第六轮首批已验证“平台筛选能力 + 第 8 章单资源精修 + 资源工厂批次规划器”可以并行推进，但第 8 章资源仍保持 `draft` / `self_checked_draft`，只有总控在数学审校、浏览器复核和教师试读完成后才可决定更高状态。

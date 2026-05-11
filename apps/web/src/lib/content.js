@@ -85,6 +85,8 @@ export async function loadTeacherWorkspace({ rootDir = process.cwd() } = {}) {
   const implementedAppletCount = appletPackages.length;
   const implementedManimCount = manimPackages.length;
   const implementedDiagnosisCount = diagnosisPackages.length;
+  const resourceIndex = buildResourceIndex(lessons);
+  const resourceFacets = buildResourceFacets(resourceIndex);
   const plannedResourceCount = lessons
     .flatMap((lesson) => lesson.resources)
     .filter((resource) => resource.availability === "proposed").length;
@@ -100,6 +102,8 @@ export async function loadTeacherWorkspace({ rootDir = process.cwd() } = {}) {
     tree: { volumes },
     lessons,
     lessonsById,
+    resourceIndex,
+    resourceFacets,
     mvp: curriculum.mvp,
     resourceTypes: curriculum.resource_types,
     summary: {
@@ -376,6 +380,7 @@ function buildResourceCards({ lesson, resourcesById, lessonPackages }) {
       status: "planned",
       version: null,
       metadataPreview: null,
+      quality: buildPlannedResourceQuality(),
       player: null,
       package: null,
     };
@@ -403,9 +408,224 @@ function buildImplementedResourceCard(entry, packageResource) {
     status: packageResource.status,
     version: packageResource.version,
     metadataPreview: buildMetadataPreview(packageResource.metadata),
+    quality: buildImplementedResourceQuality(packageResource, metadataAvailability ?? "metadata_ready"),
     player: buildResourcePlayer(packageResource),
     package: packageResource.package,
   };
+}
+
+function buildResourceIndex(lessons) {
+  return lessons.flatMap((lesson) =>
+    lesson.resources.map((resource) => ({
+      id: resource.id,
+      resourceType: resource.resourceType,
+      title: resource.title,
+      subtitle: resource.subtitle ?? null,
+      note: resource.note ?? "",
+      cognitiveAction: resource.cognitiveAction ?? null,
+      availability: resource.availability,
+      status: resource.status,
+      version: resource.version,
+      lessonId: lesson.id,
+      lessonTitle: lesson.title,
+      textbookRef: lesson.textbookRef,
+      volumeId: lesson.volume.id,
+      volumeTitle: lesson.volume.title,
+      chapterId: lesson.chapter.id,
+      chapterNumber: lesson.chapter.number,
+      chapterTitle: lesson.chapter.title,
+      sectionId: lesson.section.id,
+      sectionTitle: lesson.section.title,
+      sectionTextbookLabel: lesson.section.textbookLabel,
+      quality: resource.quality,
+      player: resource.player,
+      packagePath: resource.package?.path ?? null,
+    })),
+  );
+}
+
+function buildResourceFacets(resourceIndex) {
+  return {
+    volumes: countOptions(resourceIndex, (resource) => ({
+      id: resource.volumeId,
+      label: resource.volumeTitle,
+    })),
+    chapters: countOptions(resourceIndex, (resource) => ({
+      id: resource.chapterId,
+      label: `第 ${resource.chapterNumber} 章 ${resource.chapterTitle}`,
+      volumeId: resource.volumeId,
+    })),
+    lessons: countOptions(resourceIndex, (resource) => ({
+      id: resource.lessonId,
+      label: `${resource.textbookRef} ${resource.lessonTitle}`,
+      volumeId: resource.volumeId,
+      chapterId: resource.chapterId,
+    })),
+    resourceTypes: countOptions(resourceIndex, (resource) => ({
+      id: resource.resourceType,
+      label: resourceTypeLabel(resource.resourceType),
+    })),
+    reviewStatuses: countOptions(resourceIndex, (resource) => ({
+      id: resource.quality.reviewStatus,
+      label: workflowStatusLabel(resource.quality.reviewStatus),
+    })),
+  };
+}
+
+function countOptions(resources, optionFn) {
+  const optionsById = new Map();
+
+  for (const resource of resources) {
+    const option = optionFn(resource);
+    if (!option?.id) {
+      continue;
+    }
+
+    const current = optionsById.get(option.id);
+    if (current) {
+      current.count += 1;
+    } else {
+      optionsById.set(option.id, { ...option, count: 1 });
+    }
+  }
+
+  return [...optionsById.values()].sort((left, right) => left.label.localeCompare(right.label, "zh-Hans-CN"));
+}
+
+function buildPlannedResourceQuality() {
+  return {
+    contentStatus: "planned",
+    implementationStage: "planned",
+    reviewStatus: "planned",
+    readinessLabel: "规划中",
+    displayStates: ["planned"],
+    labels: {
+      contentStatus: workflowStatusLabel("planned"),
+      implementationStage: workflowStatusLabel("planned"),
+      reviewStatus: workflowStatusLabel("planned"),
+    },
+  };
+}
+
+function buildImplementedResourceQuality(packageResource, availability) {
+  const contentStatus = packageResource.status ?? "draft";
+  const implementationStage = getImplementationStage(packageResource, availability);
+  const reviewStatus = packageResource.metadata.compliance?.review_status ?? contentStatus;
+  const displayStates = uniqueCompact([contentStatus, implementationStage, reviewStatus]);
+
+  return {
+    contentStatus,
+    implementationStage,
+    reviewStatus,
+    readinessLabel: readinessLabel({ packageResource, availability, implementationStage }),
+    displayStates,
+    labels: {
+      contentStatus: workflowStatusLabel(contentStatus),
+      implementationStage: workflowStatusLabel(implementationStage),
+      reviewStatus: workflowStatusLabel(reviewStatus),
+    },
+  };
+}
+
+function getImplementationStage(packageResource, availability) {
+  if (packageResource.resourceType === "applet") {
+    const htmlSrcStatus = packageResource.metadata.implementation?.html_src_status;
+    const phase = packageResource.metadata.implementation?.phase;
+
+    if (htmlSrcStatus === "runnable") {
+      return "runnable";
+    }
+
+    if (htmlSrcStatus === "scaffolded" || phase === "content_spec_only") {
+      return "scaffold";
+    }
+
+    return htmlSrcStatus ?? phase ?? availability ?? "metadata_ready";
+  }
+
+  if (packageResource.resourceType === "manim_clip") {
+    if (availability === "video_ready" && (packageResource.package.media.hasOutputWebm || packageResource.package.media.hasOutputMp4)) {
+      return "video_ready";
+    }
+
+    if (packageResource.metadata.render_plan?.phase === "scene_draft" || availability === "metadata_ready") {
+      return "scaffold";
+    }
+
+    return packageResource.metadata.render_plan?.phase ?? availability ?? "metadata_ready";
+  }
+
+  if (packageResource.resourceType === "diagnosis") {
+    const questionTypes = ensureArray(packageResource.metadata.diagnosis_design?.item_summary?.question_types);
+
+    if (availability === "interactive_ready" || availability === "item_bank_ready") {
+      return availability;
+    }
+
+    if (availability === "metadata_ready" && questionTypes.includes("draft_placeholder")) {
+      return "scaffold";
+    }
+
+    return availability ?? "metadata_ready";
+  }
+
+  return availability ?? "metadata_ready";
+}
+
+function readinessLabel({ packageResource, availability, implementationStage }) {
+  if (implementationStage === "scaffold") {
+    return "骨架待精修";
+  }
+
+  if (packageResource.resourceType === "applet" && implementationStage === "runnable") {
+    return "可运行预览";
+  }
+
+  if (packageResource.resourceType === "manim_clip" && implementationStage === "video_ready") {
+    return "视频已就绪";
+  }
+
+  if (availability === "item_bank_ready") {
+    return "题组已就绪";
+  }
+
+  if (availability === "interactive_ready") {
+    return "互动诊断可用";
+  }
+
+  return workflowStatusLabel(availability);
+}
+
+function workflowStatusLabel(status) {
+  return (
+    {
+      draft: "草稿",
+      planned: "规划中",
+      scaffold: "骨架",
+      self_checked_draft: "自检草稿",
+      math_review: "数学审校",
+      math_review_passed: "数学审校通过",
+      browser_review: "浏览器复核",
+      classroom_trial: "课堂试用",
+      release_candidate: "候选发布",
+      published: "已发布",
+      runnable: "可运行",
+      metadata_ready: "metadata 已就绪",
+      video_ready: "视频已就绪",
+      item_bank_ready: "题组已就绪",
+      interactive_ready: "互动诊断可用",
+    }[status] ?? status
+  );
+}
+
+function resourceTypeLabel(type) {
+  return (
+    {
+      applet: "HTML Applet",
+      manim_clip: "Manim 动画",
+      diagnosis: "诊断任务",
+    }[type] ?? type
+  );
 }
 
 function buildResourcePlayer(packageResource) {
@@ -595,6 +815,10 @@ function groupBy(items, keyFn) {
 
 function ensureArray(value) {
   return Array.isArray(value) ? value : [];
+}
+
+function uniqueCompact(values) {
+  return [...new Set(values.filter(Boolean))];
 }
 
 function toRepoPath(rootDir, filePath) {

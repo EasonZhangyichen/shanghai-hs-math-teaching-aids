@@ -136,7 +136,7 @@
 - [ ] 对 `SH-HS-MATH-HJ-B2-C08-L02-D01`、`SH-HS-MATH-HJ-B2-C08-L05-D01`、`SH-HS-MATH-HJ-B2-C08-L10-D01` 分别开启单资源精修对话，补齐真实题组、错因标签、评分反馈和教师说明。
 - [ ] 在必修第一册第 4、5 章来源终核后，再按总控决定处理 `SH-HS-MATH-HJ-B1-C04-L02-A01`、`SH-HS-MATH-HJ-B1-C04-L04-A01`、`SH-HS-MATH-HJ-B1-C04-L06-A01`、`SH-HS-MATH-HJ-B1-C04-L06-A02`、`SH-HS-MATH-HJ-B1-C05-L02-A01`、`SH-HS-MATH-HJ-B1-C05-L03-D01`、`SH-HS-MATH-HJ-B1-C05-L04-A01`、`SH-HS-MATH-HJ-B1-C05-L08-A01`；当前不得直接 scaffold 或制作完整资源包。
 - [ ] 为 backlog item 增加更细的审核状态和课堂试用状态聚合。
-- [ ] 增加 backlog 批量生产计划导出能力：按章节、类型、优先级和数量输出同一分支上的资源清单与 threadPrompt。
+- [x] 增加 backlog 批量生产计划导出能力：`scripts/plan-resource-batch.js` 现在可按生产、审核、来源终核和暂缓队列输出只读 dry-run 建议，不直接写入任何资源或状态。
 - [ ] 为已实现资源增加审校工单维度，将 `math_review`、`classroom_trial`、`browser_review` 与资源状态分开聚合。
 - [ ] 当沪教版全册目录完成后，将 backlog 扩展到全高中课程图谱。
 
@@ -171,8 +171,9 @@
 - [x] 开启第五轮三个独立审校对话：`SH-HS-MATH-HJ-B2-C07-L03-A02`、`SH-HS-MATH-HJ-B2-C07-L05-M01`、`SH-HS-MATH-HJ-B2-C07-L07-A01`。
 - [x] 第五轮审校完成后由总控合并资源包内改动，统一再生 generated files 并运行 `npm run verify`。
 - [x] 形成质量优先双线并行制度文档：`docs/parallel-quality-system.md`。
-- [ ] 开启第六轮双线并行：生产线 3 个对话、审核线 3 个对话，但按生产线一批 3 条反馈、审核线一批 3 条反馈交回总控。
-- [ ] 生产线优先处理平台框架筛选能力、第 8 章 `SH-HS-MATH-HJ-B2-C08-L01-A01` 单资源精修、资源工厂 dry-run 批次规划；不得碰 8.3 暂缓项或未终核章节正式生产。
+- [x] 开启第六轮双线并行：生产线 3 个对话、审核线 3 个对话，但按生产线一批 3 条反馈、审核线一批 3 条反馈交回总控。
+- [x] 生产线首批已完成并由总控核对分支与改动范围：平台框架筛选能力、第 8 章 `SH-HS-MATH-HJ-B2-C08-L01-A01` 单资源精修、资源工厂 dry-run 批次规划均未碰 8.3 暂缓项或未终核章节正式生产。
+- [ ] 总控合并生产线首批后，确认 `SH-HS-MATH-HJ-B2-C08-L01-A01` 仍保持 `draft` / `self_checked_draft`，后续只进入数学审校、浏览器复核和教师试读准备，不直接进入发布流程。
 - [ ] 审核线优先处理第 7 章已实现资源的数学/沪教版一致性、课堂试读准备度、浏览器大屏触控 QA；只给状态建议，不直接进入 `published`。
 - [ ] 总控收到每批 3 条反馈后，使用 `git branch --contains <commit>` 和 `git show --stat <commit>` 核对分支与改动范围，再决定是否合并、再生 generated files、运行 `npm run verify`、推送并同步长期分支。
 - [x] 第六轮审核线首批 3 个报告已完成并由总控核对分支与改动范围：数学/沪教版一致性、课堂试读准备度、浏览器大屏触控 QA 均只新增 docs 报告，未越界修改资源包、课程图谱、平台源码或 generated files。
@@ -187,4 +188,5 @@
 - [x] 明确工作对话禁止越界修改 `develop`、长期 `track/*`、`release/v0.1-trig-mvp`、课程图谱和 generated files。
 - [x] 明确停止条件：同批 2 次以上验证失败、课时归属不确定、越界修改、平台预览稳定性受损或数学口径不确定时暂停推进。
 - [x] 完成第六轮审核线首批三三反馈的总控验收流程：逐条核对 `git branch --contains <commit>`、`git show --stat <commit>` 和报告内容后再集成。
+- [x] 完成第六轮生产线首批三三反馈的总控验收流程：逐条核对 `git branch --contains <commit>`、`git show --stat <commit>`、资源状态、生成文件边界和验证结果后再集成。
 - [ ] 在第六轮双线并行后复盘：如果 6 线程仍能保持低冲突和高质量，再考虑扩展到“5 个生产/审核混合对话 + 1 个总控”的更大批次；否则维持 3+3。
