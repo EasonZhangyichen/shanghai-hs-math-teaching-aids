@@ -1833,7 +1833,7 @@ volumes:
               - "SH-HS-MATH-HJ-B2-C07-L04"
           - id: "SH-HS-MATH-HJ-B2-C07-S03"
             textbook_label: "7.3"
-            title: "函数 y = A sin(omega x + phi) 的图像"
+            title: "函数 y = A sin(ωx + φ) 的图像"
             lesson_ids:
               - "SH-HS-MATH-HJ-B2-C07-L05"
           - id: "SH-HS-MATH-HJ-B2-C07-S04"
@@ -1999,7 +1999,7 @@ volumes:
               - "直观想象"
           - id: "SH-HS-MATH-HJ-B2-C07-L05"
             textbook_ref: "7.3"
-            title: "函数 y = A sin(omega x + phi) 的图像"
+            title: "函数 y = A sin(ωx + φ) 的图像"
             status: "draft"
             estimated_periods: 2
             core_knowledge:

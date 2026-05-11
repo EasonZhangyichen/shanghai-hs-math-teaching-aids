@@ -177,6 +177,10 @@
   - `SH-HS-MATH-HJ-B2-C08-L01-A01`“向量表示与等价拖拽板”已从占位骨架精修为可运行 Applet 原型，metadata 仍保持 `status: draft` 与 `compliance.review_status: self_checked_draft`，只建议后续进入数学审校、浏览器复核和教师试读，不直接进入发布流程。
   - 新增只读批次规划器 `scripts/plan-resource-batch.js` 与 `docs/resource-factory-batch-planner.md`，可输出生产线、审核线、来源终核和暂缓队列；工具不写入课程图谱、backlog、generated files 或资源包。
   - 本批集成时总控修正了平台测试的旧假设：第 8 章可以存在“可运行但仍为自检草稿”的资源，但不得显示为已审校或已发布。
+- 已完成双线并行质量修复线首批 3 个任务并进入总控集成：
+  - `SH-HS-MATH-HJ-B2-C07-L01-A01` 与 `SH-HS-MATH-HJ-B2-C07-L06-A01` README 中的 `theta`、`pi/2`、`kpi`、`2pi` 等旧口径已清理；第 7 章课程图谱、L05 Applet / Manim / Diagnosis metadata 中的 7.3 标题已统一为 `y = A sin(ωx + φ)`。
+  - `SH-HS-MATH-HJ-B2-C07-L03-A02` 已优化平台 iframe 下的窄宽裁切和触控目标尺寸，浏览器复测建议可进入 `browser_review`，但仍需真实教室触控屏确认拖动手感。
+  - `SH-HS-MATH-HJ-B2-C07-L05-A01` 已拆成 18 分钟主试读片段和 12 到 15 分钟可选延伸片段，学生任务同步减负，metadata 课堂时长由 25 分钟同步为 18 分钟；建议进入教师试读准备，但不进入 `classroom_trial`、`release_candidate` 或 `published`。
 - 已完成首轮数学符号与布局统一修正：
   - 平台侧和课件侧已接入富数学文本渲染，常见的 `π/2`、`-3π/2` 等会以竖式分数显示，避免 `pi/2`、`Theta` 或横向斜杠破坏数学语言。
   - `content/shared/math-text-normalizer.js` 已覆盖普通 HTML 文本、动态 DOM 更新和 SVG `<text>` 中的简单 π 分数标签。

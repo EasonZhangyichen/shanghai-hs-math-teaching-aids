@@ -94,7 +94,7 @@
 
 - 18 分钟主片段尚未由真实教师限时试读，仍需确认学生记录量和暂停点。
 - 第二片段不应塞回主片段；若课堂只给 12 到 18 分钟，应优先保留 A、ω、φ 单参数观察。
-- `metadata.yaml` 中 `pedagogy.estimated_classroom_minutes` 仍为 25；本任务允许范围不含 metadata，建议总控后续决定是否单独同步。
+- 总控集成时已将 `metadata.yaml` 中 `pedagogy.estimated_classroom_minutes` 同步为 18，避免平台卡片仍显示旧的 25 分钟脚本。
 - 尚未在真实触控屏或教室大屏上验证拖动手感。
 - `ω < 0` 的等价改写仍建议保留为拓展，不进入本资源主线。
 

@@ -15,14 +15,14 @@ curriculum:
   chapter_id: "SH-HS-MATH-HJ-B2-C07"
   chapter_title: "三角函数"
   section_id: "SH-HS-MATH-HJ-B2-C07-S03"
-  section_title: "函数 y = A sin(omega x + phi) 的图像"
+  section_title: "函数 y = A sin(ωx + φ) 的图像"
   lesson_id: "SH-HS-MATH-HJ-B2-C07-L05"
   textbook_ref: "7.3"
-  lesson_title: "函数 y = A sin(omega x + phi) 的图像"
+  lesson_title: "函数 y = A sin(ωx + φ) 的图像"
 
 pedagogy:
   cognitive_action: "变换"
-  estimated_classroom_minutes: 25
+  estimated_classroom_minutes: 18
   primary_teaching_problem: "学生容易把横向伸缩、相位平移和括号内符号的关系搞反；多参数同时变化时认知负荷过高，难以从图像反推 A、ω、φ。"
   learning_goals:
     - "分别说明 A、ω、φ 对振幅、周期和相位平移的影响。"
