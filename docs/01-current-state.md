@@ -190,6 +190,11 @@
   - 新增 `docs/browser-audits/b2-c08-l01-l04-browser-touch.md`，确认四个直达页均可打开且无本资源 console error，但平台 iframe 下 L01-L03 存在明显纵向裁切，L04-A01 因 `html_src_status: scaffolded` 未生成平台 iframe；本批不建议任何资源进入 `browser_review`。
   - 新增 `docs/classroom-trials/b2-c08-l01-l04-classroom-readiness.md`，建议 L01-A01 与 L03-A01 可进入教师限时试读准备，L02-A01 需压缩或拆成“加法构造 / 减法方向”两个片段，L04-A01 需先修正 metadata/platform 入口口径并降低学生记录负荷。
   - 本批只新增审核报告，未修改资源包、平台源码、课程图谱、backlog 或 generated files；第 8 章仍保持 `draft` / `needs_manual_textbook_check`，所有资源均不得进入 `classroom_trial`、`release_candidate` 或 `published`。
+- 已完成第 8 章 L05 / L10 / L04-M01 审核线 3 个报告并进入总控集成：
+  - 新增 `docs/review-audits/b2-c08-l05-l10-l04m01-math-hj-consistency.md`，确认三项资源课时归属大方向仍对齐当前第 8 章图谱，但整体建议 `hold_for_revision`：L05-A01 需修正零向量投影边界并弱化 8.3 坐标误读；L10-A01 需继续明确真实数学模型、先修链和课堂路径；L04-M01 需清理符号 fallback 并收窄 L04 阶段对数量积公式的提前展示。
+  - 新增 `docs/browser-audits/b2-c08-l05-l10-l04m01-browser-video.md`，记录 L05-A01 的首屏高度、平台 iframe 裁切和触控目标偏小风险；L10-A01 与 L04-M01 的部分“仍为 scaffold / 无视频产物”判断来自较旧工作树，总控以当前 `develop` 为准：L10-A01 已是 runnable prototype，L04-M01 已有 `mp4` / `webm` / poster，但二者仍不得提升发布状态。
+  - 新增 `docs/classroom-trials/b2-c08-l05-l10-l04m01-classroom-readiness.md`，建议 L05-A01 可作为教师限时试读准备的候选，但由于数学和浏览器审核仍有阻塞，总控不提升到 `classroom_trial`；L10-A01 与 L04-M01 继续回修复线。
+  - 本批只新增审核报告，未修改资源包、平台源码、课程图谱、backlog 或 generated files；第 8 章仍保持 `draft` / `self_checked_draft` / `metadata_ready`，所有资源均不得进入 `release_candidate` 或 `published`。
 - 已完成双线并行质量修复线首批 3 个任务并进入总控集成：
   - `SH-HS-MATH-HJ-B2-C07-L01-A01` 与 `SH-HS-MATH-HJ-B2-C07-L06-A01` README 中的 `theta`、`pi/2`、`kpi`、`2pi` 等旧口径已清理；第 7 章课程图谱、L05 Applet / Manim / Diagnosis metadata 中的 7.3 标题已统一为 `y = A sin(ωx + φ)`。
   - `SH-HS-MATH-HJ-B2-C07-L03-A02` 已优化平台 iframe 下的窄宽裁切和触控目标尺寸，浏览器复测建议可进入 `browser_review`，但仍需真实教室触控屏确认拖动手感。
