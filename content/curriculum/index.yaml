@@ -1902,7 +1902,7 @@ volumes:
             teaching_pain_points:
               - "学生会背周期和值域，但难以用定义域、值域和图像语言说明单调区间端点。"
               - "奇偶性、对称轴、对称中心容易混淆，尤其容易跳过定义域关于原点对称的前提。"
-              - "最值点和零点的弧度表达容易出现 pi 分数和周期项遗漏。"
+              - "最值点和零点的弧度表达容易出现 π 分数和周期项遗漏。"
             digital_entry_points:
               - type: "applet"
                 proposed_resource_id: "SH-HS-MATH-HJ-B2-C07-L02-A01"
@@ -2003,7 +2003,7 @@ volumes:
             status: "draft"
             estimated_periods: 2
             core_knowledge:
-              - "参数 A、omega、phi 对振幅、周期和相位的影响"
+              - "参数 A、ω、φ 对振幅、周期和相位的影响"
               - "从基本正弦曲线到复合参数图像的变换顺序"
               - "根据图像识别解析式中的关键参数"
             prerequisites:
@@ -2024,7 +2024,7 @@ volumes:
                 proposed_resource_id: "SH-HS-MATH-HJ-B2-C07-L05-A01"
                 title: "三角函数参数变化实验室"
                 cognitive_action: "变换"
-                note: "滑块控制 A、omega、phi，支持单参数锁定、变换顺序切换和关键点追踪；k 可作为平台扩展开关，默认对齐教材的无竖直平移形式。"
+                note: "滑块控制 A、ω、φ，支持单参数锁定、变换顺序切换和关键点追踪；k 可作为平台扩展开关，默认对齐教材的无竖直平移形式。"
               - type: "manim_clip"
                 proposed_resource_id: "SH-HS-MATH-HJ-B2-C07-L05-M01"
                 title: "图像变换顺序解释"
@@ -2034,9 +2034,9 @@ volumes:
                 proposed_resource_id: "SH-HS-MATH-HJ-B2-C07-L05-D01"
                 title: "参数识别诊断任务"
                 cognitive_action: "比较"
-                note: "给出图像关键点，要求判断 A、omega、phi 的可能取值并解释理由。"
+                note: "给出图像关键点，要求判断 A、ω、φ 的可能取值并解释理由。"
             diagnosis_focus:
-              - "能否从周期求出 omega 的绝对值。"
+              - "能否从周期求出 ω 的绝对值。"
               - "能否解释相位平移方向而不是只套公式。"
               - "能否在 A 为负时正确处理图像翻折。"
             core_competencies:
@@ -2061,9 +2061,9 @@ volumes:
               - "SH-HS-MATH-HJ-B2-C07-L07"
               - "SH-HS-MATH-HJ-XB1-DERIV-K01"
             teaching_pain_points:
-              - "学生容易忽略 x = pi/2 + kpi 的定义域限制，把图像画成连续曲线。"
+              - "学生容易忽略 x = π/2 + kπ 的定义域限制，把图像画成连续曲线。"
               - "渐近线来自 cos x = 0 的原因不清楚。"
-              - "正切曲线的周期为 pi 容易被正弦余弦的 2pi 干扰。"
+              - "正切曲线的周期为 π 容易被正弦余弦的 2π 干扰。"
             digital_entry_points:
               - type: "applet"
                 proposed_resource_id: "SH-HS-MATH-HJ-B2-C07-L06-A01"
@@ -2100,9 +2100,9 @@ volumes:
               - "SH-HS-MATH-HJ-XB1-DERIV-K01"
               - "SH-HS-MATH-HJ-MODEL-K01"
             teaching_pain_points:
-              - "学生容易说正切函数在整个定义域上单调递增，忽略只能在每个 (-pi/2 + kpi, pi/2 + kpi) 上讨论。"
+              - "学生容易说正切函数在整个定义域上单调递增，忽略只能在每个 (-π/2 + kπ, π/2 + kπ) 上讨论。"
               - "值域为全体实数与渐近线限制看似矛盾，需用局部区间解释。"
-              - "周期 pi、奇函数和单调区间的一般表达容易混淆。"
+              - "周期 π、奇函数和单调区间的一般表达容易混淆。"
             digital_entry_points:
               - type: "applet"
                 proposed_resource_id: "SH-HS-MATH-HJ-B2-C07-L07-A01"
@@ -2933,7 +2933,7 @@ mvp:
         - "正弦函数性质探究 Applet"
         - "正弦函数性质诊断任务"
     - id: "SH-HS-MATH-HJ-B2-C07-L05"
-      title: "函数 y = A sin(omega x + phi) 的图像"
+      title: "函数 y = A sin(ωx + φ) 的图像"
       target_resources:
         - "三角函数参数变化实验室 Applet（可选 k 扩展）"
         - "图像变换顺序 Manim Clip"
