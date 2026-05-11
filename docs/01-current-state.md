@@ -1,6 +1,6 @@
 # 当前状态
 
-更新时间：2026-05-09
+更新时间：2026-05-11
 
 ## 已有输入
 
@@ -167,6 +167,11 @@
   - 本模式只在写入范围互不重叠、总控逐批验收、统一再生 generated files、统一运行 `npm run verify` 的前提下启用。
   - 状态流收紧为 `draft -> self_checked_draft -> math_review -> browser_review -> classroom_trial -> release_candidate -> published`，其中 `release_candidate` 和 `published` 只允许总控决定。
   - 下一轮 6 个对话提示词已沉淀到 `docs/parallel-quality-system.md` 和 `docs/thread-starter-prompts.md`；生产线聚焦平台框架、第 8 章单资源精修和资源工厂 dry-run 规划，审核线聚焦第 7 章数学/沪教版一致性、课堂试读准备度和浏览器大屏触控 QA。
+- 已完成双线并行审核线首批 3 个报告并进入总控集成：
+  - 新增 `docs/review-audits/b2-c07-math-hj-consistency.md`，确认第 7 章已实现资源数学主线与沪教版课时归属总体一致，但 `L01-A01`、`L06-A01` 的 README 仍有 `theta`、`pi/2`、`kpi` 等旧写法，课程图谱中也仍有 `omega`、`phi`、`pi/2 + kpi` 等 fallback 写法，需总控后续统一清理。
+  - 新增 `docs/classroom-trials/b2-c07-classroom-trial-readiness.md`，建议 `L01-A01` 与 `L06-A01` 可进入真实教师限时试读准备，`L05-A01` 因 25 分钟脚本过长暂建议 `hold_for_revision`，需要先压缩或拆分课堂片段。
+  - 新增 `docs/browser-audits/b2-c07-browser-touch-audit.md`，建议 `L07-A01` 可进入带风险记录的 `browser_review`；`L03-A02` 存在平台 iframe 窄宽裁切和触控目标偏小，`L05-A01` 存在直达页和 iframe 首屏高度过高风险，均不建议无条件进入 `browser_review`。
+  - 本批只新增审核报告，未修改资源包、平台源码、课程图谱或 generated files；三项报告均不建议任何资源进入 `classroom_trial`、`release_candidate` 或 `published`。
 - 已完成首轮数学符号与布局统一修正：
   - 平台侧和课件侧已接入富数学文本渲染，常见的 `π/2`、`-3π/2` 等会以竖式分数显示，避免 `pi/2`、`Theta` 或横向斜杠破坏数学语言。
   - `content/shared/math-text-normalizer.js` 已覆盖普通 HTML 文本、动态 DOM 更新和 SVG `<text>` 中的简单 π 分数标签。
