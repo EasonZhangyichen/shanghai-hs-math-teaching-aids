@@ -200,6 +200,11 @@
   - `SH-HS-MATH-HJ-B2-C08-L10-A01` 已补实 8.1 / 8.2 / 8.3 到 8.4 的先修链、第一步建模选择和三条路径比较模型；资源仍保持 `draft` / `self_checked_draft`，不进入课堂试用或发布。
   - `SH-HS-MATH-HJ-B2-C08-L04-M01` 已收束为“有向投影长度”导入动画，清理数量积定义提前展示，并重新生成 1080p30 `mp4`、`webm` 和 poster；顶层仍保持 `draft`，平台卡片仍保持 `metadata_ready`。
   - 本批只合并三个目标资源包和统一生成的平台数据；未修改课程图谱，未恢复 8.3 暂缓项，未提升任何资源到 `math_review`、`browser_review`、`classroom_trial`、`release_candidate` 或 `published`。
+- 已完成第 8 章 L05 / L10 / L04-M01 修复后复核线 3 个报告并进入总控集成：
+  - 新增 `docs/review-audits/b2-c08-l05-a01-postfix-gate.md`，确认 `L05-A01` 数学口径可重新进入数学审校链路，但平台 iframe 仍有首屏位置过低和 560px 高度裁切读数/符号判断区的问题；暂不进入 `browser_review` 或 `classroom_trial`。
+  - 新增 `docs/review-audits/b2-c08-l10-a01-postfix-gate.md`，确认 `L10-A01` 已具备进入 `math_review` 和正式 `browser_review` 队列的基础，但仍需复核位置向量简写、平台 iframe/直达页表现和第 8 章课时终核；不得进入课堂试用或发布。
+  - 新增 `docs/review-audits/b2-c08-l04-m01-video-gate.md`，确认 `L04-M01` 成片内容通过视频质量闸门，建议后续单独补齐 `render_plan.phase: rendered`、`files.output_mp4/output_webm/poster` 和 `platform_card.availability: video_ready`；顶层仍保持 `draft`。
+  - 本批只新增复核报告，未修改资源包、平台源码、课程图谱、backlog 或 generated files；第 8 章资源继续保持 `draft` / `self_checked_draft` / `metadata_ready`，所有资源均不得进入 `classroom_trial`、`release_candidate` 或 `published`。
 - 已完成双线并行质量修复线首批 3 个任务并进入总控集成：
   - `SH-HS-MATH-HJ-B2-C07-L01-A01` 与 `SH-HS-MATH-HJ-B2-C07-L06-A01` README 中的 `theta`、`pi/2`、`kpi`、`2pi` 等旧口径已清理；第 7 章课程图谱、L05 Applet / Manim / Diagnosis metadata 中的 7.3 标题已统一为 `y = A sin(ωx + φ)`。
   - `SH-HS-MATH-HJ-B2-C07-L03-A02` 已优化平台 iframe 下的窄宽裁切和触控目标尺寸，浏览器复测建议可进入 `browser_review`，但仍需真实教室触控屏确认拖动手感。
