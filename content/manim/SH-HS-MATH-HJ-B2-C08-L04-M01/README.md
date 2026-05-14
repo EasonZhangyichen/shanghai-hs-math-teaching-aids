@@ -62,3 +62,4 @@ ffmpeg -y -ss 00:00:34 -i dist/final/SH-HS-MATH-HJ-B2-C08-L04-M01.mp4 -frames:v 
 - 检查画面是否始终使用 `θ`、`cosθ`、`投影长度` 等课堂表达。
 - 确认数量积只作为衔接出现，没有提前讲完整下一课内容。
 - 当前已导出 1920×1080、30fps、36.8 秒的 `mp4`、`webm` 和 poster；poster 取自 34 秒最终衔接画面。
+- `metadata.yaml` 已标记 `render_plan.phase: rendered` 和 `platform_card.availability: video_ready`，并通过 `files.output_mp4`、`files.output_webm`、`files.poster` 暴露平台视频入口。
