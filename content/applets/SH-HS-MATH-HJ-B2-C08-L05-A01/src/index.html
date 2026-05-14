@@ -26,6 +26,7 @@
         --measure: #0f766e;
         --measure-soft: rgba(15, 118, 110, 0.12);
         --shadow: 0 16px 42px rgba(22, 32, 28, 0.12);
+        --workspace-height: clamp(420px, calc(100svh - 86px), 492px);
       }
 
       * {
@@ -46,19 +47,19 @@
 
       .applet {
         min-height: 100svh;
-        padding: 10px;
+        padding: 8px;
         display: grid;
         grid-template-rows: auto auto;
         align-content: start;
-        gap: 10px;
+        gap: 8px;
       }
 
       .topbar {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 12px;
-        padding: 10px 12px;
+        gap: 10px;
+        padding: 7px 10px;
         border: 1px solid var(--line);
         border-radius: 8px;
         background: var(--panel);
@@ -66,18 +67,18 @@
       }
 
       .title-block {
-        min-width: 230px;
+        min-width: 190px;
       }
 
       .eyebrow {
         margin: 0 0 2px;
         color: var(--muted);
-        font-size: 12px;
+        font-size: 11px;
       }
 
       h1 {
         margin: 0;
-        font-size: 20px;
+        font-size: 18px;
         line-height: 1.2;
         font-weight: 760;
         letter-spacing: 0;
@@ -87,7 +88,7 @@
       .button-row {
         display: flex;
         flex-wrap: wrap;
-        gap: 8px;
+        gap: 6px;
       }
 
       .stepbar {
@@ -96,12 +97,12 @@
 
       .tool-button,
       .angle-button {
-        min-height: 44px;
+        min-height: 40px;
         border: 1px solid var(--line);
         border-radius: 8px;
         background: #fbfcf9;
         color: var(--ink);
-        padding: 8px 11px;
+        padding: 6px 9px;
         cursor: pointer;
       }
 
@@ -123,8 +124,8 @@
 
       .workspace {
         display: grid;
-        grid-template-columns: minmax(360px, 1fr) minmax(260px, 360px);
-        gap: 10px;
+        grid-template-columns: minmax(300px, 1fr) minmax(236px, 320px);
+        gap: 8px;
         min-height: 0;
       }
 
@@ -141,8 +142,8 @@
         position: relative;
         overflow: hidden;
         display: grid;
-        height: clamp(360px, 52svh, 440px);
-        min-height: clamp(360px, 52svh, 440px);
+        height: var(--workspace-height);
+        min-height: var(--workspace-height);
       }
 
       svg {
@@ -269,13 +270,13 @@
         left: 12px;
         bottom: 12px;
         max-width: min(560px, calc(100% - 24px));
-        padding: 8px 10px;
+        padding: 6px 8px;
         border: 1px solid var(--line);
         border-radius: 8px;
         background: rgba(255, 255, 255, 0.94);
         color: var(--ink);
-        font-size: 13px;
-        line-height: 1.42;
+        font-size: 12px;
+        line-height: 1.35;
         box-shadow: 0 10px 24px rgba(22, 32, 28, 0.12);
       }
 
@@ -287,12 +288,13 @@
         overflow: hidden;
         display: flex;
         flex-direction: column;
-        max-height: clamp(360px, 52svh, 440px);
+        height: var(--workspace-height);
+        max-height: var(--workspace-height);
         overflow-y: auto;
       }
 
       .panel-section {
-        padding: 10px 12px;
+        padding: 7px 9px;
         border-bottom: 1px solid var(--line);
       }
 
@@ -301,9 +303,9 @@
       }
 
       .section-title {
-        margin: 0 0 7px;
+        margin: 0 0 5px;
         color: var(--muted);
-        font-size: 14px;
+        font-size: 12px;
         font-weight: 720;
       }
 
@@ -311,63 +313,63 @@
         border: 1px solid rgba(15, 118, 110, 0.28);
         border-radius: 8px;
         background: var(--measure-soft);
-        padding: 9px 10px;
-        line-height: 1.45;
+        padding: 6px 8px;
+        line-height: 1.35;
       }
 
       .formula {
-        margin: 0 0 3px;
+        margin: 0 0 2px;
         color: #0f4f49;
-        font-size: 18px;
+        font-size: 16px;
         font-weight: 820;
       }
 
       .formula-note {
         margin: 0;
         color: var(--ink);
-        font-size: 13px;
+        font-size: 12px;
       }
 
       .readout-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 8px;
+        gap: 6px;
       }
 
       .readout {
-        min-height: 58px;
+        min-height: 48px;
         border: 1px solid var(--line);
         border-radius: 8px;
         background: #fbfcf9;
-        padding: 8px;
+        padding: 6px;
       }
 
       .readout strong {
         display: block;
-        margin-bottom: 3px;
+        margin-bottom: 2px;
         color: var(--muted);
-        font-size: 12px;
+        font-size: 11px;
       }
 
       .readout span {
         display: block;
-        font-size: 17px;
-        line-height: 1.25;
+        font-size: 15px;
+        line-height: 1.18;
         font-weight: 780;
       }
 
       .sign-box {
         display: grid;
-        gap: 8px;
+        gap: 6px;
       }
 
       .sign-badge {
         display: inline-flex;
         width: fit-content;
-        min-height: 34px;
+        min-height: 30px;
         align-items: center;
         border-radius: 8px;
-        padding: 6px 10px;
+        padding: 5px 8px;
         font-weight: 780;
       }
 
@@ -388,7 +390,8 @@
 
       .sign-explain {
         margin: 0;
-        line-height: 1.5;
+        font-size: 13px;
+        line-height: 1.38;
       }
 
       .summary-list {
@@ -411,13 +414,19 @@
         color: #0f4f49;
       }
 
-      @media (max-height: 760px) {
+      @media (max-width: 700px), (max-height: 820px) {
+        .formula-note {
+          display: none;
+        }
+      }
+
+      @media (max-height: 820px) {
         .summary-section {
           display: none;
         }
       }
 
-      @media (max-width: 660px) {
+      @media (max-width: 560px) {
         .workspace {
           grid-template-columns: 1fr;
         }
@@ -428,6 +437,7 @@
         }
 
         .panel {
+          height: auto;
           max-height: none;
         }
       }
@@ -482,7 +492,7 @@
             <p class="section-title">定义读法</p>
             <div class="formula-box">
               <p class="formula" data-testid="formula-readout">a·b = |a||b|cosθ</p>
-              <p class="formula-note">数量积的结果是数量；当 b 不是零向量时，也可读作 |b| 乘以 a 在 b 方向上的有向投影长度。网格只作拖拽背景和视觉参照，不是本课公式来源。</p>
+              <p class="formula-note">结果是数量；b≠0 时，可读作 |b| 乘以 a 在 b 方向上的有向投影。网格只作视觉参照。</p>
             </div>
           </section>
 
@@ -881,7 +891,7 @@
         } else if (data.zeroA) {
           projectionReadout.textContent = "a 为零向量，投影 = 0";
         } else {
-          projectionReadout.textContent = `a 在 b 方向上的投影 = ${fmtSigned(data.projectionLength)}`;
+          projectionReadout.textContent = `投影 = ${fmtSigned(data.projectionLength)}`;
         }
 
         const signText = {
