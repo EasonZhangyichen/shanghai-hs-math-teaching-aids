@@ -288,7 +288,7 @@ test("lists the B2 C09 complex-number draft applet candidates as planned resourc
   assert.equal(multiplicationLesson.resources[0].title, "复数乘法旋转缩放实验室");
 });
 
-test("links the vector projection applet and Manim scaffold to lesson B2 C08 L04", async () => {
+test("links the vector projection applet and rendered Manim entry to lesson B2 C08 L04", async () => {
   const workspace = await loadTeacherWorkspace({ rootDir: repoRoot });
   const lesson = workspace.lessonsById["SH-HS-MATH-HJ-B2-C08-L04"];
   const applet = lesson.resources.find((resource) => resource.id === "SH-HS-MATH-HJ-B2-C08-L04-A01");
@@ -302,13 +302,28 @@ test("links the vector projection applet and Manim scaffold to lesson B2 C08 L04
   );
   assert.equal(applet.availability, "metadata_ready");
   assert.equal(applet.player, null);
-  assert.equal(manim.availability, "metadata_ready");
-  assert.equal(manim.metadataPreview.renderPlan.phase, "scene_draft");
+  assert.equal(manim.availability, "video_ready");
+  assert.equal(manim.metadataPreview.renderPlan.phase, "rendered");
   assert.equal(manim.package.storyboard.title, "分镜：投影有向长度导入动画");
-  assert.equal(manim.package.media.hasOutputMp4, false);
-  assert.equal(manim.package.media.hasOutputWebm, false);
-  assert.equal(manim.package.media.hasPoster, false);
-  assert.equal(manim.player, null);
+  assert.equal(manim.package.media.hasOutputMp4, true);
+  assert.equal(manim.package.media.hasOutputWebm, true);
+  assert.equal(manim.package.media.hasPoster, true);
+  assert.deepEqual(manim.player, {
+    kind: "video",
+    isRunnable: true,
+    title: "投影有向长度导入动画",
+    poster: "content/manim/SH-HS-MATH-HJ-B2-C08-L04-M01/dist/final/SH-HS-MATH-HJ-B2-C08-L04-M01-poster.png",
+    sources: [
+      {
+        src: "content/manim/SH-HS-MATH-HJ-B2-C08-L04-M01/dist/final/SH-HS-MATH-HJ-B2-C08-L04-M01.webm",
+        type: "video/webm",
+      },
+      {
+        src: "content/manim/SH-HS-MATH-HJ-B2-C08-L04-M01/dist/final/SH-HS-MATH-HJ-B2-C08-L04-M01.mp4",
+        type: "video/mp4",
+      },
+    ],
+  });
 });
 
 test("links the tangent graph applet and rendered asymptote Manim to lesson L06", async () => {
@@ -421,7 +436,7 @@ test("builds resource filter facets for teacher preparation searches", async () 
   );
 });
 
-test("marks B2 C08 scaffold resources as draft scaffold work only", async () => {
+test("keeps B2 C08 resources in draft quality states only", async () => {
   const workspace = await loadTeacherWorkspace({ rootDir: repoRoot });
   const vectorResources = workspace.resourceIndex.filter((resource) => resource.chapterId === "SH-HS-MATH-HJ-B2-C08");
 
@@ -436,8 +451,10 @@ test("marks B2 C08 scaffold resources as draft scaffold work only", async () => 
     assert.notEqual(resource.quality.reviewStatus, "release_candidate");
     assert.notEqual(resource.quality.reviewStatus, "math_review_passed");
     assert.ok(
-      resource.quality.displayStates.every((state) => ["draft", "scaffold", "runnable", "self_checked_draft"].includes(state)),
-      `${resource.id} should only display draft/scaffold/runnable/self_checked_draft states`,
+      resource.quality.displayStates.every((state) =>
+        ["draft", "scaffold", "runnable", "video_ready", "self_checked_draft"].includes(state),
+      ),
+      `${resource.id} should only display draft/scaffold/runnable/video_ready/self_checked_draft states`,
     );
   }
 
