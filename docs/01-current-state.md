@@ -1,6 +1,6 @@
 # 当前状态
 
-更新时间：2026-05-11
+更新时间：2026-05-16
 
 ## 已有输入
 
@@ -54,7 +54,7 @@
   - 本批只处理 8.1、8.2 与 8.4 的 planned Diagnosis，未生成或恢复 8.3 暂缓项。
 - 已在 `track/manim-pipeline` 上为必修第二册第 8 章唯一剩余 Manim planned item 生成资源骨架：
   - `SH-HS-MATH-HJ-B2-C08-L04-M01`“投影有向长度导入动画”。
-  - 该资源包初始包含 `metadata.yaml`、`README.md`、`storyboard.md`、`scene.py` 和 `review.md`；后续生产线第三批已补齐真实 Manim 场景并导出 `mp4` / `webm` / poster，但顶层仍保持 `draft`，平台卡片仍保持 `metadata_ready`。
+  - 该资源包初始包含 `metadata.yaml`、`README.md`、`storyboard.md`、`scene.py` 和 `review.md`；后续生产线第三批已补齐真实 Manim 场景并导出 `mp4` / `webm` / poster，当前平台卡片已接入 `video_ready` 播放入口，但顶层仍保持 `draft`。
   - 本批先 dry-run 确认只创建该 Manim Clip，再写入单个资源包；未生成或恢复 8.3 暂缓项。
 - 已在 `track/trig-sample-pack` 上为 `SH-HS-MATH-HJ-B2-C07-L01-A01` 创建“单位圆到正弦曲线”资源包草稿：
   - 已包含 `metadata.yaml`、`README.md`、`teacher-script.md`、`student-task.md`、`review.md`。
@@ -133,7 +133,7 @@
   - 当前 `L01-M01` Manim 资源仍为 `draft` 内容状态，但渲染阶段已到 `video_ready`：已导出 1080p30 `mp4`、`webm` 和 poster，可用于平台预览和内部教研复核。
   - `content/manim/SH-HS-MATH-HJ-B2-C07-L05-M01/` 已创建“图像变换顺序解释”资源包，包含 `metadata.yaml`、`README.md`、`storyboard.md`、`scene.py`、`review.md` 和 `dist/final/` 视频产物；当前为 `rendered` / `video_ready`，已导出 1080p30、约 53.5 秒的 `mp4`、`webm` 和 poster。
   - `content/manim/SH-HS-MATH-HJ-B2-C07-L06-M01/` 已创建“为什么正切图像有渐近线”资源包，包含 `metadata.yaml`、`README.md`、`storyboard.md`、`scene.py`、`review.md` 和 `dist/final/` 视频产物；当前为 `rendered` / `video_ready`，已导出 1080p30、38.4 秒的 `mp4`、`webm` 和 poster。
-  - `content/manim/SH-HS-MATH-HJ-B2-C08-L04-M01/` 已创建“投影有向长度导入动画”资源包，包含 `metadata.yaml`、`README.md`、`storyboard.md`、`scene.py`、`review.md` 和 `dist/final/` 视频产物；当前顶层仍为 `draft`，平台卡片仍为 `metadata_ready`，后续需视频观看、数学审校和课堂节奏复核后再决定是否升级为 `video_ready`。
+  - `content/manim/SH-HS-MATH-HJ-B2-C08-L04-M01/` 已创建“投影有向长度导入动画”资源包，包含 `metadata.yaml`、`README.md`、`storyboard.md`、`scene.py`、`review.md` 和 `dist/final/` 视频产物；当前顶层仍为 `draft`，平台卡片已接入 `video_ready` 视频预览入口，但这只表示可预览，不代表数学审校、课堂试读或发布通过。
 - 已在 `track/platform-shell` 上搭建教师端平台壳 MVP：
   - 根目录新增 npm/Vite 工程脚本，`apps/web` 为教师工作台入口。
   - `apps/web/src/lib/content.js` 可读取 `content/curriculum/index.yaml`、`content/applets/*/metadata.yaml` 和 `content/manim/*/metadata.yaml`，生成平台需要的课程树、课时资源卡、metadata 预览和脚本入口数据。
@@ -183,7 +183,7 @@
   - 本批集成后由总控统一再生 `apps/web/src/data/workspace-data.json` 并运行 `npm run verify`；后续仍需第 8 章教材/平台目录终核、独立数学审校、浏览器大屏触控复核和教师限时试读。
 - 已完成第 8 章生产线第三批 3 个任务并进入总控集成：
   - `SH-HS-MATH-HJ-B2-C08-L05-A01`“数量积动态解释器”和 `SH-HS-MATH-HJ-B2-C08-L10-A01`“向量法路径比较板”已由 scaffold 升级为可直接打开的 HTML Applet 自检草稿，均保持 `metadata.status: draft` 与 `compliance.review_status: self_checked_draft`。
-  - `SH-HS-MATH-HJ-B2-C08-L04-M01`“投影有向长度导入动画”已补齐真实 Manim 场景、`mp4` / `webm` / poster 产物和自检记录；顶层仍保持 `status: draft`，平台卡片仍为 `metadata_ready`，后续由总控统一决定是否升级为 `video_ready`。
+  - `SH-HS-MATH-HJ-B2-C08-L04-M01`“投影有向长度导入动画”已补齐真实 Manim 场景、`mp4` / `webm` / poster 产物和自检记录；当时顶层保持 `status: draft`，平台卡片处于 `metadata_ready`；后续平台入口批次已将平台预览入口升级为 `video_ready`，但顶层仍为 `draft`。
   - 本批只集成目标资源包和统一生成的平台数据；未修改课程图谱，未恢复 8.3 暂缓项，未提升到 `math_review`、`browser_review`、`classroom_trial`、`release_candidate` 或 `published`。
 - 已完成第 8 章 L01-L04 审核线首批 3 个报告并进入总控集成：
   - 新增 `docs/review-audits/b2-c08-l01-l04-math-hj-consistency.md`，确认 L03-A01 可建议进入 `math_review`、L04-A01 可带风险记录进入 `math_review`，但 L01-A01 与 L02-A01 存在有序数对、分量读数或分量运算前置 8.3 的风险，必须先 `hold` 并收回到几何语言。
@@ -205,6 +205,11 @@
   - 新增 `docs/review-audits/b2-c08-l10-a01-postfix-gate.md`，确认 `L10-A01` 已具备进入 `math_review` 和正式 `browser_review` 队列的基础，但仍需复核位置向量简写、平台 iframe/直达页表现和第 8 章课时终核；不得进入课堂试用或发布。
   - 新增 `docs/review-audits/b2-c08-l04-m01-video-gate.md`，确认 `L04-M01` 成片内容通过视频质量闸门，建议后续单独补齐 `render_plan.phase: rendered`、`files.output_mp4/output_webm/poster` 和 `platform_card.availability: video_ready`；顶层仍保持 `draft`。
   - 本批只新增复核报告，未修改资源包、平台源码、课程图谱、backlog 或 generated files；第 8 章资源继续保持 `draft` / `self_checked_draft` / `metadata_ready`，所有资源均不得进入 `classroom_trial`、`release_candidate` 或 `published`。
+- 已完成第 8 章 L05 / L10 / L04-M01 平台入口与闸门修复批次并进入总控集成：
+  - `SH-HS-MATH-HJ-B2-C08-L05-A01` 已压缩平台 iframe 首屏布局并新增布局自检，核心面板、读数、投影、符号解释和关键按钮在常用视口下可见；资源仍保持 `draft` / `self_checked_draft`，仍需真实触控屏复核和教师试读。
+  - 新增 `docs/browser-audits/b2-c08-l10-a01-browser-gate.md`，确认 `L10-A01` 直达页已可运行，但平台 iframe 仍有首屏适配风险，暂建议 `hold_for_platform_iframe_fit`，不进入 `browser_review`。
+  - `SH-HS-MATH-HJ-B2-C08-L04-M01` 已补齐 `render_plan.phase: rendered`、`files.output_mp4/output_webm/poster` 与 `platform_card.availability: video_ready`，平台可读取 video player 入口；顶层 `metadata.status` 仍保持 `draft`，不进入 `release_candidate` 或 `published`。
+  - 本批同步更新平台生成数据、backlog 和测试断言，明确 `video_ready` 只表示视频入口可预览，不等同于数学审校、课堂试读或发布通过。
 - 已完成双线并行质量修复线首批 3 个任务并进入总控集成：
   - `SH-HS-MATH-HJ-B2-C07-L01-A01` 与 `SH-HS-MATH-HJ-B2-C07-L06-A01` README 中的 `theta`、`pi/2`、`kpi`、`2pi` 等旧口径已清理；第 7 章课程图谱、L05 Applet / Manim / Diagnosis metadata 中的 7.3 标题已统一为 `y = A sin(ωx + φ)`。
   - `SH-HS-MATH-HJ-B2-C07-L03-A02` 已优化平台 iframe 下的窄宽裁切和触控目标尺寸，浏览器复测建议可进入 `browser_review`，但仍需真实教室触控屏确认拖动手感。
@@ -280,11 +285,11 @@
 - 必修第二册第 6 章“三角”已有 draft 图谱和来源核对记录，但尚未完成纸质教材/已登录 dolearning 终核；尤其需要确认 6.1 是否按 5 个教材节点组织、`6.1.2 任意角及其度量` 是否包含角度制与弧度制的多课时拆分、6.3 是否只有正弦定理和余弦定理两个教材节点。
 - 必修第一册第 1、2、3、4、5 章均已完成 draft 级来源核对或图谱入口；第 1 章不新增数字化候选，第 2 章只保留 3 个 blocked planned 候选，第 3 章暂不进入资源生产，第 4、5 章保留少量 blocked planned 候选。所有第一册课时仍需纸质教材、教师用书或已登录 dolearning/上海数字教学系统终核课时数、课时边界和平台目录。
 - 必修第二册第 7 章目录已完成首版结构化整理，但尚未完成纸质教材人工终核。
-- 必修第二册第 8 章“平面向量”已完成首版结构化整理、dolearning 来源核对记录和 planned resource 数字化必要性筛选落地，但尚未完成纸质教材/已登录 dolearning 终核；尤其需要确认 8.3 是教材四小节拆分，还是 dolearning 三课时分组。第 8 章 6 个筛选后保留的 Applet 资源包均已推进为可运行自检草稿，3 个 Diagnosis 资源包仍是题组骨架，1 个 Manim Clip 已渲染视频产物但平台卡片仍保持 `metadata_ready`；8.3 暂缓资源仍不进入 scaffold 生产队列。
+- 必修第二册第 8 章“平面向量”已完成首版结构化整理、dolearning 来源核对记录和 planned resource 数字化必要性筛选落地，但尚未完成纸质教材/已登录 dolearning 终核；尤其需要确认 8.3 是教材四小节拆分，还是 dolearning 三课时分组。第 8 章 6 个筛选后保留的 Applet 资源包均已推进为可运行自检草稿，3 个 Diagnosis 资源包仍是题组骨架，1 个 Manim Clip 已渲染视频产物并接入平台 `video_ready` 播放入口；8.3 暂缓资源仍不进入 scaffold 生产队列。
 - 第 7 章的第 6 章前置节点已 draft 展开，但仍需人工终核；第 9 章“复数”已新增 draft 图谱和数字化必要性初筛，但尚未完成纸质教材/已登录 dolearning 终核。
 - 尚未创建独立课件播放器；教师工作台内已完成样板 Applet iframe 预览接入，但尚未沉淀为独立 `apps/player`。
 - 已创建八个第 7 章可运行 HTML Applet 原型，并已接入平台壳 iframe 预览；`L01-A01`、`L02-A01`、`L03-A01`、`L03-A02`、`L04-A01`、`L05-A01`、`L06-A01` 和 `L07-A01` 均已完成一轮数学/浏览器审校但仍需教师试读。第 8 章 Applet 中，`L01-A01`、`L02-A01`、`L03-A01`、`L04-A01`、`L05-A01` 和 `L10-A01` 均已推进为可运行自检草稿。
-- 已创建四个 Manim 场景脚本：`L01-M01`、`L05-M01`、`L06-M01` 与 `SH-HS-MATH-HJ-B2-C08-L04-M01` 均已导出可播放 `mp4` / `webm` / poster；第 7 章 `L01-M01`、`L05-M01` 和 `L06-M01` 已完成数学审校和重渲染，第 8 章 `L04-M01` 仍为 `draft` / `self_checked_draft`，需后续视频观看、数学审校和课堂节奏复核。
+- 已创建四个 Manim 场景脚本：`L01-M01`、`L05-M01`、`L06-M01` 与 `SH-HS-MATH-HJ-B2-C08-L04-M01` 均已导出可播放 `mp4` / `webm` / poster；第 7 章 `L01-M01`、`L05-M01` 和 `L06-M01` 已完成数学审校和重渲染，第 8 章 `L04-M01` 已接入平台 `video_ready` 播放入口但顶层仍为 `draft` / `self_checked_draft`，需后续视频观看、数学审校和课堂节奏复核。
 - 已将 Applet、Manim 和 Diagnosis metadata JSON Schema 接入首版自动校验脚本。
 - 已建立首版资源生产 backlog，可按单个资源工作单元开启新对话，避免全高中内容挤在一个上下文中；当前必修第二册第 7 章 15 个资源工作单元和第 8 章 10 个筛选后候选均已落地，新增的 B1-C02、B1-C04、B1-C05、B2-C06、B2-C09 planned 候选仅用于记录数字化必要性，不应立即 scaffold，并已补充 Applet / Manim / Diagnosis 全类型 scaffold 命令以减少后续手工建目录成本。
 - 当前第 7 章和第 8 章 backlog 已无 `planned` item；B1-C02 3 个、B1-C04 4 个、B1-C05 4 个、第 6 章 5 个、第 9 章 3 个 planned item 必须等待纸质教材或已登录 dolearning/上海数字教学平台终核后再进入 scaffold。下一步仍应优先推进第 7、8 章已实现资源的数学审校、课堂节奏试读和状态升级，或继续做其他章节来源核对，而不是继续新增同质资源。

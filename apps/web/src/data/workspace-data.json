@@ -11031,7 +11031,7 @@
           "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L04-M01",
           "title": "投影有向长度导入动画",
           "cognitive_action": "投影",
-          "note": "30-45 秒短动画，只串联作垂线、读有向投影、解释 a cos theta 的正负，不替代后续交互探索。"
+          "note": "30-45 秒短动画，只串联作垂线、读有向投影长度，解释 |a|cosθ 的正负，不替代后续交互探索。"
         }
       ],
       "diagnosisFocus": [
@@ -11394,8 +11394,8 @@
           "title": "投影有向长度导入动画",
           "subtitle": "把投影长度的正、零、负看成有向读数",
           "cognitiveAction": "投影",
-          "note": "30-45 秒短动画，只串联作垂线、读有向投影、解释 a cos theta 的正负，不替代后续交互探索。",
-          "availability": "metadata_ready",
+          "note": "30-45 秒短动画，只串联作垂线、读有向投影长度，解释 |a|cosθ 的正负，不替代后续交互探索。",
+          "availability": "video_ready",
           "status": "draft",
           "version": "0.1.0",
           "metadataPreview": {
@@ -11555,7 +11555,7 @@
               "stagedReveal": []
             },
             "renderPlan": {
-              "phase": "scene_draft",
+              "phase": "rendered",
               "manim_version": "Manim Community v0.20.1 via uvx",
               "scene_class": "DirectedProjectionLengthScene",
               "aspect_ratio": "16:9",
@@ -11574,7 +11574,7 @@
               "notes": [
                 "本轮将场景从静态占位推进为可审看的动态草稿，最终视频时长 36.8 秒。",
                 "画面文字使用 θ、cosθ、投影长度、正方向、反方向等中文课堂表达。",
-                "已生成 dist/final 下的 mp4、webm 和 poster；为不改平台/测试文件，平台卡片暂保留 metadata_ready，建议总控后续统一提升为 video_ready。",
+                "已生成 dist/final 下的 mp4、webm 和 poster，平台卡片可读取稳定视频入口。",
                 "poster 选用 34 秒处的钝角读数和最终衔接画面。"
               ]
             },
@@ -11584,9 +11584,9 @@
               "itemSummary": null
             },
             "platformCard": {
-              "availability": "metadata_ready",
-              "preview_behavior": "metadata_placeholder",
-              "embed_strategy": "先展示 metadata 与 storyboard 摘要；本轮已生成 dist/final 视频产物，待总控统一调整平台测试与状态流后再升级为 video_ready。",
+              "availability": "video_ready",
+              "preview_behavior": "video_player",
+              "embed_strategy": "读取 files.output_webm、files.output_mp4 和 poster，用 video 标签接入资源卡；若视频文件缺失则回退显示 metadata 与 storyboard 摘要。",
               "paired_resources": [
                 "SH-HS-MATH-HJ-B2-C08-L04-A01"
               ]
@@ -11595,7 +11595,10 @@
               "readme": "README.md",
               "storyboard": "storyboard.md",
               "scene": "scene.py",
-              "review_record": "review.md"
+              "review_record": "review.md",
+              "output_mp4": "dist/final/SH-HS-MATH-HJ-B2-C08-L04-M01.mp4",
+              "output_webm": "dist/final/SH-HS-MATH-HJ-B2-C08-L04-M01.webm",
+              "poster": "dist/final/SH-HS-MATH-HJ-B2-C08-L04-M01-poster.png"
             },
             "visualSemantics": {
               "background": "light classroom background",
@@ -11612,21 +11615,36 @@
           },
           "quality": {
             "contentStatus": "draft",
-            "implementationStage": "scaffold",
+            "implementationStage": "video_ready",
             "reviewStatus": "self_checked_draft",
-            "readinessLabel": "骨架待精修",
+            "readinessLabel": "视频已就绪",
             "displayStates": [
               "draft",
-              "scaffold",
+              "video_ready",
               "self_checked_draft"
             ],
             "labels": {
               "contentStatus": "草稿",
-              "implementationStage": "骨架",
+              "implementationStage": "视频已就绪",
               "reviewStatus": "自检草稿"
             }
           },
-          "player": null,
+          "player": {
+            "kind": "video",
+            "isRunnable": true,
+            "title": "投影有向长度导入动画",
+            "poster": "content/manim/SH-HS-MATH-HJ-B2-C08-L04-M01/dist/final/SH-HS-MATH-HJ-B2-C08-L04-M01-poster.png",
+            "sources": [
+              {
+                "src": "content/manim/SH-HS-MATH-HJ-B2-C08-L04-M01/dist/final/SH-HS-MATH-HJ-B2-C08-L04-M01.webm",
+                "type": "video/webm"
+              },
+              {
+                "src": "content/manim/SH-HS-MATH-HJ-B2-C08-L04-M01/dist/final/SH-HS-MATH-HJ-B2-C08-L04-M01.mp4",
+                "type": "video/mp4"
+              }
+            ]
+          },
           "package": {
             "path": "content/manim/SH-HS-MATH-HJ-B2-C08-L04-M01",
             "files": {
@@ -11635,14 +11653,14 @@
               "storyboard": "content/manim/SH-HS-MATH-HJ-B2-C08-L04-M01/storyboard.md",
               "scene": "content/manim/SH-HS-MATH-HJ-B2-C08-L04-M01/scene.py",
               "reviewRecord": "content/manim/SH-HS-MATH-HJ-B2-C08-L04-M01/review.md",
-              "outputMp4": null,
-              "outputWebm": null,
-              "poster": null
+              "outputMp4": "content/manim/SH-HS-MATH-HJ-B2-C08-L04-M01/dist/final/SH-HS-MATH-HJ-B2-C08-L04-M01.mp4",
+              "outputWebm": "content/manim/SH-HS-MATH-HJ-B2-C08-L04-M01/dist/final/SH-HS-MATH-HJ-B2-C08-L04-M01.webm",
+              "poster": "content/manim/SH-HS-MATH-HJ-B2-C08-L04-M01/dist/final/SH-HS-MATH-HJ-B2-C08-L04-M01-poster.png"
             },
             "media": {
-              "hasOutputMp4": false,
-              "hasOutputWebm": false,
-              "hasPoster": false
+              "hasOutputMp4": true,
+              "hasOutputWebm": true,
+              "hasPoster": true
             },
             "storyboard": {
               "kind": "storyboard",
@@ -23566,7 +23584,7 @@
           "proposed_resource_id": "SH-HS-MATH-HJ-B2-C08-L04-M01",
           "title": "投影有向长度导入动画",
           "cognitive_action": "投影",
-          "note": "30-45 秒短动画，只串联作垂线、读有向投影、解释 a cos theta 的正负，不替代后续交互探索。"
+          "note": "30-45 秒短动画，只串联作垂线、读有向投影长度，解释 |a|cosθ 的正负，不替代后续交互探索。"
         }
       ],
       "diagnosisFocus": [
@@ -23929,8 +23947,8 @@
           "title": "投影有向长度导入动画",
           "subtitle": "把投影长度的正、零、负看成有向读数",
           "cognitiveAction": "投影",
-          "note": "30-45 秒短动画，只串联作垂线、读有向投影、解释 a cos theta 的正负，不替代后续交互探索。",
-          "availability": "metadata_ready",
+          "note": "30-45 秒短动画，只串联作垂线、读有向投影长度，解释 |a|cosθ 的正负，不替代后续交互探索。",
+          "availability": "video_ready",
           "status": "draft",
           "version": "0.1.0",
           "metadataPreview": {
@@ -24090,7 +24108,7 @@
               "stagedReveal": []
             },
             "renderPlan": {
-              "phase": "scene_draft",
+              "phase": "rendered",
               "manim_version": "Manim Community v0.20.1 via uvx",
               "scene_class": "DirectedProjectionLengthScene",
               "aspect_ratio": "16:9",
@@ -24109,7 +24127,7 @@
               "notes": [
                 "本轮将场景从静态占位推进为可审看的动态草稿，最终视频时长 36.8 秒。",
                 "画面文字使用 θ、cosθ、投影长度、正方向、反方向等中文课堂表达。",
-                "已生成 dist/final 下的 mp4、webm 和 poster；为不改平台/测试文件，平台卡片暂保留 metadata_ready，建议总控后续统一提升为 video_ready。",
+                "已生成 dist/final 下的 mp4、webm 和 poster，平台卡片可读取稳定视频入口。",
                 "poster 选用 34 秒处的钝角读数和最终衔接画面。"
               ]
             },
@@ -24119,9 +24137,9 @@
               "itemSummary": null
             },
             "platformCard": {
-              "availability": "metadata_ready",
-              "preview_behavior": "metadata_placeholder",
-              "embed_strategy": "先展示 metadata 与 storyboard 摘要；本轮已生成 dist/final 视频产物，待总控统一调整平台测试与状态流后再升级为 video_ready。",
+              "availability": "video_ready",
+              "preview_behavior": "video_player",
+              "embed_strategy": "读取 files.output_webm、files.output_mp4 和 poster，用 video 标签接入资源卡；若视频文件缺失则回退显示 metadata 与 storyboard 摘要。",
               "paired_resources": [
                 "SH-HS-MATH-HJ-B2-C08-L04-A01"
               ]
@@ -24130,7 +24148,10 @@
               "readme": "README.md",
               "storyboard": "storyboard.md",
               "scene": "scene.py",
-              "review_record": "review.md"
+              "review_record": "review.md",
+              "output_mp4": "dist/final/SH-HS-MATH-HJ-B2-C08-L04-M01.mp4",
+              "output_webm": "dist/final/SH-HS-MATH-HJ-B2-C08-L04-M01.webm",
+              "poster": "dist/final/SH-HS-MATH-HJ-B2-C08-L04-M01-poster.png"
             },
             "visualSemantics": {
               "background": "light classroom background",
@@ -24147,21 +24168,36 @@
           },
           "quality": {
             "contentStatus": "draft",
-            "implementationStage": "scaffold",
+            "implementationStage": "video_ready",
             "reviewStatus": "self_checked_draft",
-            "readinessLabel": "骨架待精修",
+            "readinessLabel": "视频已就绪",
             "displayStates": [
               "draft",
-              "scaffold",
+              "video_ready",
               "self_checked_draft"
             ],
             "labels": {
               "contentStatus": "草稿",
-              "implementationStage": "骨架",
+              "implementationStage": "视频已就绪",
               "reviewStatus": "自检草稿"
             }
           },
-          "player": null,
+          "player": {
+            "kind": "video",
+            "isRunnable": true,
+            "title": "投影有向长度导入动画",
+            "poster": "content/manim/SH-HS-MATH-HJ-B2-C08-L04-M01/dist/final/SH-HS-MATH-HJ-B2-C08-L04-M01-poster.png",
+            "sources": [
+              {
+                "src": "content/manim/SH-HS-MATH-HJ-B2-C08-L04-M01/dist/final/SH-HS-MATH-HJ-B2-C08-L04-M01.webm",
+                "type": "video/webm"
+              },
+              {
+                "src": "content/manim/SH-HS-MATH-HJ-B2-C08-L04-M01/dist/final/SH-HS-MATH-HJ-B2-C08-L04-M01.mp4",
+                "type": "video/mp4"
+              }
+            ]
+          },
           "package": {
             "path": "content/manim/SH-HS-MATH-HJ-B2-C08-L04-M01",
             "files": {
@@ -24170,14 +24206,14 @@
               "storyboard": "content/manim/SH-HS-MATH-HJ-B2-C08-L04-M01/storyboard.md",
               "scene": "content/manim/SH-HS-MATH-HJ-B2-C08-L04-M01/scene.py",
               "reviewRecord": "content/manim/SH-HS-MATH-HJ-B2-C08-L04-M01/review.md",
-              "outputMp4": null,
-              "outputWebm": null,
-              "poster": null
+              "outputMp4": "content/manim/SH-HS-MATH-HJ-B2-C08-L04-M01/dist/final/SH-HS-MATH-HJ-B2-C08-L04-M01.mp4",
+              "outputWebm": "content/manim/SH-HS-MATH-HJ-B2-C08-L04-M01/dist/final/SH-HS-MATH-HJ-B2-C08-L04-M01.webm",
+              "poster": "content/manim/SH-HS-MATH-HJ-B2-C08-L04-M01/dist/final/SH-HS-MATH-HJ-B2-C08-L04-M01-poster.png"
             },
             "media": {
-              "hasOutputMp4": false,
-              "hasOutputWebm": false,
-              "hasPoster": false
+              "hasOutputMp4": true,
+              "hasOutputWebm": true,
+              "hasPoster": true
             },
             "storyboard": {
               "kind": "storyboard",
@@ -27639,9 +27675,9 @@
       "resourceType": "manim_clip",
       "title": "投影有向长度导入动画",
       "subtitle": "把投影长度的正、零、负看成有向读数",
-      "note": "30-45 秒短动画，只串联作垂线、读有向投影、解释 a cos theta 的正负，不替代后续交互探索。",
+      "note": "30-45 秒短动画，只串联作垂线、读有向投影长度，解释 |a|cosθ 的正负，不替代后续交互探索。",
       "cognitiveAction": "投影",
-      "availability": "metadata_ready",
+      "availability": "video_ready",
       "status": "draft",
       "version": "0.1.0",
       "lessonId": "SH-HS-MATH-HJ-B2-C08-L04",
@@ -27657,21 +27693,36 @@
       "sectionTextbookLabel": "8.2",
       "quality": {
         "contentStatus": "draft",
-        "implementationStage": "scaffold",
+        "implementationStage": "video_ready",
         "reviewStatus": "self_checked_draft",
-        "readinessLabel": "骨架待精修",
+        "readinessLabel": "视频已就绪",
         "displayStates": [
           "draft",
-          "scaffold",
+          "video_ready",
           "self_checked_draft"
         ],
         "labels": {
           "contentStatus": "草稿",
-          "implementationStage": "骨架",
+          "implementationStage": "视频已就绪",
           "reviewStatus": "自检草稿"
         }
       },
-      "player": null,
+      "player": {
+        "kind": "video",
+        "isRunnable": true,
+        "title": "投影有向长度导入动画",
+        "poster": "content/manim/SH-HS-MATH-HJ-B2-C08-L04-M01/dist/final/SH-HS-MATH-HJ-B2-C08-L04-M01-poster.png",
+        "sources": [
+          {
+            "src": "content/manim/SH-HS-MATH-HJ-B2-C08-L04-M01/dist/final/SH-HS-MATH-HJ-B2-C08-L04-M01.webm",
+            "type": "video/webm"
+          },
+          {
+            "src": "content/manim/SH-HS-MATH-HJ-B2-C08-L04-M01/dist/final/SH-HS-MATH-HJ-B2-C08-L04-M01.mp4",
+            "type": "video/mp4"
+          }
+        ]
+      },
       "packagePath": "content/manim/SH-HS-MATH-HJ-B2-C08-L04-M01"
     },
     {

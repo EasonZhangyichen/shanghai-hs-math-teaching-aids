@@ -3,7 +3,7 @@
 资源 ID：`SH-HS-MATH-HJ-B2-C08-L04-M01`
 
 当前状态：`draft`
-当前阶段：视频产物已生成；顶层状态仍保持 `draft`，平台卡片仍保持 `metadata_ready`
+当前阶段：视频产物已生成；顶层状态仍保持 `draft`，平台卡片已补齐 `video_ready` 入口
 
 ## 2026-05-11 单资源自检结论
 
@@ -32,7 +32,7 @@
 ## 下一状态建议
 
 - 顶层 `metadata.status` 保持 `draft`。
-- 若 mp4、webm 和 poster 均生成且内容验证通过，可建议总控在完成平台预览与状态测试后，再决定是否把平台可用性升级为 `video_ready`。
+- 已在 metadata 中补齐 `render_plan.phase: rendered`、`files.output_mp4`、`files.output_webm`、`files.poster` 和 `platform_card.availability: video_ready`，平台可识别稳定视频入口。
 - 不建议进入 `published`、`release_candidate` 或课堂试用状态；这些状态只能由总控在后续审校后决定。
 
 ## 数学审校关注点

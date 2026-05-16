@@ -2332,7 +2332,7 @@ volumes:
                 proposed_resource_id: "SH-HS-MATH-HJ-B2-C08-L04-M01"
                 title: "投影有向长度导入动画"
                 cognitive_action: "投影"
-                note: "30-45 秒短动画，只串联作垂线、读有向投影、解释 a cos theta 的正负，不替代后续交互探索。"
+                note: "30-45 秒短动画，只串联作垂线、读有向投影长度，解释 |a|cosθ 的正负，不替代后续交互探索。"
             diagnosis_focus:
               - "能否判断投影的正负。"
               - "能否解释投影长度与夹角余弦的关系。"

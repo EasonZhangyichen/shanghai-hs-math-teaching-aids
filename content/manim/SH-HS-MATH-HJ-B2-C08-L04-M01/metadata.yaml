@@ -115,7 +115,7 @@ visual_semantics:
   directed_segment: "正向投影用绿色，零投影用灰色，负向投影用紫色，并通过箭头方向区分。"
   emphasis_rule: "只高亮 a、b、θ、投影点 H 和有向投影线段；数量积只作为末尾衔接。"
 render_plan:
-  phase: "scene_draft"
+  phase: "rendered"
   manim_version: "Manim Community v0.20.1 via uvx"
   scene_class: "DirectedProjectionLengthScene"
   aspect_ratio: "16:9"
@@ -132,17 +132,20 @@ render_plan:
   notes:
     - "本轮将场景从静态占位推进为可审看的动态草稿，最终视频时长 36.8 秒。"
     - "画面文字使用 θ、cosθ、投影长度、正方向、反方向等中文课堂表达。"
-    - "已生成 dist/final 下的 mp4、webm 和 poster；为不改平台/测试文件，平台卡片暂保留 metadata_ready，建议总控后续统一提升为 video_ready。"
+    - "已生成 dist/final 下的 mp4、webm 和 poster，平台卡片可读取稳定视频入口。"
     - "poster 选用 34 秒处的钝角读数和最终衔接画面。"
 files:
   readme: "README.md"
   storyboard: "storyboard.md"
   scene: "scene.py"
   review_record: "review.md"
+  output_mp4: "dist/final/SH-HS-MATH-HJ-B2-C08-L04-M01.mp4"
+  output_webm: "dist/final/SH-HS-MATH-HJ-B2-C08-L04-M01.webm"
+  poster: "dist/final/SH-HS-MATH-HJ-B2-C08-L04-M01-poster.png"
 platform_card:
-  availability: "metadata_ready"
-  preview_behavior: "metadata_placeholder"
-  embed_strategy: "先展示 metadata 与 storyboard 摘要；本轮已生成 dist/final 视频产物，待总控统一调整平台测试与状态流后再升级为 video_ready。"
+  availability: "video_ready"
+  preview_behavior: "video_player"
+  embed_strategy: "读取 files.output_webm、files.output_mp4 和 poster，用 video 标签接入资源卡；若视频文件缺失则回退显示 metadata 与 storyboard 摘要。"
   paired_resources:
     - "SH-HS-MATH-HJ-B2-C08-L04-A01"
 compliance:

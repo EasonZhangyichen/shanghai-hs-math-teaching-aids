@@ -312,7 +312,7 @@ test("generates a deterministic backlog from curriculum entry points and impleme
 
   const vectorProjectionManim = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B2-C08-L04-M01");
   assert.equal(vectorProjectionManim.status, "implemented");
-  assert.equal(vectorProjectionManim.availability, "metadata_ready");
+  assert.equal(vectorProjectionManim.availability, "video_ready");
   assert.equal(vectorProjectionManim.type, "manim_clip");
   assert.equal(vectorProjectionManim.title, "投影有向长度导入动画");
   assert.equal(vectorProjectionManim.packagePath, "content/manim/SH-HS-MATH-HJ-B2-C08-L04-M01");

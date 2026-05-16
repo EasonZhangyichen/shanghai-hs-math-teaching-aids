@@ -1193,7 +1193,7 @@
       "id": "SH-HS-MATH-HJ-B2-C08-L04-M01",
       "type": "manim_clip",
       "status": "implemented",
-      "availability": "metadata_ready",
+      "availability": "video_ready",
       "title": "投影有向长度导入动画",
       "proposedTitle": "投影有向长度导入动画",
       "lessonId": "SH-HS-MATH-HJ-B2-C08-L04",
@@ -1211,14 +1211,14 @@
         "夹角为钝角时投影为负的原因不直观。",
         "投影、垂线和数量积公式之间的联系容易被分散记忆。"
       ],
-      "note": "30-45 秒短动画，只串联作垂线、读有向投影、解释 a cos theta 的正负，不替代后续交互探索。",
+      "note": "30-45 秒短动画，只串联作垂线、读有向投影长度，解释 |a|cosθ 的正负，不替代后续交互探索。",
       "priority": "chapter_backlog",
       "priorityReason": "投影连接三角比和数量积，是从第 7 章过渡到向量运算的关键节点。",
       "packagePath": "content/manim/SH-HS-MATH-HJ-B2-C08-L04-M01",
       "metadataPath": "content/manim/SH-HS-MATH-HJ-B2-C08-L04-M01/metadata.yaml",
       "recommendedTrack": "track/manim-pipeline",
       "scaffoldPolicy": "ready_for_resource_work",
-      "nextAction": "核对 metadata、资源文件和审核记录，补齐缺口后运行内容校验。",
+      "nextAction": "完成数学审校、分镜节奏复核和课堂播放口径确认，再决定是否进入 math_review。",
       "threadPrompt": "请先读取项目锚点文件和 content/production/resource-backlog.json，然后切到 track/manim-pipeline。这次只复核并推进 SH-HS-MATH-HJ-B2-C08-L04-M01（Manim Clip），对应课时 SH-HS-MATH-HJ-B2-C08-L04「向量的投影」。先确认教学痛点、认知动作、文件规范和验收标准，再动手；完成后运行 npm run generate:backlog 和 npm run verify，更新 docs/01-current-state.md 与 docs/02-next-actions.md，并提交。"
     },
     {
