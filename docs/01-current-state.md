@@ -1,6 +1,6 @@
 # 当前状态
 
-更新时间：2026-05-16
+更新时间：2026-05-18
 
 ## 已有输入
 
@@ -210,6 +210,11 @@
   - 新增 `docs/browser-audits/b2-c08-l10-a01-browser-gate.md`，确认 `L10-A01` 直达页已可运行，但平台 iframe 仍有首屏适配风险，暂建议 `hold_for_platform_iframe_fit`，不进入 `browser_review`。
   - `SH-HS-MATH-HJ-B2-C08-L04-M01` 已补齐 `render_plan.phase: rendered`、`files.output_mp4/output_webm/poster` 与 `platform_card.availability: video_ready`，平台可读取 video player 入口；顶层 `metadata.status` 仍保持 `draft`，不进入 `release_candidate` 或 `published`。
   - 本批同步更新平台生成数据、backlog 和测试断言，明确 `video_ready` 只表示视频入口可预览，不等同于数学审校、课堂试读或发布通过。
+- 已完成第 8 章 L05 / L10 / L04-M01 小范围质量闸门复核并进入总控集成：
+  - `SH-HS-MATH-HJ-B2-C08-L05-A01` 已扩大透明触控热区并新增资源内布局自检；直达页和平台 iframe 内部三种视口复核通过，但平台课时页外层仍需滚动到资源卡，真实触控屏和投屏环境仍需复核。
+  - `SH-HS-MATH-HJ-B2-C08-L10-A01` 修复后报告确认数学模型可进入 `math_review` 队列，但平台 iframe 首屏仍保持 `hold_for_platform_iframe_fit`，位置向量简写仍需数学审校确认。
+  - `SH-HS-MATH-HJ-B2-C08-L04-M01` 视频质量闸门确认 `video_ready` 预览入口合理，顶层仍为 `draft`；教师还需观看确认暂停点、“有向投影长度”课堂语言和末尾数量积衔接。
+  - 本批不修改课程图谱，不提升任何第 8 章资源到 `browser_review`、`classroom_trial`、`release_candidate` 或 `published`。
 - 已完成双线并行质量修复线首批 3 个任务并进入总控集成：
   - `SH-HS-MATH-HJ-B2-C07-L01-A01` 与 `SH-HS-MATH-HJ-B2-C07-L06-A01` README 中的 `theta`、`pi/2`、`kpi`、`2pi` 等旧口径已清理；第 7 章课程图谱、L05 Applet / Manim / Diagnosis metadata 中的 7.3 标题已统一为 `y = A sin(ωx + φ)`。
   - `SH-HS-MATH-HJ-B2-C07-L03-A02` 已优化平台 iframe 下的窄宽裁切和触控目标尺寸，浏览器复测建议可进入 `browser_review`，但仍需真实教室触控屏确认拖动手感。
