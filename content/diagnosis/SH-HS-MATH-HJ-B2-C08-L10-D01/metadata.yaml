@@ -1,77 +1,108 @@
-schema_version: 0.1.0
-id: SH-HS-MATH-HJ-B2-C08-L10-D01
-version: 0.1.0
-status: draft
-resource_type: diagnosis
-title: 向量应用第一步诊断
-subtitle: 围绕向量的应用的课堂即时诊断草稿
+schema_version: "0.1.0"
+id: "SH-HS-MATH-HJ-B2-C08-L10-D01"
+version: "0.1.0"
+status: "draft"
+resource_type: "diagnosis"
+title: "向量应用第一步诊断"
+subtitle: "围绕基底、坐标、数量积、投影与分解选择的课堂即时诊断"
+
 curriculum:
-  region: 上海
-  stage: 高中
-  subject: 数学
-  edition: 沪教版
-  volume_id: B2
-  volume_title: 必修第二册
-  chapter_id: SH-HS-MATH-HJ-B2-C08
-  chapter_title: 平面向量
-  section_id: SH-HS-MATH-HJ-B2-C08-S04
-  section_title: 向量的应用
-  lesson_id: SH-HS-MATH-HJ-B2-C08-L10
+  region: "上海"
+  stage: "高中"
+  subject: "数学"
+  edition: "沪教版"
+  volume_id: "B2"
+  volume_title: "必修第二册"
+  chapter_id: "SH-HS-MATH-HJ-B2-C08"
+  chapter_title: "平面向量"
+  section_id: "SH-HS-MATH-HJ-B2-C08-S04"
+  section_title: "向量的应用"
+  lesson_id: "SH-HS-MATH-HJ-B2-C08-L10"
   textbook_ref: "8.4"
-  lesson_title: 向量的应用
+  lesson_title: "向量的应用"
+
 pedagogy:
-  cognitive_action: 比较
-  estimated_classroom_minutes: 8
-  primary_teaching_problem: 学生面对几何题时不知道先选基底、建坐标还是使用数量积。
+  cognitive_action: "比较"
+  estimated_classroom_minutes: 9
+  primary_teaching_problem: "学生进入 8.4 向量应用后，常把第一步变成机械建坐标或直接套公式，不能根据平行、中点、垂直、夹角、投影和分解等题目特征选择合适的向量工具。"
   learning_goals:
-    - 识别向量的应用学习中的典型错因。
-    - 用“比较”方式解释学生答案背后的数学理解偏差。
-    - 根据错因标签选择课堂回讲或补救练习路径。
+    - "根据题目目标判断先选基底与向量路径、先建坐标设点、先用数量积，还是先作投影或分解。"
+    - "说清第一步选择的理由，诊断是否抓住平行、中点、垂直、夹角、长度和方向分量等关键信号。"
+    - "避免把 8.4 向量应用退化为复杂解析几何计算，保留向量法的几何直观和工具选择意识。"
   prerequisites:
-    - 向量的应用相关先修知识
+    - "向量加法、减法、数乘和基底分解"
+    - "中点、比例点、平行和共线的几何语言"
+    - "向量数量积、夹角、垂直判定和投影"
+    - "向量的坐标表示与简单坐标设点"
   successors:
-    - 后续课时学习与综合应用
+    - "SH-HS-MATH-HJ-B2-C09-K01"
+    - "SH-HS-MATH-HJ-XB1-SPACEVEC-K01"
+    - "SH-HS-MATH-HJ-XB1-ANALYTIC-K01"
   core_competencies:
-    - 逻辑推理
-    - 数学运算
-    - 直观想象
-  classroom_use: 课堂末尾 6 到 8 分钟即时诊断，也可作为作业讲评前的错因分流。
+    - "逻辑推理"
+    - "数学运算"
+    - "直观想象"
+  classroom_use: "建议放在 8.4 向量应用第一课时后半段或第二课时开头 8 到 10 分钟使用；教师只看学生是否会选第一步，不要求完成整道证明。"
+
 diagnosis_design:
   diagnostic_focus:
-    - 围绕几何条件选择基底法、坐标法或数量积法的第一步理由给反馈，不批改完整证明过程。
-    - 能否暴露并解释：学生面对几何题时不知道先选基底、建坐标还是使用数量积。
-    - 能否暴露并解释：几何语言转化为向量等式的第一步难，容易直接套公式。
-    - 能否暴露并解释：证明过程中的向量路径、辅助点和坐标系选择缺少策略。
+    - "能否在平行四边形、中点和比例点情境中先选基底、定路径或表达辅助点。"
+    - "能否在垂直、夹角、长度比较情境中识别数量积入口，而不是只做线性运算。"
+    - "能否在有天然直角边、边长或已给坐标的情境中简洁建坐标，且不把坐标法变成复杂解析几何主线。"
+    - "能否在方向分量、有效长度和沿某方向贡献等情境中先作投影或分解。"
   misconception_tags:
-    - id: concept_expression_gap
-      title: 概念表达不完整
-      description: 学生能回忆局部结论，但不能写成完整、可推广的数学表达。
-    - id: representation_mixup
-      title: 表征混淆
-      description: 学生在图像、符号或语言表征之间转换时混淆对象或条件。
+    - id: "basis_path_gap"
+      title: "基底与路径未先定"
+      description: "遇到平行四边形、中点、比例点或首尾路径时，没有先选合适的基向量或把目标向量拆成已知路径。"
+    - id: "coordinate_overreach"
+      title: "坐标法泛化过度"
+      description: "不看题目结构，默认建复杂坐标或列直线方程，增加计算负担并遮蔽向量关系。"
+    - id: "coordinate_setup_gap"
+      title: "坐标设点入口不稳"
+      description: "当题目已有直角边、边长或坐标信息时，不能选择简洁原点和坐标轴，或设点后脱离向量目标。"
+    - id: "dot_product_trigger_gap"
+      title: "数量积触发不敏感"
+      description: "遇到垂直、夹角、长度比较或锐钝判断时，没有想到把目标转化为数量积、模长或数量积符号。"
+    - id: "projection_decomposition_gap"
+      title: "投影分解信号遗漏"
+      description: "遇到沿某方向的分量、有效长度或垂直分解时，没有先确定基准方向并作投影或分解。"
+    - id: "point_ratio_expression_gap"
+      title: "辅助点与比例表达断裂"
+      description: "知道有中点或比例点，但不能把点的位置转化为从同一出发点引出的向量表达。"
   item_summary:
-    total_items: 1
+    total_items: 6
     question_types:
-      - draft_placeholder
-    estimated_minutes: 8
+      - "single_choice"
+      - "multiple_select"
+      - "short_explanation"
+      - "error_analysis"
+      - "draft_placeholder"
+    estimated_minutes: 9
   feedback_strategy:
-    immediate_feedback: 首版 scaffold 仅提供题组结构，后续按具体错因补充即时反馈。
-    teacher_dashboard_notes: 教师端先显示诊断目标和错因标签草稿，题组定稿后再展示统计口径。
+    immediate_feedback: "每题反馈只围绕第一步选择：基底与路径、坐标设点、数量积、投影分解或辅助点表达，不要求学生补完完整证明。"
+    teacher_dashboard_notes: "若 coordinate_overreach 高发，回到题目特征分类；若 basis_path_gap 或 point_ratio_expression_gap 高发，先练从图形写向量路径；若 dot_product_trigger_gap 高发，补讲垂直、夹角和长度的数量积入口；若 projection_decomposition_gap 高发，回看投影有向长度。"
+    remediation_links:
+      - "content/applets/SH-HS-MATH-HJ-B2-C08-L10-A01"
+      - "content/applets/SH-HS-MATH-HJ-B2-C08-L05-A01"
+      - "content/applets/SH-HS-MATH-HJ-B2-C08-L04-A01"
+
 scoring:
   mastery_threshold: 0.75
-  grading_mode: tagged_misconception
-  retry_policy: 课堂内允许一次订正，保留首次错因标签。
-platform_card:
-  availability: metadata_ready
-  preview_behavior: metadata_placeholder
-  embed_strategy: 首期显示诊断目标、错因标签和文件入口；题组定稿后升级为 item_bank_ready。
-files:
-  readme: README.md
-  item_bank: item-bank.yaml
-  scoring_rubric: scoring-rubric.md
-  teacher_notes: teacher-notes.md
-  review_record: review.md
-compliance:
-  copyright_note: 本 scaffold 仅生成原创资源骨架，不复制教材正文、官方课件、教案或商业题库。
-  review_status: self_checked_draft
+  grading_mode: "mixed"
+  retry_policy: "课堂内允许一次订正；订正只需改写第一步和理由，首次错因标签保留给教师看板。"
 
+platform_card:
+  availability: "metadata_ready"
+  preview_behavior: "metadata_placeholder"
+  embed_strategy: "首期仍按第 8 章草稿资源显示诊断目标、错因标签和文件入口；题组已补齐，待总控更新平台预览口径后再升级为题组预览。"
+
+files:
+  readme: "README.md"
+  item_bank: "item-bank.yaml"
+  scoring_rubric: "scoring-rubric.md"
+  teacher_notes: "teacher-notes.md"
+  review_record: "review.md"
+
+compliance:
+  copyright_note: "本诊断包为原创题组与反馈设计，不复制教材正文、官方课件、教案或商业题库。"
+  review_status: "self_checked_draft"

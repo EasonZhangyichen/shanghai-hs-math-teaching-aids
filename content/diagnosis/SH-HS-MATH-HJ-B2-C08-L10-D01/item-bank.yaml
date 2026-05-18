@@ -1,11 +1,168 @@
-schema_version: 0.1.0
-resource_id: SH-HS-MATH-HJ-B2-C08-L10-D01
-title: 向量应用第一步诊断题组草稿
-estimated_minutes: 8
-total_score: 0
+schema_version: "0.1.0"
+resource_id: "SH-HS-MATH-HJ-B2-C08-L10-D01"
+title: "向量应用第一步诊断题组"
+estimated_minutes: 9
+total_score: 10
 mastery_threshold: 0.75
 misconception_tags:
-  - concept_expression_gap
-  - representation_mixup
-items: []
+  - "basis_path_gap"
+  - "coordinate_overreach"
+  - "coordinate_setup_gap"
+  - "dot_product_trigger_gap"
+  - "projection_decomposition_gap"
+  - "point_ratio_expression_gap"
 
+items:
+  - id: "D01-Q01"
+    type: "single_choice"
+    score: 1
+    title: "平行四边形中的向量路径"
+    diagnostic_focus: "能否在平行四边形与中点情境中先选基底并拆出目标向量。"
+    prompt: "平行四边形 ABCD 中，M 是 BC 的中点。若要用向量说明向量 AM 可由向量 AB、AD 表示，第一步最合适的是哪一项？"
+    choices:
+      - id: "A"
+        text: "取向量 AB、AD 为基向量，先写向量 AM = 向量 AB + 向量 BM，再用向量 BM = 1/2 向量 AD。"
+        is_correct: true
+        feedback: "平行四边形给出两条天然基向量，中点给出 1/2 倍关系；先定路径比先算坐标更直接。"
+      - id: "B"
+        text: "先建立一般直角坐标系，分别设 A、B、C、D、M 的坐标，再列五个点的关系。"
+        is_correct: false
+        misconception_tags: ["coordinate_overreach"]
+        feedback: "这道题的结构已经由平行四边形和中点给出，泛化建坐标会增加负担。"
+      - id: "C"
+        text: "先计算向量 AM 与向量 AD 的数量积，因为出现了两条线段。"
+        is_correct: false
+        misconception_tags: ["dot_product_trigger_gap"]
+        feedback: "题目目标是表达向量，不是判断垂直、夹角或长度，数量积不是第一入口。"
+      - id: "D"
+        text: "先比较 AM 与 AD 的长度，只要长度能算出就能表示向量 AM。"
+        is_correct: false
+        misconception_tags: ["basis_path_gap"]
+        feedback: "表示一个向量不仅要长度，还要方向和路径；应先用 AB、AD 拆出 AM。"
+    answer: ["A"]
+    feedback_on_correct: "能把平行四边形和中点条件转化为基底与路径。"
+
+  - id: "D01-Q02"
+    type: "multiple_select"
+    score: 2
+    title: "数量积入口判断"
+    diagnostic_focus: "能否根据垂直、夹角和长度比较识别数量积第一步。"
+    prompt: "下列哪些情境中，第一步优先考虑把目标向量写出来并使用数量积？"
+    choices:
+      - id: "A"
+        text: "要证明 AM ⟂ BC，可先把向量 AM、BC 表示出来，再转化为向量 AM · 向量 BC = 0。"
+        is_correct: true
+        feedback: "垂直判定是数量积的典型入口。"
+      - id: "B"
+        text: "要判断两个向量夹角是锐角还是钝角，可先看这两个向量的数量积符号。"
+        is_correct: true
+        feedback: "数量积正负直接反映夹角余弦的正负。"
+      - id: "C"
+        text: "只要题中出现中点，第一步都应直接写数量积。"
+        is_correct: false
+        misconception_tags: ["dot_product_trigger_gap", "point_ratio_expression_gap"]
+        feedback: "中点本身先给出 1/2 倍或平均关系；是否用数量积要看目标是否涉及垂直、夹角或长度。"
+      - id: "D"
+        text: "题目只要求把一个向量沿两条边方向分解时，也应先求数量积。"
+        is_correct: false
+        misconception_tags: ["basis_path_gap", "projection_decomposition_gap"]
+        feedback: "沿给定方向分解时应先定基向量或投影方向；数量积可能辅助求系数，但不是必然第一步。"
+    answer: ["A", "B"]
+    scoring_note: "全选 A、B 且不选 C、D 得 2 分；漏选一个正确项得 1 分；选择 C 或 D 时记录对应错因标签。"
+    feedback_on_correct: "能把数量积留给垂直、夹角、长度和锐钝判断。"
+
+  - id: "D01-Q03"
+    type: "single_choice"
+    score: 1
+    title: "什么时候简洁建坐标"
+    diagnostic_focus: "能否在有天然直角边和长度数据时选择低负担坐标入口。"
+    prompt: "矩形 ABCD 中，AB = 4，AD = 3，E 是 AB 的中点。若要先为求 DE 的长度或判断 DE 与 AC 的夹角做准备，最合适的第一步是哪一项？"
+    choices:
+      - id: "A"
+        text: "以 A 为原点，AB、AD 所在直线分别为 x 轴、y 轴，先写 A(0,0)，B(4,0)，D(0,3)，E(2,0)。"
+        is_correct: true
+        feedback: "矩形的垂直边和已知边长天然适合简洁坐标设点，随后可写向量 DE、AC。"
+      - id: "B"
+        text: "任意把 AC 设为 x 轴，再用斜率方程求所有边所在直线。"
+        is_correct: false
+        misconception_tags: ["coordinate_setup_gap", "coordinate_overreach"]
+        feedback: "坐标法要顺着题目的垂直边和长度信息设轴，不应制造额外斜率计算。"
+      - id: "C"
+        text: "不设点，直接套两点距离公式。"
+        is_correct: false
+        misconception_tags: ["coordinate_setup_gap"]
+        feedback: "两点距离公式需要点坐标；第一步应先把点设清楚。"
+      - id: "D"
+        text: "先作出所有高线和中线，再寻找相似三角形。"
+        is_correct: false
+        misconception_tags: ["coordinate_overreach"]
+        feedback: "这里已有矩形直角边和边长，复杂辅助线会偏离向量应用第一步。"
+    answer: ["A"]
+    feedback_on_correct: "能在适合坐标法的题目中选择简洁、服务向量目标的设点方式。"
+
+  - id: "D01-Q04"
+    type: "multiple_select"
+    score: 2
+    title: "投影与分解信号"
+    diagnostic_focus: "能否识别沿某方向的分量、有效长度和垂直分解。"
+    prompt: "向量 OP 表示一次位移，单位向量 e 表示坡面方向。题目问“位移在坡面方向上的有效长度”或“把位移分成沿坡面与垂直坡面两部分”。下列哪些第一步合理？"
+    choices:
+      - id: "A"
+        text: "先明确基准方向 e，并考虑向量 OP 在 e 方向上的投影。"
+        is_correct: true
+        feedback: "“在某方向上的有效长度”就是投影信号。"
+      - id: "B"
+        text: "先把向量 OP 分解为平行 e 的部分和垂直 e 的部分。"
+        is_correct: true
+        feedback: "题目要求两部分时，第一步应先确定分解方向。"
+      - id: "C"
+        text: "先把点 P 平移到原点，因为位移向量必须从原点出发才能计算。"
+        is_correct: false
+        misconception_tags: ["coordinate_overreach"]
+        feedback: "向量可以平移表示；投影依赖方向和夹角，不要求把点移到原点。"
+      - id: "D"
+        text: "先使用向量加法首尾相接，因为题目中出现“有效长度”一定是合成问题。"
+        is_correct: false
+        misconception_tags: ["projection_decomposition_gap", "basis_path_gap"]
+        feedback: "这里问的是某方向分量，不是多个位移合成；应先投影或分解。"
+    answer: ["A", "B"]
+    scoring_note: "全选 A、B 且不多选得 2 分；漏选一个正确项得 1 分；选择 C 或 D 时记录错因标签。"
+    feedback_on_correct: "能把方向分量问题与向量加法合成问题区分开。"
+
+  - id: "D01-Q05"
+    type: "short_explanation"
+    score: 2
+    title: "比例点的第一步表达"
+    diagnostic_focus: "能否把比例点转化为从同一出发点引出的向量表达。"
+    prompt: "三角形 ABC 中，D 在 BC 上，且 BD:DC = 2:1。要用向量表示向量 AD，有同学第一步就建立一般坐标系求 D 点坐标。请改写一个更贴近向量法的第一步，并说明理由。"
+    expected_response:
+      - "可先取向量 AB、AC 为基向量。"
+      - "因为 BD:DC = 2:1，所以 D 从 B 到 C 走了 2/3 段。"
+      - "向量 AD = 向量 AB + 向量 BD = 向量 AB + 2/3 向量 BC。"
+      - "又向量 BC = 向量 AC - 向量 AB，所以向量 AD = 1/3 向量 AB + 2/3 向量 AC。"
+      - "这样直接利用比例点和同一出发点，不必先进入一般坐标计算。"
+    misconception_tags_when_incomplete:
+      - "point_ratio_expression_gap"
+      - "basis_path_gap"
+      - "coordinate_overreach"
+    feedback_on_correct: "能把比例点先翻译成向量路径，再整理为基向量表达。"
+
+  - id: "D01-Q06"
+    type: "error_analysis"
+    score: 2
+    title: "一律建坐标的订正"
+    diagnostic_focus: "能否综合辨别三类题目的第一步差异。"
+    prompt: "某同学总结说：做 8.4 向量应用题，第一步都先建坐标、列点坐标，再看能不能算下去。请指出至少两类不宜“一律建坐标”的情形，并分别给出更合适的第一步。"
+    expected_response:
+      - "平行四边形、中点、比例点或路径关系明显时，先选基向量并把目标向量拆成已知向量。"
+      - "证明垂直、判断夹角或比较长度时，先写出相关向量，再考虑数量积或模长。"
+      - "题目问沿某方向的有效长度、分量或垂直分解时，先确定基准方向并作投影或分解。"
+      - "只有当题目已有坐标、天然直角边和边长数据，或坐标能显著降低表达负担时，才优先简洁建坐标。"
+      - "第一步应由题目目标和条件特征决定，而不是固定套同一种方法。"
+    misconception_tags_when_incomplete:
+      - "coordinate_overreach"
+      - "basis_path_gap"
+      - "dot_product_trigger_gap"
+      - "projection_decomposition_gap"
+      - "coordinate_setup_gap"
+    feedback_on_correct: "能把坐标法放回工具箱中，而不是让它替代全部向量应用策略。"
