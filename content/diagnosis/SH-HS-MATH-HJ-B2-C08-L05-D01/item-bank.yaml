@@ -1,11 +1,162 @@
-schema_version: 0.1.0
-resource_id: SH-HS-MATH-HJ-B2-C08-L05-D01
-title: 数量积正负误区诊断题组草稿
-estimated_minutes: 8
-total_score: 0
+schema_version: "0.1.0"
+resource_id: "SH-HS-MATH-HJ-B2-C08-L05-D01"
+title: "数量积正负误区诊断题组"
+estimated_minutes: 9
+total_score: 10
 mastery_threshold: 0.75
 misconception_tags:
-  - concept_expression_gap
-  - representation_mixup
-items: []
+  - "angle_sign_confusion"
+  - "projection_sign_confusion"
+  - "zero_vector_boundary"
+  - "perpendicular_condition_overgeneralization"
+  - "result_type_scalar_confusion"
+  - "length_direction_mixup"
 
+items:
+  - id: "D01-Q01"
+    type: "multiple_select"
+    score: 1
+    title: "夹角分区与数量积符号"
+    diagnostic_focus: "能否根据非零向量的夹角锐、直、钝判断数量积符号。"
+    prompt: "设 a、b 是两个非零向量，θ 是它们的夹角。关于 a · b 的符号，下列说法正确的是哪些？"
+    choices:
+      - id: "A"
+        text: "若 0° < θ < 90°，则 a · b > 0。"
+        is_correct: true
+        feedback: "锐角时 cosθ > 0，且 |a|、|b| 都为正，所以数量积为正。"
+      - id: "B"
+        text: "若 θ = 90°，则 a · b = 0。"
+        is_correct: true
+        feedback: "直角时 cosθ = 0，因此两个非零向量的数量积为 0。"
+      - id: "C"
+        text: "若 90° < θ < 180°，则 a · b < 0。"
+        is_correct: true
+        feedback: "钝角时 cosθ < 0，所以数量积为负。"
+      - id: "D"
+        text: "若 |a| 比 |b| 大很多，即使 θ 是钝角，a · b 也一定为正。"
+        is_correct: false
+        misconception_tags: ["length_direction_mixup", "angle_sign_confusion"]
+        feedback: "长度只影响绝对值大小，不能改变 cosθ 的符号；钝角时数量积仍为负。"
+    answer: ["A", "B", "C"]
+    scoring_note: "全选 A、B、C 且不选 D 得 1 分；选择 D 时记录 length_direction_mixup。"
+    feedback_on_correct: "能把符号判断放在夹角分区上，而不是只看长度。"
+
+  - id: "D01-Q02"
+    type: "single_choice"
+    score: 1
+    title: "由数量积负值反推夹角"
+    diagnostic_focus: "能否从数量积符号反推两个非零向量夹角范围。"
+    prompt: "已知 a、b 是两个非零向量，且 a · b < 0。下列判断一定正确的是哪一项？"
+    choices:
+      - id: "A"
+        text: "a 与 b 的夹角是钝角。"
+        is_correct: true
+        feedback: "两个非零向量长度因子都为正，数量积为负只能来自 cosθ < 0，即夹角为钝角。"
+      - id: "B"
+        text: "a 与 b 一定方向相反。"
+        is_correct: false
+        misconception_tags: ["angle_sign_confusion"]
+        feedback: "方向相反是 180° 的特殊情况；数量积为负只说明夹角在 90° 到 180° 之间。"
+      - id: "C"
+        text: "a 的长度一定小于 b 的长度。"
+        is_correct: false
+        misconception_tags: ["length_direction_mixup"]
+        feedback: "数量积的正负不比较两个向量谁长，而由夹角的余弦符号决定。"
+      - id: "D"
+        text: "a 与 b 一定垂直。"
+        is_correct: false
+        misconception_tags: ["perpendicular_condition_overgeneralization", "angle_sign_confusion"]
+        feedback: "垂直时数量积为 0，不是负数。"
+    answer: ["A"]
+    feedback_on_correct: "能从 a · b < 0 回到夹角钝角，而不误判为反向、长度比较或垂直。"
+
+  - id: "D01-Q03"
+    type: "multiple_select"
+    score: 2
+    title: "零向量边界与垂直判定"
+    diagnostic_focus: "能否准确表述 a · b = 0 与垂直之间的条件边界。"
+    prompt: "关于 a · b = 0 和垂直关系，下列说法正确的是哪些？"
+    choices:
+      - id: "A"
+        text: "若 a、b 都是非零向量，且 a · b = 0，则 a ⊥ b。"
+        is_correct: true
+        feedback: "两个向量均非零时，数量积为 0 等价于夹角为 90°。"
+      - id: "B"
+        text: "若 a 是零向量，则无论 b 是什么向量，都有 a · b = 0。"
+        is_correct: true
+        feedback: "因为 |a| = 0，数量积为 0；但这不是由夹角为 90° 得到的。"
+      - id: "C"
+        text: "只要 a · b = 0，就可以说 a 与 b 的夹角一定是 90°。"
+        is_correct: false
+        misconception_tags: ["zero_vector_boundary", "perpendicular_condition_overgeneralization"]
+        feedback: "若其中一个是零向量，夹角并不按普通非零向量那样定义，不能直接说夹角一定是 90°。"
+      - id: "D"
+        text: "若 a、b 都是非零向量且 a ⊥ b，则 a · b = 0。"
+        is_correct: true
+        feedback: "非零向量垂直时夹角为 90°，cos90° = 0。"
+    answer: ["A", "B", "D"]
+    scoring_note: "全选 A、B、D 且不选 C 得 2 分；漏选一个正确项得 1 分；选择 C 时记录 zero_vector_boundary。"
+    feedback_on_correct: "能把“零向量导致数量积为 0”和“两个非零向量垂直导致数量积为 0”分开处理。"
+
+  - id: "D01-Q04"
+    type: "single_choice"
+    score: 2
+    title: "投影方向与数量积符号"
+    diagnostic_focus: "能否用有向投影长度解释数量积的正负。"
+    prompt: "设 a 是非零向量，把 b 沿 a 的方向作有向投影。若这个有向投影长度为负，下列说法最合适的是哪一项？"
+    choices:
+      - id: "A"
+        text: "b 在 a 的反方向一侧有分量，所以 a · b < 0。"
+        is_correct: true
+        feedback: "a · b 可以理解为 |a| 乘以 b 在 a 方向上的有向投影长度；投影为负时数量积为负。"
+      - id: "B"
+        text: "投影是线段长度，长度不可能为负，所以题设一定无意义。"
+        is_correct: false
+        misconception_tags: ["projection_sign_confusion"]
+        feedback: "这里说的是有向投影长度，不是普通无符号线段长度；方向相反时可以为负。"
+      - id: "C"
+        text: "投影为负只说明 |b| 比 |a| 小，不能判断 a · b 的符号。"
+        is_correct: false
+        misconception_tags: ["length_direction_mixup", "projection_sign_confusion"]
+        feedback: "投影的正负反映方向关系，不是比较两个向量长度。"
+      - id: "D"
+        text: "只要作了垂线，a · b 就一定等于 0。"
+        is_correct: false
+        misconception_tags: ["perpendicular_condition_overgeneralization"]
+        feedback: "作投影时出现垂线只是构造方法；是否 a · b = 0 要看 b 在 a 方向上的有向投影是否为 0。"
+    answer: ["A"]
+    feedback_on_correct: "能把数量积符号解释为沿某个方向读有向投影，而不是把投影当成无符号长度。"
+
+  - id: "D01-Q05"
+    type: "error_analysis"
+    score: 2
+    title: "长度乘积不能替代夹角"
+    diagnostic_focus: "能否同时比较长度乘积和夹角符号，避免只看 |a||b|。"
+    prompt: "甲组非零向量满足 |a| = 2，|b| = 5，夹角为 60°；乙组非零向量满足 |c| = 4，|d| = 4，夹角为 120°。有同学说：乙组长度乘积 16 大于甲组长度乘积 10，所以 c · d > a · b。请判断这句话是否正确，并说明理由。"
+    expected_response:
+      - "这句话不正确。"
+      - "甲组夹角为 60°，cos60° > 0，所以 a · b > 0，且 a · b = 2 × 5 × cos60° = 5。"
+      - "乙组夹角为 120°，cos120° < 0，所以 c · d < 0，且 c · d = 4 × 4 × cos120° = -8。"
+      - "长度乘积只影响大小，夹角的余弦符号会决定数量积的正负。"
+    misconception_tags_when_incomplete:
+      - "length_direction_mixup"
+      - "angle_sign_confusion"
+    feedback_on_correct: "能先判断夹角符号，再比较数量积，不用长度乘积替代完整定义。"
+
+  - id: "D01-Q06"
+    type: "short_explanation"
+    score: 2
+    title: "结果类型和方向信息"
+    diagnostic_focus: "能否说明数量积不是向量，并指出长度不变时方向变化仍会影响数量积。"
+    prompt: "某同学说：数量积是两个向量相乘，结果也应该是向量，方向沿着较长的那个向量；如果两个向量长度都不变，数量积就不会变。请指出至少两处错误并改正。"
+    expected_response:
+      - "数量积的结果是数量，不是向量，没有“沿着哪个向量方向”的说法。"
+      - "数量积由 |a|、|b| 和夹角共同决定，长度不变时夹角变化仍会改变数量积。"
+      - "两个非零向量夹角为锐角时数量积为正，夹角为直角时为 0，夹角为钝角时为负。"
+      - "若涉及 a · b = 0，还要注意可能是其中一个向量为零，不能直接把所有情况都说成两个向量垂直。"
+    misconception_tags_when_incomplete:
+      - "result_type_scalar_confusion"
+      - "length_direction_mixup"
+      - "angle_sign_confusion"
+      - "zero_vector_boundary"
+    feedback_on_correct: "能同时纠正结果类型和“只看长度”的误区，并回到夹角和零向量边界。"
