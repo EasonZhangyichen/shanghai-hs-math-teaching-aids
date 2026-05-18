@@ -4,7 +4,7 @@ version: 0.1.0
 status: draft
 resource_type: diagnosis
 title: 加减法方向四类短诊断
-subtitle: 围绕向量的加法和减法的课堂即时诊断草稿
+subtitle: 围绕首尾相接、平行四边形方向、减法相反向量和闭合路径的课堂即时诊断
 curriculum:
   region: 上海
   stage: 高中
@@ -24,47 +24,66 @@ pedagogy:
   estimated_classroom_minutes: 8
   primary_teaching_problem: 学生容易混淆三角形法则中的首尾相接和减法中的相反向量。
   learning_goals:
-    - 识别向量的加法和减法学习中的典型错因。
-    - 用“比较”方式解释学生答案背后的数学理解偏差。
-    - 根据错因标签选择课堂回讲或补救练习路径。
+    - 根据几何路径判断向量加法的起点、转折点和终点。
+    - 解释平行四边形法则中合向量从共同起点指向对角点的方向。
+    - 把向量减法转化为加上相反向量，并辨析端点顺序。
+    - 识别闭合路径的合位移为零向量，而不是误认为某一条边。
+    - 根据错因标签选择课堂回讲或订正路径。
   prerequisites:
-    - 向量的加法和减法相关先修知识
+    - 向量相等和相反向量
+    - 平移有向线段表示同一向量
+    - 三角形和平行四边形中的基本路径关系
   successors:
-    - 后续课时学习与综合应用
+    - SH-HS-MATH-HJ-B2-C08-L03
+    - SH-HS-MATH-HJ-B2-C08-L04
+    - SH-HS-MATH-HJ-B2-C08-L10
   core_competencies:
     - 逻辑推理
     - 数学运算
     - 直观想象
-  classroom_use: 课堂末尾 6 到 8 分钟即时诊断，也可作为作业讲评前的错因分流。
+  classroom_use: 课堂末尾 8 到 10 分钟即时诊断，也可作为作业讲评前的错因分流。
 diagnosis_design:
   diagnostic_focus:
-    - 只覆盖首尾相接、相反向量、闭合路径、端点顺序四类错因，用即时反馈提示方向来源；不做构造演示。
-    - 能否暴露并解释：学生容易混淆三角形法则中的首尾相接和减法中的相反向量。
-    - 能否暴露并解释：平行四边形法则常被当作画图模板，不能解释合向量的方向和大小。
-    - 能否暴露并解释：从几何图形抽取向量等式时，路径方向和端点顺序容易出错。
+    - 能否用三角形法则识别首尾相接的路径合向量。
+    - 能否把平行四边形法则解释为从共同起点指向对角点，而不是只记画图模板。
+    - 能否把向量减法转化为加上相反向量，并得到正确方向。
+    - 能否识别闭合路径的合位移为零向量。
+    - 能否从几何图形中按端点顺序写出正确的向量等式。
   misconception_tags:
-    - id: concept_expression_gap
-      title: 概念表达不完整
-      description: 学生能回忆局部结论，但不能写成完整、可推广的数学表达。
-    - id: representation_mixup
-      title: 表征混淆
-      description: 学生在图像、符号或语言表征之间转换时混淆对象或条件。
+    - id: addition_direction_rule_confusion
+      title: 加法方向法则混淆
+      description: 学生不能稳定追踪三角形法则中的首尾相接，或把平行四边形法则中的合向量方向画反。
+    - id: subtraction_opposite_vector_error
+      title: 减法相反向量错误
+      description: 学生把减法当成普通线段相减，未能先把被减向量改为相反向量再首尾相接。
+    - id: closed_path_zero_misread
+      title: 闭合路径零向量误读
+      description: 学生看到闭合路径时仍写成某一条边，不能用回到起点解释合位移为零向量。
+    - id: endpoint_order_reversal
+      title: 端点顺序反向
+      description: 学生把 AB 与 BA、AC 与 CA 等方向相反的向量混用，导致等式方向错误。
   item_summary:
-    total_items: 1
+    total_items: 6
     question_types:
       - draft_placeholder
+      - single_choice
+      - multiple_select
+      - short_explanation
+      - error_analysis
     estimated_minutes: 8
   feedback_strategy:
-    immediate_feedback: 首版 scaffold 仅提供题组结构，后续按具体错因补充即时反馈。
-    teacher_dashboard_notes: 教师端先显示诊断目标和错因标签草稿，题组定稿后再展示统计口径。
+    immediate_feedback: 每题反馈先指出方向来源，再提示“起点、转折点、终点”或“减去即加相反向量”的订正动作。
+    teacher_dashboard_notes: 统计四类错因命中人数；若加法方向法则混淆集中，回到三角形路径和平行四边形对角线；若减法错因集中，统一写出“减去一个向量等于加上它的相反向量”；若闭合路径或端点顺序错误集中，要求学生逐段标出起点和终点后订正。
+    remediation_links:
+      - content/applets/SH-HS-MATH-HJ-B2-C08-L02-A01
 scoring:
   mastery_threshold: 0.75
-  grading_mode: tagged_misconception
+  grading_mode: mixed
   retry_policy: 课堂内允许一次订正，保留首次错因标签。
 platform_card:
   availability: metadata_ready
   preview_behavior: metadata_placeholder
-  embed_strategy: 首期显示诊断目标、错因标签和文件入口；题组定稿后升级为 item_bank_ready。
+  embed_strategy: 首期仍按第 8 章草稿闸门显示诊断目标、错因标签和文件入口；题组已补齐但平台入口状态等待总控统一升级。
 files:
   readme: README.md
   item_bank: item-bank.yaml
@@ -72,6 +91,5 @@ files:
   teacher_notes: teacher-notes.md
   review_record: review.md
 compliance:
-  copyright_note: 本 scaffold 仅生成原创资源骨架，不复制教材正文、官方课件、教案或商业题库。
+  copyright_note: 本诊断包为原创题组与反馈设计，不复制教材正文、官方课件、教案或商业题库。
   review_status: self_checked_draft
-

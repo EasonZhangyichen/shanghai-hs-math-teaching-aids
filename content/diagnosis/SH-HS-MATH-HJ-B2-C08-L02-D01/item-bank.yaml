@@ -1,11 +1,164 @@
-schema_version: 0.1.0
-resource_id: SH-HS-MATH-HJ-B2-C08-L02-D01
-title: 加减法方向四类短诊断题组草稿
+schema_version: "0.1.0"
+resource_id: "SH-HS-MATH-HJ-B2-C08-L02-D01"
+title: "加减法方向四类短诊断题组"
 estimated_minutes: 8
-total_score: 0
+total_score: 10
 mastery_threshold: 0.75
 misconception_tags:
-  - concept_expression_gap
-  - representation_mixup
-items: []
+  - "addition_direction_rule_confusion"
+  - "subtraction_opposite_vector_error"
+  - "closed_path_zero_misread"
+  - "endpoint_order_reversal"
 
+items:
+  - id: "D01-Q01"
+    type: "single_choice"
+    score: 1
+    title: "三角形法则首尾相接"
+    diagnostic_focus: "能否把首尾相接的两段位移合成为从起点到终点的向量。"
+    prompt: "在三角形 ABC 中，沿路径 A -> B -> C 前进。下列哪一个等式正确？"
+    choices:
+      - id: "A"
+        text: "向量 AB + 向量 BC = 向量 AC"
+        is_correct: true
+        feedback: "从 A 到 B，再从 B 到 C，整体效果就是从 A 到 C。"
+      - id: "B"
+        text: "向量 AB + 向量 BC = 向量 CA"
+        is_correct: false
+        misconception_tags: ["endpoint_order_reversal"]
+        feedback: "方向反了；向量 CA 表示从 C 回到 A。"
+      - id: "C"
+        text: "向量 AB + 向量 CB = 向量 AC"
+        is_correct: false
+        misconception_tags: ["addition_direction_rule_confusion"]
+        feedback: "第二个向量应从 B 出发到 C，CB 的起点是 C，不能直接接在 AB 后面。"
+      - id: "D"
+        text: "向量 BA + 向量 BC = 向量 AC"
+        is_correct: false
+        misconception_tags: ["endpoint_order_reversal", "addition_direction_rule_confusion"]
+        feedback: "BA 从 B 到 A，与从 A 出发的路径方向不一致。"
+    answer: ["A"]
+    feedback_on_correct: "能用“起点 A、转折点 B、终点 C”解释三角形法则。"
+
+  - id: "D01-Q02"
+    type: "multiple_select"
+    score: 2
+    title: "平行四边形法则与路径解释"
+    diagnostic_focus: "能否把平行四边形法则中的共起点两边和三角形路径统一起来。"
+    prompt: "四边形 ABCD 是平行四边形，顶点按 A -> B -> C -> D 的顺序排列。下列说法正确的是哪些？"
+    choices:
+      - id: "A"
+        text: "向量 AB + 向量 AD = 向量 AC"
+        is_correct: true
+        feedback: "以 A 为共同起点作两边，合向量指向平行四边形的对角点 C。"
+      - id: "B"
+        text: "向量 AB + 向量 BC = 向量 AC"
+        is_correct: true
+        feedback: "这是三角形法则：A -> B -> C 的合位移是 A -> C。"
+      - id: "C"
+        text: "向量 AB + 向量 AD = 向量 CA"
+        is_correct: false
+        misconception_tags: ["addition_direction_rule_confusion", "endpoint_order_reversal"]
+        feedback: "对角线方向应从共同起点 A 指向 C，不是从 C 指向 A。"
+      - id: "D"
+        text: "向量 AD + 向量 DC = 向量 AC"
+        is_correct: true
+        feedback: "沿 A -> D -> C 前进，整体也是从 A 到 C。"
+    answer: ["A", "B", "D"]
+    scoring_note: "全选 A、B、D 且不选 C 得 2 分；漏选一个正确项得 1 分；选择 C 时记录方向错因。"
+    feedback_on_correct: "能把平行四边形法则看成两条等价路径，而不是只记图形模板。"
+
+  - id: "D01-Q03"
+    type: "single_choice"
+    score: 1
+    title: "减法转化为加相反向量"
+    diagnostic_focus: "能否把向量减法解释为加上被减向量的相反向量。"
+    prompt: "在三角形 ABC 中，向量 AB - 向量 AC 等于下列哪一个向量？"
+    choices:
+      - id: "A"
+        text: "向量 CB"
+        is_correct: true
+        feedback: "AB - AC = AB + CA，路径 C -> A -> B 的合位移是 C -> B。"
+      - id: "B"
+        text: "向量 BC"
+        is_correct: false
+        misconception_tags: ["subtraction_opposite_vector_error", "endpoint_order_reversal"]
+        feedback: "方向反了；减去 AC 要加 CA，最终从 C 到 B。"
+      - id: "C"
+        text: "向量 BA"
+        is_correct: false
+        misconception_tags: ["subtraction_opposite_vector_error"]
+        feedback: "只把 AB 反向了，没有处理“减去 AC”这一部分。"
+      - id: "D"
+        text: "向量 AC"
+        is_correct: false
+        misconception_tags: ["subtraction_opposite_vector_error"]
+        feedback: "减法不是保留被减向量，关键是把 AC 换成相反向量 CA。"
+    answer: ["A"]
+    feedback_on_correct: "能先写出 AB + CA，再用路径 C -> A -> B 得到 CB。"
+
+  - id: "D01-Q04"
+    type: "short_explanation"
+    score: 2
+    title: "闭合路径的和"
+    diagnostic_focus: "能否识别闭合路径的合位移为零向量，并说明不是某一条边。"
+    prompt: "有同学说：向量 AB + 向量 BC + 向量 CA = 向量 AC。请判断这句话是否正确，并说明理由。"
+    expected_response:
+      - "这句话不正确。"
+      - "AB + BC = AC。"
+      - "再加上 CA 后，路径 A -> B -> C -> A 回到起点。"
+      - "所以 AB + BC + CA = 0 向量。"
+      - "不能把闭合路径的和误认为其中某一条边。"
+    misconception_tags_when_incomplete:
+      - "closed_path_zero_misread"
+      - "addition_direction_rule_confusion"
+      - "endpoint_order_reversal"
+    feedback_on_correct: "能用“回到起点”解释零向量，而不是只机械套公式。"
+
+  - id: "D01-Q05"
+    type: "multiple_select"
+    score: 2
+    title: "端点顺序与等式辨析"
+    diagnostic_focus: "能否根据起点、终点顺序判断向量等式正误。"
+    prompt: "在三角形 ABC 中，下列等式正确的是哪些？"
+    choices:
+      - id: "A"
+        text: "向量 BA + 向量 AC = 向量 BC"
+        is_correct: true
+        feedback: "沿 B -> A -> C 前进，整体就是 B -> C。"
+      - id: "B"
+        text: "向量 AB + 向量 CA = 向量 BC"
+        is_correct: false
+        misconception_tags: ["endpoint_order_reversal", "addition_direction_rule_confusion"]
+        feedback: "AB + CA 可改看成 C -> A -> B，结果是 CB，不是 BC。"
+      - id: "C"
+        text: "向量 AC - 向量 AB = 向量 BC"
+        is_correct: true
+        feedback: "AC - AB = AC + BA，路径 B -> A -> C 的合位移是 B -> C。"
+      - id: "D"
+        text: "向量 AB - 向量 AC = 向量 BC"
+        is_correct: false
+        misconception_tags: ["subtraction_opposite_vector_error", "endpoint_order_reversal"]
+        feedback: "AB - AC = AB + CA = CB，方向与 BC 相反。"
+    answer: ["A", "C"]
+    scoring_note: "全选 A、C 且不选 B、D 得 2 分；漏选一个正确项得 1 分；选择 B 或 D 时记录端点顺序错因。"
+    feedback_on_correct: "能在加法和减法中始终追踪“从哪里出发、到哪里结束”。"
+
+  - id: "D01-Q06"
+    type: "error_analysis"
+    score: 2
+    title: "综合错因订正"
+    diagnostic_focus: "能否同时订正平行四边形对角线方向、减法方向和闭合路径。"
+    prompt: "四边形 ABCD 是平行四边形，顶点按 A -> B -> C -> D 的顺序排列。某学生写道：向量 AB + 向量 AD = 向量 CA；向量 AB - 向量 AD = 向量 BD；向量 AB + 向量 BC + 向量 CA = 向量 CA。请指出至少两处错误并改正。"
+    expected_response:
+      - "AB + AD 应等于 AC，不是 CA。"
+      - "平行四边形法则的合向量从共同起点 A 指向对角点 C。"
+      - "AB - AD = AB + DA = DB，不是 BD。"
+      - "AB + BC + CA 是闭合路径 A -> B -> C -> A，结果是 0 向量。"
+      - "订正时应说明每个向量的起点和终点。"
+    misconception_tags_when_incomplete:
+      - "addition_direction_rule_confusion"
+      - "subtraction_opposite_vector_error"
+      - "closed_path_zero_misread"
+      - "endpoint_order_reversal"
+    feedback_on_correct: "能从一个错误答案中分辨加法方向、减法相反向量、闭合路径和端点顺序。"
