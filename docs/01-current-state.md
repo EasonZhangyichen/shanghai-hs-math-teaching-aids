@@ -215,6 +215,11 @@
   - `SH-HS-MATH-HJ-B2-C08-L10-A01` 修复后报告确认数学模型可进入 `math_review` 队列，但平台 iframe 首屏仍保持 `hold_for_platform_iframe_fit`，位置向量简写仍需数学审校确认。
   - `SH-HS-MATH-HJ-B2-C08-L04-M01` 视频质量闸门确认 `video_ready` 预览入口合理，顶层仍为 `draft`；教师还需观看确认暂停点、“有向投影长度”课堂语言和末尾数量积衔接。
   - 本批不修改课程图谱，不提升任何第 8 章资源到 `browser_review`、`classroom_trial`、`release_candidate` 或 `published`。
+- 已完成第 8 章 L05 / L10 / L04-M01 补充审核闸门报告并进入总控集成：
+  - 新增 `docs/review-audits/b2-c08-l05-a01-postfix-gate-2.md`，确认 `L05-A01` 可进入教师限时试读准备，但必须带平台外层滚动定位说明；不得直接进入 `classroom_trial`。
+  - 更新 `docs/review-audits/b2-c08-l10-a01-postfix-gate.md`，确认 `L10-A01` 可进入 `math_review` 队列，但继续保留 `hold_for_platform_iframe_fit`，且位置向量简写仍需数学审校确认。
+  - 新增 `docs/review-audits/b2-c08-l04-m01-video-teacher-gate.md`，确认 `L04-M01` 可保持 `video_ready` 并进入内部教师观看确认队列；顶层仍为 `draft`。
+  - 本批只集成审核报告，不修改资源包、平台源码、课程图谱、backlog 或 generated files；第 8 章教材目录未终核前，不恢复发布链路。
 - 已完成双线并行质量修复线首批 3 个任务并进入总控集成：
   - `SH-HS-MATH-HJ-B2-C07-L01-A01` 与 `SH-HS-MATH-HJ-B2-C07-L06-A01` README 中的 `theta`、`pi/2`、`kpi`、`2pi` 等旧口径已清理；第 7 章课程图谱、L05 Applet / Manim / Diagnosis metadata 中的 7.3 标题已统一为 `y = A sin(ωx + φ)`。
   - `SH-HS-MATH-HJ-B2-C07-L03-A02` 已优化平台 iframe 下的窄宽裁切和触控目标尺寸，浏览器复测建议可进入 `browser_review`，但仍需真实教室触控屏确认拖动手感。
