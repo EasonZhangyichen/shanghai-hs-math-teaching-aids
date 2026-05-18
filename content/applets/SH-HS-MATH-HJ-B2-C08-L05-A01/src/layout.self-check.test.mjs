@@ -49,6 +49,12 @@ test("readout and control density fit the iframe panel without shrinking touch t
   assert.ok(pixelValue(buttonRule, "min-height") <= 42, "buttons should not consume excessive vertical space in the iframe header and angle row");
 });
 
+test("drag handles keep a large enough invisible touch area after platform iframe scaling", () => {
+  const match = source.match(/const hit = createSvg\("circle", \{[\s\S]*?r:\s*(\d+),[\s\S]*?class:\s*"hit-handle"/);
+  assert.ok(match, "Expected draggable endpoints to include an invisible hit-handle radius");
+  assert.ok(Number(match[1]) >= 32, "hit-handle radius should survive platform iframe scaling as a classroom touch target");
+});
+
 test("platform iframe keeps the board and readout beside each other in narrow preview columns", () => {
   const workspaceRule = cssRule(".workspace");
   const singleColumnBreakpoint = source.match(/@media \(max-width: (\d+)px\) \{\s*\.workspace \{/m);
