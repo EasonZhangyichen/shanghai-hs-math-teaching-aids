@@ -30,6 +30,13 @@
 - `README.md`：同步资源说明，避免包内文档继续保留旧的 ASCII 角度写法。
 - `src/index.html`：更新可见文案和图上标签；修复 `2π` 端点被规范化回 `0` 的边界问题；在单位圆右端标出 `0, 2π`，避免关键角端点重合造成遗漏。
 
+## 2026-05-19 数学公式显示修复线复核
+
+- 修复范围：仅在本资源包内把 README / metadata 中的参数函数占位从 `omega`、`phi` 改为 `ω`、`φ`，把区间写法统一为 `≤`，并把 README 流程箭头改为数学排版箭头。
+- 定向审计：确认课堂可见相位关系为 `cos x = sin(x + π/2)`，参数变换说明为 `y = A sin(ωx + φ)`；未发现英文大写角变量、ASCII 圆周率倍数/分式或横向三角函数商主导显示。
+- 验证结果：`npm run validate:content` 通过，内容校验为 70 个课时、14 个 Applet、4 个 Manim、7 个诊断包；`npm run verify` 通过，36 项 Node 测试全部通过，Vite build 成功，仅保留既有 chunk size warning。`verify` 再生了 `apps/web/src/data/workspace-data.json`，本分支不提交该全局生成文件。
+- 剩余风险：`theta` 仍作为既有 SDK 状态字段名、事件名和 metadata 结构键保留，不作为课堂可见角变量；Markdown 材料中的 π 分数仍依赖后续渲染器，Applet HTML 由共享 normalizer 渲染。
+
 ## 剩余风险
 
 - Codex Browser 插件在 iframe 内继续点击控件时出现运行时超时，本轮已用平台 iframe 首屏检查和本地 Playwright CLI 直达同一 `src` 页面补测交互；仍建议后续在真实教室大屏或触控屏上做一次人工拖动确认。

@@ -26,7 +26,7 @@ pedagogy:
   primary_teaching_problem: "学生容易把横向伸缩、相位平移和括号内符号的关系搞反；多参数同时变化时认知负荷过高，难以从图像反推 A、ω、φ。"
   learning_goals:
     - "分别说明 A、ω、φ 对振幅、周期和相位平移的影响。"
-    - "解释 y = A sin(ωx + φ) 的相位平移量为 -φ / ω。"
+    - "解释 y = A sin(ωx + φ) 的相位平移量为分子 φ、分母 ω 且前面取负号的分式。"
     - "通过单参数锁定和变换顺序比较，降低多参数同时变化的认知负荷。"
     - "根据关键点追踪，从图像反推 A、ω、φ 的可能取值。"
   prerequisites:
@@ -47,19 +47,19 @@ mathematical_scope:
   function: "y = A sin(ωx + φ)"
   independent_variable: "角 x 的弧度量"
   dependent_variable: "函数值 y"
-  default_x_range: "-2π <= x <= 2π"
+  default_x_range: "-2π ≤ x ≤ 2π"
   parameter_defaults:
     A: 1
     omega: 1
     phi: 0
   parameter_ranges:
-    A: "-2 <= A <= 2, A != 0 in discussion"
-    omega: "0.5 <= ω <= 3；本资源主线限制 ω > 0，暂不讨论 ω < 0 的等价改写"
-    phi: "-π <= φ <= π"
+    A: "-2 ≤ A ≤ 2；讨论时不取 A = 0"
+    omega: "0.5 ≤ ω ≤ 3；本资源主线限制 ω > 0，暂不讨论 ω < 0 的等价改写"
+    phi: "-π ≤ φ ≤ π"
   derived_quantities:
     amplitude: "|A|"
-    period: "2π / |ω|；本资源 ω > 0 时显示为 2π / ω"
-    phase_shift: "-φ / ω（本资源 ω > 0）"
+    period: "一般式为分子 2π、分母 |ω| 的分式；本资源 ω > 0 时分母可写 ω"
+    phase_shift: "分子 φ、分母 ω 且前面取负号的分式（本资源 ω > 0）"
   key_points:
     zeros: "ωx + φ = kπ"
     extrema: "ωx + φ = π/2 + kπ；A < 0 时最大值点和最小值点对调"
@@ -105,7 +105,7 @@ interaction_design:
     - step: "single_parameter"
       description: "依次锁定 A、ω、φ，分离观察振幅、周期和相位平移。"
     - step: "sequence_compare"
-      description: "切换变换顺序，比较 φ 和 -φ / ω 的不同角色。"
+      description: "切换变换顺序，比较 φ 和最终水平平移分式的不同角色。"
     - step: "key_point_tracking"
       description: "显示零点和最值点，追踪图像反推参数的依据。"
     - step: "summary"
@@ -123,7 +123,7 @@ data_contract:
       unit: "unitless"
       value_type: "number"
       default: 1
-      description: "参数 ω；本资源限制 ω > 0，控制周期 2π / ω（一般式 2π / |ω|）。"
+      description: "参数 ω；本资源限制 ω > 0，控制周期分式的分母（一般式分母为 |ω|）。"
       persistence: "snapshot"
     - name: "phi"
       unit: "radian"
@@ -135,7 +135,7 @@ data_contract:
       unit: "radian"
       value_type: "number"
       default: 0
-      description: "相位平移量 -φ / ω。"
+      description: "相位平移量：分子 φ、分母 ω，前面取负号。"
       persistence: "snapshot"
     - name: "current_x"
       unit: "radian"
@@ -204,8 +204,8 @@ data_contract:
 feedback_and_diagnosis:
   success_evidence:
     - "学生能说明 A 改变振幅，A 为负时图像关于 x 轴翻折。"
-    - "学生能从周期 T 反推 |ω| = 2π / T；在本资源 ω > 0 范围内即 ω = 2π / T。"
-    - "学生能解释相位平移量是 -φ / ω，而不是简单地把 φ 当作右移量。"
+    - "学生能从周期 T 反推 |ω|：2π 除以 T；在本资源 ω > 0 范围内即可求出 ω。"
+    - "学生能解释相位平移量是分子 φ、分母 ω 且前面取负号的分式，而不是简单地把 φ 当作右移量。"
     - "学生能在多参数同时变化时先分离参数，再综合判断图像。"
   common_error_tags:
     - id: "horizontal_scale_inverse"
@@ -220,8 +220,8 @@ feedback_and_diagnosis:
       label: "多个参数同时变化时不能分离判断依据"
   feedback_principles:
     - "反馈先锁定单一参数，再回到复合函数。"
-    - "ω 的反馈必须回到周期 T = 2π / |ω|；本资源 ω > 0 时用 T = 2π / ω。"
-    - "φ 的反馈必须同时呈现括号内符号和最终平移量 -φ / ω。"
+    - "ω 的反馈必须回到分母为 |ω| 的周期分式；本资源 ω > 0 时分母可写 ω。"
+    - "φ 的反馈必须同时呈现括号内符号和最终平移量分式。"
     - "从图像反推解析式时，先找振幅和周期，再用关键点判断相位。"
 
 visual_semantics:
@@ -232,7 +232,7 @@ visual_semantics:
   zero_points: "空心点表示当前图像零点。"
   extrema_points: "实心紫色点表示当前图像最值点。"
   amplitude_band: "淡蓝水平带表示振幅范围 [-|A|, |A|]。"
-  phase_marker: "竖直标记表示相位平移量 -φ / ω。"
+  phase_marker: "竖直标记表示相位平移量分式。"
   rule: "颜色只用于区分数学对象和变换阶段，不作装饰。"
 
 implementation:

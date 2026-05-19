@@ -3,7 +3,16 @@
 资源 ID：`SH-HS-MATH-HJ-B2-C07-L06-A01`
 版本：`0.1.0`
 当前状态：`draft`
-最后更新：2026-05-08
+最后更新：2026-05-19
+
+## 2026-05-19 数学公式显示修复补记
+
+本轮只做公式显示与课堂文本清理，未改变正切图像、定义域、渐近线、周期或播放逻辑。
+
+- `README.md`：将残留的横向斜杠式正切定义改为“`tan x` 是 `sin x` 与 `cos x` 的商”，与 Applet 界面中的上下分式排版保持一致。
+- `teacher-script.md`、`metadata.yaml`：把拓展项中的英文参数占位清理为 `ωx + φ`，并把元数据中的英文排除说明与程序式不等号显示改为中文和数学符号。
+- `src/index.html` 复核结果：单位圆卡片中的 `tan x` 定义已使用上下分式；图像坐标轴、渐近线、读数与提示通过 `math-text-normalizer` / `foreignObject` 渲染 `π/2`、`-π/2`、`3π/2` 等分式角值。
+- 资源状态仍保持 `draft` / `self_checked_draft`；本轮不提升到 `classroom_trial`、`release_candidate` 或 `published`。
 
 ## 本轮审校结论
 

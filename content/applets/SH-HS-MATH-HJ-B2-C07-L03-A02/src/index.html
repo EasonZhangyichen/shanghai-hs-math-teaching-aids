@@ -129,6 +129,15 @@
         white-space: nowrap;
       }
 
+      .math-readout .math-frac,
+      .status-card .math-frac,
+      .table-panel .math-frac,
+      .summary .math-frac,
+      button .math-frac {
+        font-size: 0.92em;
+        vertical-align: -0.42em;
+      }
+
       .canvas-wrap {
         min-height: 0;
         background: var(--canvas);
@@ -539,7 +548,7 @@
         </div>
 
         <div class="panel control-panel">
-          <div class="status-grid" data-math-normalize="off">
+          <div class="status-grid">
             <div class="status-card">
               <strong>sin x</strong>
               <span id="sinValue">0.000</span>
@@ -559,7 +568,7 @@
           </div>
 
           <div id="keyTable" class="table-panel">
-            <table data-math-normalize="off">
+            <table>
               <thead>
                 <tr>
                   <th>x</th>
