@@ -49,14 +49,14 @@ items:
     prompt: "已知 a、b 是两个非零向量，且 a · b < 0。下列判断一定正确的是哪一项？"
     choices:
       - id: "A"
-        text: "a 与 b 的夹角是钝角。"
+        text: "a 与 b 的夹角 θ 满足 90° < θ ≤ 180°。"
         is_correct: true
-        feedback: "两个非零向量长度因子都为正，数量积为负只能来自 cosθ < 0，即夹角为钝角。"
+        feedback: "两个非零向量长度因子都为正，数量积为负只能来自 cosθ < 0，即夹角大于 90°，反向时可到 180°。"
       - id: "B"
         text: "a 与 b 一定方向相反。"
         is_correct: false
         misconception_tags: ["angle_sign_confusion"]
-        feedback: "方向相反是 180° 的特殊情况；数量积为负只说明夹角在 90° 到 180° 之间。"
+        feedback: "方向相反是 θ = 180° 的特殊情况；数量积为负只说明 90° < θ ≤ 180°。"
       - id: "C"
         text: "a 的长度一定小于 b 的长度。"
         is_correct: false
