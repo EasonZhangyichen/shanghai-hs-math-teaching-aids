@@ -195,7 +195,8 @@
 - [x] 完成第 8 章 L05 / L10 / L04-M01 小范围质量闸门复核：`L05-A01` 触控热区和资源内布局自检通过，`L10-A01` 可进入数学审校队列但仍保留平台 iframe fit hold，`L04-M01` 视频入口通过质量闸门但仍需教师观看确认。
 - [x] 本轮未恢复第 8 章 3 生产 + 3 审核，也未把任何第 8 章资源提升到 `browser_review`、`classroom_trial`、`release_candidate` 或 `published`；`video_ready` 只表示平台视频入口可预览。
 - [x] 完成 `codex/integrate-b2-c08-quality-gates-20260519` 集成断点复核：已合入 B2-C08 Diagnosis 质量闸门、L01/L02 前置与语言风险修复、L04-M01 教师观看闸门、L10 平台 iframe 适配闸门、L03/L04/L05 浏览器触控 gate，并修正 `L04-A01` 测试预期为 runnable iframe player；`npm run generate:backlog` 与 `npm run verify` 已通过。
-- [ ] 下一轮先不扩大到大规模生产；建议开 6 条质量线，或 3 条修复 + 3 条审核：优先覆盖 `L10-A01` 平台 iframe fit、`L05-A01` 真实教师触控试读准备和外层滚动风险记录、`L04-M01` 教师观看确认与 pause-point 指南，同时补审 `L01-A01` / `L02-A01` 前置语言与 `L03-A01` / `L04-A01` / `L05-A01` 触控表现。第 8 章教材目录未终核前仍不进入发布链路。
+- [x] 完成第 8 章 3 条修复线首批集成：`L01-A01` / `L02-A01` 继续收回 8.3 前置语言并补充 iframe / 触控风险记录；`L03-A01` / `L04-A01` / `L05-A01` 复核触控热区、iframe 首屏和 `L04-A01` runnable 状态一致性；`L10-A01` 完成 560px iframe 紧凑模式、`AD = mp` / `AE = nq` 正式口径和零项公式修复。三线均未修改课程图谱、未提交 generated files、未提升 B2-C08 资源状态。
+- [ ] 下一步继续收 3 条审核线：`L04-M01` 教师视频观看闸门、三个 Diagnosis 限时试做与数学口径、B2-C08 来源边界 gate 强化。第 8 章教材目录未终核前仍不进入发布链路。
 - [ ] 总控收到每批 3 条反馈后，使用 `git branch --contains <commit>` 和 `git show --stat <commit>` 核对分支与改动范围，再决定是否合并、再生 generated files、运行 `npm run verify`、推送并同步长期分支。
 - [x] 第六轮审核线首批 3 个报告已完成并由总控核对分支与改动范围：数学/沪教版一致性、课堂试读准备度、浏览器大屏触控 QA 均只新增 docs 报告，未越界修改资源包、课程图谱、平台源码或 generated files。
 - [x] 根据审核线首批报告安排第 7 章小修复：清理 `L01-A01` README 中的 `theta` / `2pi` 旧口径，清理 `L06-A01` README 中的 `pi/2` / `kpi` / `2pi` ASCII 写法，并统一课程图谱中的 `omega`、`phi`、`pi/2 + kpi` fallback 表达。

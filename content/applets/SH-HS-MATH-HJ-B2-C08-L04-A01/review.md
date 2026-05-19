@@ -14,7 +14,7 @@
 
 本轮已将 scaffold 占位入口推进为可直接打开的 Applet 草稿：学生可拖动蓝色向量 `a` 与橙色方向向量 `b`，动态观察夹角、垂足 `F`、有向投影长度、`cosθ` 和数量积符号的正负联系。资源主线聚焦“投影”和“夹角变化”，不处理 8.3 暂缓项，不修改课程图谱，不建议进入 `math_review`、`release_candidate` 或 `published`。
 
-2026-05-19 平台 iframe / 大屏触控复核小修：`src/index.html` 已是可运行原型，但 metadata 仍标为 `html_src_status: scaffolded`，导致平台课时页只显示占位说明，无法完成 iframe QA。已把该实现状态修正为 `runnable`，同时压缩 iframe 首屏布局、保持按钮不低于 40px，并为 A/B 两个拖拽端点补充 32px 透明触控热区。内容状态仍为 `draft`，审核状态仍为 `self_checked_draft`。
+2026-05-19 平台 iframe / 大屏触控复核小修：`src/index.html` 已是可运行原型，metadata 当前为 `html_src_status: runnable`，平台会生成真实 iframe 预览；内容状态仍为 `draft`，审核状态仍为 `self_checked_draft`。本线程复核发现 `864x560` 平台 iframe 等效视口下，页面内部曾出现 `scrollHeight = 604 > clientHeight = 560`，A/B 透明拖拽热区缩到约 35px。已进一步压缩 L04 的 iframe 高度预算，并把 A/B 透明拖拽半径扩大到 42 个 SVG 单位；复测后等效 iframe 视口无内部滚动，热区约 45px。该改动只解决浏览器首屏和触控风险，不提升审核状态。
 
 ## 数学自检
 
@@ -27,7 +27,8 @@
 
 ## 本轮修改
 
-- `src/index.html`：替换占位页为原生 SVG/JS 交互课件，支持拖动两个向量、显示夹角弧、垂足、有向投影段、锐角/直角/钝角典型状态、分步揭示和读数面板。
+- `src/index.html`：替换占位页为原生 SVG/JS 交互课件，支持拖动两个向量、显示夹角弧、垂足、有向投影段、锐角/直角/钝角典型状态、分步揭示和读数面板；本线程进一步收紧 iframe 视口下的 `--workspace-height`，并把 A/B 透明拖拽热区半径扩大到 42。
+- `src/projection-layout.self-check.test.mjs`：补充 iframe 包裹头部高度预算和拖拽热区半径下限检查，先在旧实现上红灯复现，再随 L04 修复转绿。
 - `metadata.yaml`：补齐真实数学模型、状态变量、事件 payload、反馈证据、视觉语义和运行原型说明；`status` 保持 `draft`，`compliance.review_status` 保持 `self_checked_draft`。
 - `README.md`：补充核心问题、已实现交互、分步揭示和暂不覆盖范围。
 - `teacher-script.md`：补齐 12 到 14 分钟课堂流程、追问链和板书落点。
@@ -39,8 +40,9 @@
 - `npm run validate:content`：在只应用本资源改动的干净隔离工作树中通过。输出为 `Content validation passed: 70 lessons, 14 applet(s), 4 Manim clip(s), 7 diagnosis package(s).`
 - `npm run verify`：在只应用本资源改动的干净隔离工作树中通过。内容校验、backlog 生成、32 项 node test 和 Vite build 均通过；Vite 仍提示单个 chunk 超过 500 kB，这是既有构建体积提示。
 - 浏览器冒烟：Browser 插件安全策略阻止 `file://` 直开，因此使用 `http://127.0.0.1:8765/content/applets/SH-HS-MATH-HJ-B2-C08-L04-A01/src/index.html` 验证同一静态文件。页面标题为“投影长度与夹角实验室”，首屏 DOM 非空；点击“钝角例”和“4 正负联系”后，读数区显示数量积符号为负，并出现“钝角时 cosθ < 0，投影落在反向一侧，数量积符号也为负。”过滤 Browser 插件自身 Statsig 网络噪声后，未见本资源相关 console error。
-- 2026-05-19 资源内新增布局自检，覆盖 runnable metadata、iframe 高度变量、双列断点、40px 控件和 32px 透明拖拽热区；Browser 直达页复测 `1280x720` 下 `scrollHeight = clientHeight = 720`，平台 iframe 截图确认主画板与读数面板在 560px iframe 首屏内，且平台已从占位说明切换为真实 iframe。平台课时页外层仍需滚动到资源卡，这是平台壳层面的既有定位风险。
-- 2026-05-19 `npm run verify` 已运行但未通过：全局 `apps/web/src/lib/content.test.js` 仍硬编码期待本资源 `player === null`，而本轮将 `html_src_status` 修正为 `runnable` 后平台数据会生成 iframe player；本专项写入范围禁止修改全局测试。单独 `npm run validate:content` 和 `npm run build` 已通过，后者仍只有既有 chunk size warning。
+- 2026-05-19 资源内新增布局自检，覆盖 runnable metadata、iframe 高度变量、双列断点、40px 控件和透明拖拽热区；Browser 直达页复测 `1280x720` 下 `scrollHeight = clientHeight = 720`，平台 iframe 截图确认主画板与读数面板在 560px iframe 首屏内，且平台已从占位说明切换为真实 iframe。平台课时页外层仍需滚动到资源卡，这是平台壳层面的既有定位风险。
+- 2026-05-19 本线程自检：`src/projection-layout.self-check.test.mjs` 先红灯复现旧版 iframe 高度预算不足，修复后通过。
+- 2026-05-19 本线程 Browser 复核：直达页 `1280x720` 下 `scrollHeight = clientHeight = 720`、按钮最小高度 40px、拖拽热区约 67px；等效平台 iframe 视口 `864x560` 修复后 `scrollHeight = clientHeight = 560`、拖拽热区约 45px。平台路径 `/#lesson=SH-HS-MATH-HJ-B2-C08-L04` 中 iframe `src` 指向本资源 `src/index.html`，外框为 `864x560`，点击“钝角例”和“4 正负联系”后读数为负；过滤 Browser 插件自身 Statsig 网络噪声后，未见本资源 console error。
 
 ## 平台接入边界
 
@@ -50,9 +52,8 @@
 
 - 第 8 章仍处于 `draft` / `needs_manual_textbook_check`；8.3 课时边界未终核，本资源不能作为第 8 章全章已终核证据。
 - 尚未经过数学审校者复核，尤其需要确认“先讲有向投影，再连接数量积符号”的课堂边界是否符合本校进度。
-- 尚未经过真实投屏、触控大屏和教师 14 分钟流程试读。
+- 尚未经过真实投屏、真实触控大屏和教师 14 分钟流程试读；当前触控结论只来自浏览器等效视口和桌面指针拖拽/点击。
 - 平台外层课时页首屏仍不会自动定位到资源卡，教师演示前需要滚动到 iframe；本资源只能保证 iframe 内部首屏更紧凑。
-- 全局内容测试需要总控同步更新 L04 资源期望：若保留真实 iframe，则应不再断言 `player === null`；若坚持旧测试，则平台 iframe QA 无法覆盖 L04。
 
 ## 下一状态建议
 
