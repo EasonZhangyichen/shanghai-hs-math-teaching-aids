@@ -16,6 +16,8 @@
 
 2026-05-19 平台 iframe / 大屏触控复核小修：默认 `1280x720` 直达页曾出现页面高度约 902px，平台 560px iframe 首屏只能看到标题和画板，读数面板下移；按钮实际高度约 39px，滑块命中高度偏小，拖拽端点只有可见圆点热区。已将布局改为 iframe 剩余高度驱动的双列首屏、保持按钮和 λ 滑块不低于 40px，并为蓝色向量端点增加 32px 透明触控热区。该改动只解决浏览器首屏和触控风险，不提升审核状态。
 
+2026-05-19 本线程复核：未改动 L03 源码，仅复查直达页、平台 iframe 入口和等效 iframe 视口。`1280x720` 直达页与 `864x560` iframe 等效视口均无内部纵向滚动；平台课时页可生成 `allow-scripts allow-same-origin` 的真实 iframe，点击 `λ = -1` 后 iframe 内状态可响应为“方向相反”。继续保留平台外层需滚动到资源卡、真实投屏和真实触控屏未试读风险。
+
 ## 数学自检
 
 - `λ > 0`：`λa` 与 `a` 同向，长度为 `λ|a|`。
@@ -43,6 +45,7 @@
 - Headless 交互复核：通过。使用 bundled Playwright + 本机 Chrome 打开同一 URL，点击 `0` 后方向读数为“不规定”，点击 `-1` 后方向读数为“方向相反”，拖动蓝色原向量端点后 `|a|` 从 `2.78` 变为 `0.35`，未捕获页面 console error；截图留存在 `/tmp/b2-c08-l03-a01-scalar-multiple.png`。
 - `npm run verify` 会再生 `apps/web/src/data/workspace-data.json`；本分支不提交该 generated file，等待总控统一再生。
 - 2026-05-19 资源内新增布局自检，覆盖 iframe 高度变量、双列断点、40px 按钮、40px λ 滑块和透明拖拽热区；Browser 直达页复测 `1280x720` 下 `scrollHeight = clientHeight = 720`，平台 iframe 截图确认主画板与读数面板在 560px iframe 首屏内。平台课时页外层仍需滚动到资源卡，这是平台壳层面的既有定位风险。
+- 2026-05-19 本线程 Browser 复核：直达页 `1280x720` 下 `scrollHeight = clientHeight = 720`、按钮最小高度 40px、λ 滑块 40px、拖拽热区约 58px；等效平台 iframe 视口 `864x560` 下 `scrollHeight = clientHeight = 560`、拖拽热区约 44px。平台路径 `/#lesson=SH-HS-MATH-HJ-B2-C08-L03` 中 iframe `src` 指向本资源 `src/index.html`，外框为 `864x560`，点击 `λ = -1` 可响应；过滤 Browser 插件自身 Statsig 网络噪声后，未见本资源 console error。
 
 ## 剩余风险
 
