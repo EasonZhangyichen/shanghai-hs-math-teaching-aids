@@ -106,6 +106,61 @@ docs/parallel-quality-system.md
 - 未终核章节、8.3 暂缓项和数字化必要性不足的内容不得进入正式生产。
 - 总控收到每批 3 条反馈后，必须运行 `git branch --contains <commit>` 和 `git show --stat <commit>`，再决定是否合并。
 
+## 数学公式显示修复线
+
+负责分支：
+
+```text
+独立 codex/* 短分支，按资源包或同类平台问题命名
+```
+
+适合做：
+
+- 修复 Applet、Manim、Diagnosis 或平台中课堂可见公式的显示问题。
+- 将 `theta`、`alpha`、`omega`、`phi`、`pi` 等英文占位改为数学符号。
+- 将 `π/2`、`2π/ω`、`sin x / cos x`、`-φ/ω` 等横向纯文本分式改为上下结构或等效数学排版。
+- 增加资源内轻量公式渲染组件、CSS 数学片段或平台级数学显示测试。
+- 做浏览器/iframe/大屏复核，确认公式不遮挡、不溢出、不退化。
+
+启动提示词：
+
+```text
+请先读取 docs/00-project-brief.md、docs/01-current-state.md、docs/02-next-actions.md、docs/git-workflow.md、docs/content-standards.md、docs/codex-collaboration-guide.md、docs/resource-factory-workflow.md、docs/parallel-quality-system.md、docs/thread-starter-prompts.md、content/curriculum/index.yaml 和 content/production/resource-backlog.json，然后运行 git status --short 和 git branch --show-current。
+
+你是“数学公式显示修复线”工作对话。请不要直接改 develop。请创建独立 codex/* 短分支，并只处理总控指定的资源包或平台文件范围。
+
+核心规则：所有课堂可见数学表达必须符合 docs/content-standards.md 的“数学公式呈现标准”。不得在学生/教师可见区域保留 theta、Theta、alpha、beta、phi、omega、pi、pi/2、sin x / cos x 等英文占位或横向纯文本分式。希腊字母必须显示为 θ、α、β、φ、ω、π；分式必须使用上下结构或等效数学排版，并在平台 iframe、直达页、桌面和大屏尺寸下不遮挡、不溢出。
+
+任务步骤：
+1. 先用 rg 搜索指定范围内的 theta、Theta、alpha、beta、phi、omega、pi、/、π/2、sin x / cos x 等可疑课堂文本。
+2. 区分代码变量名和课堂可见文本；不要机械替换 JavaScript 变量名，除非变量名本身被展示给用户。
+3. 修复课堂可见公式显示，必要时新增轻量公式渲染 helper 或 CSS 组件。
+4. 更新对应 review.md，记录修复范围、仍需人工审校的公式和浏览器复核结果。
+5. 运行 npm run validate:content；如果改了 HTML、平台代码或测试，运行 npm run verify。
+6. 不提交 content/production/resource-backlog.json 或 apps/web/src/data/workspace-data.json；若验证生成 diff，恢复并说明。
+
+完成后提交本分支，并按固定格式回复：
+
+分支名：
+commit hash：
+改动文件：
+运行的验证命令：
+验证结果：
+数学公式显示修复结论：
+剩余风险：
+是否改动全局生成文件：
+是否修改课程图谱：
+是否需要总控特别关注：
+```
+
+验收标准：
+
+- 课堂可见区域不再出现英文占位希腊字母或 `pi/2` 一类 ASCII 表达。
+- 主要分式使用上下结构或等效数学排版，不以横向斜杠纯文本作为最终呈现。
+- 数学排版在平台 iframe 首屏、直达页和常见桌面尺寸下不遮挡、不溢出。
+- 只修改允许范围，不借公式修复顺手改课程图谱、资源状态或无关 UI。
+- 不能因为公式显示修好就建议进入 `published`；B2-C08 仍受教材终核限制。
+
 ## 并行章节工厂总控
 
 负责分支：
