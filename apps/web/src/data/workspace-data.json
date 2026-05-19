@@ -12245,7 +12245,7 @@
                 {
                   "id": "angle_sign_confusion",
                   "title": "夹角符号误判",
-                  "description": "不能稳定用锐角、直角、钝角判断 cosθ 和数量积的正、零、负。"
+                  "description": "不能稳定用锐角、直角、钝角及 180° 反向边界判断 cosθ 和数量积的正、零、负。"
                 },
                 {
                   "id": "projection_sign_confusion",
@@ -24934,7 +24934,7 @@
                 {
                   "id": "angle_sign_confusion",
                   "title": "夹角符号误判",
-                  "description": "不能稳定用锐角、直角、钝角判断 cosθ 和数量积的正、零、负。"
+                  "description": "不能稳定用锐角、直角、钝角及 180° 反向边界判断 cosθ 和数量积的正、零、负。"
                 },
                 {
                   "id": "projection_sign_confusion",
