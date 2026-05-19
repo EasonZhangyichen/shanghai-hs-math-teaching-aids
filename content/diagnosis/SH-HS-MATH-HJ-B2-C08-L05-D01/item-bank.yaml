@@ -68,7 +68,7 @@ items:
         misconception_tags: ["perpendicular_condition_overgeneralization", "angle_sign_confusion"]
         feedback: "垂直时数量积为 0，不是负数。"
     answer: ["A"]
-    feedback_on_correct: "能从 a · b < 0 回到夹角钝角，而不误判为反向、长度比较或垂直。"
+    feedback_on_correct: "能从 a · b < 0 回到夹角大于 90°，并覆盖 180° 反向边界，而不误判为长度比较或垂直。"
 
   - id: "D01-Q03"
     type: "multiple_select"
