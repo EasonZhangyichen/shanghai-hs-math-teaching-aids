@@ -47,8 +47,8 @@ mathematical_scope:
   functions: "y = sin x and y = cos x"
   independent_variable: "角 x 的弧度量"
   dependent_variable: "函数值 y"
-  default_x_range: "0 <= x <= 2π"
-  comparison_range: "-π/2 <= x <= 2π"
+  default_x_range: "0 ≤ x ≤ 2π"
+  comparison_range: "-π/2 ≤ x ≤ 2π"
   key_angles:
     - x: "0"
       sine: "0"

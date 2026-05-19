@@ -109,7 +109,7 @@ data_contract:
   state_variables:
     - name: "theta"
       unit: "radian"
-      description: "当前课堂变量 x 的弧度量，内部状态名沿用 theta。"
+      description: "当前课堂变量 x 的弧度量；内部状态字段保留既有 API 命名。"
     - name: "point_p"
       description: "单位圆动点坐标 (cos x, sin x)。"
     - name: "sine_value"

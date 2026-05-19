@@ -49,7 +49,7 @@ mathematical_scope:
   domain: "R"
   range: "[-1, 1]"
   fundamental_period: "2π"
-  default_x_range: "-2π <= x <= 4π"
+  default_x_range: "-2π ≤ x ≤ 4π"
   comparison_properties:
     sine:
       domain: "R"
@@ -89,7 +89,7 @@ mathematical_scope:
   out_of_scope:
     - "余弦图像的单位圆生成过程"
     - "正切函数图像与性质"
-    - "y = A sin(omega x + phi) 的参数变换"
+    - "y = A sin(ωx + φ) 的参数变换"
     - "用导数证明余弦函数单调性"
 
 representations:
