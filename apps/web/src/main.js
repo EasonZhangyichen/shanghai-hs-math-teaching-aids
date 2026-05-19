@@ -233,10 +233,19 @@ root.addEventListener("click", (event) => {
     return;
   }
 
+  const previewButton = event.target.closest("[data-preview-anchor]");
+  if (previewButton) {
+    focusResourceDetail();
+    return;
+  }
+
   const resourceResult = event.target.closest("[data-resource-result-id]");
   if (resourceResult) {
     setLesson(resourceResult.dataset.resourceResultLessonId, {
       selectedResourceId: resourceResult.dataset.resourceResultId,
+      preserveSearchScroll: true,
+      searchScrollTop: getSearchResultsScrollTop(),
+      focusResourceDetail: true,
     });
     return;
   }
@@ -249,16 +258,27 @@ root.addEventListener("click", (event) => {
 
   const resourceButton = event.target.closest("[data-resource-id]");
   if (resourceButton) {
-    state.selectedResourceId = resourceButton.dataset.resourceId;
-    render();
+    selectResource(resourceButton.dataset.resourceId, {
+      preserveSearchScroll: true,
+      focusResourceDetail: true,
+    });
     return;
   }
 
   const scriptButton = event.target.closest("[data-script-mode]");
   if (scriptButton) {
     state.scriptMode = scriptButton.dataset.scriptMode;
-    render();
+    render({ preserveSearchScroll: true });
   }
+});
+
+root.addEventListener("input", (event) => {
+  const scrubber = event.target.closest("[data-video-scrubber]");
+  if (!scrubber) {
+    return;
+  }
+
+  seekVideoFromScrubber(scrubber);
 });
 
 root.addEventListener("change", (event) => {
@@ -272,6 +292,9 @@ root.addEventListener("change", (event) => {
 });
 
 root.addEventListener("load", handlePlayerLoad, true);
+root.addEventListener("loadedmetadata", handleVideoProgressEvent, true);
+root.addEventListener("durationchange", handleVideoProgressEvent, true);
+root.addEventListener("timeupdate", handleVideoProgressEvent, true);
 
 window.addEventListener("hashchange", () => {
   const lessonId = getLessonIdFromHash();
@@ -284,7 +307,9 @@ window.addEventListener("hashchange", () => {
 
 render();
 
-function render() {
+function render(options = {}) {
+  const searchScrollTop =
+    options.searchScrollTop ?? (options.preserveSearchScroll ? getSearchResultsScrollTop() : null);
   const lesson = workspace.lessonsById[state.lessonId] ?? workspace.lessons[0];
   const selectedResource = getSelectedResource(lesson);
   const packageResource =
@@ -297,7 +322,7 @@ function render() {
       ${renderSidebar()}
       <main class="workspace" aria-label="教师工作台">
         ${renderTopbar(lesson)}
-        ${renderResourceSearch()}
+        ${renderResourceSearch(selectedResource)}
         ${renderLessonHeader(lesson)}
         <div class="workspace-grid">
           <section class="section-block knowledge-block" aria-labelledby="knowledge-title">
@@ -306,7 +331,12 @@ function render() {
           <section class="section-block resources-block" aria-labelledby="resources-title">
             ${renderResources(lesson, selectedResource)}
           </section>
-          <section class="section-block metadata-block ${selectedResource?.player?.isRunnable ? "has-player" : ""}" aria-labelledby="metadata-title">
+          <section
+            class="section-block metadata-block ${selectedResource?.player?.isRunnable ? "has-player" : ""}"
+            aria-labelledby="metadata-title"
+            data-resource-detail-panel
+            tabindex="-1"
+          >
             ${renderResourceDetail(selectedResource)}
           </section>
           <section class="section-block script-block" aria-labelledby="script-title">
@@ -316,9 +346,17 @@ function render() {
       </main>
     </div>
   `;
+
+  if (searchScrollTop !== null) {
+    restoreSearchResultsScrollTop(searchScrollTop);
+  }
+
+  if (options.focusResourceDetail) {
+    focusResourceDetail();
+  }
 }
 
-function renderResourceSearch() {
+function renderResourceSearch(selectedResource) {
   const results = getFilteredResources();
   const options = getFilteredFacetOptions();
 
@@ -336,10 +374,28 @@ function renderResourceSearch() {
         ${renderFilterSelect("审核状态", "reviewStatus", options.reviewStatuses, state.filters.reviewStatus)}
         <button class="filter-reset" data-filter-reset type="button">清空</button>
       </div>
-      <div class="search-results" aria-label="筛选结果">
+      ${renderSelectionStatus(selectedResource)}
+      <div class="search-results" data-search-results aria-label="筛选结果">
         ${results.map(renderSearchResult).join("") || `<p class="muted">暂无匹配资源</p>`}
       </div>
     </section>
+  `;
+}
+
+function renderSelectionStatus(resource) {
+  if (!resource) {
+    return "";
+  }
+
+  return `
+    <div class="selection-status" data-selection-status>
+      <div>
+        <span>${state.selectedResourceId ? "已选资源" : "当前预览"}</span>
+        <strong>${renderMathText(resource.title)}</strong>
+        <small>${escapeHtml(resourceTypeLabel(resource.resourceType))} · ${escapeHtml(resourceAvailabilityLabel(resource))}</small>
+      </div>
+      <button type="button" data-preview-anchor>查看预览</button>
+    </div>
   `;
 }
 
@@ -371,6 +427,7 @@ function renderSearchResult(resource) {
       class="search-result ${selected ? "is-selected" : ""}"
       data-resource-result-id="${escapeHtml(resource.id)}"
       data-resource-result-lesson-id="${escapeHtml(resource.lessonId)}"
+      aria-pressed="${selected ? "true" : "false"}"
       type="button"
     >
       <span class="resource-type ${escapeHtml(resource.resourceType)}">${escapeHtml(resourceTypeLabel(resource.resourceType))}</span>
@@ -747,6 +804,7 @@ function renderResourcePlayer(resource) {
   }
 
   if (resource.player.kind === "video") {
+    const videoControlId = `video-progress-${resource.id}`;
     return `
       <div class="player-preview" aria-label="Manim 视频预览">
         <div class="player-preview-header">
@@ -756,12 +814,35 @@ function renderResourcePlayer(resource) {
           </div>
           <span>${escapeHtml(resource.player.sources[0]?.src ?? "")}</span>
         </div>
-        <div class="video-frame-shell">
-          <video controls preload="metadata" ${resource.player.poster ? `poster="${escapeHtml(resource.player.poster)}"` : ""}>
+        <div class="video-frame-shell" data-video-player-shell>
+          <video
+            controls
+            playsinline
+            preload="metadata"
+            data-video-player
+            data-video-resource-id="${escapeHtml(resource.id)}"
+            aria-describedby="${escapeHtml(videoControlId)}"
+            ${resource.player.poster ? `poster="${escapeHtml(resource.player.poster)}"` : ""}
+          >
             ${resource.player.sources
               .map((source) => `<source src="${escapeHtml(source.src)}" type="${escapeHtml(source.type)}" />`)
               .join("")}
           </video>
+          <div class="video-scrubber" id="${escapeHtml(videoControlId)}">
+            <label for="${escapeHtml(videoControlId)}-range">播放进度</label>
+            <input
+              id="${escapeHtml(videoControlId)}-range"
+              type="range"
+              min="0"
+              max="1000"
+              step="1"
+              value="0"
+              disabled
+              data-video-scrubber
+              aria-label="播放进度"
+            />
+            <span data-video-time>00:00 / --:--</span>
+          </div>
         </div>
       </div>
     `;
@@ -1010,15 +1091,36 @@ function getSelectedResource(lesson) {
   return lesson.resources.find(isImplementedResource) ?? lesson.resources[0];
 }
 
+function selectResource(resourceId, options = {}) {
+  state.selectedResourceId = resourceId;
+  render({
+    ...options,
+    searchScrollTop:
+      options.searchScrollTop ?? (options.preserveSearchScroll ? getSearchResultsScrollTop() : null),
+  });
+}
+
 function setLesson(lessonId, options = {}) {
   if (!workspace.lessonsById[lessonId]) {
     return;
   }
 
+  const searchScrollTop =
+    options.searchScrollTop ?? (options.preserveSearchScroll ? getSearchResultsScrollTop() : null);
+  const nextHash = `#lesson=${encodeURIComponent(lessonId)}`;
+
   state.lessonId = lessonId;
   state.selectedResourceId = options.selectedResourceId ?? null;
-  history.pushState(null, "", `#lesson=${encodeURIComponent(lessonId)}`);
-  render();
+
+  if (window.location.hash !== nextHash) {
+    history.pushState(null, "", nextHash);
+  }
+
+  render({
+    preserveSearchScroll: options.preserveSearchScroll,
+    searchScrollTop,
+    focusResourceDetail: options.focusResourceDetail,
+  });
 }
 
 function updateFilter(field, value) {
@@ -1095,6 +1197,110 @@ function getFilteredResources() {
       (!reviewStatus || resource.quality.reviewStatus === reviewStatus)
     );
   });
+}
+
+function getSearchResultsScrollTop() {
+  return root.querySelector("[data-search-results]")?.scrollTop ?? 0;
+}
+
+function restoreSearchResultsScrollTop(scrollTop) {
+  afterNextPaint(() => {
+    const searchResults = root.querySelector("[data-search-results]");
+    if (searchResults) {
+      searchResults.scrollTop = scrollTop;
+    }
+  });
+}
+
+function focusResourceDetail() {
+  afterNextPaint(() => {
+    const detailPanel = root.querySelector("[data-resource-detail-panel]");
+    if (!detailPanel) {
+      return;
+    }
+
+    const prefersReducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+    detailPanel.scrollIntoView({
+      block: "start",
+      behavior: prefersReducedMotion ? "auto" : "smooth",
+    });
+    detailPanel.focus({ preventScroll: true });
+  });
+}
+
+function afterNextPaint(callback) {
+  if (typeof window.requestAnimationFrame === "function") {
+    window.requestAnimationFrame(callback);
+    return;
+  }
+
+  window.setTimeout(callback, 0);
+}
+
+function handleVideoProgressEvent(event) {
+  const video = event.target.closest?.("[data-video-player]");
+  if (!video) {
+    return;
+  }
+
+  syncVideoScrubber(video);
+}
+
+function seekVideoFromScrubber(scrubber) {
+  const video = scrubber.closest("[data-video-player-shell]")?.querySelector("[data-video-player]");
+  const duration = video?.duration;
+
+  if (!video || !Number.isFinite(duration) || duration <= 0) {
+    return;
+  }
+
+  const max = Number(scrubber.max || 1000);
+  const progress = Number(scrubber.value) / max;
+  video.currentTime = Math.min(duration, Math.max(0, duration * progress));
+  syncVideoScrubber(video);
+}
+
+function syncVideoScrubber(video) {
+  const shell = video.closest("[data-video-player-shell]");
+  const scrubber = shell?.querySelector("[data-video-scrubber]");
+  const timeLabel = shell?.querySelector("[data-video-time]");
+
+  if (!scrubber) {
+    return;
+  }
+
+  const duration = Number.isFinite(video.duration) && video.duration > 0 ? video.duration : 0;
+  const currentTime = Number.isFinite(video.currentTime) ? video.currentTime : 0;
+  const max = Number(scrubber.max || 1000);
+
+  scrubber.disabled = duration <= 0;
+
+  if (duration > 0 && document.activeElement !== scrubber) {
+    scrubber.value = String(Math.round((currentTime / duration) * max));
+  }
+
+  if (timeLabel) {
+    timeLabel.textContent = `${formatVideoTime(currentTime)} / ${duration > 0 ? formatVideoTime(duration) : "--:--"}`;
+  }
+}
+
+function formatVideoTime(seconds) {
+  if (!Number.isFinite(seconds) || seconds < 0) {
+    return "00:00";
+  }
+
+  const totalSeconds = Math.floor(seconds);
+  const hours = Math.floor(totalSeconds / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const remainingSeconds = totalSeconds % 60;
+  const minuteText = hours > 0 ? String(minutes).padStart(2, "0") : String(minutes);
+  const secondText = String(remainingSeconds).padStart(2, "0");
+
+  if (hours > 0) {
+    return `${hours}:${minuteText}:${secondText}`;
+  }
+
+  return `${minuteText}:${secondText}`;
 }
 
 function getInitialLessonId() {
