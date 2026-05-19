@@ -46,8 +46,8 @@ mathematical_scope:
   function: "y = tan x，tan x 是 sin x 与 cos x 的商"
   independent_variable: "角 x 的弧度量"
   dependent_variable: "终边斜率或正切值"
-  default_x_range: "-3π/2 < x < 3π/2, excluding x = π/2 + kπ"
-  visible_y_range: "-4 <= y <= 4"
+  default_x_range: "-3π/2 < x < 3π/2，排除 x = π/2 + kπ"
+  visible_y_range: "-4 ≤ y ≤ 4"
   domain: "x ≠ π/2 + kπ, k ∈ Z"
   period: "π"
   asymptotes: "x = π/2 + kπ, k ∈ Z"
@@ -64,7 +64,7 @@ mathematical_scope:
       note: "右侧分支中的常用描点"
   out_of_scope:
     - "正切函数单调性的完整一般式证明"
-    - "y = A tan(omega x + phi) 的参数变换"
+    - "y = A tan(ωx + φ) 的参数变换"
     - "用导数严格证明渐近线两侧的极限"
     - "反三角函数或切线方程的拓展讨论"
 
