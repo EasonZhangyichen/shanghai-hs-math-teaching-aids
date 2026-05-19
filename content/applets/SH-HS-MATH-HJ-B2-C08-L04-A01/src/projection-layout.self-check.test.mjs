@@ -47,12 +47,20 @@ test("projection applet uses iframe-height layout and classroom touch targets", 
     /min-height\s*:\s*\d+px/
   );
   const workspaceRule = cssRule(".workspace");
+  const workspaceHeightMatch = source.match(/--workspace-height:\s*clamp\((\d+)px,\s*calc\(100svh - (\d+)px\),\s*(\d+)px\)/);
+  const hitRadiusMatch = source.match(/r:\s*(\d+),[\s\S]*class:\s*"hit-handle"/);
 
+  assert.ok(workspaceHeightMatch, "expected workspace height to use a clamp tied to iframe viewport height");
+  assert.ok(
+    Number(workspaceHeightMatch[2]) >= 128,
+    "wrapped iframe headers need enough vertical budget so the workspace stays in the first screen",
+  );
   assert.match(source, /--workspace-height:\s*clamp\(/);
   assert.match(boardRule, /var\(--workspace-height\)/);
   assert.match(panelRule, /var\(--workspace-height\)/);
   assert.match(workspaceRule, /minmax\(300px, 1fr\) minmax\(236px, 320px\)/);
   assert.ok(pixelValue(buttonRule, "min-height") >= 40, "buttons should remain at least 40px tall for touch");
   assert.match(source, /class:\s*"hit-handle"/, "expected invisible drag hit handles for vector endpoints");
-  assert.match(source, /r:\s*32,[\s\S]*class:\s*"hit-handle"/, "hit handles should survive platform iframe scaling");
+  assert.ok(hitRadiusMatch, "expected invisible drag hit handles for vector endpoints");
+  assert.ok(Number(hitRadiusMatch[1]) >= 42, "hit handles should survive platform iframe scaling");
 });
