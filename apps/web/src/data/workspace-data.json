@@ -10407,7 +10407,7 @@
           "id": "SH-HS-MATH-HJ-B2-C08-L02-D01",
           "resourceType": "diagnosis",
           "title": "加减法方向四类短诊断",
-          "subtitle": "围绕向量的加法和减法的课堂即时诊断草稿",
+          "subtitle": "围绕首尾相接、平行四边形方向、减法相反向量和闭合路径的课堂即时诊断",
           "cognitiveAction": "比较",
           "note": "只覆盖首尾相接、相反向量、闭合路径、端点顺序四类错因，用即时反馈提示方向来源；不做构造演示。",
           "availability": "metadata_ready",
@@ -10419,7 +10419,7 @@
             "status": "draft",
             "resourceType": "diagnosis",
             "title": "加减法方向四类短诊断",
-            "subtitle": "围绕向量的加法和减法的课堂即时诊断草稿",
+            "subtitle": "围绕首尾相接、平行四边形方向、减法相反向量和闭合路径的课堂即时诊断",
             "curriculum": {
               "region": "上海",
               "stage": "高中",
@@ -10440,15 +10440,21 @@
               "estimatedClassroomMinutes": 8,
               "primaryTeachingProblem": "学生容易混淆三角形法则中的首尾相接和减法中的相反向量。",
               "learningGoals": [
-                "识别向量的加法和减法学习中的典型错因。",
-                "用“比较”方式解释学生答案背后的数学理解偏差。",
-                "根据错因标签选择课堂回讲或补救练习路径。"
+                "根据几何路径判断向量加法的起点、转折点和终点。",
+                "解释平行四边形法则中合向量从共同起点指向对角点的方向。",
+                "把向量减法转化为加上相反向量，并辨析端点顺序。",
+                "识别闭合路径的合位移为零向量，而不是误认为某一条边。",
+                "根据错因标签选择课堂回讲或订正路径。"
               ],
               "prerequisites": [
-                "向量的加法和减法相关先修知识"
+                "向量相等和相反向量",
+                "平移有向线段表示同一向量",
+                "三角形和平行四边形中的基本路径关系"
               ],
               "successors": [
-                "后续课时学习与综合应用"
+                "SH-HS-MATH-HJ-B2-C08-L03",
+                "SH-HS-MATH-HJ-B2-C08-L04",
+                "SH-HS-MATH-HJ-B2-C08-L10"
               ],
               "coreCompetencies": [
                 "逻辑推理",
@@ -10468,44 +10474,62 @@
             },
             "diagnosisDesign": {
               "diagnosticFocus": [
-                "只覆盖首尾相接、相反向量、闭合路径、端点顺序四类错因，用即时反馈提示方向来源；不做构造演示。",
-                "能否暴露并解释：学生容易混淆三角形法则中的首尾相接和减法中的相反向量。",
-                "能否暴露并解释：平行四边形法则常被当作画图模板，不能解释合向量的方向和大小。",
-                "能否暴露并解释：从几何图形抽取向量等式时，路径方向和端点顺序容易出错。"
+                "能否用三角形法则识别首尾相接的路径合向量。",
+                "能否把平行四边形法则解释为从共同起点指向对角点，而不是只记画图模板。",
+                "能否把向量减法转化为加上相反向量，并得到正确方向。",
+                "能否识别闭合路径的合位移为零向量。",
+                "能否从几何图形中按端点顺序写出正确的向量等式。"
               ],
               "misconceptionTags": [
                 {
-                  "id": "concept_expression_gap",
-                  "title": "概念表达不完整",
-                  "description": "学生能回忆局部结论，但不能写成完整、可推广的数学表达。"
+                  "id": "addition_direction_rule_confusion",
+                  "title": "加法方向法则混淆",
+                  "description": "学生不能稳定追踪三角形法则中的首尾相接，或把平行四边形法则中的合向量方向画反。"
                 },
                 {
-                  "id": "representation_mixup",
-                  "title": "表征混淆",
-                  "description": "学生在图像、符号或语言表征之间转换时混淆对象或条件。"
+                  "id": "subtraction_opposite_vector_error",
+                  "title": "减法相反向量错误",
+                  "description": "学生把减法当成普通线段相减，未能先把被减向量改为相反向量再首尾相接。"
+                },
+                {
+                  "id": "closed_path_zero_misread",
+                  "title": "闭合路径零向量误读",
+                  "description": "学生看到闭合路径时仍写成某一条边，不能用回到起点解释合位移为零向量。"
+                },
+                {
+                  "id": "endpoint_order_reversal",
+                  "title": "端点顺序反向",
+                  "description": "学生把 AB 与 BA、AC 与 CA 等方向相反的向量混用，导致等式方向错误。"
                 }
               ],
               "itemSummary": {
-                "totalItems": 1,
+                "totalItems": 6,
                 "questionTypes": [
-                  "draft_placeholder"
+                  "draft_placeholder",
+                  "single_choice",
+                  "multiple_select",
+                  "short_explanation",
+                  "error_analysis"
                 ],
                 "estimatedMinutes": 8
               },
               "feedbackStrategy": {
-                "immediate_feedback": "首版 scaffold 仅提供题组结构，后续按具体错因补充即时反馈。",
-                "teacher_dashboard_notes": "教师端先显示诊断目标和错因标签草稿，题组定稿后再展示统计口径。"
+                "immediate_feedback": "每题反馈先指出方向来源，再提示“起点、转折点、终点”或“减去即加相反向量”的订正动作。",
+                "teacher_dashboard_notes": "统计四类错因命中人数；若加法方向法则混淆集中，回到三角形路径和平行四边形对角线；若减法错因集中，统一写出“减去一个向量等于加上它的相反向量”；若闭合路径或端点顺序错误集中，要求学生逐段标出起点和终点后订正。",
+                "remediation_links": [
+                  "content/applets/SH-HS-MATH-HJ-B2-C08-L02-A01"
+                ]
               }
             },
             "scoring": {
               "mastery_threshold": 0.75,
-              "grading_mode": "tagged_misconception",
+              "grading_mode": "mixed",
               "retry_policy": "课堂内允许一次订正，保留首次错因标签。"
             },
             "platformCard": {
               "availability": "metadata_ready",
               "preview_behavior": "metadata_placeholder",
-              "embed_strategy": "首期显示诊断目标、错因标签和文件入口；题组定稿后升级为 item_bank_ready。"
+              "embed_strategy": "首期仍按第 8 章草稿闸门显示诊断目标、错因标签和文件入口；题组已补齐但平台入口状态等待总控统一升级。"
             },
             "files": {
               "readme": "README.md",
@@ -10515,7 +10539,7 @@
               "review_record": "review.md"
             },
             "compliance": {
-              "copyright_note": "本 scaffold 仅生成原创资源骨架，不复制教材正文、官方课件、教案或商业题库。",
+              "copyright_note": "本诊断包为原创题组与反馈设计，不复制教材正文、官方课件、教案或商业题库。",
               "review_status": "self_checked_draft"
             }
           },
@@ -10547,13 +10571,15 @@
               "reviewRecord": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L02-D01/review.md"
             },
             "itemBank": {
-              "title": "加减法方向四类短诊断题组草稿",
-              "itemCount": 0,
-              "totalScore": 0,
+              "title": "加减法方向四类短诊断题组",
+              "itemCount": 6,
+              "totalScore": 10,
               "estimatedMinutes": 8,
               "misconceptionTags": [
-                "concept_expression_gap",
-                "representation_mixup"
+                "addition_direction_rule_confusion",
+                "subtraction_opposite_vector_error",
+                "closed_path_zero_misread",
+                "endpoint_order_reversal"
               ]
             },
             "teacherNotes": {
@@ -10563,18 +10589,24 @@
               "summary": "资源 ID：`SH-HS-MATH-HJ-B2-C08-L02-D01`",
               "sections": [
                 "使用时机",
+                "8 到 10 分钟流程",
                 "讲评方向",
-                "后续补充"
+                "教师看板建议",
+                "补救资源",
+                "版权与边界"
               ]
             },
             "scoringRubric": {
               "kind": "scoring_rubric",
               "path": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L02-D01/scoring-rubric.md",
               "title": "评分规则",
-              "summary": "资源 ID：`SH-HS-MATH-HJ-B2-C08-L02-D01`",
+              "summary": "资源 ID：`SH-HS-MATH-HJ-B2-C08-L02-D01` 总分 10 分，掌握阈值为 7.5 分。课堂端可以显示为“方向基本稳定”“需回看路径”“需教师集中讲评”三档。",
               "sections": [
-                "当前状态",
-                "默认掌握阈值"
+                "题目分值",
+                "掌握等级",
+                "部分得分",
+                "错因标签优先级",
+                "订正规则"
               ]
             }
           }
@@ -12120,7 +12152,7 @@
           "id": "SH-HS-MATH-HJ-B2-C08-L05-D01",
           "resourceType": "diagnosis",
           "title": "数量积正负误区诊断",
-          "subtitle": "围绕向量的数量积的定义与运算律的课堂即时诊断草稿",
+          "subtitle": "围绕夹角、投影、零向量边界和垂直判定的课堂即时诊断",
           "cognitiveAction": "比较",
           "note": "检测结果类型、垂直判定、零向量边界和运算律误用。",
           "availability": "metadata_ready",
@@ -12132,7 +12164,7 @@
             "status": "draft",
             "resourceType": "diagnosis",
             "title": "数量积正负误区诊断",
-            "subtitle": "围绕向量的数量积的定义与运算律的课堂即时诊断草稿",
+            "subtitle": "围绕夹角、投影、零向量边界和垂直判定的课堂即时诊断",
             "curriculum": {
               "region": "上海",
               "stage": "高中",
@@ -12150,18 +12182,24 @@
             },
             "pedagogy": {
               "cognitiveAction": "比较",
-              "estimatedClassroomMinutes": 8,
-              "primaryTeachingProblem": "学生容易把数量积误认为仍是向量，忽略结果是数量。",
+              "estimatedClassroomMinutes": 9,
+              "primaryTeachingProblem": "学生会背 a · b = |a||b|cosθ，却容易把数量积的符号、投影方向、垂直条件和零向量边界混在一起，甚至用长度大小替代夹角判断。",
               "learningGoals": [
-                "识别向量的数量积的定义与运算律学习中的典型错因。",
-                "用“比较”方式解释学生答案背后的数学理解偏差。",
-                "根据错因标签选择课堂回讲或补救练习路径。"
+                "根据非零向量夹角的锐、直、钝判断数量积的正、零、负。",
+                "用有向投影解释数量积符号，不把投影当作普通无符号线段长度。",
+                "区分 a · b = 0 的两类来源：零向量边界和两个非零向量垂直。",
+                "确认数量积的结果是数量，并能说明长度不变时夹角变化仍会改变数量积。"
               ],
               "prerequisites": [
-                "向量的数量积的定义与运算律相关先修知识"
+                "向量的大小、方向和夹角",
+                "向量的投影与有向投影长度",
+                "余弦在锐角、直角和钝角时的符号",
+                "零向量和垂直关系的基本约定"
               ],
               "successors": [
-                "后续课时学习与综合应用"
+                "SH-HS-MATH-HJ-B2-C08-L06",
+                "SH-HS-MATH-HJ-B2-C08-L09",
+                "SH-HS-MATH-HJ-B2-C08-L10"
               ],
               "coreCompetencies": [
                 "逻辑推理",
@@ -12181,44 +12219,73 @@
             },
             "diagnosisDesign": {
               "diagnosticFocus": [
-                "检测结果类型、垂直判定、零向量边界和运算律误用。",
-                "能否暴露并解释：学生容易把数量积误认为仍是向量，忽略结果是数量。",
-                "能否暴露并解释：数量积为零与某个向量为零、两个向量垂直之间的条件边界容易混淆。",
-                "能否暴露并解释：运算律和几何意义之间脱节，导致代数变形缺少方向感。"
+                "能否用夹角锐、直、钝判断两个非零向量数量积的符号。",
+                "能否用有向投影解释正负，而不是把投影长度一律看成正数。",
+                "能否正确表述 a · b = 0 与垂直的条件边界，尤其是不把零向量说成与任意向量夹角为 90°。",
+                "能否区分数量积的结果类型、方向信息和长度信息。",
+                "能否在不使用坐标公式的情况下，用定义和几何意义完成判断。"
               ],
               "misconceptionTags": [
                 {
-                  "id": "concept_expression_gap",
-                  "title": "概念表达不完整",
-                  "description": "学生能回忆局部结论，但不能写成完整、可推广的数学表达。"
+                  "id": "angle_sign_confusion",
+                  "title": "夹角符号误判",
+                  "description": "不能稳定用锐角、直角、钝角判断 cosθ 和数量积的正、零、负。"
                 },
                 {
-                  "id": "representation_mixup",
-                  "title": "表征混淆",
-                  "description": "学生在图像、符号或语言表征之间转换时混淆对象或条件。"
+                  "id": "projection_sign_confusion",
+                  "title": "投影正负混淆",
+                  "description": "把有向投影长度当成普通线段长度，忽略投影方向与基准向量方向相反时为负。"
+                },
+                {
+                  "id": "zero_vector_boundary",
+                  "title": "零向量边界遗漏",
+                  "description": "把 a · b = 0 直接说成两个向量垂直，未排除或单独说明零向量情况。"
+                },
+                {
+                  "id": "perpendicular_condition_overgeneralization",
+                  "title": "垂直判定条件泛化",
+                  "description": "使用 a · b = 0 判断垂直时没有补足两个向量均非零等必要条件。"
+                },
+                {
+                  "id": "result_type_scalar_confusion",
+                  "title": "结果类型混淆",
+                  "description": "把数量积误认为仍是向量，给它指定方向或端点。"
+                },
+                {
+                  "id": "length_direction_mixup",
+                  "title": "长度与方向混淆",
+                  "description": "只看 |a||b| 的大小，忽略夹角和方向决定数量积的符号与大小。"
                 }
               ],
               "itemSummary": {
-                "totalItems": 1,
+                "totalItems": 6,
                 "questionTypes": [
-                  "draft_placeholder"
+                  "draft_placeholder",
+                  "single_choice",
+                  "multiple_select",
+                  "short_explanation",
+                  "error_analysis"
                 ],
-                "estimatedMinutes": 8
+                "estimatedMinutes": 9
               },
               "feedbackStrategy": {
-                "immediate_feedback": "首版 scaffold 仅提供题组结构，后续按具体错因补充即时反馈。",
-                "teacher_dashboard_notes": "教师端先显示诊断目标和错因标签草稿，题组定稿后再展示统计口径。"
+                "immediate_feedback": "每题反馈都回到一条几何理由：夹角分区、投影方向、零向量边界、结果是数量或长度与方向同时决定数量积。",
+                "teacher_dashboard_notes": "若 angle_sign_confusion 集中出现，先画锐角、直角、钝角三分区；若 projection_sign_confusion 集中出现，回到 L04 投影有向长度；若 zero_vector_boundary 或 perpendicular_condition_overgeneralization 集中出现，专门追问“两个向量是否都非零”；若 result_type_scalar_confusion 或 length_direction_mixup 集中出现，强调数量积不是向量且长度不能替代夹角。坐标公式留到 8.3 后续说明，不作为本诊断讲评主线。",
+                "remediation_links": [
+                  "content/applets/SH-HS-MATH-HJ-B2-C08-L04-A01",
+                  "content/applets/SH-HS-MATH-HJ-B2-C08-L05-A01"
+                ]
               }
             },
             "scoring": {
               "mastery_threshold": 0.75,
-              "grading_mode": "tagged_misconception",
-              "retry_policy": "课堂内允许一次订正，保留首次错因标签。"
+              "grading_mode": "mixed",
+              "retry_policy": "课堂内允许一次订正；订正时必须写出一个夹角、投影或零向量边界理由，首次错因标签保留给教师看板。"
             },
             "platformCard": {
               "availability": "metadata_ready",
               "preview_behavior": "metadata_placeholder",
-              "embed_strategy": "首期显示诊断目标、错因标签和文件入口；题组定稿后升级为 item_bank_ready。"
+              "embed_strategy": "首期仍显示诊断目标、错因标签和文件入口；题组内容已补齐，待总控统一接入诊断题组预览后再升级平台卡片。"
             },
             "files": {
               "readme": "README.md",
@@ -12228,7 +12295,7 @@
               "review_record": "review.md"
             },
             "compliance": {
-              "copyright_note": "本 scaffold 仅生成原创资源骨架，不复制教材正文、官方课件、教案或商业题库。",
+              "copyright_note": "本诊断包为原创题组与反馈设计，不复制教材正文、官方课件、教案或商业题库。",
               "review_status": "self_checked_draft"
             }
           },
@@ -12260,13 +12327,17 @@
               "reviewRecord": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L05-D01/review.md"
             },
             "itemBank": {
-              "title": "数量积正负误区诊断题组草稿",
-              "itemCount": 0,
-              "totalScore": 0,
-              "estimatedMinutes": 8,
+              "title": "数量积正负误区诊断题组",
+              "itemCount": 6,
+              "totalScore": 10,
+              "estimatedMinutes": 9,
               "misconceptionTags": [
-                "concept_expression_gap",
-                "representation_mixup"
+                "angle_sign_confusion",
+                "projection_sign_confusion",
+                "zero_vector_boundary",
+                "perpendicular_condition_overgeneralization",
+                "result_type_scalar_confusion",
+                "length_direction_mixup"
               ]
             },
             "teacherNotes": {
@@ -12276,8 +12347,10 @@
               "summary": "资源 ID：`SH-HS-MATH-HJ-B2-C08-L05-D01`",
               "sections": [
                 "使用时机",
+                "建议流程",
+                "题目意图",
                 "讲评方向",
-                "后续补充"
+                "后续衔接"
               ]
             },
             "scoringRubric": {
@@ -12286,8 +12359,10 @@
               "title": "评分规则",
               "summary": "资源 ID：`SH-HS-MATH-HJ-B2-C08-L05-D01`",
               "sections": [
-                "当前状态",
-                "默认掌握阈值"
+                "总体规则",
+                "分题分值",
+                "错因标签解释",
+                "分流建议"
               ]
             }
           }
@@ -12961,7 +13036,7 @@
           "id": "SH-HS-MATH-HJ-B2-C08-L10-D01",
           "resourceType": "diagnosis",
           "title": "向量应用第一步诊断",
-          "subtitle": "围绕向量的应用的课堂即时诊断草稿",
+          "subtitle": "围绕基底、坐标、数量积、投影与分解选择的课堂即时诊断",
           "cognitiveAction": "比较",
           "note": "围绕几何条件选择基底法、坐标法或数量积法的第一步理由给反馈，不批改完整证明过程。",
           "availability": "metadata_ready",
@@ -12973,7 +13048,7 @@
             "status": "draft",
             "resourceType": "diagnosis",
             "title": "向量应用第一步诊断",
-            "subtitle": "围绕向量的应用的课堂即时诊断草稿",
+            "subtitle": "围绕基底、坐标、数量积、投影与分解选择的课堂即时诊断",
             "curriculum": {
               "region": "上海",
               "stage": "高中",
@@ -12991,18 +13066,23 @@
             },
             "pedagogy": {
               "cognitiveAction": "比较",
-              "estimatedClassroomMinutes": 8,
-              "primaryTeachingProblem": "学生面对几何题时不知道先选基底、建坐标还是使用数量积。",
+              "estimatedClassroomMinutes": 9,
+              "primaryTeachingProblem": "学生进入 8.4 向量应用后，常把第一步变成机械建坐标或直接套公式，不能根据平行、中点、垂直、夹角、投影和分解等题目特征选择合适的向量工具。",
               "learningGoals": [
-                "识别向量的应用学习中的典型错因。",
-                "用“比较”方式解释学生答案背后的数学理解偏差。",
-                "根据错因标签选择课堂回讲或补救练习路径。"
+                "根据题目目标判断先选基底与向量路径、先建坐标设点、先用数量积，还是先作投影或分解。",
+                "说清第一步选择的理由，诊断是否抓住平行、中点、垂直、夹角、长度和方向分量等关键信号。",
+                "避免把 8.4 向量应用退化为复杂解析几何计算，保留向量法的几何直观和工具选择意识。"
               ],
               "prerequisites": [
-                "向量的应用相关先修知识"
+                "向量加法、减法、数乘和基底分解",
+                "中点、比例点、平行和共线的几何语言",
+                "向量数量积、夹角、垂直判定和投影",
+                "向量的坐标表示与简单坐标设点"
               ],
               "successors": [
-                "后续课时学习与综合应用"
+                "SH-HS-MATH-HJ-B2-C09-K01",
+                "SH-HS-MATH-HJ-XB1-SPACEVEC-K01",
+                "SH-HS-MATH-HJ-XB1-ANALYTIC-K01"
               ],
               "coreCompetencies": [
                 "逻辑推理",
@@ -13022,44 +13102,73 @@
             },
             "diagnosisDesign": {
               "diagnosticFocus": [
-                "围绕几何条件选择基底法、坐标法或数量积法的第一步理由给反馈，不批改完整证明过程。",
-                "能否暴露并解释：学生面对几何题时不知道先选基底、建坐标还是使用数量积。",
-                "能否暴露并解释：几何语言转化为向量等式的第一步难，容易直接套公式。",
-                "能否暴露并解释：证明过程中的向量路径、辅助点和坐标系选择缺少策略。"
+                "能否在平行四边形、中点和比例点情境中先选基底、定路径或表达辅助点。",
+                "能否在垂直、夹角、长度比较情境中识别数量积入口，而不是只做线性运算。",
+                "能否在有天然直角边、边长或已给坐标的情境中简洁建坐标，且不把坐标法变成复杂解析几何主线。",
+                "能否在方向分量、有效长度和沿某方向贡献等情境中先作投影或分解。"
               ],
               "misconceptionTags": [
                 {
-                  "id": "concept_expression_gap",
-                  "title": "概念表达不完整",
-                  "description": "学生能回忆局部结论，但不能写成完整、可推广的数学表达。"
+                  "id": "basis_path_gap",
+                  "title": "基底与路径未先定",
+                  "description": "遇到平行四边形、中点、比例点或首尾路径时，没有先选合适的基向量或把目标向量拆成已知路径。"
                 },
                 {
-                  "id": "representation_mixup",
-                  "title": "表征混淆",
-                  "description": "学生在图像、符号或语言表征之间转换时混淆对象或条件。"
+                  "id": "coordinate_overreach",
+                  "title": "坐标法泛化过度",
+                  "description": "不看题目结构，默认建复杂坐标或列直线方程，增加计算负担并遮蔽向量关系。"
+                },
+                {
+                  "id": "coordinate_setup_gap",
+                  "title": "坐标设点入口不稳",
+                  "description": "当题目已有直角边、边长或坐标信息时，不能选择简洁原点和坐标轴，或设点后脱离向量目标。"
+                },
+                {
+                  "id": "dot_product_trigger_gap",
+                  "title": "数量积触发不敏感",
+                  "description": "遇到垂直、夹角、长度比较或锐钝判断时，没有想到把目标转化为数量积、模长或数量积符号。"
+                },
+                {
+                  "id": "projection_decomposition_gap",
+                  "title": "投影分解信号遗漏",
+                  "description": "遇到沿某方向的分量、有效长度或垂直分解时，没有先确定基准方向并作投影或分解。"
+                },
+                {
+                  "id": "point_ratio_expression_gap",
+                  "title": "辅助点与比例表达断裂",
+                  "description": "知道有中点或比例点，但不能把点的位置转化为从同一出发点引出的向量表达。"
                 }
               ],
               "itemSummary": {
-                "totalItems": 1,
+                "totalItems": 6,
                 "questionTypes": [
+                  "single_choice",
+                  "multiple_select",
+                  "short_explanation",
+                  "error_analysis",
                   "draft_placeholder"
                 ],
-                "estimatedMinutes": 8
+                "estimatedMinutes": 9
               },
               "feedbackStrategy": {
-                "immediate_feedback": "首版 scaffold 仅提供题组结构，后续按具体错因补充即时反馈。",
-                "teacher_dashboard_notes": "教师端先显示诊断目标和错因标签草稿，题组定稿后再展示统计口径。"
+                "immediate_feedback": "每题反馈只围绕第一步选择：基底与路径、坐标设点、数量积、投影分解或辅助点表达，不要求学生补完完整证明。",
+                "teacher_dashboard_notes": "若 coordinate_overreach 高发，回到题目特征分类；若 basis_path_gap 或 point_ratio_expression_gap 高发，先练从图形写向量路径；若 dot_product_trigger_gap 高发，补讲垂直、夹角和长度的数量积入口；若 projection_decomposition_gap 高发，回看投影有向长度。",
+                "remediation_links": [
+                  "content/applets/SH-HS-MATH-HJ-B2-C08-L10-A01",
+                  "content/applets/SH-HS-MATH-HJ-B2-C08-L05-A01",
+                  "content/applets/SH-HS-MATH-HJ-B2-C08-L04-A01"
+                ]
               }
             },
             "scoring": {
               "mastery_threshold": 0.75,
-              "grading_mode": "tagged_misconception",
-              "retry_policy": "课堂内允许一次订正，保留首次错因标签。"
+              "grading_mode": "mixed",
+              "retry_policy": "课堂内允许一次订正；订正只需改写第一步和理由，首次错因标签保留给教师看板。"
             },
             "platformCard": {
               "availability": "metadata_ready",
               "preview_behavior": "metadata_placeholder",
-              "embed_strategy": "首期显示诊断目标、错因标签和文件入口；题组定稿后升级为 item_bank_ready。"
+              "embed_strategy": "首期仍按第 8 章草稿资源显示诊断目标、错因标签和文件入口；题组已补齐，待总控更新平台预览口径后再升级为题组预览。"
             },
             "files": {
               "readme": "README.md",
@@ -13069,7 +13178,7 @@
               "review_record": "review.md"
             },
             "compliance": {
-              "copyright_note": "本 scaffold 仅生成原创资源骨架，不复制教材正文、官方课件、教案或商业题库。",
+              "copyright_note": "本诊断包为原创题组与反馈设计，不复制教材正文、官方课件、教案或商业题库。",
               "review_status": "self_checked_draft"
             }
           },
@@ -13101,13 +13210,17 @@
               "reviewRecord": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L10-D01/review.md"
             },
             "itemBank": {
-              "title": "向量应用第一步诊断题组草稿",
-              "itemCount": 0,
-              "totalScore": 0,
-              "estimatedMinutes": 8,
+              "title": "向量应用第一步诊断题组",
+              "itemCount": 6,
+              "totalScore": 10,
+              "estimatedMinutes": 9,
               "misconceptionTags": [
-                "concept_expression_gap",
-                "representation_mixup"
+                "basis_path_gap",
+                "coordinate_overreach",
+                "coordinate_setup_gap",
+                "dot_product_trigger_gap",
+                "projection_decomposition_gap",
+                "point_ratio_expression_gap"
               ]
             },
             "teacherNotes": {
@@ -13117,18 +13230,24 @@
               "summary": "资源 ID：`SH-HS-MATH-HJ-B2-C08-L10-D01`",
               "sections": [
                 "使用时机",
+                "8 到 10 分钟流程",
                 "讲评方向",
-                "后续补充"
+                "教师看板建议",
+                "补救资源",
+                "版权与边界"
               ]
             },
             "scoringRubric": {
               "kind": "scoring_rubric",
               "path": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L10-D01/scoring-rubric.md",
               "title": "评分规则",
-              "summary": "资源 ID：`SH-HS-MATH-HJ-B2-C08-L10-D01`",
+              "summary": "资源 ID：`SH-HS-MATH-HJ-B2-C08-L10-D01` 总分 10 分，掌握阈值为 7.5 分。课堂端可显示为“第一步选择稳定”“需回看工具特征”“需教师讲评”三档。",
               "sections": [
-                "当前状态",
-                "默认掌握阈值"
+                "题目分值",
+                "掌握等级",
+                "部分得分",
+                "错因标签优先级",
+                "订正规则"
               ]
             }
           }
@@ -22960,7 +23079,7 @@
           "id": "SH-HS-MATH-HJ-B2-C08-L02-D01",
           "resourceType": "diagnosis",
           "title": "加减法方向四类短诊断",
-          "subtitle": "围绕向量的加法和减法的课堂即时诊断草稿",
+          "subtitle": "围绕首尾相接、平行四边形方向、减法相反向量和闭合路径的课堂即时诊断",
           "cognitiveAction": "比较",
           "note": "只覆盖首尾相接、相反向量、闭合路径、端点顺序四类错因，用即时反馈提示方向来源；不做构造演示。",
           "availability": "metadata_ready",
@@ -22972,7 +23091,7 @@
             "status": "draft",
             "resourceType": "diagnosis",
             "title": "加减法方向四类短诊断",
-            "subtitle": "围绕向量的加法和减法的课堂即时诊断草稿",
+            "subtitle": "围绕首尾相接、平行四边形方向、减法相反向量和闭合路径的课堂即时诊断",
             "curriculum": {
               "region": "上海",
               "stage": "高中",
@@ -22993,15 +23112,21 @@
               "estimatedClassroomMinutes": 8,
               "primaryTeachingProblem": "学生容易混淆三角形法则中的首尾相接和减法中的相反向量。",
               "learningGoals": [
-                "识别向量的加法和减法学习中的典型错因。",
-                "用“比较”方式解释学生答案背后的数学理解偏差。",
-                "根据错因标签选择课堂回讲或补救练习路径。"
+                "根据几何路径判断向量加法的起点、转折点和终点。",
+                "解释平行四边形法则中合向量从共同起点指向对角点的方向。",
+                "把向量减法转化为加上相反向量，并辨析端点顺序。",
+                "识别闭合路径的合位移为零向量，而不是误认为某一条边。",
+                "根据错因标签选择课堂回讲或订正路径。"
               ],
               "prerequisites": [
-                "向量的加法和减法相关先修知识"
+                "向量相等和相反向量",
+                "平移有向线段表示同一向量",
+                "三角形和平行四边形中的基本路径关系"
               ],
               "successors": [
-                "后续课时学习与综合应用"
+                "SH-HS-MATH-HJ-B2-C08-L03",
+                "SH-HS-MATH-HJ-B2-C08-L04",
+                "SH-HS-MATH-HJ-B2-C08-L10"
               ],
               "coreCompetencies": [
                 "逻辑推理",
@@ -23021,44 +23146,62 @@
             },
             "diagnosisDesign": {
               "diagnosticFocus": [
-                "只覆盖首尾相接、相反向量、闭合路径、端点顺序四类错因，用即时反馈提示方向来源；不做构造演示。",
-                "能否暴露并解释：学生容易混淆三角形法则中的首尾相接和减法中的相反向量。",
-                "能否暴露并解释：平行四边形法则常被当作画图模板，不能解释合向量的方向和大小。",
-                "能否暴露并解释：从几何图形抽取向量等式时，路径方向和端点顺序容易出错。"
+                "能否用三角形法则识别首尾相接的路径合向量。",
+                "能否把平行四边形法则解释为从共同起点指向对角点，而不是只记画图模板。",
+                "能否把向量减法转化为加上相反向量，并得到正确方向。",
+                "能否识别闭合路径的合位移为零向量。",
+                "能否从几何图形中按端点顺序写出正确的向量等式。"
               ],
               "misconceptionTags": [
                 {
-                  "id": "concept_expression_gap",
-                  "title": "概念表达不完整",
-                  "description": "学生能回忆局部结论，但不能写成完整、可推广的数学表达。"
+                  "id": "addition_direction_rule_confusion",
+                  "title": "加法方向法则混淆",
+                  "description": "学生不能稳定追踪三角形法则中的首尾相接，或把平行四边形法则中的合向量方向画反。"
                 },
                 {
-                  "id": "representation_mixup",
-                  "title": "表征混淆",
-                  "description": "学生在图像、符号或语言表征之间转换时混淆对象或条件。"
+                  "id": "subtraction_opposite_vector_error",
+                  "title": "减法相反向量错误",
+                  "description": "学生把减法当成普通线段相减，未能先把被减向量改为相反向量再首尾相接。"
+                },
+                {
+                  "id": "closed_path_zero_misread",
+                  "title": "闭合路径零向量误读",
+                  "description": "学生看到闭合路径时仍写成某一条边，不能用回到起点解释合位移为零向量。"
+                },
+                {
+                  "id": "endpoint_order_reversal",
+                  "title": "端点顺序反向",
+                  "description": "学生把 AB 与 BA、AC 与 CA 等方向相反的向量混用，导致等式方向错误。"
                 }
               ],
               "itemSummary": {
-                "totalItems": 1,
+                "totalItems": 6,
                 "questionTypes": [
-                  "draft_placeholder"
+                  "draft_placeholder",
+                  "single_choice",
+                  "multiple_select",
+                  "short_explanation",
+                  "error_analysis"
                 ],
                 "estimatedMinutes": 8
               },
               "feedbackStrategy": {
-                "immediate_feedback": "首版 scaffold 仅提供题组结构，后续按具体错因补充即时反馈。",
-                "teacher_dashboard_notes": "教师端先显示诊断目标和错因标签草稿，题组定稿后再展示统计口径。"
+                "immediate_feedback": "每题反馈先指出方向来源，再提示“起点、转折点、终点”或“减去即加相反向量”的订正动作。",
+                "teacher_dashboard_notes": "统计四类错因命中人数；若加法方向法则混淆集中，回到三角形路径和平行四边形对角线；若减法错因集中，统一写出“减去一个向量等于加上它的相反向量”；若闭合路径或端点顺序错误集中，要求学生逐段标出起点和终点后订正。",
+                "remediation_links": [
+                  "content/applets/SH-HS-MATH-HJ-B2-C08-L02-A01"
+                ]
               }
             },
             "scoring": {
               "mastery_threshold": 0.75,
-              "grading_mode": "tagged_misconception",
+              "grading_mode": "mixed",
               "retry_policy": "课堂内允许一次订正，保留首次错因标签。"
             },
             "platformCard": {
               "availability": "metadata_ready",
               "preview_behavior": "metadata_placeholder",
-              "embed_strategy": "首期显示诊断目标、错因标签和文件入口；题组定稿后升级为 item_bank_ready。"
+              "embed_strategy": "首期仍按第 8 章草稿闸门显示诊断目标、错因标签和文件入口；题组已补齐但平台入口状态等待总控统一升级。"
             },
             "files": {
               "readme": "README.md",
@@ -23068,7 +23211,7 @@
               "review_record": "review.md"
             },
             "compliance": {
-              "copyright_note": "本 scaffold 仅生成原创资源骨架，不复制教材正文、官方课件、教案或商业题库。",
+              "copyright_note": "本诊断包为原创题组与反馈设计，不复制教材正文、官方课件、教案或商业题库。",
               "review_status": "self_checked_draft"
             }
           },
@@ -23100,13 +23243,15 @@
               "reviewRecord": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L02-D01/review.md"
             },
             "itemBank": {
-              "title": "加减法方向四类短诊断题组草稿",
-              "itemCount": 0,
-              "totalScore": 0,
+              "title": "加减法方向四类短诊断题组",
+              "itemCount": 6,
+              "totalScore": 10,
               "estimatedMinutes": 8,
               "misconceptionTags": [
-                "concept_expression_gap",
-                "representation_mixup"
+                "addition_direction_rule_confusion",
+                "subtraction_opposite_vector_error",
+                "closed_path_zero_misread",
+                "endpoint_order_reversal"
               ]
             },
             "teacherNotes": {
@@ -23116,18 +23261,24 @@
               "summary": "资源 ID：`SH-HS-MATH-HJ-B2-C08-L02-D01`",
               "sections": [
                 "使用时机",
+                "8 到 10 分钟流程",
                 "讲评方向",
-                "后续补充"
+                "教师看板建议",
+                "补救资源",
+                "版权与边界"
               ]
             },
             "scoringRubric": {
               "kind": "scoring_rubric",
               "path": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L02-D01/scoring-rubric.md",
               "title": "评分规则",
-              "summary": "资源 ID：`SH-HS-MATH-HJ-B2-C08-L02-D01`",
+              "summary": "资源 ID：`SH-HS-MATH-HJ-B2-C08-L02-D01` 总分 10 分，掌握阈值为 7.5 分。课堂端可以显示为“方向基本稳定”“需回看路径”“需教师集中讲评”三档。",
               "sections": [
-                "当前状态",
-                "默认掌握阈值"
+                "题目分值",
+                "掌握等级",
+                "部分得分",
+                "错因标签优先级",
+                "订正规则"
               ]
             }
           }
@@ -24673,7 +24824,7 @@
           "id": "SH-HS-MATH-HJ-B2-C08-L05-D01",
           "resourceType": "diagnosis",
           "title": "数量积正负误区诊断",
-          "subtitle": "围绕向量的数量积的定义与运算律的课堂即时诊断草稿",
+          "subtitle": "围绕夹角、投影、零向量边界和垂直判定的课堂即时诊断",
           "cognitiveAction": "比较",
           "note": "检测结果类型、垂直判定、零向量边界和运算律误用。",
           "availability": "metadata_ready",
@@ -24685,7 +24836,7 @@
             "status": "draft",
             "resourceType": "diagnosis",
             "title": "数量积正负误区诊断",
-            "subtitle": "围绕向量的数量积的定义与运算律的课堂即时诊断草稿",
+            "subtitle": "围绕夹角、投影、零向量边界和垂直判定的课堂即时诊断",
             "curriculum": {
               "region": "上海",
               "stage": "高中",
@@ -24703,18 +24854,24 @@
             },
             "pedagogy": {
               "cognitiveAction": "比较",
-              "estimatedClassroomMinutes": 8,
-              "primaryTeachingProblem": "学生容易把数量积误认为仍是向量，忽略结果是数量。",
+              "estimatedClassroomMinutes": 9,
+              "primaryTeachingProblem": "学生会背 a · b = |a||b|cosθ，却容易把数量积的符号、投影方向、垂直条件和零向量边界混在一起，甚至用长度大小替代夹角判断。",
               "learningGoals": [
-                "识别向量的数量积的定义与运算律学习中的典型错因。",
-                "用“比较”方式解释学生答案背后的数学理解偏差。",
-                "根据错因标签选择课堂回讲或补救练习路径。"
+                "根据非零向量夹角的锐、直、钝判断数量积的正、零、负。",
+                "用有向投影解释数量积符号，不把投影当作普通无符号线段长度。",
+                "区分 a · b = 0 的两类来源：零向量边界和两个非零向量垂直。",
+                "确认数量积的结果是数量，并能说明长度不变时夹角变化仍会改变数量积。"
               ],
               "prerequisites": [
-                "向量的数量积的定义与运算律相关先修知识"
+                "向量的大小、方向和夹角",
+                "向量的投影与有向投影长度",
+                "余弦在锐角、直角和钝角时的符号",
+                "零向量和垂直关系的基本约定"
               ],
               "successors": [
-                "后续课时学习与综合应用"
+                "SH-HS-MATH-HJ-B2-C08-L06",
+                "SH-HS-MATH-HJ-B2-C08-L09",
+                "SH-HS-MATH-HJ-B2-C08-L10"
               ],
               "coreCompetencies": [
                 "逻辑推理",
@@ -24734,44 +24891,73 @@
             },
             "diagnosisDesign": {
               "diagnosticFocus": [
-                "检测结果类型、垂直判定、零向量边界和运算律误用。",
-                "能否暴露并解释：学生容易把数量积误认为仍是向量，忽略结果是数量。",
-                "能否暴露并解释：数量积为零与某个向量为零、两个向量垂直之间的条件边界容易混淆。",
-                "能否暴露并解释：运算律和几何意义之间脱节，导致代数变形缺少方向感。"
+                "能否用夹角锐、直、钝判断两个非零向量数量积的符号。",
+                "能否用有向投影解释正负，而不是把投影长度一律看成正数。",
+                "能否正确表述 a · b = 0 与垂直的条件边界，尤其是不把零向量说成与任意向量夹角为 90°。",
+                "能否区分数量积的结果类型、方向信息和长度信息。",
+                "能否在不使用坐标公式的情况下，用定义和几何意义完成判断。"
               ],
               "misconceptionTags": [
                 {
-                  "id": "concept_expression_gap",
-                  "title": "概念表达不完整",
-                  "description": "学生能回忆局部结论，但不能写成完整、可推广的数学表达。"
+                  "id": "angle_sign_confusion",
+                  "title": "夹角符号误判",
+                  "description": "不能稳定用锐角、直角、钝角判断 cosθ 和数量积的正、零、负。"
                 },
                 {
-                  "id": "representation_mixup",
-                  "title": "表征混淆",
-                  "description": "学生在图像、符号或语言表征之间转换时混淆对象或条件。"
+                  "id": "projection_sign_confusion",
+                  "title": "投影正负混淆",
+                  "description": "把有向投影长度当成普通线段长度，忽略投影方向与基准向量方向相反时为负。"
+                },
+                {
+                  "id": "zero_vector_boundary",
+                  "title": "零向量边界遗漏",
+                  "description": "把 a · b = 0 直接说成两个向量垂直，未排除或单独说明零向量情况。"
+                },
+                {
+                  "id": "perpendicular_condition_overgeneralization",
+                  "title": "垂直判定条件泛化",
+                  "description": "使用 a · b = 0 判断垂直时没有补足两个向量均非零等必要条件。"
+                },
+                {
+                  "id": "result_type_scalar_confusion",
+                  "title": "结果类型混淆",
+                  "description": "把数量积误认为仍是向量，给它指定方向或端点。"
+                },
+                {
+                  "id": "length_direction_mixup",
+                  "title": "长度与方向混淆",
+                  "description": "只看 |a||b| 的大小，忽略夹角和方向决定数量积的符号与大小。"
                 }
               ],
               "itemSummary": {
-                "totalItems": 1,
+                "totalItems": 6,
                 "questionTypes": [
-                  "draft_placeholder"
+                  "draft_placeholder",
+                  "single_choice",
+                  "multiple_select",
+                  "short_explanation",
+                  "error_analysis"
                 ],
-                "estimatedMinutes": 8
+                "estimatedMinutes": 9
               },
               "feedbackStrategy": {
-                "immediate_feedback": "首版 scaffold 仅提供题组结构，后续按具体错因补充即时反馈。",
-                "teacher_dashboard_notes": "教师端先显示诊断目标和错因标签草稿，题组定稿后再展示统计口径。"
+                "immediate_feedback": "每题反馈都回到一条几何理由：夹角分区、投影方向、零向量边界、结果是数量或长度与方向同时决定数量积。",
+                "teacher_dashboard_notes": "若 angle_sign_confusion 集中出现，先画锐角、直角、钝角三分区；若 projection_sign_confusion 集中出现，回到 L04 投影有向长度；若 zero_vector_boundary 或 perpendicular_condition_overgeneralization 集中出现，专门追问“两个向量是否都非零”；若 result_type_scalar_confusion 或 length_direction_mixup 集中出现，强调数量积不是向量且长度不能替代夹角。坐标公式留到 8.3 后续说明，不作为本诊断讲评主线。",
+                "remediation_links": [
+                  "content/applets/SH-HS-MATH-HJ-B2-C08-L04-A01",
+                  "content/applets/SH-HS-MATH-HJ-B2-C08-L05-A01"
+                ]
               }
             },
             "scoring": {
               "mastery_threshold": 0.75,
-              "grading_mode": "tagged_misconception",
-              "retry_policy": "课堂内允许一次订正，保留首次错因标签。"
+              "grading_mode": "mixed",
+              "retry_policy": "课堂内允许一次订正；订正时必须写出一个夹角、投影或零向量边界理由，首次错因标签保留给教师看板。"
             },
             "platformCard": {
               "availability": "metadata_ready",
               "preview_behavior": "metadata_placeholder",
-              "embed_strategy": "首期显示诊断目标、错因标签和文件入口；题组定稿后升级为 item_bank_ready。"
+              "embed_strategy": "首期仍显示诊断目标、错因标签和文件入口；题组内容已补齐，待总控统一接入诊断题组预览后再升级平台卡片。"
             },
             "files": {
               "readme": "README.md",
@@ -24781,7 +24967,7 @@
               "review_record": "review.md"
             },
             "compliance": {
-              "copyright_note": "本 scaffold 仅生成原创资源骨架，不复制教材正文、官方课件、教案或商业题库。",
+              "copyright_note": "本诊断包为原创题组与反馈设计，不复制教材正文、官方课件、教案或商业题库。",
               "review_status": "self_checked_draft"
             }
           },
@@ -24813,13 +24999,17 @@
               "reviewRecord": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L05-D01/review.md"
             },
             "itemBank": {
-              "title": "数量积正负误区诊断题组草稿",
-              "itemCount": 0,
-              "totalScore": 0,
-              "estimatedMinutes": 8,
+              "title": "数量积正负误区诊断题组",
+              "itemCount": 6,
+              "totalScore": 10,
+              "estimatedMinutes": 9,
               "misconceptionTags": [
-                "concept_expression_gap",
-                "representation_mixup"
+                "angle_sign_confusion",
+                "projection_sign_confusion",
+                "zero_vector_boundary",
+                "perpendicular_condition_overgeneralization",
+                "result_type_scalar_confusion",
+                "length_direction_mixup"
               ]
             },
             "teacherNotes": {
@@ -24829,8 +25019,10 @@
               "summary": "资源 ID：`SH-HS-MATH-HJ-B2-C08-L05-D01`",
               "sections": [
                 "使用时机",
+                "建议流程",
+                "题目意图",
                 "讲评方向",
-                "后续补充"
+                "后续衔接"
               ]
             },
             "scoringRubric": {
@@ -24839,8 +25031,10 @@
               "title": "评分规则",
               "summary": "资源 ID：`SH-HS-MATH-HJ-B2-C08-L05-D01`",
               "sections": [
-                "当前状态",
-                "默认掌握阈值"
+                "总体规则",
+                "分题分值",
+                "错因标签解释",
+                "分流建议"
               ]
             }
           }
@@ -25514,7 +25708,7 @@
           "id": "SH-HS-MATH-HJ-B2-C08-L10-D01",
           "resourceType": "diagnosis",
           "title": "向量应用第一步诊断",
-          "subtitle": "围绕向量的应用的课堂即时诊断草稿",
+          "subtitle": "围绕基底、坐标、数量积、投影与分解选择的课堂即时诊断",
           "cognitiveAction": "比较",
           "note": "围绕几何条件选择基底法、坐标法或数量积法的第一步理由给反馈，不批改完整证明过程。",
           "availability": "metadata_ready",
@@ -25526,7 +25720,7 @@
             "status": "draft",
             "resourceType": "diagnosis",
             "title": "向量应用第一步诊断",
-            "subtitle": "围绕向量的应用的课堂即时诊断草稿",
+            "subtitle": "围绕基底、坐标、数量积、投影与分解选择的课堂即时诊断",
             "curriculum": {
               "region": "上海",
               "stage": "高中",
@@ -25544,18 +25738,23 @@
             },
             "pedagogy": {
               "cognitiveAction": "比较",
-              "estimatedClassroomMinutes": 8,
-              "primaryTeachingProblem": "学生面对几何题时不知道先选基底、建坐标还是使用数量积。",
+              "estimatedClassroomMinutes": 9,
+              "primaryTeachingProblem": "学生进入 8.4 向量应用后，常把第一步变成机械建坐标或直接套公式，不能根据平行、中点、垂直、夹角、投影和分解等题目特征选择合适的向量工具。",
               "learningGoals": [
-                "识别向量的应用学习中的典型错因。",
-                "用“比较”方式解释学生答案背后的数学理解偏差。",
-                "根据错因标签选择课堂回讲或补救练习路径。"
+                "根据题目目标判断先选基底与向量路径、先建坐标设点、先用数量积，还是先作投影或分解。",
+                "说清第一步选择的理由，诊断是否抓住平行、中点、垂直、夹角、长度和方向分量等关键信号。",
+                "避免把 8.4 向量应用退化为复杂解析几何计算，保留向量法的几何直观和工具选择意识。"
               ],
               "prerequisites": [
-                "向量的应用相关先修知识"
+                "向量加法、减法、数乘和基底分解",
+                "中点、比例点、平行和共线的几何语言",
+                "向量数量积、夹角、垂直判定和投影",
+                "向量的坐标表示与简单坐标设点"
               ],
               "successors": [
-                "后续课时学习与综合应用"
+                "SH-HS-MATH-HJ-B2-C09-K01",
+                "SH-HS-MATH-HJ-XB1-SPACEVEC-K01",
+                "SH-HS-MATH-HJ-XB1-ANALYTIC-K01"
               ],
               "coreCompetencies": [
                 "逻辑推理",
@@ -25575,44 +25774,73 @@
             },
             "diagnosisDesign": {
               "diagnosticFocus": [
-                "围绕几何条件选择基底法、坐标法或数量积法的第一步理由给反馈，不批改完整证明过程。",
-                "能否暴露并解释：学生面对几何题时不知道先选基底、建坐标还是使用数量积。",
-                "能否暴露并解释：几何语言转化为向量等式的第一步难，容易直接套公式。",
-                "能否暴露并解释：证明过程中的向量路径、辅助点和坐标系选择缺少策略。"
+                "能否在平行四边形、中点和比例点情境中先选基底、定路径或表达辅助点。",
+                "能否在垂直、夹角、长度比较情境中识别数量积入口，而不是只做线性运算。",
+                "能否在有天然直角边、边长或已给坐标的情境中简洁建坐标，且不把坐标法变成复杂解析几何主线。",
+                "能否在方向分量、有效长度和沿某方向贡献等情境中先作投影或分解。"
               ],
               "misconceptionTags": [
                 {
-                  "id": "concept_expression_gap",
-                  "title": "概念表达不完整",
-                  "description": "学生能回忆局部结论，但不能写成完整、可推广的数学表达。"
+                  "id": "basis_path_gap",
+                  "title": "基底与路径未先定",
+                  "description": "遇到平行四边形、中点、比例点或首尾路径时，没有先选合适的基向量或把目标向量拆成已知路径。"
                 },
                 {
-                  "id": "representation_mixup",
-                  "title": "表征混淆",
-                  "description": "学生在图像、符号或语言表征之间转换时混淆对象或条件。"
+                  "id": "coordinate_overreach",
+                  "title": "坐标法泛化过度",
+                  "description": "不看题目结构，默认建复杂坐标或列直线方程，增加计算负担并遮蔽向量关系。"
+                },
+                {
+                  "id": "coordinate_setup_gap",
+                  "title": "坐标设点入口不稳",
+                  "description": "当题目已有直角边、边长或坐标信息时，不能选择简洁原点和坐标轴，或设点后脱离向量目标。"
+                },
+                {
+                  "id": "dot_product_trigger_gap",
+                  "title": "数量积触发不敏感",
+                  "description": "遇到垂直、夹角、长度比较或锐钝判断时，没有想到把目标转化为数量积、模长或数量积符号。"
+                },
+                {
+                  "id": "projection_decomposition_gap",
+                  "title": "投影分解信号遗漏",
+                  "description": "遇到沿某方向的分量、有效长度或垂直分解时，没有先确定基准方向并作投影或分解。"
+                },
+                {
+                  "id": "point_ratio_expression_gap",
+                  "title": "辅助点与比例表达断裂",
+                  "description": "知道有中点或比例点，但不能把点的位置转化为从同一出发点引出的向量表达。"
                 }
               ],
               "itemSummary": {
-                "totalItems": 1,
+                "totalItems": 6,
                 "questionTypes": [
+                  "single_choice",
+                  "multiple_select",
+                  "short_explanation",
+                  "error_analysis",
                   "draft_placeholder"
                 ],
-                "estimatedMinutes": 8
+                "estimatedMinutes": 9
               },
               "feedbackStrategy": {
-                "immediate_feedback": "首版 scaffold 仅提供题组结构，后续按具体错因补充即时反馈。",
-                "teacher_dashboard_notes": "教师端先显示诊断目标和错因标签草稿，题组定稿后再展示统计口径。"
+                "immediate_feedback": "每题反馈只围绕第一步选择：基底与路径、坐标设点、数量积、投影分解或辅助点表达，不要求学生补完完整证明。",
+                "teacher_dashboard_notes": "若 coordinate_overreach 高发，回到题目特征分类；若 basis_path_gap 或 point_ratio_expression_gap 高发，先练从图形写向量路径；若 dot_product_trigger_gap 高发，补讲垂直、夹角和长度的数量积入口；若 projection_decomposition_gap 高发，回看投影有向长度。",
+                "remediation_links": [
+                  "content/applets/SH-HS-MATH-HJ-B2-C08-L10-A01",
+                  "content/applets/SH-HS-MATH-HJ-B2-C08-L05-A01",
+                  "content/applets/SH-HS-MATH-HJ-B2-C08-L04-A01"
+                ]
               }
             },
             "scoring": {
               "mastery_threshold": 0.75,
-              "grading_mode": "tagged_misconception",
-              "retry_policy": "课堂内允许一次订正，保留首次错因标签。"
+              "grading_mode": "mixed",
+              "retry_policy": "课堂内允许一次订正；订正只需改写第一步和理由，首次错因标签保留给教师看板。"
             },
             "platformCard": {
               "availability": "metadata_ready",
               "preview_behavior": "metadata_placeholder",
-              "embed_strategy": "首期显示诊断目标、错因标签和文件入口；题组定稿后升级为 item_bank_ready。"
+              "embed_strategy": "首期仍按第 8 章草稿资源显示诊断目标、错因标签和文件入口；题组已补齐，待总控更新平台预览口径后再升级为题组预览。"
             },
             "files": {
               "readme": "README.md",
@@ -25622,7 +25850,7 @@
               "review_record": "review.md"
             },
             "compliance": {
-              "copyright_note": "本 scaffold 仅生成原创资源骨架，不复制教材正文、官方课件、教案或商业题库。",
+              "copyright_note": "本诊断包为原创题组与反馈设计，不复制教材正文、官方课件、教案或商业题库。",
               "review_status": "self_checked_draft"
             }
           },
@@ -25654,13 +25882,17 @@
               "reviewRecord": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L10-D01/review.md"
             },
             "itemBank": {
-              "title": "向量应用第一步诊断题组草稿",
-              "itemCount": 0,
-              "totalScore": 0,
-              "estimatedMinutes": 8,
+              "title": "向量应用第一步诊断题组",
+              "itemCount": 6,
+              "totalScore": 10,
+              "estimatedMinutes": 9,
               "misconceptionTags": [
-                "concept_expression_gap",
-                "representation_mixup"
+                "basis_path_gap",
+                "coordinate_overreach",
+                "coordinate_setup_gap",
+                "dot_product_trigger_gap",
+                "projection_decomposition_gap",
+                "point_ratio_expression_gap"
               ]
             },
             "teacherNotes": {
@@ -25670,18 +25902,24 @@
               "summary": "资源 ID：`SH-HS-MATH-HJ-B2-C08-L10-D01`",
               "sections": [
                 "使用时机",
+                "8 到 10 分钟流程",
                 "讲评方向",
-                "后续补充"
+                "教师看板建议",
+                "补救资源",
+                "版权与边界"
               ]
             },
             "scoringRubric": {
               "kind": "scoring_rubric",
               "path": "content/diagnosis/SH-HS-MATH-HJ-B2-C08-L10-D01/scoring-rubric.md",
               "title": "评分规则",
-              "summary": "资源 ID：`SH-HS-MATH-HJ-B2-C08-L10-D01`",
+              "summary": "资源 ID：`SH-HS-MATH-HJ-B2-C08-L10-D01` 总分 10 分，掌握阈值为 7.5 分。课堂端可显示为“第一步选择稳定”“需回看工具特征”“需教师讲评”三档。",
               "sections": [
-                "当前状态",
-                "默认掌握阈值"
+                "题目分值",
+                "掌握等级",
+                "部分得分",
+                "错因标签优先级",
+                "订正规则"
               ]
             }
           }
@@ -27548,7 +27786,7 @@
       "id": "SH-HS-MATH-HJ-B2-C08-L02-D01",
       "resourceType": "diagnosis",
       "title": "加减法方向四类短诊断",
-      "subtitle": "围绕向量的加法和减法的课堂即时诊断草稿",
+      "subtitle": "围绕首尾相接、平行四边形方向、减法相反向量和闭合路径的课堂即时诊断",
       "note": "只覆盖首尾相接、相反向量、闭合路径、端点顺序四类错因，用即时反馈提示方向来源；不做构造演示。",
       "cognitiveAction": "比较",
       "availability": "metadata_ready",
@@ -27775,7 +28013,7 @@
       "id": "SH-HS-MATH-HJ-B2-C08-L05-D01",
       "resourceType": "diagnosis",
       "title": "数量积正负误区诊断",
-      "subtitle": "围绕向量的数量积的定义与运算律的课堂即时诊断草稿",
+      "subtitle": "围绕夹角、投影、零向量边界和垂直判定的课堂即时诊断",
       "note": "检测结果类型、垂直判定、零向量边界和运算律误用。",
       "cognitiveAction": "比较",
       "availability": "metadata_ready",
@@ -27861,7 +28099,7 @@
       "id": "SH-HS-MATH-HJ-B2-C08-L10-D01",
       "resourceType": "diagnosis",
       "title": "向量应用第一步诊断",
-      "subtitle": "围绕向量的应用的课堂即时诊断草稿",
+      "subtitle": "围绕基底、坐标、数量积、投影与分解选择的课堂即时诊断",
       "note": "围绕几何条件选择基底法、坐标法或数量积法的第一步理由给反馈，不批改完整证明过程。",
       "cognitiveAction": "比较",
       "availability": "metadata_ready",

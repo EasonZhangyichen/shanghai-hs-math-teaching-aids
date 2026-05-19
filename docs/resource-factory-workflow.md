@@ -36,6 +36,8 @@ content/curriculum/index.yaml
 
 backlog 不是“每课必做资源清单”。课程图谱中的 `digital_entry_points` 必须先通过数字化必要性判断：只有数字化确实能解决该知识点的动态变化、多表征联动、操作诊断或动画叙事问题，才进入 Applet / Manim / Diagnosis 生产。普通板书、纸笔练习或静态图足够解决的内容，不应为了覆盖率强行进入 backlog。
 
+第 8 章这类未终核章节的 Diagnosis 资源即使已经补齐 `item-bank.yaml`、评分规则和教师说明，也只能视为 `draft` / `self_checked_draft`；`metadata_placeholder` 或 `metadata_ready` 是平台保守闸门，不等同于数学审校通过，更不能被生产线自动提升到 `math_review`、`classroom_trial` 或发布状态。
+
 当前覆盖必修第一册第 2、4、5 章，必修第二册第 6、7、8、9 章：44 个资源工作单元，25 个已实现，19 个仍为 planned。第 7 章三角函数样板资源和第 8 章平面向量筛选后候选已落地；8.3 暂缓资源等待教材或 dolearning 终核后再决定是否恢复。必修第一册第 2、4、5 章，第 6 章和第 9 章的 planned item 仅来自来源核对后的数字化必要性初筛，未终核前不要直接 scaffold。
 
 ## scaffold 命令
