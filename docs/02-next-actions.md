@@ -135,7 +135,8 @@
 - [x] 对 `SH-HS-MATH-HJ-B2-C08-L01-A01`、`SH-HS-MATH-HJ-B2-C08-L02-A01`、`SH-HS-MATH-HJ-B2-C08-L03-A01`、`SH-HS-MATH-HJ-B2-C08-L04-A01` 开启单资源精修对话，补齐真实数学模型、交互状态和课堂脚本；四个资源均保持 `draft` / `self_checked_draft`。
 - [x] 对 `SH-HS-MATH-HJ-B2-C08-L05-A01`、`SH-HS-MATH-HJ-B2-C08-L10-A01` 分别开启单资源精修对话，补齐真实数学模型、交互状态和课堂脚本；两个资源均保持 `draft` / `self_checked_draft`。
 - [ ] 对 `SH-HS-MATH-HJ-B2-C08-L01-A01` 至 `SH-HS-MATH-HJ-B2-C08-L05-A01`、`SH-HS-MATH-HJ-B2-C08-L10-A01` 和 `SH-HS-MATH-HJ-B2-C08-L04-M01` 安排独立数学审校、浏览器大屏触控复核、视频观看复核和教师限时试读；第 8 章教材/平台目录终核前不进入发布链路。
-- [ ] 对 `SH-HS-MATH-HJ-B2-C08-L02-D01`、`SH-HS-MATH-HJ-B2-C08-L05-D01`、`SH-HS-MATH-HJ-B2-C08-L10-D01` 分别开启单资源精修对话，补齐真实题组、错因标签、评分反馈和教师说明。
+- [x] 对 `SH-HS-MATH-HJ-B2-C08-L02-D01`、`SH-HS-MATH-HJ-B2-C08-L05-D01`、`SH-HS-MATH-HJ-B2-C08-L10-D01` 分别完成单资源精修，补齐真实题组、错因标签、评分反馈和教师说明；三项仍保持 `draft` / `self_checked_draft`，第 8 章终核和数学审校前不进入发布链路。
+- [ ] 对 `SH-HS-MATH-HJ-B2-C08-L02-D01`、`SH-HS-MATH-HJ-B2-C08-L05-D01`、`SH-HS-MATH-HJ-B2-C08-L10-D01` 安排独立数学审校、题组试做、教师限时试读准备和平台 Diagnosis 预览入口设计；通过前不进入 `classroom_trial`、`release_candidate` 或 `published`。
 - [ ] 在必修第一册第 4、5 章来源终核后，再按总控决定处理 `SH-HS-MATH-HJ-B1-C04-L02-A01`、`SH-HS-MATH-HJ-B1-C04-L04-A01`、`SH-HS-MATH-HJ-B1-C04-L06-A01`、`SH-HS-MATH-HJ-B1-C04-L06-A02`、`SH-HS-MATH-HJ-B1-C05-L02-A01`、`SH-HS-MATH-HJ-B1-C05-L03-D01`、`SH-HS-MATH-HJ-B1-C05-L04-A01`、`SH-HS-MATH-HJ-B1-C05-L08-A01`；当前不得直接 scaffold 或制作完整资源包。
 - [ ] 为 backlog item 增加更细的审核状态和课堂试用状态聚合。
 - [x] 增加 backlog 批量生产计划导出能力：`scripts/plan-resource-batch.js` 现在可按生产、审核、来源终核和暂缓队列输出只读 dry-run 建议，不直接写入任何资源或状态。

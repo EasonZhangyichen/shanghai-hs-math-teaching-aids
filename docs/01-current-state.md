@@ -50,7 +50,8 @@
   - `SH-HS-MATH-HJ-B2-C08-L02-D01`“加减法方向四类短诊断”。
   - `SH-HS-MATH-HJ-B2-C08-L05-D01`“数量积正负误区诊断”。
   - `SH-HS-MATH-HJ-B2-C08-L10-D01`“向量应用第一步诊断”。
-  - 每个资源包已包含 `metadata.yaml`、`README.md`、`item-bank.yaml`、`scoring-rubric.md`、`teacher-notes.md` 和 `review.md`；当前仅为 `draft` / `metadata_ready` / `self_checked_draft`，题组仍是占位骨架，尚未深入编写完整题组、数学审校或课堂试用。
+  - 每个资源包已包含 `metadata.yaml`、`README.md`、`item-bank.yaml`、`scoring-rubric.md`、`teacher-notes.md` 和 `review.md`；后续生产线已补齐三项 Diagnosis 的真实题组、错因标签、评分反馈和教师说明。
+  - 三项 Diagnosis 仍保持 `metadata.status: draft`、`platform_card.availability: metadata_ready` / `metadata_placeholder` 与 `compliance.review_status: self_checked_draft`，尚未进入数学审校、课堂试用或发布链路。
   - 本批只处理 8.1、8.2 与 8.4 的 planned Diagnosis，未生成或恢复 8.3 暂缓项。
 - 已在 `track/manim-pipeline` 上为必修第二册第 8 章唯一剩余 Manim planned item 生成资源骨架：
   - `SH-HS-MATH-HJ-B2-C08-L04-M01`“投影有向长度导入动画”。
@@ -295,7 +296,7 @@
 - 必修第二册第 6 章“三角”已有 draft 图谱和来源核对记录，但尚未完成纸质教材/已登录 dolearning 终核；尤其需要确认 6.1 是否按 5 个教材节点组织、`6.1.2 任意角及其度量` 是否包含角度制与弧度制的多课时拆分、6.3 是否只有正弦定理和余弦定理两个教材节点。
 - 必修第一册第 1、2、3、4、5 章均已完成 draft 级来源核对或图谱入口；第 1 章不新增数字化候选，第 2 章只保留 3 个 blocked planned 候选，第 3 章暂不进入资源生产，第 4、5 章保留少量 blocked planned 候选。所有第一册课时仍需纸质教材、教师用书或已登录 dolearning/上海数字教学系统终核课时数、课时边界和平台目录。
 - 必修第二册第 7 章目录已完成首版结构化整理，但尚未完成纸质教材人工终核。
-- 必修第二册第 8 章“平面向量”已完成首版结构化整理、dolearning 来源核对记录和 planned resource 数字化必要性筛选落地，但尚未完成纸质教材/已登录 dolearning 终核；尤其需要确认 8.3 是教材四小节拆分，还是 dolearning 三课时分组。第 8 章 6 个筛选后保留的 Applet 资源包均已推进为可运行自检草稿，3 个 Diagnosis 资源包仍是题组骨架，1 个 Manim Clip 已渲染视频产物并接入平台 `video_ready` 播放入口；8.3 暂缓资源仍不进入 scaffold 生产队列。
+- 必修第二册第 8 章“平面向量”已完成首版结构化整理、dolearning 来源核对记录和 planned resource 数字化必要性筛选落地，但尚未完成纸质教材/已登录 dolearning 终核；尤其需要确认 8.3 是教材四小节拆分，还是 dolearning 三课时分组。第 8 章 6 个筛选后保留的 Applet 资源包均已推进为可运行自检草稿，3 个 Diagnosis 资源包已补齐自检题组但仍保持 `draft` / `self_checked_draft` / `metadata_ready` 或 `metadata_placeholder`，1 个 Manim Clip 已渲染视频产物并接入平台 `video_ready` 播放入口；8.3 暂缓资源仍不进入 scaffold 生产队列。
 - 第 7 章的第 6 章前置节点已 draft 展开，但仍需人工终核；第 9 章“复数”已新增 draft 图谱和数字化必要性初筛，但尚未完成纸质教材/已登录 dolearning 终核。
 - 尚未创建独立课件播放器；教师工作台内已完成样板 Applet iframe 预览接入，但尚未沉淀为独立 `apps/player`。
 - 已创建八个第 7 章可运行 HTML Applet 原型，并已接入平台壳 iframe 预览；`L01-A01`、`L02-A01`、`L03-A01`、`L03-A02`、`L04-A01`、`L05-A01`、`L06-A01` 和 `L07-A01` 均已完成一轮数学/浏览器审校但仍需教师试读。第 8 章 Applet 中，`L01-A01`、`L02-A01`、`L03-A01`、`L04-A01`、`L05-A01` 和 `L10-A01` 均已推进为可运行自检草稿。
