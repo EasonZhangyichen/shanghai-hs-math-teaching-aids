@@ -374,6 +374,89 @@
         }
       }
 
+      @media (max-height: 620px) and (min-width: 781px) {
+        .applet {
+          padding: 6px;
+          gap: 6px;
+        }
+
+        .topbar {
+          padding: 6px 8px;
+          gap: 8px;
+        }
+
+        .eyebrow {
+          display: none;
+        }
+
+        h1 {
+          font-size: 18px;
+        }
+
+        .workspace {
+          gap: 8px;
+          grid-template-columns: minmax(400px, 1fr) minmax(300px, 360px);
+        }
+
+        .board-wrap {
+          grid-template-rows: minmax(270px, 1fr) auto;
+        }
+
+        svg {
+          height: clamp(270px, 40svh, 320px);
+        }
+
+        .slider-panel {
+          gap: 6px;
+          padding: 6px 8px;
+        }
+
+        .slider-row {
+          gap: 4px;
+        }
+
+        .panel {
+          gap: 4px;
+          padding: 6px;
+          max-height: calc(100svh - 70px);
+        }
+
+        .section {
+          gap: 4px;
+          padding-bottom: 5px;
+        }
+
+        .panel .section:first-child > .strategy-box {
+          display: none;
+        }
+
+        .step-button,
+        .basis-button,
+        .method-option,
+        .route-option,
+        .preset-button,
+        .tool-button {
+          min-height: 32px;
+          padding: 4px 7px;
+          font-size: 13px;
+        }
+
+        .readout {
+          min-height: 46px;
+          padding: 6px;
+        }
+
+        .readout strong {
+          font-size: 15px;
+        }
+
+        .formula-box,
+        .strategy-box {
+          padding: 6px 7px;
+          line-height: 1.34;
+        }
+      }
+
       @media (max-width: 640px) {
         .applet {
           padding: 10px;
@@ -589,7 +672,7 @@
 
       function joinTerms(terms) {
         const compact = terms.filter(Boolean);
-        return compact.length ? compact.join(" ") : "0";
+        return compact.length ? compact.join(" ").replace(/^\+\s*/, "") : "0";
       }
 
       function formulaForCurrentBasis() {
