@@ -42,18 +42,18 @@
 
       .applet {
         min-height: 100svh;
-        padding: 14px;
+        padding: 10px;
         display: grid;
         grid-template-rows: auto 1fr;
-        gap: 12px;
+        gap: 8px;
       }
 
       .topbar {
         display: grid;
-        grid-template-columns: minmax(250px, 1fr) auto;
-        gap: 12px;
+        grid-template-columns: minmax(220px, 1fr) auto;
+        gap: 10px;
         align-items: center;
-        padding: 12px 14px;
+        padding: 9px 12px;
         border: 1px solid var(--line);
         border-radius: 8px;
         background: var(--panel);
@@ -68,7 +68,7 @@
 
       h1 {
         margin: 0;
-        font-size: 22px;
+        font-size: 20px;
         line-height: 1.18;
         letter-spacing: 0;
       }
@@ -93,12 +93,12 @@
       .route-option,
       .preset-button,
       .tool-button {
-        min-height: 40px;
+        min-height: 36px;
         border: 1px solid var(--line);
         border-radius: 8px;
         background: #f7faf5;
         color: var(--ink);
-        padding: 7px 10px;
+        padding: 6px 9px;
         cursor: pointer;
       }
 
@@ -127,8 +127,8 @@
 
       .workspace {
         display: grid;
-        grid-template-columns: minmax(440px, 1fr) minmax(320px, 390px);
-        gap: 12px;
+        grid-template-columns: minmax(420px, 1fr) minmax(320px, 380px);
+        gap: 10px;
         align-items: start;
         min-height: 0;
       }
@@ -144,13 +144,13 @@
 
       .board-wrap {
         display: grid;
-        grid-template-rows: minmax(360px, 1fr) auto;
+        grid-template-rows: minmax(300px, 1fr) auto;
         overflow: hidden;
       }
 
       svg {
         width: 100%;
-        height: clamp(340px, 50svh, 430px);
+        height: clamp(300px, 45svh, 390px);
         min-height: 0;
         touch-action: none;
         user-select: none;
@@ -164,8 +164,8 @@
       .slider-panel {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 10px;
-        padding: 12px;
+        gap: 8px;
+        padding: 8px 10px;
         border-top: 1px solid var(--line);
         background: #fbfcf8;
       }
@@ -181,7 +181,7 @@
         justify-content: space-between;
         gap: 8px;
         color: var(--muted);
-        font-size: 13px;
+        font-size: 12px;
       }
 
       input[type="range"] {
@@ -192,16 +192,16 @@
       .panel {
         display: grid;
         align-content: start;
-        gap: 8px;
-        padding: 10px;
-        max-height: calc(100svh - 100px);
+        gap: 6px;
+        padding: 8px;
+        max-height: calc(100svh - 92px);
         overflow: auto;
       }
 
       .section {
         display: grid;
-        gap: 6px;
-        padding-bottom: 8px;
+        gap: 5px;
+        padding-bottom: 6px;
         border-bottom: 1px solid var(--line);
       }
 
@@ -212,19 +212,19 @@
 
       h2 {
         margin: 0;
-        font-size: 15px;
+        font-size: 14px;
         line-height: 1.25;
       }
 
       .readout-grid {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 8px;
+        gap: 6px;
       }
 
       .readout {
-        min-height: 66px;
-        padding: 10px;
+        min-height: 54px;
+        padding: 8px;
         border: 1px solid var(--line);
         border-radius: 8px;
         background: #fbfcf8;
@@ -239,17 +239,17 @@
 
       .readout strong {
         display: block;
-        font-size: 18px;
+        font-size: 16px;
         line-height: 1.22;
       }
 
       .formula-box,
       .strategy-box {
-        padding: 8px 10px;
+        padding: 7px 8px;
         border: 1px solid var(--line);
         border-radius: 8px;
         background: #fbfcf8;
-        line-height: 1.48;
+        line-height: 1.42;
       }
 
       .formula-box strong,
@@ -457,8 +457,8 @@
           </section>
 
           <section class="section">
-            <h2>第一步提示</h2>
-            <div id="method_strategy" class="formula-box"></div>
+            <h2>路径等式</h2>
+            <div id="path_delta" class="formula-box"></div>
           </section>
 
           <section class="section">
@@ -471,8 +471,8 @@
           </section>
 
           <section class="section">
-            <h2>路径等式</h2>
-            <div id="path_delta" class="formula-box"></div>
+            <h2>第一步提示</h2>
+            <div id="method_strategy" class="formula-box"></div>
           </section>
 
           <section class="section">
@@ -599,17 +599,17 @@
         if (state.basis === "ab_bc") {
           const first = n - m;
           return {
-            basisText: "设 p = AB，r = BC；因为 AC = p + r。",
-            pointText: `D = ${fmt(m)}p，E = ${fmt(n)}(p + r)`,
-            targetText: `DE = ${joinTerms([term(first, "p", true), term(n, "r")])}`,
+            basisText: "设 p 表示向量 AB，r 表示向量 BC；因为向量 AC = p + r。",
+            pointText: `以 A 为共同起点：AD = ${fmt(m)}p，AE = ${fmt(n)}(p + r)`,
+            targetText: `DE = AE - AD = ${joinTerms([term(first, "p", true), term(n, "r")])}`,
             routeText: routeFormula("ab_bc")
           };
         }
 
         return {
-          basisText: "设 p = AB，q = AC。",
-          pointText: `D = ${fmt(m)}p，E = ${fmt(n)}q`,
-          targetText: `DE = ${joinTerms([term(-m, "p", true), term(n, "q")])}`,
+          basisText: "设 p 表示向量 AB，q 表示向量 AC。",
+          pointText: `以 A 为共同起点：AD = ${fmt(m)}p，AE = ${fmt(n)}q`,
+          targetText: `DE = AE - AD = ${joinTerms([term(-m, "p", true), term(n, "q")])}`,
           routeText: routeFormula("ab_ac")
         };
       }
@@ -619,7 +619,7 @@
           basis: {
             title: "基底法的第一步",
             first: "先取 p = AB，q = AC，因为 D、E 都落在从 A 出发的两条边上。",
-            follow: "接着写 D = mp，E = nq，再由 DE = E - D 得到目标向量。",
+            follow: "接着写 AD = mp，AE = nq，再由 DE = AE - AD 得到目标向量。",
             warning: "适合分点、共线、中点、平行等线性关系明显的问题。"
           },
           path: {
