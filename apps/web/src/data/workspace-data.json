@@ -9633,13 +9633,13 @@
               "estimatedClassroomMinutes": 14,
               "primaryTeachingProblem": "学生容易把向量绑定到起点位置，难以理解只要大小和方向相同就是同一向量。",
               "learningGoals": [
-                "用有向线段 AB 的位移分量、长度和方向刻画一个平面向量。",
-                "通过平移后的 CD 说明起点不同但位移分量相同的有向线段表示相等向量。",
-                "同时读取 Δx、Δy、长度和方向角，避免只看线段所在位置或只看长度。",
+                "用有向线段 AB 从起点到终点的几何位移、长度和方向刻画一个平面向量。",
+                "通过平移后的 CD 说明起点不同但移动方式相同的有向线段表示相等向量。",
+                "同时观察横向移动、纵向移动、长度和方向，避免只看线段所在位置或只看长度。",
                 "在零向量情形下说明长度为 0，方向不规定。"
               ],
               "prerequisites": [
-                "平面直角坐标系中的点和坐标读数",
+                "平面网格中的点位、方向和距离观察",
                 "线段长度、方向、平行和共线关系",
                 "有向线段可以表示从起点到终点的位移"
               ],
@@ -9657,26 +9657,26 @@
             "mathematicalScope": {
               "focus": "在平面网格中比较有向线段 AB 与平移后的 CD，突出向量由大小和方向决定，与起点位置无关。",
               "lesson": "向量的概念",
-              "vector_model": "AB = (x_B - x_A, y_B - y_A)",
-              "equality_rule": "两个非零向量大小相等且方向相同则相等；在本课件中等价为位移分量 Δx、Δy 相同。",
+              "vector_model": "有向线段 AB 表示从 A 到 B 的一次几何位移。",
+              "equality_rule": "两个非零向量大小相等且方向相同则相等；在本课件中通过横向移动和纵向移动都相同来提供几何证据。",
               "zero_vector_rule": "起点和终点重合时得到零向量，长度为 0，方向不规定。",
               "default_points": {
-                "base_start": "A(-4, -1)",
-                "base_end": "B(-1, 2)",
-                "translated_start": "C(2, -2)",
-                "translated_end": "D(5, 1)"
+                "base_start": "A，左下方起点",
+                "base_end": "B，向右上移动后的终点",
+                "translated_start": "C，另一处起点",
+                "translated_end": "D，按同样移动方式得到的终点"
               },
               "out_of_scope": [
                 "向量加法、减法和数乘的运算法则",
-                "向量坐标运算的系统训练",
-                "8.3 向量坐标表示的课时边界讨论",
+                "后续解析化表示和运算规则的系统训练",
+                "8.3 后续课时边界讨论",
                 "用题库形式训练平行、共线和相反向量判定"
               ]
             },
             "representations": [
               {
-                "id": "coordinate_grid",
-                "role": "显示点的位置、位移分量和起点变化。"
+                "id": "plane_grid",
+                "role": "显示点的位置、横纵移动和起点变化。"
               },
               {
                 "id": "base_vector",
@@ -9688,7 +9688,7 @@
               },
               {
                 "id": "measurement_readout",
-                "role": "同步显示 Δx、Δy、长度、方向角和起点对照。"
+                "role": "同步显示横向移动、纵向移动、长度、方向和起点对照。"
               },
               {
                 "id": "staged_summary",
@@ -9704,7 +9704,7 @@
               "teacherControls": [
                 "重置到默认位置",
                 "按观察、平移、读数、归纳四步揭示",
-                "显示或隐藏分量辅助线",
+                "显示或隐藏横纵移动辅助线",
                 "显示或隐藏平移痕迹"
               ],
               "studentControls": [
@@ -9723,7 +9723,7 @@
                 },
                 {
                   "step": "read_components_length_direction",
-                  "description": "揭示 Δx、Δy、长度和方向角，建立相等向量的证据链。"
+                  "description": "揭示横向移动、纵向移动、长度和方向，建立相等向量的证据链。"
                 },
                 {
                   "step": "summarize_position_independence",
@@ -9761,14 +9761,14 @@
                   "name": "delta_x",
                   "value_type": "number",
                   "default": 3,
-                  "description": "当前向量的横向位移分量。",
+                  "description": "当前向量从起点到终点的横向移动格数。",
                   "persistence": "snapshot"
                 },
                 {
                   "name": "delta_y",
                   "value_type": "number",
                   "default": 3,
-                  "description": "当前向量的纵向位移分量。",
+                  "description": "当前向量从起点到终点的纵向移动格数。",
                   "persistence": "snapshot"
                 },
                 {
@@ -9783,7 +9783,7 @@
                   "unit": "degree",
                   "value_type": "number",
                   "default": 45,
-                  "description": "当前非零向量相对 x 轴正方向的方向角；零向量时为空。",
+                  "description": "当前非零向量的方向读数；零向量时为空。",
                   "persistence": "snapshot"
                 },
                 {
@@ -9845,7 +9845,7 @@
             },
             "feedbackAndDiagnosis": {
               "success_evidence": [
-                "学生能用 Δx 和 Δy 说明 AB 与 CD 表示同一向量。",
+                "学生能用横向移动和纵向移动都相同说明 AB 与 CD 表示同一向量。",
                 "学生能解释起点 A 和 C 不同，但大小和方向不变，所以向量相等。",
                 "学生能指出只看长度不足以判断向量相等，还必须看方向。",
                 "学生能在 A 与 B 重合时说明这是零向量且方向不规定。"
@@ -9865,7 +9865,7 @@
                 },
                 {
                   "id": "representation_gap",
-                  "label": "有向线段、分量和向量记号之间断裂"
+                  "label": "有向线段、移动方式和向量记号之间断裂"
                 },
                 {
                   "id": "zero_vector_direction_error",
@@ -9873,8 +9873,8 @@
                 }
               ],
               "feedback_principles": [
-                "先让学生读位移分量，再判断大小和方向。",
-                "纠正位置误区时拖动 CD 的起点，而不改变 Δx 和 Δy。",
+                "先让学生观察从起点到终点的横纵移动，再判断大小和方向。",
+                "纠正位置误区时拖动 CD 的起点，而不改变整条有向线段的移动方式。",
                 "纠正只看长度的误区时保留相同长度但改变方向的反例追问。",
                 "遇到零向量时单独说明长度和方向边界。"
               ]
@@ -9882,7 +9882,7 @@
             "visualSemantics": {
               "base_vector": "蓝色表示用于定义当前向量的 AB。",
               "translated_vector": "橙色表示平移后的等价向量 CD。",
-              "component_guides": "青绿色虚线表示 Δx 和 Δy 分量读数。",
+              "movement_guides": "青绿色虚线表示横向移动和纵向移动。",
               "parallel_guides": "灰色虚线连接对应起点和终点，帮助观察整条有向线段的平移。",
               "rule": "颜色只承载数学对象含义，不作为装饰。"
             },
@@ -10068,7 +10068,7 @@
                 "拖动向量 a、向量 b，观察方向和大小变化如何同步影响 a + b 与 a - b。",
                 "用首尾相接和平行四边形两种构造解释同一个向量加法结果。",
                 "把向量减法解释为加上相反向量，并用从 B 指向 A 的端点路径检查方向。",
-                "从动态构造回到分量读数和向量等式，避免只记画法模板。"
+                "从动态构造回到路径、端点顺序和横纵移动证据，避免只记画法模板。"
               ],
               "prerequisites": [
                 "向量由大小和方向确定",
@@ -10093,20 +10093,20 @@
               "addition_rule": "把 b 平移到 a 的终点得到首尾相接路径，或在共起点下补平行四边形，对角线均表示 a + b。",
               "subtraction_rule": "a - b = a + (-b)，共起点时从 B 指向 A 的向量也表示 a - b。",
               "default_vectors": {
-                "origin": "O(-3, -1.5)",
-                "vector_a": "a = (3, 2)",
-                "vector_b": "b = (2, -1.5)"
+                "origin": "O，左下方共同起点",
+                "vector_a": "a 从 O 向右上移动",
+                "vector_b": "b 从 O 向右下移动"
               },
               "out_of_scope": [
                 "向量数乘和线性组合的系统训练",
-                "8.3 向量坐标表示课时边界和坐标运算法则扩展",
+                "8.3 后续课时边界和解析化运算法则扩展",
                 "用题库形式训练复杂几何图形中的向量等式",
                 "把资源状态提升到数学审校或发布候选"
               ]
             },
             "representations": [
               {
-                "id": "coordinate_grid",
+                "id": "plane_grid",
                 "role": "显示共起点、终点、平移后的向量和结果向量。"
               },
               {
@@ -10118,8 +10118,8 @@
                 "role": "在首尾相接、平行四边形和减法模式间切换同一组向量的解释路径。"
               },
               {
-                "id": "algebra_readout",
-                "role": "同步显示 a、b、a + b 和 a - b 的分量读数。"
+                "id": "movement_readout",
+                "role": "同步显示 a、b、a + b 和 a - b 的横向、纵向移动。"
               },
               {
                 "id": "staged_summary",
@@ -10142,13 +10142,13 @@
               "studentControls": [
                 "拖动 A 或 B 改变向量 a、b",
                 "拖动 O 改变共同起点但保持两个向量不变",
-                "对照三种模式下结果向量的方向和分量",
+                "对照三种模式下结果向量的方向、大小和端点路径",
                 "用 B 到 A 的路径判断 a - b 的方向"
               ],
               "stagedReveal": [
                 {
                   "step": "observe_vectors",
-                  "description": "只读向量 a、b 的方向、大小和分量。"
+                  "description": "只读向量 a、b 的方向、大小和横纵移动。"
                 },
                 {
                   "step": "construct_result",
@@ -10156,7 +10156,7 @@
                 },
                 {
                   "step": "read_components",
-                  "description": "揭示结果向量的分量读数和端点路径。"
+                  "description": "揭示结果向量的横纵移动和端点路径。"
                 },
                 {
                   "step": "summarize_rules",
@@ -10197,7 +10197,7 @@
                     "x": 3,
                     "y": 2
                   },
-                  "description": "从 O 指向 A 的向量 a 的分量。",
+                  "description": "从 O 指向 A 的向量 a 的几何位移。",
                   "persistence": "snapshot"
                 },
                 {
@@ -10207,7 +10207,7 @@
                     "x": 2,
                     "y": -1.5
                   },
-                  "description": "从 O 指向 B 的向量 b 的分量。",
+                  "description": "从 O 指向 B 的向量 b 的几何位移。",
                   "persistence": "snapshot"
                 },
                 {
@@ -10217,7 +10217,7 @@
                     "x": 5,
                     "y": 0.5
                   },
-                  "description": "向量 a + b 的分量。",
+                  "description": "向量 a + b 的几何位移。",
                   "persistence": "snapshot"
                 },
                 {
@@ -10227,14 +10227,14 @@
                     "x": 1,
                     "y": 3.5
                   },
-                  "description": "向量 a - b 的分量。",
+                  "description": "向量 a - b 的几何位移。",
                   "persistence": "snapshot"
                 },
                 {
                   "name": "show_guides",
                   "value_type": "boolean",
                   "default": true,
-                  "description": "是否显示构造辅助线和分量辅助线。",
+                  "description": "是否显示构造辅助线和横纵移动辅助线。",
                   "persistence": "snapshot"
                 }
               ],
@@ -10290,7 +10290,7 @@
                 "学生能指出首尾相接中第二个向量的起点必须接到第一个向量的终点。",
                 "学生能说明平行四边形对角线与首尾相接路径得到同一个 a + b。",
                 "学生能把 a - b 解释为 a + (-b)，并能用从 B 指向 A 的向量检查方向。",
-                "学生能从分量读数验证拖拽后的 a + b 和 a - b。"
+                "学生能从横纵移动和端点路径验证拖拽后的 a + b 和 a - b。"
               ],
               "common_error_tags": [
                 {
@@ -10311,14 +10311,14 @@
                 },
                 {
                   "id": "representation_gap",
-                  "label": "几何构造和分量读数断裂"
+                  "label": "几何构造和横纵移动读数断裂"
                 }
               ],
               "feedback_principles": [
-                "先让学生拖动构造，再读出结果向量的方向和分量。",
+                "先让学生拖动构造，再读出结果向量的方向、大小和移动方式。",
                 "对加法错误，回到首尾相接路径或平行四边形对角线。",
                 "对减法错误，先显示 -b，再用 B 到 A 的路径检查方向。",
-                "反馈只指向可视化证据和向量等式，不扩展到未终核的 8.3 坐标运算。"
+                "反馈只指向可视化证据和向量等式，不扩展到未终核的 8.3 后续运算。"
               ]
             },
             "visualSemantics": {
@@ -10327,7 +10327,7 @@
               "result_vector": "绿色表示当前模式下的结果向量 a + b 或 a - b。",
               "reverse_vector": "红色表示减法模式中的相反向量 -b。",
               "endpoint_path": "紫色虚线表示从 B 指向 A 的端点路径。",
-              "guides": "灰色或绿色虚线表示构造辅助线和分量辅助线。",
+              "guides": "灰色或绿色虚线表示构造辅助线和横纵移动辅助线。",
               "rule": "颜色只承载数学对象含义，不作为装饰。"
             },
             "implementation": {
@@ -11354,7 +11354,7 @@
             },
             "implementation": {
               "phase": "runnable_prototype",
-              "html_src_status": "scaffolded",
+              "html_src_status": "runnable",
               "planned_engine": "native-canvas-svg",
               "create_src_in_later_task": false,
               "classroom_device_targets": [
@@ -11370,21 +11370,27 @@
           },
           "quality": {
             "contentStatus": "draft",
-            "implementationStage": "scaffold",
+            "implementationStage": "runnable",
             "reviewStatus": "self_checked_draft",
-            "readinessLabel": "骨架待精修",
+            "readinessLabel": "可运行预览",
             "displayStates": [
               "draft",
-              "scaffold",
+              "runnable",
               "self_checked_draft"
             ],
             "labels": {
               "contentStatus": "草稿",
-              "implementationStage": "骨架",
+              "implementationStage": "可运行",
               "reviewStatus": "自检草稿"
             }
           },
-          "player": null,
+          "player": {
+            "kind": "iframe",
+            "isRunnable": true,
+            "src": "content/applets/SH-HS-MATH-HJ-B2-C08-L04-A01/src/index.html",
+            "title": "投影长度与夹角实验室",
+            "sandbox": "allow-scripts allow-same-origin"
+          },
           "package": {
             "path": "content/applets/SH-HS-MATH-HJ-B2-C08-L04-A01",
             "files": {
@@ -11484,6 +11490,15 @@
               "directed_length": "|a|cosθ",
               "angle_range": "0 ≤ θ ≤ π；锐角投影长度为正，直角为零，钝角为负。",
               "dot_product_bridge": "只预告下一课会把有向投影长度与数量积联系起来，不展示数量积定义式。",
+              "teacher_watch_gate": {
+                "internal_queue": "teacher_watch_ready",
+                "confirmation_before_classroom_trial": [
+                  "确认教师口播会明确：这里读的是有方向符号的长度，不是普通非负线段长。",
+                  "确认教师只在画面文字稳定后暂停，不在锐角到直角或直角到钝角的旋转过渡中暂停。",
+                  "确认末尾只作 L05 数量积衔接，不提前写出完整数量积定义式或运算律。",
+                  "确认平台入口仍只是 video_ready 预览，不代表课堂试用或发布通过。"
+                ]
+              },
               "key_angles": [
                 {
                   "label": "锐角",
@@ -11573,11 +11588,11 @@
               "pausePoints": [
                 {
                   "after_beat": "drop_perpendicular",
-                  "teacher_prompt": "如果只看普通线段长，哪里会丢掉方向信息？"
+                  "teacher_prompt": "建议在 00:09-00:11、H 和有向线段 OH 稳定后暂停：如果只看普通线段长，哪里会丢掉方向信息？"
                 },
                 {
                   "after_beat": "compare_signs",
-                  "teacher_prompt": "为什么夹角变成钝角后，投影不是更长或更短的问题，而是符号变成负？"
+                  "teacher_prompt": "建议在 00:27-00:29、钝角文字稳定后暂停：为什么夹角变成钝角后，投影不是更长或更短的问题，而是符号变成负？"
                 }
               ]
             },
@@ -11607,7 +11622,8 @@
                 "本轮将场景从静态占位推进为可审看的动态草稿，最终视频时长 36.8 秒。",
                 "画面文字使用 θ、cosθ、投影长度、正方向、反方向等中文课堂表达。",
                 "已生成 dist/final 下的 mp4、webm 和 poster，平台卡片可读取稳定视频入口。",
-                "poster 选用 34 秒处的钝角读数和最终衔接画面。"
+                "poster 选用 34 秒处的钝角读数和最终衔接画面。",
+                "2026-05-19 教师观看门槛补充复核未重新渲染；本次只补齐暂停点、口播衔接和平台入口说明。"
               ]
             },
             "diagnosisDesign": {
@@ -11618,7 +11634,7 @@
             "platformCard": {
               "availability": "video_ready",
               "preview_behavior": "video_player",
-              "embed_strategy": "读取 files.output_webm、files.output_mp4 和 poster，用 video 标签接入资源卡；若视频文件缺失则回退显示 metadata 与 storyboard 摘要。",
+              "embed_strategy": "读取 files.output_webm、files.output_mp4 和 poster，用 video 标签接入资源卡；video_ready 只表示可预览视频入口，若视频文件缺失则回退显示 metadata 与 storyboard 摘要，不提升为课堂试用或发布状态。",
               "paired_resources": [
                 "SH-HS-MATH-HJ-B2-C08-L04-A01"
               ]
@@ -12185,7 +12201,7 @@
               "estimatedClassroomMinutes": 9,
               "primaryTeachingProblem": "学生会背 a · b = |a||b|cosθ，却容易把数量积的符号、投影方向、垂直条件和零向量边界混在一起，甚至用长度大小替代夹角判断。",
               "learningGoals": [
-                "根据非零向量夹角的锐、直、钝判断数量积的正、零、负。",
+                "根据非零向量夹角的锐、直、钝及反向边界判断数量积的正、零、负。",
                 "用有向投影解释数量积符号，不把投影当作普通无符号线段长度。",
                 "区分 a · b = 0 的两类来源：零向量边界和两个非零向量垂直。",
                 "确认数量积的结果是数量，并能说明长度不变时夹角变化仍会改变数量积。"
@@ -12219,7 +12235,7 @@
             },
             "diagnosisDesign": {
               "diagnosticFocus": [
-                "能否用夹角锐、直、钝判断两个非零向量数量积的符号。",
+                "能否用夹角锐、直、钝及 180° 反向边界判断两个非零向量数量积的符号。",
                 "能否用有向投影解释正负，而不是把投影长度一律看成正数。",
                 "能否正确表述 a · b = 0 与垂直的条件边界，尤其是不把零向量说成与任意向量夹角为 90°。",
                 "能否区分数量积的结果类型、方向信息和长度信息。",
@@ -12680,7 +12696,7 @@
               "learningGoals": [
                 "说清 8.4 向量应用调用的前置知识来自 8.1 线性运算、8.2 数量积和 8.3 坐标表示。",
                 "围绕同一个三角形分点问题，比较基底法、路径法、数量积/坐标法的第一步建模选择。",
-                "在三角形情境中选择一组基向量，并用它们表示边上点的位置向量。",
+                "在三角形情境中选择一组基向量，并用从 A 出发的向量 AD、AE 表示边上分点。",
                 "比较 D 到 E 的三条几何路径，说明路径不同但向量和相同。",
                 "把 AD/AB、AE/AC 这样的几何关系转化为系数形式的向量等式，但不展开完整解题器。"
               ],
@@ -12706,8 +12722,8 @@
               "focus": "以三角形 ABC 中 D 在 AB 上、E 在 AC 上为典型情境，比较向量应用题的第一步建模选择。",
               "lesson": "向量的应用",
               "problem_model": "设 D 在 AB 上，AD/AB = m；E 在 AC 上，AE/AC = n。目标是判断第一步应如何建模，并把向量 DE 写成选定基向量的线性组合。",
-              "primary_basis": "p = AB, q = AC，此时 D = m p，E = n q，DE = -m p + n q。",
-              "alternate_basis": "p = AB, r = BC，此时 AC = p + r，DE = (n - m)p + n r。",
+              "primary_basis": "p 表示向量 AB，q 表示向量 AC；以 A 为共同起点，AD = m p，AE = n q，DE = AE - AD = -m p + n q。",
+              "alternate_basis": "p 表示向量 AB，r 表示向量 BC；此时 AC = p + r，AD = m p，AE = n(p + r)，DE = AE - AD = (n - m)p + n r。",
               "first_step_methods": [
                 "基底法：先选 p = AB、q = AC，因为 D、E 都落在从 A 出发的两条边上。",
                 "路径法：先选 D -> A -> E、D -> B -> C -> E 或 D -> B -> E，把每段移动翻译为向量和。",
@@ -12780,7 +12796,7 @@
                 },
                 {
                   "step": "choose_basis",
-                  "description": "比较基底法、路径法、数量积/坐标法的第一步，再选择基向量写 D、E 的位置表达。"
+                  "description": "比较基底法、路径法、数量积/坐标法的第一步，再选择基向量写 AD、AE 的向量表达，避免把点 D、E 直接等同于向量。"
                 },
                 {
                   "step": "trace_path",
@@ -12832,7 +12848,7 @@
                 {
                   "name": "basis_equation",
                   "value_type": "string",
-                  "description": "当前基向量选择下 D、E 与 DE 的表达。",
+                  "description": "当前基向量选择下 AD、AE 与 DE 的表达。",
                   "persistence": "snapshot"
                 },
                 {
@@ -12911,9 +12927,9 @@
               "success_evidence": [
                 "学生能说出 8.4 本题调用了 8.1 线性运算、8.2 数量积和 8.3 坐标表示中的哪些工具，但不混成一个万能工具箱。",
                 "学生能比较基底法、路径法、数量积/坐标法的第一步选择，并说明本题为什么优先用基底法或路径法。",
-                "学生能先写出选定基向量，再写 D、E 的位置表达。",
+                "学生能先写出选定基向量，再写 AD、AE 的向量表达；若口头使用“D 点对应 mp、E 点对应 nq”的位置向量简写，需说明共同起点为 A。",
                 "学生能解释 D -> A -> E、D -> B -> C -> E 等不同路径化简后为什么一致。",
-                "学生能把“点在边上”的几何语言转化为 m p、n q 等向量等式。",
+                "学生能把“点在边上”的几何语言转化为 AD = m p、AE = n q 等向量等式。",
                 "学生能说明坐标法可以作为后续工具，但本题第一步更适合先用路径分解。"
               ],
               "common_error_tags": [
@@ -12942,6 +12958,7 @@
                 "先让学生用图中路径说出每一段移动，再写符号表达。",
                 "对比例方向错误，回到 AD/AB 和 AE/AC 的起点方向检查。",
                 "对坐标法或数量积法冲动，先追问“题目第一问是否真的要求长度、夹角、垂直或坐标数值”。",
+                "对“D = mp、E = nq”这类简写，提醒它只能作为以 A 为共同起点的位置向量口头简写；正式板书优先写 AD = mp、AE = nq。",
                 "只比较建模路径，不把本板扩展成完整解题器。"
               ]
             },
@@ -22305,13 +22322,13 @@
               "estimatedClassroomMinutes": 14,
               "primaryTeachingProblem": "学生容易把向量绑定到起点位置，难以理解只要大小和方向相同就是同一向量。",
               "learningGoals": [
-                "用有向线段 AB 的位移分量、长度和方向刻画一个平面向量。",
-                "通过平移后的 CD 说明起点不同但位移分量相同的有向线段表示相等向量。",
-                "同时读取 Δx、Δy、长度和方向角，避免只看线段所在位置或只看长度。",
+                "用有向线段 AB 从起点到终点的几何位移、长度和方向刻画一个平面向量。",
+                "通过平移后的 CD 说明起点不同但移动方式相同的有向线段表示相等向量。",
+                "同时观察横向移动、纵向移动、长度和方向，避免只看线段所在位置或只看长度。",
                 "在零向量情形下说明长度为 0，方向不规定。"
               ],
               "prerequisites": [
-                "平面直角坐标系中的点和坐标读数",
+                "平面网格中的点位、方向和距离观察",
                 "线段长度、方向、平行和共线关系",
                 "有向线段可以表示从起点到终点的位移"
               ],
@@ -22329,26 +22346,26 @@
             "mathematicalScope": {
               "focus": "在平面网格中比较有向线段 AB 与平移后的 CD，突出向量由大小和方向决定，与起点位置无关。",
               "lesson": "向量的概念",
-              "vector_model": "AB = (x_B - x_A, y_B - y_A)",
-              "equality_rule": "两个非零向量大小相等且方向相同则相等；在本课件中等价为位移分量 Δx、Δy 相同。",
+              "vector_model": "有向线段 AB 表示从 A 到 B 的一次几何位移。",
+              "equality_rule": "两个非零向量大小相等且方向相同则相等；在本课件中通过横向移动和纵向移动都相同来提供几何证据。",
               "zero_vector_rule": "起点和终点重合时得到零向量，长度为 0，方向不规定。",
               "default_points": {
-                "base_start": "A(-4, -1)",
-                "base_end": "B(-1, 2)",
-                "translated_start": "C(2, -2)",
-                "translated_end": "D(5, 1)"
+                "base_start": "A，左下方起点",
+                "base_end": "B，向右上移动后的终点",
+                "translated_start": "C，另一处起点",
+                "translated_end": "D，按同样移动方式得到的终点"
               },
               "out_of_scope": [
                 "向量加法、减法和数乘的运算法则",
-                "向量坐标运算的系统训练",
-                "8.3 向量坐标表示的课时边界讨论",
+                "后续解析化表示和运算规则的系统训练",
+                "8.3 后续课时边界讨论",
                 "用题库形式训练平行、共线和相反向量判定"
               ]
             },
             "representations": [
               {
-                "id": "coordinate_grid",
-                "role": "显示点的位置、位移分量和起点变化。"
+                "id": "plane_grid",
+                "role": "显示点的位置、横纵移动和起点变化。"
               },
               {
                 "id": "base_vector",
@@ -22360,7 +22377,7 @@
               },
               {
                 "id": "measurement_readout",
-                "role": "同步显示 Δx、Δy、长度、方向角和起点对照。"
+                "role": "同步显示横向移动、纵向移动、长度、方向和起点对照。"
               },
               {
                 "id": "staged_summary",
@@ -22376,7 +22393,7 @@
               "teacherControls": [
                 "重置到默认位置",
                 "按观察、平移、读数、归纳四步揭示",
-                "显示或隐藏分量辅助线",
+                "显示或隐藏横纵移动辅助线",
                 "显示或隐藏平移痕迹"
               ],
               "studentControls": [
@@ -22395,7 +22412,7 @@
                 },
                 {
                   "step": "read_components_length_direction",
-                  "description": "揭示 Δx、Δy、长度和方向角，建立相等向量的证据链。"
+                  "description": "揭示横向移动、纵向移动、长度和方向，建立相等向量的证据链。"
                 },
                 {
                   "step": "summarize_position_independence",
@@ -22433,14 +22450,14 @@
                   "name": "delta_x",
                   "value_type": "number",
                   "default": 3,
-                  "description": "当前向量的横向位移分量。",
+                  "description": "当前向量从起点到终点的横向移动格数。",
                   "persistence": "snapshot"
                 },
                 {
                   "name": "delta_y",
                   "value_type": "number",
                   "default": 3,
-                  "description": "当前向量的纵向位移分量。",
+                  "description": "当前向量从起点到终点的纵向移动格数。",
                   "persistence": "snapshot"
                 },
                 {
@@ -22455,7 +22472,7 @@
                   "unit": "degree",
                   "value_type": "number",
                   "default": 45,
-                  "description": "当前非零向量相对 x 轴正方向的方向角；零向量时为空。",
+                  "description": "当前非零向量的方向读数；零向量时为空。",
                   "persistence": "snapshot"
                 },
                 {
@@ -22517,7 +22534,7 @@
             },
             "feedbackAndDiagnosis": {
               "success_evidence": [
-                "学生能用 Δx 和 Δy 说明 AB 与 CD 表示同一向量。",
+                "学生能用横向移动和纵向移动都相同说明 AB 与 CD 表示同一向量。",
                 "学生能解释起点 A 和 C 不同，但大小和方向不变，所以向量相等。",
                 "学生能指出只看长度不足以判断向量相等，还必须看方向。",
                 "学生能在 A 与 B 重合时说明这是零向量且方向不规定。"
@@ -22537,7 +22554,7 @@
                 },
                 {
                   "id": "representation_gap",
-                  "label": "有向线段、分量和向量记号之间断裂"
+                  "label": "有向线段、移动方式和向量记号之间断裂"
                 },
                 {
                   "id": "zero_vector_direction_error",
@@ -22545,8 +22562,8 @@
                 }
               ],
               "feedback_principles": [
-                "先让学生读位移分量，再判断大小和方向。",
-                "纠正位置误区时拖动 CD 的起点，而不改变 Δx 和 Δy。",
+                "先让学生观察从起点到终点的横纵移动，再判断大小和方向。",
+                "纠正位置误区时拖动 CD 的起点，而不改变整条有向线段的移动方式。",
                 "纠正只看长度的误区时保留相同长度但改变方向的反例追问。",
                 "遇到零向量时单独说明长度和方向边界。"
               ]
@@ -22554,7 +22571,7 @@
             "visualSemantics": {
               "base_vector": "蓝色表示用于定义当前向量的 AB。",
               "translated_vector": "橙色表示平移后的等价向量 CD。",
-              "component_guides": "青绿色虚线表示 Δx 和 Δy 分量读数。",
+              "movement_guides": "青绿色虚线表示横向移动和纵向移动。",
               "parallel_guides": "灰色虚线连接对应起点和终点，帮助观察整条有向线段的平移。",
               "rule": "颜色只承载数学对象含义，不作为装饰。"
             },
@@ -22740,7 +22757,7 @@
                 "拖动向量 a、向量 b，观察方向和大小变化如何同步影响 a + b 与 a - b。",
                 "用首尾相接和平行四边形两种构造解释同一个向量加法结果。",
                 "把向量减法解释为加上相反向量，并用从 B 指向 A 的端点路径检查方向。",
-                "从动态构造回到分量读数和向量等式，避免只记画法模板。"
+                "从动态构造回到路径、端点顺序和横纵移动证据，避免只记画法模板。"
               ],
               "prerequisites": [
                 "向量由大小和方向确定",
@@ -22765,20 +22782,20 @@
               "addition_rule": "把 b 平移到 a 的终点得到首尾相接路径，或在共起点下补平行四边形，对角线均表示 a + b。",
               "subtraction_rule": "a - b = a + (-b)，共起点时从 B 指向 A 的向量也表示 a - b。",
               "default_vectors": {
-                "origin": "O(-3, -1.5)",
-                "vector_a": "a = (3, 2)",
-                "vector_b": "b = (2, -1.5)"
+                "origin": "O，左下方共同起点",
+                "vector_a": "a 从 O 向右上移动",
+                "vector_b": "b 从 O 向右下移动"
               },
               "out_of_scope": [
                 "向量数乘和线性组合的系统训练",
-                "8.3 向量坐标表示课时边界和坐标运算法则扩展",
+                "8.3 后续课时边界和解析化运算法则扩展",
                 "用题库形式训练复杂几何图形中的向量等式",
                 "把资源状态提升到数学审校或发布候选"
               ]
             },
             "representations": [
               {
-                "id": "coordinate_grid",
+                "id": "plane_grid",
                 "role": "显示共起点、终点、平移后的向量和结果向量。"
               },
               {
@@ -22790,8 +22807,8 @@
                 "role": "在首尾相接、平行四边形和减法模式间切换同一组向量的解释路径。"
               },
               {
-                "id": "algebra_readout",
-                "role": "同步显示 a、b、a + b 和 a - b 的分量读数。"
+                "id": "movement_readout",
+                "role": "同步显示 a、b、a + b 和 a - b 的横向、纵向移动。"
               },
               {
                 "id": "staged_summary",
@@ -22814,13 +22831,13 @@
               "studentControls": [
                 "拖动 A 或 B 改变向量 a、b",
                 "拖动 O 改变共同起点但保持两个向量不变",
-                "对照三种模式下结果向量的方向和分量",
+                "对照三种模式下结果向量的方向、大小和端点路径",
                 "用 B 到 A 的路径判断 a - b 的方向"
               ],
               "stagedReveal": [
                 {
                   "step": "observe_vectors",
-                  "description": "只读向量 a、b 的方向、大小和分量。"
+                  "description": "只读向量 a、b 的方向、大小和横纵移动。"
                 },
                 {
                   "step": "construct_result",
@@ -22828,7 +22845,7 @@
                 },
                 {
                   "step": "read_components",
-                  "description": "揭示结果向量的分量读数和端点路径。"
+                  "description": "揭示结果向量的横纵移动和端点路径。"
                 },
                 {
                   "step": "summarize_rules",
@@ -22869,7 +22886,7 @@
                     "x": 3,
                     "y": 2
                   },
-                  "description": "从 O 指向 A 的向量 a 的分量。",
+                  "description": "从 O 指向 A 的向量 a 的几何位移。",
                   "persistence": "snapshot"
                 },
                 {
@@ -22879,7 +22896,7 @@
                     "x": 2,
                     "y": -1.5
                   },
-                  "description": "从 O 指向 B 的向量 b 的分量。",
+                  "description": "从 O 指向 B 的向量 b 的几何位移。",
                   "persistence": "snapshot"
                 },
                 {
@@ -22889,7 +22906,7 @@
                     "x": 5,
                     "y": 0.5
                   },
-                  "description": "向量 a + b 的分量。",
+                  "description": "向量 a + b 的几何位移。",
                   "persistence": "snapshot"
                 },
                 {
@@ -22899,14 +22916,14 @@
                     "x": 1,
                     "y": 3.5
                   },
-                  "description": "向量 a - b 的分量。",
+                  "description": "向量 a - b 的几何位移。",
                   "persistence": "snapshot"
                 },
                 {
                   "name": "show_guides",
                   "value_type": "boolean",
                   "default": true,
-                  "description": "是否显示构造辅助线和分量辅助线。",
+                  "description": "是否显示构造辅助线和横纵移动辅助线。",
                   "persistence": "snapshot"
                 }
               ],
@@ -22962,7 +22979,7 @@
                 "学生能指出首尾相接中第二个向量的起点必须接到第一个向量的终点。",
                 "学生能说明平行四边形对角线与首尾相接路径得到同一个 a + b。",
                 "学生能把 a - b 解释为 a + (-b)，并能用从 B 指向 A 的向量检查方向。",
-                "学生能从分量读数验证拖拽后的 a + b 和 a - b。"
+                "学生能从横纵移动和端点路径验证拖拽后的 a + b 和 a - b。"
               ],
               "common_error_tags": [
                 {
@@ -22983,14 +23000,14 @@
                 },
                 {
                   "id": "representation_gap",
-                  "label": "几何构造和分量读数断裂"
+                  "label": "几何构造和横纵移动读数断裂"
                 }
               ],
               "feedback_principles": [
-                "先让学生拖动构造，再读出结果向量的方向和分量。",
+                "先让学生拖动构造，再读出结果向量的方向、大小和移动方式。",
                 "对加法错误，回到首尾相接路径或平行四边形对角线。",
                 "对减法错误，先显示 -b，再用 B 到 A 的路径检查方向。",
-                "反馈只指向可视化证据和向量等式，不扩展到未终核的 8.3 坐标运算。"
+                "反馈只指向可视化证据和向量等式，不扩展到未终核的 8.3 后续运算。"
               ]
             },
             "visualSemantics": {
@@ -22999,7 +23016,7 @@
               "result_vector": "绿色表示当前模式下的结果向量 a + b 或 a - b。",
               "reverse_vector": "红色表示减法模式中的相反向量 -b。",
               "endpoint_path": "紫色虚线表示从 B 指向 A 的端点路径。",
-              "guides": "灰色或绿色虚线表示构造辅助线和分量辅助线。",
+              "guides": "灰色或绿色虚线表示构造辅助线和横纵移动辅助线。",
               "rule": "颜色只承载数学对象含义，不作为装饰。"
             },
             "implementation": {
@@ -24026,7 +24043,7 @@
             },
             "implementation": {
               "phase": "runnable_prototype",
-              "html_src_status": "scaffolded",
+              "html_src_status": "runnable",
               "planned_engine": "native-canvas-svg",
               "create_src_in_later_task": false,
               "classroom_device_targets": [
@@ -24042,21 +24059,27 @@
           },
           "quality": {
             "contentStatus": "draft",
-            "implementationStage": "scaffold",
+            "implementationStage": "runnable",
             "reviewStatus": "self_checked_draft",
-            "readinessLabel": "骨架待精修",
+            "readinessLabel": "可运行预览",
             "displayStates": [
               "draft",
-              "scaffold",
+              "runnable",
               "self_checked_draft"
             ],
             "labels": {
               "contentStatus": "草稿",
-              "implementationStage": "骨架",
+              "implementationStage": "可运行",
               "reviewStatus": "自检草稿"
             }
           },
-          "player": null,
+          "player": {
+            "kind": "iframe",
+            "isRunnable": true,
+            "src": "content/applets/SH-HS-MATH-HJ-B2-C08-L04-A01/src/index.html",
+            "title": "投影长度与夹角实验室",
+            "sandbox": "allow-scripts allow-same-origin"
+          },
           "package": {
             "path": "content/applets/SH-HS-MATH-HJ-B2-C08-L04-A01",
             "files": {
@@ -24156,6 +24179,15 @@
               "directed_length": "|a|cosθ",
               "angle_range": "0 ≤ θ ≤ π；锐角投影长度为正，直角为零，钝角为负。",
               "dot_product_bridge": "只预告下一课会把有向投影长度与数量积联系起来，不展示数量积定义式。",
+              "teacher_watch_gate": {
+                "internal_queue": "teacher_watch_ready",
+                "confirmation_before_classroom_trial": [
+                  "确认教师口播会明确：这里读的是有方向符号的长度，不是普通非负线段长。",
+                  "确认教师只在画面文字稳定后暂停，不在锐角到直角或直角到钝角的旋转过渡中暂停。",
+                  "确认末尾只作 L05 数量积衔接，不提前写出完整数量积定义式或运算律。",
+                  "确认平台入口仍只是 video_ready 预览，不代表课堂试用或发布通过。"
+                ]
+              },
               "key_angles": [
                 {
                   "label": "锐角",
@@ -24245,11 +24277,11 @@
               "pausePoints": [
                 {
                   "after_beat": "drop_perpendicular",
-                  "teacher_prompt": "如果只看普通线段长，哪里会丢掉方向信息？"
+                  "teacher_prompt": "建议在 00:09-00:11、H 和有向线段 OH 稳定后暂停：如果只看普通线段长，哪里会丢掉方向信息？"
                 },
                 {
                   "after_beat": "compare_signs",
-                  "teacher_prompt": "为什么夹角变成钝角后，投影不是更长或更短的问题，而是符号变成负？"
+                  "teacher_prompt": "建议在 00:27-00:29、钝角文字稳定后暂停：为什么夹角变成钝角后，投影不是更长或更短的问题，而是符号变成负？"
                 }
               ]
             },
@@ -24279,7 +24311,8 @@
                 "本轮将场景从静态占位推进为可审看的动态草稿，最终视频时长 36.8 秒。",
                 "画面文字使用 θ、cosθ、投影长度、正方向、反方向等中文课堂表达。",
                 "已生成 dist/final 下的 mp4、webm 和 poster，平台卡片可读取稳定视频入口。",
-                "poster 选用 34 秒处的钝角读数和最终衔接画面。"
+                "poster 选用 34 秒处的钝角读数和最终衔接画面。",
+                "2026-05-19 教师观看门槛补充复核未重新渲染；本次只补齐暂停点、口播衔接和平台入口说明。"
               ]
             },
             "diagnosisDesign": {
@@ -24290,7 +24323,7 @@
             "platformCard": {
               "availability": "video_ready",
               "preview_behavior": "video_player",
-              "embed_strategy": "读取 files.output_webm、files.output_mp4 和 poster，用 video 标签接入资源卡；若视频文件缺失则回退显示 metadata 与 storyboard 摘要。",
+              "embed_strategy": "读取 files.output_webm、files.output_mp4 和 poster，用 video 标签接入资源卡；video_ready 只表示可预览视频入口，若视频文件缺失则回退显示 metadata 与 storyboard 摘要，不提升为课堂试用或发布状态。",
               "paired_resources": [
                 "SH-HS-MATH-HJ-B2-C08-L04-A01"
               ]
@@ -24857,7 +24890,7 @@
               "estimatedClassroomMinutes": 9,
               "primaryTeachingProblem": "学生会背 a · b = |a||b|cosθ，却容易把数量积的符号、投影方向、垂直条件和零向量边界混在一起，甚至用长度大小替代夹角判断。",
               "learningGoals": [
-                "根据非零向量夹角的锐、直、钝判断数量积的正、零、负。",
+                "根据非零向量夹角的锐、直、钝及反向边界判断数量积的正、零、负。",
                 "用有向投影解释数量积符号，不把投影当作普通无符号线段长度。",
                 "区分 a · b = 0 的两类来源：零向量边界和两个非零向量垂直。",
                 "确认数量积的结果是数量，并能说明长度不变时夹角变化仍会改变数量积。"
@@ -24891,7 +24924,7 @@
             },
             "diagnosisDesign": {
               "diagnosticFocus": [
-                "能否用夹角锐、直、钝判断两个非零向量数量积的符号。",
+                "能否用夹角锐、直、钝及 180° 反向边界判断两个非零向量数量积的符号。",
                 "能否用有向投影解释正负，而不是把投影长度一律看成正数。",
                 "能否正确表述 a · b = 0 与垂直的条件边界，尤其是不把零向量说成与任意向量夹角为 90°。",
                 "能否区分数量积的结果类型、方向信息和长度信息。",
@@ -25352,7 +25385,7 @@
               "learningGoals": [
                 "说清 8.4 向量应用调用的前置知识来自 8.1 线性运算、8.2 数量积和 8.3 坐标表示。",
                 "围绕同一个三角形分点问题，比较基底法、路径法、数量积/坐标法的第一步建模选择。",
-                "在三角形情境中选择一组基向量，并用它们表示边上点的位置向量。",
+                "在三角形情境中选择一组基向量，并用从 A 出发的向量 AD、AE 表示边上分点。",
                 "比较 D 到 E 的三条几何路径，说明路径不同但向量和相同。",
                 "把 AD/AB、AE/AC 这样的几何关系转化为系数形式的向量等式，但不展开完整解题器。"
               ],
@@ -25378,8 +25411,8 @@
               "focus": "以三角形 ABC 中 D 在 AB 上、E 在 AC 上为典型情境，比较向量应用题的第一步建模选择。",
               "lesson": "向量的应用",
               "problem_model": "设 D 在 AB 上，AD/AB = m；E 在 AC 上，AE/AC = n。目标是判断第一步应如何建模，并把向量 DE 写成选定基向量的线性组合。",
-              "primary_basis": "p = AB, q = AC，此时 D = m p，E = n q，DE = -m p + n q。",
-              "alternate_basis": "p = AB, r = BC，此时 AC = p + r，DE = (n - m)p + n r。",
+              "primary_basis": "p 表示向量 AB，q 表示向量 AC；以 A 为共同起点，AD = m p，AE = n q，DE = AE - AD = -m p + n q。",
+              "alternate_basis": "p 表示向量 AB，r 表示向量 BC；此时 AC = p + r，AD = m p，AE = n(p + r)，DE = AE - AD = (n - m)p + n r。",
               "first_step_methods": [
                 "基底法：先选 p = AB、q = AC，因为 D、E 都落在从 A 出发的两条边上。",
                 "路径法：先选 D -> A -> E、D -> B -> C -> E 或 D -> B -> E，把每段移动翻译为向量和。",
@@ -25452,7 +25485,7 @@
                 },
                 {
                   "step": "choose_basis",
-                  "description": "比较基底法、路径法、数量积/坐标法的第一步，再选择基向量写 D、E 的位置表达。"
+                  "description": "比较基底法、路径法、数量积/坐标法的第一步，再选择基向量写 AD、AE 的向量表达，避免把点 D、E 直接等同于向量。"
                 },
                 {
                   "step": "trace_path",
@@ -25504,7 +25537,7 @@
                 {
                   "name": "basis_equation",
                   "value_type": "string",
-                  "description": "当前基向量选择下 D、E 与 DE 的表达。",
+                  "description": "当前基向量选择下 AD、AE 与 DE 的表达。",
                   "persistence": "snapshot"
                 },
                 {
@@ -25583,9 +25616,9 @@
               "success_evidence": [
                 "学生能说出 8.4 本题调用了 8.1 线性运算、8.2 数量积和 8.3 坐标表示中的哪些工具，但不混成一个万能工具箱。",
                 "学生能比较基底法、路径法、数量积/坐标法的第一步选择，并说明本题为什么优先用基底法或路径法。",
-                "学生能先写出选定基向量，再写 D、E 的位置表达。",
+                "学生能先写出选定基向量，再写 AD、AE 的向量表达；若口头使用“D 点对应 mp、E 点对应 nq”的位置向量简写，需说明共同起点为 A。",
                 "学生能解释 D -> A -> E、D -> B -> C -> E 等不同路径化简后为什么一致。",
-                "学生能把“点在边上”的几何语言转化为 m p、n q 等向量等式。",
+                "学生能把“点在边上”的几何语言转化为 AD = m p、AE = n q 等向量等式。",
                 "学生能说明坐标法可以作为后续工具，但本题第一步更适合先用路径分解。"
               ],
               "common_error_tags": [
@@ -25614,6 +25647,7 @@
                 "先让学生用图中路径说出每一段移动，再写符号表达。",
                 "对比例方向错误，回到 AD/AB 和 AE/AC 的起点方向检查。",
                 "对坐标法或数量积法冲动，先追问“题目第一问是否真的要求长度、夹角、垂直或坐标数值”。",
+                "对“D = mp、E = nq”这类简写，提醒它只能作为以 A 为共同起点的位置向量口头简写；正式板书优先写 AD = mp、AE = nq。",
                 "只比较建模路径，不把本板扩展成完整解题器。"
               ]
             },
@@ -27891,21 +27925,27 @@
       "sectionTextbookLabel": "8.2",
       "quality": {
         "contentStatus": "draft",
-        "implementationStage": "scaffold",
+        "implementationStage": "runnable",
         "reviewStatus": "self_checked_draft",
-        "readinessLabel": "骨架待精修",
+        "readinessLabel": "可运行预览",
         "displayStates": [
           "draft",
-          "scaffold",
+          "runnable",
           "self_checked_draft"
         ],
         "labels": {
           "contentStatus": "草稿",
-          "implementationStage": "骨架",
+          "implementationStage": "可运行",
           "reviewStatus": "自检草稿"
         }
       },
-      "player": null,
+      "player": {
+        "kind": "iframe",
+        "isRunnable": true,
+        "src": "content/applets/SH-HS-MATH-HJ-B2-C08-L04-A01/src/index.html",
+        "title": "投影长度与夹角实验室",
+        "sandbox": "allow-scripts allow-same-origin"
+      },
       "packagePath": "content/applets/SH-HS-MATH-HJ-B2-C08-L04-A01"
     },
     {

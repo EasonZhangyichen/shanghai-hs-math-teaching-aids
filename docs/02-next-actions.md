@@ -1,6 +1,6 @@
 # 下一步任务
 
-更新时间：2026-05-18
+更新时间：2026-05-19
 
 ## P0：项目治理
 
@@ -37,6 +37,7 @@
 - [ ] 人工终核必修第二册第 8 章的课时划分、课时数和标题表述。
 - [ ] 用纸质教材或已登录 dolearning 左侧目录专项确认必修第二册第 8 章 8.3“向量的坐标表示”应按三课时还是四小节进入课程图谱。
 - [ ] 在 8.3 目录终核后，根据 `docs/source-audits/b2-c08-digital-necessity-review.md` 决定是否恢复或重排暂缓的 8.3 资源候选。
+- [ ] 第 8 章教材目录、课时边界和 8.3 分组终核前，所有 B2-C08 资源最高只允许保持 `draft` / `self_checked_draft` / `metadata_ready` / `video_ready`；不得进入 `classroom_trial`、`release_candidate` 或 `published`。
 - [x] 完成必修第二册第 6 章“三角”首轮来源核对、课程图谱 draft 和数字化必要性筛选，记录到 `docs/source-audits/b2-c06-source-audit.md`。
 - [x] 在 `content/curriculum/index.yaml` 中新增第 6 章 `SH-HS-MATH-HJ-B2-C06` draft 图谱，并只保留 5 个数字化必要性明确或需再次收窄的候选。
 - [ ] 用纸质教材或已登录 dolearning 左侧目录终核必修第二册第 6 章的章标题、节标题、课时边界、课时数和 6.1/6.3 课时拆分。
@@ -193,7 +194,8 @@
 - [x] 完成第 8 章 L05 / L10 / L04-M01 平台入口与闸门修复批次：`L05-A01` 已压缩平台 iframe 首屏并新增布局自检，`L04-M01` 已补齐 `video_ready` metadata 与平台视频入口，`L10-A01` 已新增正式浏览器闸门报告并继续标记为 `hold_for_platform_iframe_fit`。
 - [x] 完成第 8 章 L05 / L10 / L04-M01 小范围质量闸门复核：`L05-A01` 触控热区和资源内布局自检通过，`L10-A01` 可进入数学审校队列但仍保留平台 iframe fit hold，`L04-M01` 视频入口通过质量闸门但仍需教师观看确认。
 - [x] 本轮未恢复第 8 章 3 生产 + 3 审核，也未把任何第 8 章资源提升到 `browser_review`、`classroom_trial`、`release_candidate` 或 `published`；`video_ready` 只表示平台视频入口可预览。
-- [ ] 下一轮先不扩大到 6 线程生产；优先开 3 条定向修复/复核线：`L10-A01` 平台 iframe fit 修复、`L05-A01` 真实教师触控试读准备和外层滚动风险记录、`L04-M01` 教师观看确认与 pause-point 指南。第 8 章教材目录未终核前仍不进入发布链路。
+- [x] 完成 `codex/integrate-b2-c08-quality-gates-20260519` 集成断点复核：已合入 B2-C08 Diagnosis 质量闸门、L01/L02 前置与语言风险修复、L04-M01 教师观看闸门、L10 平台 iframe 适配闸门、L03/L04/L05 浏览器触控 gate，并修正 `L04-A01` 测试预期为 runnable iframe player；`npm run generate:backlog` 与 `npm run verify` 已通过。
+- [ ] 下一轮先不扩大到大规模生产；建议开 6 条质量线，或 3 条修复 + 3 条审核：优先覆盖 `L10-A01` 平台 iframe fit、`L05-A01` 真实教师触控试读准备和外层滚动风险记录、`L04-M01` 教师观看确认与 pause-point 指南，同时补审 `L01-A01` / `L02-A01` 前置语言与 `L03-A01` / `L04-A01` / `L05-A01` 触控表现。第 8 章教材目录未终核前仍不进入发布链路。
 - [ ] 总控收到每批 3 条反馈后，使用 `git branch --contains <commit>` 和 `git show --stat <commit>` 核对分支与改动范围，再决定是否合并、再生 generated files、运行 `npm run verify`、推送并同步长期分支。
 - [x] 第六轮审核线首批 3 个报告已完成并由总控核对分支与改动范围：数学/沪教版一致性、课堂试读准备度、浏览器大屏触控 QA 均只新增 docs 报告，未越界修改资源包、课程图谱、平台源码或 generated files。
 - [x] 根据审核线首批报告安排第 7 章小修复：清理 `L01-A01` README 中的 `theta` / `2pi` 旧口径，清理 `L06-A01` README 中的 `pi/2` / `kpi` / `2pi` ASCII 写法，并统一课程图谱中的 `omega`、`phi`、`pi/2 + kpi` fallback 表达。

@@ -1,6 +1,6 @@
 # 当前状态
 
-更新时间：2026-05-18
+更新时间：2026-05-19
 
 ## 已有输入
 
@@ -221,6 +221,10 @@
   - 更新 `docs/review-audits/b2-c08-l10-a01-postfix-gate.md`，确认 `L10-A01` 可进入 `math_review` 队列，但继续保留 `hold_for_platform_iframe_fit`，且位置向量简写仍需数学审校确认。
   - 新增 `docs/review-audits/b2-c08-l04-m01-video-teacher-gate.md`，确认 `L04-M01` 可保持 `video_ready` 并进入内部教师观看确认队列；顶层仍为 `draft`。
   - 本批只集成审核报告，不修改资源包、平台源码、课程图谱、backlog 或 generated files；第 8 章教材目录未终核前，不恢复发布链路。
+- 已在 `codex/integrate-b2-c08-quality-gates-20260519` 上完成第 8 章质量 gate 集成断点复核：
+  - 已合入 B2-C08 Diagnosis 质量闸门、L01/L02 前置与语言风险修复、L04-M01 教师观看闸门、L10 平台 iframe 适配闸门，以及 L03/L04/L05 浏览器触控 gate。
+  - `SH-HS-MATH-HJ-B2-C08-L04-A01` 的 metadata 已是 `draft` / `self_checked_draft`，`implementation.html_src_status: runnable`；平台测试已更新为允许生成 iframe player，入口指向 `content/applets/SH-HS-MATH-HJ-B2-C08-L04-A01/src/index.html`，标题为“投影长度与夹角实验室”，sandbox 为 `allow-scripts allow-same-origin`。
+  - 本轮已重新运行 `npm run generate:backlog` 和 `npm run verify`，集成分支验证通过；没有把任何第 8 章资源提升到 `browser_review`、`classroom_trial`、`release_candidate` 或 `published`。
 - 已完成双线并行质量修复线首批 3 个任务并进入总控集成：
   - `SH-HS-MATH-HJ-B2-C07-L01-A01` 与 `SH-HS-MATH-HJ-B2-C07-L06-A01` README 中的 `theta`、`pi/2`、`kpi`、`2pi` 等旧口径已清理；第 7 章课程图谱、L05 Applet / Manim / Diagnosis metadata 中的 7.3 标题已统一为 `y = A sin(ωx + φ)`。
   - `SH-HS-MATH-HJ-B2-C07-L03-A02` 已优化平台 iframe 下的窄宽裁切和触控目标尺寸，浏览器复测建议可进入 `browser_review`，但仍需真实教室触控屏确认拖动手感。
@@ -296,7 +300,7 @@
 - 必修第二册第 6 章“三角”已有 draft 图谱和来源核对记录，但尚未完成纸质教材/已登录 dolearning 终核；尤其需要确认 6.1 是否按 5 个教材节点组织、`6.1.2 任意角及其度量` 是否包含角度制与弧度制的多课时拆分、6.3 是否只有正弦定理和余弦定理两个教材节点。
 - 必修第一册第 1、2、3、4、5 章均已完成 draft 级来源核对或图谱入口；第 1 章不新增数字化候选，第 2 章只保留 3 个 blocked planned 候选，第 3 章暂不进入资源生产，第 4、5 章保留少量 blocked planned 候选。所有第一册课时仍需纸质教材、教师用书或已登录 dolearning/上海数字教学系统终核课时数、课时边界和平台目录。
 - 必修第二册第 7 章目录已完成首版结构化整理，但尚未完成纸质教材人工终核。
-- 必修第二册第 8 章“平面向量”已完成首版结构化整理、dolearning 来源核对记录和 planned resource 数字化必要性筛选落地，但尚未完成纸质教材/已登录 dolearning 终核；尤其需要确认 8.3 是教材四小节拆分，还是 dolearning 三课时分组。第 8 章 6 个筛选后保留的 Applet 资源包均已推进为可运行自检草稿，3 个 Diagnosis 资源包已补齐自检题组但仍保持 `draft` / `self_checked_draft` / `metadata_ready` 或 `metadata_placeholder`，1 个 Manim Clip 已渲染视频产物并接入平台 `video_ready` 播放入口；8.3 暂缓资源仍不进入 scaffold 生产队列。
+- 必修第二册第 8 章“平面向量”已完成首版结构化整理、dolearning 来源核对记录和 planned resource 数字化必要性筛选落地，但尚未完成纸质教材/已登录 dolearning 终核；尤其需要确认 8.3 是教材四小节拆分，还是 dolearning 三课时分组。第 8 章 6 个筛选后保留的 Applet 资源包均已推进为可运行自检草稿，3 个 Diagnosis 资源包已补齐自检题组但仍保持 `draft` / `self_checked_draft` / `metadata_ready` 或 `metadata_placeholder`，1 个 Manim Clip 已渲染视频产物并接入平台 `video_ready` 播放入口；8.3 暂缓资源仍不进入 scaffold 生产队列。教材目录终核前，所有 B2-C08 资源不得进入 `classroom_trial`、`release_candidate` 或 `published`。
 - 第 7 章的第 6 章前置节点已 draft 展开，但仍需人工终核；第 9 章“复数”已新增 draft 图谱和数字化必要性初筛，但尚未完成纸质教材/已登录 dolearning 终核。
 - 尚未创建独立课件播放器；教师工作台内已完成样板 Applet iframe 预览接入，但尚未沉淀为独立 `apps/player`。
 - 已创建八个第 7 章可运行 HTML Applet 原型，并已接入平台壳 iframe 预览；`L01-A01`、`L02-A01`、`L03-A01`、`L03-A02`、`L04-A01`、`L05-A01`、`L06-A01` 和 `L07-A01` 均已完成一轮数学/浏览器审校但仍需教师试读。第 8 章 Applet 中，`L01-A01`、`L02-A01`、`L03-A01`、`L04-A01`、`L05-A01` 和 `L10-A01` 均已推进为可运行自检草稿。
