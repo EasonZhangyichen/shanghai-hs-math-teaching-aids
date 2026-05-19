@@ -403,7 +403,7 @@
             <p class="section-title">教师控制</p>
             <div class="control-row">
               <button class="tool-button" id="reset-button">重置</button>
-              <button class="tool-button" id="components-button" aria-pressed="true">分量</button>
+              <button class="tool-button" id="components-button" aria-pressed="true">横纵辅助</button>
               <button class="tool-button" id="trail-button" aria-pressed="false">痕迹</button>
             </div>
           </section>
@@ -412,16 +412,16 @@
             <p class="section-title">大小与方向</p>
             <div class="readout-grid">
               <div class="readout">
-                <strong>位移分量</strong>
-                <span id="component-readout">Δx = 3, Δy = 3</span>
+                <strong>横纵移动</strong>
+                <span id="component-readout">向右 3 格，向上 3 格</span>
               </div>
               <div class="readout">
                 <strong>向量长度</strong>
                 <span id="length-readout">|AB| = 3√2</span>
               </div>
               <div class="readout">
-                <strong>方向角</strong>
-                <span id="angle-readout">45°</span>
+                <strong>方向</strong>
+                <span id="angle-readout">右上方向</span>
               </div>
               <div class="readout">
                 <strong>起点对照</strong>
@@ -440,7 +440,7 @@
             <ul class="compare-list">
               <li><b>看大小：</b>两条有向线段的长度相同。</li>
               <li><b>看方向：</b>两条有向线段的方向相同。</li>
-              <li><b>不看位置：</b>起点变化时，只要位移分量不变，表示的向量不变。</li>
+              <li><b>不看位置：</b>起点变化时，只要移动方式、长度和方向不变，表示的向量不变。</li>
               <li><b>边界：</b>零向量长度为 0，方向不规定。</li>
             </ul>
           </section>
@@ -573,8 +573,18 @@
         return value.toFixed(1);
       }
 
-      function fmtPoint(point) {
-        return `(${fmtNumber(point.x)}, ${fmtNumber(point.y)})`;
+      function fmtMovement(displacement) {
+        return `${fmtHorizontal(displacement.x)}，${fmtVertical(displacement.y)}`;
+      }
+
+      function fmtHorizontal(value) {
+        if (Math.abs(value) < 0.0001) return "横向不动";
+        return `${value > 0 ? "向右" : "向左"} ${fmtNumber(Math.abs(value))} 格`;
+      }
+
+      function fmtVertical(value) {
+        if (Math.abs(value) < 0.0001) return "纵向不动";
+        return `${value > 0 ? "向上" : "向下"} ${fmtNumber(Math.abs(value))} 格`;
       }
 
       function fmtLength(dx, dy) {
@@ -586,11 +596,14 @@
         return length.toFixed(2);
       }
 
-      function fmtAngle(dx, dy) {
+      function fmtDirection(dx, dy) {
         const length = Math.hypot(dx, dy);
         if (length < 0.0001) return "方向不规定";
-        const angle = (Math.atan2(dy, dx) * 180) / Math.PI;
-        return `${Math.round((angle + 360) % 360)}°`;
+        const horizontal = dx > 0.0001 ? "右" : dx < -0.0001 ? "左" : "";
+        const vertical = dy > 0.0001 ? "上" : dy < -0.0001 ? "下" : "";
+        if (!horizontal) return `${vertical}方`;
+        if (!vertical) return `${horizontal}方`;
+        return `${horizontal}${vertical}方向`;
       }
 
       function createSvg(tag, attrs = {}) {
@@ -648,16 +661,12 @@
           const a = toScreen({ x, y: view.minY });
           const b = toScreen({ x, y: view.maxY });
           grid.appendChild(createSvg("line", { x1: a.x, y1: a.y, x2: b.x, y2: b.y, class: x === 0 ? "axis-line" : "grid-line" }));
-          if (x !== 0) addText(grid, String(x), { x, y: -0.25 }, "axis-label");
         }
         for (let y = view.minY; y <= view.maxY; y += 1) {
           const a = toScreen({ x: view.minX, y });
           const b = toScreen({ x: view.maxX, y });
           grid.appendChild(createSvg("line", { x1: a.x, y1: a.y, x2: b.x, y2: b.y, class: y === 0 ? "axis-line" : "grid-line" }));
-          if (y !== 0) addText(grid, String(y), { x: 0.25, y }, "axis-label", "start");
         }
-        addText(grid, "x", { x: view.maxX - 0.35, y: -0.35 }, "axis-label");
-        addText(grid, "y", { x: 0.35, y: view.maxY - 0.35 }, "axis-label", "start");
         root.appendChild(grid);
       }
 
@@ -668,8 +677,8 @@
         const c = toScreen(corner);
         root.appendChild(createSvg("line", { x1: s.x, y1: s.y, x2: c.x, y2: c.y, class: "component-line" }));
         root.appendChild(createSvg("line", { x1: c.x, y1: c.y, x2: e.x, y2: e.y, class: "component-line" }));
-        addText(root, "Δx", { x: (start.x + end.x) / 2, y: start.y - 0.24 }, "component-label");
-        addText(root, "Δy", { x: end.x + 0.26, y: (start.y + end.y) / 2 }, "component-label", "start");
+        addText(root, "横向移动", { x: (start.x + end.x) / 2, y: start.y - 0.24 }, "component-label");
+        addText(root, "纵向移动", { x: end.x + 0.26, y: (start.y + end.y) / 2 }, "component-label", "start");
       }
 
       function ensureTrail() {
@@ -756,15 +765,15 @@
           }
         }
 
-        componentReadout.textContent = `Δx = ${fmtNumber(d.x)}, Δy = ${fmtNumber(d.y)}`;
+        componentReadout.textContent = fmtMovement(d);
         lengthReadout.textContent = `|AB| = |CD| = ${fmtLength(d.x, d.y)}`;
-        angleReadout.textContent = fmtAngle(d.x, d.y);
-        startReadout.textContent = samePoint(state.baseStart, state.copyStart) ? "A = C" : `A ${fmtPoint(state.baseStart)}, C ${fmtPoint(state.copyStart)}`;
+        angleReadout.textContent = fmtDirection(d.x, d.y);
+        startReadout.textContent = samePoint(state.baseStart, state.copyStart) ? "A 与 C 是同一起点" : "A 与 C 是不同起点";
 
         const zero = length < 0.001;
         relationBox.innerHTML = zero
           ? `<p class="warning">当前为零向量：长度为 0，方向不规定。</p><p class="formula">AB = CD = 0</p>`
-          : `<p>蓝色 AB 与橙色 CD 有相同的位移分量、长度和方向。</p><p class="formula">AB = CD = (${fmtNumber(d.x)}, ${fmtNumber(d.y)})</p>`;
+          : `<p>蓝色 AB 与橙色 CD 的移动方式、长度和方向都相同。</p><p class="formula">AB 与 CD 表示同一向量</p>`;
 
         summarySection.hidden = state.step < 4;
         stageNote.innerHTML = stageMessage(zero);
@@ -794,7 +803,7 @@
         const messages = {
           1: "<strong>观察：</strong>有向线段用起点和终点表示，真正要抓住的是从 A 到 B 的位移。",
           2: "<strong>平移：</strong>把同一位移搬到 C 点，得到的 CD 与 AB 表示同一个向量。",
-          3: "<strong>读数：</strong>同时看 Δx、Δy、长度和方向，不能只看起点位置。",
+          3: "<strong>读数：</strong>同时看横向移动、纵向移动、长度和方向，不能只看起点位置。",
           4: "<strong>归纳：</strong>相等向量只要求大小相等、方向相同，与起点位置无关。"
         };
         if (zero) return "<strong>零向量：</strong>起点和终点重合时长度为 0，方向不规定。";

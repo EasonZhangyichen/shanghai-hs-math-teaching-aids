@@ -38,7 +38,7 @@ pedagogy:
     - "直观想象"
     - "逻辑推理"
     - "数学运算"
-  classroom_use: "建议在「向量的投影」课堂开头播放约 37 秒，只建立有向投影长度的直觉，再切到 Applet 做拖动验证。"
+  classroom_use: "建议在「向量的投影」课堂开头播放约 37 秒。本片无内置音轨，需教师现场口播；播放前应确认两处暂停点和末尾数量积衔接口径，再切到 Applet 做拖动验证。"
 mathematical_scope:
   focus: "短动画只串联定方向、作垂线、读有向投影、解释 |a|cosθ 的正零负，不替代后续交互探索。"
   lesson: "向量的投影"
@@ -47,6 +47,13 @@ mathematical_scope:
   directed_length: "|a|cosθ"
   angle_range: "0 ≤ θ ≤ π；锐角投影长度为正，直角为零，钝角为负。"
   dot_product_bridge: "只预告下一课会把有向投影长度与数量积联系起来，不展示数量积定义式。"
+  teacher_watch_gate:
+    internal_queue: "teacher_watch_ready"
+    confirmation_before_classroom_trial:
+      - "确认教师口播会明确：这里读的是有方向符号的长度，不是普通非负线段长。"
+      - "确认教师只在画面文字稳定后暂停，不在锐角到直角或直角到钝角的旋转过渡中暂停。"
+      - "确认末尾只作 L05 数量积衔接，不提前写出完整数量积定义式或运算律。"
+      - "确认平台入口仍只是 video_ready 预览，不代表课堂试用或发布通过。"
   key_angles:
     - label: "锐角"
       projection_position: "投影点 H 在 b 的正方向"
@@ -104,9 +111,9 @@ narrative_design:
       estimated_seconds: 4
   pause_points:
     - after_beat: drop_perpendicular
-      teacher_prompt: "如果只看普通线段长，哪里会丢掉方向信息？"
+      teacher_prompt: "建议在 00:09-00:11、H 和有向线段 OH 稳定后暂停：如果只看普通线段长，哪里会丢掉方向信息？"
     - after_beat: compare_signs
-      teacher_prompt: "为什么夹角变成钝角后，投影不是更长或更短的问题，而是符号变成负？"
+      teacher_prompt: "建议在 00:27-00:29、钝角文字稳定后暂停：为什么夹角变成钝角后，投影不是更长或更短的问题，而是符号变成负？"
 visual_semantics:
   background: "light classroom background"
   baseline_axis: "基准方向用稳定深色箭头表示，向量 b 用蓝色表示。"
@@ -134,6 +141,7 @@ render_plan:
     - "画面文字使用 θ、cosθ、投影长度、正方向、反方向等中文课堂表达。"
     - "已生成 dist/final 下的 mp4、webm 和 poster，平台卡片可读取稳定视频入口。"
     - "poster 选用 34 秒处的钝角读数和最终衔接画面。"
+    - "2026-05-19 教师观看门槛补充复核未重新渲染；本次只补齐暂停点、口播衔接和平台入口说明。"
 files:
   readme: "README.md"
   storyboard: "storyboard.md"
@@ -145,7 +153,7 @@ files:
 platform_card:
   availability: "video_ready"
   preview_behavior: "video_player"
-  embed_strategy: "读取 files.output_webm、files.output_mp4 和 poster，用 video 标签接入资源卡；若视频文件缺失则回退显示 metadata 与 storyboard 摘要。"
+  embed_strategy: "读取 files.output_webm、files.output_mp4 和 poster，用 video 标签接入资源卡；video_ready 只表示可预览视频入口，若视频文件缺失则回退显示 metadata 与 storyboard 摘要，不提升为课堂试用或发布状态。"
   paired_resources:
     - "SH-HS-MATH-HJ-B2-C08-L04-A01"
 compliance:

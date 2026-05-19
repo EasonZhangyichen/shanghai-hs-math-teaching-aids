@@ -301,7 +301,18 @@ test("links the vector projection applet and rendered Manim entry to lesson B2 C
     ["applet", "manim_clip"],
   );
   assert.equal(applet.availability, "metadata_ready");
-  assert.equal(applet.player, null);
+  assert.equal(applet.status, "draft");
+  assert.equal(applet.quality.reviewStatus, "self_checked_draft");
+  assert.equal(applet.metadataPreview.implementation.phase, "runnable_prototype");
+  assert.equal(applet.metadataPreview.implementation.html_src_status, "runnable");
+  assert.equal(applet.package.files.srcEntry, "content/applets/SH-HS-MATH-HJ-B2-C08-L04-A01/src/index.html");
+  assert.deepEqual(applet.player, {
+    kind: "iframe",
+    isRunnable: true,
+    src: "content/applets/SH-HS-MATH-HJ-B2-C08-L04-A01/src/index.html",
+    title: "投影长度与夹角实验室",
+    sandbox: "allow-scripts allow-same-origin",
+  });
   assert.equal(manim.availability, "video_ready");
   assert.equal(manim.metadataPreview.renderPlan.phase, "rendered");
   assert.equal(manim.package.storyboard.title, "分镜：投影有向长度导入动画");

@@ -37,6 +37,17 @@
 - `review.md`：自检结论、渲染记录和后续审校风险。
 - `dist/final/`：渲染成功后放置课堂 `mp4`、网页 `webm` 和 poster。
 
+## 教师观看门槛
+
+本片当前是 `video_ready` 预览入口，但顶层状态仍是 `draft`。进入真实课堂试用前，教师至少需要完成一次观看确认：
+
+- 确认本片无内置音轨，课堂使用依赖教师现场口播。
+- 在垂线和投影点 `H` 稳定后暂停，补问“如果只看普通线段长，哪里会丢掉方向信息？”
+- 在钝角读数稳定后暂停，补问“为什么这里不是长短变化，而是符号变成负？”
+- 口播时明确“这里读的是有方向符号的长度，不是普通非负线段长”。
+- 最后一屏只衔接“下一课用它理解数量积”，不要提前写出完整数量积定义式或运算律。
+- 确认平台视频入口可以播放 `webm` / `mp4`，但 `video_ready` 只代表可预览，不代表 `classroom_trial`、`release_candidate` 或 `published`。
+
 ## 运行与导出
 
 在本资源目录中执行：
@@ -58,8 +69,8 @@ ffmpeg -y -ss 00:00:34 -i dist/final/SH-HS-MATH-HJ-B2-C08-L04-M01.mp4 -frames:v 
 
 ## 审看建议
 
-- 先看 `H` 是否清楚地沿 `b` 所在直线从正方向移动到原点，再移动到反方向。
+- 先看 `H` 是否清楚地沿 `b` 所在直线从正方向移动到原点，再移动到反方向；暂停应落在文字稳定后的画面，不要停在旋转过渡中。
 - 检查画面是否始终使用 `θ`、`cosθ`、`投影长度` 等课堂表达。
 - 确认数量积只作为衔接出现，没有提前讲完整下一课内容。
 - 当前已导出 1920×1080、30fps、36.8 秒的 `mp4`、`webm` 和 poster；poster 取自 34 秒最终衔接画面。
-- `metadata.yaml` 已标记 `render_plan.phase: rendered` 和 `platform_card.availability: video_ready`，并通过 `files.output_mp4`、`files.output_webm`、`files.poster` 暴露平台视频入口。
+- `metadata.yaml` 已标记 `render_plan.phase: rendered` 和 `platform_card.availability: video_ready`，并通过 `files.output_mp4`、`files.output_webm`、`files.poster` 暴露平台视频入口；该入口仅用于预览和教师观看确认。
