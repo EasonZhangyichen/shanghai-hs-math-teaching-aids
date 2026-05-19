@@ -365,10 +365,61 @@ button {
 .search-results {
   display: grid;
   gap: 8px;
-  max-height: 360px;
+  max-height: clamp(220px, 32vh, 320px);
   margin-top: 14px;
   overflow: auto;
   padding-right: 4px;
+}
+
+.selection-status {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  margin-top: 12px;
+  padding: 10px 12px;
+  border: 1px solid #a7ddd6;
+  border-radius: 8px;
+  background: #f2fbf9;
+}
+
+.selection-status div {
+  min-width: 0;
+  display: grid;
+  gap: 2px;
+}
+
+.selection-status span,
+.selection-status small {
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 750;
+}
+
+.selection-status strong {
+  overflow-wrap: anywhere;
+  color: var(--ink);
+  font-size: 0.94rem;
+}
+
+.selection-status button {
+  flex: 0 0 auto;
+  min-height: 34px;
+  padding: 6px 10px;
+  border: 1px solid #54bdb2;
+  border-radius: 8px;
+  color: #0f655f;
+  background: #ffffff;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.selection-status button:hover,
+.selection-status button:focus {
+  border-color: var(--teal);
+  color: #0b514c;
+  outline: 2px solid #b9e6df;
+  outline-offset: 1px;
 }
 
 .search-result {
@@ -706,6 +757,36 @@ li {
   background: #101820;
 }
 
+.video-scrubber {
+  display: grid;
+  grid-template-columns: auto minmax(160px, 1fr) auto;
+  gap: 10px;
+  align-items: center;
+  padding: 10px 12px 12px;
+  color: #e6edf3;
+  background: #101820;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.video-scrubber label,
+.video-scrubber span {
+  font-size: 0.76rem;
+  font-weight: 750;
+  white-space: nowrap;
+}
+
+.video-scrubber input[type="range"] {
+  width: 100%;
+  min-height: 30px;
+  accent-color: #54bdb2;
+  cursor: pointer;
+}
+
+.video-scrubber input[type="range"]:disabled {
+  cursor: wait;
+  opacity: 0.58;
+}
+
 .metadata-summary div {
   min-height: 68px;
   display: grid;
@@ -834,6 +915,11 @@ li {
     grid-template-columns: 1fr;
   }
 
+  .selection-status {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
   .workspace-grid {
     grid-template-columns: 1fr;
   }
@@ -872,5 +958,9 @@ li {
   .player-frame-shell iframe {
     height: 620px;
     min-height: 620px;
+  }
+
+  .video-scrubber {
+    grid-template-columns: 1fr;
   }
 }

@@ -47,8 +47,10 @@ function contentPackagesPlugin() {
           return;
         }
 
+        let fileStat;
+
         try {
-          const fileStat = await stat(filePath);
+          fileStat = await stat(filePath);
           if (!fileStat.isFile()) {
             next();
             return;
@@ -58,8 +60,7 @@ function contentPackagesPlugin() {
           return;
         }
 
-        response.setHeader("Content-Type", contentType(filePath));
-        createReadStream(filePath).pipe(response);
+        serveContentFile(request, response, filePath, fileStat);
       });
     },
     async closeBundle() {
@@ -70,6 +71,90 @@ function contentPackagesPlugin() {
         filter: (source) => shouldCopyManimPath(source),
       });
     },
+  };
+}
+
+function serveContentFile(request, response, filePath, fileStat) {
+  const range = parseByteRange(request.headers.range, fileStat.size);
+
+  response.setHeader("Content-Type", contentType(filePath));
+  response.setHeader("Accept-Ranges", "bytes");
+
+  if (range === "invalid") {
+    response.statusCode = 416;
+    response.setHeader("Content-Range", `bytes */${fileStat.size}`);
+    response.end();
+    return;
+  }
+
+  if (range) {
+    const { start, end } = range;
+    response.statusCode = 206;
+    response.setHeader("Content-Range", `bytes ${start}-${end}/${fileStat.size}`);
+    response.setHeader("Content-Length", String(end - start + 1));
+
+    if (request.method === "HEAD") {
+      response.end();
+      return;
+    }
+
+    createReadStream(filePath, { start, end }).pipe(response);
+    return;
+  }
+
+  response.setHeader("Content-Length", String(fileStat.size));
+
+  if (request.method === "HEAD") {
+    response.end();
+    return;
+  }
+
+  createReadStream(filePath).pipe(response);
+}
+
+function parseByteRange(rangeHeader, size) {
+  if (!rangeHeader) {
+    return null;
+  }
+
+  const match = /^bytes=(\d*)-(\d*)$/.exec(rangeHeader);
+  if (!match || size <= 0) {
+    return "invalid";
+  }
+
+  const [, rawStart, rawEnd] = match;
+  if (!rawStart && !rawEnd) {
+    return "invalid";
+  }
+
+  if (!rawStart) {
+    const suffixLength = Number(rawEnd);
+    if (!Number.isSafeInteger(suffixLength) || suffixLength <= 0) {
+      return "invalid";
+    }
+
+    return {
+      start: Math.max(size - suffixLength, 0),
+      end: size - 1,
+    };
+  }
+
+  const start = Number(rawStart);
+  const end = rawEnd ? Number(rawEnd) : size - 1;
+
+  if (
+    !Number.isSafeInteger(start) ||
+    !Number.isSafeInteger(end) ||
+    start < 0 ||
+    end < start ||
+    start >= size
+  ) {
+    return "invalid";
+  }
+
+  return {
+    start,
+    end: Math.min(end, size - 1),
   };
 }
 
