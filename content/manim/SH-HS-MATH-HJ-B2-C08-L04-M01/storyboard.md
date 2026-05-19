@@ -86,3 +86,4 @@
 
 - 平台卡片通过 `metadata.yaml` 的 `files.output_webm`、`files.output_mp4` 和 `files.poster` 打开视频预览。
 - `platform_card.availability: video_ready` 只表示视频入口可预览；教师观看确认和课堂试用仍需另行记录。
+- 本分镜可进入内部教师观看确认队列，用于核对 36.8 秒节奏、暂停点和现场口播；不得据此提升为课堂试用、候选发布或正式发布状态。
