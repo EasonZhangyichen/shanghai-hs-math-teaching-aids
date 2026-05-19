@@ -24,12 +24,12 @@ pedagogy:
   estimated_classroom_minutes: 14
   primary_teaching_problem: 学生容易把向量绑定到起点位置，难以理解只要大小和方向相同就是同一向量。
   learning_goals:
-    - 用有向线段 AB 的位移分量、长度和方向刻画一个平面向量。
-    - 通过平移后的 CD 说明起点不同但位移分量相同的有向线段表示相等向量。
-    - 同时读取 Δx、Δy、长度和方向角，避免只看线段所在位置或只看长度。
+    - 用有向线段 AB 从起点到终点的几何位移、长度和方向刻画一个平面向量。
+    - 通过平移后的 CD 说明起点不同但移动方式相同的有向线段表示相等向量。
+    - 同时观察横向移动、纵向移动、长度和方向，避免只看线段所在位置或只看长度。
     - 在零向量情形下说明长度为 0，方向不规定。
   prerequisites:
-    - 平面直角坐标系中的点和坐标读数
+    - 平面网格中的点位、方向和距离观察
     - 线段长度、方向、平行和共线关系
     - 有向线段可以表示从起点到终点的位移
   successors:
@@ -43,28 +43,28 @@ pedagogy:
 mathematical_scope:
   focus: 在平面网格中比较有向线段 AB 与平移后的 CD，突出向量由大小和方向决定，与起点位置无关。
   lesson: 向量的概念
-  vector_model: AB = (x_B - x_A, y_B - y_A)
-  equality_rule: 两个非零向量大小相等且方向相同则相等；在本课件中等价为位移分量 Δx、Δy 相同。
+  vector_model: 有向线段 AB 表示从 A 到 B 的一次几何位移。
+  equality_rule: 两个非零向量大小相等且方向相同则相等；在本课件中通过横向移动和纵向移动都相同来提供几何证据。
   zero_vector_rule: 起点和终点重合时得到零向量，长度为 0，方向不规定。
   default_points:
-    base_start: A(-4, -1)
-    base_end: B(-1, 2)
-    translated_start: C(2, -2)
-    translated_end: D(5, 1)
+    base_start: A，左下方起点
+    base_end: B，向右上移动后的终点
+    translated_start: C，另一处起点
+    translated_end: D，按同样移动方式得到的终点
   out_of_scope:
     - 向量加法、减法和数乘的运算法则
-    - 向量坐标运算的系统训练
-    - 8.3 向量坐标表示的课时边界讨论
+    - 后续解析化表示和运算规则的系统训练
+    - 8.3 后续课时边界讨论
     - 用题库形式训练平行、共线和相反向量判定
 representations:
-  - id: coordinate_grid
-    role: 显示点的位置、位移分量和起点变化。
+  - id: plane_grid
+    role: 显示点的位置、横纵移动和起点变化。
   - id: base_vector
     role: 用蓝色有向线段 AB 表示当前向量的大小和方向。
   - id: translated_vector
     role: 用橙色有向线段 CD 表示平移后的相等向量。
   - id: measurement_readout
-    role: 同步显示 Δx、Δy、长度、方向角和起点对照。
+    role: 同步显示横向移动、纵向移动、长度、方向和起点对照。
   - id: staged_summary
     role: 供教师按观察、平移、读数、归纳四步揭示课堂结论。
 interaction_design:
@@ -72,7 +72,7 @@ interaction_design:
   teacher_controls:
     - 重置到默认位置
     - 按观察、平移、读数、归纳四步揭示
-    - 显示或隐藏分量辅助线
+    - 显示或隐藏横纵移动辅助线
     - 显示或隐藏平移痕迹
   student_controls:
     - 拖动 A、B 观察大小和方向如何改变
@@ -84,7 +84,7 @@ interaction_design:
     - step: translate_equivalent_vector
       description: 显示 CD，把同一位移搬到不同起点，形成位置对照。
     - step: read_components_length_direction
-      description: 揭示 Δx、Δy、长度和方向角，建立相等向量的证据链。
+      description: 揭示横向移动、纵向移动、长度和方向，建立相等向量的证据链。
     - step: summarize_position_independence
       description: 归纳向量相等只看大小和方向，不看起点位置，并补充零向量边界。
 data_contract:
@@ -108,12 +108,12 @@ data_contract:
     - name: delta_x
       value_type: number
       default: 3
-      description: 当前向量的横向位移分量。
+      description: 当前向量从起点到终点的横向移动格数。
       persistence: snapshot
     - name: delta_y
       value_type: number
       default: 3
-      description: 当前向量的纵向位移分量。
+      description: 当前向量从起点到终点的纵向移动格数。
       persistence: snapshot
     - name: length
       value_type: number
@@ -124,7 +124,7 @@ data_contract:
       unit: degree
       value_type: number
       default: 45
-      description: 当前非零向量相对 x 轴正方向的方向角；零向量时为空。
+      description: 当前非零向量的方向读数；零向量时为空。
       persistence: snapshot
     - name: reveal_step
       value_type: number
@@ -162,7 +162,7 @@ data_contract:
       required_for_player: true
 feedback_and_diagnosis:
   success_evidence:
-    - 学生能用 Δx 和 Δy 说明 AB 与 CD 表示同一向量。
+    - 学生能用横向移动和纵向移动都相同说明 AB 与 CD 表示同一向量。
     - 学生能解释起点 A 和 C 不同，但大小和方向不变，所以向量相等。
     - 学生能指出只看长度不足以判断向量相等，还必须看方向。
     - 学生能在 A 与 B 重合时说明这是零向量且方向不规定。
@@ -174,18 +174,18 @@ feedback_and_diagnosis:
     - id: direction_only_judgment
       label: 只看方向，不看大小
     - id: representation_gap
-      label: 有向线段、分量和向量记号之间断裂
+      label: 有向线段、移动方式和向量记号之间断裂
     - id: zero_vector_direction_error
       label: 误给零向量指定方向
   feedback_principles:
-    - 先让学生读位移分量，再判断大小和方向。
-    - 纠正位置误区时拖动 CD 的起点，而不改变 Δx 和 Δy。
+    - 先让学生观察从起点到终点的横纵移动，再判断大小和方向。
+    - 纠正位置误区时拖动 CD 的起点，而不改变整条有向线段的移动方式。
     - 纠正只看长度的误区时保留相同长度但改变方向的反例追问。
     - 遇到零向量时单独说明长度和方向边界。
 visual_semantics:
   base_vector: 蓝色表示用于定义当前向量的 AB。
   translated_vector: 橙色表示平移后的等价向量 CD。
-  component_guides: 青绿色虚线表示 Δx 和 Δy 分量读数。
+  movement_guides: 青绿色虚线表示横向移动和纵向移动。
   parallel_guides: 灰色虚线连接对应起点和终点，帮助观察整条有向线段的平移。
   rule: 颜色只承载数学对象含义，不作为装饰。
 implementation:

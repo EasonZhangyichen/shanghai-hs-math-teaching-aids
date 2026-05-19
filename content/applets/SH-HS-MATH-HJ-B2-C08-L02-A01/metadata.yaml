@@ -27,7 +27,7 @@ pedagogy:
     - 拖动向量 a、向量 b，观察方向和大小变化如何同步影响 a + b 与 a - b。
     - 用首尾相接和平行四边形两种构造解释同一个向量加法结果。
     - 把向量减法解释为加上相反向量，并用从 B 指向 A 的端点路径检查方向。
-    - 从动态构造回到分量读数和向量等式，避免只记画法模板。
+    - 从动态构造回到路径、端点顺序和横纵移动证据，避免只记画法模板。
   prerequisites:
     - 向量由大小和方向确定
     - 平移有向线段表示同一向量
@@ -47,23 +47,23 @@ mathematical_scope:
   addition_rule: 把 b 平移到 a 的终点得到首尾相接路径，或在共起点下补平行四边形，对角线均表示 a + b。
   subtraction_rule: a - b = a + (-b)，共起点时从 B 指向 A 的向量也表示 a - b。
   default_vectors:
-    origin: O(-3, -1.5)
-    vector_a: a = (3, 2)
-    vector_b: b = (2, -1.5)
+    origin: O，左下方共同起点
+    vector_a: a 从 O 向右上移动
+    vector_b: b 从 O 向右下移动
   out_of_scope:
     - 向量数乘和线性组合的系统训练
-    - 8.3 向量坐标表示课时边界和坐标运算法则扩展
+    - 8.3 后续课时边界和解析化运算法则扩展
     - 用题库形式训练复杂几何图形中的向量等式
     - 把资源状态提升到数学审校或发布候选
 representations:
-  - id: coordinate_grid
+  - id: plane_grid
     role: 显示共起点、终点、平移后的向量和结果向量。
   - id: draggable_vectors
     role: 通过拖动 O、A、B 改变向量 a、b 的位置、方向和大小。
   - id: construction_modes
     role: 在首尾相接、平行四边形和减法模式间切换同一组向量的解释路径。
-  - id: algebra_readout
-    role: 同步显示 a、b、a + b 和 a - b 的分量读数。
+  - id: movement_readout
+    role: 同步显示 a、b、a + b 和 a - b 的横向、纵向移动。
   - id: staged_summary
     role: 支持教师按观察、构造、读数、归纳四步揭示课堂结论。
 interaction_design:
@@ -77,15 +77,15 @@ interaction_design:
   student_controls:
     - 拖动 A 或 B 改变向量 a、b
     - 拖动 O 改变共同起点但保持两个向量不变
-    - 对照三种模式下结果向量的方向和分量
+    - 对照三种模式下结果向量的方向、大小和端点路径
     - 用 B 到 A 的路径判断 a - b 的方向
   staged_reveal:
     - step: observe_vectors
-      description: 只读向量 a、b 的方向、大小和分量。
+      description: 只读向量 a、b 的方向、大小和横纵移动。
     - step: construct_result
       description: 根据当前模式显示首尾相接、平行四边形或相反向量构造。
     - step: read_components
-      description: 揭示结果向量的分量读数和端点路径。
+      description: 揭示结果向量的横纵移动和端点路径。
     - step: summarize_rules
       description: 归纳加法两种构造等价、减法转化为加相反向量。
 data_contract:
@@ -112,33 +112,33 @@ data_contract:
       default:
         x: 3
         y: 2
-      description: 从 O 指向 A 的向量 a 的分量。
+      description: 从 O 指向 A 的向量 a 的几何位移。
       persistence: snapshot
     - name: vector_b
       value_type: point2d
       default:
         x: 2
         y: -1.5
-      description: 从 O 指向 B 的向量 b 的分量。
+      description: 从 O 指向 B 的向量 b 的几何位移。
       persistence: snapshot
     - name: sum_vector
       value_type: point2d
       default:
         x: 5
         y: 0.5
-      description: 向量 a + b 的分量。
+      description: 向量 a + b 的几何位移。
       persistence: snapshot
     - name: difference_vector
       value_type: point2d
       default:
         x: 1
         y: 3.5
-      description: 向量 a - b 的分量。
+      description: 向量 a - b 的几何位移。
       persistence: snapshot
     - name: show_guides
       value_type: boolean
       default: true
-      description: 是否显示构造辅助线和分量辅助线。
+      description: 是否显示构造辅助线和横纵移动辅助线。
       persistence: snapshot
   events:
     - name: ready
@@ -172,7 +172,7 @@ feedback_and_diagnosis:
     - 学生能指出首尾相接中第二个向量的起点必须接到第一个向量的终点。
     - 学生能说明平行四边形对角线与首尾相接路径得到同一个 a + b。
     - 学生能把 a - b 解释为 a + (-b)，并能用从 B 指向 A 的向量检查方向。
-    - 学生能从分量读数验证拖拽后的 a + b 和 a - b。
+    - 学生能从横纵移动和端点路径验证拖拽后的 a + b 和 a - b。
   common_error_tags:
     - id: head_tail_order_error
       label: 首尾相接顺序错误
@@ -183,19 +183,19 @@ feedback_and_diagnosis:
     - id: endpoint_order_reversal
       label: 端点顺序反写导致方向错误
     - id: representation_gap
-      label: 几何构造和分量读数断裂
+      label: 几何构造和横纵移动读数断裂
   feedback_principles:
-    - 先让学生拖动构造，再读出结果向量的方向和分量。
+    - 先让学生拖动构造，再读出结果向量的方向、大小和移动方式。
     - 对加法错误，回到首尾相接路径或平行四边形对角线。
     - 对减法错误，先显示 -b，再用 B 到 A 的路径检查方向。
-    - 反馈只指向可视化证据和向量等式，不扩展到未终核的 8.3 坐标运算。
+    - 反馈只指向可视化证据和向量等式，不扩展到未终核的 8.3 后续运算。
 visual_semantics:
   vector_a: 蓝色表示向量 a = OA。
   vector_b: 橙色表示向量 b = OB。
   result_vector: 绿色表示当前模式下的结果向量 a + b 或 a - b。
   reverse_vector: 红色表示减法模式中的相反向量 -b。
   endpoint_path: 紫色虚线表示从 B 指向 A 的端点路径。
-  guides: 灰色或绿色虚线表示构造辅助线和分量辅助线。
+  guides: 灰色或绿色虚线表示构造辅助线和横纵移动辅助线。
   rule: 颜色只承载数学对象含义，不作为装饰。
 implementation:
   phase: runnable_prototype
