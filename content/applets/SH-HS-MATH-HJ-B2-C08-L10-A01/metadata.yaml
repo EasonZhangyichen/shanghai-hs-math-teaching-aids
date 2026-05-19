@@ -26,7 +26,7 @@ pedagogy:
   learning_goals:
     - 说清 8.4 向量应用调用的前置知识来自 8.1 线性运算、8.2 数量积和 8.3 坐标表示。
     - 围绕同一个三角形分点问题，比较基底法、路径法、数量积/坐标法的第一步建模选择。
-    - 在三角形情境中选择一组基向量，并用它们表示边上点的位置向量。
+    - 在三角形情境中选择一组基向量，并用从 A 出发的向量 AD、AE 表示边上分点。
     - 比较 D 到 E 的三条几何路径，说明路径不同但向量和相同。
     - 把 AD/AB、AE/AC 这样的几何关系转化为系数形式的向量等式，但不展开完整解题器。
   prerequisites:
@@ -47,8 +47,8 @@ mathematical_scope:
   focus: 以三角形 ABC 中 D 在 AB 上、E 在 AC 上为典型情境，比较向量应用题的第一步建模选择。
   lesson: 向量的应用
   problem_model: "设 D 在 AB 上，AD/AB = m；E 在 AC 上，AE/AC = n。目标是判断第一步应如何建模，并把向量 DE 写成选定基向量的线性组合。"
-  primary_basis: "p = AB, q = AC，此时 D = m p，E = n q，DE = -m p + n q。"
-  alternate_basis: "p = AB, r = BC，此时 AC = p + r，DE = (n - m)p + n r。"
+  primary_basis: "p 表示向量 AB，q 表示向量 AC；以 A 为共同起点，AD = m p，AE = n q，DE = AE - AD = -m p + n q。"
+  alternate_basis: "p 表示向量 AB，r 表示向量 BC；此时 AC = p + r，AD = m p，AE = n(p + r)，DE = AE - AD = (n - m)p + n r。"
   first_step_methods:
     - "基底法：先选 p = AB、q = AC，因为 D、E 都落在从 A 出发的两条边上。"
     - "路径法：先选 D -> A -> E、D -> B -> C -> E 或 D -> B -> E，把每段移动翻译为向量和。"
@@ -95,7 +95,7 @@ interaction_design:
     - step: read_conditions
       description: 先读 D、E 的分点关系，只确定 m 和 n，不急于计算。
     - step: choose_basis
-      description: 比较基底法、路径法、数量积/坐标法的第一步，再选择基向量写 D、E 的位置表达。
+      description: 比较基底法、路径法、数量积/坐标法的第一步，再选择基向量写 AD、AE 的向量表达，避免把点 D、E 直接等同于向量。
     - step: trace_path
       description: 选择 D 到 E 的一条路径，把每段几何移动翻译成向量和。
     - step: compare_equations
@@ -129,7 +129,7 @@ data_contract:
       persistence: snapshot
     - name: basis_equation
       value_type: string
-      description: 当前基向量选择下 D、E 与 DE 的表达。
+      description: 当前基向量选择下 AD、AE 与 DE 的表达。
       persistence: snapshot
     - name: path_delta
       value_type: string
@@ -179,9 +179,9 @@ feedback_and_diagnosis:
   success_evidence:
     - 学生能说出 8.4 本题调用了 8.1 线性运算、8.2 数量积和 8.3 坐标表示中的哪些工具，但不混成一个万能工具箱。
     - 学生能比较基底法、路径法、数量积/坐标法的第一步选择，并说明本题为什么优先用基底法或路径法。
-    - 学生能先写出选定基向量，再写 D、E 的位置表达。
+    - 学生能先写出选定基向量，再写 AD、AE 的向量表达；若口头使用“D 点对应 mp、E 点对应 nq”的位置向量简写，需说明共同起点为 A。
     - 学生能解释 D -> A -> E、D -> B -> C -> E 等不同路径化简后为什么一致。
-    - 学生能把“点在边上”的几何语言转化为 m p、n q 等向量等式。
+    - 学生能把“点在边上”的几何语言转化为 AD = m p、AE = n q 等向量等式。
     - 学生能说明坐标法可以作为后续工具，但本题第一步更适合先用路径分解。
   common_error_tags:
     - id: basis_not_chosen
@@ -198,6 +198,7 @@ feedback_and_diagnosis:
     - 先让学生用图中路径说出每一段移动，再写符号表达。
     - 对比例方向错误，回到 AD/AB 和 AE/AC 的起点方向检查。
     - 对坐标法或数量积法冲动，先追问“题目第一问是否真的要求长度、夹角、垂直或坐标数值”。
+    - 对“D = mp、E = nq”这类简写，提醒它只能作为以 A 为共同起点的位置向量口头简写；正式板书优先写 AD = mp、AE = nq。
     - 只比较建模路径，不把本板扩展成完整解题器。
 visual_semantics:
   basis_ab: 蓝色表示基向量 AB。
