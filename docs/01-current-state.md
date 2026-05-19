@@ -57,6 +57,7 @@
   - `SH-HS-MATH-HJ-B2-C08-L04-M01`“投影有向长度导入动画”。
   - 该资源包初始包含 `metadata.yaml`、`README.md`、`storyboard.md`、`scene.py` 和 `review.md`；后续生产线第三批已补齐真实 Manim 场景并导出 `mp4` / `webm` / poster，当前平台卡片已接入 `video_ready` 播放入口，但顶层仍保持 `draft`。
   - 本批先 dry-run 确认只创建该 Manim Clip，再写入单个资源包；未生成或恢复 8.3 暂缓项。
+- 2026-05-19 第 8 章首批 3 条修复线已由总控集成：`L01-A01` / `L02-A01` 继续收回 8.3 前置语言，改向几何位移、大小、方向、首尾相接和端点顺序；`L03-A01` / `L04-A01` / `L05-A01` 补充浏览器触控与平台 iframe 风险记录，`L04-A01` 仍为 runnable iframe 且保持 `draft` / `self_checked_draft`；`L10-A01` 进一步压缩 560px iframe 首屏并统一正式表达为 `AD = mp` / `AE = nq`，继续保留 `hold_for_platform_iframe_fit`。本批未恢复 8.3 暂缓资源，未提升任何 B2-C08 资源到 `classroom_trial`、`release_candidate` 或 `published`。
 - 已在 `track/trig-sample-pack` 上为 `SH-HS-MATH-HJ-B2-C07-L01-A01` 创建“单位圆到正弦曲线”资源包草稿：
   - 已包含 `metadata.yaml`、`README.md`、`teacher-script.md`、`student-task.md`、`review.md`。
   - 已新增 `src/index.html` 可运行原型，支持单位圆动点拖拽、`theta` 滑块、播放/暂停、重置、投影线、轨迹、关键点和周期延拓。
