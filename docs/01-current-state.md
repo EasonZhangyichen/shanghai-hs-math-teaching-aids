@@ -235,6 +235,10 @@
   - 平台侧和课件侧已接入富数学文本渲染，常见的 `π/2`、`-3π/2` 等会以竖式分数显示，避免 `pi/2`、`Theta` 或横向斜杠破坏数学语言。
   - `content/shared/math-text-normalizer.js` 已覆盖普通 HTML 文本、动态 DOM 更新和 SVG `<text>` 中的简单 π 分数标签。
   - `SH-HS-MATH-HJ-B2-C07-L06-A01` 与 `SH-HS-MATH-HJ-B2-C07-L07-A01` 已完成正切相关课件首屏尺寸压缩、平台 iframe 高度优化和基础浏览器复核。
+- 2026-05-19 已将数学公式显示问题升级为项目级质量闸门：
+  - `docs/content-standards.md` 新增“数学公式呈现标准”，要求课堂可见公式中的希腊字母、分式、集合、区间、绝对值和函数式符合高中数学书写习惯，不得把 `theta`、`pi/2`、横向纯文本分式或英文变量占位直接暴露给教师和学生。
+  - `docs/codex-collaboration-guide.md`、`docs/resource-factory-workflow.md`、`docs/parallel-quality-system.md` 和 `docs/thread-starter-prompts.md` 已补充总控分流规则：总控不直接承接具体资源修复、功能新增或审核，必须开独立工作对话完成；总控负责提示词、质量闸门、合并和最终验证。
+  - 现有 Applet 中仍可能残留不达标公式显示，下一步需开独立“数学公式显示修复线”逐资源审计和修复；修复前不得因可运行而提升相关资源质量状态。
 - 已完成第一轮已实现资源审校并进入总控集成：
   - 任务单位于 `docs/resource-review-rounds/2026-05-08-round-1.md`。
   - `SH-HS-MATH-HJ-B2-C07-L06-A01` 正切函数图像生成器已完成数学表达、首屏、播放跨渐近线、教师脚本和学生活动节奏审校，建议进入 `math_review`，但仍需一线教师按 16 分钟流程试读。
@@ -306,6 +310,7 @@
 - 第 7 章的第 6 章前置节点已 draft 展开，但仍需人工终核；第 9 章“复数”已新增 draft 图谱和数字化必要性初筛，但尚未完成纸质教材/已登录 dolearning 终核。
 - 尚未创建独立课件播放器；教师工作台内已完成样板 Applet iframe 预览接入，但尚未沉淀为独立 `apps/player`。
 - 已创建八个第 7 章可运行 HTML Applet 原型，并已接入平台壳 iframe 预览；`L01-A01`、`L02-A01`、`L03-A01`、`L03-A02`、`L04-A01`、`L05-A01`、`L06-A01` 和 `L07-A01` 均已完成一轮数学/浏览器审校但仍需教师试读。第 8 章 Applet 中，`L01-A01`、`L02-A01`、`L03-A01`、`L04-A01`、`L05-A01` 和 `L10-A01` 均已推进为可运行自检草稿。
+- 已知多个 Applet 仍可能存在课堂可见公式显示不达标问题，包括 `theta` / `pi` 英文占位、横向纯文本分式和未上下排版的 `π/2` 类表达；这些问题需要独立修复线处理，不能在总控线程直接批量修复。
 - 已创建四个 Manim 场景脚本：`L01-M01`、`L05-M01`、`L06-M01` 与 `SH-HS-MATH-HJ-B2-C08-L04-M01` 均已导出可播放 `mp4` / `webm` / poster；第 7 章 `L01-M01`、`L05-M01` 和 `L06-M01` 已完成数学审校和重渲染，第 8 章 `L04-M01` 已接入平台 `video_ready` 播放入口但顶层仍为 `draft` / `self_checked_draft`，需后续视频观看、数学审校和课堂节奏复核。
 - 已将 Applet、Manim 和 Diagnosis metadata JSON Schema 接入首版自动校验脚本。
 - 已建立首版资源生产 backlog，可按单个资源工作单元开启新对话，避免全高中内容挤在一个上下文中；当前必修第二册第 7 章 15 个资源工作单元和第 8 章 10 个筛选后候选均已落地，新增的 B1-C02、B1-C04、B1-C05、B2-C06、B2-C09 planned 候选仅用于记录数字化必要性，不应立即 scaffold，并已补充 Applet / Manim / Diagnosis 全类型 scaffold 命令以减少后续手工建目录成本。
