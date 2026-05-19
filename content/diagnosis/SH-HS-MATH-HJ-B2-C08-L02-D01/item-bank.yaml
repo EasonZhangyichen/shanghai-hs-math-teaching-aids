@@ -78,7 +78,7 @@ items:
       - id: "A"
         text: "向量 CB"
         is_correct: true
-        feedback: "AB - AC = AB + CA，路径 C -> A -> B 的合位移是 C -> B。"
+        feedback: "AB - AC = AB + CA = CA + AB，按路径 C -> A -> B，合位移是 C -> B。"
       - id: "B"
         text: "向量 BC"
         is_correct: false
@@ -130,7 +130,7 @@ items:
         text: "向量 AB + 向量 CA = 向量 BC"
         is_correct: false
         misconception_tags: ["endpoint_order_reversal", "addition_direction_rule_confusion"]
-        feedback: "AB + CA 可改看成 C -> A -> B，结果是 CB，不是 BC。"
+        feedback: "AB + CA = CA + AB，可按 C -> A -> B 读路径，结果是 CB，不是 BC。"
       - id: "C"
         text: "向量 AC - 向量 AB = 向量 BC"
         is_correct: true
@@ -139,7 +139,7 @@ items:
         text: "向量 AB - 向量 AC = 向量 BC"
         is_correct: false
         misconception_tags: ["subtraction_opposite_vector_error", "endpoint_order_reversal"]
-        feedback: "AB - AC = AB + CA = CB，方向与 BC 相反。"
+        feedback: "AB - AC = AB + CA = CA + AB = CB，方向与 BC 相反。"
     answer: ["A", "C"]
     scoring_note: "全选 A、C 且不选 B、D 得 2 分；漏选一个正确项得 1 分；选择 B 或 D 时记录端点顺序错因。"
     feedback_on_correct: "能在加法和减法中始终追踪“从哪里出发、到哪里结束”。"
@@ -153,7 +153,7 @@ items:
     expected_response:
       - "AB + AD 应等于 AC，不是 CA。"
       - "平行四边形法则的合向量从共同起点 A 指向对角点 C。"
-      - "AB - AD = AB + DA = DB，不是 BD。"
+      - "AB - AD = AB + DA = DA + AB = DB，不是 BD。"
       - "AB + BC + CA 是闭合路径 A -> B -> C -> A，结果是 0 向量。"
       - "订正时应说明每个向量的起点和终点。"
     misconception_tags_when_incomplete:

@@ -22,7 +22,7 @@
 
 ## 讲评方向
 
-- `angle_sign_confusion` 高发：画同一长度的两个向量，把夹角拖到锐角、直角、钝角三段，让学生先说 `cosθ` 符号，再说数量积符号。
+- `angle_sign_confusion` 高发：画同一长度的两个向量，把夹角拖到锐角、直角、钝角和 180° 反向位置，让学生先说 `cosθ` 符号，再说数量积符号。
 - `projection_sign_confusion` 高发：回到“沿 a 的方向读 b 的有向投影”，强调投影点在反方向一侧时读负值。
 - `zero_vector_boundary` 或 `perpendicular_condition_overgeneralization` 高发：板书两句话并比较：“若两个非零向量 a · b = 0，则 a ⊥ b”；“若某个向量为零，a · b = 0 但不能用夹角为 90°解释”。
 - `result_type_scalar_confusion` 高发：让学生把“数量积”和“向量加法”放在一起比较结果类型，一个是数量，一个仍是向量。
