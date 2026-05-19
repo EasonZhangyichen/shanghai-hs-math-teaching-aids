@@ -49,7 +49,7 @@ mathematical_scope:
   domain: "R"
   range: "[-1, 1]"
   fundamental_period: "2π"
-  default_x_range: "-2π <= x <= 4π"
+  default_x_range: "-2π ≤ x ≤ 4π"
   monotonicity:
     increasing: "[-π/2 + 2kπ, π/2 + 2kπ], k ∈ Z"
     decreasing: "[π/2 + 2kπ, 3π/2 + 2kπ], k ∈ Z"

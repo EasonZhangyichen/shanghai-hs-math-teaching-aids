@@ -13,10 +13,10 @@
 
 ```text
 同一角 x
--> P = (cos x, sin x)
--> 同一 x 下读 y = sin x 与 y = cos x
--> 比较关键角值序列
--> 用 sin(x + π/2) 验证 cos x 的相位位置
+→ P = (cos x, sin x)
+→ 同一 x 下读 y = sin x 与 y = cos x
+→ 比较关键角值序列
+→ 用 sin(x + π/2) 验证 cos x 的相位位置
 ```
 
 ## 为什么需要数字化

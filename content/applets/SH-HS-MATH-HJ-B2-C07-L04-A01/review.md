@@ -54,6 +54,13 @@
 - [x] Browser 插件可打开页面并完成按钮/表格 DOM 交互检查；截图接口本轮出现 `Page.captureScreenshot` 超时。
 - [x] 使用终端 Playwright 作为截图回退，完成 1280×720 截图、归纳面板快照、关键角跳转、播放/暂停和 console 检查；未发现页面脚本错误或警告。
 
+## 2026-05-19 数学公式显示修复线复核
+
+- 修复范围：仅在本资源包内把 metadata 中的参数函数占位从 `omega`、`phi` 改为 `ω`、`φ`，把 README / teacher-script / metadata 中的区间和流程箭头改为数学排版写法；`src/index.html` 继续使用共享数学文本规范化脚本处理动态归纳表和反馈语。
+- 定向审计：未发现英文大写角变量、ASCII 圆周率倍数/分式或横向三角函数商主导课堂显示；余弦性质表继续使用 `π`、`k ∈ Z`、`sin x` 和 `cos x`。
+- 验证结果：`npm run validate:content` 通过，内容校验为 70 个课时、14 个 Applet、4 个 Manim、7 个诊断包；`npm run verify` 通过，36 项 Node 测试全部通过，Vite build 成功，仅保留既有 chunk size warning。`verify` 再生了 `apps/web/src/data/workspace-data.json`，本分支不提交该全局生成文件。
+- 剩余风险：本轮不提升资源状态；真实教室触控和 Markdown 文档分式渲染仍需后续平台/设备复核。
+
 ## 版权与合规清单
 
 - [x] 本草稿为原创脚本、任务与交互实现。

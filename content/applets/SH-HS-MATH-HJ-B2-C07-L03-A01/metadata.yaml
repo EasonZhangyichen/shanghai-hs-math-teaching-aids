@@ -46,8 +46,8 @@ mathematical_scope:
   function: "y = cos x"
   independent_variable: "角 x 的弧度量"
   dependent_variable: "单位圆动点的横坐标"
-  default_theta_range: "0 <= x <= 2π"
-  extension_theta_range: "-2π <= x <= 4π"
+  default_theta_range: "0 ≤ x ≤ 2π"
+  extension_theta_range: "-2π ≤ x ≤ 4π"
   key_angles:
     - theta: "0"
       cosine: "1"
@@ -73,7 +73,7 @@ mathematical_scope:
   out_of_scope:
     - "余弦函数单调区间、奇偶性和对称性的系统归纳"
     - "正弦与余弦性质的完整比较"
-    - "y = A sin(omega x + phi) 的参数变换"
+    - "y = A sin(ωx + φ) 的参数变换"
     - "用诱导公式证明余弦性质"
 
 representations:

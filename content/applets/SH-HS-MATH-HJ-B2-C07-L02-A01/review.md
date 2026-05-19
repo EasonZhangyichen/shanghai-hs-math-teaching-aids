@@ -49,6 +49,13 @@
 - `npm run validate:content`：通过，内容校验结果为 70 个课时、14 个 Applet、4 个 Manim、7 个诊断包。
 - `npm run verify`：通过，28 个测试全部通过，生产构建成功；仅有 Vite chunk 体积提示。命令生成的 `apps/web/src/data/workspace-data.json` 已按本轮约束排除出提交。
 
+## 2026-05-19 数学公式显示修复线复核
+
+- 修复范围：仅在本资源包内把 README / teacher-script / metadata 中的可见区间写法统一为 `≤`，并把 README 流程箭头从 ASCII 箭头改为数学排版箭头；`src/index.html` 继续使用共享数学文本规范化脚本处理 π 分数和动态公式。
+- 定向审计：未发现英文角变量、ASCII 圆周率倍数/分式或横向三角函数商主导课堂显示；正弦一般式仍使用 `π`、`k ∈ Z` 和 `sin x`。
+- 验证结果：`npm run validate:content` 通过，内容校验为 70 个课时、14 个 Applet、4 个 Manim、7 个诊断包；`npm run verify` 通过，36 项 Node 测试全部通过，Vite build 成功，仅保留既有 chunk size warning。`verify` 再生了 `apps/web/src/data/workspace-data.json`，本分支不提交该全局生成文件。
+- 剩余风险：自动化尚未复测真实触控屏；Markdown 材料的上下分式显示仍取决于后续文档渲染能力，Applet HTML 运行态由 normalizer 兜底。
+
 ## 剩余风险
 
 - 需要数学审校者最终确认最小值点主写法与教材课堂板书习惯一致。
