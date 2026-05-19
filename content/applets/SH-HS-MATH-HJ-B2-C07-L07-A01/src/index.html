@@ -323,12 +323,13 @@
         line-height: 1.75;
       }
 
-      .formula-list code,
-      .explain code {
-        font-family: "SFMono-Regular", Consolas, monospace;
-        background: rgba(31, 95, 153, 0.08);
-        border-radius: 5px;
-        padding: 1px 4px;
+      .math-inline {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.04em;
+        font-family: Georgia, "Times New Roman", "Songti SC", serif;
+        font-weight: 800;
+        white-space: nowrap;
       }
 
       .summary-box {
@@ -364,6 +365,7 @@
       .svg-math-label .math-frac,
       .metric-value .math-frac,
       .readout .math-frac,
+      .math-inline .math-frac,
       .formula-list .math-frac {
         font-size: 0.9em;
       }
@@ -474,18 +476,18 @@
         <section class="panel-block">
           <h2 class="block-title">课堂追问</h2>
           <p class="explain" id="promptText">
-            只看高亮的一个连续定义区间：当 <code>x</code> 从左到右移动时，<code>tan x</code> 是否始终增大？
+            只看高亮的一个连续定义区间：当 <span class="math-inline">x</span> 从左到右移动时，<span class="math-inline">tan x</span> 是否始终增大？
           </p>
         </section>
 
         <section class="panel-block summary-box" id="summaryBox">
           <h2 class="block-title">性质归纳</h2>
           <ul class="formula-list">
-            <li>定义域：<code>x ≠ π/2 + kπ, k ∈ Z</code></li>
-            <li>值域：<code>R</code></li>
-            <li>周期：<code>tan(x + π) = tan x</code></li>
-            <li>奇偶性：<code>tan(-x) = -tan x</code></li>
-            <li>单调性：在 <code>(-π/2 + kπ, π/2 + kπ), k ∈ Z</code> 上递增</li>
+            <li>定义域：<span class="math-inline">x ≠ π/2 + kπ, k ∈ Z</span></li>
+            <li>值域：<span class="math-inline">ℝ</span></li>
+            <li>周期：<span class="math-inline">tan(x + π) = tan x</span></li>
+            <li>奇偶性：<span class="math-inline">tan(-x) = -tan x</span></li>
+            <li>单调性：在 <span class="math-inline">(-π/2 + kπ, π/2 + kπ), k ∈ Z</span> 上递增</li>
           </ul>
         </section>
       </aside>

@@ -426,6 +426,39 @@
         font-weight: 700;
       }
 
+      .svg-math-foreign {
+        overflow: visible;
+        pointer-events: none;
+      }
+
+      .callout-html {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        color: var(--ink);
+        font-size: 15px;
+        font-weight: 700;
+        line-height: 1;
+        white-space: nowrap;
+      }
+
+      .math-inline {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.04em;
+        white-space: nowrap;
+      }
+
+      .math-inline .math-frac,
+      .callout-html .math-frac,
+      .formula-note .math-frac,
+      .panel-note .math-frac,
+      .checkpoint-list .math-frac {
+        font-size: 0.9em;
+      }
+
       .is-hidden {
         display: none;
       }
@@ -521,8 +554,11 @@
               <line id="pointGuideX" class="grid-line"></line>
               <line id="pointGuideY" class="grid-line"></line>
               <circle id="currentPoint" class="current-point" r="9"></circle>
-              <rect id="pointCallout" class="callout" rx="8" width="172" height="44"></rect>
-              <text id="pointLabel" class="callout-text"></text>
+              <rect id="pointCallout" class="callout" rx="8" width="202" height="44"></rect>
+              <text id="pointLabel" class="callout-text is-hidden"></text>
+              <foreignObject id="pointLabelFo" x="0" y="0" width="190" height="34" class="svg-math-foreign">
+                <div id="pointLabelHtml" class="callout-html">x=0, y=0</div>
+              </foreignObject>
             </g>
           </svg>
           <div class="legend">
@@ -571,7 +607,12 @@
               <span class="slider-head">观察点 x <output id="xOutput">0</output></span>
               <input id="xSlider" type="range" min="-6.28318" max="6.28318" step="0.02" value="0" />
             </label>
-            <p class="panel-note">本实验限制 ω &gt; 0，因此周期按 2π / ω 显示；一般式为 2π / |ω|。</p>
+            <p class="panel-note">
+              本实验限制 ω &gt; 0，因此周期按
+              <span class="math-inline" aria-label="2π/ω"><span class="math-frac"><span>2π</span><span>ω</span></span></span>
+              显示；一般式为
+              <span class="math-inline" aria-label="2π/|ω|"><span class="math-frac"><span>2π</span><span>|ω|</span></span></span>。
+            </p>
           </section>
 
           <section class="panel-section">
@@ -584,7 +625,11 @@
                 平移后伸缩
               </button>
             </div>
-            <p class="panel-note" id="sequenceNote">先得到 y = sin(ωx)，再按 -φ / ω 平移到最终图像。</p>
+            <p class="panel-note" id="sequenceNote">
+              先得到 y = sin(ωx)，再按
+              <span class="math-inline" aria-label="-φ/ω">-<span class="math-frac"><span>φ</span><span>ω</span></span></span>
+              平移到最终图像。
+            </p>
           </section>
 
           <section class="panel-section">
@@ -610,8 +655,16 @@
             <p class="section-title">课堂收束</p>
             <ul class="checkpoint-list">
               <li>先看 <strong>|A|</strong> 判断振幅和翻折。</li>
-              <li>再用 <strong>T = 2π / ω</strong> 判断横向伸缩。</li>
-              <li>最后用 <strong>x = -φ / ω</strong> 判断相位平移。</li>
+              <li>
+                再用 <strong>T =
+                  <span class="math-inline" aria-label="2π/ω"><span class="math-frac"><span>2π</span><span>ω</span></span></span>
+                </strong> 判断横向伸缩。
+              </li>
+              <li>
+                最后用 <strong>x =
+                  <span class="math-inline" aria-label="-φ/ω">-<span class="math-frac"><span>φ</span><span>ω</span></span></span>
+                </strong> 判断相位平移。
+              </li>
             </ul>
           </section>
         </aside>
@@ -657,6 +710,8 @@
         pointGuideY: document.getElementById("pointGuideY"),
         pointCallout: document.getElementById("pointCallout"),
         pointLabel: document.getElementById("pointLabel"),
+        pointLabelFo: document.getElementById("pointLabelFo"),
+        pointLabelHtml: document.getElementById("pointLabelHtml"),
         formulaReadout: document.getElementById("formulaReadout"),
         phaseReadout: document.getElementById("phaseReadout"),
         amplitudeReadout: document.getElementById("amplitudeReadout"),
@@ -731,6 +786,17 @@
         Object.entries(attrs).forEach(([key, value]) => element.setAttribute(key, value));
         return element;
       }
+
+      function setMathText(element, value) {
+        if (window.SHMathTextNormalizer?.setMathHTML && element instanceof HTMLElement) {
+          window.SHMathTextNormalizer.setMathHTML(element, value);
+        } else {
+          element.textContent = window.SHMathTextNormalizer?.formatMathText?.(value) ?? String(value ?? "");
+        }
+      }
+
+      const PHASE_SHIFT_HTML =
+        '<span class="math-inline" aria-label="-φ/ω">-<span class="math-frac"><span>φ</span><span>ω</span></span></span>';
 
       function drawGrid() {
         elements.gridLayer.innerHTML = "";
@@ -863,7 +929,9 @@
         elements.pointCallout.setAttribute("y", calloutY);
         elements.pointLabel.setAttribute("x", calloutX + 12);
         elements.pointLabel.setAttribute("y", calloutY + 27);
-        elements.pointLabel.textContent = `x=${formatPiValue(x)}, y=${formatNumber(y)}`;
+        elements.pointLabelFo.setAttribute("x", calloutX + 12);
+        elements.pointLabelFo.setAttribute("y", calloutY + 6);
+        setMathText(elements.pointLabelHtml, `x=${formatPiValue(x)}, y=${formatNumber(y)}`);
       }
 
       function updateReadouts() {
@@ -872,24 +940,28 @@
         const y = finalY(state.currentX);
         elements.aOutput.textContent = formatNumber(state.a);
         elements.omegaOutput.textContent = formatNumber(state.omega);
-        elements.phiOutput.textContent = formatPiValue(phiValue);
-        elements.xOutput.textContent = formatPiValue(state.currentX);
+        setMathText(elements.phiOutput, formatPiValue(phiValue));
+        setMathText(elements.xOutput, formatPiValue(state.currentX));
 
         elements.amplitudeReadout.textContent = formatNumber(Math.abs(state.a));
-        elements.periodReadout.textContent = formatPiValue(period());
-        elements.shiftReadout.textContent = formatPiValue(shift);
+        setMathText(elements.periodReadout, formatPiValue(period()));
+        setMathText(elements.shiftReadout, formatPiValue(shift));
         elements.pointReadout.textContent = formatNumber(y);
-        elements.formulaReadout.textContent =
-          `y = ${formatCoefficient(state.a)}sin(${formatOmega(state.omega)}x${formatPhiTerm(phiValue)})`;
-        elements.phaseReadout.textContent =
-          `相位：${formatOmega(state.omega)}x${formatPhiTerm(phiValue)}，平移 ${formatPiValue(shift)}`;
+        setMathText(
+          elements.formulaReadout,
+          `y = ${formatCoefficient(state.a)}sin(${formatOmega(state.omega)}x${formatPhiTerm(phiValue)})`,
+        );
+        setMathText(
+          elements.phaseReadout,
+          `相位：${formatOmega(state.omega)}x${formatPhiTerm(phiValue)}，平移 ${formatPiValue(shift)}`,
+        );
         elements.summaryA.textContent = formatNumber(Math.abs(state.a));
-        elements.summaryOmega.textContent = formatPiValue(period());
-        elements.summaryPhi.textContent = formatPiValue(shift);
-        elements.sequenceNote.textContent =
+        setMathText(elements.summaryOmega, formatPiValue(period()));
+        setMathText(elements.summaryPhi, formatPiValue(shift));
+        elements.sequenceNote.innerHTML =
           state.sequenceMode === "scale_then_shift"
-            ? "先得到 y = sin(ωx)，再按 -φ / ω 平移到最终图像。"
-            : "先得到 y = sin(x + φ)，再做横向伸缩；最终平移量仍是 -φ / ω。";
+            ? `先得到 y = sin(ωx)，再按 ${PHASE_SHIFT_HTML} 平移到最终图像。`
+            : `先得到 y = sin(x + φ)，再做横向伸缩；最终平移量仍是 ${PHASE_SHIFT_HTML}。`;
         elements.summaryPanel.classList.toggle("is-hidden", !state.summaryVisible);
       }
 
