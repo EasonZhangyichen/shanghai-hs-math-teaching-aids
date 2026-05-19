@@ -178,7 +178,7 @@ visual_semantics:
   rule: 颜色只承载数学对象含义，不作为装饰。
 implementation:
   phase: runnable_prototype
-  html_src_status: scaffolded
+  html_src_status: runnable
   planned_engine: native-canvas-svg
   create_src_in_later_task: false
   classroom_device_targets:
