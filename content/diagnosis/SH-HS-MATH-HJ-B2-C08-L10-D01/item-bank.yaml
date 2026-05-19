@@ -54,9 +54,9 @@ items:
         is_correct: true
         feedback: "垂直判定是数量积的典型入口。"
       - id: "B"
-        text: "要判断两个向量夹角是锐角还是钝角，可先看这两个向量的数量积符号。"
+        text: "要判断两个非零向量夹角是锐角还是钝角，可先看这两个向量的数量积符号。"
         is_correct: true
-        feedback: "数量积正负直接反映夹角余弦的正负。"
+        feedback: "两个向量均非零时，数量积正负直接反映夹角余弦的正负。"
       - id: "C"
         text: "只要题中出现中点，第一步都应直接写数量积。"
         is_correct: false

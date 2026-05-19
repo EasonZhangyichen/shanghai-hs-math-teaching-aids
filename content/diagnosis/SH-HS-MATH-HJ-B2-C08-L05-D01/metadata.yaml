@@ -52,7 +52,7 @@ diagnosis_design:
   misconception_tags:
     - id: "angle_sign_confusion"
       title: "夹角符号误判"
-      description: "不能稳定用锐角、直角、钝角判断 cosθ 和数量积的正、零、负。"
+      description: "不能稳定用锐角、直角、钝角及 180° 反向边界判断 cosθ 和数量积的正、零、负。"
     - id: "projection_sign_confusion"
       title: "投影正负混淆"
       description: "把有向投影长度当成普通线段长度，忽略投影方向与基准向量方向相反时为负。"

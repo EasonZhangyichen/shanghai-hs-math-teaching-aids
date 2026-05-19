@@ -38,3 +38,10 @@
 - 仍需小组限时试做，确认 6 题能在 8 到 10 分钟内完成。
 - 第 8 章整体课时划分仍为 `draft`，需纸质教材或已登录 dolearning 最终确认；本资源当前不建议进入 `math_review` 以上状态。
 - 未接入交互式诊断播放器，当前仅为题组预览与教师讲评用草稿。
+
+## 2026-05-19 B2-C08 Diagnosis 审核线程复核
+
+- 本轮只做题组质量审核，未新增题目，未改变 `metadata.status: draft`、`compliance.review_status: self_checked_draft` 或 `platform_card.availability: metadata_ready`。
+- 数学口径复核：Q01 到 Q06 的向量加法、减法、闭合路径和端点顺序结论均可由几何路径直接验证，未发现需要修题的答案错误。
+- 错因标签复核：四类标签均能对应具体错误选择或解释缺口，`subtraction_opposite_vector_error` 与 `endpoint_order_reversal` 在 Q03、Q05、Q06 中的组合合理。
+- 限时节奏复核：6 题 10 分适合 8 到 10 分钟即时诊断；教师需继续要求 Q04、Q06 条目式作答，避免写成完整证明。
