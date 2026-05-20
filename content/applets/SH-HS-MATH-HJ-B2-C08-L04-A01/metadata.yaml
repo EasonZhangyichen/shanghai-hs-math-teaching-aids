@@ -54,8 +54,8 @@ mathematical_scope:
     - 向量坐标表示 8.3 的课时边界讨论
     - 题库式判断投影或数量积正负
 representations:
-  - id: coordinate_grid
-    role: 显示共享起点、方向直线、垂足和投影段。
+  - id: projection_board
+    role: 显示共享起点、方向轴、垂足和投影段，不呈现坐标读数。
   - id: vector_a
     role: 蓝色向量 a，表示被投影对象，可拖动终点改变大小和方向。
   - id: vector_b
@@ -63,7 +63,7 @@ representations:
   - id: projection_foot
     role: 垂足 F，连接向量 a 的端点到 b 所在直线。
   - id: measurement_readout
-    role: 同步显示 angle_degrees、cos_theta、signed_projection 和 dot_sign。
+    role: 同步显示夹角 θ、cos θ、有向投影长度和数量积符号。
   - id: staged_summary
     role: 供教师按夹角、垂足、有向长度、正负联系四步揭示。
 interaction_design:
@@ -83,40 +83,27 @@ interaction_design:
       description: 先显示两条向量和夹角，观察锐角、直角、钝角边界。
     - step: drop_perpendicular
       description: 显示从 A 到 b 所在直线的垂线和垂足 F。
-    - step: read_signed_projection
-      description: 显示从 O 到 F 的有向投影段，并读出 signed_projection 与 cos_theta。
+    - step: read_directed_length
+      description: 显示从 O 到 F 的有向投影段，并读出有向投影长度与 cos θ 的符号联系。
     - step: connect_sign
       description: 归纳 cos 值、有向投影长度和数量积符号的正负联系。
 data_contract:
   state_variables:
     - name: vector_a
       value_type: point2d
-      description: 蓝色被投影向量 a 的终点坐标，起点固定为 O。
+      description: 蓝色被投影向量 a 的终点位置，起点固定为 O。
       persistence: snapshot
     - name: vector_b
       value_type: point2d
-      description: 橙色投影方向向量 b 的终点坐标，起点固定为 O。
+      description: 橙色投影方向向量 b 的终点位置，起点固定为 O。
       persistence: snapshot
     - name: projection_foot
       value_type: point2d
       description: 从 a 的终点向 b 所在直线作垂线得到的垂足 F。
       persistence: snapshot
-    - name: angle_degrees
-      unit: degree
-      value_type: number
-      description: 非零向量 a 与非零向量 b 的夹角，范围为 0 到 180 度。
-      persistence: snapshot
-    - name: cos_theta
-      value_type: number
-      description: 当前夹角的余弦值，用于观察正负变化。
-      persistence: snapshot
-    - name: signed_projection
-      value_type: number
-      description: 向量 a 在向量 b 方向上的有向投影长度。
-      persistence: snapshot
-    - name: dot_sign
-      value_type: string
-      description: 数量积符号的直观状态：positive、zero、negative 或 undefined。
+    - name: projection_state
+      value_type: object
+      description: 夹角 θ、cos θ、有向投影长度和数量积符号组成的运行读数。
       persistence: snapshot
     - name: reveal_step
       value_type: number
@@ -131,10 +118,7 @@ data_contract:
         - vector_a
         - vector_b
         - projection_foot
-        - angle_degrees
-        - cos_theta
-        - signed_projection
-        - dot_sign
+        - projection_state
         - reveal_step
       required_for_player: true
     - name: state_changed
@@ -144,10 +128,7 @@ data_contract:
         - vector_a
         - vector_b
         - projection_foot
-        - angle_degrees
-        - cos_theta
-        - signed_projection
-        - dot_sign
+        - projection_state
         - reveal_step
       required_for_player: true
 feedback_and_diagnosis:
@@ -157,13 +138,13 @@ feedback_and_diagnosis:
     - 学生能用拖动得到的图形证据说明钝角时投影为负不是“长度为负”，而是方向读数为负。
     - 学生能说明本资源只建立投影和符号直观，完整数量积公式需在后续课时继续学习。
   common_error_tags:
-    - id: unsigned_projection_length
+    - id: projection_as_plain_length
       label: 把投影长度当成普通无向线段长度
     - id: obtuse_projection_sign
       label: 不理解钝角投影为负
     - id: perpendicular_foot_gap
       label: 垂足、投影点和原向量端点混淆
-    - id: dot_sign_formula_memory
+    - id: product_sign_formula_memory
       label: 只背数量积正负结论，缺少投影解释
   feedback_principles:
     - 先让学生看垂足位置，再读有向投影长度。
