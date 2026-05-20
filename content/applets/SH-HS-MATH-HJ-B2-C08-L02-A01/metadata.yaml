@@ -54,7 +54,7 @@ mathematical_scope:
     - 向量数乘和线性组合的系统训练
     - 8.3 后续课时边界和解析化运算法则扩展
     - 用题库形式训练复杂几何图形中的向量等式
-    - 把资源状态提升到数学审校或发布候选
+    - 超出 draft / self_checked_draft / metadata_ready 草稿边界的正式流转
 representations:
   - id: plane_grid
     role: 显示共起点、终点、平移后的向量和结果向量。
@@ -213,5 +213,5 @@ files:
   review_record: review.md
   src_entry: src/index.html
 compliance:
-  copyright_note: 本资源为原创交互草稿，不复制教材正文、官方课件、教案或商业题库；第 8 章来源和课时边界仍需纸质教材或已登录平台终核。
+  copyright_note: 本资源为原创交互草稿，不复制教材正文、官方课件、教案或商业题库；第 8 章教材来源和课时边界仍需纸质教材或已登录平台终核，当前仅保持 draft / self_checked_draft / metadata_ready 草稿边界。
   review_status: self_checked_draft

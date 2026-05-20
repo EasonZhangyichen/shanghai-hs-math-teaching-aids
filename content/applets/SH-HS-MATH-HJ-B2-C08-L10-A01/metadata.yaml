@@ -63,6 +63,7 @@ mathematical_scope:
     - 不把数量积/坐标法扩展成全能向量应用工具箱
     - 不强行展开复杂解析几何或坐标建系计算
     - 不处理数量积求角、求长度的完整应用链
+    - 超出 draft / self_checked_draft / metadata_ready 草稿边界的正式流转
 representations:
   - id: geometry_board
     role: 显示三角形 ABC、分点 D/E、所选基向量和当前路径。
@@ -223,5 +224,5 @@ files:
   review_record: review.md
   src_entry: src/index.html
 compliance:
-  copyright_note: 本资源为原创交互草稿，不复制教材正文、官方课件、教案或商业题库；第 8 章课时边界仍需纸质教材或已登录平台终核。
+  copyright_note: 本资源为原创交互草稿，不复制教材正文、官方课件、教案或商业题库；第 8 章教材来源和课时边界仍需纸质教材或已登录平台终核，当前仅保持 draft / self_checked_draft / metadata_ready 草稿边界。
   review_status: self_checked_draft

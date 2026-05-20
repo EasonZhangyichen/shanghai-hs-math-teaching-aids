@@ -58,6 +58,7 @@ mathematical_scope:
     - 数量积运算律的代数证明或题组训练
     - 向量应用中的距离、垂直或夹角综合题
     - 暂缓资源或课程图谱调整
+    - 超出 draft / self_checked_draft / metadata_ready 草稿边界的正式流转
 representations:
   - id: vector_canvas
     role: 在淡网格拖拽背景中显示共起点向量 a、b、夹角 θ 和可拖拽端点；网格只作视觉参照，不作为坐标公式来源。
@@ -212,5 +213,5 @@ files:
   review_record: review.md
   src_entry: src/index.html
 compliance:
-  copyright_note: 本资源为原创交互草稿，不复制教材正文、官方课件、教案或商业题库；第 8 章课时边界仍需纸质教材或已登录平台终核。
+  copyright_note: 本资源为原创交互草稿，不复制教材正文、官方课件、教案或商业题库；第 8 章教材来源和课时边界仍需纸质教材或已登录平台终核，当前仅保持 draft / self_checked_draft / metadata_ready 草稿边界。
   review_status: self_checked_draft

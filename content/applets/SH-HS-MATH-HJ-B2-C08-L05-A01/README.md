@@ -12,6 +12,8 @@ a·b = |a||b|cosθ
 
 页面用两个共起点向量 a、b 连接夹角 θ、cosθ、a 在 b 方向上的有向投影长度和数量积 a·b。教师可拖动两个向量，也可用 30°、60°、90°、120°、150° 典型角按钮快速形成锐角、直角、钝角对照。画布保留淡网格只是为了拖拽定位和视觉参照，不作为 8.3 坐标公式来源。
 
+第 8 章教材来源和课时边界仍未完成纸质教材或已登录平台终核；本资源只能保持 `draft` / `self_checked_draft` / `metadata_ready` 草稿边界。
+
 ## 核心教学痛点
 
 - 学生容易把数量积误认为向量，忽略 a·b 的结果是数量。
@@ -39,4 +41,4 @@ a·b = |a||b|cosθ
 - `metadata.status` 保持 `draft`。
 - `compliance.review_status` 保持 `self_checked_draft`。
 - `implementation.phase` 为 `runnable_prototype`，`html_src_status` 为 `runnable`。
-- 已完成作者自检草稿，仍需后续数学审校、浏览器复核和教师试读。
+- 已完成作者自检草稿，仍需独立数学教师复核、浏览器/触控抽查和教师流程试读作为风险记录；这些复核不改变当前草稿边界。
