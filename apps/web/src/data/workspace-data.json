@@ -11152,8 +11152,8 @@
             },
             "representations": [
               {
-                "id": "coordinate_grid",
-                "role": "显示共享起点、方向直线、垂足和投影段。"
+                "id": "projection_board",
+                "role": "显示共享起点、方向轴、垂足和投影段，不呈现坐标读数。"
               },
               {
                 "id": "vector_a",
@@ -11169,7 +11169,7 @@
               },
               {
                 "id": "measurement_readout",
-                "role": "同步显示 angle_degrees、cos_theta、signed_projection 和 dot_sign。"
+                "role": "同步显示夹角 θ、cos θ、有向投影长度和数量积符号。"
               },
               {
                 "id": "staged_summary",
@@ -11204,8 +11204,8 @@
                   "description": "显示从 A 到 b 所在直线的垂线和垂足 F。"
                 },
                 {
-                  "step": "read_signed_projection",
-                  "description": "显示从 O 到 F 的有向投影段，并读出 signed_projection 与 cos_theta。"
+                  "step": "read_directed_length",
+                  "description": "显示从 O 到 F 的有向投影段，并读出有向投影长度与 cos θ 的符号联系。"
                 },
                 {
                   "step": "connect_sign",
@@ -11218,13 +11218,13 @@
                 {
                   "name": "vector_a",
                   "value_type": "point2d",
-                  "description": "蓝色被投影向量 a 的终点坐标，起点固定为 O。",
+                  "description": "蓝色被投影向量 a 的终点位置，起点固定为 O。",
                   "persistence": "snapshot"
                 },
                 {
                   "name": "vector_b",
                   "value_type": "point2d",
-                  "description": "橙色投影方向向量 b 的终点坐标，起点固定为 O。",
+                  "description": "橙色投影方向向量 b 的终点位置，起点固定为 O。",
                   "persistence": "snapshot"
                 },
                 {
@@ -11234,28 +11234,9 @@
                   "persistence": "snapshot"
                 },
                 {
-                  "name": "angle_degrees",
-                  "unit": "degree",
-                  "value_type": "number",
-                  "description": "非零向量 a 与非零向量 b 的夹角，范围为 0 到 180 度。",
-                  "persistence": "snapshot"
-                },
-                {
-                  "name": "cos_theta",
-                  "value_type": "number",
-                  "description": "当前夹角的余弦值，用于观察正负变化。",
-                  "persistence": "snapshot"
-                },
-                {
-                  "name": "signed_projection",
-                  "value_type": "number",
-                  "description": "向量 a 在向量 b 方向上的有向投影长度。",
-                  "persistence": "snapshot"
-                },
-                {
-                  "name": "dot_sign",
-                  "value_type": "string",
-                  "description": "数量积符号的直观状态：positive、zero、negative 或 undefined。",
+                  "name": "projection_state",
+                  "value_type": "object",
+                  "description": "夹角 θ、cos θ、有向投影长度和数量积符号组成的运行读数。",
                   "persistence": "snapshot"
                 },
                 {
@@ -11275,10 +11256,7 @@
                     "vector_a",
                     "vector_b",
                     "projection_foot",
-                    "angle_degrees",
-                    "cos_theta",
-                    "signed_projection",
-                    "dot_sign",
+                    "projection_state",
                     "reveal_step"
                   ],
                   "required_for_player": true
@@ -11291,10 +11269,7 @@
                     "vector_a",
                     "vector_b",
                     "projection_foot",
-                    "angle_degrees",
-                    "cos_theta",
-                    "signed_projection",
-                    "dot_sign",
+                    "projection_state",
                     "reveal_step"
                   ],
                   "required_for_player": true
@@ -11322,7 +11297,7 @@
               ],
               "common_error_tags": [
                 {
-                  "id": "unsigned_projection_length",
+                  "id": "projection_as_plain_length",
                   "label": "把投影长度当成普通无向线段长度"
                 },
                 {
@@ -11334,7 +11309,7 @@
                   "label": "垂足、投影点和原向量端点混淆"
                 },
                 {
-                  "id": "dot_sign_formula_memory",
+                  "id": "product_sign_formula_memory",
                   "label": "只背数量积正负结论，缺少投影解释"
                 }
               ],
@@ -12698,7 +12673,7 @@
                 "围绕同一个三角形分点问题，比较基底法、路径法、数量积/坐标法的第一步建模选择。",
                 "在三角形情境中选择一组基向量，并用从 A 出发的向量 AD、AE 表示边上分点。",
                 "比较 D 到 E 的三条几何路径，说明路径不同但向量和相同。",
-                "把 AD/AB、AE/AC 这样的几何关系转化为系数形式的向量等式，但不展开完整解题器。"
+                "把 AD 与 AB、AE 与 AC 的比例关系转化为系数形式的向量等式，但不展开完整解题器。"
               ],
               "prerequisites": [
                 "8.1 向量的概念和线性运算：有向线段、相等向量、向量加减法和数乘的几何意义",
@@ -12721,7 +12696,7 @@
             "mathematicalScope": {
               "focus": "以三角形 ABC 中 D 在 AB 上、E 在 AC 上为典型情境，比较向量应用题的第一步建模选择。",
               "lesson": "向量的应用",
-              "problem_model": "设 D 在 AB 上，AD/AB = m；E 在 AC 上，AE/AC = n。目标是判断第一步应如何建模，并把向量 DE 写成选定基向量的线性组合。",
+              "problem_model": "设 D 在 AB 上，AD 与 AB 的比例为 m；E 在 AC 上，AE 与 AC 的比例为 n。目标是判断第一步应如何建模，并把向量 DE 写成选定基向量的线性组合。",
               "primary_basis": "p 表示向量 AB，q 表示向量 AC；以 A 为共同起点，AD = m p，AE = n q，DE = AE - AD = -m p + n q。",
               "alternate_basis": "p 表示向量 AB，r 表示向量 BC；此时 AC = p + r，AD = m p，AE = n(p + r)，DE = AE - AD = (n - m)p + n r。",
               "first_step_methods": [
@@ -12749,7 +12724,7 @@
               },
               {
                 "id": "basis_selector",
-                "role": "比较 AB/AC 与 AB/BC 两种基向量选择对等式表达的影响。"
+                "role": "比较 AB、AC 与 AB、BC 两种基向量选择对等式表达的影响。"
               },
               {
                 "id": "first_step_strategy",
@@ -12773,7 +12748,7 @@
               "pausePoints": []
             },
             "interactionDesign": {
-              "primaryControl": "拖动 D、E 或使用比例滑块改变 m = AD/AB 与 n = AE/AC，观察不同路径等式如何同步变化。",
+              "primaryControl": "拖动 D、E 或使用比例滑块改变 m 与 n，观察不同路径等式如何同步变化。",
               "teacherControls": [
                 "重置到默认分点",
                 "切换基底法、路径法、数量积/坐标法的第一步提示",
@@ -12814,21 +12789,21 @@
                   "name": "ratio_m",
                   "value_type": "number",
                   "default": 0.4,
-                  "description": "D 在 AB 上的位置比例，m = AD/AB。",
+                  "description": "D 在 AB 上的位置比例，m 表示 AD 与 AB 的比。",
                   "persistence": "snapshot"
                 },
                 {
                   "name": "ratio_n",
                   "value_type": "number",
                   "default": 0.65,
-                  "description": "E 在 AC 上的位置比例，n = AE/AC。",
+                  "description": "E 在 AC 上的位置比例，n 表示 AE 与 AC 的比。",
                   "persistence": "snapshot"
                 },
                 {
                   "name": "basis_mode",
                   "value_type": "string",
                   "default": "ab_ac",
-                  "description": "当前基向量组，ab_ac 表示 AB/AC，ab_bc 表示 AB/BC。",
+                  "description": "当前基向量组，ab_ac 表示 AB 与 AC，ab_bc 表示 AB 与 BC。",
                   "persistence": "snapshot"
                 },
                 {
@@ -12956,7 +12931,7 @@
               ],
               "feedback_principles": [
                 "先让学生用图中路径说出每一段移动，再写符号表达。",
-                "对比例方向错误，回到 AD/AB 和 AE/AC 的起点方向检查。",
+                "对比例方向错误，回到 AD 与 AB、AE 与 AC 的起点方向检查。",
                 "对坐标法或数量积法冲动，先追问“题目第一问是否真的要求长度、夹角、垂直或坐标数值”。",
                 "对“D = mp、E = nq”这类简写，提醒它只能作为以 A 为共同起点的位置向量口头简写；正式板书优先写 AD = mp、AE = nq。",
                 "只比较建模路径，不把本板扩展成完整解题器。"
@@ -23841,8 +23816,8 @@
             },
             "representations": [
               {
-                "id": "coordinate_grid",
-                "role": "显示共享起点、方向直线、垂足和投影段。"
+                "id": "projection_board",
+                "role": "显示共享起点、方向轴、垂足和投影段，不呈现坐标读数。"
               },
               {
                 "id": "vector_a",
@@ -23858,7 +23833,7 @@
               },
               {
                 "id": "measurement_readout",
-                "role": "同步显示 angle_degrees、cos_theta、signed_projection 和 dot_sign。"
+                "role": "同步显示夹角 θ、cos θ、有向投影长度和数量积符号。"
               },
               {
                 "id": "staged_summary",
@@ -23893,8 +23868,8 @@
                   "description": "显示从 A 到 b 所在直线的垂线和垂足 F。"
                 },
                 {
-                  "step": "read_signed_projection",
-                  "description": "显示从 O 到 F 的有向投影段，并读出 signed_projection 与 cos_theta。"
+                  "step": "read_directed_length",
+                  "description": "显示从 O 到 F 的有向投影段，并读出有向投影长度与 cos θ 的符号联系。"
                 },
                 {
                   "step": "connect_sign",
@@ -23907,13 +23882,13 @@
                 {
                   "name": "vector_a",
                   "value_type": "point2d",
-                  "description": "蓝色被投影向量 a 的终点坐标，起点固定为 O。",
+                  "description": "蓝色被投影向量 a 的终点位置，起点固定为 O。",
                   "persistence": "snapshot"
                 },
                 {
                   "name": "vector_b",
                   "value_type": "point2d",
-                  "description": "橙色投影方向向量 b 的终点坐标，起点固定为 O。",
+                  "description": "橙色投影方向向量 b 的终点位置，起点固定为 O。",
                   "persistence": "snapshot"
                 },
                 {
@@ -23923,28 +23898,9 @@
                   "persistence": "snapshot"
                 },
                 {
-                  "name": "angle_degrees",
-                  "unit": "degree",
-                  "value_type": "number",
-                  "description": "非零向量 a 与非零向量 b 的夹角，范围为 0 到 180 度。",
-                  "persistence": "snapshot"
-                },
-                {
-                  "name": "cos_theta",
-                  "value_type": "number",
-                  "description": "当前夹角的余弦值，用于观察正负变化。",
-                  "persistence": "snapshot"
-                },
-                {
-                  "name": "signed_projection",
-                  "value_type": "number",
-                  "description": "向量 a 在向量 b 方向上的有向投影长度。",
-                  "persistence": "snapshot"
-                },
-                {
-                  "name": "dot_sign",
-                  "value_type": "string",
-                  "description": "数量积符号的直观状态：positive、zero、negative 或 undefined。",
+                  "name": "projection_state",
+                  "value_type": "object",
+                  "description": "夹角 θ、cos θ、有向投影长度和数量积符号组成的运行读数。",
                   "persistence": "snapshot"
                 },
                 {
@@ -23964,10 +23920,7 @@
                     "vector_a",
                     "vector_b",
                     "projection_foot",
-                    "angle_degrees",
-                    "cos_theta",
-                    "signed_projection",
-                    "dot_sign",
+                    "projection_state",
                     "reveal_step"
                   ],
                   "required_for_player": true
@@ -23980,10 +23933,7 @@
                     "vector_a",
                     "vector_b",
                     "projection_foot",
-                    "angle_degrees",
-                    "cos_theta",
-                    "signed_projection",
-                    "dot_sign",
+                    "projection_state",
                     "reveal_step"
                   ],
                   "required_for_player": true
@@ -24011,7 +23961,7 @@
               ],
               "common_error_tags": [
                 {
-                  "id": "unsigned_projection_length",
+                  "id": "projection_as_plain_length",
                   "label": "把投影长度当成普通无向线段长度"
                 },
                 {
@@ -24023,7 +23973,7 @@
                   "label": "垂足、投影点和原向量端点混淆"
                 },
                 {
-                  "id": "dot_sign_formula_memory",
+                  "id": "product_sign_formula_memory",
                   "label": "只背数量积正负结论，缺少投影解释"
                 }
               ],
@@ -25387,7 +25337,7 @@
                 "围绕同一个三角形分点问题，比较基底法、路径法、数量积/坐标法的第一步建模选择。",
                 "在三角形情境中选择一组基向量，并用从 A 出发的向量 AD、AE 表示边上分点。",
                 "比较 D 到 E 的三条几何路径，说明路径不同但向量和相同。",
-                "把 AD/AB、AE/AC 这样的几何关系转化为系数形式的向量等式，但不展开完整解题器。"
+                "把 AD 与 AB、AE 与 AC 的比例关系转化为系数形式的向量等式，但不展开完整解题器。"
               ],
               "prerequisites": [
                 "8.1 向量的概念和线性运算：有向线段、相等向量、向量加减法和数乘的几何意义",
@@ -25410,7 +25360,7 @@
             "mathematicalScope": {
               "focus": "以三角形 ABC 中 D 在 AB 上、E 在 AC 上为典型情境，比较向量应用题的第一步建模选择。",
               "lesson": "向量的应用",
-              "problem_model": "设 D 在 AB 上，AD/AB = m；E 在 AC 上，AE/AC = n。目标是判断第一步应如何建模，并把向量 DE 写成选定基向量的线性组合。",
+              "problem_model": "设 D 在 AB 上，AD 与 AB 的比例为 m；E 在 AC 上，AE 与 AC 的比例为 n。目标是判断第一步应如何建模，并把向量 DE 写成选定基向量的线性组合。",
               "primary_basis": "p 表示向量 AB，q 表示向量 AC；以 A 为共同起点，AD = m p，AE = n q，DE = AE - AD = -m p + n q。",
               "alternate_basis": "p 表示向量 AB，r 表示向量 BC；此时 AC = p + r，AD = m p，AE = n(p + r)，DE = AE - AD = (n - m)p + n r。",
               "first_step_methods": [
@@ -25438,7 +25388,7 @@
               },
               {
                 "id": "basis_selector",
-                "role": "比较 AB/AC 与 AB/BC 两种基向量选择对等式表达的影响。"
+                "role": "比较 AB、AC 与 AB、BC 两种基向量选择对等式表达的影响。"
               },
               {
                 "id": "first_step_strategy",
@@ -25462,7 +25412,7 @@
               "pausePoints": []
             },
             "interactionDesign": {
-              "primaryControl": "拖动 D、E 或使用比例滑块改变 m = AD/AB 与 n = AE/AC，观察不同路径等式如何同步变化。",
+              "primaryControl": "拖动 D、E 或使用比例滑块改变 m 与 n，观察不同路径等式如何同步变化。",
               "teacherControls": [
                 "重置到默认分点",
                 "切换基底法、路径法、数量积/坐标法的第一步提示",
@@ -25503,21 +25453,21 @@
                   "name": "ratio_m",
                   "value_type": "number",
                   "default": 0.4,
-                  "description": "D 在 AB 上的位置比例，m = AD/AB。",
+                  "description": "D 在 AB 上的位置比例，m 表示 AD 与 AB 的比。",
                   "persistence": "snapshot"
                 },
                 {
                   "name": "ratio_n",
                   "value_type": "number",
                   "default": 0.65,
-                  "description": "E 在 AC 上的位置比例，n = AE/AC。",
+                  "description": "E 在 AC 上的位置比例，n 表示 AE 与 AC 的比。",
                   "persistence": "snapshot"
                 },
                 {
                   "name": "basis_mode",
                   "value_type": "string",
                   "default": "ab_ac",
-                  "description": "当前基向量组，ab_ac 表示 AB/AC，ab_bc 表示 AB/BC。",
+                  "description": "当前基向量组，ab_ac 表示 AB 与 AC，ab_bc 表示 AB 与 BC。",
                   "persistence": "snapshot"
                 },
                 {
@@ -25645,7 +25595,7 @@
               ],
               "feedback_principles": [
                 "先让学生用图中路径说出每一段移动，再写符号表达。",
-                "对比例方向错误，回到 AD/AB 和 AE/AC 的起点方向检查。",
+                "对比例方向错误，回到 AD 与 AB、AE 与 AC 的起点方向检查。",
                 "对坐标法或数量积法冲动，先追问“题目第一问是否真的要求长度、夹角、垂直或坐标数值”。",
                 "对“D = mp、E = nq”这类简写，提醒它只能作为以 A 为共同起点的位置向量口头简写；正式板书优先写 AD = mp、AE = nq。",
                 "只比较建模路径，不把本板扩展成完整解题器。"

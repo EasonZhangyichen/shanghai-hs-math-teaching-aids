@@ -48,11 +48,9 @@ a·b = |b| × a 在 b 方向上的有向投影长度
 
 板书落点：
 
-```text
-0 < θ < π/2  ->  a·b > 0
-θ = π/2      ->  a·b = 0
-π/2 < θ < π  ->  a·b < 0
-```
+- 0 < θ < <math><mfrac><mi>π</mi><mn>2</mn></mfrac></math>  ->  a·b > 0
+- θ = <math><mfrac><mi>π</mi><mn>2</mn></mfrac></math>  ->  a·b = 0
+- <math><mfrac><mi>π</mi><mn>2</mn></mfrac></math> < θ < π  ->  a·b < 0
 
 ### 4. 边界提醒
 

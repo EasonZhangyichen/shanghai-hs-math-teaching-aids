@@ -411,6 +411,40 @@
 
       }
 
+      @media (max-height: 620px) {
+        .panel-inner {
+          overflow: hidden;
+        }
+
+        .controls {
+          gap: 6px;
+          margin-bottom: 6px;
+        }
+
+        .readout-grid {
+          gap: 6px;
+        }
+
+        .readout-card {
+          min-height: 56px;
+          padding: 6px;
+        }
+
+        .relation-box {
+          margin-top: 6px;
+          padding: 7px;
+        }
+
+        .relation-box p {
+          line-height: 1.35;
+        }
+
+        .summary-box,
+        .legend {
+          display: none;
+        }
+      }
+
       @media (max-width: 560px) {
         .applet {
           padding: 10px;
@@ -484,19 +518,19 @@
 
             <div class="readout-grid">
               <div class="readout-card" id="angleCard">
-                <p class="readout-label">夹角 angle_degrees</p>
+                <p class="readout-label">夹角 θ</p>
                 <p class="readout-value" id="angleReadout">--</p>
               </div>
               <div class="readout-card" id="cosCard">
-                <p class="readout-label">cos_theta</p>
+                <p class="readout-label">cos θ</p>
                 <p class="readout-value" id="cosReadout">--</p>
               </div>
               <div class="readout-card" id="projectionCard">
-                <p class="readout-label">有向投影 signed_projection</p>
+                <p class="readout-label">有向投影长度</p>
                 <p class="readout-value" id="projectionReadout">--</p>
               </div>
               <div class="readout-card" id="dotCard">
-                <p class="readout-label">数量积符号 dot_sign</p>
+                <p class="readout-label">数量积符号</p>
                 <p class="readout-value" id="dotReadout">--</p>
               </div>
             </div>
@@ -504,7 +538,7 @@
             <div id="relationBox" class="relation-box"></div>
 
             <div class="summary-box" id="summaryBox" hidden>
-              <p class="formula">观察链：夹角变大，cos 值从正到 0 再到负；有向投影长度随之从正到 0 再到负。</p>
+              <p class="formula">观察链：夹角变大，cos θ 从正到 0 再到负；有向投影长度随之从正到 0 再到负。</p>
               <p>这里先用图形理解“符号来自方向”，不做完整数量积公式训练。</p>
             </div>
 
@@ -645,10 +679,6 @@
         return value.toFixed(digits);
       }
 
-      function fmtPoint(point) {
-        return `(${fmtNumber(point.x, 1)}, ${fmtNumber(point.y, 1)})`;
-      }
-
       function fmtAngle(value) {
         if (value === null) return "不规定";
         return `${Math.round(value)}°`;
@@ -733,13 +763,11 @@
           const a = toScreen({ x, y: view.minY });
           const b = toScreen({ x, y: view.maxY });
           grid.appendChild(createSvg("line", { x1: a.x, y1: a.y, x2: b.x, y2: b.y, class: x === 0 ? "axis-line" : "grid-line" }));
-          if (x !== 0) addText(grid, String(x), { x, y: -0.22 }, "axis-label");
         }
         for (let y = view.minY; y <= view.maxY; y += 1) {
           const a = toScreen({ x: view.minX, y });
           const b = toScreen({ x: view.maxX, y });
           grid.appendChild(createSvg("line", { x1: a.x, y1: a.y, x2: b.x, y2: b.y, class: y === 0 ? "axis-line" : "grid-line" }));
-          if (y !== 0) addText(grid, String(y), { x: 0.18, y }, "axis-label", "start");
         }
         addText(grid, "O", { x: -0.22, y: -0.22 }, "axis-label", "end");
         root.appendChild(grid);
@@ -913,17 +941,17 @@
           return `<p>当前只观察两条向量的夹角：θ = ${fmtAngle(stats.angleDegrees)}。</p><p>继续拖动 A 或 B，注意 θ 小于、等于或大于 90° 时读数怎样换边界。</p>`;
         }
         if (state.step === 2) {
-          return `<p>从 A 向橙色方向所在直线作垂线，垂足为 F。</p><p class="formula">F ${fmtPoint(stats.foot)} 是投影点，不只是普通线段端点。</p>`;
+          return `<p>从 A 向橙色方向所在直线作垂线，得到垂足 F。</p><p class="formula">垂足 F 标出方向轴上的有向位置，不只是普通线段端点。</p>`;
         }
         if (state.step === 3) {
           const directionText = stats.dotSign === "negative" ? "落在 O 的反向一侧" : stats.dotSign === "zero" ? "正好落在 O 点" : "落在 b 的同向一侧";
-          return `<p>垂足 F ${directionText}，所以投影要读成有方向的长度。</p><p class="formula">有向投影 = |a| cosθ = ${fmtNumber(stats.signedProjection, 2)}</p>`;
+          return `<p>垂足 F ${directionText}，这是方向轴上的有向位置。</p><p class="formula">有向投影长度 = |a| cos θ = ${fmtNumber(stats.signedProjection, 2)}</p>`;
         }
         const signReason = stats.dotSign === "negative"
-          ? "钝角时 cosθ < 0，投影落在反向一侧，数量积符号也为负。"
+          ? "钝角时 cos θ < 0，垂足 F 落在反向一侧，数量积符号也为负。"
           : stats.dotSign === "zero"
-            ? "直角时 cosθ = 0，投影收缩到 O，数量积符号为 0。"
-            : "锐角时 cosθ > 0，投影落在同向一侧，数量积符号也为正。";
+            ? "直角时 cos θ = 0，垂足 F 收缩到 O，数量积符号为 0。"
+            : "锐角时 cos θ > 0，垂足 F 落在同向一侧，数量积符号也为正。";
         return `<p>${signReason}</p><p class="formula">本页只建立符号直观：投影同号，数量积同号。</p>`;
       }
 
@@ -932,10 +960,12 @@
           vector_a: state.vectorEnd,
           vector_b: state.directionEnd,
           projection_foot: stats.foot,
-          angle_degrees: stats.angleDegrees === null ? null : Number(stats.angleDegrees.toFixed(2)),
-          cos_theta: stats.cosTheta === null ? null : Number(stats.cosTheta.toFixed(4)),
-          signed_projection: stats.signedProjection === null ? null : Number(stats.signedProjection.toFixed(4)),
-          dot_sign: stats.dotSign,
+          projection_state: {
+            theta: stats.angleDegrees === null ? null : Number(stats.angleDegrees.toFixed(2)),
+            cos: stats.cosTheta === null ? null : Number(stats.cosTheta.toFixed(4)),
+            directed_length: stats.signedProjection === null ? null : Number(stats.signedProjection.toFixed(4)),
+            product_sign: stats.dotSign
+          },
           reveal_step: state.step
         };
         window.parent?.postMessage({ type: `applet:${type}`, resourceId: RESOURCE_ID, payload }, "*");

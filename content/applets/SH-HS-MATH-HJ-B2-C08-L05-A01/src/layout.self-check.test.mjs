@@ -3,6 +3,12 @@ import { readFile } from "node:fs/promises";
 import test from "node:test";
 
 const source = await readFile(new URL("./index.html", import.meta.url), "utf8");
+const visibleResourceFiles = [
+  ["src/index.html", source],
+  ["teacher-script.md", await readFile(new URL("../teacher-script.md", import.meta.url), "utf8")],
+  ["student-task.md", await readFile(new URL("../student-task.md", import.meta.url), "utf8")],
+  ["review.md", await readFile(new URL("../review.md", import.meta.url), "utf8")]
+];
 
 function cssRule(selector) {
   const escaped = selector.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -62,4 +68,12 @@ test("platform iframe keeps the board and readout beside each other in narrow pr
   assert.match(workspaceRule, /minmax\(300px, 1fr\) minmax\(236px, 320px\)/);
   assert.ok(singleColumnBreakpoint, "Expected a single-column media query for genuinely small screens");
   assert.ok(Number(singleColumnBreakpoint[1]) <= 560, "platform iframe previews around 560px wide should remain two-column");
+});
+
+test("visible pi fractions use stacked math instead of slash-delimited text", () => {
+  for (const [filename, text] of visibleResourceFiles) {
+    assert.doesNotMatch(text, /(?:\d+)?π\/\d+/, `${filename} should not expose pi fractions as slash-delimited text`);
+  }
+
+  assert.match(source, /math-frac/, "index.html should include stacked fraction markup for classroom readouts");
 });
