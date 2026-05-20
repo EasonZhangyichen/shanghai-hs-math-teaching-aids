@@ -9633,8 +9633,8 @@
               "estimatedClassroomMinutes": 14,
               "primaryTeachingProblem": "学生容易把向量绑定到起点位置，难以理解只要大小和方向相同就是同一向量。",
               "learningGoals": [
-                "用有向线段 AB 从起点到终点的几何位移、长度和方向刻画一个平面向量。",
-                "通过平移后的 CD 说明起点不同但几何位移相同的有向线段表示相等向量。",
+                "用向量 AB 从起点到终点的几何位移、长度和方向刻画一个平面向量。",
+                "通过平移后的向量 CD 说明起点不同但几何位移相同的有向线段表示相等向量。",
                 "同时观察水平位移、竖直位移、长度和方向，避免只看线段所在位置或只看长度。",
                 "在零向量情形下说明长度为 0，方向不规定。"
               ],
@@ -9655,9 +9655,9 @@
               ]
             },
             "mathematicalScope": {
-              "focus": "在平面网格中比较有向线段 AB 与平移后的 CD，突出向量由大小和方向决定，与起点位置无关。",
+              "focus": "在平面网格中比较向量 AB 与平移后的向量 CD，突出向量由大小和方向决定，与起点位置无关。",
               "lesson": "向量的概念",
-              "vector_model": "有向线段 AB 表示从 A 到 B 的一次几何位移。",
+              "vector_model": "向量 AB 表示从 A 到 B 的一次几何位移。",
               "equality_rule": "两个非零向量大小相等且方向相同则相等；在本课件中通过水平位移和竖直位移都相同来提供几何证据。",
               "zero_vector_rule": "起点和终点重合时得到零向量，长度为 0，方向不规定。",
               "default_points": {
@@ -9680,11 +9680,11 @@
               },
               {
                 "id": "base_vector",
-                "role": "用蓝色有向线段 AB 表示当前向量的大小和方向。"
+                "role": "用蓝色向量 AB 表示当前向量的大小和方向。"
               },
               {
                 "id": "translated_vector",
-                "role": "用橙色有向线段 CD 表示平移后的相等向量。"
+                "role": "用橙色向量 CD 表示平移后的相等向量。"
               },
               {
                 "id": "measurement_readout",
@@ -9700,7 +9700,7 @@
               "pausePoints": []
             },
             "interactionDesign": {
-              "primaryControl": "拖动 A 或 B 改变向量，拖动 AB 整体或 CD 整体改变起点但保持位移不变。",
+              "primaryControl": "拖动 A 或 B 改变向量，拖动向量 AB 整体或向量 CD 整体改变起点但保持位移不变。",
               "teacherControls": [
                 "重置到默认位置",
                 "按观察、平移、证据、归纳四步揭示",
@@ -9710,16 +9710,16 @@
               "studentControls": [
                 "拖动 A、B 观察大小和方向如何改变",
                 "拖动 C、D 或橙色向量整体观察起点变化",
-                "用位移证据判断 AB 与 CD 是否表示相同向量"
+                "用位移证据判断向量 AB 与向量 CD 是否表示相同向量"
               ],
               "stagedReveal": [
                 {
                   "step": "observe_base_vector",
-                  "description": "只呈现 AB 和网格，先让学生说出从 A 到 B 的位移。"
+                  "description": "只呈现向量 AB 和网格，先让学生说出从 A 到 B 的位移。"
                 },
                 {
                   "step": "translate_equivalent_vector",
-                  "description": "显示 CD，把同一位移搬到不同起点，形成位置对照。"
+                  "description": "显示向量 CD，把同一位移搬到不同起点，形成位置对照。"
                 },
                 {
                   "step": "check_movement_size_direction",
@@ -9736,13 +9736,13 @@
                 {
                   "name": "base_start",
                   "value_type": "point2d",
-                  "description": "蓝色有向线段 AB 的起点 A。",
+                  "description": "蓝色向量 AB 的起点 A。",
                   "persistence": "snapshot"
                 },
                 {
                   "name": "base_end",
                   "value_type": "point2d",
-                  "description": "蓝色有向线段 AB 的终点 B。",
+                  "description": "蓝色向量 AB 的终点 B。",
                   "persistence": "snapshot"
                 },
                 {
@@ -9754,7 +9754,7 @@
                 {
                   "name": "translated_end",
                   "value_type": "point2d",
-                  "description": "橙色平移向量 CD 的终点 D，由 C 加上 AB 的位移得到。",
+                  "description": "橙色平移向量 CD 的终点 D，由 C 点按向量 AB 的同一几何位移得到。",
                   "persistence": "snapshot"
                 },
                 {
@@ -9845,7 +9845,7 @@
             },
             "feedbackAndDiagnosis": {
               "success_evidence": [
-                "学生能用水平位移和竖直位移都相同说明 AB 与 CD 表示同一向量。",
+                "学生能用水平位移和竖直位移都相同说明向量 AB 与向量 CD 表示同一向量。",
                 "学生能解释起点 A 和 C 不同，但大小和方向不变，所以向量相等。",
                 "学生能指出只看长度不足以判断向量相等，还必须看方向。",
                 "学生能在 A 与 B 重合时说明这是零向量且方向不规定。"
@@ -9874,13 +9874,13 @@
               ],
               "feedback_principles": [
                 "先让学生观察从起点到终点的水平/竖直位移，再判断大小和方向。",
-                "纠正位置误区时拖动 CD 的起点，而不改变整条有向线段的几何位移。",
+                "纠正位置误区时拖动向量 CD 的起点，而不改变整条有向线段的几何位移。",
                 "纠正只看长度的误区时保留相同长度但改变方向的反例追问。",
                 "遇到零向量时单独说明长度和方向边界。"
               ]
             },
             "visualSemantics": {
-              "base_vector": "蓝色表示用于定义当前向量的 AB。",
+              "base_vector": "蓝色表示用于定义当前向量的向量 AB。",
               "translated_vector": "橙色表示平移后的等价向量 CD。",
               "movement_guides": "青绿色虚线表示水平位移和竖直位移。",
               "parallel_guides": "灰色虚线连接对应起点和终点，帮助观察整条有向线段的平移。",
@@ -10065,9 +10065,9 @@
               "estimatedClassroomMinutes": 14,
               "primaryTeachingProblem": "学生容易混淆三角形法则中的首尾相接、平行四边形法则中的对角线和减法中的相反向量。",
               "learningGoals": [
-                "拖动向量 a、向量 b，观察方向和大小变化如何同步影响 a + b 与 a - b。",
-                "用首尾相接和平行四边形两种构造解释同一个向量加法结果。",
-                "把向量减法解释为加上相反向量，并用从 B 指向 A 的端点路径检查方向。",
+                "拖动向量 a、向量 b，观察方向和大小变化如何同步影响向量和 a + b 与向量差 a - b。",
+                "用首尾相接和平行四边形两种构造解释同一个向量和。",
+                "把向量差 a - b 解释为加上相反向量 -b，并用从 B 指向 A 的端点路径检查方向。",
                 "从动态构造回到路径、端点顺序和几何位移证据，避免只记画法模板。"
               ],
               "prerequisites": [
@@ -10087,11 +10087,11 @@
               ]
             },
             "mathematicalScope": {
-              "focus": "在同一平面网格中拖动共起点向量 a、b，并切换首尾相接、平行四边形和减法模式，同步显示 a + b、a - b 与路径解释。",
+              "focus": "在同一平面网格中拖动共起点向量 a、b，并切换首尾相接、平行四边形和减法模式，同步显示向量和 a + b、向量差 a - b 与路径解释。",
               "lesson": "向量的加法和减法",
               "vector_model": "a = OA, b = OB, a + b = OS, a - b = OD",
-              "addition_rule": "把 b 平移到 a 的终点得到首尾相接路径，或在共起点下补平行四边形，对角线均表示 a + b。",
-              "subtraction_rule": "a - b = a + (-b)，共起点时从 B 指向 A 的向量也表示 a - b。",
+              "addition_rule": "把 b 平移到 a 的终点得到 O → A → S 的首尾相接路径，或在共起点下补平行四边形，对角线均表示向量和 a + b。",
+              "subtraction_rule": "向量差 a - b = a + (-b)，共起点时从 B 指向 A 的向量也表示 a - b。",
               "default_vectors": {
                 "origin": "O，左下方共同起点",
                 "vector_a": "a 从 O 向右上移动",
@@ -10119,7 +10119,7 @@
               },
               {
                 "id": "movement_readout",
-                "role": "同步显示 a、b、a + b 和 a - b 的水平/竖直位移。"
+                "role": "同步显示 a、b、向量和 a + b、向量差 a - b 在网格中的几何位移证据。"
               },
               {
                 "id": "staged_summary",
@@ -10143,7 +10143,7 @@
                 "拖动 A 或 B 改变向量 a、b",
                 "拖动 O 改变共同起点但保持两个向量不变",
                 "对照三种模式下结果向量的方向、大小和端点路径",
-                "用 B 到 A 的路径判断 a - b 的方向"
+                "用 B 到 A 的路径判断向量差 a - b 的方向"
               ],
               "stagedReveal": [
                 {
@@ -10217,7 +10217,7 @@
                     "x": 5,
                     "y": 0.5
                   },
-                  "description": "向量 a + b 的几何位移。",
+                  "description": "向量和 a + b 的几何位移。",
                   "persistence": "snapshot"
                 },
                 {
@@ -10227,7 +10227,7 @@
                     "x": 1,
                     "y": 3.5
                   },
-                  "description": "向量 a - b 的几何位移。",
+                  "description": "向量差 a - b 的几何位移。",
                   "persistence": "snapshot"
                 },
                 {
@@ -10288,9 +10288,9 @@
             "feedbackAndDiagnosis": {
               "success_evidence": [
                 "学生能指出首尾相接中第二个向量的起点必须接到第一个向量的终点。",
-                "学生能说明平行四边形对角线与首尾相接路径得到同一个 a + b。",
-                "学生能把 a - b 解释为 a + (-b)，并能用从 B 指向 A 的向量检查方向。",
-                "学生能从几何位移和端点路径验证拖拽后的 a + b 和 a - b。"
+                "学生能说明平行四边形对角线与首尾相接路径得到同一个向量和 a + b。",
+                "学生能把向量差 a - b 解释为 a + (-b)，并能用从 B 指向 A 的向量检查方向。",
+                "学生能从几何位移和端点路径验证拖拽后的向量和 a + b 和向量差 a - b。"
               ],
               "common_error_tags": [
                 {
@@ -10324,9 +10324,9 @@
             "visualSemantics": {
               "vector_a": "蓝色表示向量 a = OA。",
               "vector_b": "橙色表示向量 b = OB。",
-              "result_vector": "绿色表示当前模式下的结果向量 a + b 或 a - b。",
-              "reverse_vector": "红色表示减法模式中的相反向量 -b。",
-              "endpoint_path": "紫色虚线表示从 B 指向 A 的端点路径。",
+              "result_vector": "绿色表示当前模式下的向量和 a + b 或向量差 a - b。",
+              "reverse_vector": "红色表示与 b 等长反向的相反向量 -b。",
+              "endpoint_path": "紫色虚线表示从 B 指向 A 的端点路径，用于检查向量差方向。",
               "guides": "灰色或绿色虚线表示构造辅助线和位移辅助线。",
               "rule": "颜色只承载数学对象含义，不作为装饰。"
             },
@@ -10753,8 +10753,8 @@
             },
             "representations": [
               {
-                "id": "coordinate_grid",
-                "role": "提供拖动原向量和观察伸缩方向的几何背景，不作为 8.3 坐标运算训练。"
+                "id": "reference_grid",
+                "role": "浅色参照网格只帮助观察方向和长度伸缩，不显示 x/y 标签，也不作为 8.3 坐标运算训练。"
               },
               {
                 "id": "base_vector",
@@ -22322,8 +22322,8 @@
               "estimatedClassroomMinutes": 14,
               "primaryTeachingProblem": "学生容易把向量绑定到起点位置，难以理解只要大小和方向相同就是同一向量。",
               "learningGoals": [
-                "用有向线段 AB 从起点到终点的几何位移、长度和方向刻画一个平面向量。",
-                "通过平移后的 CD 说明起点不同但几何位移相同的有向线段表示相等向量。",
+                "用向量 AB 从起点到终点的几何位移、长度和方向刻画一个平面向量。",
+                "通过平移后的向量 CD 说明起点不同但几何位移相同的有向线段表示相等向量。",
                 "同时观察水平位移、竖直位移、长度和方向，避免只看线段所在位置或只看长度。",
                 "在零向量情形下说明长度为 0，方向不规定。"
               ],
@@ -22344,9 +22344,9 @@
               ]
             },
             "mathematicalScope": {
-              "focus": "在平面网格中比较有向线段 AB 与平移后的 CD，突出向量由大小和方向决定，与起点位置无关。",
+              "focus": "在平面网格中比较向量 AB 与平移后的向量 CD，突出向量由大小和方向决定，与起点位置无关。",
               "lesson": "向量的概念",
-              "vector_model": "有向线段 AB 表示从 A 到 B 的一次几何位移。",
+              "vector_model": "向量 AB 表示从 A 到 B 的一次几何位移。",
               "equality_rule": "两个非零向量大小相等且方向相同则相等；在本课件中通过水平位移和竖直位移都相同来提供几何证据。",
               "zero_vector_rule": "起点和终点重合时得到零向量，长度为 0，方向不规定。",
               "default_points": {
@@ -22369,11 +22369,11 @@
               },
               {
                 "id": "base_vector",
-                "role": "用蓝色有向线段 AB 表示当前向量的大小和方向。"
+                "role": "用蓝色向量 AB 表示当前向量的大小和方向。"
               },
               {
                 "id": "translated_vector",
-                "role": "用橙色有向线段 CD 表示平移后的相等向量。"
+                "role": "用橙色向量 CD 表示平移后的相等向量。"
               },
               {
                 "id": "measurement_readout",
@@ -22389,7 +22389,7 @@
               "pausePoints": []
             },
             "interactionDesign": {
-              "primaryControl": "拖动 A 或 B 改变向量，拖动 AB 整体或 CD 整体改变起点但保持位移不变。",
+              "primaryControl": "拖动 A 或 B 改变向量，拖动向量 AB 整体或向量 CD 整体改变起点但保持位移不变。",
               "teacherControls": [
                 "重置到默认位置",
                 "按观察、平移、证据、归纳四步揭示",
@@ -22399,16 +22399,16 @@
               "studentControls": [
                 "拖动 A、B 观察大小和方向如何改变",
                 "拖动 C、D 或橙色向量整体观察起点变化",
-                "用位移证据判断 AB 与 CD 是否表示相同向量"
+                "用位移证据判断向量 AB 与向量 CD 是否表示相同向量"
               ],
               "stagedReveal": [
                 {
                   "step": "observe_base_vector",
-                  "description": "只呈现 AB 和网格，先让学生说出从 A 到 B 的位移。"
+                  "description": "只呈现向量 AB 和网格，先让学生说出从 A 到 B 的位移。"
                 },
                 {
                   "step": "translate_equivalent_vector",
-                  "description": "显示 CD，把同一位移搬到不同起点，形成位置对照。"
+                  "description": "显示向量 CD，把同一位移搬到不同起点，形成位置对照。"
                 },
                 {
                   "step": "check_movement_size_direction",
@@ -22425,13 +22425,13 @@
                 {
                   "name": "base_start",
                   "value_type": "point2d",
-                  "description": "蓝色有向线段 AB 的起点 A。",
+                  "description": "蓝色向量 AB 的起点 A。",
                   "persistence": "snapshot"
                 },
                 {
                   "name": "base_end",
                   "value_type": "point2d",
-                  "description": "蓝色有向线段 AB 的终点 B。",
+                  "description": "蓝色向量 AB 的终点 B。",
                   "persistence": "snapshot"
                 },
                 {
@@ -22443,7 +22443,7 @@
                 {
                   "name": "translated_end",
                   "value_type": "point2d",
-                  "description": "橙色平移向量 CD 的终点 D，由 C 加上 AB 的位移得到。",
+                  "description": "橙色平移向量 CD 的终点 D，由 C 点按向量 AB 的同一几何位移得到。",
                   "persistence": "snapshot"
                 },
                 {
@@ -22534,7 +22534,7 @@
             },
             "feedbackAndDiagnosis": {
               "success_evidence": [
-                "学生能用水平位移和竖直位移都相同说明 AB 与 CD 表示同一向量。",
+                "学生能用水平位移和竖直位移都相同说明向量 AB 与向量 CD 表示同一向量。",
                 "学生能解释起点 A 和 C 不同，但大小和方向不变，所以向量相等。",
                 "学生能指出只看长度不足以判断向量相等，还必须看方向。",
                 "学生能在 A 与 B 重合时说明这是零向量且方向不规定。"
@@ -22563,13 +22563,13 @@
               ],
               "feedback_principles": [
                 "先让学生观察从起点到终点的水平/竖直位移，再判断大小和方向。",
-                "纠正位置误区时拖动 CD 的起点，而不改变整条有向线段的几何位移。",
+                "纠正位置误区时拖动向量 CD 的起点，而不改变整条有向线段的几何位移。",
                 "纠正只看长度的误区时保留相同长度但改变方向的反例追问。",
                 "遇到零向量时单独说明长度和方向边界。"
               ]
             },
             "visualSemantics": {
-              "base_vector": "蓝色表示用于定义当前向量的 AB。",
+              "base_vector": "蓝色表示用于定义当前向量的向量 AB。",
               "translated_vector": "橙色表示平移后的等价向量 CD。",
               "movement_guides": "青绿色虚线表示水平位移和竖直位移。",
               "parallel_guides": "灰色虚线连接对应起点和终点，帮助观察整条有向线段的平移。",
@@ -22754,9 +22754,9 @@
               "estimatedClassroomMinutes": 14,
               "primaryTeachingProblem": "学生容易混淆三角形法则中的首尾相接、平行四边形法则中的对角线和减法中的相反向量。",
               "learningGoals": [
-                "拖动向量 a、向量 b，观察方向和大小变化如何同步影响 a + b 与 a - b。",
-                "用首尾相接和平行四边形两种构造解释同一个向量加法结果。",
-                "把向量减法解释为加上相反向量，并用从 B 指向 A 的端点路径检查方向。",
+                "拖动向量 a、向量 b，观察方向和大小变化如何同步影响向量和 a + b 与向量差 a - b。",
+                "用首尾相接和平行四边形两种构造解释同一个向量和。",
+                "把向量差 a - b 解释为加上相反向量 -b，并用从 B 指向 A 的端点路径检查方向。",
                 "从动态构造回到路径、端点顺序和几何位移证据，避免只记画法模板。"
               ],
               "prerequisites": [
@@ -22776,11 +22776,11 @@
               ]
             },
             "mathematicalScope": {
-              "focus": "在同一平面网格中拖动共起点向量 a、b，并切换首尾相接、平行四边形和减法模式，同步显示 a + b、a - b 与路径解释。",
+              "focus": "在同一平面网格中拖动共起点向量 a、b，并切换首尾相接、平行四边形和减法模式，同步显示向量和 a + b、向量差 a - b 与路径解释。",
               "lesson": "向量的加法和减法",
               "vector_model": "a = OA, b = OB, a + b = OS, a - b = OD",
-              "addition_rule": "把 b 平移到 a 的终点得到首尾相接路径，或在共起点下补平行四边形，对角线均表示 a + b。",
-              "subtraction_rule": "a - b = a + (-b)，共起点时从 B 指向 A 的向量也表示 a - b。",
+              "addition_rule": "把 b 平移到 a 的终点得到 O → A → S 的首尾相接路径，或在共起点下补平行四边形，对角线均表示向量和 a + b。",
+              "subtraction_rule": "向量差 a - b = a + (-b)，共起点时从 B 指向 A 的向量也表示 a - b。",
               "default_vectors": {
                 "origin": "O，左下方共同起点",
                 "vector_a": "a 从 O 向右上移动",
@@ -22808,7 +22808,7 @@
               },
               {
                 "id": "movement_readout",
-                "role": "同步显示 a、b、a + b 和 a - b 的水平/竖直位移。"
+                "role": "同步显示 a、b、向量和 a + b、向量差 a - b 在网格中的几何位移证据。"
               },
               {
                 "id": "staged_summary",
@@ -22832,7 +22832,7 @@
                 "拖动 A 或 B 改变向量 a、b",
                 "拖动 O 改变共同起点但保持两个向量不变",
                 "对照三种模式下结果向量的方向、大小和端点路径",
-                "用 B 到 A 的路径判断 a - b 的方向"
+                "用 B 到 A 的路径判断向量差 a - b 的方向"
               ],
               "stagedReveal": [
                 {
@@ -22906,7 +22906,7 @@
                     "x": 5,
                     "y": 0.5
                   },
-                  "description": "向量 a + b 的几何位移。",
+                  "description": "向量和 a + b 的几何位移。",
                   "persistence": "snapshot"
                 },
                 {
@@ -22916,7 +22916,7 @@
                     "x": 1,
                     "y": 3.5
                   },
-                  "description": "向量 a - b 的几何位移。",
+                  "description": "向量差 a - b 的几何位移。",
                   "persistence": "snapshot"
                 },
                 {
@@ -22977,9 +22977,9 @@
             "feedbackAndDiagnosis": {
               "success_evidence": [
                 "学生能指出首尾相接中第二个向量的起点必须接到第一个向量的终点。",
-                "学生能说明平行四边形对角线与首尾相接路径得到同一个 a + b。",
-                "学生能把 a - b 解释为 a + (-b)，并能用从 B 指向 A 的向量检查方向。",
-                "学生能从几何位移和端点路径验证拖拽后的 a + b 和 a - b。"
+                "学生能说明平行四边形对角线与首尾相接路径得到同一个向量和 a + b。",
+                "学生能把向量差 a - b 解释为 a + (-b)，并能用从 B 指向 A 的向量检查方向。",
+                "学生能从几何位移和端点路径验证拖拽后的向量和 a + b 和向量差 a - b。"
               ],
               "common_error_tags": [
                 {
@@ -23013,9 +23013,9 @@
             "visualSemantics": {
               "vector_a": "蓝色表示向量 a = OA。",
               "vector_b": "橙色表示向量 b = OB。",
-              "result_vector": "绿色表示当前模式下的结果向量 a + b 或 a - b。",
-              "reverse_vector": "红色表示减法模式中的相反向量 -b。",
-              "endpoint_path": "紫色虚线表示从 B 指向 A 的端点路径。",
+              "result_vector": "绿色表示当前模式下的向量和 a + b 或向量差 a - b。",
+              "reverse_vector": "红色表示与 b 等长反向的相反向量 -b。",
+              "endpoint_path": "紫色虚线表示从 B 指向 A 的端点路径，用于检查向量差方向。",
               "guides": "灰色或绿色虚线表示构造辅助线和位移辅助线。",
               "rule": "颜色只承载数学对象含义，不作为装饰。"
             },
@@ -23442,8 +23442,8 @@
             },
             "representations": [
               {
-                "id": "coordinate_grid",
-                "role": "提供拖动原向量和观察伸缩方向的几何背景，不作为 8.3 坐标运算训练。"
+                "id": "reference_grid",
+                "role": "浅色参照网格只帮助观察方向和长度伸缩，不显示 x/y 标签，也不作为 8.3 坐标运算训练。"
               },
               {
                 "id": "base_vector",

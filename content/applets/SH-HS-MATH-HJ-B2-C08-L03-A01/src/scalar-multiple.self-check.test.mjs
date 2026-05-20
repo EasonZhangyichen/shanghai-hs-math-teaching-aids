@@ -61,3 +61,21 @@ test("scalar multiple applet fits a platform iframe without shrinking touch targ
   assert.ok(pixelValue(sliderRule, "min-height") >= 40, "lambda slider should preserve a classroom touch target");
   assert.match(html, /id="base-hit"[\s\S]*class="hit-handle"/, "expected a transparent drag hit area for the base vector endpoint");
 });
+
+test("scalar multiple applet keeps the grid from reading as x/y coordinate-axis training", () => {
+  assert.doesNotMatch(html, /textContent\s*=\s*"x"/, "visible x-axis label should not be generated");
+  assert.doesNotMatch(html, /textContent\s*=\s*"y"/, "visible y-axis label should not be generated");
+  assert.doesNotMatch(html, /\.axis-label\b/, "axis label styling should not remain as a visible affordance");
+  assert.match(html, /参照网格不作坐标轴读数/);
+});
+
+test("scalar multiple applet uses Chinese mathematical wording in accessible labels", () => {
+  const ariaLabels = Array.from(html.matchAll(/aria-label="([^"]*)"/g), (match) => match[1]);
+  assert.ok(ariaLabels.length > 0, "expected aria-label text to inspect");
+  assert.ok(
+    ariaLabels.every((label) => !/lambda/i.test(label)),
+    `aria-label text should prefer λ wording instead of English lambda: ${ariaLabels.join(" | ")}`,
+  );
+  assert.ok(ariaLabels.includes("调节实数 λ"));
+  assert.ok(ariaLabels.includes("快速设置实数 λ"));
+});
