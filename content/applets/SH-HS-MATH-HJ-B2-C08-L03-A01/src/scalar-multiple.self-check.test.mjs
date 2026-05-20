@@ -66,7 +66,7 @@ test("scalar multiple applet keeps the grid from reading as x/y coordinate-axis 
   assert.doesNotMatch(html, /textContent\s*=\s*"x"/, "visible x-axis label should not be generated");
   assert.doesNotMatch(html, /textContent\s*=\s*"y"/, "visible y-axis label should not be generated");
   assert.doesNotMatch(html, /\.axis-label\b/, "axis label styling should not remain as a visible affordance");
-  assert.match(html, /参照网格不作坐标轴读数/);
+  assert.match(html, /浅色网格只作方向和长度参照/);
 });
 
 test("scalar multiple applet uses Chinese mathematical wording in accessible labels", () => {
@@ -75,6 +75,14 @@ test("scalar multiple applet uses Chinese mathematical wording in accessible lab
   assert.ok(
     ariaLabels.every((label) => !/lambda/i.test(label)),
     `aria-label text should prefer λ wording instead of English lambda: ${ariaLabels.join(" | ")}`,
+  );
+  assert.ok(
+    ariaLabels.every((label) => !/坐标轴读数/.test(label)),
+    `aria-label text should describe the grid as a reference instead of coordinate-axis reading: ${ariaLabels.join(" | ")}`,
+  );
+  assert.ok(
+    ariaLabels.some((label) => /浅色网格只作方向和长度参照/.test(label)),
+    "expected the vector board aria-label to frame the grid as a direction/length reference",
   );
   assert.ok(ariaLabels.includes("调节实数 λ"));
   assert.ok(ariaLabels.includes("快速设置实数 λ"));
