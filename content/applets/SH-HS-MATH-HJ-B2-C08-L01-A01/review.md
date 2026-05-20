@@ -4,7 +4,7 @@
 
 当前状态：`draft`
 
-本轮日期：2026-05-19
+本轮日期：2026-05-20
 
 本轮范围：仅 `content/applets/SH-HS-MATH-HJ-B2-C08-L01-A01/**`
 
@@ -12,7 +12,7 @@
 
 建议保持 `draft`，本轮仅作为 `self_checked_draft` 级别的作者自检记录。
 
-本轮复核并修正 8.1.1 阶段的数学语言：平面网格中可以拖动蓝色 `AB` 定义向量，橙色 `CD` 始终按同一几何位移平移到新起点；界面统一为几何位移、水平位移、竖直位移、大小、方向、端点顺序和起点对照。资源主线聚焦“相等向量可以平移”，不提前使用后续课时的解析化表示与运算口径，不修改课程图谱，仍不得进入 `classroom_trial`、`release_candidate` 或 `published`。
+本轮在 8.1.1 阶段继续保持几何位移、长度、方向和等价向量语言，仅做符号微修：将课堂可见的 `AB = CD = 0`、`AB 与 CD`、`CD 与 AB` 等容易被读成线段等式的表达改为“向量 AB”“向量 CD”或“都是零向量”。资源主线仍聚焦“相等向量可以平移”，不引入坐标化读法，不提前使用后续课时的解析化表示与运算口径，不修改课程图谱，仍不得进入 `classroom_trial`、`release_candidate` 或 `published`。
 
 ## 数学自检
 
@@ -24,23 +24,25 @@
 
 ## 本轮修改
 
-- `src/index.html`：将界面证据、归纳语和辅助线标签改为几何位移、水平位移、竖直位移、大小和方向；移除后续解析化展示，并微调 iframe 首屏高度与触控目标。
-- `metadata.yaml`：将学习目标、数学边界、交互说明、反馈证据收回到几何位移、大小和方向语言。
-- `README.md`：同步清理后续解析化和角度化前置口径。
-- `teacher-script.md`：将板书和追问改为“几何位移、大小、方向”。
-- `student-task.md`：将记录任务改为水平位移、竖直位移观察和相等向量判断。
+- `src/index.html`：将零向量提示改为“向量 AB 和向量 CD 都是零向量”，将同向量提示、长度读数和阶段文案统一为“向量 AB / 向量 CD”。
+- `src/symbol-language.self-check.test.mjs`：新增资源级自检，先红灯复现旧版 `AB = CD = 0`，修复后转绿；同时锁定 `status: draft` 与 `review_status: self_checked_draft`。
+- `student-task.md`：将观察、表格判断和结论填空中的裸 `AB/CD` 改为“向量 AB / 向量 CD”。
+- `teacher-script.md`：将流程标题、追问和板书落点改为“向量 AB / 向量 CD”的等价证据，避免课堂板书出现裸等式。
+- `README.md`、`metadata.yaml`：同步把资源说明、学习目标、交互描述和反馈证据改为向量对象表述，保留几何位移、长度、方向和等价向量口径；`status` 与 `review_status` 未升级。
 
 ## 验证记录
 
+- `node --test content/applets/SH-HS-MATH-HJ-B2-C08-L01-A01/src/symbol-language.self-check.test.mjs`：已先红灯复现旧版 `AB = CD = 0`，修复后通过，2 项资源级自检全部通过。
 - `npm run validate:content`：通过。输出为 `Content validation passed: 70 lessons, 14 applet(s), 4 Manim clip(s), 7 diagnosis package(s).`
-- `npm run verify`：通过。内容校验、backlog 生成、32 项 node test 和 Vite build 均通过；Vite 仍提示 bundle 超过 500 kB，这是既有构建体积提示，不指向本资源。
+- `npm run verify`：通过。内容校验、backlog 生成、36 项 node test 和 Vite build 均通过；Vite 仍提示 bundle 超过 500 kB，这是既有构建体积提示，不指向本资源。
 - 浏览器冒烟：通过。使用本地 Vite 与平台预览 iframe 复核；864 x 560 iframe 内，页面标题为“向量表示与等价拖拽板”，主画板和侧栏同屏，按钮最小高度 42 px，点击“3 证据”和“痕迹”后证据层与痕迹开关正常；过滤 Browser 插件自身 Statsig 网络噪声后，未见本资源 console error。
-- `npm run verify` 再生了 `apps/web/src/data/workspace-data.json` diff；本分支已恢复该 generated file，等待总控统一再生。
+- `npm run verify` 再生了 `apps/web/src/data/workspace-data.json` diff；本分支不提交该 generated file，等待总控统一再生。
 
 ## 剩余风险
 
 - 第 8 章仍处于 `draft` / `needs_manual_textbook_check`；8.3 课时边界未终核，本资源不能作为第 8 章全章已终核证据。
 - 尚未经过数学审校者复核，尤其需要确认 8.1.1 阶段保留水平位移、竖直位移证据是否适合班级基础。
+- 本轮只做符号微修，没有引入向量箭头排版；若后续数学审校要求严格使用带箭头记号，需要再做一轮统一排版。
 - 尚未经过真实投屏、触控大屏和教师 14 分钟流程试读。
 - 学生可能把“拖动端点改变向量”和“拖动整条向量平移位置”混淆，教师脚本中需明确区分。
 
