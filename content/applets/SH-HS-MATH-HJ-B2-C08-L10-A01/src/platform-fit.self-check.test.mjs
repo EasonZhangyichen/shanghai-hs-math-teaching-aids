@@ -5,8 +5,23 @@ import test from "node:test";
 const source = await readFile(new URL("./index.html", import.meta.url), "utf8");
 const readme = await readFile(new URL("../README.md", import.meta.url), "utf8");
 const teacherScript = await readFile(new URL("../teacher-script.md", import.meta.url), "utf8");
+const studentTask = await readFile(new URL("../student-task.md", import.meta.url), "utf8");
 const review = await readFile(new URL("../review.md", import.meta.url), "utf8");
 const metadata = await readFile(new URL("../metadata.yaml", import.meta.url), "utf8");
+
+const visibleSlashForms = [
+  /AD\/AB\s*=\s*m/,
+  /AE\/AC\s*=\s*n/,
+  /m\s*=\s*AD\/AB/,
+  /n\s*=\s*AE\/AC/,
+  /AB\s*\/\s*AC/,
+  /AB\s*\/\s*BC/,
+  /1\/4/,
+  /1\/3/,
+  /1\/2/,
+  /2\/3/,
+  /3\/4/
+];
 
 test("platform iframe compact mode keeps key controls inside the 560px target", () => {
   assert.match(source, /@media\s*\(max-height:\s*620px\)\s*and\s*\(min-width:\s*781px\)/);
@@ -29,7 +44,41 @@ test("formal notation uses AD and AE while oral shorthand stays explicitly bound
   assert.match(review, /暂不建议：`math_review`、`browser_review`、`classroom_trial`、`release_candidate` 或 `published`/);
 });
 
-test("zero first coefficient does not leave a leading plus sign in AB/BC basis", () => {
+test("classroom-visible ratios and basis pairs avoid plain slash notation", () => {
+  for (const pattern of visibleSlashForms) {
+    assert.doesNotMatch(source, pattern);
+  }
+
+  assert.match(source, /class="frac"/);
+  assert.match(source, /class="basis-pair"/);
+  assert.match(source, /function ratioHtml\(value\)/);
+
+  const docs = [readme, teacherScript, studentTask, review, metadata].join("\n");
+  for (const pattern of visibleSlashForms) {
+    assert.doesNotMatch(docs, pattern);
+  }
+  assert.match(readme, /\\frac\{AD\}\{AB\}\s*=\s*m/);
+  assert.match(teacherScript, /\\frac\{AD\}\{AB\}\s*=\s*m/);
+  assert.match(studentTask, /\\frac\{AD\}\{AB\}\s*=\s*m/);
+});
+
+test("common ratio readouts render as stacked fractions", () => {
+  const helperStart = source.indexOf("      function fmt(value)");
+  const helperEnd = source.indexOf("      function term(coef", helperStart);
+  assert.notEqual(helperStart, -1, "Expected fmt helper in HTML source");
+  assert.notEqual(helperEnd, -1, "Expected term helper after ratio helpers");
+
+  const helperDefinitions = source.slice(helperStart, helperEnd);
+  const { ratioHtml } = new Function(`${helperDefinitions}\nreturn { ratioHtml };`)();
+
+  for (const value of [0.25, 0.33, 0.5, 0.67, 0.75]) {
+    const rendered = ratioHtml(value);
+    assert.match(rendered, /class="frac"/);
+    assert.doesNotMatch(rendered, /\d\/\d/);
+  }
+});
+
+test("zero first coefficient does not leave a leading plus sign in AB and BC basis", () => {
   const fmtDefinition = source.match(/function fmt\(value\) \{[\s\S]*?\n      \}/)?.[0];
   const termDefinition = source.match(/function term\(coef, symbol, first = false\) \{[\s\S]*?\n      \}/)?.[0];
   const joinTermsDefinition = source.match(/function joinTerms\(terms\) \{[\s\S]*?\n      \}/)?.[0];
