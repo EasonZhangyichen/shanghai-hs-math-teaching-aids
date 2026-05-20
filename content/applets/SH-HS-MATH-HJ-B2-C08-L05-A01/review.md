@@ -6,6 +6,7 @@
 
 ## 自检结论
 
+- 2026-05-20 本轮追加复核：保留资源状态为 `draft`，在 `src/index.html` 中将 30°、45°、60°、90°、120°、135°、150°、180° 的弧度标签集中到资源内共享 `exactRadianLabels` normalizer；角度读数继续由同一 `radianHtml`/`fractionHtml` 输出上下结构分式，补强资源内自检覆盖 <math><mfrac><mi>π</mi><mn>3</mn></mfrac></math>、<math><mfrac><mi>π</mi><mn>2</mn></mfrac></math>、<math><mfrac><mrow><mn>2</mn><mi>π</mi></mrow><mn>3</mn></mfrac></math>、<math><mfrac><mrow><mn>3</mn><mi>π</mi></mrow><mn>4</mn></mfrac></math>、<math><mfrac><mrow><mn>5</mn><mi>π</mi></mrow><mn>6</mn></mfrac></math> 等典型课堂可见读数。
 - 2026-05-20 本轮数学显示闸门修复：课堂可见的弧度分式读数、课堂收束和教师脚本中的 π 分式不再使用纯文本斜杠；`src/index.html` 改用资源内 CSS 上下结构分式，教师脚本和审核记录改用 MathML 分式，并新增资源内自检门禁扫描可见资源文件中的斜杠式 π 分式。
 - 2026-05-19 本轮专项复核未改动 L05 源码：直达页和平台 iframe 内部首屏布局、40px 按钮、32px 透明拖拽热区和资源内布局自检继续作为当前通过证据；仍保留平台课时页外层需要滚动到资源卡、真实教室触控屏手感未确认两项风险。
 - 2026-05-19 本线程复核继续未改动 L05 源码：Browser 直达页、等效平台 iframe 视口和平台 iframe 入口均能渲染真实课件，点击 `120°` 后数量积和投影读数变为负；继续保留真实投屏、真实触控大屏和教师流程试读未完成风险。
@@ -34,6 +35,9 @@
 
 ## 已做本地验证
 
+- 2026-05-20 `node --test content/applets/SH-HS-MATH-HJ-B2-C08-L05-A01/src/layout.self-check.test.mjs` 已先红灯复现缺少共享弧度分式 normalizer 的问题；补强后 6 项资源内自检通过，覆盖典型 π 分式上下结构输出和可见文件斜杠扫描。
+- 2026-05-20 本轮追加复核 `npm run validate:content` 通过：70 lessons、14 applet(s)、4 Manim clip(s)、7 diagnosis package(s)。
+- 2026-05-20 本轮追加复核 `npm run verify` 通过：内容校验、backlog 生成、36 项 node test 和 Vite build 均通过；复核后未留下 `apps/web/src/data/workspace-data.json`、`content/production/resource-backlog.json` 或 `content/curriculum/index.yaml` diff。
 - 2026-05-20 `node --test content/applets/SH-HS-MATH-HJ-B2-C08-L05-A01/src/layout.self-check.test.mjs` 已先红灯复现旧版可见 π 分式斜杠外露问题；修复后 5 项资源内自检通过。
 - 2026-05-20 文本扫描复核目标资源包内可见文件，未发现斜杠式 π 分式残留。
 - 2026-05-20 Browser 渲染抽查：`http://127.0.0.1:4178/index.html` 默认 `60°` 和点击 `120°` 后，角度读数均为上下结构分式 DOM，页面正文未出现斜杠式 π 分式；未见本资源 console error。

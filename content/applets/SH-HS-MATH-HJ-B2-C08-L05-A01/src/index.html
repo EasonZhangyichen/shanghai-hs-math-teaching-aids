@@ -759,6 +759,18 @@
         return `<span class="math-frac" aria-label="${numerator} over ${denominator}"><span class="math-num">${numerator}</span><span class="math-den">${denominator}</span></span>`;
       }
 
+      const exactRadianLabels = new Map([
+        [0, { kind: "plain", text: "0" }],
+        [30, { numerator: "π", denominator: "6" }],
+        [45, { numerator: "π", denominator: "4" }],
+        [60, { numerator: "π", denominator: "3" }],
+        [90, { numerator: "π", denominator: "2" }],
+        [120, { numerator: "2π", denominator: "3" }],
+        [135, { numerator: "3π", denominator: "4" }],
+        [150, { numerator: "5π", denominator: "6" }],
+        [180, { kind: "plain", text: "π" }]
+      ]);
+
       function radianHtml(value) {
         if (value.kind === "plain") return value.text;
         return fractionHtml(value.numerator, value.denominator);
@@ -767,18 +779,7 @@
       function angleExactHtml(angleDeg) {
         if (angleDeg === null) return "夹角不规定";
         const rounded = Math.round(angleDeg);
-        const table = new Map([
-          [0, { kind: "plain", text: "0" }],
-          [30, { numerator: "π", denominator: "6" }],
-          [45, { numerator: "π", denominator: "4" }],
-          [60, { numerator: "π", denominator: "3" }],
-          [90, { numerator: "π", denominator: "2" }],
-          [120, { numerator: "2π", denominator: "3" }],
-          [135, { numerator: "3π", denominator: "4" }],
-          [150, { numerator: "5π", denominator: "6" }],
-          [180, { kind: "plain", text: "π" }]
-        ]);
-        const radians = table.get(rounded);
+        const radians = exactRadianLabels.get(rounded);
         return radians ? `<span class="math-inline">θ = ${rounded}° = ${radianHtml(radians)}</span>` : `θ = ${angleDeg.toFixed(1)}°`;
       }
 

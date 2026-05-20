@@ -17,6 +17,10 @@ function cssRule(selector) {
   return match[1];
 }
 
+function escapeRegExp(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
 function cssRuleByPattern(pattern, label) {
   const matches = Array.from(source.matchAll(new RegExp(`${pattern}\\s*\\{([\\s\\S]*?)\\n\\s*\\}`, "gm")));
   assert.ok(matches.length > 0, `Expected to find CSS rule for ${label}`);
@@ -76,4 +80,31 @@ test("visible pi fractions use stacked math instead of slash-delimited text", ()
   }
 
   assert.match(source, /math-frac/, "index.html should include stacked fraction markup for classroom readouts");
+});
+
+test("typical radian labels are normalized through one stacked-math formatter", () => {
+  const normalizerMatch = source.match(/const exactRadianLabels = new Map\(\[([\s\S]*?)\]\);/);
+  assert.ok(normalizerMatch, "Expected a shared exactRadianLabels normalizer for classroom angle readouts");
+
+  const labelsSource = normalizerMatch[1];
+  const requiredFractions = [
+    [30, "π", "6"],
+    [60, "π", "3"],
+    [90, "π", "2"],
+    [120, "2π", "3"],
+    [135, "3π", "4"],
+    [150, "5π", "6"]
+  ];
+
+  for (const [degrees, numerator, denominator] of requiredFractions) {
+    const pattern = new RegExp(
+      `\\[${degrees},\\s*\\{\\s*numerator:\\s*"${escapeRegExp(numerator)}",\\s*denominator:\\s*"${escapeRegExp(denominator)}"\\s*\\}\\s*\\]`
+    );
+    assert.match(labelsSource, pattern, `${degrees}° should be represented as a stacked ${numerator}/${denominator} label`);
+  }
+
+  const angleFormatter = source.match(/function angleExactHtml\(angleDeg\) \{([\s\S]*?)\n      \}/);
+  assert.ok(angleFormatter, "Expected to find angleExactHtml");
+  assert.match(angleFormatter[1], /exactRadianLabels\.get\(rounded\)/, "angle readout should use the shared normalizer");
+  assert.doesNotMatch(angleFormatter[1], /new Map/, "angle readout should not keep a private duplicate fraction table");
 });
