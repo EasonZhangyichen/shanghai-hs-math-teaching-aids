@@ -28,7 +28,7 @@ pedagogy:
     - 围绕同一个三角形分点问题，比较基底法、路径法、数量积/坐标法的第一步建模选择。
     - 在三角形情境中选择一组基向量，并用从 A 出发的向量 AD、AE 表示边上分点。
     - 比较 D 到 E 的三条几何路径，说明路径不同但向量和相同。
-    - 把 AD/AB、AE/AC 这样的几何关系转化为系数形式的向量等式，但不展开完整解题器。
+    - 把 AD 与 AB、AE 与 AC 的比例关系转化为系数形式的向量等式，但不展开完整解题器。
   prerequisites:
     - "8.1 向量的概念和线性运算：有向线段、相等向量、向量加减法和数乘的几何意义"
     - "8.2 向量的数量积：知道数量积适合处理长度、夹角和垂直判断"
@@ -46,7 +46,7 @@ pedagogy:
 mathematical_scope:
   focus: 以三角形 ABC 中 D 在 AB 上、E 在 AC 上为典型情境，比较向量应用题的第一步建模选择。
   lesson: 向量的应用
-  problem_model: "设 D 在 AB 上，AD/AB = m；E 在 AC 上，AE/AC = n。目标是判断第一步应如何建模，并把向量 DE 写成选定基向量的线性组合。"
+  problem_model: "设 D 在 AB 上，AD 与 AB 的比例为 m；E 在 AC 上，AE 与 AC 的比例为 n。目标是判断第一步应如何建模，并把向量 DE 写成选定基向量的线性组合。"
   primary_basis: "p 表示向量 AB，q 表示向量 AC；以 A 为共同起点，AD = m p，AE = n q，DE = AE - AD = -m p + n q。"
   alternate_basis: "p 表示向量 AB，r 表示向量 BC；此时 AC = p + r，AD = m p，AE = n(p + r)，DE = AE - AD = (n - m)p + n r。"
   first_step_methods:
@@ -67,7 +67,7 @@ representations:
   - id: geometry_board
     role: 显示三角形 ABC、分点 D/E、所选基向量和当前路径。
   - id: basis_selector
-    role: 比较 AB/AC 与 AB/BC 两种基向量选择对等式表达的影响。
+    role: 比较 AB、AC 与 AB、BC 两种基向量选择对等式表达的影响。
   - id: first_step_strategy
     role: 明确比较基底法、路径法、数量积/坐标法的第一步建模选择。
   - id: path_trace
@@ -77,7 +77,7 @@ representations:
   - id: strategy_panel
     role: 帮助教师把“选基向量、选路径、化简比较”作为课堂策略总结。
 interaction_design:
-  primary_control: 拖动 D、E 或使用比例滑块改变 m = AD/AB 与 n = AE/AC，观察不同路径等式如何同步变化。
+  primary_control: 拖动 D、E 或使用比例滑块改变 m 与 n，观察不同路径等式如何同步变化。
   teacher_controls:
     - 重置到默认分点
     - 切换基底法、路径法、数量积/坐标法的第一步提示
@@ -105,17 +105,17 @@ data_contract:
     - name: ratio_m
       value_type: number
       default: 0.4
-      description: D 在 AB 上的位置比例，m = AD/AB。
+      description: D 在 AB 上的位置比例，m 表示 AD 与 AB 的比。
       persistence: snapshot
     - name: ratio_n
       value_type: number
       default: 0.65
-      description: E 在 AC 上的位置比例，n = AE/AC。
+      description: E 在 AC 上的位置比例，n 表示 AE 与 AC 的比。
       persistence: snapshot
     - name: basis_mode
       value_type: string
       default: ab_ac
-      description: 当前基向量组，ab_ac 表示 AB/AC，ab_bc 表示 AB/BC。
+      description: 当前基向量组，ab_ac 表示 AB 与 AC，ab_bc 表示 AB 与 BC。
       persistence: snapshot
     - name: first_step_choice
       value_type: string
@@ -196,7 +196,7 @@ feedback_and_diagnosis:
       label: 表征对应断裂
   feedback_principles:
     - 先让学生用图中路径说出每一段移动，再写符号表达。
-    - 对比例方向错误，回到 AD/AB 和 AE/AC 的起点方向检查。
+    - 对比例方向错误，回到 AD 与 AB、AE 与 AC 的起点方向检查。
     - 对坐标法或数量积法冲动，先追问“题目第一问是否真的要求长度、夹角、垂直或坐标数值”。
     - 对“D = mp、E = nq”这类简写，提醒它只能作为以 A 为共同起点的位置向量口头简写；正式板书优先写 AD = mp、AE = nq。
     - 只比较建模路径，不把本板扩展成完整解题器。
