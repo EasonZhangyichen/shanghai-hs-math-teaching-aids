@@ -56,6 +56,7 @@ mathematical_scope:
     - 后续解析化表示和运算规则的系统训练
     - 8.3 后续课时边界讨论
     - 用题库形式训练平行、共线和相反向量判定
+    - 超出 draft / self_checked_draft / metadata_ready 草稿边界的正式流转
 representations:
   - id: plane_grid
     role: 显示点的位置、水平/竖直位移和起点变化。
@@ -204,5 +205,5 @@ files:
   review_record: review.md
   src_entry: src/index.html
 compliance:
-  copyright_note: 本资源为原创交互草稿，不复制教材正文、官方课件、教案或商业题库；第 8 章课时边界仍需纸质教材或已登录平台终核。
+  copyright_note: 本资源为原创交互草稿，不复制教材正文、官方课件、教案或商业题库；第 8 章教材来源和课时边界仍需纸质教材或已登录平台终核，当前仅保持 draft / self_checked_draft / metadata_ready 草稿边界。
   review_status: self_checked_draft

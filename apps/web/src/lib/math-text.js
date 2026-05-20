@@ -39,18 +39,17 @@ export function renderMathText(value) {
 }
 
 function renderMathMarkup(text) {
-  const fractionPattern = /(-?)(\d*)π\/(\d+)/g;
+  const fractionPattern = /(-?)((?:(?:\d+|k)?π)|φ)\s*\/\s*(\d+|ω)/g;
   let output = "";
   let cursor = 0;
 
   for (const match of text.matchAll(fractionPattern)) {
-    const [token, sign, coefficient, denominator] = match;
+    const [token, sign, numerator, denominator] = match;
     const index = match.index ?? 0;
-    const numerator = `${coefficient || ""}π`;
 
     output += escapeHtml(text.slice(cursor, index));
     output += escapeHtml(sign);
-    output += `<span class="math-frac" aria-label="${escapeHtml(token.replace(/^-/, ""))}"><span>${escapeHtml(
+    output += `<span class="math-frac" aria-label="${escapeHtml(`${numerator}/${denominator}`)}"><span>${escapeHtml(
       numerator,
     )}</span><span>${escapeHtml(denominator)}</span></span>`;
     cursor = index + token.length;

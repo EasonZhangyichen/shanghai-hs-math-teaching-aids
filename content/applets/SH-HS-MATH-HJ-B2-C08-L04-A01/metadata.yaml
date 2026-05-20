@@ -53,6 +53,7 @@ mathematical_scope:
     - 坐标形式数量积的系统练习
     - 向量坐标表示 8.3 的课时边界讨论
     - 题库式判断投影或数量积正负
+    - 超出 draft / self_checked_draft / metadata_ready 草稿边界的正式流转
 representations:
   - id: projection_board
     role: 显示共享起点、方向轴、垂足和投影段，不呈现坐标读数。
@@ -173,5 +174,5 @@ files:
   review_record: review.md
   src_entry: src/index.html
 compliance:
-  copyright_note: 本资源为原创交互草稿，不复制教材正文、官方课件、教案或商业题库；第 8 章课时边界仍需纸质教材或已登录平台终核。
+  copyright_note: 本资源为原创交互草稿，不复制教材正文、官方课件、教案或商业题库；第 8 章教材来源和课时边界仍需纸质教材或已登录平台终核，当前仅保持 draft / self_checked_draft / metadata_ready 草稿边界。
   review_status: self_checked_draft

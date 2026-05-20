@@ -30,14 +30,14 @@
 - 答案唯一性通过：Q01、Q03 为明确单选，Q02、Q04 的多选正确项和错误项区分稳定；Q05、Q06 的开放题均给出可评分的关键步骤与理由。
 - 错因标签定位清晰：`coordinate_overreach`、`basis_path_gap`、`point_ratio_expression_gap`、`dot_product_trigger_gap`、`projection_decomposition_gap`、`coordinate_setup_gap` 分别对应“第一步选择”中的不同工具误判。
 - 限时可行性判断：题组不要求完整证明，Q05、Q06 允许条目式回答时 8 到 10 分钟可完成；若要求写完证明过程会超出本诊断边界，教师说明已明确禁止这样使用。
-- 状态边界：保持 `metadata.status: draft`、`compliance.review_status: self_checked_draft`、`platform_card.availability: metadata_ready`，本次不提升课堂试用或发布状态。
+- 状态边界：保持 `metadata.status: draft`、`compliance.review_status: self_checked_draft`、`platform_card.availability: metadata_ready`，本次不提升任何正式流转状态。
 
 ## 待复核
 
 - 需数学教师确认 Q05 比例点表达的课堂语言是否与沪教版 8.4 例题口径一致。
 - 需小组限时试做，确认 6 题能在 8 到 10 分钟内完成。
 - 需后续诊断播放器接入后复核多选题、短解释题和错误分析题的标签统计口径。
-- 第 8 章课时划分仍需纸质教材或已登录 dolearning 左侧目录终核；本包不进入发布链路。
+- 第 8 章课时划分仍需纸质教材或已登录 dolearning 左侧目录终核；本包当前只保持 `draft` / `self_checked_draft` / `metadata_ready`。
 
 ## 2026-05-19 B2-C08 Diagnosis 审核线程复核
 
