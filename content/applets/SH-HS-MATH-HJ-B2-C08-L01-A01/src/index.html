@@ -433,7 +433,7 @@
               </div>
               <div class="readout">
                 <strong>向量长度</strong>
-                <span id="length-readout">|AB| = 3√2</span>
+                <span id="length-readout">向量 AB、向量 CD 均为 3√2</span>
               </div>
               <div class="readout">
                 <strong>方向</strong>
@@ -793,21 +793,21 @@
           addVector(svg, state.copyStart, cEnd, "copy-vector", "copy-body", "arrow-copy");
           addHandle(svg, state.copyStart, "C", "c", "copy");
           addHandle(svg, cEnd, "D", "d", "copy");
-          addText(svg, "平移后的 CD", midpoint(state.copyStart, cEnd, -0.38), "vector-label");
+          addText(svg, "平移后的向量 CD", midpoint(state.copyStart, cEnd, -0.38), "vector-label");
           if (showMeasures && length > 0.001) {
             drawMovementGuides(svg, state.copyStart, cEnd);
           }
         }
 
         movementReadout.textContent = fmtMovement(d);
-        lengthReadout.textContent = `|AB| = |CD| = ${fmtLength(d.x, d.y)}`;
+        lengthReadout.textContent = `向量 AB、向量 CD 均为 ${fmtLength(d.x, d.y)}`;
         angleReadout.textContent = fmtDirection(d.x, d.y);
         startReadout.textContent = samePoint(state.baseStart, state.copyStart) ? "A 与 C 是同一起点" : "A 与 C 是不同起点";
 
         const zero = length < 0.001;
         relationBox.innerHTML = zero
-          ? `<p class="warning">当前为零向量：长度为 0，方向不规定。</p><p class="formula">AB = CD = 0</p>`
-          : `<p>蓝色 AB 与橙色 CD 的几何位移、长度和方向都相同。</p><p class="formula">AB 与 CD 表示同一向量</p>`;
+          ? `<p class="warning">当前为零向量：长度为 0，方向不规定。</p><p class="formula">向量 AB 和向量 CD 都是零向量</p>`
+          : `<p>蓝色向量 AB 与橙色向量 CD 的几何位移、长度和方向都相同。</p><p class="formula">向量 AB 与向量 CD 表示同一向量</p>`;
 
         summarySection.hidden = state.step < 4;
         stageNote.innerHTML = stageMessage(zero);
@@ -836,7 +836,7 @@
       function stageMessage(zero) {
         const messages = {
           1: "<strong>观察：</strong>有向线段用起点和终点表示，真正要抓住的是从 A 到 B 的位移。",
-          2: "<strong>平移：</strong>把同一位移搬到 C 点，得到的 CD 与 AB 表示同一个向量。",
+          2: "<strong>平移：</strong>把同一位移搬到 C 点，得到的向量 CD 与向量 AB 表示同一个向量。",
           3: "<strong>证据：</strong>同时看水平位移、竖直位移、长度和方向，不能只看起点位置。",
           4: "<strong>归纳：</strong>相等向量只要求大小相等、方向相同，与起点位置无关。"
         };
