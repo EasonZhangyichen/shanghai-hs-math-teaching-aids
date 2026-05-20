@@ -351,11 +351,44 @@
         font-size: 11px;
       }
 
-      .readout span {
+      .readout > span {
         display: block;
         font-size: 15px;
         line-height: 1.18;
         font-weight: 780;
+      }
+
+      .math-inline {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.22em;
+        white-space: nowrap;
+        vertical-align: middle;
+      }
+
+      .math-frac {
+        display: inline-grid;
+        grid-template-rows: auto auto;
+        justify-items: center;
+        min-width: 1.1em;
+        margin: 0 0.05em;
+        line-height: 1;
+        vertical-align: middle;
+      }
+
+      .math-frac .math-num,
+      .math-frac .math-den {
+        display: block;
+        padding: 0 0.08em;
+      }
+
+      .math-frac .math-num {
+        border-bottom: 1.4px solid currentColor;
+        padding-bottom: 0.06em;
+      }
+
+      .math-frac .math-den {
+        padding-top: 0.06em;
       }
 
       .sign-box {
@@ -516,7 +549,9 @@
               </div>
               <div class="readout">
                 <strong>夹角</strong>
-                <span id="angle-readout" data-testid="angle-readout">θ = 60° = π/3</span>
+                <span id="angle-readout" data-testid="angle-readout">
+                  <span class="math-inline">θ = 60° = <span class="math-frac" aria-label="pi over 3"><span class="math-num">π</span><span class="math-den">3</span></span></span>
+                </span>
               </div>
               <div class="readout">
                 <strong>余弦</strong>
@@ -548,9 +583,9 @@
           <section class="panel-section summary-section">
             <p class="section-title">课堂收束</p>
             <ul class="summary-list">
-              <li><b>锐角：</b>0 &lt; θ &lt; π/2，cosθ &gt; 0，所以 a·b &gt; 0。</li>
-              <li><b>直角：</b>θ = π/2，cosθ = 0，所以 a·b = 0。</li>
-              <li><b>钝角：</b>π/2 &lt; θ &lt; π，cosθ &lt; 0，所以 a·b &lt; 0。</li>
+              <li><b>锐角：</b><span class="math-inline">0 &lt; θ &lt; <span class="math-frac" aria-label="pi over 2"><span class="math-num">π</span><span class="math-den">2</span></span></span>，cosθ &gt; 0，所以 a·b &gt; 0。</li>
+              <li><b>直角：</b><span class="math-inline">θ = <span class="math-frac" aria-label="pi over 2"><span class="math-num">π</span><span class="math-den">2</span></span></span>，cosθ = 0，所以 a·b = 0。</li>
+              <li><b>钝角：</b><span class="math-inline"><span class="math-frac" aria-label="pi over 2"><span class="math-num">π</span><span class="math-den">2</span></span> &lt; θ &lt; π</span>，cosθ &lt; 0，所以 a·b &lt; 0。</li>
               <li><b>零向量：</b>a·b = 0，但不能把它当作两个非零向量垂直；若 b 为零向量，投影方向未规定。</li>
             </ul>
           </section>
@@ -720,22 +755,31 @@
         return value > 0 ? fmt(value) : `-${fmt(Math.abs(value))}`;
       }
 
-      function angleExactText(angleDeg) {
+      function fractionHtml(numerator, denominator) {
+        return `<span class="math-frac" aria-label="${numerator} over ${denominator}"><span class="math-num">${numerator}</span><span class="math-den">${denominator}</span></span>`;
+      }
+
+      function radianHtml(value) {
+        if (value.kind === "plain") return value.text;
+        return fractionHtml(value.numerator, value.denominator);
+      }
+
+      function angleExactHtml(angleDeg) {
         if (angleDeg === null) return "夹角不规定";
         const rounded = Math.round(angleDeg);
         const table = new Map([
-          [0, "0"],
-          [30, "π/6"],
-          [45, "π/4"],
-          [60, "π/3"],
-          [90, "π/2"],
-          [120, "2π/3"],
-          [135, "3π/4"],
-          [150, "5π/6"],
-          [180, "π"]
+          [0, { kind: "plain", text: "0" }],
+          [30, { numerator: "π", denominator: "6" }],
+          [45, { numerator: "π", denominator: "4" }],
+          [60, { numerator: "π", denominator: "3" }],
+          [90, { numerator: "π", denominator: "2" }],
+          [120, { numerator: "2π", denominator: "3" }],
+          [135, { numerator: "3π", denominator: "4" }],
+          [150, { numerator: "5π", denominator: "6" }],
+          [180, { kind: "plain", text: "π" }]
         ]);
-        const radText = table.get(rounded);
-        return radText ? `θ = ${rounded}° = ${radText}` : `θ = ${angleDeg.toFixed(1)}°`;
+        const radians = table.get(rounded);
+        return radians ? `<span class="math-inline">θ = ${rounded}° = ${radianHtml(radians)}</span>` : `θ = ${angleDeg.toFixed(1)}°`;
       }
 
       function createSvg(tag, attrs = {}) {
@@ -883,7 +927,7 @@
         addText(svg, "向量 b", { x: state.b.x * 0.56, y: state.b.y * 0.56 + 0.34 }, "vector-label");
 
         lengthReadout.textContent = `|a| = ${fmt(data.lenA)}, |b| = ${fmt(data.lenB)}`;
-        angleReadout.textContent = angleExactText(data.angleDeg);
+        angleReadout.innerHTML = angleExactHtml(data.angleDeg);
         cosReadout.textContent = data.angleDeg === null ? "cosθ 不用于零向量边界" : `cosθ = ${fmt(data.cos)}`;
         dotReadout.textContent = `a·b = ${fmtSigned(data.dot)}`;
         if (!data.projectionDefined) {
