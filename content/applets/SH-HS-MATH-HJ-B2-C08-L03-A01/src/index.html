@@ -13,7 +13,6 @@
         --panel: #ffffff;
         --line: #d8e1da;
         --grid: #e7ece8;
-        --axis: #8e9c94;
         --base: #2563eb;
         --base-soft: rgba(37, 99, 235, 0.13);
         --scaled: #d97706;
@@ -164,23 +163,12 @@
         stroke-width: 1;
       }
 
-      .axis-line {
-        stroke: var(--axis);
-        stroke-width: 1.4;
-      }
-
-      .axis-label,
       .point-label,
       .vector-label,
       .measure-label {
         fill: var(--ink);
         font-size: 13px;
         font-weight: 700;
-      }
-
-      .axis-label {
-        fill: var(--muted);
-        font-size: 12px;
       }
 
       .base-vector,
@@ -480,7 +468,7 @@
             data-testid="vector-board"
             viewBox="0 0 760 540"
             role="img"
-            aria-label="拖动原向量 a 并观察 lambda 乘以 a 后的方向和长度"
+            aria-label="拖动原向量 a，观察数乘 λa 的方向和长度；参照网格不作坐标轴读数"
           >
             <defs>
               <marker id="arrow-base" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
@@ -514,7 +502,7 @@
             </g>
           </svg>
           <p class="board-note" id="board-note">
-            拖动蓝色原向量 a 的箭头端点，再移动 λ。橙色向量始终从同一起点出发表示 λa。
+            拖动蓝色原向量 a 的箭头端点，再移动 λ。橙色向量始终从同一起点出发表示 λa；浅色网格只作方向和长度参照。
           </p>
         </div>
 
@@ -535,9 +523,9 @@
               max="2"
               step="0.1"
               value="1.5"
-              aria-label="调节实数 lambda"
+              aria-label="调节实数 λ"
             />
-            <div class="quick-values" aria-label="快速设置 lambda">
+            <div class="quick-values" aria-label="快速设置实数 λ">
               <button class="lambda-button" type="button" data-lambda="-1">-1</button>
               <button class="lambda-button" type="button" data-lambda="-0.5">-0.5</button>
               <button class="lambda-button" type="button" data-lambda="0">0</button>
@@ -709,7 +697,6 @@
       }
 
       function buildGrid() {
-        const origin = toScreen({ x: 0, y: 0 });
         for (let x = view.xMin; x <= view.xMax; x += 1) {
           const start = toScreen({ x, y: view.yMin });
           const end = toScreen({ x, y: view.yMax });
@@ -718,7 +705,7 @@
           line.setAttribute("y1", start.y);
           line.setAttribute("x2", end.x);
           line.setAttribute("y2", end.y);
-          line.setAttribute("class", x === 0 ? "axis-line" : "grid-line");
+          line.setAttribute("class", "grid-line");
           gridLayer.append(line);
         }
         for (let y = view.yMin; y <= view.yMax; y += 1) {
@@ -729,23 +716,9 @@
           line.setAttribute("y1", start.y);
           line.setAttribute("x2", end.x);
           line.setAttribute("y2", end.y);
-          line.setAttribute("class", y === 0 ? "axis-line" : "grid-line");
+          line.setAttribute("class", "grid-line");
           gridLayer.append(line);
         }
-
-        const xLabel = document.createElementNS("http://www.w3.org/2000/svg", "text");
-        xLabel.setAttribute("x", view.width - 28);
-        xLabel.setAttribute("y", origin.y - 8);
-        xLabel.setAttribute("class", "axis-label");
-        xLabel.textContent = "x";
-        gridLayer.append(xLabel);
-
-        const yLabel = document.createElementNS("http://www.w3.org/2000/svg", "text");
-        yLabel.setAttribute("x", origin.x + 8);
-        yLabel.setAttribute("y", 20);
-        yLabel.setAttribute("class", "axis-label");
-        yLabel.textContent = "y";
-        gridLayer.append(yLabel);
       }
 
       function signKey() {
