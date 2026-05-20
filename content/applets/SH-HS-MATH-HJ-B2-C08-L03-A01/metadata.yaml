@@ -58,8 +58,8 @@ mathematical_scope:
     - 用坐标公式系统训练共线和平行判定
     - 正式数学审校、触控大屏复测和课堂试用
 representations:
-  - id: coordinate_grid
-    role: 提供拖动原向量和观察伸缩方向的几何背景，不作为 8.3 坐标运算训练。
+  - id: reference_grid
+    role: 浅色参照网格只帮助观察方向和长度伸缩，不显示 x/y 标签，也不作为 8.3 坐标运算训练。
   - id: base_vector
     role: 蓝色有向线段表示原向量 a，可拖动端点改变大小和方向。
   - id: scaled_vector
