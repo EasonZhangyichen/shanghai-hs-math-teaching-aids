@@ -29,14 +29,14 @@
 - 答案唯一性通过：单选、多选、简答和错误分析题的正确结论清晰；多选题的部分得分规则能区分漏选和方向性错选。
 - 已收紧反馈语言：对 `AB - AC`、`AB + CA` 和 `AB - AD` 的反馈补明“改写为加相反向量后可交换到首尾相接路径再读结果”，避免学生误以为原顺序本身就是连续路径。
 - 错因标签覆盖到题组目标的四类方向错因：加法方向法则、减法相反向量、闭合路径零向量和端点顺序反向。
-- 限时可行性判断：6 题共 10 分，其中 Q04、Q06 需要短解释；若教师要求条目式作答，8 到 10 分钟可完成。正式进入课堂试用前仍需小组限时试做。
-- 状态边界：保持 `metadata.status: draft`、`compliance.review_status: self_checked_draft`、`platform_card.availability: metadata_ready`，本次不提升课堂试用或发布状态。
+- 限时可行性判断：6 题共 10 分，其中 Q04、Q06 需要短解释；若教师要求条目式作答，8 到 10 分钟可完成。若后续总控另开小组限时试做，也只作为风险记录。
+- 状态边界：保持 `metadata.status: draft`、`compliance.review_status: self_checked_draft`、`platform_card.availability: metadata_ready`，本次不提升任何正式流转状态。
 
 ## 剩余风险
 
 - 仍需数学教师复核所有向量等式、方向和零向量表述。
 - 仍需小组限时试做，确认 6 题能在 8 到 10 分钟内完成。
-- 第 8 章整体课时划分仍为 `draft`，需纸质教材或已登录 dolearning 最终确认；本资源当前不建议进入 `math_review` 以上状态。
+- 第 8 章整体课时划分仍为 `draft`，需纸质教材或已登录 dolearning 最终确认；本资源当前只保持 `draft` / `self_checked_draft` / `metadata_ready`。
 - 未接入交互式诊断播放器，当前仅为题组预览与教师讲评用草稿。
 
 ## 2026-05-19 B2-C08 Diagnosis 审核线程复核

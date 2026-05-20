@@ -48,9 +48,9 @@
 ## 剩余风险
 
 - 第 8 章来源和课时边界仍未完成纸质教材或已登录 dolearning 终核。
-- 当前仅完成作者自检，尚未经过数学审校、浏览器大屏触控复核或真实课堂试读。
+- 当前仅完成作者自检，尚未经过数学教师复核、浏览器大屏触控复核或真实课堂试读。
 - Canvas 交互已按桌面和平板投屏设计，本轮完成本地 iframe 冒烟；真实触控大屏手感仍需课堂前复核。
 
 ## 不提升状态说明
 
-本资源保持 `metadata.status: draft`，`compliance.review_status: self_checked_draft`。仍不得进入 `classroom_trial`、`release_candidate` 或 `published`；是否进入 `math_review` 需由总控在数学审校后决定。
+本资源保持 `metadata.status: draft`，`compliance.review_status: self_checked_draft`，平台入口只按 `metadata_ready` 草稿口径理解。第 8 章教材来源和课时边界未终核前，数学教师复核、浏览器大屏触控抽查或试读只能作为风险补充记录，不开启更高正式流转。

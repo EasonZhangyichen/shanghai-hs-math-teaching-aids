@@ -29,13 +29,13 @@
 - 答案唯一性通过：Q01 到 Q06 的正确答案和关键理由均清晰；Q03 明确区分“两个非零向量垂直”和“零向量导致数量积为 0”。
 - 错因标签定位清晰：`angle_sign_confusion`、`projection_sign_confusion`、`zero_vector_boundary`、`perpendicular_condition_overgeneralization`、`result_type_scalar_confusion`、`length_direction_mixup` 均能对应具体选项或解释题缺口。
 - 限时可行性判断：Q05、Q06 为解释题，若按关键词给分可在 8 到 10 分钟完成；若要求完整书写计算过程，9 分钟可能偏紧，需小组限时试做确认。
-- 状态边界：保持 `metadata.status: draft`、`compliance.review_status: self_checked_draft`、`platform_card.availability: metadata_ready`，本次不提升课堂试用或发布状态。
+- 状态边界：保持 `metadata.status: draft`、`compliance.review_status: self_checked_draft`、`platform_card.availability: metadata_ready`，本次不提升任何正式流转状态。
 
 ## 待后续复核
 
 - 需要数学教师复核 Q03 中零向量与垂直表述是否符合本校课堂约定。
 - 需要小组限时试做确认 Q05、Q06 的解释题是否会拖慢 9 分钟节奏。
-- 第 8 章课时划分仍待纸质教材或已登录平台终核；本资源不得进入 `release_candidate` 或 `published`。
+- 第 8 章课时划分仍待纸质教材或已登录平台终核；本资源当前只保持 `draft` / `self_checked_draft` / `metadata_ready`。
 
 ## 2026-05-19 B2-C08 Diagnosis 审核线程复核
 

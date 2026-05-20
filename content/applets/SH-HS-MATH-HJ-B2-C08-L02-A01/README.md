@@ -36,6 +36,6 @@
 - `student-task.md`：学生观察、猜想、验证和归纳任务。
 - `review.md`：自检记录和剩余风险。
 
-## 后续建议
+## 来源与流转边界
 
-进入总控验收后，建议先做数学审校和浏览器大屏触控复核，再考虑是否进入 `math_review` 或 `browser_review`。第 8 章来源仍未终核，本资源不建议进入 `classroom_trial`、`release_candidate` 或 `published`。
+第 8 章教材来源和课时边界仍未完成纸质教材或已登录平台终核。本资源当前只可保持 `draft` / `self_checked_draft` / `metadata_ready`，后续数学教师复核、浏览器大屏触控抽查或试读记录只能作为风险补充，不触发更高正式流转。
