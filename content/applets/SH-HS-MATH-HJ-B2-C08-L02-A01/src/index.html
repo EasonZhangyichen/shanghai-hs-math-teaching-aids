@@ -401,11 +401,11 @@
               </div>
               <div class="readout">
                 <strong>加法结果</strong>
-                <span id="sum-readout">a + b：向右 5 格，向上 0.5 格</span>
+                <span id="sum-readout">向量和 a + b：向右 5 格，向上 0.5 格</span>
               </div>
               <div class="readout">
                 <strong>减法结果</strong>
-                <span id="diff-readout">a - b：向右 1 格，向上 3.5 格</span>
+                <span id="diff-readout">向量差 a - b：向右 1 格，向上 3.5 格</span>
               </div>
             </div>
           </section>
@@ -421,17 +421,17 @@
               <li><span class="swatch a"></span><span>蓝色：向量 a，可拖动终点 A 改变。</span></li>
               <li><span class="swatch b"></span><span>橙色：向量 b，可拖动终点 B 改变。</span></li>
               <li><span class="swatch"></span><span>绿色：当前模式下的结果向量。</span></li>
-              <li><span class="swatch reverse"></span><span>红色：减法模式中的相反向量 -b。</span></li>
-              <li><span class="swatch path"></span><span>紫色：B 到 A 的端点路径，帮助检查方向。</span></li>
+              <li><span class="swatch reverse"></span><span>红色：与 b 等长反向的相反向量 -b。</span></li>
+              <li><span class="swatch path"></span><span>紫色：从 B 指向 A 的端点路径，检查向量差方向。</span></li>
             </ul>
           </section>
 
           <section class="panel-section" id="summary-section" hidden>
             <p class="section-title">课堂归纳</p>
             <ul class="summary-list">
-              <li><b>三角形法则：</b>把 b 的起点平移到 a 的终点，首尾相接得到 a + b。</li>
-              <li><b>平行四边形法则：</b>a、b 共起点时，对角线仍是 a + b。</li>
-              <li><b>减法：</b>a - b 可以看成 a + (-b)，也可看成从 B 指向 A 的向量。</li>
+              <li><b>三角形法则：</b>把 b 的起点平移到 a 的终点，沿 O → A → S 首尾相接得到向量和 a + b。</li>
+              <li><b>平行四边形法则：</b>a、b 共起点时，对角线给出同一个向量和 a + b。</li>
+              <li><b>减法：</b>向量差 a - b 可以看成 a + (-b)，也可看成从 B 指向 A 的向量。</li>
               <li><b>方向检查：</b>端点顺序变了，向量方向也会变，不能只看同一条线段。</li>
             </ul>
           </section>
@@ -881,21 +881,21 @@
         const diff = vectorDifference();
         vectorAReadout.textContent = `a：${fmtMovement(a)}`;
         vectorBReadout.textContent = `b：${fmtMovement(b)}`;
-        sumReadout.textContent = `a + b：${fmtMovement(sum)}`;
-        diffReadout.textContent = `a - b：${fmtMovement(diff)}`;
+        sumReadout.textContent = `向量和 a + b：${fmtMovement(sum)}`;
+        diffReadout.textContent = `向量差 a - b：${fmtMovement(diff)}`;
 
         const relation = {
           triangle: {
-            text: "先走向量 a，再把向量 b 平移到 a 的终点，终点 S 与起点 O 连成结果向量。",
-            formula: `连续位移后，a + b：${fmtMovement(sum)}`
+            text: "先走向量 a，再把向量 b 平移到 a 的终点，沿 O → A → S 首尾相接；从 O 直接指向 S 的向量就是向量和。",
+            formula: `向量和 a + b 表示总位移：${fmtMovement(sum)}`
           },
           parallelogram: {
-            text: "让 a 和 b 共起点，补出平行四边形后，从共同起点出发的对角线就是同一个和向量。",
-            formula: `对角线 OS 表示 a + b：${fmtMovement(sum)}`
+            text: "让 a 和 b 共起点，补出平行四边形后，从共同起点出发的对角线给出同一个向量和。",
+            formula: `对角线 OS 表示向量和 a + b：${fmtMovement(sum)}`
           },
           subtraction: {
-            text: "减去 b 等于加上 b 的相反向量。共起点时，从 B 指向 A 的向量也表示 a - b。",
-            formula: `a - b = a + (-b)，结果：${fmtMovement(diff)}`
+            text: "减去 b 等于加上 b 的相反向量。共起点时，从 B 指向 A 的向量表示同一个向量差。",
+            formula: `向量差 a - b = a + (-b)：${fmtMovement(diff)}`
           }
         }[state.mode];
 
@@ -917,8 +917,8 @@
         if (state.mode === "triangle") {
           return {
             1: "<strong>观察：</strong>拖动 O、A、B，先说出向量 a 和向量 b 的方向、大小和几何位移。",
-            2: "<strong>构造：</strong>把 b 的起点平移到 A，形成 O -> A -> S 的首尾相接路径。",
-            3: "<strong>证据：</strong>结果向量 OS 表示两次连续位移后的总位移。",
+            2: "<strong>构造：</strong>把 b 的起点平移到 A，形成 O → A → S 的首尾相接路径。",
+            3: "<strong>证据：</strong>结果向量 OS 表示两次连续位移后的总位移，即向量和 a + b。",
             4: "<strong>归纳：</strong>三角形法则关注路径方向，第二个向量必须接在第一个向量的终点。"
           }[state.step];
         }
@@ -927,16 +927,16 @@
           return {
             1: "<strong>观察：</strong>a 与 b 共起点时，两个终点 A、B 决定一个平行四边形。",
             2: "<strong>构造：</strong>分别平移 a 和 b，第四个顶点 S 由两条路径共同到达。",
-            3: "<strong>证据：</strong>对角线 OS 与首尾相接的结果相同，都是 a + b。",
-            4: "<strong>归纳：</strong>平行四边形法则不是画图模板，它和首尾相接给出同一个和向量。"
+            3: "<strong>证据：</strong>对角线 OS 与首尾相接的结果相同，都表示向量和 a + b。",
+            4: "<strong>归纳：</strong>平行四边形法则不是画图模板，它和首尾相接给出同一个向量和。"
           }[state.step];
         }
 
         return {
           1: "<strong>观察：</strong>先把 a 与 b 放在同一起点，注意 A、B 两个终点的顺序。",
-          2: "<strong>构造：</strong>从 A 出发接上相反向量 -b，得到 a + (-b)。",
-          3: "<strong>证据：</strong>从 B 指向 A 的端点路径与 a - b 的结果同向同长，方向不能反写。",
-          4: "<strong>归纳：</strong>减法的核心是相反向量，a - b 与 b - a 方向相反。"
+          2: "<strong>构造：</strong>从 A 出发接上与 b 等长反向的相反向量 -b，得到 a + (-b)。",
+          3: "<strong>证据：</strong>从 B 指向 A 的端点路径与向量差 a - b 同向同长，方向不能反写。",
+          4: "<strong>归纳：</strong>减法的核心是相反向量，向量差 a - b 与 b - a 方向相反。"
         }[state.step];
       }
 

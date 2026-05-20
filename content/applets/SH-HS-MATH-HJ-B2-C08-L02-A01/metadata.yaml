@@ -24,9 +24,9 @@ pedagogy:
   estimated_classroom_minutes: 14
   primary_teaching_problem: 学生容易混淆三角形法则中的首尾相接、平行四边形法则中的对角线和减法中的相反向量。
   learning_goals:
-    - 拖动向量 a、向量 b，观察方向和大小变化如何同步影响 a + b 与 a - b。
-    - 用首尾相接和平行四边形两种构造解释同一个向量加法结果。
-    - 把向量减法解释为加上相反向量，并用从 B 指向 A 的端点路径检查方向。
+    - 拖动向量 a、向量 b，观察方向和大小变化如何同步影响向量和 a + b 与向量差 a - b。
+    - 用首尾相接和平行四边形两种构造解释同一个向量和。
+    - 把向量差 a - b 解释为加上相反向量 -b，并用从 B 指向 A 的端点路径检查方向。
     - 从动态构造回到路径、端点顺序和几何位移证据，避免只记画法模板。
   prerequisites:
     - 向量由大小和方向确定
@@ -41,11 +41,11 @@ pedagogy:
     - 逻辑推理
     - 数学运算
 mathematical_scope:
-  focus: 在同一平面网格中拖动共起点向量 a、b，并切换首尾相接、平行四边形和减法模式，同步显示 a + b、a - b 与路径解释。
+  focus: 在同一平面网格中拖动共起点向量 a、b，并切换首尾相接、平行四边形和减法模式，同步显示向量和 a + b、向量差 a - b 与路径解释。
   lesson: 向量的加法和减法
   vector_model: a = OA, b = OB, a + b = OS, a - b = OD
-  addition_rule: 把 b 平移到 a 的终点得到首尾相接路径，或在共起点下补平行四边形，对角线均表示 a + b。
-  subtraction_rule: a - b = a + (-b)，共起点时从 B 指向 A 的向量也表示 a - b。
+  addition_rule: 把 b 平移到 a 的终点得到 O → A → S 的首尾相接路径，或在共起点下补平行四边形，对角线均表示向量和 a + b。
+  subtraction_rule: 向量差 a - b = a + (-b)，共起点时从 B 指向 A 的向量也表示 a - b。
   default_vectors:
     origin: O，左下方共同起点
     vector_a: a 从 O 向右上移动
@@ -63,7 +63,7 @@ representations:
   - id: construction_modes
     role: 在首尾相接、平行四边形和减法模式间切换同一组向量的解释路径。
   - id: movement_readout
-    role: 同步显示 a、b、a + b 和 a - b 的水平/竖直位移。
+    role: 同步显示 a、b、向量和 a + b、向量差 a - b 在网格中的几何位移证据。
   - id: staged_summary
     role: 支持教师按观察、构造、证据、归纳四步揭示课堂结论。
 interaction_design:
@@ -78,7 +78,7 @@ interaction_design:
     - 拖动 A 或 B 改变向量 a、b
     - 拖动 O 改变共同起点但保持两个向量不变
     - 对照三种模式下结果向量的方向、大小和端点路径
-    - 用 B 到 A 的路径判断 a - b 的方向
+    - 用 B 到 A 的路径判断向量差 a - b 的方向
   staged_reveal:
     - step: observe_vectors
       description: 只观察向量 a、b 的方向、大小和几何位移。
@@ -126,14 +126,14 @@ data_contract:
       default:
         x: 5
         y: 0.5
-      description: 向量 a + b 的几何位移。
+      description: 向量和 a + b 的几何位移。
       persistence: snapshot
     - name: difference_vector
       value_type: point2d
       default:
         x: 1
         y: 3.5
-      description: 向量 a - b 的几何位移。
+      description: 向量差 a - b 的几何位移。
       persistence: snapshot
     - name: show_guides
       value_type: boolean
@@ -170,9 +170,9 @@ data_contract:
 feedback_and_diagnosis:
   success_evidence:
     - 学生能指出首尾相接中第二个向量的起点必须接到第一个向量的终点。
-    - 学生能说明平行四边形对角线与首尾相接路径得到同一个 a + b。
-    - 学生能把 a - b 解释为 a + (-b)，并能用从 B 指向 A 的向量检查方向。
-    - 学生能从几何位移和端点路径验证拖拽后的 a + b 和 a - b。
+    - 学生能说明平行四边形对角线与首尾相接路径得到同一个向量和 a + b。
+    - 学生能把向量差 a - b 解释为 a + (-b)，并能用从 B 指向 A 的向量检查方向。
+    - 学生能从几何位移和端点路径验证拖拽后的向量和 a + b 和向量差 a - b。
   common_error_tags:
     - id: head_tail_order_error
       label: 首尾相接顺序错误
@@ -192,9 +192,9 @@ feedback_and_diagnosis:
 visual_semantics:
   vector_a: 蓝色表示向量 a = OA。
   vector_b: 橙色表示向量 b = OB。
-  result_vector: 绿色表示当前模式下的结果向量 a + b 或 a - b。
-  reverse_vector: 红色表示减法模式中的相反向量 -b。
-  endpoint_path: 紫色虚线表示从 B 指向 A 的端点路径。
+  result_vector: 绿色表示当前模式下的向量和 a + b 或向量差 a - b。
+  reverse_vector: 红色表示与 b 等长反向的相反向量 -b。
+  endpoint_path: 紫色虚线表示从 B 指向 A 的端点路径，用于检查向量差方向。
   guides: 灰色或绿色虚线表示构造辅助线和位移辅助线。
   rule: 颜色只承载数学对象含义，不作为装饰。
 implementation:
