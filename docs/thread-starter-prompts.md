@@ -6,6 +6,12 @@
 
 不要让多个对话同时改同一个分支。如果要并行推进，优先让每个对话处理不同短分支或不同 git worktree，并遵守 `docs/parallel-chapter-factory.md`。
 
+## 长期硬规则
+
+1. 所有用户可见数学公式必须符合数学书写形式。不得裸露 `theta`、`lambda`、`omega`、`kpi`、`pi/2`、`2pi/omega` 等英文或 ASCII 占位；希腊字母、系数与 `π`、三角函数、区间和集合符号必须按教材习惯显示。
+2. 分式优先使用上下结构或等效数学排版，不用横向文本 slash 代替正式公式。资源、平台、导出视频、教师脚本和学生任务都必须执行同一标准。
+3. 总控线程只做方向、质量闸门、分支核验、集成、推送和调度。修复、生产、审核、新功能实现必须开独立 `codex/*` 工作线程；总控线程不得直接生产资源或在总控上下文中完成实现类工作。
+
 ## 通用启动提示词
 
 ```text
@@ -30,7 +36,7 @@ develop
 启动提示词：
 
 ```text
-这次作为项目总控对话。请读取项目锚点文件，检查 git status 和当前分支。不要先写代码，先根据 docs/02-next-actions.md 帮我判断下一步最应该推进什么，并说明应该切到哪个分支。
+这次作为项目总控对话。请读取项目锚点文件，检查 git status 和当前分支。不要先写代码，先根据 docs/02-next-actions.md 帮我判断下一步最应该推进什么，并说明应该开哪个独立 codex/* 工作线程或切到哪个分支。总控线程只做方向、质量闸门、分支核验、集成、推送和调度；修复、生产、审核、新功能实现必须交给独立工作线程。
 ```
 
 ## 资源工厂总控
@@ -117,7 +123,7 @@ docs/parallel-quality-system.md
 适合做：
 
 - 修复 Applet、Manim、Diagnosis 或平台中课堂可见公式的显示问题。
-- 将 `theta`、`alpha`、`omega`、`phi`、`pi` 等英文占位改为数学符号。
+- 将 `theta`、`alpha`、`lambda`、`omega`、`phi`、`pi`、`kpi` 等英文或 ASCII 占位改为数学符号。
 - 将 `π/2`、`2π/ω`、`sin x / cos x`、`-φ/ω` 等横向纯文本分式改为上下结构或等效数学排版。
 - 增加资源内轻量公式渲染组件、CSS 数学片段或平台级数学显示测试。
 - 做浏览器/iframe/大屏复核，确认公式不遮挡、不溢出、不退化。
@@ -129,10 +135,10 @@ docs/parallel-quality-system.md
 
 你是“数学公式显示修复线”工作对话。请不要直接改 develop。请创建独立 codex/* 短分支，并只处理总控指定的资源包或平台文件范围。
 
-核心规则：所有课堂可见数学表达必须符合 docs/content-standards.md 的“数学公式呈现标准”。不得在学生/教师可见区域保留 theta、Theta、alpha、beta、phi、omega、pi、pi/2、sin x / cos x 等英文占位或横向纯文本分式。希腊字母必须显示为 θ、α、β、φ、ω、π；分式必须使用上下结构或等效数学排版，并在平台 iframe、直达页、桌面和大屏尺寸下不遮挡、不溢出。
+核心规则：所有用户可见数学表达必须符合 docs/content-standards.md 的“数学公式呈现标准”。不得在学生/教师可见区域保留 theta、Theta、alpha、beta、lambda、phi、omega、pi、kpi、pi/2、2pi/omega、sin x / cos x 等英文或 ASCII 占位。希腊字母必须显示为 θ、α、β、λ、φ、ω、π；分式优先使用上下结构或等效数学排版，并在平台 iframe、直达页、桌面和大屏尺寸下不遮挡、不溢出。
 
 任务步骤：
-1. 先用 rg 搜索指定范围内的 theta、Theta、alpha、beta、phi、omega、pi、/、π/2、sin x / cos x 等可疑课堂文本。
+1. 先用 rg 搜索指定范围内的 theta、Theta、alpha、beta、lambda、phi、omega、pi、kpi、/、π/2、sin x / cos x 等可疑课堂文本。
 2. 区分代码变量名和课堂可见文本；不要机械替换 JavaScript 变量名，除非变量名本身被展示给用户。
 3. 修复课堂可见公式显示，必要时新增轻量公式渲染 helper 或 CSS 组件。
 4. 更新对应 review.md，记录修复范围、仍需人工审校的公式和浏览器复核结果。
@@ -280,7 +286,7 @@ track/trig-sample-pack
 - 正弦函数课时包。
 - 单位圆到正弦曲线 Applet。
 - 正弦函数性质探究 Applet。
-- `y = A sin(omega x + phi) + k` 参数实验室。
+- `y = A sin(ωx + φ) + k` 参数实验室。
 - 教师脚本、学生任务、诊断题。
 
 启动提示词：
