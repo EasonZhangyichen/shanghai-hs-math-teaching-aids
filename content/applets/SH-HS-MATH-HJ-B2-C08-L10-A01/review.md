@@ -20,9 +20,9 @@
 - 替换基向量：设 `p` 表示向量 `AB`，`r` 表示向量 `BC`。因为 `AC = p + r`，所以 `AE = n(p + r)`，`DE = AE - AD = (n - m)p + n r`。
 - 位置向量简写：原 `D = mp`、`E = nq` 容易把点与向量直接等同；本轮改为 `AD = mp`、`AE = nq`。若课堂口头使用“D 点对应 mp、E 点对应 nq”，必须补明“以 A 为共同起点的位置向量”，并建议数学教师专项确认该简写是否写入正式脚本。
 - 沪教版先修链：8.4 本题只调用 8.1 线性运算、8.2 数量积、8.3 坐标表示中的已学工具；本题第一步优先基底法或路径法，数量积/坐标法只在后续要求长度、夹角、垂直或数值化时进入。
-- 路径一：`D -> A -> E`，对应 `DA + AE`。
-- 路径二：`D -> B -> C -> E`，对应 `DB + BC + CE`。
-- 路径三：`D -> B -> E`，对应 `DB + BE`。
+- 路径一：`D → A → E`，对应 `DA + AE`。
+- 路径二：`D → B → C → E`，对应 `DB + BC + CE`。
+- 路径三：`D → B → E`，对应 `DB + BE`。
 - 三条路径表达不同，化简后对应同一个目标向量 `DE`。
 - 本资源只训练向量应用建模的第一步选择，不展开坐标建系、复杂解析几何或数量积求角求长。
 
@@ -47,11 +47,11 @@
 - 本轮绿灯检查：同一锚点检查通过，确认资源包已包含 8.1/8.2/8.3 先修链、第一步选择说明、数量积/坐标法边界和 HTML 方法按钮。
 - Browser 平台容器测量：在 dev server 的平台预览页中，`1024x768` 对应 iframe 约 `936x560`，`1280x720` 对应 iframe 约 `864x560`，`1366x768` 对应 iframe 约 `950x560`。
 - Browser applet 首屏测量：以上三档 iframe 等效尺寸下，`documentElement.scrollHeight = 560`，核心画板底部约 `381px`，比例滑块底部约 `441px`，路径等式底部约 `536px`，均落在 `560px` iframe 首屏内。
-- Browser 交互检查：在 `864x560` 等效尺寸下通过首屏 DOM 选择 `D -> B -> C -> E` 路径，按钮 `aria-pressed` 状态更新，路径等式显示 `DB + BC + CE` 并化简为 `DE = AE - AD = -0.4p + 0.65q`；正式基向量表达保持 `AD = 0.4p`、`AE = 0.65q`，未出现 `D = ...` / `E = ...` 作为正式等式。该检查未产生本地 applet console warning/error；Browser runtime 自身的 Statsig 网络 403 噪声与本资源无关。
+- Browser 交互检查：在 `864x560` 等效尺寸下通过首屏 DOM 选择 `D → B → C → E` 路径，按钮 `aria-pressed` 状态更新，路径等式显示 `DB + BC + CE` 并化简为 `DE = AE - AD = -0.4p + 0.65q`；正式基向量表达保持 `AD = 0.4p`、`AE = 0.65q`，未出现 `D = ...` / `E = ...` 作为正式等式。该检查未产生本地 applet console warning/error；Browser runtime 自身的 Statsig 网络 403 噪声与本资源无关。
 - 平台 iframe 复测红灯：在 `864x560` 等效尺寸下，修复前基向量切换区域位于首屏下方；切换 `AB、BC` 且令 `m = n = 0.65` 时，路径公式曾显示 `DE = AE - AD = + 0.65r`。
 - 平台 iframe 复测绿灯：在 `864x560` 等效尺寸下，核心画板底部约 `329px`，比例滑块底部约 `389px`，路径按钮底部约 `155px`，路径等式底部约 `370px`，基向量切换底部约 `440px`，基向量等式底部约 `522px`，均落在 560px iframe 首屏内。
 - 分式显示 Browser 检查：`864x560` 等效尺寸下，滑块标签显示上下分式，基向量组显示双行卡片；DOM 可见文本未检出分点比例、基向量组和常见刻度的横向斜杠写法。
-- 公式复测绿灯：平台预览页中进入 L10 iframe，选择 `D -> B -> C -> E`、`AB、BC` 并设置 `m = 0.65` 后，路径等式和基向量等式均显示 `DE = AE - AD = 0.65r`，未再出现前导加号；资源 console 未见 warning/error。
+- 公式复测绿灯：平台预览页中进入 L10 iframe，选择 `D → B → C → E`、`AB、BC` 并设置 `m = 0.65` 后，路径等式和基向量等式均显示 `DE = AE - AD = 0.65r`，未再出现前导加号；资源 console 未见 warning/error。
 - 分式显示红灯检查：实现前资源级自检按预期失败，失败点为课堂可见比例仍包含横向斜杠写法。
 - `node --test content/applets/SH-HS-MATH-HJ-B2-C08-L10-A01/src/platform-fit.self-check.test.mjs`：通过，5 项资源级自检全部通过。
 - `npm run validate:content`：通过。输出为 `Content validation passed: 70 lessons, 14 applet(s), 4 Manim clip(s), 7 diagnosis package(s).`

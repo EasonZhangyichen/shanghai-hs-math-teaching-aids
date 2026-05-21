@@ -9,6 +9,15 @@ const studentTask = await readFile(new URL("../student-task.md", import.meta.url
 const review = await readFile(new URL("../review.md", import.meta.url), "utf8");
 const metadata = await readFile(new URL("../metadata.yaml", import.meta.url), "utf8");
 
+const formalPromotionStatuses = [
+  "math_review",
+  "browser_review",
+  "classroom_trial",
+  "release_candidate",
+  "published"
+];
+const asciiPathArrowPattern = new RegExp("\\x2d>");
+
 const visibleSlashForms = [
   /AD\/AB\s*=\s*m/,
   /AE\/AC\s*=\s*n/,
@@ -22,6 +31,14 @@ const visibleSlashForms = [
   /2\/3/,
   /3\/4/
 ];
+
+const docsAndMetadata = {
+  readme,
+  teacherScript,
+  studentTask,
+  review,
+  metadata
+};
 
 test("platform iframe compact mode keeps key controls inside the 560px target", () => {
   assert.match(source, /@media\s*\(max-height:\s*620px\)\s*and\s*\(min-width:\s*781px\)/);
@@ -41,7 +58,30 @@ test("formal notation uses AD and AE while oral shorthand stays explicitly bound
   assert.match(teacherScript, /正式板书优先写 `AD = mp`、`AE = nq`/);
   assert.match(metadata, /以 A 为共同起点/);
   assert.match(review, /hold_for_platform_iframe_fit/);
-  assert.match(review, /暂不建议：`math_review`、`browser_review`、`classroom_trial`、`release_candidate` 或 `published`/);
+  assert.match(
+    review,
+    /(?:暂不建议：`math_review`、`browser_review`、`classroom_trial`、`release_candidate` 或 `published`|(?:本轮)?(?:不触发|不升级到|不进入|不得升级到|暂不进入)[^。\n]*(?:更高正式流转|正式流转|math_review|browser_review|classroom_trial|release_candidate|published))/
+  );
+  assert.match(review, /建议[：:][^。\n]*维持 `self_checked_draft`/);
+  assert.match(metadata, /^status:\s*draft$/m);
+  assert.match(metadata, /^\s*review_status:\s*self_checked_draft$/m);
+  for (const status of formalPromotionStatuses) {
+    assert.doesNotMatch(metadata, new RegExp(`^(?:status|\\s*review_status):\\s*${status}\\s*$`, "m"));
+  }
+});
+
+test("documentation and metadata avoid ASCII path arrows", () => {
+  for (const [name, text] of Object.entries(docsAndMetadata)) {
+    assert.doesNotMatch(text, asciiPathArrowPattern, `${name} should use → or Chinese wording instead of ASCII arrows`);
+  }
+
+  for (const pathText of ["D → A → E", "D → B → C → E", "D → B → E"]) {
+    assert.match(readme, new RegExp(pathText));
+    assert.match(teacherScript, new RegExp(pathText));
+    assert.match(studentTask, new RegExp(pathText));
+    assert.match(review, new RegExp(pathText));
+    assert.match(metadata, new RegExp(pathText));
+  }
 });
 
 test("classroom-visible ratios and basis pairs avoid plain slash notation", () => {
