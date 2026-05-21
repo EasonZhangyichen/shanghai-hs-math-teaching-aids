@@ -15,7 +15,7 @@ test("validates the current curriculum and resource packages", async () => {
   assert.deepEqual(result.errors, []);
   assert.equal(result.counts.lessons, 70);
   assert.equal(result.counts.digitalEntryPoints, 44);
-  assert.equal(result.counts.applets, 15);
+  assert.equal(result.counts.applets, 18);
   assert.equal(result.counts.manimClips, 4);
   assert.equal(result.counts.diagnoses, 7);
   assert.ok(result.resources.some((resource) => resource.id === "SH-HS-MATH-HJ-B2-C07-L01-A01"));
@@ -33,6 +33,9 @@ test("validates the current curriculum and resource packages", async () => {
   assert.ok(result.resources.some((resource) => resource.id === "SH-HS-MATH-HJ-B2-C08-L05-A01"));
   assert.ok(result.resources.some((resource) => resource.id === "SH-HS-MATH-HJ-B2-C08-L10-A01"));
   assert.ok(result.resources.some((resource) => resource.id === "SH-HS-MATH-HJ-B1-C02-L04-A01"));
+  assert.ok(result.resources.some((resource) => resource.id === "SH-HS-MATH-HJ-B1-C02-L05-A01"));
+  assert.ok(result.resources.some((resource) => resource.id === "SH-HS-MATH-HJ-B1-C04-L06-A01"));
+  assert.ok(result.resources.some((resource) => resource.id === "SH-HS-MATH-HJ-B2-C06-L03-A01"));
   assert.ok(result.resources.some((resource) => resource.id === "SH-HS-MATH-HJ-B2-C07-L01-M01"));
   assert.ok(result.resources.some((resource) => resource.id === "SH-HS-MATH-HJ-B2-C07-L05-M01"));
   assert.ok(result.resources.some((resource) => resource.id === "SH-HS-MATH-HJ-B2-C07-L06-M01"));

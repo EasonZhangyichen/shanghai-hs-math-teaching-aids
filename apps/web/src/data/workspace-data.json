@@ -3,6 +3,9 @@
     "curriculum": "content/curriculum/index.yaml",
     "applets": [
       "content/applets/SH-HS-MATH-HJ-B1-C02-L04-A01",
+      "content/applets/SH-HS-MATH-HJ-B1-C02-L05-A01",
+      "content/applets/SH-HS-MATH-HJ-B1-C04-L06-A01",
+      "content/applets/SH-HS-MATH-HJ-B2-C06-L03-A01",
       "content/applets/SH-HS-MATH-HJ-B2-C07-L01-A01",
       "content/applets/SH-HS-MATH-HJ-B2-C07-L02-A01",
       "content/applets/SH-HS-MATH-HJ-B2-C07-L03-A01",
@@ -206,7 +209,7 @@
                     "title": "一元二次不等式的求解",
                     "status": "draft",
                     "resourceCount": 1,
-                    "hasImplementedApplet": false
+                    "hasImplementedApplet": true
                   },
                   {
                     "id": "SH-HS-MATH-HJ-B1-C02-L06",
@@ -394,7 +397,7 @@
                     "title": "对数函数的性质",
                     "status": "draft",
                     "resourceCount": 2,
-                    "hasImplementedApplet": false
+                    "hasImplementedApplet": true
                   }
                 ]
               }
@@ -580,7 +583,7 @@
                     "title": "任意角的正弦、余弦、正切、余切",
                     "status": "draft",
                     "resourceCount": 2,
-                    "hasImplementedApplet": false
+                    "hasImplementedApplet": true
                   },
                   {
                     "id": "SH-HS-MATH-HJ-B2-C06-L04",
@@ -2016,28 +2019,351 @@
           "id": "SH-HS-MATH-HJ-B1-C02-L05-A01",
           "resourceType": "applet",
           "title": "二次不等式与函数符号区间联动板",
-          "cognitiveAction": "对应",
+          "subtitle": "拖动开口和零点，联动观察图像相对 x 轴的位置与解集区间",
+          "cognitiveAction": "比较",
           "note": "调节二次项系数、判别式和零点位置，同步观察抛物线开口、与x轴交点、符号区间和解集表示；数字化比板书更能呈现从两个实根、重根到无实根时解集形态的变化，并为第5章函数观点求解作桥接。不做因式分解刷题、套表格或机械解二次不等式。仅为 draft planned，未终核前禁止 scaffold。",
-          "availability": "proposed",
-          "status": "planned",
-          "version": null,
-          "metadataPreview": null,
-          "quality": {
-            "contentStatus": "planned",
-            "implementationStage": "planned",
-            "reviewStatus": "planned",
-            "readinessLabel": "规划中",
-            "displayStates": [
-              "planned"
+          "availability": "metadata_ready",
+          "status": "draft",
+          "version": "0.1.0",
+          "metadataPreview": {
+            "id": "SH-HS-MATH-HJ-B1-C02-L05-A01",
+            "version": "0.1.0",
+            "status": "draft",
+            "resourceType": "applet",
+            "title": "二次不等式与函数符号区间联动板",
+            "subtitle": "拖动开口和零点，联动观察图像相对 x 轴的位置与解集区间",
+            "curriculum": {
+              "region": "上海",
+              "stage": "高中",
+              "subject": "数学",
+              "edition": "沪教版",
+              "volume_id": "B1",
+              "volume_title": "必修第一册",
+              "chapter_id": "SH-HS-MATH-HJ-B1-C02",
+              "chapter_title": "等式与不等式",
+              "section_id": "SH-HS-MATH-HJ-B1-C02-S02",
+              "section_title": "不等式的求解",
+              "lesson_id": "SH-HS-MATH-HJ-B1-C02-L05",
+              "textbook_ref": "2.2.2",
+              "lesson_title": "一元二次不等式的求解"
+            },
+            "pedagogy": {
+              "cognitiveAction": "比较",
+              "estimatedClassroomMinutes": 12,
+              "primaryTeachingProblem": "学生容易只背“大于取两边、小于取中间”，不能解释根、开口方向、图像在 x 轴上方或下方与解集区间之间的对应。",
+              "learningGoals": [
+                "用二次函数图像在 x 轴上方说明 f(x) > 0 的解集，用图像在 x 轴下方说明 f(x) < 0 的解集。",
+                "拖动两个零点，观察符号区间端点随零点同步移动。",
+                "拖动开口方向，说明开口向上和开口向下时 f(x) > 0、f(x) < 0 区间互换。",
+                "比较两个实根、重根、无实根时一元二次不等式解集的边界差异。"
+              ],
+              "prerequisites": [
+                "一元二次方程的根",
+                "二次函数图像与 x 轴交点",
+                "数轴和区间表示",
+                "不等式解集的集合语言"
+              ],
+              "successors": [
+                "SH-HS-MATH-HJ-B1-C02-L06",
+                "SH-HS-MATH-HJ-B1-C05-L07",
+                "SH-HS-MATH-HJ-B1-C05-L08"
+              ],
+              "coreCompetencies": [
+                "直观想象",
+                "逻辑推理",
+                "数学运算"
+              ]
+            },
+            "mathematicalScope": {
+              "focus": "以 f(x) = a(x - x1)(x - x2) 为主模型，拖动 a 的开口手柄和零点手柄，同步显示图像相对 x 轴的位置、数轴符号区间和不等式解集。",
+              "function_model": "f(x) = a(x - x1)(x - x2)，其中 a 不等于 0。",
+              "sign_link": "f(x) > 0 对应图像在 x 轴上方的横坐标集合；f(x) < 0 对应图像在 x 轴下方的横坐标集合。",
+              "opening_rule": "两个实根时，开口向上则 f(x) > 0 在两侧、f(x) < 0 在中间；开口向下则 f(x) > 0 在中间、f(x) < 0 在两侧。",
+              "boundary_cases": {
+                "double_root": "重根时，除重根外图像在 x 轴同侧，严格不等式不包含重根。",
+                "no_real_root": "无实根时，图像整体在 x 轴一侧，严格不等式可能为 R 或空集。"
+              },
+              "out_of_scope": [
+                "因式分解刷题和机械套表格训练",
+                "参数二次不等式的完整分类讨论",
+                "分式不等式或高次不等式",
+                "课程图谱、生产 backlog 或课时边界调整",
+                "超出 draft 和 self_checked_draft 草稿边界的正式流转"
+              ]
+            },
+            "representations": [
+              {
+                "id": "graph_panel",
+                "role": "显示二次函数图像、x 轴、零点、开口手柄，以及图像在 x 轴上方或下方的颜色区分。"
+              },
+              {
+                "id": "sign_number_line",
+                "role": "用数轴区间同步显示 f(x) > 0 与 f(x) < 0 的解集。"
+              },
+              {
+                "id": "inequality_readout",
+                "role": "用规范数学排版显示一元二次不等式与当前解集。"
+              },
+              {
+                "id": "opening_summary",
+                "role": "明确归纳开口向上和开口向下时正负区间的互换关系。"
+              }
             ],
-            "labels": {
-              "contentStatus": "规划中",
-              "implementationStage": "规划中",
-              "reviewStatus": "规划中"
+            "narrativeDesign": {
+              "beats": [],
+              "pausePoints": []
+            },
+            "interactionDesign": {
+              "primaryControl": "拖动图像上的两个零点手柄改变 x 轴交点，拖动开口手柄改变 a 的正负和大小。",
+              "teacherControls": [
+                "切换两个实根、重根、无实根情形",
+                "重置到默认图像",
+                "用按钮切换开口向上或开口向下",
+                "分步显示观察图像、数轴区间和不等式解集"
+              ],
+              "studentControls": [
+                "拖动零点并预测数轴端点如何移动",
+                "拖动开口手柄并判断 f(x) > 0、f(x) < 0 区间是否互换",
+                "在重根和无实根情形下写出严格不等式解集"
+              ],
+              "stagedReveal": [
+                {
+                  "step": "observe_graph",
+                  "description": "先观察抛物线与 x 轴交点，以及图像在 x 轴上方或下方的位置。"
+                },
+                {
+                  "step": "link_number_line",
+                  "description": "显示数轴符号区间，让上方位置对应 f(x) > 0，下方位置对应 f(x) < 0。"
+                },
+                {
+                  "step": "solve_inequality",
+                  "description": "显示一元二次不等式解集，并比较开口向上和开口向下的区间互换。"
+                },
+                {
+                  "step": "boundary_cases",
+                  "description": "切换重根和无实根，讨论 R、空集和单点边界。"
+                }
+              ]
+            },
+            "dataContract": {
+              "state_variables": [
+                {
+                  "name": "opening_a",
+                  "value_type": "number",
+                  "default": 0.7,
+                  "description": "二次项系数 a，正值表示开口向上，负值表示开口向下。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "root_mode",
+                  "value_type": "string",
+                  "default": "two_roots",
+                  "description": "当前根形态，取 two_roots、double_root 或 no_real。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "left_root",
+                  "value_type": "number",
+                  "default": -2,
+                  "description": "两个实根情形下左侧零点。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "right_root",
+                  "value_type": "number",
+                  "default": 2,
+                  "description": "两个实根情形下右侧零点。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "center",
+                  "value_type": "number",
+                  "default": 0,
+                  "description": "重根位置或无实根图像的对称轴位置。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "positive_solution",
+                  "value_type": "string",
+                  "default": "(-∞, -2) ∪ (2, +∞)",
+                  "description": "当前 f(x) > 0 的解集区间。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "negative_solution",
+                  "value_type": "string",
+                  "default": "(-2, 2)",
+                  "description": "当前 f(x) < 0 的解集区间。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "reveal_step",
+                  "value_type": "number",
+                  "default": 1,
+                  "description": "当前课堂分步揭示阶段。",
+                  "persistence": "snapshot"
+                }
+              ],
+              "events": [
+                {
+                  "name": "ready",
+                  "direction": "applet_to_player",
+                  "description": "课件完成初始渲染。",
+                  "payload": [
+                    "opening_a",
+                    "root_mode",
+                    "left_root",
+                    "right_root",
+                    "center",
+                    "positive_solution",
+                    "negative_solution",
+                    "reveal_step"
+                  ],
+                  "required_for_player": true
+                },
+                {
+                  "name": "state_changed",
+                  "direction": "applet_to_player",
+                  "description": "拖动开口、拖动零点、切换根形态或切换揭示步骤时通知播放器。",
+                  "payload": [
+                    "opening_a",
+                    "root_mode",
+                    "left_root",
+                    "right_root",
+                    "center",
+                    "positive_solution",
+                    "negative_solution",
+                    "reveal_step"
+                  ],
+                  "required_for_player": true
+                }
+              ]
+            },
+            "diagnosisDesign": {
+              "diagnosticFocus": [],
+              "misconceptionTags": [],
+              "itemSummary": null
+            },
+            "files": {
+              "readme": "README.md",
+              "teacher_script": "teacher-script.md",
+              "student_task": "student-task.md",
+              "review_record": "review.md",
+              "src_entry": "src/index.html"
+            },
+            "feedbackAndDiagnosis": {
+              "success_evidence": [
+                "学生能指出 f(x) > 0 不是背口诀，而是取图像在 x 轴上方的横坐标。",
+                "学生能在两个实根情形下说明开口向上和开口向下时正负区间互换。",
+                "学生能在重根情形下区分严格不等式和含等号不等式。",
+                "学生能在无实根情形下判断解集为 R 或空集，并说明依据是整条图像在 x 轴同侧。"
+              ],
+              "common_error_tags": [
+                {
+                  "id": "memorized_middle_sides",
+                  "label": "只背中间或两侧，不解释图像位置"
+                },
+                {
+                  "id": "opening_direction_missed",
+                  "label": "忽略开口方向导致正负区间写反"
+                },
+                {
+                  "id": "strict_boundary_error",
+                  "label": "严格不等式误包含零点或重根"
+                },
+                {
+                  "id": "no_real_root_confusion",
+                  "label": "无实根时混淆 R 与空集"
+                }
+              ],
+              "feedback_principles": [
+                "先看图像相对 x 轴的位置，再读数轴区间，最后写不等式解集。",
+                "学生写错中间或两侧时，拖动开口手柄让区间互换，而不是直接给口诀。",
+                "讨论含等号边界时回到零点是 f(x) = 0 的横坐标。"
+              ]
+            },
+            "visualSemantics": {
+              "graph_above": "绿色表示图像在 x 轴上方，对应 f(x) > 0。",
+              "graph_below": "红色表示图像在 x 轴下方，对应 f(x) < 0。",
+              "roots": "深色实心点表示 f(x) = 0 的横坐标。",
+              "opening_handle": "蓝色菱形手柄表示改变开口方向和张开程度。",
+              "number_line": "数轴区间颜色与图像上方或下方颜色保持一致。",
+              "rule": "颜色只承载数学对象和符号含义，不作为装饰。"
+            },
+            "implementation": {
+              "phase": "runnable_prototype",
+              "html_src_status": "runnable",
+              "planned_engine": "native-canvas-svg",
+              "create_src_in_later_task": false,
+              "classroom_device_targets": [
+                "desktop",
+                "tablet",
+                "projector"
+              ]
+            },
+            "compliance": {
+              "copyright_note": "本资源为原创 HTML Applet 草稿，不复制教材正文、官方课件、商业平台资源或题库；仅按用户授权任务生产 draft 级自检原型，课程边界和数学审校仍需后续人工复核。",
+              "review_status": "self_checked_draft"
             }
           },
-          "player": null,
-          "package": null
+          "quality": {
+            "contentStatus": "draft",
+            "implementationStage": "runnable",
+            "reviewStatus": "self_checked_draft",
+            "readinessLabel": "可运行预览",
+            "displayStates": [
+              "draft",
+              "runnable",
+              "self_checked_draft"
+            ],
+            "labels": {
+              "contentStatus": "草稿",
+              "implementationStage": "可运行",
+              "reviewStatus": "自检草稿"
+            }
+          },
+          "player": {
+            "kind": "iframe",
+            "isRunnable": true,
+            "src": "content/applets/SH-HS-MATH-HJ-B1-C02-L05-A01/src/index.html",
+            "title": "二次不等式与函数符号区间联动板",
+            "sandbox": "allow-scripts allow-same-origin"
+          },
+          "package": {
+            "path": "content/applets/SH-HS-MATH-HJ-B1-C02-L05-A01",
+            "files": {
+              "metadata": "content/applets/SH-HS-MATH-HJ-B1-C02-L05-A01/metadata.yaml",
+              "readme": "content/applets/SH-HS-MATH-HJ-B1-C02-L05-A01/README.md",
+              "teacherScript": "content/applets/SH-HS-MATH-HJ-B1-C02-L05-A01/teacher-script.md",
+              "studentTask": "content/applets/SH-HS-MATH-HJ-B1-C02-L05-A01/student-task.md",
+              "reviewRecord": "content/applets/SH-HS-MATH-HJ-B1-C02-L05-A01/review.md",
+              "srcEntry": "content/applets/SH-HS-MATH-HJ-B1-C02-L05-A01/src/index.html"
+            },
+            "teacherScript": {
+              "kind": "teacher_script",
+              "path": "content/applets/SH-HS-MATH-HJ-B1-C02-L05-A01/teacher-script.md",
+              "title": "教师脚本",
+              "summary": "资源：`SH-HS-MATH-HJ-B1-C02-L05-A01` 建议用时：12 分钟。",
+              "sections": [
+                "1. 看图像",
+                "2. 对数轴",
+                "3. 换开口",
+                "4. 看边界"
+              ]
+            },
+            "studentTask": {
+              "kind": "student_task",
+              "path": "content/applets/SH-HS-MATH-HJ-B1-C02-L05-A01/student-task.md",
+              "title": "学生活动任务",
+              "summary": "资源：`SH-HS-MATH-HJ-B1-C02-L05-A01`",
+              "sections": [
+                "活动 A：先预测",
+                "活动 B：拖零点",
+                "活动 C：换开口",
+                "活动 D：看特殊情形"
+              ]
+            }
+          }
         }
       ]
     },
@@ -2888,28 +3214,326 @@
           "id": "SH-HS-MATH-HJ-B1-C04-L06-A01",
           "resourceType": "applet",
           "title": "指数对数互反图像镜像板",
-          "cognitiveAction": "对应",
+          "subtitle": "调节底数 a，观察 y = a^x 与 y = log_a x 关于 y = x 的镜像关系",
+          "cognitiveAction": "变换",
           "note": "拖动指数函数图像上的点，同步交换坐标生成对数函数点，展示定义域/值域互换和关于 y = x 的对称；数字化比板书更能显化点的动态对应。不做对数定义背诵或换底公式练习。仅为 draft planned，纸质教材或已登录平台终核前禁止 scaffold。",
-          "availability": "proposed",
-          "status": "planned",
-          "version": null,
-          "metadataPreview": null,
-          "quality": {
-            "contentStatus": "planned",
-            "implementationStage": "planned",
-            "reviewStatus": "planned",
-            "readinessLabel": "规划中",
-            "displayStates": [
-              "planned"
+          "availability": "metadata_ready",
+          "status": "draft",
+          "version": "0.1.0",
+          "metadataPreview": {
+            "id": "SH-HS-MATH-HJ-B1-C04-L06-A01",
+            "version": "0.1.0",
+            "status": "draft",
+            "resourceType": "applet",
+            "title": "指数对数互反图像镜像板",
+            "subtitle": "调节底数 a，观察 y = a^x 与 y = log_a x 关于 y = x 的镜像关系",
+            "curriculum": {
+              "region": "上海",
+              "stage": "高中",
+              "subject": "数学",
+              "edition": "沪教版",
+              "volume_id": "B1",
+              "volume_title": "必修第一册",
+              "chapter_id": "SH-HS-MATH-HJ-B1-C04",
+              "chapter_title": "幂函数、指数函数与对数函数",
+              "section_id": "SH-HS-MATH-HJ-B1-C04-S03",
+              "section_title": "对数函数",
+              "lesson_id": "SH-HS-MATH-HJ-B1-C04-L06",
+              "textbook_ref": "4.3.2",
+              "lesson_title": "对数函数的性质"
+            },
+            "pedagogy": {
+              "cognitiveAction": "变换",
+              "estimatedClassroomMinutes": 12,
+              "primaryTeachingProblem": "学生容易只把指数函数和对数函数看成两条曲线，不能用交换坐标说明二者互为反函数，也容易把图像镜像误认为关于坐标轴对称。",
+              "learningGoals": [
+                "说明 y = a^x 与 y = log_a x 在同一底数 a 下互为反函数。",
+                "用点 P(x, a^x) 与 Q(a^x, x) 的交换坐标关系解释图像关于直线 y = x 对称。",
+                "说出指数函数的定义域 R 与对数函数的值域 R 对应，指数函数的值域 (0, +∞) 与对数函数的定义域 (0, +∞) 对应。",
+                "比较 a > 1 与 0 < a < 1 时，两条互反函数曲线的单调方向。"
+              ],
+              "prerequisites": [
+                "指数函数的图像与性质",
+                "对数函数的定义与图像",
+                "点关于直线 y = x 的对称直观"
+              ],
+              "successors": [
+                "SH-HS-MATH-HJ-B1-C05-L04",
+                "SH-HS-MATH-HJ-B1-C05-L09",
+                "SH-HS-MATH-HJ-B1-C05-L10",
+                "SH-HS-MATH-HJ-MODEL-K01"
+              ],
+              "coreCompetencies": [
+                "直观想象",
+                "数学抽象",
+                "逻辑推理"
+              ]
+            },
+            "mathematicalScope": {
+              "focus": "同一底数 a 满足 a > 0 且 a != 1 时，y = a^x 与 y = log_a x 互为反函数，图像关于 y = x 对称。",
+              "exponential_function": "y = a^x，定义域 R，值域 (0, +∞)",
+              "logarithmic_function": "y = log_a x，定义域 (0, +∞)，值域 R",
+              "inverse_rule": "若 P(x, a^x) 在指数函数图像上，则 Q(a^x, x) 在对应对数函数图像上，P 与 Q 关于直线 y = x 对称。",
+              "monotonicity": "a > 1 时两条曲线都严格递增；0 < a < 1 时两条曲线都严格递减。",
+              "default_base": 2,
+              "base_range": "1/4 ≤ a ≤ 4，交互中自动避开 a = 1",
+              "out_of_scope": [
+                "对数定义背诵或指数式与对数式互化题组",
+                "换底公式推导和计算训练",
+                "一般反函数存在性证明",
+                "超出 draft / self_checked_draft 草稿边界的正式流转"
+              ]
+            },
+            "representations": [
+              {
+                "id": "mirror_graph",
+                "role": "在同一坐标系中绘制 y = a^x、y = log_a x 和 y = x 镜像参照线，保持横纵同尺度。"
+              },
+              {
+                "id": "coordinate_swap_probe",
+                "role": "显示指数函数点 P(x, a^x) 与对数函数点 Q(a^x, x)，用连线和中点说明交换坐标。"
+              },
+              {
+                "id": "base_control",
+                "role": "用底数滑块和典型底数按钮切换 a > 1 与 0 < a < 1 的单调方向。"
+              },
+              {
+                "id": "property_panel",
+                "role": "同步呈现定义域、值域和单调性的对应关系。"
+              }
             ],
-            "labels": {
-              "contentStatus": "规划中",
-              "implementationStage": "规划中",
-              "reviewStatus": "规划中"
+            "narrativeDesign": {
+              "beats": [],
+              "pausePoints": []
+            },
+            "interactionDesign": {
+              "primaryControl": "调节底数 a，并移动指数函数上的观察点 P，自动生成交换坐标后的对数函数点 Q。",
+              "teacherControls": [
+                "底数滑块，连续观察 a 的变化并自动避开 a = 1",
+                "典型底数按钮：a = 1/2、a = 2、a = 3",
+                "观察点滑块，沿指数函数移动 P 并同步显示 Q",
+                "重置到 a = 2、x = 0.5"
+              ],
+              "studentControls": [
+                "读出 P(x, a^x) 与 Q(a^x, x) 的坐标并解释交换坐标",
+                "对照定义域、值域和单调性卡片完成观察记录"
+              ],
+              "stagedReveal": [
+                {
+                  "step": "observe_curves",
+                  "description": "先看同底数的指数曲线和对数曲线，以及 y = x 镜像参照线。"
+                },
+                {
+                  "step": "swap_coordinates",
+                  "description": "移动指数函数上的 P 点，观察 Q 点坐标由 P 点交换得到。"
+                },
+                {
+                  "step": "connect_domains",
+                  "description": "把指数函数的定义域和值域分别与对数函数的值域和定义域对应起来。"
+                },
+                {
+                  "step": "compare_monotonicity",
+                  "description": "切换 a > 1 和 0 < a < 1，比较两条互反函数的单调方向。"
+                }
+              ]
+            },
+            "dataContract": {
+              "state_variables": [
+                {
+                  "name": "base_a",
+                  "value_type": "number",
+                  "default": 2,
+                  "description": "当前底数 a，满足 a > 0 且 a != 1。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "probe_x",
+                  "value_type": "number",
+                  "default": 0.5,
+                  "description": "指数函数观察点 P 的横坐标 x。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "exp_y",
+                  "value_type": "number",
+                  "default": 1.4142135623730951,
+                  "description": "指数函数观察点 P 的纵坐标 a^x。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "log_x",
+                  "value_type": "number",
+                  "default": 1.4142135623730951,
+                  "description": "对数函数观察点 Q 的横坐标，等于 a^x。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "log_y",
+                  "value_type": "number",
+                  "default": 0.5,
+                  "description": "对数函数观察点 Q 的纵坐标，等于原指数点的 x。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "monotonicity",
+                  "value_type": "string",
+                  "default": "increasing",
+                  "description": "当前底数对应的单调方向，取 increasing 或 decreasing。",
+                  "persistence": "snapshot"
+                }
+              ],
+              "events": [
+                {
+                  "name": "ready",
+                  "direction": "applet_to_player",
+                  "description": "课件完成初始渲染。",
+                  "payload": [
+                    "base_a",
+                    "probe_x",
+                    "exp_y",
+                    "log_x",
+                    "log_y",
+                    "monotonicity"
+                  ],
+                  "required_for_player": true
+                },
+                {
+                  "name": "state_changed",
+                  "direction": "applet_to_player",
+                  "description": "底数或观察点变化时通知播放器。",
+                  "payload": [
+                    "base_a",
+                    "probe_x",
+                    "exp_y",
+                    "log_x",
+                    "log_y",
+                    "monotonicity"
+                  ],
+                  "required_for_player": true
+                }
+              ]
+            },
+            "diagnosisDesign": {
+              "diagnosticFocus": [],
+              "misconceptionTags": [],
+              "itemSummary": null
+            },
+            "files": {
+              "readme": "README.md",
+              "teacher_script": "teacher-script.md",
+              "student_task": "student-task.md",
+              "review_record": "review.md",
+              "src_entry": "src/index.html"
+            },
+            "feedbackAndDiagnosis": {
+              "success_evidence": [
+                "学生能指着 P 和 Q 说出 Q 由 P 交换坐标得到。",
+                "学生能用互为反函数解释两条曲线关于 y = x 对称，而不是只说形状相似。",
+                "学生能说出指数函数的定义域 R 与对数函数的值域 R 对应，指数函数的值域 (0, +∞) 与对数函数的定义域 (0, +∞) 对应。",
+                "学生能按 a > 1 或 0 < a < 1 判断两条互反函数同增或同减。"
+              ],
+              "common_error_tags": [
+                {
+                  "id": "axis_mirror_confusion",
+                  "label": "把关于 y = x 对称误认为关于坐标轴对称"
+                },
+                {
+                  "id": "inverse_missing",
+                  "label": "只画两条曲线，未说明互为反函数"
+                },
+                {
+                  "id": "domain_range_swap_gap",
+                  "label": "不能说明定义域和值域互换"
+                },
+                {
+                  "id": "base_monotonicity_gap",
+                  "label": "底数范围与单调方向对应不清"
+                }
+              ],
+              "feedback_principles": [
+                "先读 P(x, a^x)，再交换坐标得到 Q(a^x, x)。",
+                "判断镜像时必须回到直线 y = x，而不是 x 轴或 y 轴。",
+                "用定义域和值域互换解释为什么对数函数只在 x > 0 上有图像。"
+              ]
+            },
+            "visualSemantics": {
+              "exponential_curve": "蓝色表示 y = a^x。",
+              "logarithmic_curve": "橙色表示 y = log_a x。",
+              "mirror_line": "绿色虚线表示 y = x 镜像参照线。",
+              "swap_segment": "紫色线段连接 P 与 Q，提示二者为镜像点。"
+            },
+            "implementation": {
+              "phase": "runnable_prototype",
+              "html_src_status": "runnable",
+              "planned_engine": "native-canvas-svg",
+              "create_src_in_later_task": false,
+              "classroom_device_targets": [
+                "desktop",
+                "tablet",
+                "projector"
+              ]
+            },
+            "compliance": {
+              "copyright_note": "本资源为原创交互草稿，不复制教材正文、官方课件、教案或商业题库；第 4 章课时边界仍需纸质教材或已登录平台终核，当前仅保持 draft / self_checked_draft 草稿边界。",
+              "review_status": "self_checked_draft"
             }
           },
-          "player": null,
-          "package": null
+          "quality": {
+            "contentStatus": "draft",
+            "implementationStage": "runnable",
+            "reviewStatus": "self_checked_draft",
+            "readinessLabel": "可运行预览",
+            "displayStates": [
+              "draft",
+              "runnable",
+              "self_checked_draft"
+            ],
+            "labels": {
+              "contentStatus": "草稿",
+              "implementationStage": "可运行",
+              "reviewStatus": "自检草稿"
+            }
+          },
+          "player": {
+            "kind": "iframe",
+            "isRunnable": true,
+            "src": "content/applets/SH-HS-MATH-HJ-B1-C04-L06-A01/src/index.html",
+            "title": "指数对数互反图像镜像板",
+            "sandbox": "allow-scripts allow-same-origin"
+          },
+          "package": {
+            "path": "content/applets/SH-HS-MATH-HJ-B1-C04-L06-A01",
+            "files": {
+              "metadata": "content/applets/SH-HS-MATH-HJ-B1-C04-L06-A01/metadata.yaml",
+              "readme": "content/applets/SH-HS-MATH-HJ-B1-C04-L06-A01/README.md",
+              "teacherScript": "content/applets/SH-HS-MATH-HJ-B1-C04-L06-A01/teacher-script.md",
+              "studentTask": "content/applets/SH-HS-MATH-HJ-B1-C04-L06-A01/student-task.md",
+              "reviewRecord": "content/applets/SH-HS-MATH-HJ-B1-C04-L06-A01/review.md",
+              "srcEntry": "content/applets/SH-HS-MATH-HJ-B1-C04-L06-A01/src/index.html"
+            },
+            "teacherScript": {
+              "kind": "teacher_script",
+              "path": "content/applets/SH-HS-MATH-HJ-B1-C04-L06-A01/teacher-script.md",
+              "title": "教师脚本：指数对数互反图像镜像板",
+              "summary": "",
+              "sections": [
+                "使用目标",
+                "操作流程"
+              ]
+            },
+            "studentTask": {
+              "kind": "student_task",
+              "path": "content/applets/SH-HS-MATH-HJ-B1-C04-L06-A01/student-task.md",
+              "title": "学生活动任务：交换坐标看互反",
+              "summary": "",
+              "sections": [
+                "任务 1：找对应点",
+                "任务 2：判断镜像轴",
+                "任务 3：定义域和值域互换",
+                "任务 4：单调性对照"
+              ]
+            }
+          }
         },
         {
           "id": "SH-HS-MATH-HJ-B1-C04-L06-A02",
@@ -3803,28 +4427,282 @@
           "id": "SH-HS-MATH-HJ-B2-C06-L03-A01",
           "resourceType": "applet",
           "title": "单位圆三角比与终边联动板",
+          "subtitle": "拖动单位圆终边点，观察 sin、cos、tan 的几何意义和象限符号",
           "cognitiveAction": "投影",
           "note": "拖动单位圆终边，同步显示坐标、四个三角比、象限符号和无定义状态，突出三角比几何意义与第7章函数值来源。",
-          "availability": "proposed",
-          "status": "planned",
-          "version": null,
-          "metadataPreview": null,
-          "quality": {
-            "contentStatus": "planned",
-            "implementationStage": "planned",
-            "reviewStatus": "planned",
-            "readinessLabel": "规划中",
-            "displayStates": [
-              "planned"
+          "availability": "metadata_ready",
+          "status": "draft",
+          "version": "0.1.0",
+          "metadataPreview": {
+            "id": "SH-HS-MATH-HJ-B2-C06-L03-A01",
+            "version": "0.1.0",
+            "status": "draft",
+            "resourceType": "applet",
+            "title": "单位圆三角比与终边联动板",
+            "subtitle": "拖动单位圆终边点，观察 sin、cos、tan 的几何意义和象限符号",
+            "curriculum": {
+              "region": "上海",
+              "stage": "高中",
+              "subject": "数学",
+              "edition": "沪教版",
+              "volume_id": "B2",
+              "volume_title": "必修第二册",
+              "chapter_id": "SH-HS-MATH-HJ-B2-C06",
+              "chapter_title": "三角",
+              "section_id": "SH-HS-MATH-HJ-B2-C06-S01",
+              "section_title": "正弦、余弦、正切、余切",
+              "lesson_id": "SH-HS-MATH-HJ-B2-C06-L03",
+              "textbook_ref": "6.1.3",
+              "lesson_title": "任意角的正弦、余弦、正切、余切"
+            },
+            "pedagogy": {
+              "cognitiveAction": "投影",
+              "estimatedClassroomMinutes": 14,
+              "primaryTeachingProblem": "学生容易把任意角三角比仍看作直角三角形边长比，不能把终边、单位圆坐标、三角比和象限符号联动起来。",
+              "learningGoals": [
+                "说明终边与单位圆交点 P 的坐标是 P = (cos θ, sin θ)。",
+                "用横向投影读出 cos θ，用纵向投影读出 sin θ。",
+                "用切线 x = 1 上的有向高度或 sin θ 与 cos θ 的商解释 tan θ。",
+                "观察象限变化时 sin θ、cos θ、tan θ 的符号和 tan θ 无定义边界。"
+              ],
+              "prerequisites": [
+                "任意角和弧度制",
+                "锐角三角比",
+                "平面直角坐标系和单位圆"
+              ],
+              "successors": [
+                "SH-HS-MATH-HJ-B2-C06-L04",
+                "SH-HS-MATH-HJ-B2-C06-L05",
+                "SH-HS-MATH-HJ-B2-C07-L01",
+                "SH-HS-MATH-HJ-B2-C07-L06"
+              ],
+              "coreCompetencies": [
+                "直观想象",
+                "数学抽象",
+                "逻辑推理"
+              ]
+            },
+            "mathematicalScope": {
+              "focus": "拖动单位圆上的终边点 P，联动显示 P = (cos θ, sin θ)、sin θ、cos θ、tan θ 和象限符号。",
+              "definition": "终边与单位圆交于 P(x, y)，cos θ = x，sin θ = y；当 x 不为 0 时 tan θ = y / x。",
+              "tangent_model": "终边所在直线与切线 x = 1 的交点 T 的纵坐标表示 tan θ；cos θ = 0 时 tan θ 无定义。",
+              "out_of_scope": [
+                "余切的完整交互",
+                "诱导公式推导",
+                "三角函数图像生成",
+                "正式审校或稳定流转"
+              ]
+            },
+            "representations": [
+              {
+                "id": "unit_circle_board",
+                "role": "显示坐标轴、单位圆、终边、P 点、投影段和正切线。"
+              },
+              {
+                "id": "sign_cards",
+                "role": "四象限符号卡随当前象限高亮，辅助观察符号变化。"
+              }
             ],
-            "labels": {
-              "contentStatus": "规划中",
-              "implementationStage": "规划中",
-              "reviewStatus": "规划中"
+            "narrativeDesign": {
+              "beats": [],
+              "pausePoints": []
+            },
+            "interactionDesign": {
+              "primaryControl": "拖动单位圆上的 P 点改变终边，也可点击关键角按钮。",
+              "teacherControls": [
+                "重置到 π/6",
+                "点击四象限代表角和轴上关键角",
+                "显示或隐藏正切线表征"
+              ],
+              "studentControls": [
+                "拖动 P 点观察坐标和三角比读数",
+                "比较不同象限中的符号变化",
+                "停在 π/2 和 3π/2 解释 tan θ 无定义"
+              ],
+              "stagedReveal": [
+                {
+                  "step": "terminal_side",
+                  "description": "观察角的终边和单位圆点 P。"
+                },
+                {
+                  "step": "coordinate_ratio",
+                  "description": "用 P 的横纵坐标解释 cos θ 与 sin θ。"
+                },
+                {
+                  "step": "tangent_ratio",
+                  "description": "用切线 x = 1 解释 tan θ 与无定义边界。"
+                }
+              ]
+            },
+            "dataContract": {
+              "state_variables": [
+                {
+                  "name": "theta",
+                  "unit": "radian",
+                  "value_type": "number",
+                  "default": 0.5235987755982988,
+                  "description": "当前角 θ 的弧度量。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "point_p",
+                  "value_type": "point2d",
+                  "description": "单位圆上点 P 的坐标。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "trig_values",
+                  "value_type": "object",
+                  "description": "sin θ、cos θ、tan θ 和 tan 是否有定义。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "quadrant_state",
+                  "value_type": "string",
+                  "default": "I",
+                  "description": "当前终边所在象限或坐标轴边界。",
+                  "persistence": "snapshot"
+                }
+              ],
+              "events": [
+                {
+                  "name": "ready",
+                  "direction": "applet_to_player",
+                  "description": "课件完成初始渲染。",
+                  "payload": [
+                    "theta",
+                    "point_p",
+                    "trig_values",
+                    "quadrant_state"
+                  ],
+                  "required_for_player": true
+                },
+                {
+                  "name": "angle_changed",
+                  "direction": "applet_to_player",
+                  "description": "拖动、滑块或关键角按钮改变当前角。",
+                  "payload": [
+                    "theta",
+                    "point_p",
+                    "trig_values",
+                    "quadrant_state"
+                  ]
+                }
+              ]
+            },
+            "diagnosisDesign": {
+              "diagnosticFocus": [],
+              "misconceptionTags": [],
+              "itemSummary": null
+            },
+            "files": {
+              "readme": "README.md",
+              "teacher_script": "teacher-script.md",
+              "student_task": "student-task.md",
+              "review_record": "review.md",
+              "src_entry": "src/index.html"
+            },
+            "feedbackAndDiagnosis": {
+              "success_evidence": [
+                "学生能指出 P 的横坐标对应 cos θ，纵坐标对应 sin θ。",
+                "学生能说明 tan θ 来自 sin θ 与 cos θ 的商或切线高度。",
+                "学生能用图形颜色和象限卡判断三角比符号。",
+                "学生能说明 cos θ = 0 时 tan θ 无定义。"
+              ],
+              "common_error_tags": [
+                {
+                  "id": "coordinate_ratio_gap",
+                  "label": "不能把坐标和三角比对应起来"
+                },
+                {
+                  "id": "quadrant_sign_memory_only",
+                  "label": "只背象限符号，缺少图形来源"
+                },
+                {
+                  "id": "tan_domain_ignored",
+                  "label": "忽略正切无定义边界"
+                }
+              ],
+              "feedback_principles": [
+                "先看 P 所在象限和坐标符号，再读三角比。",
+                "讨论正切时必须回到 cos θ 是否为 0。"
+              ]
+            },
+            "visualSemantics": {
+              "terminal": "蓝色表示终边与点 P。",
+              "cosine": "橙色表示 cos θ 的横向投影。",
+              "sine": "青绿色表示 sin θ 的纵向投影。",
+              "tangent": "紫色表示 tan θ 的切线高度。",
+              "positive_negative": "绿色表示正，红色表示负，灰色表示 0 或无定义。"
+            },
+            "implementation": {
+              "phase": "runnable_prototype",
+              "html_src_status": "runnable",
+              "planned_engine": "native-canvas-svg",
+              "create_src_in_later_task": false,
+              "classroom_device_targets": [
+                "教师电脑浏览器",
+                "教室大屏",
+                "触控屏"
+              ]
+            },
+            "compliance": {
+              "copyright_note": "原创 HTML Applet 草稿，不复制教材正文、官方课件、教案、商业题库或外部素材。第 6 章仍需教材终核，本资源只保持 draft / self_checked_draft。",
+              "review_status": "self_checked_draft"
             }
           },
-          "player": null,
-          "package": null
+          "quality": {
+            "contentStatus": "draft",
+            "implementationStage": "runnable",
+            "reviewStatus": "self_checked_draft",
+            "readinessLabel": "可运行预览",
+            "displayStates": [
+              "draft",
+              "runnable",
+              "self_checked_draft"
+            ],
+            "labels": {
+              "contentStatus": "草稿",
+              "implementationStage": "可运行",
+              "reviewStatus": "自检草稿"
+            }
+          },
+          "player": {
+            "kind": "iframe",
+            "isRunnable": true,
+            "src": "content/applets/SH-HS-MATH-HJ-B2-C06-L03-A01/src/index.html",
+            "title": "单位圆三角比与终边联动板",
+            "sandbox": "allow-scripts allow-same-origin"
+          },
+          "package": {
+            "path": "content/applets/SH-HS-MATH-HJ-B2-C06-L03-A01",
+            "files": {
+              "metadata": "content/applets/SH-HS-MATH-HJ-B2-C06-L03-A01/metadata.yaml",
+              "readme": "content/applets/SH-HS-MATH-HJ-B2-C06-L03-A01/README.md",
+              "teacherScript": "content/applets/SH-HS-MATH-HJ-B2-C06-L03-A01/teacher-script.md",
+              "studentTask": "content/applets/SH-HS-MATH-HJ-B2-C06-L03-A01/student-task.md",
+              "reviewRecord": "content/applets/SH-HS-MATH-HJ-B2-C06-L03-A01/review.md",
+              "srcEntry": "content/applets/SH-HS-MATH-HJ-B2-C06-L03-A01/src/index.html"
+            },
+            "teacherScript": {
+              "kind": "teacher_script",
+              "path": "content/applets/SH-HS-MATH-HJ-B2-C06-L03-A01/teacher-script.md",
+              "title": "教师脚本：单位圆三角比与终边联动板",
+              "summary": "1. 拖动 `P`，确认蓝色射线是角的终边，`P` 是终边与单位圆的交点。 2. 观察 `P = (cos θ, sin θ)`，说明横坐标给出 `cos θ`，纵坐标给出 `sin θ`。 3. 点击四象限代表角，对照投影段颜色和象限符号卡。",
+              "sections": []
+            },
+            "studentTask": {
+              "kind": "student_task",
+              "path": "content/applets/SH-HS-MATH-HJ-B2-C06-L03-A01/student-task.md",
+              "title": "学生活动：单位圆三角比与终边联动板",
+              "summary": "",
+              "sections": [
+                "任务一",
+                "任务二",
+                "任务三"
+              ]
+            }
+          }
         },
         {
           "id": "SH-HS-MATH-HJ-B2-C06-L03-D01",
@@ -14993,28 +15871,351 @@
           "id": "SH-HS-MATH-HJ-B1-C02-L05-A01",
           "resourceType": "applet",
           "title": "二次不等式与函数符号区间联动板",
-          "cognitiveAction": "对应",
+          "subtitle": "拖动开口和零点，联动观察图像相对 x 轴的位置与解集区间",
+          "cognitiveAction": "比较",
           "note": "调节二次项系数、判别式和零点位置，同步观察抛物线开口、与x轴交点、符号区间和解集表示；数字化比板书更能呈现从两个实根、重根到无实根时解集形态的变化，并为第5章函数观点求解作桥接。不做因式分解刷题、套表格或机械解二次不等式。仅为 draft planned，未终核前禁止 scaffold。",
-          "availability": "proposed",
-          "status": "planned",
-          "version": null,
-          "metadataPreview": null,
-          "quality": {
-            "contentStatus": "planned",
-            "implementationStage": "planned",
-            "reviewStatus": "planned",
-            "readinessLabel": "规划中",
-            "displayStates": [
-              "planned"
+          "availability": "metadata_ready",
+          "status": "draft",
+          "version": "0.1.0",
+          "metadataPreview": {
+            "id": "SH-HS-MATH-HJ-B1-C02-L05-A01",
+            "version": "0.1.0",
+            "status": "draft",
+            "resourceType": "applet",
+            "title": "二次不等式与函数符号区间联动板",
+            "subtitle": "拖动开口和零点，联动观察图像相对 x 轴的位置与解集区间",
+            "curriculum": {
+              "region": "上海",
+              "stage": "高中",
+              "subject": "数学",
+              "edition": "沪教版",
+              "volume_id": "B1",
+              "volume_title": "必修第一册",
+              "chapter_id": "SH-HS-MATH-HJ-B1-C02",
+              "chapter_title": "等式与不等式",
+              "section_id": "SH-HS-MATH-HJ-B1-C02-S02",
+              "section_title": "不等式的求解",
+              "lesson_id": "SH-HS-MATH-HJ-B1-C02-L05",
+              "textbook_ref": "2.2.2",
+              "lesson_title": "一元二次不等式的求解"
+            },
+            "pedagogy": {
+              "cognitiveAction": "比较",
+              "estimatedClassroomMinutes": 12,
+              "primaryTeachingProblem": "学生容易只背“大于取两边、小于取中间”，不能解释根、开口方向、图像在 x 轴上方或下方与解集区间之间的对应。",
+              "learningGoals": [
+                "用二次函数图像在 x 轴上方说明 f(x) > 0 的解集，用图像在 x 轴下方说明 f(x) < 0 的解集。",
+                "拖动两个零点，观察符号区间端点随零点同步移动。",
+                "拖动开口方向，说明开口向上和开口向下时 f(x) > 0、f(x) < 0 区间互换。",
+                "比较两个实根、重根、无实根时一元二次不等式解集的边界差异。"
+              ],
+              "prerequisites": [
+                "一元二次方程的根",
+                "二次函数图像与 x 轴交点",
+                "数轴和区间表示",
+                "不等式解集的集合语言"
+              ],
+              "successors": [
+                "SH-HS-MATH-HJ-B1-C02-L06",
+                "SH-HS-MATH-HJ-B1-C05-L07",
+                "SH-HS-MATH-HJ-B1-C05-L08"
+              ],
+              "coreCompetencies": [
+                "直观想象",
+                "逻辑推理",
+                "数学运算"
+              ]
+            },
+            "mathematicalScope": {
+              "focus": "以 f(x) = a(x - x1)(x - x2) 为主模型，拖动 a 的开口手柄和零点手柄，同步显示图像相对 x 轴的位置、数轴符号区间和不等式解集。",
+              "function_model": "f(x) = a(x - x1)(x - x2)，其中 a 不等于 0。",
+              "sign_link": "f(x) > 0 对应图像在 x 轴上方的横坐标集合；f(x) < 0 对应图像在 x 轴下方的横坐标集合。",
+              "opening_rule": "两个实根时，开口向上则 f(x) > 0 在两侧、f(x) < 0 在中间；开口向下则 f(x) > 0 在中间、f(x) < 0 在两侧。",
+              "boundary_cases": {
+                "double_root": "重根时，除重根外图像在 x 轴同侧，严格不等式不包含重根。",
+                "no_real_root": "无实根时，图像整体在 x 轴一侧，严格不等式可能为 R 或空集。"
+              },
+              "out_of_scope": [
+                "因式分解刷题和机械套表格训练",
+                "参数二次不等式的完整分类讨论",
+                "分式不等式或高次不等式",
+                "课程图谱、生产 backlog 或课时边界调整",
+                "超出 draft 和 self_checked_draft 草稿边界的正式流转"
+              ]
+            },
+            "representations": [
+              {
+                "id": "graph_panel",
+                "role": "显示二次函数图像、x 轴、零点、开口手柄，以及图像在 x 轴上方或下方的颜色区分。"
+              },
+              {
+                "id": "sign_number_line",
+                "role": "用数轴区间同步显示 f(x) > 0 与 f(x) < 0 的解集。"
+              },
+              {
+                "id": "inequality_readout",
+                "role": "用规范数学排版显示一元二次不等式与当前解集。"
+              },
+              {
+                "id": "opening_summary",
+                "role": "明确归纳开口向上和开口向下时正负区间的互换关系。"
+              }
             ],
-            "labels": {
-              "contentStatus": "规划中",
-              "implementationStage": "规划中",
-              "reviewStatus": "规划中"
+            "narrativeDesign": {
+              "beats": [],
+              "pausePoints": []
+            },
+            "interactionDesign": {
+              "primaryControl": "拖动图像上的两个零点手柄改变 x 轴交点，拖动开口手柄改变 a 的正负和大小。",
+              "teacherControls": [
+                "切换两个实根、重根、无实根情形",
+                "重置到默认图像",
+                "用按钮切换开口向上或开口向下",
+                "分步显示观察图像、数轴区间和不等式解集"
+              ],
+              "studentControls": [
+                "拖动零点并预测数轴端点如何移动",
+                "拖动开口手柄并判断 f(x) > 0、f(x) < 0 区间是否互换",
+                "在重根和无实根情形下写出严格不等式解集"
+              ],
+              "stagedReveal": [
+                {
+                  "step": "observe_graph",
+                  "description": "先观察抛物线与 x 轴交点，以及图像在 x 轴上方或下方的位置。"
+                },
+                {
+                  "step": "link_number_line",
+                  "description": "显示数轴符号区间，让上方位置对应 f(x) > 0，下方位置对应 f(x) < 0。"
+                },
+                {
+                  "step": "solve_inequality",
+                  "description": "显示一元二次不等式解集，并比较开口向上和开口向下的区间互换。"
+                },
+                {
+                  "step": "boundary_cases",
+                  "description": "切换重根和无实根，讨论 R、空集和单点边界。"
+                }
+              ]
+            },
+            "dataContract": {
+              "state_variables": [
+                {
+                  "name": "opening_a",
+                  "value_type": "number",
+                  "default": 0.7,
+                  "description": "二次项系数 a，正值表示开口向上，负值表示开口向下。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "root_mode",
+                  "value_type": "string",
+                  "default": "two_roots",
+                  "description": "当前根形态，取 two_roots、double_root 或 no_real。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "left_root",
+                  "value_type": "number",
+                  "default": -2,
+                  "description": "两个实根情形下左侧零点。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "right_root",
+                  "value_type": "number",
+                  "default": 2,
+                  "description": "两个实根情形下右侧零点。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "center",
+                  "value_type": "number",
+                  "default": 0,
+                  "description": "重根位置或无实根图像的对称轴位置。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "positive_solution",
+                  "value_type": "string",
+                  "default": "(-∞, -2) ∪ (2, +∞)",
+                  "description": "当前 f(x) > 0 的解集区间。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "negative_solution",
+                  "value_type": "string",
+                  "default": "(-2, 2)",
+                  "description": "当前 f(x) < 0 的解集区间。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "reveal_step",
+                  "value_type": "number",
+                  "default": 1,
+                  "description": "当前课堂分步揭示阶段。",
+                  "persistence": "snapshot"
+                }
+              ],
+              "events": [
+                {
+                  "name": "ready",
+                  "direction": "applet_to_player",
+                  "description": "课件完成初始渲染。",
+                  "payload": [
+                    "opening_a",
+                    "root_mode",
+                    "left_root",
+                    "right_root",
+                    "center",
+                    "positive_solution",
+                    "negative_solution",
+                    "reveal_step"
+                  ],
+                  "required_for_player": true
+                },
+                {
+                  "name": "state_changed",
+                  "direction": "applet_to_player",
+                  "description": "拖动开口、拖动零点、切换根形态或切换揭示步骤时通知播放器。",
+                  "payload": [
+                    "opening_a",
+                    "root_mode",
+                    "left_root",
+                    "right_root",
+                    "center",
+                    "positive_solution",
+                    "negative_solution",
+                    "reveal_step"
+                  ],
+                  "required_for_player": true
+                }
+              ]
+            },
+            "diagnosisDesign": {
+              "diagnosticFocus": [],
+              "misconceptionTags": [],
+              "itemSummary": null
+            },
+            "files": {
+              "readme": "README.md",
+              "teacher_script": "teacher-script.md",
+              "student_task": "student-task.md",
+              "review_record": "review.md",
+              "src_entry": "src/index.html"
+            },
+            "feedbackAndDiagnosis": {
+              "success_evidence": [
+                "学生能指出 f(x) > 0 不是背口诀，而是取图像在 x 轴上方的横坐标。",
+                "学生能在两个实根情形下说明开口向上和开口向下时正负区间互换。",
+                "学生能在重根情形下区分严格不等式和含等号不等式。",
+                "学生能在无实根情形下判断解集为 R 或空集，并说明依据是整条图像在 x 轴同侧。"
+              ],
+              "common_error_tags": [
+                {
+                  "id": "memorized_middle_sides",
+                  "label": "只背中间或两侧，不解释图像位置"
+                },
+                {
+                  "id": "opening_direction_missed",
+                  "label": "忽略开口方向导致正负区间写反"
+                },
+                {
+                  "id": "strict_boundary_error",
+                  "label": "严格不等式误包含零点或重根"
+                },
+                {
+                  "id": "no_real_root_confusion",
+                  "label": "无实根时混淆 R 与空集"
+                }
+              ],
+              "feedback_principles": [
+                "先看图像相对 x 轴的位置，再读数轴区间，最后写不等式解集。",
+                "学生写错中间或两侧时，拖动开口手柄让区间互换，而不是直接给口诀。",
+                "讨论含等号边界时回到零点是 f(x) = 0 的横坐标。"
+              ]
+            },
+            "visualSemantics": {
+              "graph_above": "绿色表示图像在 x 轴上方，对应 f(x) > 0。",
+              "graph_below": "红色表示图像在 x 轴下方，对应 f(x) < 0。",
+              "roots": "深色实心点表示 f(x) = 0 的横坐标。",
+              "opening_handle": "蓝色菱形手柄表示改变开口方向和张开程度。",
+              "number_line": "数轴区间颜色与图像上方或下方颜色保持一致。",
+              "rule": "颜色只承载数学对象和符号含义，不作为装饰。"
+            },
+            "implementation": {
+              "phase": "runnable_prototype",
+              "html_src_status": "runnable",
+              "planned_engine": "native-canvas-svg",
+              "create_src_in_later_task": false,
+              "classroom_device_targets": [
+                "desktop",
+                "tablet",
+                "projector"
+              ]
+            },
+            "compliance": {
+              "copyright_note": "本资源为原创 HTML Applet 草稿，不复制教材正文、官方课件、商业平台资源或题库；仅按用户授权任务生产 draft 级自检原型，课程边界和数学审校仍需后续人工复核。",
+              "review_status": "self_checked_draft"
             }
           },
-          "player": null,
-          "package": null
+          "quality": {
+            "contentStatus": "draft",
+            "implementationStage": "runnable",
+            "reviewStatus": "self_checked_draft",
+            "readinessLabel": "可运行预览",
+            "displayStates": [
+              "draft",
+              "runnable",
+              "self_checked_draft"
+            ],
+            "labels": {
+              "contentStatus": "草稿",
+              "implementationStage": "可运行",
+              "reviewStatus": "自检草稿"
+            }
+          },
+          "player": {
+            "kind": "iframe",
+            "isRunnable": true,
+            "src": "content/applets/SH-HS-MATH-HJ-B1-C02-L05-A01/src/index.html",
+            "title": "二次不等式与函数符号区间联动板",
+            "sandbox": "allow-scripts allow-same-origin"
+          },
+          "package": {
+            "path": "content/applets/SH-HS-MATH-HJ-B1-C02-L05-A01",
+            "files": {
+              "metadata": "content/applets/SH-HS-MATH-HJ-B1-C02-L05-A01/metadata.yaml",
+              "readme": "content/applets/SH-HS-MATH-HJ-B1-C02-L05-A01/README.md",
+              "teacherScript": "content/applets/SH-HS-MATH-HJ-B1-C02-L05-A01/teacher-script.md",
+              "studentTask": "content/applets/SH-HS-MATH-HJ-B1-C02-L05-A01/student-task.md",
+              "reviewRecord": "content/applets/SH-HS-MATH-HJ-B1-C02-L05-A01/review.md",
+              "srcEntry": "content/applets/SH-HS-MATH-HJ-B1-C02-L05-A01/src/index.html"
+            },
+            "teacherScript": {
+              "kind": "teacher_script",
+              "path": "content/applets/SH-HS-MATH-HJ-B1-C02-L05-A01/teacher-script.md",
+              "title": "教师脚本",
+              "summary": "资源：`SH-HS-MATH-HJ-B1-C02-L05-A01` 建议用时：12 分钟。",
+              "sections": [
+                "1. 看图像",
+                "2. 对数轴",
+                "3. 换开口",
+                "4. 看边界"
+              ]
+            },
+            "studentTask": {
+              "kind": "student_task",
+              "path": "content/applets/SH-HS-MATH-HJ-B1-C02-L05-A01/student-task.md",
+              "title": "学生活动任务",
+              "summary": "资源：`SH-HS-MATH-HJ-B1-C02-L05-A01`",
+              "sections": [
+                "活动 A：先预测",
+                "活动 B：拖零点",
+                "活动 C：换开口",
+                "活动 D：看特殊情形"
+              ]
+            }
+          }
         }
       ]
     },
@@ -15865,28 +17066,326 @@
           "id": "SH-HS-MATH-HJ-B1-C04-L06-A01",
           "resourceType": "applet",
           "title": "指数对数互反图像镜像板",
-          "cognitiveAction": "对应",
+          "subtitle": "调节底数 a，观察 y = a^x 与 y = log_a x 关于 y = x 的镜像关系",
+          "cognitiveAction": "变换",
           "note": "拖动指数函数图像上的点，同步交换坐标生成对数函数点，展示定义域/值域互换和关于 y = x 的对称；数字化比板书更能显化点的动态对应。不做对数定义背诵或换底公式练习。仅为 draft planned，纸质教材或已登录平台终核前禁止 scaffold。",
-          "availability": "proposed",
-          "status": "planned",
-          "version": null,
-          "metadataPreview": null,
-          "quality": {
-            "contentStatus": "planned",
-            "implementationStage": "planned",
-            "reviewStatus": "planned",
-            "readinessLabel": "规划中",
-            "displayStates": [
-              "planned"
+          "availability": "metadata_ready",
+          "status": "draft",
+          "version": "0.1.0",
+          "metadataPreview": {
+            "id": "SH-HS-MATH-HJ-B1-C04-L06-A01",
+            "version": "0.1.0",
+            "status": "draft",
+            "resourceType": "applet",
+            "title": "指数对数互反图像镜像板",
+            "subtitle": "调节底数 a，观察 y = a^x 与 y = log_a x 关于 y = x 的镜像关系",
+            "curriculum": {
+              "region": "上海",
+              "stage": "高中",
+              "subject": "数学",
+              "edition": "沪教版",
+              "volume_id": "B1",
+              "volume_title": "必修第一册",
+              "chapter_id": "SH-HS-MATH-HJ-B1-C04",
+              "chapter_title": "幂函数、指数函数与对数函数",
+              "section_id": "SH-HS-MATH-HJ-B1-C04-S03",
+              "section_title": "对数函数",
+              "lesson_id": "SH-HS-MATH-HJ-B1-C04-L06",
+              "textbook_ref": "4.3.2",
+              "lesson_title": "对数函数的性质"
+            },
+            "pedagogy": {
+              "cognitiveAction": "变换",
+              "estimatedClassroomMinutes": 12,
+              "primaryTeachingProblem": "学生容易只把指数函数和对数函数看成两条曲线，不能用交换坐标说明二者互为反函数，也容易把图像镜像误认为关于坐标轴对称。",
+              "learningGoals": [
+                "说明 y = a^x 与 y = log_a x 在同一底数 a 下互为反函数。",
+                "用点 P(x, a^x) 与 Q(a^x, x) 的交换坐标关系解释图像关于直线 y = x 对称。",
+                "说出指数函数的定义域 R 与对数函数的值域 R 对应，指数函数的值域 (0, +∞) 与对数函数的定义域 (0, +∞) 对应。",
+                "比较 a > 1 与 0 < a < 1 时，两条互反函数曲线的单调方向。"
+              ],
+              "prerequisites": [
+                "指数函数的图像与性质",
+                "对数函数的定义与图像",
+                "点关于直线 y = x 的对称直观"
+              ],
+              "successors": [
+                "SH-HS-MATH-HJ-B1-C05-L04",
+                "SH-HS-MATH-HJ-B1-C05-L09",
+                "SH-HS-MATH-HJ-B1-C05-L10",
+                "SH-HS-MATH-HJ-MODEL-K01"
+              ],
+              "coreCompetencies": [
+                "直观想象",
+                "数学抽象",
+                "逻辑推理"
+              ]
+            },
+            "mathematicalScope": {
+              "focus": "同一底数 a 满足 a > 0 且 a != 1 时，y = a^x 与 y = log_a x 互为反函数，图像关于 y = x 对称。",
+              "exponential_function": "y = a^x，定义域 R，值域 (0, +∞)",
+              "logarithmic_function": "y = log_a x，定义域 (0, +∞)，值域 R",
+              "inverse_rule": "若 P(x, a^x) 在指数函数图像上，则 Q(a^x, x) 在对应对数函数图像上，P 与 Q 关于直线 y = x 对称。",
+              "monotonicity": "a > 1 时两条曲线都严格递增；0 < a < 1 时两条曲线都严格递减。",
+              "default_base": 2,
+              "base_range": "1/4 ≤ a ≤ 4，交互中自动避开 a = 1",
+              "out_of_scope": [
+                "对数定义背诵或指数式与对数式互化题组",
+                "换底公式推导和计算训练",
+                "一般反函数存在性证明",
+                "超出 draft / self_checked_draft 草稿边界的正式流转"
+              ]
+            },
+            "representations": [
+              {
+                "id": "mirror_graph",
+                "role": "在同一坐标系中绘制 y = a^x、y = log_a x 和 y = x 镜像参照线，保持横纵同尺度。"
+              },
+              {
+                "id": "coordinate_swap_probe",
+                "role": "显示指数函数点 P(x, a^x) 与对数函数点 Q(a^x, x)，用连线和中点说明交换坐标。"
+              },
+              {
+                "id": "base_control",
+                "role": "用底数滑块和典型底数按钮切换 a > 1 与 0 < a < 1 的单调方向。"
+              },
+              {
+                "id": "property_panel",
+                "role": "同步呈现定义域、值域和单调性的对应关系。"
+              }
             ],
-            "labels": {
-              "contentStatus": "规划中",
-              "implementationStage": "规划中",
-              "reviewStatus": "规划中"
+            "narrativeDesign": {
+              "beats": [],
+              "pausePoints": []
+            },
+            "interactionDesign": {
+              "primaryControl": "调节底数 a，并移动指数函数上的观察点 P，自动生成交换坐标后的对数函数点 Q。",
+              "teacherControls": [
+                "底数滑块，连续观察 a 的变化并自动避开 a = 1",
+                "典型底数按钮：a = 1/2、a = 2、a = 3",
+                "观察点滑块，沿指数函数移动 P 并同步显示 Q",
+                "重置到 a = 2、x = 0.5"
+              ],
+              "studentControls": [
+                "读出 P(x, a^x) 与 Q(a^x, x) 的坐标并解释交换坐标",
+                "对照定义域、值域和单调性卡片完成观察记录"
+              ],
+              "stagedReveal": [
+                {
+                  "step": "observe_curves",
+                  "description": "先看同底数的指数曲线和对数曲线，以及 y = x 镜像参照线。"
+                },
+                {
+                  "step": "swap_coordinates",
+                  "description": "移动指数函数上的 P 点，观察 Q 点坐标由 P 点交换得到。"
+                },
+                {
+                  "step": "connect_domains",
+                  "description": "把指数函数的定义域和值域分别与对数函数的值域和定义域对应起来。"
+                },
+                {
+                  "step": "compare_monotonicity",
+                  "description": "切换 a > 1 和 0 < a < 1，比较两条互反函数的单调方向。"
+                }
+              ]
+            },
+            "dataContract": {
+              "state_variables": [
+                {
+                  "name": "base_a",
+                  "value_type": "number",
+                  "default": 2,
+                  "description": "当前底数 a，满足 a > 0 且 a != 1。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "probe_x",
+                  "value_type": "number",
+                  "default": 0.5,
+                  "description": "指数函数观察点 P 的横坐标 x。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "exp_y",
+                  "value_type": "number",
+                  "default": 1.4142135623730951,
+                  "description": "指数函数观察点 P 的纵坐标 a^x。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "log_x",
+                  "value_type": "number",
+                  "default": 1.4142135623730951,
+                  "description": "对数函数观察点 Q 的横坐标，等于 a^x。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "log_y",
+                  "value_type": "number",
+                  "default": 0.5,
+                  "description": "对数函数观察点 Q 的纵坐标，等于原指数点的 x。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "monotonicity",
+                  "value_type": "string",
+                  "default": "increasing",
+                  "description": "当前底数对应的单调方向，取 increasing 或 decreasing。",
+                  "persistence": "snapshot"
+                }
+              ],
+              "events": [
+                {
+                  "name": "ready",
+                  "direction": "applet_to_player",
+                  "description": "课件完成初始渲染。",
+                  "payload": [
+                    "base_a",
+                    "probe_x",
+                    "exp_y",
+                    "log_x",
+                    "log_y",
+                    "monotonicity"
+                  ],
+                  "required_for_player": true
+                },
+                {
+                  "name": "state_changed",
+                  "direction": "applet_to_player",
+                  "description": "底数或观察点变化时通知播放器。",
+                  "payload": [
+                    "base_a",
+                    "probe_x",
+                    "exp_y",
+                    "log_x",
+                    "log_y",
+                    "monotonicity"
+                  ],
+                  "required_for_player": true
+                }
+              ]
+            },
+            "diagnosisDesign": {
+              "diagnosticFocus": [],
+              "misconceptionTags": [],
+              "itemSummary": null
+            },
+            "files": {
+              "readme": "README.md",
+              "teacher_script": "teacher-script.md",
+              "student_task": "student-task.md",
+              "review_record": "review.md",
+              "src_entry": "src/index.html"
+            },
+            "feedbackAndDiagnosis": {
+              "success_evidence": [
+                "学生能指着 P 和 Q 说出 Q 由 P 交换坐标得到。",
+                "学生能用互为反函数解释两条曲线关于 y = x 对称，而不是只说形状相似。",
+                "学生能说出指数函数的定义域 R 与对数函数的值域 R 对应，指数函数的值域 (0, +∞) 与对数函数的定义域 (0, +∞) 对应。",
+                "学生能按 a > 1 或 0 < a < 1 判断两条互反函数同增或同减。"
+              ],
+              "common_error_tags": [
+                {
+                  "id": "axis_mirror_confusion",
+                  "label": "把关于 y = x 对称误认为关于坐标轴对称"
+                },
+                {
+                  "id": "inverse_missing",
+                  "label": "只画两条曲线，未说明互为反函数"
+                },
+                {
+                  "id": "domain_range_swap_gap",
+                  "label": "不能说明定义域和值域互换"
+                },
+                {
+                  "id": "base_monotonicity_gap",
+                  "label": "底数范围与单调方向对应不清"
+                }
+              ],
+              "feedback_principles": [
+                "先读 P(x, a^x)，再交换坐标得到 Q(a^x, x)。",
+                "判断镜像时必须回到直线 y = x，而不是 x 轴或 y 轴。",
+                "用定义域和值域互换解释为什么对数函数只在 x > 0 上有图像。"
+              ]
+            },
+            "visualSemantics": {
+              "exponential_curve": "蓝色表示 y = a^x。",
+              "logarithmic_curve": "橙色表示 y = log_a x。",
+              "mirror_line": "绿色虚线表示 y = x 镜像参照线。",
+              "swap_segment": "紫色线段连接 P 与 Q，提示二者为镜像点。"
+            },
+            "implementation": {
+              "phase": "runnable_prototype",
+              "html_src_status": "runnable",
+              "planned_engine": "native-canvas-svg",
+              "create_src_in_later_task": false,
+              "classroom_device_targets": [
+                "desktop",
+                "tablet",
+                "projector"
+              ]
+            },
+            "compliance": {
+              "copyright_note": "本资源为原创交互草稿，不复制教材正文、官方课件、教案或商业题库；第 4 章课时边界仍需纸质教材或已登录平台终核，当前仅保持 draft / self_checked_draft 草稿边界。",
+              "review_status": "self_checked_draft"
             }
           },
-          "player": null,
-          "package": null
+          "quality": {
+            "contentStatus": "draft",
+            "implementationStage": "runnable",
+            "reviewStatus": "self_checked_draft",
+            "readinessLabel": "可运行预览",
+            "displayStates": [
+              "draft",
+              "runnable",
+              "self_checked_draft"
+            ],
+            "labels": {
+              "contentStatus": "草稿",
+              "implementationStage": "可运行",
+              "reviewStatus": "自检草稿"
+            }
+          },
+          "player": {
+            "kind": "iframe",
+            "isRunnable": true,
+            "src": "content/applets/SH-HS-MATH-HJ-B1-C04-L06-A01/src/index.html",
+            "title": "指数对数互反图像镜像板",
+            "sandbox": "allow-scripts allow-same-origin"
+          },
+          "package": {
+            "path": "content/applets/SH-HS-MATH-HJ-B1-C04-L06-A01",
+            "files": {
+              "metadata": "content/applets/SH-HS-MATH-HJ-B1-C04-L06-A01/metadata.yaml",
+              "readme": "content/applets/SH-HS-MATH-HJ-B1-C04-L06-A01/README.md",
+              "teacherScript": "content/applets/SH-HS-MATH-HJ-B1-C04-L06-A01/teacher-script.md",
+              "studentTask": "content/applets/SH-HS-MATH-HJ-B1-C04-L06-A01/student-task.md",
+              "reviewRecord": "content/applets/SH-HS-MATH-HJ-B1-C04-L06-A01/review.md",
+              "srcEntry": "content/applets/SH-HS-MATH-HJ-B1-C04-L06-A01/src/index.html"
+            },
+            "teacherScript": {
+              "kind": "teacher_script",
+              "path": "content/applets/SH-HS-MATH-HJ-B1-C04-L06-A01/teacher-script.md",
+              "title": "教师脚本：指数对数互反图像镜像板",
+              "summary": "",
+              "sections": [
+                "使用目标",
+                "操作流程"
+              ]
+            },
+            "studentTask": {
+              "kind": "student_task",
+              "path": "content/applets/SH-HS-MATH-HJ-B1-C04-L06-A01/student-task.md",
+              "title": "学生活动任务：交换坐标看互反",
+              "summary": "",
+              "sections": [
+                "任务 1：找对应点",
+                "任务 2：判断镜像轴",
+                "任务 3：定义域和值域互换",
+                "任务 4：单调性对照"
+              ]
+            }
+          }
         },
         {
           "id": "SH-HS-MATH-HJ-B1-C04-L06-A02",
@@ -16780,28 +18279,282 @@
           "id": "SH-HS-MATH-HJ-B2-C06-L03-A01",
           "resourceType": "applet",
           "title": "单位圆三角比与终边联动板",
+          "subtitle": "拖动单位圆终边点，观察 sin、cos、tan 的几何意义和象限符号",
           "cognitiveAction": "投影",
           "note": "拖动单位圆终边，同步显示坐标、四个三角比、象限符号和无定义状态，突出三角比几何意义与第7章函数值来源。",
-          "availability": "proposed",
-          "status": "planned",
-          "version": null,
-          "metadataPreview": null,
-          "quality": {
-            "contentStatus": "planned",
-            "implementationStage": "planned",
-            "reviewStatus": "planned",
-            "readinessLabel": "规划中",
-            "displayStates": [
-              "planned"
+          "availability": "metadata_ready",
+          "status": "draft",
+          "version": "0.1.0",
+          "metadataPreview": {
+            "id": "SH-HS-MATH-HJ-B2-C06-L03-A01",
+            "version": "0.1.0",
+            "status": "draft",
+            "resourceType": "applet",
+            "title": "单位圆三角比与终边联动板",
+            "subtitle": "拖动单位圆终边点，观察 sin、cos、tan 的几何意义和象限符号",
+            "curriculum": {
+              "region": "上海",
+              "stage": "高中",
+              "subject": "数学",
+              "edition": "沪教版",
+              "volume_id": "B2",
+              "volume_title": "必修第二册",
+              "chapter_id": "SH-HS-MATH-HJ-B2-C06",
+              "chapter_title": "三角",
+              "section_id": "SH-HS-MATH-HJ-B2-C06-S01",
+              "section_title": "正弦、余弦、正切、余切",
+              "lesson_id": "SH-HS-MATH-HJ-B2-C06-L03",
+              "textbook_ref": "6.1.3",
+              "lesson_title": "任意角的正弦、余弦、正切、余切"
+            },
+            "pedagogy": {
+              "cognitiveAction": "投影",
+              "estimatedClassroomMinutes": 14,
+              "primaryTeachingProblem": "学生容易把任意角三角比仍看作直角三角形边长比，不能把终边、单位圆坐标、三角比和象限符号联动起来。",
+              "learningGoals": [
+                "说明终边与单位圆交点 P 的坐标是 P = (cos θ, sin θ)。",
+                "用横向投影读出 cos θ，用纵向投影读出 sin θ。",
+                "用切线 x = 1 上的有向高度或 sin θ 与 cos θ 的商解释 tan θ。",
+                "观察象限变化时 sin θ、cos θ、tan θ 的符号和 tan θ 无定义边界。"
+              ],
+              "prerequisites": [
+                "任意角和弧度制",
+                "锐角三角比",
+                "平面直角坐标系和单位圆"
+              ],
+              "successors": [
+                "SH-HS-MATH-HJ-B2-C06-L04",
+                "SH-HS-MATH-HJ-B2-C06-L05",
+                "SH-HS-MATH-HJ-B2-C07-L01",
+                "SH-HS-MATH-HJ-B2-C07-L06"
+              ],
+              "coreCompetencies": [
+                "直观想象",
+                "数学抽象",
+                "逻辑推理"
+              ]
+            },
+            "mathematicalScope": {
+              "focus": "拖动单位圆上的终边点 P，联动显示 P = (cos θ, sin θ)、sin θ、cos θ、tan θ 和象限符号。",
+              "definition": "终边与单位圆交于 P(x, y)，cos θ = x，sin θ = y；当 x 不为 0 时 tan θ = y / x。",
+              "tangent_model": "终边所在直线与切线 x = 1 的交点 T 的纵坐标表示 tan θ；cos θ = 0 时 tan θ 无定义。",
+              "out_of_scope": [
+                "余切的完整交互",
+                "诱导公式推导",
+                "三角函数图像生成",
+                "正式审校或稳定流转"
+              ]
+            },
+            "representations": [
+              {
+                "id": "unit_circle_board",
+                "role": "显示坐标轴、单位圆、终边、P 点、投影段和正切线。"
+              },
+              {
+                "id": "sign_cards",
+                "role": "四象限符号卡随当前象限高亮，辅助观察符号变化。"
+              }
             ],
-            "labels": {
-              "contentStatus": "规划中",
-              "implementationStage": "规划中",
-              "reviewStatus": "规划中"
+            "narrativeDesign": {
+              "beats": [],
+              "pausePoints": []
+            },
+            "interactionDesign": {
+              "primaryControl": "拖动单位圆上的 P 点改变终边，也可点击关键角按钮。",
+              "teacherControls": [
+                "重置到 π/6",
+                "点击四象限代表角和轴上关键角",
+                "显示或隐藏正切线表征"
+              ],
+              "studentControls": [
+                "拖动 P 点观察坐标和三角比读数",
+                "比较不同象限中的符号变化",
+                "停在 π/2 和 3π/2 解释 tan θ 无定义"
+              ],
+              "stagedReveal": [
+                {
+                  "step": "terminal_side",
+                  "description": "观察角的终边和单位圆点 P。"
+                },
+                {
+                  "step": "coordinate_ratio",
+                  "description": "用 P 的横纵坐标解释 cos θ 与 sin θ。"
+                },
+                {
+                  "step": "tangent_ratio",
+                  "description": "用切线 x = 1 解释 tan θ 与无定义边界。"
+                }
+              ]
+            },
+            "dataContract": {
+              "state_variables": [
+                {
+                  "name": "theta",
+                  "unit": "radian",
+                  "value_type": "number",
+                  "default": 0.5235987755982988,
+                  "description": "当前角 θ 的弧度量。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "point_p",
+                  "value_type": "point2d",
+                  "description": "单位圆上点 P 的坐标。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "trig_values",
+                  "value_type": "object",
+                  "description": "sin θ、cos θ、tan θ 和 tan 是否有定义。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "quadrant_state",
+                  "value_type": "string",
+                  "default": "I",
+                  "description": "当前终边所在象限或坐标轴边界。",
+                  "persistence": "snapshot"
+                }
+              ],
+              "events": [
+                {
+                  "name": "ready",
+                  "direction": "applet_to_player",
+                  "description": "课件完成初始渲染。",
+                  "payload": [
+                    "theta",
+                    "point_p",
+                    "trig_values",
+                    "quadrant_state"
+                  ],
+                  "required_for_player": true
+                },
+                {
+                  "name": "angle_changed",
+                  "direction": "applet_to_player",
+                  "description": "拖动、滑块或关键角按钮改变当前角。",
+                  "payload": [
+                    "theta",
+                    "point_p",
+                    "trig_values",
+                    "quadrant_state"
+                  ]
+                }
+              ]
+            },
+            "diagnosisDesign": {
+              "diagnosticFocus": [],
+              "misconceptionTags": [],
+              "itemSummary": null
+            },
+            "files": {
+              "readme": "README.md",
+              "teacher_script": "teacher-script.md",
+              "student_task": "student-task.md",
+              "review_record": "review.md",
+              "src_entry": "src/index.html"
+            },
+            "feedbackAndDiagnosis": {
+              "success_evidence": [
+                "学生能指出 P 的横坐标对应 cos θ，纵坐标对应 sin θ。",
+                "学生能说明 tan θ 来自 sin θ 与 cos θ 的商或切线高度。",
+                "学生能用图形颜色和象限卡判断三角比符号。",
+                "学生能说明 cos θ = 0 时 tan θ 无定义。"
+              ],
+              "common_error_tags": [
+                {
+                  "id": "coordinate_ratio_gap",
+                  "label": "不能把坐标和三角比对应起来"
+                },
+                {
+                  "id": "quadrant_sign_memory_only",
+                  "label": "只背象限符号，缺少图形来源"
+                },
+                {
+                  "id": "tan_domain_ignored",
+                  "label": "忽略正切无定义边界"
+                }
+              ],
+              "feedback_principles": [
+                "先看 P 所在象限和坐标符号，再读三角比。",
+                "讨论正切时必须回到 cos θ 是否为 0。"
+              ]
+            },
+            "visualSemantics": {
+              "terminal": "蓝色表示终边与点 P。",
+              "cosine": "橙色表示 cos θ 的横向投影。",
+              "sine": "青绿色表示 sin θ 的纵向投影。",
+              "tangent": "紫色表示 tan θ 的切线高度。",
+              "positive_negative": "绿色表示正，红色表示负，灰色表示 0 或无定义。"
+            },
+            "implementation": {
+              "phase": "runnable_prototype",
+              "html_src_status": "runnable",
+              "planned_engine": "native-canvas-svg",
+              "create_src_in_later_task": false,
+              "classroom_device_targets": [
+                "教师电脑浏览器",
+                "教室大屏",
+                "触控屏"
+              ]
+            },
+            "compliance": {
+              "copyright_note": "原创 HTML Applet 草稿，不复制教材正文、官方课件、教案、商业题库或外部素材。第 6 章仍需教材终核，本资源只保持 draft / self_checked_draft。",
+              "review_status": "self_checked_draft"
             }
           },
-          "player": null,
-          "package": null
+          "quality": {
+            "contentStatus": "draft",
+            "implementationStage": "runnable",
+            "reviewStatus": "self_checked_draft",
+            "readinessLabel": "可运行预览",
+            "displayStates": [
+              "draft",
+              "runnable",
+              "self_checked_draft"
+            ],
+            "labels": {
+              "contentStatus": "草稿",
+              "implementationStage": "可运行",
+              "reviewStatus": "自检草稿"
+            }
+          },
+          "player": {
+            "kind": "iframe",
+            "isRunnable": true,
+            "src": "content/applets/SH-HS-MATH-HJ-B2-C06-L03-A01/src/index.html",
+            "title": "单位圆三角比与终边联动板",
+            "sandbox": "allow-scripts allow-same-origin"
+          },
+          "package": {
+            "path": "content/applets/SH-HS-MATH-HJ-B2-C06-L03-A01",
+            "files": {
+              "metadata": "content/applets/SH-HS-MATH-HJ-B2-C06-L03-A01/metadata.yaml",
+              "readme": "content/applets/SH-HS-MATH-HJ-B2-C06-L03-A01/README.md",
+              "teacherScript": "content/applets/SH-HS-MATH-HJ-B2-C06-L03-A01/teacher-script.md",
+              "studentTask": "content/applets/SH-HS-MATH-HJ-B2-C06-L03-A01/student-task.md",
+              "reviewRecord": "content/applets/SH-HS-MATH-HJ-B2-C06-L03-A01/review.md",
+              "srcEntry": "content/applets/SH-HS-MATH-HJ-B2-C06-L03-A01/src/index.html"
+            },
+            "teacherScript": {
+              "kind": "teacher_script",
+              "path": "content/applets/SH-HS-MATH-HJ-B2-C06-L03-A01/teacher-script.md",
+              "title": "教师脚本：单位圆三角比与终边联动板",
+              "summary": "1. 拖动 `P`，确认蓝色射线是角的终边，`P` 是终边与单位圆的交点。 2. 观察 `P = (cos θ, sin θ)`，说明横坐标给出 `cos θ`，纵坐标给出 `sin θ`。 3. 点击四象限代表角，对照投影段颜色和象限符号卡。",
+              "sections": []
+            },
+            "studentTask": {
+              "kind": "student_task",
+              "path": "content/applets/SH-HS-MATH-HJ-B2-C06-L03-A01/student-task.md",
+              "title": "学生活动：单位圆三角比与终边联动板",
+              "summary": "",
+              "sections": [
+                "任务一",
+                "任务二",
+                "任务三"
+              ]
+            }
+          }
         },
         {
           "id": "SH-HS-MATH-HJ-B2-C06-L03-D01",
@@ -27050,12 +28803,12 @@
       "id": "SH-HS-MATH-HJ-B1-C02-L05-A01",
       "resourceType": "applet",
       "title": "二次不等式与函数符号区间联动板",
-      "subtitle": null,
+      "subtitle": "拖动开口和零点，联动观察图像相对 x 轴的位置与解集区间",
       "note": "调节二次项系数、判别式和零点位置，同步观察抛物线开口、与x轴交点、符号区间和解集表示；数字化比板书更能呈现从两个实根、重根到无实根时解集形态的变化，并为第5章函数观点求解作桥接。不做因式分解刷题、套表格或机械解二次不等式。仅为 draft planned，未终核前禁止 scaffold。",
-      "cognitiveAction": "对应",
-      "availability": "proposed",
-      "status": "planned",
-      "version": null,
+      "cognitiveAction": "比较",
+      "availability": "metadata_ready",
+      "status": "draft",
+      "version": "0.1.0",
       "lessonId": "SH-HS-MATH-HJ-B1-C02-L05",
       "lessonTitle": "一元二次不等式的求解",
       "textbookRef": "2.2.2",
@@ -27068,21 +28821,29 @@
       "sectionTitle": "不等式的求解",
       "sectionTextbookLabel": "2.2",
       "quality": {
-        "contentStatus": "planned",
-        "implementationStage": "planned",
-        "reviewStatus": "planned",
-        "readinessLabel": "规划中",
+        "contentStatus": "draft",
+        "implementationStage": "runnable",
+        "reviewStatus": "self_checked_draft",
+        "readinessLabel": "可运行预览",
         "displayStates": [
-          "planned"
+          "draft",
+          "runnable",
+          "self_checked_draft"
         ],
         "labels": {
-          "contentStatus": "规划中",
-          "implementationStage": "规划中",
-          "reviewStatus": "规划中"
+          "contentStatus": "草稿",
+          "implementationStage": "可运行",
+          "reviewStatus": "自检草稿"
         }
       },
-      "player": null,
-      "packagePath": null
+      "player": {
+        "kind": "iframe",
+        "isRunnable": true,
+        "src": "content/applets/SH-HS-MATH-HJ-B1-C02-L05-A01/src/index.html",
+        "title": "二次不等式与函数符号区间联动板",
+        "sandbox": "allow-scripts allow-same-origin"
+      },
+      "packagePath": "content/applets/SH-HS-MATH-HJ-B1-C02-L05-A01"
     },
     {
       "id": "SH-HS-MATH-HJ-B1-C02-L08-M01",
@@ -27202,12 +28963,12 @@
       "id": "SH-HS-MATH-HJ-B1-C04-L06-A01",
       "resourceType": "applet",
       "title": "指数对数互反图像镜像板",
-      "subtitle": null,
+      "subtitle": "调节底数 a，观察 y = a^x 与 y = log_a x 关于 y = x 的镜像关系",
       "note": "拖动指数函数图像上的点，同步交换坐标生成对数函数点，展示定义域/值域互换和关于 y = x 的对称；数字化比板书更能显化点的动态对应。不做对数定义背诵或换底公式练习。仅为 draft planned，纸质教材或已登录平台终核前禁止 scaffold。",
-      "cognitiveAction": "对应",
-      "availability": "proposed",
-      "status": "planned",
-      "version": null,
+      "cognitiveAction": "变换",
+      "availability": "metadata_ready",
+      "status": "draft",
+      "version": "0.1.0",
       "lessonId": "SH-HS-MATH-HJ-B1-C04-L06",
       "lessonTitle": "对数函数的性质",
       "textbookRef": "4.3.2",
@@ -27220,21 +28981,29 @@
       "sectionTitle": "对数函数",
       "sectionTextbookLabel": "4.3",
       "quality": {
-        "contentStatus": "planned",
-        "implementationStage": "planned",
-        "reviewStatus": "planned",
-        "readinessLabel": "规划中",
+        "contentStatus": "draft",
+        "implementationStage": "runnable",
+        "reviewStatus": "self_checked_draft",
+        "readinessLabel": "可运行预览",
         "displayStates": [
-          "planned"
+          "draft",
+          "runnable",
+          "self_checked_draft"
         ],
         "labels": {
-          "contentStatus": "规划中",
-          "implementationStage": "规划中",
-          "reviewStatus": "规划中"
+          "contentStatus": "草稿",
+          "implementationStage": "可运行",
+          "reviewStatus": "自检草稿"
         }
       },
-      "player": null,
-      "packagePath": null
+      "player": {
+        "kind": "iframe",
+        "isRunnable": true,
+        "src": "content/applets/SH-HS-MATH-HJ-B1-C04-L06-A01/src/index.html",
+        "title": "指数对数互反图像镜像板",
+        "sandbox": "allow-scripts allow-same-origin"
+      },
+      "packagePath": "content/applets/SH-HS-MATH-HJ-B1-C04-L06-A01"
     },
     {
       "id": "SH-HS-MATH-HJ-B1-C04-L06-A02",
@@ -27468,12 +29237,12 @@
       "id": "SH-HS-MATH-HJ-B2-C06-L03-A01",
       "resourceType": "applet",
       "title": "单位圆三角比与终边联动板",
-      "subtitle": null,
+      "subtitle": "拖动单位圆终边点，观察 sin、cos、tan 的几何意义和象限符号",
       "note": "拖动单位圆终边，同步显示坐标、四个三角比、象限符号和无定义状态，突出三角比几何意义与第7章函数值来源。",
       "cognitiveAction": "投影",
-      "availability": "proposed",
-      "status": "planned",
-      "version": null,
+      "availability": "metadata_ready",
+      "status": "draft",
+      "version": "0.1.0",
       "lessonId": "SH-HS-MATH-HJ-B2-C06-L03",
       "lessonTitle": "任意角的正弦、余弦、正切、余切",
       "textbookRef": "6.1.3",
@@ -27486,21 +29255,29 @@
       "sectionTitle": "正弦、余弦、正切、余切",
       "sectionTextbookLabel": "6.1",
       "quality": {
-        "contentStatus": "planned",
-        "implementationStage": "planned",
-        "reviewStatus": "planned",
-        "readinessLabel": "规划中",
+        "contentStatus": "draft",
+        "implementationStage": "runnable",
+        "reviewStatus": "self_checked_draft",
+        "readinessLabel": "可运行预览",
         "displayStates": [
-          "planned"
+          "draft",
+          "runnable",
+          "self_checked_draft"
         ],
         "labels": {
-          "contentStatus": "规划中",
-          "implementationStage": "规划中",
-          "reviewStatus": "规划中"
+          "contentStatus": "草稿",
+          "implementationStage": "可运行",
+          "reviewStatus": "自检草稿"
         }
       },
-      "player": null,
-      "packagePath": null
+      "player": {
+        "kind": "iframe",
+        "isRunnable": true,
+        "src": "content/applets/SH-HS-MATH-HJ-B2-C06-L03-A01/src/index.html",
+        "title": "单位圆三角比与终边联动板",
+        "sandbox": "allow-scripts allow-same-origin"
+      },
+      "packagePath": "content/applets/SH-HS-MATH-HJ-B2-C06-L03-A01"
     },
     {
       "id": "SH-HS-MATH-HJ-B2-C06-L03-D01",
@@ -29165,7 +30942,7 @@
       {
         "id": "planned",
         "label": "规划中",
-        "count": 18
+        "count": 15
       },
       {
         "id": "math_review_passed",
@@ -29175,7 +30952,7 @@
       {
         "id": "self_checked_draft",
         "label": "自检草稿",
-        "count": 23
+        "count": 26
       }
     ]
   },
@@ -29240,9 +31017,9 @@
     "volumeCount": 7,
     "chapterCount": 9,
     "lessonCount": 70,
-    "implementedAppletCount": 15,
+    "implementedAppletCount": 18,
     "implementedManimCount": 4,
     "implementedDiagnosisCount": 7,
-    "plannedResourceCount": 18
+    "plannedResourceCount": 15
   }
 }
