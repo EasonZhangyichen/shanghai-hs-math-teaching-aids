@@ -15,22 +15,22 @@ test("generates a deterministic backlog from curriculum entry points and impleme
 
   assert.equal(backlog.source.curriculum, "content/curriculum/index.yaml");
   assert.equal(backlog.summary.total, 44);
-  assert.equal(backlog.summary.implemented, 25);
-  assert.equal(backlog.summary.planned, 19);
-  assert.deepEqual(backlog.summary.byType.applet, { total: 29, implemented: 14, planned: 15 });
+  assert.equal(backlog.summary.implemented, 26);
+  assert.equal(backlog.summary.planned, 18);
+  assert.deepEqual(backlog.summary.byType.applet, { total: 29, implemented: 15, planned: 14 });
   assert.deepEqual(backlog.summary.byType.manim_clip, { total: 5, implemented: 4, planned: 1 });
   assert.deepEqual(backlog.summary.byType.diagnosis, { total: 10, implemented: 7, planned: 3 });
 
   const parameterInequalityApplet = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B1-C02-L04-A01");
-  assert.equal(parameterInequalityApplet.status, "planned");
-  assert.equal(parameterInequalityApplet.availability, "planned");
+  assert.equal(parameterInequalityApplet.status, "implemented");
+  assert.equal(parameterInequalityApplet.availability, "metadata_ready");
   assert.equal(parameterInequalityApplet.type, "applet");
   assert.equal(parameterInequalityApplet.lessonTitle, "一元一次不等式及一元一次不等式组的求解");
   assert.equal(parameterInequalityApplet.chapterTitle, "等式与不等式");
-  assert.equal(parameterInequalityApplet.recommendedTrack, "track/curriculum-map");
-  assert.equal(parameterInequalityApplet.scaffoldPolicy, "blocked_until_source_verified");
-  assert.match(parameterInequalityApplet.nextAction, /终核前.*不创建资源包/);
-  assert.match(parameterInequalityApplet.threadPrompt, /不要创建资源包，不 scaffold/);
+  assert.equal(parameterInequalityApplet.recommendedTrack, "track/trig-sample-pack");
+  assert.equal(parameterInequalityApplet.scaffoldPolicy, "ready_for_resource_work");
+  assert.match(parameterInequalityApplet.nextAction, /数学边界复核/);
+  assert.match(parameterInequalityApplet.threadPrompt, /只复核并推进 SH-HS-MATH-HJ-B1-C02-L04-A01/);
 
   const quadraticInequalityApplet = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B1-C02-L05-A01");
   assert.equal(quadraticInequalityApplet.status, "planned");
@@ -394,8 +394,8 @@ test("writes the backlog as stable pretty JSON", async () => {
     const written = JSON.parse(await readFile(outputPath, "utf8"));
 
     assert.equal(written.summary.total, 44);
-    assert.equal(written.summary.implemented, 25);
-    assert.equal(written.summary.planned, 19);
+    assert.equal(written.summary.implemented, 26);
+    assert.equal(written.summary.planned, 18);
     assert.equal(written.items[0].id, "SH-HS-MATH-HJ-B1-C02-L04-A01");
     assert.ok(
       JSON.stringify(written, null, 2).includes(

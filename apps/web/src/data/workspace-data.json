@@ -2,6 +2,7 @@
   "sources": {
     "curriculum": "content/curriculum/index.yaml",
     "applets": [
+      "content/applets/SH-HS-MATH-HJ-B1-C02-L04-A01",
       "content/applets/SH-HS-MATH-HJ-B2-C07-L01-A01",
       "content/applets/SH-HS-MATH-HJ-B2-C07-L02-A01",
       "content/applets/SH-HS-MATH-HJ-B2-C07-L03-A01",
@@ -197,7 +198,7 @@
                     "title": "一元一次不等式及一元一次不等式组的求解",
                     "status": "draft",
                     "resourceCount": 1,
-                    "hasImplementedApplet": false
+                    "hasImplementedApplet": true
                   },
                   {
                     "id": "SH-HS-MATH-HJ-B1-C02-L05",
@@ -1618,28 +1619,337 @@
           "id": "SH-HS-MATH-HJ-B1-C02-L04-A01",
           "resourceType": "applet",
           "title": "参数不等式解集数轴实验室",
-          "cognitiveAction": "对应",
+          "subtitle": "拖动参数观察一次不等式解集的方向、端点开闭和退化情形",
+          "cognitiveAction": "变换",
           "note": "拖动参数并同步显示不等式、数轴阴影、端点开闭、区间记号和空集/全集情形；数字化价值在于连续呈现参数过零时不等号方向和解集形态的变化，也能巩固数轴上解集与区间语言。不做常规移项、一元一次不等式刷题或机械化简。仅为 draft planned，未终核前禁止 scaffold。",
-          "availability": "proposed",
-          "status": "planned",
-          "version": null,
-          "metadataPreview": null,
-          "quality": {
-            "contentStatus": "planned",
-            "implementationStage": "planned",
-            "reviewStatus": "planned",
-            "readinessLabel": "规划中",
-            "displayStates": [
-              "planned"
+          "availability": "metadata_ready",
+          "status": "draft",
+          "version": "0.1.0",
+          "metadataPreview": {
+            "id": "SH-HS-MATH-HJ-B1-C02-L04-A01",
+            "version": "0.1.0",
+            "status": "draft",
+            "resourceType": "applet",
+            "title": "参数不等式解集数轴实验室",
+            "subtitle": "拖动参数观察一次不等式解集的方向、端点开闭和退化情形",
+            "curriculum": {
+              "region": "上海",
+              "stage": "高中",
+              "subject": "数学",
+              "edition": "沪教版",
+              "volume_id": "B1",
+              "volume_title": "必修第一册",
+              "chapter_id": "SH-HS-MATH-HJ-B1-C02",
+              "chapter_title": "等式与不等式",
+              "section_id": "SH-HS-MATH-HJ-B1-C02-S02",
+              "section_title": "不等式的求解",
+              "lesson_id": "SH-HS-MATH-HJ-B1-C02-L04",
+              "textbook_ref": "2.2.1",
+              "lesson_title": "一元一次不等式及一元一次不等式组的求解"
+            },
+            "pedagogy": {
+              "cognitiveAction": "变换",
+              "estimatedClassroomMinutes": 12,
+              "primaryTeachingProblem": "学生能按步骤移项求解一次不等式，但遇到含参数系数时容易忘记按参数符号分类，也容易混淆数轴端点开闭和空集、全集情形。",
+              "learningGoals": [
+                "通过拖动参数 a 和 b，观察 a 的符号决定不等式方向是否改变。",
+                "用数轴阴影判断解集向左或向右延伸，并把开闭端点与严格、不严格不等号对应起来。",
+                "读出临界点由参数决定的位置变化，理解 a 为 0 时不再产生分界点。",
+                "区分一条射线解集、空集和全集三类形态。"
+              ],
+              "prerequisites": [
+                "不等式的加法性质和乘法性质",
+                "数轴和区间表示",
+                "集合交集和空集"
+              ],
+              "successors": [
+                "SH-HS-MATH-HJ-B1-C02-L05",
+                "SH-HS-MATH-HJ-B1-C05-L01",
+                "SH-HS-MATH-HJ-B1-C05-L07"
+              ],
+              "coreCompetencies": [
+                "直观想象",
+                "逻辑推理",
+                "数学运算"
+              ]
+            },
+            "mathematicalScope": {
+              "focus": "围绕含参数一次不等式 ax + b 与 0 的大小关系，联动显示参数符号、临界点、数轴阴影、端点开闭、空集和全集。",
+              "lesson": "一元一次不等式及一元一次不等式组的求解",
+              "inequality_model": "使用 ax + b 与 0 的大小关系作为动态模型，a 和 b 均由滑块控制。",
+              "classification_rule": "a 大于 0 时直接按原不等号读 x 的范围；a 小于 0 时除以负数后不等号方向改变；a 等于 0 时退化为常真或常假命题。",
+              "endpoint_rule": "严格不等号对应空心端点，不严格不等号对应实心端点；a 的正负只改变方向，不改变端点开闭。",
+              "default_parameters": {
+                "a": 2,
+                "b": -4,
+                "relation": "le"
+              },
+              "out_of_scope": [
+                "常规移项和化简题库训练",
+                "一元一次不等式组交集的系统训练",
+                "二次、分式、绝对值不等式",
+                "用函数观点求解不等式的后续课时展开",
+                "超出 draft / self_checked_draft 草稿边界的正式流转"
+              ]
+            },
+            "representations": [
+              {
+                "id": "parameter_controls",
+                "role": "用滑块和不等号按钮控制参数 a、b 与大小关系。"
+              },
+              {
+                "id": "inequality_readout",
+                "role": "同步显示当前不等式、除以 a 时的方向变化和临界点公式。"
+              },
+              {
+                "id": "number_line",
+                "role": "用数轴阴影展示解集方向、端点开闭、空集和全集。"
+              },
+              {
+                "id": "classification_panel",
+                "role": "用文字总结 a 大于 0、a 小于 0、a 等于 0 三种分类依据。"
+              },
+              {
+                "id": "staged_summary",
+                "role": "供教师按参数、临界点、数轴、分类四步揭示。"
+              }
             ],
-            "labels": {
-              "contentStatus": "规划中",
-              "implementationStage": "规划中",
-              "reviewStatus": "规划中"
+            "narrativeDesign": {
+              "beats": [],
+              "pausePoints": []
+            },
+            "interactionDesign": {
+              "primaryControl": "拖动 a 和 b 两个参数滑块，并切换小于、小于等于、大于、大于等于，观察数轴解集如何变化。",
+              "teacherControls": [
+                "重置到默认状态",
+                "正系数、负系数、全集、空集四个典型状态",
+                "按参数、临界点、数轴、分类四步揭示"
+              ],
+              "studentControls": [
+                "调节 a 的符号，观察解集方向是否改变",
+                "调节 b 的值，观察临界点在数轴上的位置移动",
+                "切换严格或不严格不等号，观察端点开闭"
+              ],
+              "stagedReveal": [
+                {
+                  "step": "observe_parameter_sign",
+                  "description": "先看 a 的符号，判断除以 a 后方向是否改变。"
+                },
+                {
+                  "step": "locate_critical_point",
+                  "description": "显示临界点由参数决定，并观察 b 改变时分界点移动。"
+                },
+                {
+                  "step": "read_number_line",
+                  "description": "对照数轴阴影方向和端点开闭，说出解集。"
+                },
+                {
+                  "step": "classify_degenerate_case",
+                  "description": "讨论 a 等于 0 时没有分界点，可能得到全集或空集。"
+                }
+              ]
+            },
+            "dataContract": {
+              "state_variables": [
+                {
+                  "name": "coefficient_a",
+                  "value_type": "number",
+                  "default": 2,
+                  "description": "x 的系数 a。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "constant_b",
+                  "value_type": "number",
+                  "default": -4,
+                  "description": "常数项 b。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "relation",
+                  "value_type": "string",
+                  "default": "le",
+                  "description": "当前选择的小于、小于等于、大于或大于等于关系。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "critical_point",
+                  "value_type": "number",
+                  "default": 2,
+                  "description": "a 不等于 0 时的临界点。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "solution_kind",
+                  "value_type": "string",
+                  "default": "ray",
+                  "description": "当前解集类型，可为射线、全集或空集。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "reveal_step",
+                  "value_type": "number",
+                  "default": 1,
+                  "description": "当前教师分步揭示阶段。",
+                  "persistence": "snapshot"
+                }
+              ],
+              "events": [
+                {
+                  "name": "ready",
+                  "direction": "applet_to_player",
+                  "description": "课件完成初始渲染。",
+                  "payload": [
+                    "coefficient_a",
+                    "constant_b",
+                    "relation",
+                    "critical_point",
+                    "solution_kind",
+                    "reveal_step"
+                  ],
+                  "required_for_player": true
+                },
+                {
+                  "name": "state_changed",
+                  "direction": "applet_to_player",
+                  "description": "参数、关系、典型状态或揭示阶段变化时通知播放器。",
+                  "payload": [
+                    "coefficient_a",
+                    "constant_b",
+                    "relation",
+                    "critical_point",
+                    "solution_kind",
+                    "reveal_step"
+                  ],
+                  "required_for_player": true
+                }
+              ]
+            },
+            "diagnosisDesign": {
+              "diagnosticFocus": [],
+              "misconceptionTags": [],
+              "itemSummary": null
+            },
+            "files": {
+              "readme": "README.md",
+              "teacher_script": "teacher-script.md",
+              "student_task": "student-task.md",
+              "review_record": "review.md",
+              "src_entry": "src/index.html"
+            },
+            "feedbackAndDiagnosis": {
+              "success_evidence": [
+                "学生能先判断 a 的符号，再说明是否需要改变不等号方向。",
+                "学生能把严格不等号对应到空心端点，把不严格不等号对应到实心端点。",
+                "学生能解释 b 改变只会移动临界点，不单独决定取左侧还是右侧。",
+                "学生能在 a 等于 0 时判断当前不等式对所有 x 成立或没有解。"
+              ],
+              "common_error_tags": [
+                {
+                  "id": "sign_flip_missing",
+                  "label": "除以负参数时忘记改变不等号方向"
+                },
+                {
+                  "id": "endpoint_open_closed_confusion",
+                  "label": "严格和不严格不等号对应的端点开闭混淆"
+                },
+                {
+                  "id": "critical_point_motion_gap",
+                  "label": "不能说明参数改变如何移动临界点"
+                },
+                {
+                  "id": "degenerate_case_missing",
+                  "label": "漏掉 a 等于 0 时的全集或空集情形"
+                }
+              ],
+              "feedback_principles": [
+                "先问 a 的符号，再讨论临界点和数轴方向。",
+                "纠正端点错误时只切换不等号，保持 a 和 b 不变。",
+                "纠正方向错误时让 a 从正数连续跨到负数，观察阴影方向翻转。",
+                "遇到 a 等于 0 时明确说明不再是一次不等式，而是常真或常假的判断。"
+              ]
+            },
+            "visualSemantics": {
+              "solution_ray": "绿色粗线表示满足不等式的 x 的范围。",
+              "critical_point": "深色端点表示临界点，空心或实心体现是否取到。",
+              "zero_case": "紫色提示用于 a 等于 0 的全集或空集情形。",
+              "direction_change": "橙色强调除以负参数时方向改变。",
+              "rule": "颜色只承载数学对象含义，不作为装饰。"
+            },
+            "implementation": {
+              "phase": "runnable_prototype",
+              "html_src_status": "runnable",
+              "planned_engine": "native-canvas-svg",
+              "create_src_in_later_task": false,
+              "classroom_device_targets": [
+                "desktop",
+                "tablet",
+                "projector"
+              ]
+            },
+            "compliance": {
+              "copyright_note": "本资源为原创交互草稿，不复制教材正文、官方课件、教案或商业题库；第 2 章课时边界仍需纸质教材或已登录平台终核，当前仅保持 draft / self_checked_draft 草稿边界。",
+              "review_status": "self_checked_draft"
             }
           },
-          "player": null,
-          "package": null
+          "quality": {
+            "contentStatus": "draft",
+            "implementationStage": "runnable",
+            "reviewStatus": "self_checked_draft",
+            "readinessLabel": "可运行预览",
+            "displayStates": [
+              "draft",
+              "runnable",
+              "self_checked_draft"
+            ],
+            "labels": {
+              "contentStatus": "草稿",
+              "implementationStage": "可运行",
+              "reviewStatus": "自检草稿"
+            }
+          },
+          "player": {
+            "kind": "iframe",
+            "isRunnable": true,
+            "src": "content/applets/SH-HS-MATH-HJ-B1-C02-L04-A01/src/index.html",
+            "title": "参数不等式解集数轴实验室",
+            "sandbox": "allow-scripts allow-same-origin"
+          },
+          "package": {
+            "path": "content/applets/SH-HS-MATH-HJ-B1-C02-L04-A01",
+            "files": {
+              "metadata": "content/applets/SH-HS-MATH-HJ-B1-C02-L04-A01/metadata.yaml",
+              "readme": "content/applets/SH-HS-MATH-HJ-B1-C02-L04-A01/README.md",
+              "teacherScript": "content/applets/SH-HS-MATH-HJ-B1-C02-L04-A01/teacher-script.md",
+              "studentTask": "content/applets/SH-HS-MATH-HJ-B1-C02-L04-A01/student-task.md",
+              "reviewRecord": "content/applets/SH-HS-MATH-HJ-B1-C02-L04-A01/review.md",
+              "srcEntry": "content/applets/SH-HS-MATH-HJ-B1-C02-L04-A01/src/index.html"
+            },
+            "teacherScript": {
+              "kind": "teacher_script",
+              "path": "content/applets/SH-HS-MATH-HJ-B1-C02-L04-A01/teacher-script.md",
+              "title": "教师脚本：参数不等式解集数轴实验室",
+              "summary": "",
+              "sections": [
+                "使用时机",
+                "课堂流程",
+                "使用建议"
+              ]
+            },
+            "studentTask": {
+              "kind": "student_task",
+              "path": "content/applets/SH-HS-MATH-HJ-B1-C02-L04-A01/student-task.md",
+              "title": "学生活动：参数不等式解集数轴实验室",
+              "summary": "",
+              "sections": [
+                "任务 1：观察方向",
+                "任务 2：观察端点开闭",
+                "任务 3：观察临界点",
+                "任务 4：辨析退化情形",
+                "归纳句"
+              ]
+            }
+          }
         }
       ]
     },
@@ -14286,28 +14596,337 @@
           "id": "SH-HS-MATH-HJ-B1-C02-L04-A01",
           "resourceType": "applet",
           "title": "参数不等式解集数轴实验室",
-          "cognitiveAction": "对应",
+          "subtitle": "拖动参数观察一次不等式解集的方向、端点开闭和退化情形",
+          "cognitiveAction": "变换",
           "note": "拖动参数并同步显示不等式、数轴阴影、端点开闭、区间记号和空集/全集情形；数字化价值在于连续呈现参数过零时不等号方向和解集形态的变化，也能巩固数轴上解集与区间语言。不做常规移项、一元一次不等式刷题或机械化简。仅为 draft planned，未终核前禁止 scaffold。",
-          "availability": "proposed",
-          "status": "planned",
-          "version": null,
-          "metadataPreview": null,
-          "quality": {
-            "contentStatus": "planned",
-            "implementationStage": "planned",
-            "reviewStatus": "planned",
-            "readinessLabel": "规划中",
-            "displayStates": [
-              "planned"
+          "availability": "metadata_ready",
+          "status": "draft",
+          "version": "0.1.0",
+          "metadataPreview": {
+            "id": "SH-HS-MATH-HJ-B1-C02-L04-A01",
+            "version": "0.1.0",
+            "status": "draft",
+            "resourceType": "applet",
+            "title": "参数不等式解集数轴实验室",
+            "subtitle": "拖动参数观察一次不等式解集的方向、端点开闭和退化情形",
+            "curriculum": {
+              "region": "上海",
+              "stage": "高中",
+              "subject": "数学",
+              "edition": "沪教版",
+              "volume_id": "B1",
+              "volume_title": "必修第一册",
+              "chapter_id": "SH-HS-MATH-HJ-B1-C02",
+              "chapter_title": "等式与不等式",
+              "section_id": "SH-HS-MATH-HJ-B1-C02-S02",
+              "section_title": "不等式的求解",
+              "lesson_id": "SH-HS-MATH-HJ-B1-C02-L04",
+              "textbook_ref": "2.2.1",
+              "lesson_title": "一元一次不等式及一元一次不等式组的求解"
+            },
+            "pedagogy": {
+              "cognitiveAction": "变换",
+              "estimatedClassroomMinutes": 12,
+              "primaryTeachingProblem": "学生能按步骤移项求解一次不等式，但遇到含参数系数时容易忘记按参数符号分类，也容易混淆数轴端点开闭和空集、全集情形。",
+              "learningGoals": [
+                "通过拖动参数 a 和 b，观察 a 的符号决定不等式方向是否改变。",
+                "用数轴阴影判断解集向左或向右延伸，并把开闭端点与严格、不严格不等号对应起来。",
+                "读出临界点由参数决定的位置变化，理解 a 为 0 时不再产生分界点。",
+                "区分一条射线解集、空集和全集三类形态。"
+              ],
+              "prerequisites": [
+                "不等式的加法性质和乘法性质",
+                "数轴和区间表示",
+                "集合交集和空集"
+              ],
+              "successors": [
+                "SH-HS-MATH-HJ-B1-C02-L05",
+                "SH-HS-MATH-HJ-B1-C05-L01",
+                "SH-HS-MATH-HJ-B1-C05-L07"
+              ],
+              "coreCompetencies": [
+                "直观想象",
+                "逻辑推理",
+                "数学运算"
+              ]
+            },
+            "mathematicalScope": {
+              "focus": "围绕含参数一次不等式 ax + b 与 0 的大小关系，联动显示参数符号、临界点、数轴阴影、端点开闭、空集和全集。",
+              "lesson": "一元一次不等式及一元一次不等式组的求解",
+              "inequality_model": "使用 ax + b 与 0 的大小关系作为动态模型，a 和 b 均由滑块控制。",
+              "classification_rule": "a 大于 0 时直接按原不等号读 x 的范围；a 小于 0 时除以负数后不等号方向改变；a 等于 0 时退化为常真或常假命题。",
+              "endpoint_rule": "严格不等号对应空心端点，不严格不等号对应实心端点；a 的正负只改变方向，不改变端点开闭。",
+              "default_parameters": {
+                "a": 2,
+                "b": -4,
+                "relation": "le"
+              },
+              "out_of_scope": [
+                "常规移项和化简题库训练",
+                "一元一次不等式组交集的系统训练",
+                "二次、分式、绝对值不等式",
+                "用函数观点求解不等式的后续课时展开",
+                "超出 draft / self_checked_draft 草稿边界的正式流转"
+              ]
+            },
+            "representations": [
+              {
+                "id": "parameter_controls",
+                "role": "用滑块和不等号按钮控制参数 a、b 与大小关系。"
+              },
+              {
+                "id": "inequality_readout",
+                "role": "同步显示当前不等式、除以 a 时的方向变化和临界点公式。"
+              },
+              {
+                "id": "number_line",
+                "role": "用数轴阴影展示解集方向、端点开闭、空集和全集。"
+              },
+              {
+                "id": "classification_panel",
+                "role": "用文字总结 a 大于 0、a 小于 0、a 等于 0 三种分类依据。"
+              },
+              {
+                "id": "staged_summary",
+                "role": "供教师按参数、临界点、数轴、分类四步揭示。"
+              }
             ],
-            "labels": {
-              "contentStatus": "规划中",
-              "implementationStage": "规划中",
-              "reviewStatus": "规划中"
+            "narrativeDesign": {
+              "beats": [],
+              "pausePoints": []
+            },
+            "interactionDesign": {
+              "primaryControl": "拖动 a 和 b 两个参数滑块，并切换小于、小于等于、大于、大于等于，观察数轴解集如何变化。",
+              "teacherControls": [
+                "重置到默认状态",
+                "正系数、负系数、全集、空集四个典型状态",
+                "按参数、临界点、数轴、分类四步揭示"
+              ],
+              "studentControls": [
+                "调节 a 的符号，观察解集方向是否改变",
+                "调节 b 的值，观察临界点在数轴上的位置移动",
+                "切换严格或不严格不等号，观察端点开闭"
+              ],
+              "stagedReveal": [
+                {
+                  "step": "observe_parameter_sign",
+                  "description": "先看 a 的符号，判断除以 a 后方向是否改变。"
+                },
+                {
+                  "step": "locate_critical_point",
+                  "description": "显示临界点由参数决定，并观察 b 改变时分界点移动。"
+                },
+                {
+                  "step": "read_number_line",
+                  "description": "对照数轴阴影方向和端点开闭，说出解集。"
+                },
+                {
+                  "step": "classify_degenerate_case",
+                  "description": "讨论 a 等于 0 时没有分界点，可能得到全集或空集。"
+                }
+              ]
+            },
+            "dataContract": {
+              "state_variables": [
+                {
+                  "name": "coefficient_a",
+                  "value_type": "number",
+                  "default": 2,
+                  "description": "x 的系数 a。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "constant_b",
+                  "value_type": "number",
+                  "default": -4,
+                  "description": "常数项 b。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "relation",
+                  "value_type": "string",
+                  "default": "le",
+                  "description": "当前选择的小于、小于等于、大于或大于等于关系。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "critical_point",
+                  "value_type": "number",
+                  "default": 2,
+                  "description": "a 不等于 0 时的临界点。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "solution_kind",
+                  "value_type": "string",
+                  "default": "ray",
+                  "description": "当前解集类型，可为射线、全集或空集。",
+                  "persistence": "snapshot"
+                },
+                {
+                  "name": "reveal_step",
+                  "value_type": "number",
+                  "default": 1,
+                  "description": "当前教师分步揭示阶段。",
+                  "persistence": "snapshot"
+                }
+              ],
+              "events": [
+                {
+                  "name": "ready",
+                  "direction": "applet_to_player",
+                  "description": "课件完成初始渲染。",
+                  "payload": [
+                    "coefficient_a",
+                    "constant_b",
+                    "relation",
+                    "critical_point",
+                    "solution_kind",
+                    "reveal_step"
+                  ],
+                  "required_for_player": true
+                },
+                {
+                  "name": "state_changed",
+                  "direction": "applet_to_player",
+                  "description": "参数、关系、典型状态或揭示阶段变化时通知播放器。",
+                  "payload": [
+                    "coefficient_a",
+                    "constant_b",
+                    "relation",
+                    "critical_point",
+                    "solution_kind",
+                    "reveal_step"
+                  ],
+                  "required_for_player": true
+                }
+              ]
+            },
+            "diagnosisDesign": {
+              "diagnosticFocus": [],
+              "misconceptionTags": [],
+              "itemSummary": null
+            },
+            "files": {
+              "readme": "README.md",
+              "teacher_script": "teacher-script.md",
+              "student_task": "student-task.md",
+              "review_record": "review.md",
+              "src_entry": "src/index.html"
+            },
+            "feedbackAndDiagnosis": {
+              "success_evidence": [
+                "学生能先判断 a 的符号，再说明是否需要改变不等号方向。",
+                "学生能把严格不等号对应到空心端点，把不严格不等号对应到实心端点。",
+                "学生能解释 b 改变只会移动临界点，不单独决定取左侧还是右侧。",
+                "学生能在 a 等于 0 时判断当前不等式对所有 x 成立或没有解。"
+              ],
+              "common_error_tags": [
+                {
+                  "id": "sign_flip_missing",
+                  "label": "除以负参数时忘记改变不等号方向"
+                },
+                {
+                  "id": "endpoint_open_closed_confusion",
+                  "label": "严格和不严格不等号对应的端点开闭混淆"
+                },
+                {
+                  "id": "critical_point_motion_gap",
+                  "label": "不能说明参数改变如何移动临界点"
+                },
+                {
+                  "id": "degenerate_case_missing",
+                  "label": "漏掉 a 等于 0 时的全集或空集情形"
+                }
+              ],
+              "feedback_principles": [
+                "先问 a 的符号，再讨论临界点和数轴方向。",
+                "纠正端点错误时只切换不等号，保持 a 和 b 不变。",
+                "纠正方向错误时让 a 从正数连续跨到负数，观察阴影方向翻转。",
+                "遇到 a 等于 0 时明确说明不再是一次不等式，而是常真或常假的判断。"
+              ]
+            },
+            "visualSemantics": {
+              "solution_ray": "绿色粗线表示满足不等式的 x 的范围。",
+              "critical_point": "深色端点表示临界点，空心或实心体现是否取到。",
+              "zero_case": "紫色提示用于 a 等于 0 的全集或空集情形。",
+              "direction_change": "橙色强调除以负参数时方向改变。",
+              "rule": "颜色只承载数学对象含义，不作为装饰。"
+            },
+            "implementation": {
+              "phase": "runnable_prototype",
+              "html_src_status": "runnable",
+              "planned_engine": "native-canvas-svg",
+              "create_src_in_later_task": false,
+              "classroom_device_targets": [
+                "desktop",
+                "tablet",
+                "projector"
+              ]
+            },
+            "compliance": {
+              "copyright_note": "本资源为原创交互草稿，不复制教材正文、官方课件、教案或商业题库；第 2 章课时边界仍需纸质教材或已登录平台终核，当前仅保持 draft / self_checked_draft 草稿边界。",
+              "review_status": "self_checked_draft"
             }
           },
-          "player": null,
-          "package": null
+          "quality": {
+            "contentStatus": "draft",
+            "implementationStage": "runnable",
+            "reviewStatus": "self_checked_draft",
+            "readinessLabel": "可运行预览",
+            "displayStates": [
+              "draft",
+              "runnable",
+              "self_checked_draft"
+            ],
+            "labels": {
+              "contentStatus": "草稿",
+              "implementationStage": "可运行",
+              "reviewStatus": "自检草稿"
+            }
+          },
+          "player": {
+            "kind": "iframe",
+            "isRunnable": true,
+            "src": "content/applets/SH-HS-MATH-HJ-B1-C02-L04-A01/src/index.html",
+            "title": "参数不等式解集数轴实验室",
+            "sandbox": "allow-scripts allow-same-origin"
+          },
+          "package": {
+            "path": "content/applets/SH-HS-MATH-HJ-B1-C02-L04-A01",
+            "files": {
+              "metadata": "content/applets/SH-HS-MATH-HJ-B1-C02-L04-A01/metadata.yaml",
+              "readme": "content/applets/SH-HS-MATH-HJ-B1-C02-L04-A01/README.md",
+              "teacherScript": "content/applets/SH-HS-MATH-HJ-B1-C02-L04-A01/teacher-script.md",
+              "studentTask": "content/applets/SH-HS-MATH-HJ-B1-C02-L04-A01/student-task.md",
+              "reviewRecord": "content/applets/SH-HS-MATH-HJ-B1-C02-L04-A01/review.md",
+              "srcEntry": "content/applets/SH-HS-MATH-HJ-B1-C02-L04-A01/src/index.html"
+            },
+            "teacherScript": {
+              "kind": "teacher_script",
+              "path": "content/applets/SH-HS-MATH-HJ-B1-C02-L04-A01/teacher-script.md",
+              "title": "教师脚本：参数不等式解集数轴实验室",
+              "summary": "",
+              "sections": [
+                "使用时机",
+                "课堂流程",
+                "使用建议"
+              ]
+            },
+            "studentTask": {
+              "kind": "student_task",
+              "path": "content/applets/SH-HS-MATH-HJ-B1-C02-L04-A01/student-task.md",
+              "title": "学生活动：参数不等式解集数轴实验室",
+              "summary": "",
+              "sections": [
+                "任务 1：观察方向",
+                "任务 2：观察端点开闭",
+                "任务 3：观察临界点",
+                "任务 4：辨析退化情形",
+                "归纳句"
+              ]
+            }
+          }
         }
       ]
     },
@@ -26385,12 +27004,12 @@
       "id": "SH-HS-MATH-HJ-B1-C02-L04-A01",
       "resourceType": "applet",
       "title": "参数不等式解集数轴实验室",
-      "subtitle": null,
+      "subtitle": "拖动参数观察一次不等式解集的方向、端点开闭和退化情形",
       "note": "拖动参数并同步显示不等式、数轴阴影、端点开闭、区间记号和空集/全集情形；数字化价值在于连续呈现参数过零时不等号方向和解集形态的变化，也能巩固数轴上解集与区间语言。不做常规移项、一元一次不等式刷题或机械化简。仅为 draft planned，未终核前禁止 scaffold。",
-      "cognitiveAction": "对应",
-      "availability": "proposed",
-      "status": "planned",
-      "version": null,
+      "cognitiveAction": "变换",
+      "availability": "metadata_ready",
+      "status": "draft",
+      "version": "0.1.0",
       "lessonId": "SH-HS-MATH-HJ-B1-C02-L04",
       "lessonTitle": "一元一次不等式及一元一次不等式组的求解",
       "textbookRef": "2.2.1",
@@ -26403,21 +27022,29 @@
       "sectionTitle": "不等式的求解",
       "sectionTextbookLabel": "2.2",
       "quality": {
-        "contentStatus": "planned",
-        "implementationStage": "planned",
-        "reviewStatus": "planned",
-        "readinessLabel": "规划中",
+        "contentStatus": "draft",
+        "implementationStage": "runnable",
+        "reviewStatus": "self_checked_draft",
+        "readinessLabel": "可运行预览",
         "displayStates": [
-          "planned"
+          "draft",
+          "runnable",
+          "self_checked_draft"
         ],
         "labels": {
-          "contentStatus": "规划中",
-          "implementationStage": "规划中",
-          "reviewStatus": "规划中"
+          "contentStatus": "草稿",
+          "implementationStage": "可运行",
+          "reviewStatus": "自检草稿"
         }
       },
-      "player": null,
-      "packagePath": null
+      "player": {
+        "kind": "iframe",
+        "isRunnable": true,
+        "src": "content/applets/SH-HS-MATH-HJ-B1-C02-L04-A01/src/index.html",
+        "title": "参数不等式解集数轴实验室",
+        "sandbox": "allow-scripts allow-same-origin"
+      },
+      "packagePath": "content/applets/SH-HS-MATH-HJ-B1-C02-L04-A01"
     },
     {
       "id": "SH-HS-MATH-HJ-B1-C02-L05-A01",
@@ -28538,7 +29165,7 @@
       {
         "id": "planned",
         "label": "规划中",
-        "count": 19
+        "count": 18
       },
       {
         "id": "math_review_passed",
@@ -28548,7 +29175,7 @@
       {
         "id": "self_checked_draft",
         "label": "自检草稿",
-        "count": 22
+        "count": 23
       }
     ]
   },
@@ -28613,9 +29240,9 @@
     "volumeCount": 7,
     "chapterCount": 9,
     "lessonCount": 70,
-    "implementedAppletCount": 14,
+    "implementedAppletCount": 15,
     "implementedManimCount": 4,
     "implementedDiagnosisCount": 7,
-    "plannedResourceCount": 19
+    "plannedResourceCount": 18
   }
 }
