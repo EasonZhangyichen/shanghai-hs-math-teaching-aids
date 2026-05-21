@@ -19,16 +19,16 @@
 
 | 最高频错因 | 回讲入口 | 追问 |
 | --- | --- | --- |
-| `addition_direction_rule_confusion` | 画 A -> B -> C 与平行四边形 A-B-C-D 两条路径。 | “这两个向量首尾相接了吗？合向量从哪个点指向哪个点？” |
+| `addition_direction_rule_confusion` | 画 A → B → C 与平行四边形 A-B-C-D 两条路径。 | “这两个向量首尾相接了吗？合向量从哪个点指向哪个点？” |
 | `subtraction_opposite_vector_error` | 把 `AB - AC` 先改写成 `AB + CA`。 | “被减向量 AC 的相反向量是哪一个？改写后路径从哪里开始？” |
-| `closed_path_zero_misread` | 圈出 A -> B -> C -> A 的闭合路径。 | “走完整条路径后回到哪里？合位移为什么是零向量？” |
+| `closed_path_zero_misread` | 圈出 A → B → C → A 的闭合路径。 | “走完整条路径后回到哪里？合位移为什么是零向量？” |
 | `endpoint_order_reversal` | 逐个读 AB、BA、AC、CA 的起点和终点。 | “这两个记号是否只是字母换顺序？方向发生了什么变化？” |
 
 ## 教师看板建议
 
 - 若 `addition_direction_rule_confusion` 命中率超过三分之一，先不要进入复杂混合运算，回到三角形法则和平行四边形法则的同一合向量解释。
 - 若 `subtraction_opposite_vector_error` 集中出现，用 2 到 3 个同起点例子强化“前一个终点减后一个终点”的方向直觉，但仍不要引入坐标表示。
-- 若 `endpoint_order_reversal` 集中出现，要求学生在所有向量记号上方标注“起 -> 终”，再订正答案。
+- 若 `endpoint_order_reversal` 集中出现，要求学生在所有向量记号上方标注“起 → 终”，再订正答案。
 - 若 `closed_path_zero_misread` 集中出现，优先用闭合路径回到起点的运动解释，不用“公式背诵”替代。
 
 ## 补救资源

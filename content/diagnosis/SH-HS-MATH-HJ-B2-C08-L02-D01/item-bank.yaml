@@ -16,7 +16,7 @@ items:
     score: 1
     title: "三角形法则首尾相接"
     diagnostic_focus: "能否把首尾相接的两段位移合成为从起点到终点的向量。"
-    prompt: "在三角形 ABC 中，沿路径 A -> B -> C 前进。下列哪一个等式正确？"
+    prompt: "在三角形 ABC 中，沿路径 A → B → C 前进。下列哪一个等式正确？"
     choices:
       - id: "A"
         text: "向量 AB + 向量 BC = 向量 AC"
@@ -45,7 +45,7 @@ items:
     score: 2
     title: "平行四边形法则与路径解释"
     diagnostic_focus: "能否把平行四边形法则中的共起点两边和三角形路径统一起来。"
-    prompt: "四边形 ABCD 是平行四边形，顶点按 A -> B -> C -> D 的顺序排列。下列说法正确的是哪些？"
+    prompt: "四边形 ABCD 是平行四边形，顶点按 A → B → C → D 的顺序排列。下列说法正确的是哪些？"
     choices:
       - id: "A"
         text: "向量 AB + 向量 AD = 向量 AC"
@@ -54,7 +54,7 @@ items:
       - id: "B"
         text: "向量 AB + 向量 BC = 向量 AC"
         is_correct: true
-        feedback: "这是三角形法则：A -> B -> C 的合位移是 A -> C。"
+        feedback: "这是三角形法则：A → B → C 的合位移是 A → C。"
       - id: "C"
         text: "向量 AB + 向量 AD = 向量 CA"
         is_correct: false
@@ -63,7 +63,7 @@ items:
       - id: "D"
         text: "向量 AD + 向量 DC = 向量 AC"
         is_correct: true
-        feedback: "沿 A -> D -> C 前进，整体也是从 A 到 C。"
+        feedback: "沿 A → D → C 前进，整体也是从 A 到 C。"
     answer: ["A", "B", "D"]
     scoring_note: "全选 A、B、D 且不选 C 得 2 分；漏选一个正确项得 1 分；选择 C 时记录方向错因。"
     feedback_on_correct: "能把平行四边形法则看成两条等价路径，而不是只记图形模板。"
@@ -78,7 +78,7 @@ items:
       - id: "A"
         text: "向量 CB"
         is_correct: true
-        feedback: "AB - AC = AB + CA = CA + AB，按路径 C -> A -> B，合位移是 C -> B。"
+        feedback: "AB - AC = AB + CA = CA + AB，按路径 C → A → B，合位移是 C → B。"
       - id: "B"
         text: "向量 BC"
         is_correct: false
@@ -95,7 +95,7 @@ items:
         misconception_tags: ["subtraction_opposite_vector_error"]
         feedback: "减法不是保留被减向量，关键是把 AC 换成相反向量 CA。"
     answer: ["A"]
-    feedback_on_correct: "能先写出 AB + CA，再用路径 C -> A -> B 得到 CB。"
+    feedback_on_correct: "能先写出 AB + CA，再用路径 C → A → B 得到 CB。"
 
   - id: "D01-Q04"
     type: "short_explanation"
@@ -106,7 +106,7 @@ items:
     expected_response:
       - "这句话不正确。"
       - "AB + BC = AC。"
-      - "再加上 CA 后，路径 A -> B -> C -> A 回到起点。"
+      - "再加上 CA 后，路径 A → B → C → A 回到起点。"
       - "所以 AB + BC + CA = 0 向量。"
       - "不能把闭合路径的和误认为其中某一条边。"
     misconception_tags_when_incomplete:
@@ -125,16 +125,16 @@ items:
       - id: "A"
         text: "向量 BA + 向量 AC = 向量 BC"
         is_correct: true
-        feedback: "沿 B -> A -> C 前进，整体就是 B -> C。"
+        feedback: "沿 B → A → C 前进，整体就是 B → C。"
       - id: "B"
         text: "向量 AB + 向量 CA = 向量 BC"
         is_correct: false
         misconception_tags: ["endpoint_order_reversal", "addition_direction_rule_confusion"]
-        feedback: "AB + CA = CA + AB，可按 C -> A -> B 读路径，结果是 CB，不是 BC。"
+        feedback: "AB + CA = CA + AB，可按 C → A → B 读路径，结果是 CB，不是 BC。"
       - id: "C"
         text: "向量 AC - 向量 AB = 向量 BC"
         is_correct: true
-        feedback: "AC - AB = AC + BA，路径 B -> A -> C 的合位移是 B -> C。"
+        feedback: "AC - AB = AC + BA，路径 B → A → C 的合位移是 B → C。"
       - id: "D"
         text: "向量 AB - 向量 AC = 向量 BC"
         is_correct: false
@@ -149,12 +149,12 @@ items:
     score: 2
     title: "综合错因订正"
     diagnostic_focus: "能否同时订正平行四边形对角线方向、减法方向和闭合路径。"
-    prompt: "四边形 ABCD 是平行四边形，顶点按 A -> B -> C -> D 的顺序排列。某学生写道：向量 AB + 向量 AD = 向量 CA；向量 AB - 向量 AD = 向量 BD；向量 AB + 向量 BC + 向量 CA = 向量 CA。请指出至少两处错误并改正。"
+    prompt: "四边形 ABCD 是平行四边形，顶点按 A → B → C → D 的顺序排列。某学生写道：向量 AB + 向量 AD = 向量 CA；向量 AB - 向量 AD = 向量 BD；向量 AB + 向量 BC + 向量 CA = 向量 CA。请指出至少两处错误并改正。"
     expected_response:
       - "AB + AD 应等于 AC，不是 CA。"
       - "平行四边形法则的合向量从共同起点 A 指向对角点 C。"
       - "AB - AD = AB + DA = DA + AB = DB，不是 BD。"
-      - "AB + BC + CA 是闭合路径 A -> B -> C -> A，结果是 0 向量。"
+      - "AB + BC + CA 是闭合路径 A → B → C → A，结果是 0 向量。"
       - "订正时应说明每个向量的起点和终点。"
     misconception_tags_when_incomplete:
       - "addition_direction_rule_confusion"
