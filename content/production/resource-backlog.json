@@ -16,13 +16,13 @@
   },
   "summary": {
     "total": 44,
-    "implemented": 25,
-    "planned": 19,
+    "implemented": 26,
+    "planned": 18,
     "byType": {
       "applet": {
         "total": 29,
-        "implemented": 14,
-        "planned": 15
+        "implemented": 15,
+        "planned": 14
       },
       "manim_clip": {
         "total": 5,
@@ -40,8 +40,8 @@
     {
       "id": "SH-HS-MATH-HJ-B1-C02-L04-A01",
       "type": "applet",
-      "status": "planned",
-      "availability": "planned",
+      "status": "implemented",
+      "availability": "metadata_ready",
       "title": "参数不等式解集数轴实验室",
       "proposedTitle": "参数不等式解集数轴实验室",
       "lessonId": "SH-HS-MATH-HJ-B1-C02-L04",
@@ -62,12 +62,12 @@
       "note": "拖动参数并同步显示不等式、数轴阴影、端点开闭、区间记号和空集/全集情形；数字化价值在于连续呈现参数过零时不等号方向和解集形态的变化，也能巩固数轴上解集与区间语言。不做常规移项、一元一次不等式刷题或机械化简。仅为 draft planned，未终核前禁止 scaffold。",
       "priority": "chapter_backlog",
       "priorityReason": "参数一次不等式、数轴解集和区间语言存在明确多表征联动价值；但课时边界未终核前禁止 scaffold。",
-      "packagePath": null,
-      "metadataPath": null,
-      "recommendedTrack": "track/curriculum-map",
-      "scaffoldPolicy": "blocked_until_source_verified",
-      "nextAction": "先完成纸质教材、教师用书或已登录 dolearning/上海数字教学平台终核；终核前只保留为 planned 候选，不创建资源包、不 scaffold。",
-      "threadPrompt": "请先读取项目锚点文件和 content/production/resource-backlog.json，然后切到 track/curriculum-map。这次只核对 SH-HS-MATH-HJ-B1-C02-L04-A01（Applet）是否已经满足制作前提，对应课时 SH-HS-MATH-HJ-B1-C02-L04「一元一次不等式及一元一次不等式组的求解」。不要创建资源包，不 scaffold，不渲染；只做纸质教材、教师用书或已登录 dolearning/上海数字教学平台的课时边界和数字化必要性终核。完成后运行 npm run generate:backlog 和 npm run verify，更新 docs/01-current-state.md 与 docs/02-next-actions.md，并提交。"
+      "packagePath": "content/applets/SH-HS-MATH-HJ-B1-C02-L04-A01",
+      "metadataPath": "content/applets/SH-HS-MATH-HJ-B1-C02-L04-A01/metadata.yaml",
+      "recommendedTrack": "track/trig-sample-pack",
+      "scaffoldPolicy": "ready_for_resource_work",
+      "nextAction": "完成数学边界复核、课堂节奏试读和浏览器交互验证，再决定是否进入 math_review。",
+      "threadPrompt": "请先读取项目锚点文件和 content/production/resource-backlog.json，然后切到 track/trig-sample-pack。这次只复核并推进 SH-HS-MATH-HJ-B1-C02-L04-A01（Applet），对应课时 SH-HS-MATH-HJ-B1-C02-L04「一元一次不等式及一元一次不等式组的求解」。先确认教学痛点、认知动作、文件规范和验收标准，再动手；完成后运行 npm run generate:backlog 和 npm run verify，更新 docs/01-current-state.md 与 docs/02-next-actions.md，并提交。"
     },
     {
       "id": "SH-HS-MATH-HJ-B1-C02-L05-A01",

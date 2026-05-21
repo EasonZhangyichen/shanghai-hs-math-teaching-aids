@@ -13,10 +13,10 @@ test("loads the curriculum tree for the teacher workspace", async () => {
 
   assert.equal(workspace.project.name, "沪教版高中数学数字教具云平台");
   assert.equal(workspace.summary.lessonCount, 70);
-  assert.equal(workspace.summary.implementedAppletCount, 14);
+  assert.equal(workspace.summary.implementedAppletCount, 15);
   assert.equal(workspace.summary.implementedManimCount, 4);
   assert.equal(workspace.summary.implementedDiagnosisCount, 7);
-  assert.equal(workspace.summary.plannedResourceCount, 19);
+  assert.equal(workspace.summary.plannedResourceCount, 18);
 
   const b1 = workspace.tree.volumes.find((volume) => volume.id === "B1");
   assert.ok(b1, "B1 volume should be present");
@@ -49,6 +49,29 @@ test("loads the curriculum tree for the teacher workspace", async () => {
   assert.equal(b2.chapters[3].id, "SH-HS-MATH-HJ-B2-C09");
   assert.equal(b2.chapters[3].sections[1].lessons[0].id, "SH-HS-MATH-HJ-B2-C09-L03");
   assert.equal(b2.chapters[3].sections[3].lessons[1].id, "SH-HS-MATH-HJ-B2-C09-L07");
+});
+
+test("links the parameter inequality applet to B1 C02 L04", async () => {
+  const workspace = await loadTeacherWorkspace({ rootDir: repoRoot });
+  const lesson = workspace.lessonsById["SH-HS-MATH-HJ-B1-C02-L04"];
+  const applet = lesson.resources.find((resource) => resource.id === "SH-HS-MATH-HJ-B1-C02-L04-A01");
+
+  assert.equal(lesson.title, "一元一次不等式及一元一次不等式组的求解");
+  assert.ok(applet, "parameter inequality applet should be attached to B1 C02 L04");
+  assert.equal(applet.availability, "metadata_ready");
+  assert.equal(applet.status, "draft");
+  assert.equal(applet.metadataPreview.implementation.phase, "runnable_prototype");
+  assert.equal(applet.metadataPreview.implementation.html_src_status, "runnable");
+  assert.equal(applet.package.files.srcEntry, "content/applets/SH-HS-MATH-HJ-B1-C02-L04-A01/src/index.html");
+  assert.deepEqual(applet.player, {
+    kind: "iframe",
+    isRunnable: true,
+    src: "content/applets/SH-HS-MATH-HJ-B1-C02-L04-A01/src/index.html",
+    title: "参数不等式解集数轴实验室",
+    sandbox: "allow-scripts allow-same-origin",
+  });
+  assert.equal(applet.package.teacherScript.title, "教师脚本：参数不等式解集数轴实验室");
+  assert.equal(applet.package.studentTask.title, "学生活动：参数不等式解集数轴实验室");
 });
 
 test("links the sample applet package to lesson L01 with script and activity entries", async () => {
@@ -252,7 +275,7 @@ test("links the parameter lab applet and rendered transform-order Manim to lesso
   assert.equal(diagnosis.metadataPreview.diagnosisDesign.itemSummary.totalItems, 6);
   assert.equal(diagnosis.package.files.itemBank, "content/diagnosis/SH-HS-MATH-HJ-B2-C07-L05-D01/item-bank.yaml");
   assert.equal(diagnosis.player, null);
-  assert.equal(workspace.summary.plannedResourceCount, 19);
+  assert.equal(workspace.summary.plannedResourceCount, 18);
 });
 
 test("lists the B2 C09 complex-number draft applet candidates as planned resources", async () => {
@@ -389,7 +412,7 @@ test("links the tangent properties applet to lesson L07", async () => {
   const applet = lesson.resources.find((resource) => resource.id === "SH-HS-MATH-HJ-B2-C07-L07-A01");
   const diagnosis = lesson.resources.find((resource) => resource.id === "SH-HS-MATH-HJ-B2-C07-L07-D01");
 
-  assert.equal(workspace.summary.implementedAppletCount, 14);
+  assert.equal(workspace.summary.implementedAppletCount, 15);
   assert.equal(lesson.title, "正切函数的性质");
   assert.equal(lesson.resources.length, 2);
   assert.deepEqual(
