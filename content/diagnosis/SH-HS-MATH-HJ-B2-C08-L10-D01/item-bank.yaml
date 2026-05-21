@@ -21,9 +21,9 @@ items:
     prompt: "平行四边形 ABCD 中，M 是 BC 的中点。若要用向量说明向量 AM 可由向量 AB、AD 表示，第一步最合适的是哪一项？"
     choices:
       - id: "A"
-        text: "取向量 AB、AD 为基向量，先写向量 AM = 向量 AB + 向量 BM，再用向量 BM = 1/2 向量 AD。"
+        text: "取向量 AB、AD 为基向量，先写向量 AM = 向量 AB + 向量 BM，再用向量 BM = 向量 AD 的二分之一。"
         is_correct: true
-        feedback: "平行四边形给出两条天然基向量，中点给出 1/2 倍关系；先定路径比先算坐标更直接。"
+        feedback: "平行四边形给出两条天然基向量，中点给出二分之一倍关系；先定路径比先算坐标更直接。"
       - id: "B"
         text: "先建立一般直角坐标系，分别设 A、B、C、D、M 的坐标，再列五个点的关系。"
         is_correct: false
@@ -61,7 +61,7 @@ items:
         text: "只要题中出现中点，第一步都应直接写数量积。"
         is_correct: false
         misconception_tags: ["dot_product_trigger_gap", "point_ratio_expression_gap"]
-        feedback: "中点本身先给出 1/2 倍或平均关系；是否用数量积要看目标是否涉及垂直、夹角或长度。"
+        feedback: "中点本身先给出二分之一倍或平均关系；是否用数量积要看目标是否涉及垂直、夹角或长度。"
       - id: "D"
         text: "题目只要求把一个向量沿两条边方向分解时，也应先求数量积。"
         is_correct: false
@@ -137,9 +137,9 @@ items:
     prompt: "三角形 ABC 中，D 在 BC 上，且 BD:DC = 2:1。要用向量表示向量 AD，有同学第一步就建立一般坐标系求 D 点坐标。请改写一个更贴近向量法的第一步，并说明理由。"
     expected_response:
       - "可先取向量 AB、AC 为基向量。"
-      - "因为 BD:DC = 2:1，所以 D 从 B 到 C 走了 2/3 段。"
-      - "向量 AD = 向量 AB + 向量 BD = 向量 AB + 2/3 向量 BC。"
-      - "又向量 BC = 向量 AC - 向量 AB，所以向量 AD = 1/3 向量 AB + 2/3 向量 AC。"
+      - "因为 BD:DC = 2:1，所以 D 从 B 到 C 走了三分之二段。"
+      - "向量 AD = 向量 AB + 向量 BD，且向量 BD 是向量 BC 的三分之二。"
+      - "又向量 BC = 向量 AC - 向量 AB，所以向量 AD = 向量 AB 的三分之一 + 向量 AC 的三分之二。"
       - "这样直接利用比例点和同一出发点，不必先进入一般坐标计算。"
     misconception_tags_when_incomplete:
       - "point_ratio_expression_gap"
