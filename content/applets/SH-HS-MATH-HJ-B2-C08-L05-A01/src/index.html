@@ -550,7 +550,7 @@
               <div class="readout">
                 <strong>夹角</strong>
                 <span id="angle-readout" data-testid="angle-readout">
-                  <span class="math-inline">θ = 60° = <span class="math-frac" aria-label="pi over 3"><span class="math-num">π</span><span class="math-den">3</span></span></span>
+                  <span class="math-inline">θ = 60° = <span class="math-frac" aria-label="三分之π"><span class="math-num">π</span><span class="math-den">3</span></span></span>
                 </span>
               </div>
               <div class="readout">
@@ -583,9 +583,9 @@
           <section class="panel-section summary-section">
             <p class="section-title">课堂收束</p>
             <ul class="summary-list">
-              <li><b>锐角：</b><span class="math-inline">0 &lt; θ &lt; <span class="math-frac" aria-label="pi over 2"><span class="math-num">π</span><span class="math-den">2</span></span></span>，cosθ &gt; 0，所以 a·b &gt; 0。</li>
-              <li><b>直角：</b><span class="math-inline">θ = <span class="math-frac" aria-label="pi over 2"><span class="math-num">π</span><span class="math-den">2</span></span></span>，cosθ = 0，所以 a·b = 0。</li>
-              <li><b>钝角：</b><span class="math-inline"><span class="math-frac" aria-label="pi over 2"><span class="math-num">π</span><span class="math-den">2</span></span> &lt; θ &lt; π</span>，cosθ &lt; 0，所以 a·b &lt; 0。</li>
+              <li><b>锐角：</b><span class="math-inline">0 &lt; θ &lt; <span class="math-frac" aria-label="二分之π"><span class="math-num">π</span><span class="math-den">2</span></span></span>，cosθ &gt; 0，所以 a·b &gt; 0。</li>
+              <li><b>直角：</b><span class="math-inline">θ = <span class="math-frac" aria-label="二分之π"><span class="math-num">π</span><span class="math-den">2</span></span></span>，cosθ = 0，所以 a·b = 0。</li>
+              <li><b>钝角：</b><span class="math-inline"><span class="math-frac" aria-label="二分之π"><span class="math-num">π</span><span class="math-den">2</span></span> &lt; θ &lt; π</span>，cosθ &lt; 0，所以 a·b &lt; 0。</li>
               <li><b>零向量：</b>a·b = 0，但不能把它当作两个非零向量垂直；若 b 为零向量，投影方向未规定。</li>
             </ul>
           </section>
@@ -755,8 +755,24 @@
         return value > 0 ? fmt(value) : `-${fmt(Math.abs(value))}`;
       }
 
+      const chineseMathNames = new Map([
+        ["2", "二"],
+        ["3", "三"],
+        ["4", "四"],
+        ["5", "五"],
+        ["6", "六"]
+      ]);
+
+      function readableMathText(value) {
+        return value.replace(/\d+/g, (digits) => chineseMathNames.get(digits) ?? digits);
+      }
+
+      function fractionAriaLabel(numerator, denominator) {
+        return `${readableMathText(denominator)}分之${readableMathText(numerator)}`;
+      }
+
       function fractionHtml(numerator, denominator) {
-        return `<span class="math-frac" aria-label="${numerator} over ${denominator}"><span class="math-num">${numerator}</span><span class="math-den">${denominator}</span></span>`;
+        return `<span class="math-frac" aria-label="${fractionAriaLabel(numerator, denominator)}"><span class="math-num">${numerator}</span><span class="math-den">${denominator}</span></span>`;
       }
 
       const exactRadianLabels = new Map([
