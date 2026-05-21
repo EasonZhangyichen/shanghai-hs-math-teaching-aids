@@ -1,0 +1,199 @@
+schema_version: 0.1.0
+id: SH-HS-MATH-HJ-B1-C02-L05-A01
+version: 0.1.0
+status: draft
+resource_type: applet
+title: 二次不等式与函数符号区间联动板
+subtitle: 拖动开口和零点，联动观察图像相对 x 轴的位置与解集区间
+curriculum:
+  region: 上海
+  stage: 高中
+  subject: 数学
+  edition: 沪教版
+  volume_id: B1
+  volume_title: 必修第一册
+  chapter_id: SH-HS-MATH-HJ-B1-C02
+  chapter_title: 等式与不等式
+  section_id: SH-HS-MATH-HJ-B1-C02-S02
+  section_title: 不等式的求解
+  lesson_id: SH-HS-MATH-HJ-B1-C02-L05
+  textbook_ref: 2.2.2
+  lesson_title: 一元二次不等式的求解
+pedagogy:
+  cognitive_action: 比较
+  estimated_classroom_minutes: 12
+  primary_teaching_problem: 学生容易只背“大于取两边、小于取中间”，不能解释根、开口方向、图像在 x 轴上方或下方与解集区间之间的对应。
+  learning_goals:
+    - 用二次函数图像在 x 轴上方说明 f(x) > 0 的解集，用图像在 x 轴下方说明 f(x) < 0 的解集。
+    - 拖动两个零点，观察符号区间端点随零点同步移动。
+    - 拖动开口方向，说明开口向上和开口向下时 f(x) > 0、f(x) < 0 区间互换。
+    - 比较两个实根、重根、无实根时一元二次不等式解集的边界差异。
+  prerequisites:
+    - 一元二次方程的根
+    - 二次函数图像与 x 轴交点
+    - 数轴和区间表示
+    - 不等式解集的集合语言
+  successors:
+    - SH-HS-MATH-HJ-B1-C02-L06
+    - SH-HS-MATH-HJ-B1-C05-L07
+    - SH-HS-MATH-HJ-B1-C05-L08
+  core_competencies:
+    - 直观想象
+    - 逻辑推理
+    - 数学运算
+mathematical_scope:
+  focus: 以 f(x) = a(x - x1)(x - x2) 为主模型，拖动 a 的开口手柄和零点手柄，同步显示图像相对 x 轴的位置、数轴符号区间和不等式解集。
+  function_model: f(x) = a(x - x1)(x - x2)，其中 a 不等于 0。
+  sign_link: f(x) > 0 对应图像在 x 轴上方的横坐标集合；f(x) < 0 对应图像在 x 轴下方的横坐标集合。
+  opening_rule: 两个实根时，开口向上则 f(x) > 0 在两侧、f(x) < 0 在中间；开口向下则 f(x) > 0 在中间、f(x) < 0 在两侧。
+  boundary_cases:
+    double_root: 重根时，除重根外图像在 x 轴同侧，严格不等式不包含重根。
+    no_real_root: 无实根时，图像整体在 x 轴一侧，严格不等式可能为 R 或空集。
+  out_of_scope:
+    - 因式分解刷题和机械套表格训练
+    - 参数二次不等式的完整分类讨论
+    - 分式不等式或高次不等式
+    - 课程图谱、生产 backlog 或课时边界调整
+    - 超出 draft 和 self_checked_draft 草稿边界的正式流转
+representations:
+  - id: graph_panel
+    role: 显示二次函数图像、x 轴、零点、开口手柄，以及图像在 x 轴上方或下方的颜色区分。
+  - id: sign_number_line
+    role: 用数轴区间同步显示 f(x) > 0 与 f(x) < 0 的解集。
+  - id: inequality_readout
+    role: 用规范数学排版显示一元二次不等式与当前解集。
+  - id: opening_summary
+    role: 明确归纳开口向上和开口向下时正负区间的互换关系。
+interaction_design:
+  primary_control: 拖动图像上的两个零点手柄改变 x 轴交点，拖动开口手柄改变 a 的正负和大小。
+  teacher_controls:
+    - 切换两个实根、重根、无实根情形
+    - 重置到默认图像
+    - 用按钮切换开口向上或开口向下
+    - 分步显示观察图像、数轴区间和不等式解集
+  student_controls:
+    - 拖动零点并预测数轴端点如何移动
+    - 拖动开口手柄并判断 f(x) > 0、f(x) < 0 区间是否互换
+    - 在重根和无实根情形下写出严格不等式解集
+  staged_reveal:
+    - step: observe_graph
+      description: 先观察抛物线与 x 轴交点，以及图像在 x 轴上方或下方的位置。
+    - step: link_number_line
+      description: 显示数轴符号区间，让上方位置对应 f(x) > 0，下方位置对应 f(x) < 0。
+    - step: solve_inequality
+      description: 显示一元二次不等式解集，并比较开口向上和开口向下的区间互换。
+    - step: boundary_cases
+      description: 切换重根和无实根，讨论 R、空集和单点边界。
+data_contract:
+  state_variables:
+    - name: opening_a
+      value_type: number
+      default: 0.7
+      description: 二次项系数 a，正值表示开口向上，负值表示开口向下。
+      persistence: snapshot
+    - name: root_mode
+      value_type: string
+      default: two_roots
+      description: 当前根形态，取 two_roots、double_root 或 no_real。
+      persistence: snapshot
+    - name: left_root
+      value_type: number
+      default: -2
+      description: 两个实根情形下左侧零点。
+      persistence: snapshot
+    - name: right_root
+      value_type: number
+      default: 2
+      description: 两个实根情形下右侧零点。
+      persistence: snapshot
+    - name: center
+      value_type: number
+      default: 0
+      description: 重根位置或无实根图像的对称轴位置。
+      persistence: snapshot
+    - name: positive_solution
+      value_type: string
+      default: (-∞, -2) ∪ (2, +∞)
+      description: 当前 f(x) > 0 的解集区间。
+      persistence: snapshot
+    - name: negative_solution
+      value_type: string
+      default: (-2, 2)
+      description: 当前 f(x) < 0 的解集区间。
+      persistence: snapshot
+    - name: reveal_step
+      value_type: number
+      default: 1
+      description: 当前课堂分步揭示阶段。
+      persistence: snapshot
+  events:
+    - name: ready
+      direction: applet_to_player
+      description: 课件完成初始渲染。
+      payload:
+        - opening_a
+        - root_mode
+        - left_root
+        - right_root
+        - center
+        - positive_solution
+        - negative_solution
+        - reveal_step
+      required_for_player: true
+    - name: state_changed
+      direction: applet_to_player
+      description: 拖动开口、拖动零点、切换根形态或切换揭示步骤时通知播放器。
+      payload:
+        - opening_a
+        - root_mode
+        - left_root
+        - right_root
+        - center
+        - positive_solution
+        - negative_solution
+        - reveal_step
+      required_for_player: true
+feedback_and_diagnosis:
+  success_evidence:
+    - 学生能指出 f(x) > 0 不是背口诀，而是取图像在 x 轴上方的横坐标。
+    - 学生能在两个实根情形下说明开口向上和开口向下时正负区间互换。
+    - 学生能在重根情形下区分严格不等式和含等号不等式。
+    - 学生能在无实根情形下判断解集为 R 或空集，并说明依据是整条图像在 x 轴同侧。
+  common_error_tags:
+    - id: memorized_middle_sides
+      label: 只背中间或两侧，不解释图像位置
+    - id: opening_direction_missed
+      label: 忽略开口方向导致正负区间写反
+    - id: strict_boundary_error
+      label: 严格不等式误包含零点或重根
+    - id: no_real_root_confusion
+      label: 无实根时混淆 R 与空集
+  feedback_principles:
+    - 先看图像相对 x 轴的位置，再读数轴区间，最后写不等式解集。
+    - 学生写错中间或两侧时，拖动开口手柄让区间互换，而不是直接给口诀。
+    - 讨论含等号边界时回到零点是 f(x) = 0 的横坐标。
+visual_semantics:
+  graph_above: 绿色表示图像在 x 轴上方，对应 f(x) > 0。
+  graph_below: 红色表示图像在 x 轴下方，对应 f(x) < 0。
+  roots: 深色实心点表示 f(x) = 0 的横坐标。
+  opening_handle: 蓝色菱形手柄表示改变开口方向和张开程度。
+  number_line: 数轴区间颜色与图像上方或下方颜色保持一致。
+  rule: 颜色只承载数学对象和符号含义，不作为装饰。
+implementation:
+  phase: runnable_prototype
+  html_src_status: runnable
+  planned_engine: native-canvas-svg
+  create_src_in_later_task: false
+  classroom_device_targets:
+    - desktop
+    - tablet
+    - projector
+files:
+  readme: README.md
+  teacher_script: teacher-script.md
+  student_task: student-task.md
+  review_record: review.md
+  src_entry: src/index.html
+compliance:
+  copyright_note: 本资源为原创 HTML Applet 草稿，不复制教材正文、官方课件、商业平台资源或题库；仅按用户授权任务生产 draft 级自检原型，课程边界和数学审校仍需后续人工复核。
+  review_status: self_checked_draft
