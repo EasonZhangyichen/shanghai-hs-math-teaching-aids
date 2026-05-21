@@ -1,0 +1,145 @@
+schema_version: "0.1.0"
+id: "SH-HS-MATH-HJ-B2-C06-L03-A01"
+version: "0.1.0"
+status: "draft"
+resource_type: "applet"
+title: "单位圆三角比与终边联动板"
+subtitle: "拖动单位圆终边点，观察 sin、cos、tan 的几何意义和象限符号"
+curriculum:
+  region: "上海"
+  stage: "高中"
+  subject: "数学"
+  edition: "沪教版"
+  volume_id: "B2"
+  volume_title: "必修第二册"
+  chapter_id: "SH-HS-MATH-HJ-B2-C06"
+  chapter_title: "三角"
+  section_id: "SH-HS-MATH-HJ-B2-C06-S01"
+  section_title: "正弦、余弦、正切、余切"
+  lesson_id: "SH-HS-MATH-HJ-B2-C06-L03"
+  textbook_ref: "6.1.3"
+  lesson_title: "任意角的正弦、余弦、正切、余切"
+pedagogy:
+  cognitive_action: "投影"
+  estimated_classroom_minutes: 14
+  primary_teaching_problem: "学生容易把任意角三角比仍看作直角三角形边长比，不能把终边、单位圆坐标、三角比和象限符号联动起来。"
+  learning_goals:
+    - "说明终边与单位圆交点 P 的坐标是 P = (cos θ, sin θ)。"
+    - "用横向投影读出 cos θ，用纵向投影读出 sin θ。"
+    - "用切线 x = 1 上的有向高度或 sin θ 与 cos θ 的商解释 tan θ。"
+    - "观察象限变化时 sin θ、cos θ、tan θ 的符号和 tan θ 无定义边界。"
+  prerequisites:
+    - "任意角和弧度制"
+    - "锐角三角比"
+    - "平面直角坐标系和单位圆"
+  successors:
+    - "SH-HS-MATH-HJ-B2-C06-L04"
+    - "SH-HS-MATH-HJ-B2-C06-L05"
+    - "SH-HS-MATH-HJ-B2-C07-L01"
+    - "SH-HS-MATH-HJ-B2-C07-L06"
+  core_competencies:
+    - "直观想象"
+    - "数学抽象"
+    - "逻辑推理"
+mathematical_scope:
+  focus: "拖动单位圆上的终边点 P，联动显示 P = (cos θ, sin θ)、sin θ、cos θ、tan θ 和象限符号。"
+  definition: "终边与单位圆交于 P(x, y)，cos θ = x，sin θ = y；当 x 不为 0 时 tan θ = y / x。"
+  tangent_model: "终边所在直线与切线 x = 1 的交点 T 的纵坐标表示 tan θ；cos θ = 0 时 tan θ 无定义。"
+  out_of_scope:
+    - "余切的完整交互"
+    - "诱导公式推导"
+    - "三角函数图像生成"
+    - "正式审校或稳定流转"
+representations:
+  - id: "unit_circle_board"
+    role: "显示坐标轴、单位圆、终边、P 点、投影段和正切线。"
+  - id: "sign_cards"
+    role: "四象限符号卡随当前象限高亮，辅助观察符号变化。"
+interaction_design:
+  primary_control: "拖动单位圆上的 P 点改变终边，也可点击关键角按钮。"
+  teacher_controls:
+    - "重置到 π/6"
+    - "点击四象限代表角和轴上关键角"
+    - "显示或隐藏正切线表征"
+  student_controls:
+    - "拖动 P 点观察坐标和三角比读数"
+    - "比较不同象限中的符号变化"
+    - "停在 π/2 和 3π/2 解释 tan θ 无定义"
+  staged_reveal:
+    - step: "terminal_side"
+      description: "观察角的终边和单位圆点 P。"
+    - step: "coordinate_ratio"
+      description: "用 P 的横纵坐标解释 cos θ 与 sin θ。"
+    - step: "tangent_ratio"
+      description: "用切线 x = 1 解释 tan θ 与无定义边界。"
+data_contract:
+  state_variables:
+    - name: "theta"
+      unit: "radian"
+      value_type: "number"
+      default: 0.5235987755982988
+      description: "当前角 θ 的弧度量。"
+      persistence: "snapshot"
+    - name: "point_p"
+      value_type: "point2d"
+      description: "单位圆上点 P 的坐标。"
+      persistence: "snapshot"
+    - name: "trig_values"
+      value_type: "object"
+      description: "sin θ、cos θ、tan θ 和 tan 是否有定义。"
+      persistence: "snapshot"
+    - name: "quadrant_state"
+      value_type: "string"
+      default: "I"
+      description: "当前终边所在象限或坐标轴边界。"
+      persistence: "snapshot"
+  events:
+    - name: "ready"
+      direction: "applet_to_player"
+      description: "课件完成初始渲染。"
+      payload: ["theta", "point_p", "trig_values", "quadrant_state"]
+      required_for_player: true
+    - name: "angle_changed"
+      direction: "applet_to_player"
+      description: "拖动、滑块或关键角按钮改变当前角。"
+      payload: ["theta", "point_p", "trig_values", "quadrant_state"]
+feedback_and_diagnosis:
+  success_evidence:
+    - "学生能指出 P 的横坐标对应 cos θ，纵坐标对应 sin θ。"
+    - "学生能说明 tan θ 来自 sin θ 与 cos θ 的商或切线高度。"
+    - "学生能用图形颜色和象限卡判断三角比符号。"
+    - "学生能说明 cos θ = 0 时 tan θ 无定义。"
+  common_error_tags:
+    - id: "coordinate_ratio_gap"
+      label: "不能把坐标和三角比对应起来"
+    - id: "quadrant_sign_memory_only"
+      label: "只背象限符号，缺少图形来源"
+    - id: "tan_domain_ignored"
+      label: "忽略正切无定义边界"
+  feedback_principles:
+    - "先看 P 所在象限和坐标符号，再读三角比。"
+    - "讨论正切时必须回到 cos θ 是否为 0。"
+visual_semantics:
+  terminal: "蓝色表示终边与点 P。"
+  cosine: "橙色表示 cos θ 的横向投影。"
+  sine: "青绿色表示 sin θ 的纵向投影。"
+  tangent: "紫色表示 tan θ 的切线高度。"
+  positive_negative: "绿色表示正，红色表示负，灰色表示 0 或无定义。"
+implementation:
+  phase: "runnable_prototype"
+  html_src_status: "runnable"
+  planned_engine: "native-canvas-svg"
+  create_src_in_later_task: false
+  classroom_device_targets:
+    - "教师电脑浏览器"
+    - "教室大屏"
+    - "触控屏"
+files:
+  readme: "README.md"
+  teacher_script: "teacher-script.md"
+  student_task: "student-task.md"
+  review_record: "review.md"
+  src_entry: "src/index.html"
+compliance:
+  copyright_note: "原创 HTML Applet 草稿，不复制教材正文、官方课件、教案、商业题库或外部素材。第 6 章仍需教材终核，本资源只保持 draft / self_checked_draft。"
+  review_status: "self_checked_draft"
