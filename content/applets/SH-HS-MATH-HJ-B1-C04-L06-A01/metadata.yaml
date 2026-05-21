@@ -1,0 +1,166 @@
+schema_version: "0.1.0"
+id: "SH-HS-MATH-HJ-B1-C04-L06-A01"
+version: "0.1.0"
+status: "draft"
+resource_type: "applet"
+title: "指数对数互反图像镜像板"
+subtitle: "调节底数 a，观察 y = a^x 与 y = log_a x 关于 y = x 的镜像关系"
+curriculum:
+  region: "上海"
+  stage: "高中"
+  subject: "数学"
+  edition: "沪教版"
+  volume_id: "B1"
+  volume_title: "必修第一册"
+  chapter_id: "SH-HS-MATH-HJ-B1-C04"
+  chapter_title: "幂函数、指数函数与对数函数"
+  section_id: "SH-HS-MATH-HJ-B1-C04-S03"
+  section_title: "对数函数"
+  lesson_id: "SH-HS-MATH-HJ-B1-C04-L06"
+  textbook_ref: "4.3.2"
+  lesson_title: "对数函数的性质"
+pedagogy:
+  cognitive_action: "变换"
+  estimated_classroom_minutes: 12
+  primary_teaching_problem: "学生容易只把指数函数和对数函数看成两条曲线，不能用交换坐标说明二者互为反函数，也容易把图像镜像误认为关于坐标轴对称。"
+  learning_goals:
+    - "说明 y = a^x 与 y = log_a x 在同一底数 a 下互为反函数。"
+    - "用点 P(x, a^x) 与 Q(a^x, x) 的交换坐标关系解释图像关于直线 y = x 对称。"
+    - "说出指数函数的定义域 R 与对数函数的值域 R 对应，指数函数的值域 (0, +∞) 与对数函数的定义域 (0, +∞) 对应。"
+    - "比较 a > 1 与 0 < a < 1 时，两条互反函数曲线的单调方向。"
+  prerequisites:
+    - "指数函数的图像与性质"
+    - "对数函数的定义与图像"
+    - "点关于直线 y = x 的对称直观"
+  successors:
+    - "SH-HS-MATH-HJ-B1-C05-L04"
+    - "SH-HS-MATH-HJ-B1-C05-L09"
+    - "SH-HS-MATH-HJ-B1-C05-L10"
+    - "SH-HS-MATH-HJ-MODEL-K01"
+  core_competencies:
+    - "直观想象"
+    - "数学抽象"
+    - "逻辑推理"
+mathematical_scope:
+  focus: "同一底数 a 满足 a > 0 且 a != 1 时，y = a^x 与 y = log_a x 互为反函数，图像关于 y = x 对称。"
+  exponential_function: "y = a^x，定义域 R，值域 (0, +∞)"
+  logarithmic_function: "y = log_a x，定义域 (0, +∞)，值域 R"
+  inverse_rule: "若 P(x, a^x) 在指数函数图像上，则 Q(a^x, x) 在对应对数函数图像上，P 与 Q 关于直线 y = x 对称。"
+  monotonicity: "a > 1 时两条曲线都严格递增；0 < a < 1 时两条曲线都严格递减。"
+  default_base: 2
+  base_range: "1/4 ≤ a ≤ 4，交互中自动避开 a = 1"
+  out_of_scope:
+    - "对数定义背诵或指数式与对数式互化题组"
+    - "换底公式推导和计算训练"
+    - "一般反函数存在性证明"
+    - "超出 draft / self_checked_draft 草稿边界的正式流转"
+representations:
+  - id: "mirror_graph"
+    role: "在同一坐标系中绘制 y = a^x、y = log_a x 和 y = x 镜像参照线，保持横纵同尺度。"
+  - id: "coordinate_swap_probe"
+    role: "显示指数函数点 P(x, a^x) 与对数函数点 Q(a^x, x)，用连线和中点说明交换坐标。"
+  - id: "base_control"
+    role: "用底数滑块和典型底数按钮切换 a > 1 与 0 < a < 1 的单调方向。"
+  - id: "property_panel"
+    role: "同步呈现定义域、值域和单调性的对应关系。"
+interaction_design:
+  primary_control: "调节底数 a，并移动指数函数上的观察点 P，自动生成交换坐标后的对数函数点 Q。"
+  teacher_controls:
+    - "底数滑块，连续观察 a 的变化并自动避开 a = 1"
+    - "典型底数按钮：a = 1/2、a = 2、a = 3"
+    - "观察点滑块，沿指数函数移动 P 并同步显示 Q"
+    - "重置到 a = 2、x = 0.5"
+  student_controls:
+    - "读出 P(x, a^x) 与 Q(a^x, x) 的坐标并解释交换坐标"
+    - "对照定义域、值域和单调性卡片完成观察记录"
+  staged_reveal:
+    - step: "observe_curves"
+      description: "先看同底数的指数曲线和对数曲线，以及 y = x 镜像参照线。"
+    - step: "swap_coordinates"
+      description: "移动指数函数上的 P 点，观察 Q 点坐标由 P 点交换得到。"
+    - step: "connect_domains"
+      description: "把指数函数的定义域和值域分别与对数函数的值域和定义域对应起来。"
+    - step: "compare_monotonicity"
+      description: "切换 a > 1 和 0 < a < 1，比较两条互反函数的单调方向。"
+data_contract:
+  state_variables:
+    - name: "base_a"
+      value_type: "number"
+      default: 2
+      description: "当前底数 a，满足 a > 0 且 a != 1。"
+      persistence: "snapshot"
+    - name: "probe_x"
+      value_type: "number"
+      default: 0.5
+      description: "指数函数观察点 P 的横坐标 x。"
+      persistence: "snapshot"
+    - name: "exp_y"
+      value_type: "number"
+      default: 1.4142135623730951
+      description: "指数函数观察点 P 的纵坐标 a^x。"
+      persistence: "snapshot"
+    - name: "log_x"
+      value_type: "number"
+      default: 1.4142135623730951
+      description: "对数函数观察点 Q 的横坐标，等于 a^x。"
+      persistence: "snapshot"
+    - name: "log_y"
+      value_type: "number"
+      default: 0.5
+      description: "对数函数观察点 Q 的纵坐标，等于原指数点的 x。"
+      persistence: "snapshot"
+    - name: "monotonicity"
+      value_type: "string"
+      default: "increasing"
+      description: "当前底数对应的单调方向，取 increasing 或 decreasing。"
+      persistence: "snapshot"
+  events:
+    - name: "ready"
+      direction: "applet_to_player"
+      description: "课件完成初始渲染。"
+      payload: ["base_a", "probe_x", "exp_y", "log_x", "log_y", "monotonicity"]
+      required_for_player: true
+    - name: "state_changed"
+      direction: "applet_to_player"
+      description: "底数或观察点变化时通知播放器。"
+      payload: ["base_a", "probe_x", "exp_y", "log_x", "log_y", "monotonicity"]
+      required_for_player: true
+feedback_and_diagnosis:
+  success_evidence:
+    - "学生能指着 P 和 Q 说出 Q 由 P 交换坐标得到。"
+    - "学生能用互为反函数解释两条曲线关于 y = x 对称，而不是只说形状相似。"
+    - "学生能说出指数函数的定义域 R 与对数函数的值域 R 对应，指数函数的值域 (0, +∞) 与对数函数的定义域 (0, +∞) 对应。"
+    - "学生能按 a > 1 或 0 < a < 1 判断两条互反函数同增或同减。"
+  common_error_tags:
+    - id: "axis_mirror_confusion"
+      label: "把关于 y = x 对称误认为关于坐标轴对称"
+    - id: "inverse_missing"
+      label: "只画两条曲线，未说明互为反函数"
+    - id: "domain_range_swap_gap"
+      label: "不能说明定义域和值域互换"
+    - id: "base_monotonicity_gap"
+      label: "底数范围与单调方向对应不清"
+  feedback_principles:
+    - "先读 P(x, a^x)，再交换坐标得到 Q(a^x, x)。"
+    - "判断镜像时必须回到直线 y = x，而不是 x 轴或 y 轴。"
+    - "用定义域和值域互换解释为什么对数函数只在 x > 0 上有图像。"
+visual_semantics:
+  exponential_curve: "蓝色表示 y = a^x。"
+  logarithmic_curve: "橙色表示 y = log_a x。"
+  mirror_line: "绿色虚线表示 y = x 镜像参照线。"
+  swap_segment: "紫色线段连接 P 与 Q，提示二者为镜像点。"
+implementation:
+  phase: "runnable_prototype"
+  html_src_status: "runnable"
+  planned_engine: "native-canvas-svg"
+  create_src_in_later_task: false
+  classroom_device_targets: ["desktop", "tablet", "projector"]
+files:
+  readme: "README.md"
+  teacher_script: "teacher-script.md"
+  student_task: "student-task.md"
+  review_record: "review.md"
+  src_entry: "src/index.html"
+compliance:
+  copyright_note: "本资源为原创交互草稿，不复制教材正文、官方课件、教案或商业题库；第 4 章课时边界仍需纸质教材或已登录平台终核，当前仅保持 draft / self_checked_draft 草稿边界。"
+  review_status: "self_checked_draft"

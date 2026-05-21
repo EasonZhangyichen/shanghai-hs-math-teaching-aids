@@ -1,0 +1,791 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>指数对数互反图像镜像板</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #17202a;
+        --muted: #5f6d7a;
+        --paper: #f6f8fb;
+        --panel: #ffffff;
+        --line: #d9e3eb;
+        --blue: #2266a8;
+        --orange: #c46b2b;
+        --green: #2f8a63;
+        --purple: #7457c5;
+        --grid: #e6edf3;
+        --domain: #fff4df;
+        --shadow: 0 16px 44px rgba(34, 51, 71, 0.13);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100svh;
+        background:
+          linear-gradient(90deg, rgba(34, 102, 168, 0.06) 1px, transparent 1px),
+          linear-gradient(0deg, rgba(47, 138, 99, 0.05) 1px, transparent 1px),
+          var(--paper);
+        background-size: 38px 38px;
+        color: var(--ink);
+        font-family: "Songti SC", "Noto Serif CJK SC", "Source Han Serif SC", Georgia, serif;
+      }
+
+      button,
+      input {
+        font: inherit;
+      }
+
+      .shell {
+        width: min(1280px, calc(100vw - 18px));
+        margin: 0 auto;
+        padding: 14px 0 20px;
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 14px;
+        align-items: end;
+        margin-bottom: 12px;
+      }
+
+      h1 {
+        margin: 0;
+        color: #122335;
+        font-size: clamp(24px, 3vw, 38px);
+        line-height: 1.1;
+        letter-spacing: 0;
+      }
+
+      .subtitle {
+        max-width: 860px;
+        margin: 6px 0 0;
+        color: var(--muted);
+        font-size: 15px;
+        line-height: 1.55;
+      }
+
+      .math {
+        font-family: "Times New Roman", "STIX Two Text", serif;
+        font-style: italic;
+        letter-spacing: 0;
+        white-space: nowrap;
+      }
+
+      .math sub,
+      .math sup {
+        font-size: 0.68em;
+        line-height: 0;
+      }
+
+      .status-strip {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 8px;
+      }
+
+      .status-chip {
+        border: 1px solid #ccd8e2;
+        border-radius: 6px;
+        background: rgba(255, 255, 255, 0.84);
+        padding: 8px 10px;
+        color: #2c4054;
+        font-size: 14px;
+        font-weight: 800;
+      }
+
+      .workspace {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 336px;
+        gap: 14px;
+        align-items: start;
+      }
+
+      .stage,
+      .panel {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.95);
+        box-shadow: var(--shadow);
+      }
+
+      .stage {
+        min-width: 0;
+        padding: 12px;
+      }
+
+      .graph-frame {
+        overflow: hidden;
+        border: 1px solid #dce5ed;
+        border-radius: 8px;
+        background: #fbfdff;
+      }
+
+      .legend {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 12px;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 12px;
+        border-bottom: 1px solid #dce5ed;
+      }
+
+      .legend-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 12px;
+        align-items: center;
+      }
+
+      .legend-item {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        color: #243849;
+        font-size: 14px;
+        font-weight: 800;
+        white-space: nowrap;
+      }
+
+      .swatch {
+        width: 22px;
+        height: 4px;
+        border-radius: 999px;
+        background: currentColor;
+      }
+
+      .swatch.blue {
+        color: var(--blue);
+      }
+
+      .swatch.orange {
+        color: var(--orange);
+      }
+
+      .swatch.green {
+        color: var(--green);
+        background: repeating-linear-gradient(90deg, currentColor 0 6px, transparent 6px 10px);
+      }
+
+      svg {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      .grid-line {
+        stroke: var(--grid);
+        stroke-width: 1;
+      }
+
+      .axis-line {
+        stroke: #9fb1c0;
+        stroke-width: 1.4;
+      }
+
+      .tick-label {
+        fill: #6a7a89;
+        font-family: "Times New Roman", serif;
+        font-size: 13px;
+      }
+
+      .domain-shade {
+        fill: var(--domain);
+        opacity: 0.55;
+      }
+
+      .curve-exp,
+      .curve-log {
+        fill: none;
+        stroke-width: 3.2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .curve-exp {
+        stroke: var(--blue);
+      }
+
+      .curve-log {
+        stroke: var(--orange);
+      }
+
+      .mirror-line {
+        stroke: var(--green);
+        stroke-width: 2.2;
+        stroke-dasharray: 8 7;
+      }
+
+      .swap-line {
+        stroke: var(--purple);
+        stroke-width: 2.6;
+        stroke-dasharray: 7 6;
+      }
+
+      .guide-line {
+        stroke: #b6c2cc;
+        stroke-width: 1.4;
+        stroke-dasharray: 4 5;
+      }
+
+      .point {
+        stroke: #ffffff;
+        stroke-width: 3;
+      }
+
+      .point-label,
+      .graph-note {
+        fill: #243849;
+        font-size: 14px;
+        font-weight: 900;
+      }
+
+      .graph-note {
+        fill: #4f6476;
+        font-size: 13px;
+      }
+
+      .readout-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 8px;
+        margin-top: 10px;
+      }
+
+      .metric {
+        min-height: 76px;
+        border: 1px solid #d9e3eb;
+        border-radius: 8px;
+        background: #fff;
+        padding: 9px 10px;
+      }
+
+      .metric-label {
+        margin: 0 0 6px;
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 900;
+      }
+
+      .metric-value {
+        display: block;
+        color: #132638;
+        font-size: 18px;
+        font-weight: 900;
+        line-height: 1.2;
+      }
+
+      .metric-help {
+        display: block;
+        margin-top: 5px;
+        color: #637482;
+        font-size: 12px;
+        line-height: 1.35;
+      }
+
+      .panel {
+        position: sticky;
+        top: 14px;
+        padding: 14px;
+      }
+
+      .section + .section {
+        margin-top: 15px;
+        padding-top: 15px;
+        border-top: 1px solid #dfe7ee;
+      }
+
+      .section-title {
+        margin: 0 0 9px;
+        color: #243849;
+        font-size: 15px;
+        font-weight: 900;
+      }
+
+      .control-row {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 10px;
+        align-items: center;
+      }
+
+      input[type="range"] {
+        width: 100%;
+        accent-color: var(--blue);
+      }
+
+      output {
+        min-width: 72px;
+        border: 1px solid #d5e0e8;
+        border-radius: 6px;
+        background: #f9fbfd;
+        padding: 6px 8px;
+        text-align: center;
+        color: #1b344c;
+        font-size: 14px;
+        font-weight: 900;
+      }
+
+      .button-row {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 7px;
+        margin-top: 10px;
+      }
+
+      .tool-button {
+        min-height: 40px;
+        border: 1px solid #cfdbe4;
+        border-radius: 7px;
+        background: #fff;
+        color: #22384e;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 900;
+      }
+
+      .tool-button:hover,
+      .tool-button:focus-visible {
+        border-color: #86a9c9;
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(34, 102, 168, 0.16);
+      }
+
+      .tool-button.active {
+        border-color: var(--blue);
+        background: #e8f1fb;
+        color: #184d82;
+      }
+
+      .inverse-box,
+      .property {
+        border: 1px solid #dce5ed;
+        border-radius: 8px;
+        background: #fbfcfd;
+        padding: 9px 10px;
+      }
+
+      .inverse-box {
+        border-color: #d8d2ed;
+        background: #f8f5ff;
+      }
+
+      .inverse-box p,
+      .property p {
+        margin: 0;
+        color: #2f4050;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      .inverse-box p + p,
+      .property + .property {
+        margin-top: 8px;
+      }
+
+      .property strong {
+        display: block;
+        margin-bottom: 4px;
+        color: #1f3448;
+        font-size: 14px;
+      }
+
+      .property span {
+        display: block;
+        color: #5c6f80;
+        font-size: 13px;
+        line-height: 1.45;
+      }
+
+      @media (max-width: 900px) {
+        .hero,
+        .workspace {
+          grid-template-columns: 1fr;
+        }
+
+        .status-strip {
+          justify-content: flex-start;
+        }
+
+        .panel {
+          position: static;
+        }
+      }
+
+      @media (max-width: 620px) {
+        .shell {
+          width: min(100vw - 12px, 1280px);
+          padding-top: 8px;
+        }
+
+        .readout-grid,
+        .button-row {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="shell">
+      <header class="hero">
+        <div>
+          <h1>指数对数互反图像镜像板</h1>
+          <p class="subtitle">
+            调节底数 a，移动指数函数上的点 P，观察
+            <span class="math">y = a<sup>x</sup></span> 与
+            <span class="math">y = log<sub>a</sub> x</span>
+            互为反函数，并关于直线 y = x 对称。
+          </p>
+        </div>
+        <div class="status-strip" aria-label="资源状态">
+          <span class="status-chip">draft</span>
+          <span class="status-chip">self_checked_draft</span>
+        </div>
+      </header>
+
+      <section class="workspace" aria-label="指数函数和对数函数互反图像交互区">
+        <div class="stage">
+          <div class="graph-frame">
+            <div class="legend" aria-label="图例">
+              <div class="legend-group">
+                <span class="legend-item"><span class="swatch blue"></span><span class="math">y = a<sup>x</sup></span></span>
+                <span class="legend-item"><span class="swatch orange"></span><span class="math">y = log<sub>a</sub> x</span></span>
+                <span class="legend-item"><span class="swatch green"></span><span>y = x</span> 镜像参照线</span>
+              </div>
+              <strong>P(x, a<sup>x</sup>) 交换坐标得到 Q(a<sup>x</sup>, x)</strong>
+            </div>
+            <svg id="graph" viewBox="0 0 700 620" role="img" aria-label="指数函数、对数函数和 y 等于 x 镜像参照线">
+              <defs>
+                <clipPath id="plot-clip"><rect x="70" y="42" width="520" height="520"></rect></clipPath>
+              </defs>
+              <g id="static-layer"></g>
+              <g id="curve-layer" clip-path="url(#plot-clip)"></g>
+              <g id="point-layer"></g>
+            </svg>
+          </div>
+
+          <div class="readout-grid" aria-label="当前读数">
+            <div class="metric">
+              <p class="metric-label">底数条件</p>
+              <span class="metric-value" id="base-readout">a = 2</span>
+              <span class="metric-help">a &gt; 0 且 a ≠ 1</span>
+            </div>
+            <div class="metric">
+              <p class="metric-label">指数点 P</p>
+              <span class="metric-value" id="p-readout">P(0.5, 1.414)</span>
+              <span class="metric-help">在蓝色曲线上</span>
+            </div>
+            <div class="metric">
+              <p class="metric-label">对数点 Q</p>
+              <span class="metric-value" id="q-readout">Q(1.414, 0.5)</span>
+              <span class="metric-help">由 P 交换坐标得到</span>
+            </div>
+            <div class="metric">
+              <p class="metric-label">单调方向</p>
+              <span class="metric-value" id="trend-readout">同为递增</span>
+              <span class="metric-help" id="trend-help">a &gt; 1</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="panel" aria-label="控制与性质说明">
+          <section class="section">
+            <h2 class="section-title">底数 a</h2>
+            <div class="control-row">
+              <input id="base-slider" type="range" min="-2" max="2" step="0.01" value="1" aria-label="调节底数 a" />
+              <output id="base-output">2.00</output>
+            </div>
+            <div class="button-row" aria-label="典型底数">
+              <button class="tool-button" type="button" data-base="0.5">1/2</button>
+              <button class="tool-button active" type="button" data-base="2">2</button>
+              <button class="tool-button" type="button" data-base="3">3</button>
+              <button class="tool-button" type="button" data-reset="true">重置</button>
+            </div>
+          </section>
+
+          <section class="section">
+            <h2 class="section-title">移动指数函数上的点 P</h2>
+            <div class="control-row">
+              <input id="probe-slider" type="range" min="-1" max="1" step="0.01" value="0.5" aria-label="移动指数函数上的观察点 P" />
+              <output id="probe-output">0.50</output>
+            </div>
+          </section>
+
+          <section class="section">
+            <h2 class="section-title">互反函数说明</h2>
+            <div class="inverse-box">
+              <p>同一底数下，<span class="math">y = a<sup>x</sup></span> 与 <span class="math">y = log<sub>a</sub> x</span> 互为反函数。</p>
+              <p>点 P(x, a<sup>x</sup>) 交换坐标得到 Q(a<sup>x</sup>, x)，所以两条图像关于直线 y = x 对称。</p>
+            </div>
+          </section>
+
+          <section class="section">
+            <h2 class="section-title">定义域、值域、单调性对应</h2>
+            <div class="property">
+              <strong>指数函数的定义域 R 与对数函数的值域 R 对应</strong>
+              <span>指数函数的 x 可以取全体实数，对应到对数函数的 y 可以取全体实数。</span>
+            </div>
+            <div class="property">
+              <strong>指数函数的值域 (0, +∞) 与对数函数的定义域 (0, +∞) 对应</strong>
+              <span>蓝色曲线的输出始终为正，所以橙色曲线只在 x &gt; 0 的区域出现。</span>
+            </div>
+            <div class="property">
+              <strong id="monotonicity-card">a &gt; 1 时两条曲线都严格递增</strong>
+              <span>底数跨过 1 后，单调方向整体翻转，但互反关系保持不变。</span>
+            </div>
+          </section>
+        </aside>
+      </section>
+    </main>
+
+    <script>
+      const RESOURCE_ID = "SH-HS-MATH-HJ-B1-C04-L06-A01";
+      const svgNS = "http://www.w3.org/2000/svg";
+      const plot = { x: 70, y: 42, size: 520, min: -4, max: 4 };
+      const state = { baseA: 2, probeX: 0.5 };
+      const elements = {
+        staticLayer: document.getElementById("static-layer"),
+        curveLayer: document.getElementById("curve-layer"),
+        pointLayer: document.getElementById("point-layer"),
+        baseSlider: document.getElementById("base-slider"),
+        baseOutput: document.getElementById("base-output"),
+        probeSlider: document.getElementById("probe-slider"),
+        probeOutput: document.getElementById("probe-output"),
+        baseReadout: document.getElementById("base-readout"),
+        pReadout: document.getElementById("p-readout"),
+        qReadout: document.getElementById("q-readout"),
+        trendReadout: document.getElementById("trend-readout"),
+        trendHelp: document.getElementById("trend-help"),
+        monotonicityCard: document.getElementById("monotonicity-card"),
+      };
+
+      function createSvg(type, attrs = {}, text = "") {
+        const node = document.createElementNS(svgNS, type);
+        for (const [name, value] of Object.entries(attrs)) node.setAttribute(name, value);
+        if (text) node.textContent = text;
+        return node;
+      }
+
+      function clamp(value, min, max) {
+        return Math.min(max, Math.max(min, value));
+      }
+
+      function normalizeBase(value) {
+        const clamped = clamp(Number(value) || 2, 0.25, 4);
+        if (Math.abs(clamped - 1) < 0.035) return clamped < 1 ? 0.965 : 1.035;
+        return clamped;
+      }
+
+      function baseFromSlider() {
+        let exponent = Number(elements.baseSlider.value);
+        if (Math.abs(exponent) < 0.05) {
+          exponent = exponent < 0 ? -0.05 : 0.05;
+          elements.baseSlider.value = String(exponent);
+        }
+        return normalizeBase(2 ** exponent);
+      }
+
+      function syncBaseSlider(base) {
+        elements.baseSlider.value = String(Math.log2(base));
+      }
+
+      function toSvgX(value) {
+        return plot.x + ((value - plot.min) / (plot.max - plot.min)) * plot.size;
+      }
+
+      function toSvgY(value) {
+        return plot.y + ((plot.max - value) / (plot.max - plot.min)) * plot.size;
+      }
+
+      function inView(x, y) {
+        return x >= plot.min && x <= plot.max && y >= plot.min && y <= plot.max && Number.isFinite(y);
+      }
+
+      function formatNumber(value) {
+        if (!Number.isFinite(value)) return "未定";
+        if (Math.abs(value) < 1e-10) return "0";
+        return value.toFixed(3).replace(/0+$/u, "").replace(/\.$/u, "");
+      }
+
+      function expValue(x) {
+        return state.baseA ** x;
+      }
+
+      function logValue(x) {
+        return Math.log(x) / Math.log(state.baseA);
+      }
+
+      function monotonicity() {
+        return state.baseA > 1 ? "increasing" : "decreasing";
+      }
+
+      function pathFromSamples(points) {
+        let d = "";
+        let drawing = false;
+        for (const point of points) {
+          if (!inView(point.x, point.y)) {
+            drawing = false;
+            continue;
+          }
+          const px = toSvgX(point.x);
+          const py = toSvgY(point.y);
+          d += drawing ? ` L ${px.toFixed(2)} ${py.toFixed(2)}` : ` M ${px.toFixed(2)} ${py.toFixed(2)}`;
+          drawing = true;
+        }
+        return d.trim();
+      }
+
+      function drawStatic() {
+        elements.staticLayer.innerHTML = "";
+        elements.staticLayer.append(
+          createSvg("rect", { x: toSvgX(0), y: plot.y, width: toSvgX(plot.max) - toSvgX(0), height: plot.size, class: "domain-shade" }),
+        );
+        for (let tick = plot.min; tick <= plot.max; tick += 1) {
+          elements.staticLayer.append(
+            createSvg("line", { x1: toSvgX(tick), y1: plot.y, x2: toSvgX(tick), y2: plot.y + plot.size, class: "grid-line" }),
+            createSvg("line", { x1: plot.x, y1: toSvgY(tick), x2: plot.x + plot.size, y2: toSvgY(tick), class: "grid-line" }),
+          );
+        }
+        elements.staticLayer.append(
+          createSvg("line", { x1: plot.x, y1: toSvgY(0), x2: plot.x + plot.size, y2: toSvgY(0), class: "axis-line" }),
+          createSvg("line", { x1: toSvgX(0), y1: plot.y, x2: toSvgX(0), y2: plot.y + plot.size, class: "axis-line" }),
+          createSvg("line", { x1: toSvgX(plot.min), y1: toSvgY(plot.min), x2: toSvgX(plot.max), y2: toSvgY(plot.max), class: "mirror-line" }),
+        );
+        for (const tick of [-4, -2, 0, 2, 4]) {
+          elements.staticLayer.append(
+            createSvg("text", { x: toSvgX(tick), y: toSvgY(0) + 19, "text-anchor": "middle", class: "tick-label" }, String(tick)),
+            createSvg("text", { x: toSvgX(0) - 10, y: toSvgY(tick) + 4, "text-anchor": "end", class: "tick-label" }, String(tick)),
+          );
+        }
+        elements.staticLayer.append(
+          createSvg("text", { x: toSvgX(4) + 18, y: toSvgY(0) + 4, class: "graph-note" }, "x"),
+          createSvg("text", { x: toSvgX(0) - 4, y: toSvgY(4) - 16, class: "graph-note" }, "y"),
+          createSvg("text", { x: toSvgX(2.7), y: toSvgY(3.05), class: "graph-note" }, "y = x"),
+          createSvg("text", { x: toSvgX(0.42), y: toSvgY(-3.65), class: "graph-note" }, "淡黄色区域表示对数函数定义域 x > 0"),
+        );
+      }
+
+      function drawCurves() {
+        elements.curveLayer.innerHTML = "";
+        const expPoints = [];
+        const logPoints = [];
+        for (let i = 0; i <= 520; i += 1) {
+          const x = plot.min + ((plot.max - plot.min) * i) / 520;
+          expPoints.push({ x, y: expValue(x) });
+        }
+        for (let i = 0; i <= 520; i += 1) {
+          const x = 0.025 + ((plot.max - 0.025) * i) / 520;
+          logPoints.push({ x, y: logValue(x) });
+        }
+        elements.curveLayer.append(
+          createSvg("path", { d: pathFromSamples(expPoints), class: "curve-exp" }),
+          createSvg("path", { d: pathFromSamples(logPoints), class: "curve-log" }),
+        );
+      }
+
+      function drawPoints() {
+        elements.pointLayer.innerHTML = "";
+        const px = state.probeX;
+        const py = expValue(px);
+        const qx = py;
+        const qy = px;
+        const mx = (px + qx) / 2;
+        const my = (py + qy) / 2;
+        elements.pointLayer.append(
+          createSvg("line", { x1: toSvgX(px), y1: toSvgY(py), x2: toSvgX(qx), y2: toSvgY(qy), class: "swap-line" }),
+          createSvg("line", { x1: toSvgX(px), y1: toSvgY(py), x2: toSvgX(px), y2: toSvgY(qy), class: "guide-line" }),
+          createSvg("line", { x1: toSvgX(px), y1: toSvgY(qy), x2: toSvgX(qx), y2: toSvgY(qy), class: "guide-line" }),
+          createSvg("circle", { cx: toSvgX(px), cy: toSvgY(py), r: 7, fill: "var(--blue)", class: "point" }),
+          createSvg("circle", { cx: toSvgX(qx), cy: toSvgY(qy), r: 7, fill: "var(--orange)", class: "point" }),
+          createSvg("circle", { cx: toSvgX(mx), cy: toSvgY(my), r: 4, fill: "var(--purple)" }),
+          createSvg("text", { x: toSvgX(px) + 10, y: toSvgY(py) - 10, class: "point-label" }, "P"),
+          createSvg("text", { x: toSvgX(qx) + 10, y: toSvgY(qy) + 18, class: "point-label" }, "Q"),
+        );
+      }
+
+      function updateReadouts() {
+        const px = state.probeX;
+        const py = expValue(px);
+        const isIncreasing = monotonicity() === "increasing";
+        elements.baseOutput.value = state.baseA.toFixed(2);
+        elements.probeOutput.value = px.toFixed(2);
+        elements.baseReadout.textContent = `a = ${formatNumber(state.baseA)}`;
+        elements.pReadout.textContent = `P(${formatNumber(px)}, ${formatNumber(py)})`;
+        elements.qReadout.textContent = `Q(${formatNumber(py)}, ${formatNumber(px)})`;
+        elements.trendReadout.textContent = isIncreasing ? "同为递增" : "同为递减";
+        elements.trendHelp.textContent = isIncreasing ? "a > 1" : "0 < a < 1";
+        elements.monotonicityCard.textContent = isIncreasing ? "a > 1 时两条曲线都严格递增" : "0 < a < 1 时两条曲线都严格递减";
+        for (const button of document.querySelectorAll("[data-base]")) {
+          button.classList.toggle("active", Math.abs(Number(button.dataset.base) - state.baseA) < 0.015);
+        }
+      }
+
+      function getSnapshot() {
+        const expY = expValue(state.probeX);
+        return { base_a: state.baseA, probe_x: state.probeX, exp_y: expY, log_x: expY, log_y: state.probeX, monotonicity: monotonicity() };
+      }
+
+      function emitMessage(type, payload = {}) {
+        window.parent?.postMessage({ source: "shanghai-hs-math-applet", resourceId: RESOURCE_ID, type, payload }, "*");
+      }
+
+      function render(shouldEmit = true) {
+        drawCurves();
+        drawPoints();
+        updateReadouts();
+        if (shouldEmit) emitMessage("applet:stateChanged", getSnapshot());
+      }
+
+      elements.baseSlider.addEventListener("input", () => {
+        state.baseA = baseFromSlider();
+        render();
+      });
+      elements.probeSlider.addEventListener("input", () => {
+        state.probeX = clamp(Number(elements.probeSlider.value), -1, 1);
+        render();
+      });
+      document.querySelectorAll("[data-base]").forEach((button) => {
+        button.addEventListener("click", () => {
+          state.baseA = normalizeBase(Number(button.dataset.base));
+          syncBaseSlider(state.baseA);
+          render();
+        });
+      });
+      document.querySelector("[data-reset]").addEventListener("click", () => {
+        state.baseA = 2;
+        state.probeX = 0.5;
+        syncBaseSlider(state.baseA);
+        elements.probeSlider.value = String(state.probeX);
+        render();
+      });
+      window.addEventListener("message", (event) => {
+        if (event.data?.type !== "player:init") return;
+        const incoming = event.data.payload?.state ?? event.data.payload ?? {};
+        if (typeof incoming.base_a === "number") {
+          state.baseA = normalizeBase(incoming.base_a);
+          syncBaseSlider(state.baseA);
+        }
+        if (typeof incoming.probe_x === "number") {
+          state.probeX = clamp(incoming.probe_x, -1, 1);
+          elements.probeSlider.value = String(state.probeX);
+        }
+        render(false);
+        emitMessage("applet:ready", getSnapshot());
+      });
+
+      drawStatic();
+      syncBaseSlider(state.baseA);
+      render(false);
+      emitMessage("applet:ready", getSnapshot());
+    </script>
+  </body>
+</html>

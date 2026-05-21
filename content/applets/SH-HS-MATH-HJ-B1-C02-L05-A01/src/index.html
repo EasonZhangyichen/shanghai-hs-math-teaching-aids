@@ -1,0 +1,771 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>二次不等式与函数符号区间联动板</title>
+    <style>
+      :root {
+        --ink: #15211e;
+        --muted: #5d6b66;
+        --paper: #fbfbf5;
+        --panel: #ffffff;
+        --line: #d9dfd7;
+        --grid: #e8ede7;
+        --axis: #798780;
+        --above: #16845f;
+        --above-soft: rgba(22, 132, 95, 0.14);
+        --below: #c13f34;
+        --below-soft: rgba(193, 63, 52, 0.13);
+        --handle: #2563eb;
+        --handle-soft: rgba(37, 99, 235, 0.13);
+        --warn: #a16207;
+        --shadow: 0 18px 48px rgba(21, 33, 30, 0.12);
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        min-height: 100svh;
+        background:
+          linear-gradient(140deg, rgba(22, 132, 95, 0.08), transparent 36%),
+          linear-gradient(320deg, rgba(193, 63, 52, 0.07), transparent 38%),
+          var(--paper);
+        color: var(--ink);
+        font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+      }
+
+      button, input { font: inherit; }
+      math { font-family: "Times New Roman", "STIX Two Math", serif; }
+
+      .applet {
+        height: 100svh;
+        min-height: 100svh;
+        display: grid;
+        grid-template-rows: auto 1fr;
+        gap: 10px;
+        padding: 12px;
+        overflow: hidden;
+      }
+
+      .topbar, .board, .side {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.94);
+        box-shadow: var(--shadow);
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 10px 12px;
+      }
+
+      .eyebrow {
+        margin: 0 0 2px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 22px;
+        line-height: 1.18;
+        letter-spacing: 0;
+      }
+
+      .workspace {
+        min-height: 0;
+        display: grid;
+        grid-template-columns: minmax(560px, 1fr) minmax(330px, 390px);
+        gap: 12px;
+        overflow: hidden;
+      }
+
+      .stepbar, .segmented {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: flex-end;
+      }
+
+      .button {
+        min-height: 40px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #f7faf6;
+        color: var(--ink);
+        padding: 7px 10px;
+        cursor: pointer;
+      }
+
+      .button[aria-pressed="true"] {
+        border-color: var(--handle);
+        background: var(--handle-soft);
+        color: #143a86;
+        font-weight: 800;
+      }
+
+      .button.primary {
+        border-color: #82a991;
+        background: var(--above-soft);
+      }
+
+      .board {
+        min-height: 0;
+        display: grid;
+        grid-template-rows: minmax(360px, 1fr) auto;
+        overflow: hidden;
+      }
+
+      .graph-wrap {
+        min-height: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      svg {
+        width: 100%;
+        height: 100%;
+        display: block;
+        touch-action: none;
+        user-select: none;
+      }
+
+      .grid-line { stroke: var(--grid); stroke-width: 1; }
+      .axis-line { stroke: var(--axis); stroke-width: 1.7; }
+      .axis-label, .point-label, .region-label {
+        fill: var(--ink);
+        font-size: 13px;
+        font-weight: 750;
+      }
+      .axis-label { fill: var(--muted); font-size: 12px; }
+      .curve-base { fill: none; stroke: #21332e; stroke-width: 2; opacity: 0.18; }
+      .curve-above, .curve-below {
+        fill: none;
+        stroke-width: 5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .curve-above { stroke: var(--above); }
+      .curve-below { stroke: var(--below); }
+      .root-dot { fill: #172554; stroke: #fff; stroke-width: 3; }
+      .opening-handle { fill: var(--handle); stroke: #fff; stroke-width: 3; }
+      .hit-target {
+        fill: transparent;
+        stroke: transparent;
+        cursor: grab;
+        pointer-events: all;
+      }
+      .dragging .hit-target { cursor: grabbing; }
+      .guide-line {
+        stroke: var(--handle);
+        stroke-width: 2;
+        stroke-dasharray: 6 5;
+        opacity: 0.72;
+      }
+
+      .number-lines {
+        display: grid;
+        gap: 8px;
+        padding: 12px 14px 14px;
+        background: #fbfcf8;
+      }
+
+      .number-row {
+        display: grid;
+        grid-template-columns: 84px 1fr minmax(170px, 280px);
+        align-items: center;
+        gap: 10px;
+        min-height: 38px;
+      }
+
+      .row-label { font-weight: 800; font-size: 14px; }
+      .row-label.positive { color: var(--above); }
+      .row-label.negative { color: var(--below); }
+      .axis-track { position: relative; height: 30px; }
+      .axis-track::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 14px;
+        border-top: 2px solid #9aa7a0;
+      }
+      .interval-segment {
+        position: absolute;
+        top: 8px;
+        height: 14px;
+        border-radius: 999px;
+      }
+      .interval-segment.positive { background: var(--above); }
+      .interval-segment.negative { background: var(--below); }
+      .tick { position: absolute; top: 5px; width: 2px; height: 20px; background: #56645e; }
+      .tick-label {
+        position: absolute;
+        top: 23px;
+        transform: translateX(-50%);
+        color: var(--muted);
+        font-size: 11px;
+        white-space: nowrap;
+      }
+      .interval-text { font-size: 14px; font-weight: 800; }
+
+      .side {
+        min-height: 0;
+        display: grid;
+        grid-template-rows: auto auto 1fr;
+        overflow: hidden;
+      }
+
+      .panel-section {
+        padding: 13px 14px;
+        border-bottom: 1px solid var(--line);
+      }
+      .panel-scroll { min-height: 0; overflow: auto; }
+      .section-title {
+        margin: 0 0 8px;
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 800;
+      }
+
+      .formula-box {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 9px;
+        background: #fbfcf8;
+        text-align: center;
+      }
+
+      .readout-grid {
+        margin-top: 9px;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .readout {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 8px;
+        background: #fff;
+      }
+      .readout small { display: block; color: var(--muted); font-size: 12px; }
+      .readout strong { display: block; margin-top: 2px; font-size: 18px; }
+
+      .control-grid { display: grid; gap: 10px; }
+      .range-row {
+        display: grid;
+        grid-template-columns: 76px 1fr 54px;
+        align-items: center;
+        gap: 8px;
+        font-size: 13px;
+      }
+      input[type="range"] { width: 100%; accent-color: var(--handle); }
+
+      .link-summary, .solution-list { display: grid; gap: 8px; }
+      .summary-line {
+        border-left: 5px solid var(--line);
+        border-radius: 0 8px 8px 0;
+        padding: 8px 10px;
+        background: #fbfcf8;
+      }
+      .summary-line.positive { border-color: var(--above); background: var(--above-soft); }
+      .summary-line.negative { border-color: var(--below); background: var(--below-soft); }
+      .summary-line.warning { border-color: var(--warn); background: rgba(161, 98, 7, 0.1); }
+      .summary-line p, .stage-note { margin: 0; line-height: 1.45; }
+      .stage-note { color: var(--muted); }
+
+      .solution-row {
+        display: grid;
+        grid-template-columns: 104px 1fr;
+        align-items: center;
+        gap: 8px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 8px 10px;
+        background: #fff;
+      }
+      .solution-row strong { font-size: 15px; }
+      .solution-row.positive strong { color: var(--above); }
+      .solution-row.negative strong { color: var(--below); }
+      .sr-only-template { display: none; }
+
+      @media (max-width: 980px) {
+        .applet { height: auto; min-height: 100svh; overflow: auto; }
+        .topbar, .workspace { display: flex; flex-direction: column; }
+        .workspace, .side, .panel-scroll { overflow: visible; }
+        .board { min-height: 720px; }
+      }
+
+      @media (max-height: 660px) and (min-width: 981px) {
+        .applet { padding: 8px; gap: 8px; }
+        .topbar { padding: 8px 10px; }
+        h1 { font-size: 19px; }
+        .board { grid-template-rows: minmax(300px, 1fr) auto; }
+        .panel-section { padding: 10px 12px; }
+        .number-row { grid-template-columns: 74px 1fr 220px; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="applet" aria-label="二次不等式与函数符号区间联动板">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">SH-HS-MATH-HJ-B1-C02-L05-A01</p>
+          <h1>二次不等式与函数符号区间联动板</h1>
+        </div>
+        <div class="stepbar" aria-label="课堂揭示步骤">
+          <button class="button step-button" data-step="1" aria-pressed="true">看图像</button>
+          <button class="button step-button" data-step="2" aria-pressed="false">对数轴</button>
+          <button class="button step-button" data-step="3" aria-pressed="false">写解集</button>
+          <button class="button step-button" data-step="4" aria-pressed="false">看边界</button>
+        </div>
+      </header>
+
+      <section class="workspace">
+        <section class="board" aria-label="函数图像和数轴联动区">
+          <div class="graph-wrap">
+            <svg id="graph" role="img" aria-label="二次函数图像、x 轴、零点和开口手柄"></svg>
+          </div>
+          <div class="number-lines" aria-label="解集区间数轴">
+            <div class="number-row">
+              <div class="row-label positive">f(x) &gt; 0</div>
+              <div class="axis-track" id="positiveTrack"></div>
+              <div class="interval-text" id="positiveText">(-∞, -2) ∪ (2, +∞)</div>
+            </div>
+            <div class="number-row">
+              <div class="row-label negative">f(x) &lt; 0</div>
+              <div class="axis-track" id="negativeTrack"></div>
+              <div class="interval-text" id="negativeText">(-2, 2)</div>
+            </div>
+          </div>
+        </section>
+
+        <aside class="side" aria-label="控制与解集说明">
+          <section class="panel-section">
+            <p class="section-title">当前函数</p>
+            <div class="formula-box">
+              <math display="block">
+                <mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>a</mi>
+                <mo>(</mo><mi>x</mi><mo>-</mo><msub><mi>x</mi><mn>1</mn></msub><mo>)</mo>
+                <mo>(</mo><mi>x</mi><mo>-</mo><msub><mi>x</mi><mn>2</mn></msub><mo>)</mo>
+              </math>
+              <math display="block">
+                <mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo>
+                <mi>a</mi><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mi>b</mi><mi>x</mi><mo>+</mo><mi>c</mi>
+              </math>
+            </div>
+            <div class="readout-grid">
+              <div class="readout"><small>开口方向</small><strong id="openingReadout">开口向上</strong></div>
+              <div class="readout"><small>零点</small><strong id="rootReadout">-2，2</strong></div>
+              <div class="readout"><small>上方位置</small><strong id="aboveReadout">两侧</strong></div>
+              <div class="readout"><small>下方位置</small><strong id="belowReadout">中间</strong></div>
+            </div>
+          </section>
+
+          <section class="panel-section">
+            <p class="section-title">拖动与切换</p>
+            <div class="control-grid">
+              <div class="segmented" aria-label="根形态">
+                <button class="button mode-button" data-mode="two_roots" aria-pressed="true">两个实根</button>
+                <button class="button mode-button" data-mode="double_root" aria-pressed="false">重根</button>
+                <button class="button mode-button" data-mode="no_real" aria-pressed="false">无实根</button>
+              </div>
+              <div class="segmented" aria-label="开口方向快捷切换">
+                <button class="button opening-button" data-opening="up" aria-pressed="true">开口向上</button>
+                <button class="button opening-button" data-opening="down" aria-pressed="false">开口向下</button>
+                <button class="button primary" id="resetButton">重置</button>
+              </div>
+              <label class="range-row"><span>左零点</span><input id="leftRootSlider" type="range" min="-4.5" max="3.5" step="0.1" value="-2" /><span id="leftRootValue">-2</span></label>
+              <label class="range-row"><span>右零点</span><input id="rightRootSlider" type="range" min="-3.5" max="4.5" step="0.1" value="2" /><span id="rightRootValue">2</span></label>
+            </div>
+          </section>
+
+          <div class="panel-scroll">
+            <section class="panel-section">
+              <p class="section-title">图像与解集区间</p>
+              <div class="link-summary">
+                <div class="summary-line positive"><p>图像在 x 轴上方的横坐标，就是 <strong>f(x) &gt; 0</strong> 的解集区间：<span id="aboveSentence">两侧</span>。</p></div>
+                <div class="summary-line negative"><p>图像在 x 轴下方的横坐标，就是 <strong>f(x) &lt; 0</strong> 的解集区间：<span id="belowSentence">中间</span>。</p></div>
+                <div class="summary-line warning"><p id="openingRule">开口向上时，正区间在两侧、负区间在中间；拖成开口向下后，两者互换。</p></div>
+              </div>
+            </section>
+            <section class="panel-section">
+              <p class="section-title">一元二次不等式解集</p>
+              <div class="solution-list">
+                <div class="solution-row positive"><strong><math><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>&gt;</mo><mn>0</mn></math></strong><span id="positiveSolution">(-∞, -2) ∪ (2, +∞)</span></div>
+                <div class="solution-row negative"><strong><math><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>&lt;</mo><mn>0</mn></math></strong><span id="negativeSolution">(-2, 2)</span></div>
+                <div class="solution-row"><strong><math><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mn>0</mn></math></strong><span id="zeroSolution">{-2, 2}</span></div>
+              </div>
+            </section>
+            <section class="panel-section">
+              <p class="section-title">课堂提示</p>
+              <p class="stage-note" id="stageNote">先不背口诀，只把绿色曲线读成“上方”，把红色曲线读成“下方”。</p>
+            </section>
+          </div>
+        </aside>
+      </section>
+    </main>
+
+    <template class="sr-only-template" id="dragRoleContract">
+      <span data-drag-role="left-root"></span>
+      <span data-drag-role="right-root"></span>
+      <span data-drag-role="opening"></span>
+    </template>
+
+    <script>
+      const RESOURCE_ID = "SH-HS-MATH-HJ-B1-C02-L05-A01";
+      const graph = document.getElementById("graph");
+      const positiveTrack = document.getElementById("positiveTrack");
+      const negativeTrack = document.getElementById("negativeTrack");
+      const state = { a: 0.7, mode: "two_roots", leftRoot: -2, rightRoot: 2, center: 0, revealStep: 1 };
+      const xMin = -5, xMax = 5, yMin = -5, yMax = 5;
+      const viewWidth = 760, viewHeight = 470;
+      const margin = { left: 46, right: 24, top: 26, bottom: 36 };
+      let activeDrag = null;
+
+      // self-check helpers: start
+      function fmtNumber(value) {
+        if (!Number.isFinite(value)) return String(value);
+        const rounded = Math.round(value * 10) / 10;
+        return Number.isInteger(rounded) ? String(rounded) : rounded.toFixed(1).replace(/\.0$/, "");
+      }
+
+      function intervalText(intervals) {
+        if (!intervals.length) return "∅";
+        if (intervals.length === 1 && intervals[0].from === -Infinity && intervals[0].to === Infinity) return "R";
+        return intervals.map((interval) => {
+          const left = interval.from === -Infinity ? "-∞" : fmtNumber(interval.from);
+          const right = interval.to === Infinity ? "+∞" : fmtNumber(interval.to);
+          return `(${left}, ${right})`;
+        }).join(" ∪ ");
+      }
+
+      function pointSetText(points) {
+        return points.length ? `{${points.map(fmtNumber).join(", ")}}` : "∅";
+      }
+
+      function solveSignPattern({ a, mode, leftRoot, rightRoot, center }) {
+        const upward = a > 0;
+        const left = Math.min(leftRoot, rightRoot);
+        const right = Math.max(leftRoot, rightRoot);
+        const h = center ?? (left + right) / 2;
+        let positiveIntervals = [], negativeIntervals = [], zeroPoints = [], aboveWhere = "", belowWhere = "", boundaryNote = "";
+
+        if (mode === "two_roots") {
+          zeroPoints = [left, right];
+          if (upward) {
+            positiveIntervals = [{ from: -Infinity, to: left }, { from: right, to: Infinity }];
+            negativeIntervals = [{ from: left, to: right }];
+            aboveWhere = "两侧"; belowWhere = "中间";
+          } else {
+            positiveIntervals = [{ from: left, to: right }];
+            negativeIntervals = [{ from: -Infinity, to: left }, { from: right, to: Infinity }];
+            aboveWhere = "中间"; belowWhere = "两侧";
+          }
+          boundaryNote = upward
+            ? "开口向上时，正区间在两侧、负区间在中间；拖成开口向下后，两者互换。"
+            : "开口向下时，正区间在中间、负区间在两侧；拖成开口向上后，两者互换。";
+        } else if (mode === "double_root") {
+          zeroPoints = [h];
+          if (upward) {
+            positiveIntervals = [{ from: -Infinity, to: h }, { from: h, to: Infinity }];
+            aboveWhere = "除重根外的全部位置"; belowWhere = "无";
+          } else {
+            negativeIntervals = [{ from: -Infinity, to: h }, { from: h, to: Infinity }];
+            aboveWhere = "无"; belowWhere = "除重根外的全部位置";
+          }
+          boundaryNote = "重根处函数值等于 0，严格不等式不能包含这个横坐标。";
+        } else {
+          if (upward) {
+            positiveIntervals = [{ from: -Infinity, to: Infinity }];
+            aboveWhere = "全部横坐标"; belowWhere = "无";
+          } else {
+            negativeIntervals = [{ from: -Infinity, to: Infinity }];
+            aboveWhere = "无"; belowWhere = "全部横坐标";
+          }
+          boundaryNote = "无实根时没有零点分段，整条图像在 x 轴同一侧。";
+        }
+
+        return {
+          positiveIntervals,
+          negativeIntervals,
+          zeroPoints,
+          positiveText: intervalText(positiveIntervals),
+          negativeText: intervalText(negativeIntervals),
+          zeroText: pointSetText(zeroPoints),
+          aboveWhere,
+          belowWhere,
+          boundaryNote,
+        };
+      }
+      // self-check helpers: end
+
+      function sx(x) { return margin.left + ((x - xMin) / (xMax - xMin)) * (viewWidth - margin.left - margin.right); }
+      function sy(y) { return margin.top + ((yMax - y) / (yMax - yMin)) * (viewHeight - margin.top - margin.bottom); }
+      function worldX(px) { return xMin + ((px - margin.left) / (viewWidth - margin.left - margin.right)) * (xMax - xMin); }
+      function worldY(py) { return yMax - ((py - margin.top) / (viewHeight - margin.top - margin.bottom)) * (yMax - yMin); }
+      function clamp(value, min, max) { return Math.min(max, Math.max(min, value)); }
+      function setA(value) {
+        let next = clamp(value, -2.4, 2.4);
+        if (Math.abs(next) < 0.16) next = next < 0 ? -0.16 : 0.16;
+        state.a = next;
+      }
+      function f(x) {
+        if (state.mode === "two_roots") return state.a * (x - state.leftRoot) * (x - state.rightRoot);
+        if (state.mode === "double_root") return state.a * (x - state.center) * (x - state.center);
+        return state.a * ((x - state.center) * (x - state.center) + 1.15);
+      }
+      function openingHandle() {
+        if (state.mode === "two_roots" && Math.abs(state.rightRoot - state.leftRoot) > 0.5) {
+          const x = (state.leftRoot + state.rightRoot) / 2;
+          const base = (x - state.leftRoot) * (x - state.rightRoot);
+          return { x, y: state.a * base, base };
+        }
+        const x = clamp(state.center + 1.1, xMin + 0.7, xMax - 0.7);
+        const base = state.mode === "double_root" ? (x - state.center) ** 2 : (x - state.center) ** 2 + 1.15;
+        return { x, y: state.a * base, base };
+      }
+      function rootPositions() {
+        if (state.mode === "two_roots") return [
+          { role: "left-root", x: state.leftRoot, y: 0, label: "x₁" },
+          { role: "right-root", x: state.rightRoot, y: 0, label: "x₂" },
+        ];
+        if (state.mode === "double_root") return [
+          { role: "left-root", x: state.center, y: 0, label: "重根" },
+          { role: "right-root", x: state.center, y: 0, label: "重根" },
+        ];
+        return [{ role: "left-root", x: state.center, y: f(state.center), label: "对称轴" }];
+      }
+      function pathFromPoints(points) {
+        return points.map((point, index) => `${index === 0 ? "M" : "L"}${sx(point.x).toFixed(2)} ${sy(point.y).toFixed(2)}`).join(" ");
+      }
+      function curvePath() {
+        const points = [];
+        for (let i = 0; i <= 180; i += 1) {
+          const x = xMin + ((xMax - xMin) * i) / 180;
+          points.push({ x, y: clamp(f(x), yMin, yMax) });
+        }
+        return pathFromPoints(points);
+      }
+      function coloredCurvePaths(kind) {
+        const targetPositive = kind === "positive";
+        const paths = [];
+        let current = [];
+        for (let i = 0; i <= 220; i += 1) {
+          const x = xMin + ((xMax - xMin) * i) / 220;
+          const y = f(x);
+          const visible = targetPositive ? y >= 0 : y < 0;
+          if (visible) current.push({ x, y: clamp(y, yMin, yMax) });
+          else {
+            if (current.length > 1) paths.push(pathFromPoints(current));
+            current = [];
+          }
+        }
+        if (current.length > 1) paths.push(pathFromPoints(current));
+        return paths;
+      }
+      function renderGraph() {
+        const grid = [];
+        for (let x = -5; x <= 5; x += 1) {
+          grid.push(`<line class="grid-line" x1="${sx(x)}" y1="${sy(yMin)}" x2="${sx(x)}" y2="${sy(yMax)}"></line>`);
+          if (x !== 0) grid.push(`<text class="axis-label" x="${sx(x)}" y="${sy(-0.28)}" text-anchor="middle">${x}</text>`);
+        }
+        for (let y = -5; y <= 5; y += 1) grid.push(`<line class="grid-line" x1="${sx(xMin)}" y1="${sy(y)}" x2="${sx(xMax)}" y2="${sy(y)}"></line>`);
+        const abovePaths = coloredCurvePaths("positive").map((path) => `<path class="curve-above" d="${path}"></path>`).join("");
+        const belowPaths = coloredCurvePaths("negative").map((path) => `<path class="curve-below" d="${path}"></path>`).join("");
+        const handle = openingHandle();
+        const roots = rootPositions().map((root, index) => `
+          <g>
+            <circle class="root-dot" cx="${sx(root.x)}" cy="${sy(root.y)}" r="6"></circle>
+            <circle class="hit-target" data-drag-role="${root.role}" cx="${sx(root.x)}" cy="${sy(root.y)}" r="24"></circle>
+            <text class="point-label" x="${sx(root.x)}" y="${sy(root.y) - 14 - index * 11}" text-anchor="middle">${root.label}</text>
+          </g>`).join("");
+
+        graph.innerHTML = `
+          <rect x="0" y="0" width="${viewWidth}" height="${viewHeight}" fill="transparent"></rect>
+          ${grid.join("")}
+          <line class="axis-line" x1="${sx(xMin)}" y1="${sy(0)}" x2="${sx(xMax)}" y2="${sy(0)}"></line>
+          <line class="axis-line" x1="${sx(0)}" y1="${sy(yMin)}" x2="${sx(0)}" y2="${sy(yMax)}"></line>
+          <text class="axis-label" x="${sx(xMax) - 10}" y="${sy(0) - 8}">x 轴</text>
+          <text class="region-label" x="${sx(xMin) + 14}" y="${sy(3.95)}">图像在 x 轴上方：f(x) &gt; 0</text>
+          <text class="region-label" x="${sx(xMin) + 14}" y="${sy(-4.35)}">图像在 x 轴下方：f(x) &lt; 0</text>
+          <path class="curve-base" d="${curvePath()}"></path>
+          ${abovePaths}${belowPaths}
+          <line class="guide-line" x1="${sx(handle.x)}" y1="${sy(0)}" x2="${sx(handle.x)}" y2="${sy(handle.y)}"></line>
+          ${roots}
+          <g>
+            <polygon class="opening-handle" points="${sx(handle.x)},${sy(handle.y) - 10} ${sx(handle.x) + 10},${sy(handle.y)} ${sx(handle.x)},${sy(handle.y) + 10} ${sx(handle.x) - 10},${sy(handle.y)}"></polygon>
+            <circle class="hit-target" data-drag-role="opening" cx="${sx(handle.x)}" cy="${sy(handle.y)}" r="28"></circle>
+            <text class="point-label" x="${sx(handle.x) + 16}" y="${sy(handle.y) - 12}">拖开口</text>
+          </g>`;
+      }
+      function renderAxisTrack(track, intervals, className) {
+        const ticks = [-4, -2, 0, 2, 4].map((tick) => {
+          const left = ((tick - xMin) / (xMax - xMin)) * 100;
+          return `<span class="tick" style="left:${left}%"></span><span class="tick-label" style="left:${left}%">${tick}</span>`;
+        }).join("");
+        const segments = intervals.map((interval) => {
+          const from = interval.from === -Infinity ? xMin : Math.max(xMin, interval.from);
+          const to = interval.to === Infinity ? xMax : Math.min(xMax, interval.to);
+          if (to <= xMin || from >= xMax || to <= from) return "";
+          const left = ((from - xMin) / (xMax - xMin)) * 100;
+          const width = ((to - from) / (xMax - xMin)) * 100;
+          return `<span class="interval-segment ${className}" style="left:${left}%; width:${width}%"></span>`;
+        }).join("");
+        track.innerHTML = `${segments}${ticks}`;
+      }
+      function snapshot(pattern = solveSignPattern(state)) {
+        return {
+          resourceId: RESOURCE_ID,
+          opening_a: Number(state.a.toFixed(3)),
+          root_mode: state.mode,
+          left_root: Number(state.leftRoot.toFixed(3)),
+          right_root: Number(state.rightRoot.toFixed(3)),
+          center: Number(state.center.toFixed(3)),
+          positive_solution: pattern.positiveText,
+          negative_solution: pattern.negativeText,
+          reveal_step: state.revealStep,
+        };
+      }
+      function post(type, payload) { window.parent?.postMessage({ type, payload, source: RESOURCE_ID }, "*"); }
+      function updateControls(pattern) {
+        document.getElementById("openingReadout").textContent = state.a > 0 ? "开口向上" : "开口向下";
+        document.getElementById("rootReadout").textContent = state.mode === "two_roots"
+          ? `${fmtNumber(Math.min(state.leftRoot, state.rightRoot))}，${fmtNumber(Math.max(state.leftRoot, state.rightRoot))}`
+          : state.mode === "double_root" ? `重根 ${fmtNumber(state.center)}` : "无实根";
+        document.getElementById("aboveReadout").textContent = pattern.aboveWhere;
+        document.getElementById("belowReadout").textContent = pattern.belowWhere;
+        document.getElementById("aboveSentence").textContent = pattern.aboveWhere;
+        document.getElementById("belowSentence").textContent = pattern.belowWhere;
+        document.getElementById("openingRule").textContent = pattern.boundaryNote;
+        for (const id of ["positiveText", "positiveSolution"]) document.getElementById(id).textContent = pattern.positiveText;
+        for (const id of ["negativeText", "negativeSolution"]) document.getElementById(id).textContent = pattern.negativeText;
+        document.getElementById("zeroSolution").textContent = pattern.zeroText;
+        document.getElementById("leftRootSlider").value = state.mode === "two_roots" ? state.leftRoot : state.center;
+        document.getElementById("rightRootSlider").value = state.mode === "two_roots" ? state.rightRoot : state.center;
+        document.getElementById("leftRootValue").textContent = fmtNumber(state.mode === "two_roots" ? state.leftRoot : state.center);
+        document.getElementById("rightRootValue").textContent = fmtNumber(state.mode === "two_roots" ? state.rightRoot : state.center);
+        document.getElementById("rightRootSlider").disabled = state.mode !== "two_roots";
+        document.querySelectorAll(".mode-button").forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.mode === state.mode)));
+        document.querySelectorAll(".opening-button").forEach((button) => button.setAttribute("aria-pressed", String((button.dataset.opening === "up") === (state.a > 0))));
+        document.querySelectorAll(".step-button").forEach((button) => button.setAttribute("aria-pressed", String(Number(button.dataset.step) === state.revealStep)));
+        const stageNotes = {
+          1: "先不背口诀，只把绿色曲线读成“上方”，把红色曲线读成“下方”。",
+          2: "数轴上的绿色区间来自图像在 x 轴上方的横坐标，红色区间来自图像在 x 轴下方的横坐标。",
+          3: "写解集时先判断要的是 f(x) > 0 还是 f(x) < 0，再把对应颜色的区间写下来。",
+          4: "重根和无实根不是新口诀，要回到图像是否穿过 x 轴、是否只碰 x 轴或完全不相交。",
+        };
+        document.getElementById("stageNote").textContent = stageNotes[state.revealStep];
+      }
+      function render(emit = true) {
+        const pattern = solveSignPattern(state);
+        renderGraph();
+        renderAxisTrack(positiveTrack, pattern.positiveIntervals, "positive");
+        renderAxisTrack(negativeTrack, pattern.negativeIntervals, "negative");
+        updateControls(pattern);
+        if (emit) post("applet:stateChanged", snapshot(pattern));
+      }
+      function setMode(mode) {
+        state.mode = mode;
+        if (mode === "double_root") {
+          state.center = (state.leftRoot + state.rightRoot) / 2;
+          state.leftRoot = state.center; state.rightRoot = state.center;
+        } else if (mode === "no_real") {
+          state.center = (state.leftRoot + state.rightRoot) / 2 || state.center;
+        } else {
+          state.leftRoot = clamp(state.center - 1.6, xMin + 0.5, xMax - 1.2);
+          state.rightRoot = clamp(state.center + 1.6, xMin + 1.2, xMax - 0.5);
+          if (state.rightRoot - state.leftRoot < 0.8) { state.leftRoot = -2; state.rightRoot = 2; }
+        }
+        render();
+      }
+
+      graph.setAttribute("viewBox", `0 0 ${viewWidth} ${viewHeight}`);
+      graph.addEventListener("pointerdown", (event) => {
+        const role = event.target?.dataset?.dragRole;
+        if (!role) return;
+        activeDrag = role;
+        graph.classList.add("dragging");
+        graph.setPointerCapture(event.pointerId);
+      });
+      graph.addEventListener("pointermove", (event) => {
+        if (!activeDrag) return;
+        const rect = graph.getBoundingClientRect();
+        const px = ((event.clientX - rect.left) / rect.width) * viewWidth;
+        const py = ((event.clientY - rect.top) / rect.height) * viewHeight;
+        const x = clamp(worldX(px), xMin + 0.35, xMax - 0.35);
+        const y = clamp(worldY(py), yMin + 0.35, yMax - 0.35);
+        if (activeDrag === "opening") {
+          const handle = openingHandle();
+          setA(y / handle.base);
+        } else if (state.mode === "two_roots") {
+          if (activeDrag === "left-root") state.leftRoot = clamp(x, xMin + 0.35, state.rightRoot - 0.35);
+          else state.rightRoot = clamp(x, state.leftRoot + 0.35, xMax - 0.35);
+          state.center = (state.leftRoot + state.rightRoot) / 2;
+        } else {
+          state.center = x; state.leftRoot = x; state.rightRoot = x;
+        }
+        render();
+      });
+      function endDrag(event) {
+        if (activeDrag && event.pointerId !== undefined) {
+          try { graph.releasePointerCapture(event.pointerId); } catch {}
+        }
+        activeDrag = null;
+        graph.classList.remove("dragging");
+      }
+      graph.addEventListener("pointerup", endDrag);
+      graph.addEventListener("pointercancel", endDrag);
+      document.querySelectorAll(".mode-button").forEach((button) => button.addEventListener("click", () => setMode(button.dataset.mode)));
+      document.querySelectorAll(".opening-button").forEach((button) => button.addEventListener("click", () => {
+        const magnitude = Math.max(0.35, Math.abs(state.a));
+        setA(button.dataset.opening === "up" ? magnitude : -magnitude);
+        render();
+      }));
+      document.querySelectorAll(".step-button").forEach((button) => button.addEventListener("click", () => {
+        state.revealStep = Number(button.dataset.step);
+        render();
+      }));
+      document.getElementById("leftRootSlider").addEventListener("input", (event) => {
+        const value = Number(event.target.value);
+        if (state.mode === "two_roots") {
+          state.leftRoot = clamp(value, xMin + 0.35, state.rightRoot - 0.35);
+          state.center = (state.leftRoot + state.rightRoot) / 2;
+        } else {
+          state.center = value; state.leftRoot = value; state.rightRoot = value;
+        }
+        render();
+      });
+      document.getElementById("rightRootSlider").addEventListener("input", (event) => {
+        state.rightRoot = clamp(Number(event.target.value), state.leftRoot + 0.35, xMax - 0.35);
+        state.center = (state.leftRoot + state.rightRoot) / 2;
+        render();
+      });
+      document.getElementById("resetButton").addEventListener("click", () => {
+        state.a = 0.7; state.mode = "two_roots"; state.leftRoot = -2; state.rightRoot = 2; state.center = 0; state.revealStep = 1;
+        render();
+      });
+      window.addEventListener("message", (event) => {
+        if (event.data?.type !== "player:init") return;
+        const incoming = event.data?.state;
+        if (incoming && typeof incoming === "object") {
+          if (typeof incoming.opening_a === "number") setA(incoming.opening_a);
+          if (["two_roots", "double_root", "no_real"].includes(incoming.root_mode)) state.mode = incoming.root_mode;
+          if (typeof incoming.left_root === "number") state.leftRoot = incoming.left_root;
+          if (typeof incoming.right_root === "number") state.rightRoot = incoming.right_root;
+          if (typeof incoming.center === "number") state.center = incoming.center;
+          if (typeof incoming.reveal_step === "number") state.revealStep = clamp(incoming.reveal_step, 1, 4);
+        }
+        render(false);
+        post("applet:ready", snapshot());
+      });
+      render(false);
+      post("applet:ready", snapshot());
+    </script>
+  </body>
+</html>

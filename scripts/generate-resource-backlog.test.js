@@ -15,9 +15,9 @@ test("generates a deterministic backlog from curriculum entry points and impleme
 
   assert.equal(backlog.source.curriculum, "content/curriculum/index.yaml");
   assert.equal(backlog.summary.total, 44);
-  assert.equal(backlog.summary.implemented, 26);
-  assert.equal(backlog.summary.planned, 18);
-  assert.deepEqual(backlog.summary.byType.applet, { total: 29, implemented: 15, planned: 14 });
+  assert.equal(backlog.summary.implemented, 29);
+  assert.equal(backlog.summary.planned, 15);
+  assert.deepEqual(backlog.summary.byType.applet, { total: 29, implemented: 18, planned: 11 });
   assert.deepEqual(backlog.summary.byType.manim_clip, { total: 5, implemented: 4, planned: 1 });
   assert.deepEqual(backlog.summary.byType.diagnosis, { total: 10, implemented: 7, planned: 3 });
 
@@ -33,9 +33,22 @@ test("generates a deterministic backlog from curriculum entry points and impleme
   assert.match(parameterInequalityApplet.threadPrompt, /只复核并推进 SH-HS-MATH-HJ-B1-C02-L04-A01/);
 
   const quadraticInequalityApplet = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B1-C02-L05-A01");
-  assert.equal(quadraticInequalityApplet.status, "planned");
+  assert.equal(quadraticInequalityApplet.status, "implemented");
+  assert.equal(quadraticInequalityApplet.availability, "metadata_ready");
   assert.equal(quadraticInequalityApplet.type, "applet");
-  assert.equal(quadraticInequalityApplet.scaffoldPolicy, "blocked_until_source_verified");
+  assert.equal(quadraticInequalityApplet.scaffoldPolicy, "ready_for_resource_work");
+
+  const expLogMirrorApplet = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B1-C04-L06-A01");
+  assert.equal(expLogMirrorApplet.status, "implemented");
+  assert.equal(expLogMirrorApplet.availability, "metadata_ready");
+  assert.equal(expLogMirrorApplet.type, "applet");
+  assert.equal(expLogMirrorApplet.scaffoldPolicy, "ready_for_resource_work");
+
+  const unitCircleTrigApplet = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B2-C06-L03-A01");
+  assert.equal(unitCircleTrigApplet.status, "implemented");
+  assert.equal(unitCircleTrigApplet.availability, "metadata_ready");
+  assert.equal(unitCircleTrigApplet.type, "applet");
+  assert.equal(unitCircleTrigApplet.scaffoldPolicy, "ready_for_resource_work");
 
   const meanInequalityManim = backlog.items.find((item) => item.id === "SH-HS-MATH-HJ-B1-C02-L08-M01");
   assert.equal(meanInequalityManim.status, "planned");
@@ -394,8 +407,8 @@ test("writes the backlog as stable pretty JSON", async () => {
     const written = JSON.parse(await readFile(outputPath, "utf8"));
 
     assert.equal(written.summary.total, 44);
-    assert.equal(written.summary.implemented, 26);
-    assert.equal(written.summary.planned, 18);
+    assert.equal(written.summary.implemented, 29);
+    assert.equal(written.summary.planned, 15);
     assert.equal(written.items[0].id, "SH-HS-MATH-HJ-B1-C02-L04-A01");
     assert.ok(
       JSON.stringify(written, null, 2).includes(

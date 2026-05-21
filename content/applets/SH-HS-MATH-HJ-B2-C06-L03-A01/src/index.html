@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>单位圆三角比与终边联动板</title>
+    <style>
+      :root {
+        --ink: #162033;
+        --muted: #607080;
+        --paper: #f5f7f1;
+        --panel: #ffffff;
+        --line: #d8e0dc;
+        --blue: #2563d8;
+        --orange: #d36b20;
+        --sine: #087b6f;
+        --tan: #7c4bb3;
+        --pos: #157347;
+        --neg: #b42318;
+        --zero: #66717c;
+        --pos-bg: #e4f3ea;
+        --neg-bg: #fde9e7;
+        --zero-bg: #edf1f4;
+        --shadow: 0 16px 36px rgba(22, 32, 51, 0.12);
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        min-height: 100svh;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+      }
+      button, input { font: inherit; }
+      .applet {
+        min-height: 100svh;
+        padding: 10px;
+        display: grid;
+        grid-template-rows: auto 1fr;
+        gap: 10px;
+      }
+      .topbar, .stage, .panel {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+        box-shadow: var(--shadow);
+      }
+      .topbar {
+        padding: 10px 12px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+      .eyebrow {
+        margin: 0 0 2px;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 800;
+      }
+      h1 {
+        margin: 0;
+        font-size: 20px;
+        line-height: 1.2;
+        letter-spacing: 0;
+      }
+      .workspace {
+        min-height: 0;
+        display: grid;
+        grid-template-columns: minmax(360px, 1fr) minmax(300px, 380px);
+        gap: 10px;
+      }
+      .stage {
+        min-height: 520px;
+        overflow: hidden;
+      }
+      svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+        min-height: 520px;
+        touch-action: none;
+        user-select: none;
+      }
+      .panel {
+        overflow: auto;
+        padding: 12px;
+      }
+      .controls, .preset-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+      }
+      button {
+        min-height: 40px;
+        border: 1px solid #ccd7d1;
+        border-radius: 8px;
+        background: #fbfcf9;
+        color: #213247;
+        padding: 6px 10px;
+        font-weight: 800;
+        cursor: pointer;
+      }
+      button[aria-pressed="true"], .primary {
+        border-color: var(--blue);
+        background: var(--blue);
+        color: #fff;
+      }
+      .readouts {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+      }
+      .metric, .box, .quadrant-card {
+        border: 1px solid #dce4df;
+        border-radius: 8px;
+        background: #fff;
+      }
+      .metric {
+        min-height: 70px;
+        padding: 9px;
+      }
+      .metric-label {
+        margin: 0 0 5px;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 850;
+      }
+      .metric-value {
+        display: block;
+        font-size: 18px;
+        font-weight: 900;
+        line-height: 1.25;
+      }
+      .metric-note {
+        display: block;
+        margin-top: 4px;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.35;
+      }
+      .positive { color: var(--pos); }
+      .negative { color: var(--neg); }
+      .zero, .undefined { color: var(--zero); }
+      .box {
+        margin-top: 10px;
+        padding: 10px;
+      }
+      .formula-line {
+        margin: 0;
+        font-size: 14px;
+        line-height: 1.65;
+        font-weight: 750;
+      }
+      .formula-line + .formula-line { margin-top: 4px; }
+      .slider-row {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 8px;
+        align-items: center;
+      }
+      input[type="range"] {
+        width: 100%;
+        accent-color: var(--blue);
+      }
+      output {
+        min-width: 66px;
+        border: 1px solid #cbd6d1;
+        border-radius: 7px;
+        background: #fff;
+        padding: 5px 7px;
+        text-align: center;
+        font-weight: 900;
+      }
+      .preset-row { margin-top: 8px; }
+      .quadrant-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+      }
+      .quadrant-card {
+        padding: 8px;
+      }
+      .quadrant-card.is-active {
+        border-color: var(--blue);
+        box-shadow: 0 0 0 3px rgba(37, 99, 216, 0.16);
+      }
+      .quadrant-title {
+        margin: 0 0 6px;
+        font-size: 13px;
+        font-weight: 900;
+      }
+      .badges {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 4px;
+      }
+      .sign-badge {
+        border-radius: 6px;
+        padding: 5px 3px;
+        text-align: center;
+        font-size: 12px;
+        font-weight: 900;
+      }
+      .sign-badge.positive { background: var(--pos-bg); color: var(--pos); }
+      .sign-badge.negative { background: var(--neg-bg); color: var(--neg); }
+      .sign-badge.zero, .sign-badge.undefined { background: var(--zero-bg); color: var(--zero); }
+      .math-frac {
+        display: inline-grid;
+        grid-template-rows: auto auto;
+        justify-items: center;
+        vertical-align: -0.35em;
+        line-height: 1;
+        font-size: 0.92em;
+      }
+      .math-frac > span:first-child {
+        border-bottom: 1px solid currentColor;
+        padding: 0 0.14em 0.08em;
+      }
+      .math-frac > span:last-child { padding-top: 0.08em; }
+      .rad-unit {
+        margin-left: 0.2em;
+        color: var(--muted);
+        font-size: 0.82em;
+      }
+      .axis { stroke: #7f8c8f; stroke-width: 1.6; }
+      .circle { fill: #fffdf8; stroke: #314457; stroke-width: 3; }
+      .terminal { stroke: var(--blue); stroke-width: 5; stroke-linecap: round; }
+      .guide { stroke: #9aa7a8; stroke-width: 1.8; stroke-dasharray: 6 6; }
+      .seg { stroke-width: 7; stroke-linecap: round; }
+      .seg.positive { stroke: var(--pos); }
+      .seg.negative { stroke: var(--neg); }
+      .seg.zero, .seg.undefined { stroke: var(--zero); }
+      .tan-line { stroke: var(--tan); stroke-width: 2.4; stroke-dasharray: 8 6; }
+      .point-p { fill: var(--blue); stroke: #fff; stroke-width: 4; cursor: grab; }
+      .point-t { fill: var(--tan); stroke: #fff; stroke-width: 4; }
+      .hit-handle { fill: transparent; stroke: transparent; pointer-events: all; cursor: grab; }
+      .label { fill: #26374b; font-size: 14px; font-weight: 850; }
+      .axis-label { fill: #61707e; font-size: 13px; font-weight: 800; }
+      .svg-math-foreign { overflow: visible; pointer-events: none; }
+      .svg-math-label {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #5a6674;
+        font-size: 13px;
+        font-weight: 850;
+      }
+      @media (max-width: 840px) {
+        .topbar, .workspace { display: block; }
+        .controls { margin-top: 10px; }
+        .stage, .panel { margin-top: 10px; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="applet">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">SH-HS-MATH-HJ-B2-C06-L03-A01 · draft</p>
+          <h1>单位圆三角比与终边联动板</h1>
+        </div>
+        <div class="controls">
+          <button id="resetButton" class="primary" type="button">重置</button>
+          <button id="minusTurnButton" type="button">−2π</button>
+          <button id="plusTurnButton" type="button">+2π</button>
+          <button id="toggleTangentButton" type="button" aria-pressed="true">正切线</button>
+        </div>
+      </header>
+
+      <section class="workspace">
+        <section class="stage" aria-label="单位圆终边与三角比几何图">
+          <svg id="unitSvg" viewBox="0 0 620 560" role="img" aria-label="可拖动终边点的单位圆">
+            <defs>
+              <marker id="arrow" markerWidth="12" markerHeight="12" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+                <path d="M0,0 L10,5 L0,10 z" fill="#2563d8"></path>
+              </marker>
+            </defs>
+            <line x1="70" y1="280" x2="550" y2="280" class="axis"></line>
+            <line x1="310" y1="520" x2="310" y2="40" class="axis"></line>
+            <text x="556" y="276" class="axis-label">x</text>
+            <text x="318" y="46" class="axis-label">y</text>
+            <text x="295" y="300" class="label">O</text>
+            <circle cx="310" cy="280" r="180" class="circle"></circle>
+            <foreignObject class="svg-math-foreign" x="470" y="290" width="80" height="28"><div class="svg-math-label">0, 2π</div></foreignObject>
+            <foreignObject class="svg-math-foreign" x="284" y="52" width="56" height="44"><div class="svg-math-label"><span class="math-frac"><span>π</span><span>2</span></span></div></foreignObject>
+            <foreignObject class="svg-math-foreign" x="92" y="290" width="44" height="28"><div class="svg-math-label">π</div></foreignObject>
+            <foreignObject class="svg-math-foreign" x="278" y="462" width="66" height="46"><div class="svg-math-label"><span class="math-frac"><span>3π</span><span>2</span></span></div></foreignObject>
+            <g id="tangentLayer">
+              <line id="tangentLine" x1="490" y1="62" x2="490" y2="498" class="tan-line"></line>
+              <text x="500" y="82" class="label">x = 1</text>
+              <line id="tanSegment" x1="490" y1="280" x2="490" y2="176" class="seg positive"></line>
+              <circle id="pointT" cx="490" cy="176" r="8" class="point-t"></circle>
+              <text id="pointTLabel" x="502" y="174" class="label">T</text>
+            </g>
+            <polyline id="angleArc" points="" fill="none" stroke="#2563d8" stroke-width="3" stroke-linecap="round"></polyline>
+            <text id="angleLabel" x="365" y="260" class="label">θ</text>
+            <line id="cosSegment" x1="310" y1="280" x2="466" y2="280" class="seg positive"></line>
+            <line id="sinSegment" x1="466" y1="280" x2="466" y2="190" class="seg positive"></line>
+            <line id="projectionGuide" x1="466" y1="280" x2="466" y2="190" class="guide"></line>
+            <line id="terminalRay" x1="310" y1="280" x2="466" y2="190" class="terminal" marker-end="url(#arrow)"></line>
+            <circle id="pointP" cx="466" cy="190" r="10" class="point-p"></circle>
+            <circle id="pointHit" cx="466" cy="190" r="44" class="hit-handle"></circle>
+            <text id="pointPLabel" x="478" y="185" class="label">P</text>
+            <text id="cosText" x="370" y="306" class="label">cos θ</text>
+            <text id="sinText" x="478" y="235" class="label">sin θ</text>
+          </svg>
+        </section>
+
+        <aside class="panel" aria-label="读数与象限符号">
+          <section class="readouts">
+            <article class="metric"><p class="metric-label">角度</p><span id="degreeValue" class="metric-value">30°</span><span id="positionValue" class="metric-note">第一象限</span></article>
+            <article class="metric"><p class="metric-label">弧度</p><span id="radianValue" class="metric-value"><span class="math-frac"><span>π</span><span>6</span></span></span><span class="metric-note">关键角分式排版</span></article>
+            <article class="metric"><p class="metric-label">单位圆上的点 P</p><span id="coordinateValue" class="metric-value">P = (0.866, 0.500)</span><span class="metric-note">P = (cos θ, sin θ)</span></article>
+            <article class="metric"><p class="metric-label">tan θ</p><span id="tanValue" class="metric-value positive">0.577</span><span id="tanNote" class="metric-note">切线 x = 1 上的有向高度</span></article>
+            <article class="metric"><p class="metric-label">cos θ</p><span id="cosValue" class="metric-value positive">0.866</span><span class="metric-note">横坐标 x</span></article>
+            <article class="metric"><p class="metric-label">sin θ</p><span id="sinValue" class="metric-value positive">0.500</span><span class="metric-note">纵坐标 y</span></article>
+          </section>
+          <section class="box">
+            <p class="formula-line">终边与单位圆交于点 P。</p>
+            <p class="formula-line">P = (cos θ, sin θ)，cos θ = x，sin θ = y。</p>
+            <p class="formula-line">当 cos θ ≠ 0 时，tan θ = <span class="math-frac"><span>sin θ</span><span>cos θ</span></span>。</p>
+          </section>
+          <section class="box">
+            <div class="slider-row">
+              <input id="angleSlider" type="range" min="-360" max="720" value="30" step="1" aria-label="角度" />
+              <output id="sliderOutput">30°</output>
+            </div>
+            <div class="preset-row" aria-label="关键角">
+              <button class="preset-button" type="button" data-angle="30"><span class="math-frac"><span>π</span><span>6</span></span></button>
+              <button class="preset-button" type="button" data-angle="90"><span class="math-frac"><span>π</span><span>2</span></span></button>
+              <button class="preset-button" type="button" data-angle="120"><span class="math-frac"><span>2π</span><span>3</span></span></button>
+              <button class="preset-button" type="button" data-angle="210"><span class="math-frac"><span>7π</span><span>6</span></span></button>
+              <button class="preset-button" type="button" data-angle="270"><span class="math-frac"><span>3π</span><span>2</span></span></button>
+              <button class="preset-button" type="button" data-angle="300"><span class="math-frac"><span>5π</span><span>3</span></span></button>
+            </div>
+          </section>
+          <section class="box">
+            <div id="quadrantGrid" class="quadrant-grid">
+              <article class="quadrant-card" data-quadrant="I"><p class="quadrant-title">第一象限</p><div class="badges"><span class="sign-badge positive">sin +</span><span class="sign-badge positive">cos +</span><span class="sign-badge positive">tan +</span></div></article>
+              <article class="quadrant-card" data-quadrant="II"><p class="quadrant-title">第二象限</p><div class="badges"><span class="sign-badge positive">sin +</span><span class="sign-badge negative">cos −</span><span class="sign-badge negative">tan −</span></div></article>
+              <article class="quadrant-card" data-quadrant="III"><p class="quadrant-title">第三象限</p><div class="badges"><span class="sign-badge negative">sin −</span><span class="sign-badge negative">cos −</span><span class="sign-badge positive">tan +</span></div></article>
+              <article class="quadrant-card" data-quadrant="IV"><p class="quadrant-title">第四象限</p><div class="badges"><span class="sign-badge negative">sin −</span><span class="sign-badge positive">cos +</span><span class="sign-badge negative">tan −</span></div></article>
+            </div>
+            <p id="axisStatus" class="metric-note">当前不在坐标轴上，按所在象限读取符号。</p>
+          </section>
+        </aside>
+      </section>
+    </main>
+    <script>
+      const RESOURCE_ID = "SH-HS-MATH-HJ-B2-C06-L03-A01";
+      const SDK = "sh-hs-math-applet-sdk";
+      const TWO_PI = Math.PI * 2;
+      const C = { x: 310, y: 280 };
+      const S = 180;
+      let seq = 0;
+      let theta = Math.PI / 6;
+      let tangentVisible = true;
+      let instanceId = "standalone-preview";
+      const dragHitStyle = { r: 44, class: "hit-handle" };
+      const $ = (id) => document.querySelector(id);
+      const svg = $("#unitSvg");
+      const ids = ["terminalRay","pointP","pointHit","pointPLabel","cosSegment","sinSegment","projectionGuide","tanSegment","pointT","pointTLabel","angleArc","angleLabel","degreeValue","radianValue","positionValue","coordinateValue","tanValue","tanNote","cosValue","sinValue","angleSlider","sliderOutput","axisStatus","tangentLayer","toggleTangentButton"].reduce((acc, id) => (acc[id] = $("#" + id), acc), {});
+      function norm(a) { return ((a % TWO_PI) + TWO_PI) % TWO_PI; }
+      function screen(x, y) { return { x: C.x + x * S, y: C.y - y * S }; }
+      function line(el, a, b) { el.setAttribute("x1", a.x); el.setAttribute("y1", a.y); el.setAttribute("x2", b.x); el.setAttribute("y2", b.y); }
+      function circ(el, p, r = 10, cls) { el.setAttribute("cx", p.x); el.setAttribute("cy", p.y); el.setAttribute("r", r); if (cls) el.setAttribute("class", cls); }
+      function clean(v) { return Math.abs(v) < 0.0005 ? 0 : v; }
+      function fmt(v) { return v === null ? "无定义" : (clean(v) === 0 ? "0.000" : clean(v).toFixed(3)); }
+      function gcd(a, b) { a = Math.abs(a); b = Math.abs(b); while (b) [a, b] = [b, a % b]; return a || 1; }
+      function ntext(n) { const s = n < 0 ? "−" : ""; const a = Math.abs(n); return a === 1 ? `${s}π` : `${s}${a}π`; }
+      function radHtml(a) {
+        const r = a / Math.PI;
+        if (Math.abs(r) < 1e-8) return `0<span class="rad-unit">rad</span>`;
+        for (const d of [1,2,3,4,6,12]) {
+          const n = Math.round(r * d);
+          if (Math.abs(r - n / d) < 1e-8) {
+            const g = gcd(n, d), nn = n / g, dd = d / g;
+            if (dd === 1) return `${nn === 1 ? "π" : nn === -1 ? "−π" : `${nn}π`}<span class="rad-unit">rad</span>`;
+            return `<span class="math-frac"><span>${ntext(nn)}</span><span>${dd}</span></span><span class="rad-unit">rad</span>`;
+          }
+        }
+        return `${a.toFixed(3)}<span class="rad-unit">rad</span>`;
+      }
+      function signClass(v, defined = true) { return !defined ? "undefined" : Math.abs(v) < 0.0005 ? "zero" : v > 0 ? "positive" : "negative"; }
+      function setSigned(el, v, defined = true) {
+        const c = signClass(v, defined);
+        el.classList.toggle("positive", c === "positive");
+        el.classList.toggle("negative", c === "negative");
+        el.classList.toggle("zero", c === "zero");
+        el.classList.toggle("undefined", c === "undefined");
+      }
+      function quadrant(cos, sin) {
+        if (Math.abs(cos) < 0.0005 && sin > 0) return "positive_y_axis";
+        if (Math.abs(cos) < 0.0005 && sin < 0) return "negative_y_axis";
+        if (Math.abs(sin) < 0.0005 && cos > 0) return "positive_x_axis";
+        if (Math.abs(sin) < 0.0005 && cos < 0) return "negative_x_axis";
+        if (cos > 0 && sin > 0) return "I";
+        if (cos < 0 && sin > 0) return "II";
+        if (cos < 0 && sin < 0) return "III";
+        return "IV";
+      }
+      function qLabel(q) { return ({I:"第一象限",II:"第二象限",III:"第三象限",IV:"第四象限",positive_y_axis:"正 y 轴",negative_y_axis:"负 y 轴",positive_x_axis:"正 x 轴",negative_x_axis:"负 x 轴"})[q]; }
+      function updateQuadrantCards(q) {
+        document.querySelectorAll(".quadrant-card").forEach((card) => card.classList.toggle("is-active", card.dataset.quadrant === q));
+      }
+      function statePayload() {
+        const a = norm(theta), cos = clean(Math.cos(a)), sin = clean(Math.sin(a)), def = Math.abs(cos) >= 0.0005;
+        return { theta, point_p: { x: cos, y: sin }, trig_values: { sin, cos, tan: def ? sin / cos : null, tan_defined: def }, quadrant_state: quadrant(cos, sin) };
+      }
+      function post(type, payload) {
+        window.parent?.postMessage({ sdk: SDK, sdkVersion: "0.1.0", resourceId: RESOURCE_ID, instanceId, type, seq: ++seq, timestamp: new Date().toISOString(), payload }, "*");
+      }
+      function render(emit = false) {
+        const st = statePayload(), { cos, sin, tan, tan_defined } = st.trig_values;
+        const O = screen(0, 0), P = screen(cos, sin), F = screen(cos, 0);
+        line(ids.terminalRay, O, P); line(ids.cosSegment, O, F); line(ids.sinSegment, F, P); line(ids.projectionGuide, F, P);
+        circ(ids.pointP, P); circ(ids.pointHit, P, dragHitStyle.r, dragHitStyle.class);
+        ids.pointPLabel.setAttribute("x", P.x + (cos >= 0 ? 12 : -28)); ids.pointPLabel.setAttribute("y", P.y - 10);
+        setSigned(ids.cosSegment, cos); setSigned(ids.sinSegment, sin);
+        if (tan_defined) {
+          const T = screen(1, Math.max(-1.35, Math.min(1.35, tan)));
+          line(ids.tanSegment, screen(1,0), T); circ(ids.pointT, T, 8); ids.tanSegment.style.opacity = "1"; ids.pointT.style.opacity = "1"; ids.pointTLabel.style.opacity = "1"; setSigned(ids.tanSegment, tan);
+        } else {
+          ids.tanSegment.style.opacity = "0.25"; ids.pointT.style.opacity = "0"; ids.pointTLabel.style.opacity = "0"; setSigned(ids.tanSegment, 0, false);
+        }
+        const points = []; const a = norm(theta); for (let i = 0; i <= 32; i++) { const t = a * i / 32; const p = screen(Math.cos(t) * 0.32, Math.sin(t) * 0.32); points.push(`${p.x.toFixed(1)},${p.y.toFixed(1)}`); }
+        ids.angleArc.setAttribute("points", points.join(" "));
+        const deg = Math.round(theta * 180 / Math.PI);
+        ids.degreeValue.textContent = `${deg}°`; ids.sliderOutput.textContent = `${deg}°`; ids.angleSlider.value = String(Math.max(-360, Math.min(720, deg)));
+        ids.radianValue.innerHTML = radHtml(theta); ids.positionValue.textContent = qLabel(st.quadrant_state);
+        ids.coordinateValue.textContent = `P = (${fmt(cos)}, ${fmt(sin)})`;
+        ids.cosValue.textContent = fmt(cos); ids.sinValue.textContent = fmt(sin); ids.tanValue.textContent = fmt(tan_defined ? tan : null);
+        ids.tanNote.textContent = tan_defined ? "切线 x = 1 上的有向高度" : "cos θ = 0，tan θ 无定义";
+        setSigned(ids.cosValue, cos); setSigned(ids.sinValue, sin); setSigned(ids.tanValue, tan || 0, tan_defined);
+        ids.axisStatus.textContent = tan_defined ? `当前在${qLabel(st.quadrant_state)}，符号可由颜色直接观察。` : "当前在 y 轴上：cos θ = 0，tan θ 无定义。";
+        ids.tangentLayer.style.display = tangentVisible ? "" : "none"; ids.toggleTangentButton.setAttribute("aria-pressed", String(tangentVisible));
+        updateQuadrantCards(st.quadrant_state);
+        if (emit) post("applet:stateChanged", { state: st, patch: st, domainEvent: "angle_changed" });
+      }
+      function setTheta(value) { theta = Math.max(-TWO_PI, Math.min(4 * Math.PI, value)); render(true); }
+      ids.angleSlider.addEventListener("input", () => setTheta(Number(ids.angleSlider.value) * Math.PI / 180));
+      document.querySelectorAll(".preset-button").forEach((b) => b.addEventListener("click", () => setTheta(Number(b.dataset.angle) * Math.PI / 180)));
+      $("#resetButton").addEventListener("click", () => { tangentVisible = true; setTheta(Math.PI / 6); });
+      $("#minusTurnButton").addEventListener("click", () => setTheta(theta - TWO_PI));
+      $("#plusTurnButton").addEventListener("click", () => setTheta(theta + TWO_PI));
+      ids.toggleTangentButton.addEventListener("click", () => { tangentVisible = !tangentVisible; render(true); });
+      let dragging = false;
+      function local(e) { const p = svg.createSVGPoint(); p.x = e.clientX; p.y = e.clientY; const q = p.matrixTransform(svg.getScreenCTM().inverse()); return { x: (q.x - C.x) / S, y: -(q.y - C.y) / S }; }
+      ids.pointP.addEventListener("pointerdown", (e) => { dragging = true; svg.setPointerCapture?.(e.pointerId); e.preventDefault(); });
+      ids.pointHit.addEventListener("pointerdown", (e) => { dragging = true; svg.setPointerCapture?.(e.pointerId); e.preventDefault(); });
+      svg.addEventListener("pointermove", (e) => { if (!dragging) return; const p = local(e); if (Math.hypot(p.x, p.y) < 0.08) return; const turns = Math.round((theta - norm(theta)) / TWO_PI); setTheta(norm(Math.atan2(p.y, p.x)) + turns * TWO_PI); });
+      svg.addEventListener("pointerup", () => { dragging = false; });
+      svg.addEventListener("pointercancel", () => { dragging = false; });
+      window.addEventListener("message", (event) => {
+        const msg = event.data; if (!msg || msg.sdk !== SDK) return; if (msg.instanceId) instanceId = msg.instanceId;
+        if (msg.type === "player:init") { if (typeof msg.payload?.initialState?.theta === "number") theta = msg.payload.initialState.theta; render(); post("applet:ready", { supportedSdkVersion: "0.1.0", initialState: statePayload() }); }
+        if (msg.type === "player:setState" && typeof msg.payload?.state?.theta === "number") setTheta(msg.payload.state.theta);
+        if (msg.type === "player:command" && msg.payload?.command === "reset") setTheta(Math.PI / 6);
+      });
+      render();
+      post("applet:ready", { supportedSdkVersion: "0.1.0", initialState: statePayload() });
+    </script>
+  </body>
+</html>

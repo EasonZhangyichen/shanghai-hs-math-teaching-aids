@@ -16,13 +16,13 @@
   },
   "summary": {
     "total": 44,
-    "implemented": 26,
-    "planned": 18,
+    "implemented": 29,
+    "planned": 15,
     "byType": {
       "applet": {
         "total": 29,
-        "implemented": 15,
-        "planned": 14
+        "implemented": 18,
+        "planned": 11
       },
       "manim_clip": {
         "total": 5,
@@ -72,8 +72,8 @@
     {
       "id": "SH-HS-MATH-HJ-B1-C02-L05-A01",
       "type": "applet",
-      "status": "planned",
-      "availability": "planned",
+      "status": "implemented",
+      "availability": "metadata_ready",
       "title": "二次不等式与函数符号区间联动板",
       "proposedTitle": "二次不等式与函数符号区间联动板",
       "lessonId": "SH-HS-MATH-HJ-B1-C02-L05",
@@ -94,12 +94,12 @@
       "note": "调节二次项系数、判别式和零点位置，同步观察抛物线开口、与x轴交点、符号区间和解集表示；数字化比板书更能呈现从两个实根、重根到无实根时解集形态的变化，并为第5章函数观点求解作桥接。不做因式分解刷题、套表格或机械解二次不等式。仅为 draft planned，未终核前禁止 scaffold。",
       "priority": "chapter_backlog",
       "priorityReason": "二次不等式与二次函数图像、零点和符号区间的对应具有明确动态可视化价值；但课时边界未终核前禁止 scaffold。",
-      "packagePath": null,
-      "metadataPath": null,
-      "recommendedTrack": "track/curriculum-map",
-      "scaffoldPolicy": "blocked_until_source_verified",
-      "nextAction": "先完成纸质教材、教师用书或已登录 dolearning/上海数字教学平台终核；终核前只保留为 planned 候选，不创建资源包、不 scaffold。",
-      "threadPrompt": "请先读取项目锚点文件和 content/production/resource-backlog.json，然后切到 track/curriculum-map。这次只核对 SH-HS-MATH-HJ-B1-C02-L05-A01（Applet）是否已经满足制作前提，对应课时 SH-HS-MATH-HJ-B1-C02-L05「一元二次不等式的求解」。不要创建资源包，不 scaffold，不渲染；只做纸质教材、教师用书或已登录 dolearning/上海数字教学平台的课时边界和数字化必要性终核。完成后运行 npm run generate:backlog 和 npm run verify，更新 docs/01-current-state.md 与 docs/02-next-actions.md，并提交。"
+      "packagePath": "content/applets/SH-HS-MATH-HJ-B1-C02-L05-A01",
+      "metadataPath": "content/applets/SH-HS-MATH-HJ-B1-C02-L05-A01/metadata.yaml",
+      "recommendedTrack": "track/trig-sample-pack",
+      "scaffoldPolicy": "ready_for_resource_work",
+      "nextAction": "完成数学边界复核、课堂节奏试读和浏览器交互验证，再决定是否进入 math_review。",
+      "threadPrompt": "请先读取项目锚点文件和 content/production/resource-backlog.json，然后切到 track/trig-sample-pack。这次只复核并推进 SH-HS-MATH-HJ-B1-C02-L05-A01（Applet），对应课时 SH-HS-MATH-HJ-B1-C02-L05「一元二次不等式的求解」。先确认教学痛点、认知动作、文件规范和验收标准，再动手；完成后运行 npm run generate:backlog 和 npm run verify，更新 docs/01-current-state.md 与 docs/02-next-actions.md，并提交。"
     },
     {
       "id": "SH-HS-MATH-HJ-B1-C02-L08-M01",
@@ -200,8 +200,8 @@
     {
       "id": "SH-HS-MATH-HJ-B1-C04-L06-A01",
       "type": "applet",
-      "status": "planned",
-      "availability": "planned",
+      "status": "implemented",
+      "availability": "metadata_ready",
       "title": "指数对数互反图像镜像板",
       "proposedTitle": "指数对数互反图像镜像板",
       "lessonId": "SH-HS-MATH-HJ-B1-C04-L06",
@@ -222,12 +222,12 @@
       "note": "拖动指数函数图像上的点，同步交换坐标生成对数函数点，展示定义域/值域互换和关于 y = x 的对称；数字化比板书更能显化点的动态对应。不做对数定义背诵或换底公式练习。仅为 draft planned，纸质教材或已登录平台终核前禁止 scaffold。",
       "priority": "follow_up",
       "priorityReason": "指数对数互反和三类函数增长模型具有明确可视化价值，但需先确认课时边界，并评估是否与第5章函数应用资源合并；未终核前禁止 scaffold。",
-      "packagePath": null,
-      "metadataPath": null,
-      "recommendedTrack": "track/curriculum-map",
-      "scaffoldPolicy": "blocked_until_source_verified",
-      "nextAction": "先完成纸质教材、教师用书或已登录 dolearning/上海数字教学平台终核；终核前只保留为 planned 候选，不创建资源包、不 scaffold。",
-      "threadPrompt": "请先读取项目锚点文件和 content/production/resource-backlog.json，然后切到 track/curriculum-map。这次只核对 SH-HS-MATH-HJ-B1-C04-L06-A01（Applet）是否已经满足制作前提，对应课时 SH-HS-MATH-HJ-B1-C04-L06「对数函数的性质」。不要创建资源包，不 scaffold，不渲染；只做纸质教材、教师用书或已登录 dolearning/上海数字教学平台的课时边界和数字化必要性终核。完成后运行 npm run generate:backlog 和 npm run verify，更新 docs/01-current-state.md 与 docs/02-next-actions.md，并提交。"
+      "packagePath": "content/applets/SH-HS-MATH-HJ-B1-C04-L06-A01",
+      "metadataPath": "content/applets/SH-HS-MATH-HJ-B1-C04-L06-A01/metadata.yaml",
+      "recommendedTrack": "track/trig-sample-pack",
+      "scaffoldPolicy": "ready_for_resource_work",
+      "nextAction": "完成数学边界复核、课堂节奏试读和浏览器交互验证，再决定是否进入 math_review。",
+      "threadPrompt": "请先读取项目锚点文件和 content/production/resource-backlog.json，然后切到 track/trig-sample-pack。这次只复核并推进 SH-HS-MATH-HJ-B1-C04-L06-A01（Applet），对应课时 SH-HS-MATH-HJ-B1-C04-L06「对数函数的性质」。先确认教学痛点、认知动作、文件规范和验收标准，再动手；完成后运行 npm run generate:backlog 和 npm run verify，更新 docs/01-current-state.md 与 docs/02-next-actions.md，并提交。"
     },
     {
       "id": "SH-HS-MATH-HJ-B1-C04-L06-A02",
@@ -424,8 +424,8 @@
     {
       "id": "SH-HS-MATH-HJ-B2-C06-L03-A01",
       "type": "applet",
-      "status": "planned",
-      "availability": "planned",
+      "status": "implemented",
+      "availability": "metadata_ready",
       "title": "单位圆三角比与终边联动板",
       "proposedTitle": "单位圆三角比与终边联动板",
       "lessonId": "SH-HS-MATH-HJ-B2-C06-L03",
@@ -446,12 +446,12 @@
       "note": "拖动单位圆终边，同步显示坐标、四个三角比、象限符号和无定义状态，突出三角比几何意义与第7章函数值来源。",
       "priority": "chapter_backlog",
       "priorityReason": "单位圆三角比直接支撑后续正弦、余弦、正切函数值来源，也适合暴露象限和定义域误区。",
-      "packagePath": null,
-      "metadataPath": null,
-      "recommendedTrack": "track/curriculum-map",
-      "scaffoldPolicy": "blocked_until_source_verified",
-      "nextAction": "先完成纸质教材、教师用书或已登录 dolearning/上海数字教学平台终核；终核前只保留为 planned 候选，不创建资源包、不 scaffold。",
-      "threadPrompt": "请先读取项目锚点文件和 content/production/resource-backlog.json，然后切到 track/curriculum-map。这次只核对 SH-HS-MATH-HJ-B2-C06-L03-A01（Applet）是否已经满足制作前提，对应课时 SH-HS-MATH-HJ-B2-C06-L03「任意角的正弦、余弦、正切、余切」。不要创建资源包，不 scaffold，不渲染；只做纸质教材、教师用书或已登录 dolearning/上海数字教学平台的课时边界和数字化必要性终核。完成后运行 npm run generate:backlog 和 npm run verify，更新 docs/01-current-state.md 与 docs/02-next-actions.md，并提交。"
+      "packagePath": "content/applets/SH-HS-MATH-HJ-B2-C06-L03-A01",
+      "metadataPath": "content/applets/SH-HS-MATH-HJ-B2-C06-L03-A01/metadata.yaml",
+      "recommendedTrack": "track/trig-sample-pack",
+      "scaffoldPolicy": "ready_for_resource_work",
+      "nextAction": "完成数学边界复核、课堂节奏试读和浏览器交互验证，再决定是否进入 math_review。",
+      "threadPrompt": "请先读取项目锚点文件和 content/production/resource-backlog.json，然后切到 track/trig-sample-pack。这次只复核并推进 SH-HS-MATH-HJ-B2-C06-L03-A01（Applet），对应课时 SH-HS-MATH-HJ-B2-C06-L03「任意角的正弦、余弦、正切、余切」。先确认教学痛点、认知动作、文件规范和验收标准，再动手；完成后运行 npm run generate:backlog 和 npm run verify，更新 docs/01-current-state.md 与 docs/02-next-actions.md，并提交。"
     },
     {
       "id": "SH-HS-MATH-HJ-B2-C06-L03-D01",
