@@ -1,0 +1,849 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>参数不等式解集数轴实验室</title>
+    <style>
+      :root {
+        --ink: #17211d;
+        --muted: #5d685f;
+        --paper: #f7faf6;
+        --panel: #ffffff;
+        --line: #d7e0d7;
+        --axis: #8ca08e;
+        --solution: #0f766e;
+        --solution-soft: rgba(15, 118, 110, 0.14);
+        --flip: #c2410c;
+        --zero: #6d28d9;
+        --zero-soft: rgba(109, 40, 217, 0.12);
+        --empty: #b42318;
+        --empty-soft: rgba(180, 35, 24, 0.12);
+        --shadow: 0 18px 42px rgba(23, 33, 29, 0.12);
+        --workspace-height: clamp(396px, calc(100svh - 120px), 520px);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-width: 320px;
+        min-height: 100svh;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+      }
+
+      button,
+      input {
+        font: inherit;
+      }
+
+      .applet {
+        min-height: 100svh;
+        display: grid;
+        grid-template-rows: auto auto;
+        align-content: start;
+        gap: 8px;
+        padding: 8px;
+      }
+
+      .topbar,
+      .board,
+      .panel {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+        box-shadow: var(--shadow);
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 8px 10px;
+      }
+
+      .lesson,
+      .label {
+        margin: 0 0 4px;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 720;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 18px;
+        line-height: 1.18;
+        letter-spacing: 0;
+      }
+
+      .stepbar,
+      .button-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
+      .stepbar {
+        justify-content: flex-end;
+      }
+
+      .tool-button,
+      .choice-button {
+        min-height: 40px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fbfdfb;
+        color: var(--ink);
+        padding: 6px 9px;
+        cursor: pointer;
+      }
+
+      .tool-button[aria-pressed="true"],
+      .choice-button[aria-pressed="true"] {
+        border-color: var(--solution);
+        background: var(--solution-soft);
+        color: #0f4f49;
+        font-weight: 760;
+      }
+
+      .tool-button:focus-visible,
+      .choice-button:focus-visible,
+      input:focus-visible {
+        outline: 3px solid rgba(15, 118, 110, 0.26);
+        outline-offset: 2px;
+      }
+
+      .workspace {
+        display: grid;
+        grid-template-columns: minmax(330px, 1fr) minmax(260px, 332px);
+        gap: 8px;
+      }
+
+      .board {
+        min-width: 0;
+        height: var(--workspace-height);
+        min-height: var(--workspace-height);
+        overflow: hidden;
+        display: grid;
+        grid-template-rows: auto minmax(0, 1fr) auto;
+        gap: 8px;
+        padding: 10px;
+      }
+
+      .equation-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.1fr) minmax(230px, 0.9fr);
+        gap: 8px;
+      }
+
+      .equation-card,
+      .classification-card,
+      .stage-note,
+      .readout,
+      .solution-box,
+      .summary-list li {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fbfdfb;
+      }
+
+      .equation-card,
+      .classification-card {
+        min-width: 0;
+        padding: 9px 10px;
+      }
+
+      .formula-main {
+        margin: 0;
+        font-size: 23px;
+        line-height: 1.24;
+        font-weight: 820;
+      }
+
+      .formula-sub {
+        margin: 5px 0 0;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.35;
+      }
+
+      .classification-card {
+        display: grid;
+        align-content: center;
+        gap: 4px;
+        font-size: 14px;
+        line-height: 1.36;
+      }
+
+      .classification-card strong {
+        font-size: 16px;
+      }
+
+      .classification-card.flip strong {
+        color: var(--flip);
+      }
+
+      .classification-card.zero strong {
+        color: var(--zero);
+      }
+
+      .classification-card.empty strong {
+        color: var(--empty);
+      }
+
+      svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+        min-height: 0;
+        touch-action: none;
+      }
+
+      .axis-line {
+        stroke: var(--axis);
+        stroke-width: 3;
+        stroke-linecap: round;
+      }
+
+      .tick-line {
+        stroke: var(--axis);
+        stroke-width: 1.5;
+      }
+
+      .tick-label {
+        fill: var(--muted);
+        font-size: 13px;
+        font-weight: 650;
+      }
+
+      .solution-ray {
+        stroke: var(--solution);
+        stroke-width: 11;
+        stroke-linecap: round;
+      }
+
+      .solution-ray.all {
+        stroke: var(--zero);
+      }
+
+      .critical-guide {
+        stroke: var(--ink);
+        stroke-width: 1.6;
+        stroke-dasharray: 6 5;
+        opacity: 0.62;
+      }
+
+      .critical-point {
+        stroke: var(--ink);
+        stroke-width: 3;
+      }
+
+      .critical-point.open {
+        fill: var(--panel);
+      }
+
+      .critical-point.closed {
+        fill: var(--ink);
+      }
+
+      .critical-label,
+      .solution-label,
+      .empty-label {
+        fill: var(--ink);
+        font-size: 15px;
+        font-weight: 780;
+      }
+
+      .solution-label {
+        fill: #0f4f49;
+      }
+
+      .empty-label {
+        fill: var(--empty);
+      }
+
+      .stage-note {
+        min-height: 50px;
+        padding: 8px 10px;
+        font-size: 13px;
+        line-height: 1.42;
+      }
+
+      .stage-note strong {
+        color: #0f4f49;
+      }
+
+      .panel {
+        height: var(--workspace-height);
+        max-height: var(--workspace-height);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .panel-inner {
+        min-height: 0;
+        overflow-y: auto;
+      }
+
+      .panel-section {
+        padding: 8px 9px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .panel-section:last-child {
+        border-bottom: 0;
+      }
+
+      .slider-wrap {
+        display: grid;
+        gap: 6px;
+        margin-bottom: 9px;
+      }
+
+      .slider-label {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 680;
+      }
+
+      .slider-label strong {
+        color: var(--ink);
+      }
+
+      input[type="range"] {
+        width: 100%;
+        accent-color: var(--solution);
+      }
+
+      .readout-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 6px;
+      }
+
+      .readout {
+        min-height: 52px;
+        padding: 7px;
+      }
+
+      .readout strong {
+        display: block;
+        margin-bottom: 3px;
+        color: var(--muted);
+        font-size: 11px;
+      }
+
+      .readout span {
+        display: block;
+        font-size: 15px;
+        line-height: 1.22;
+        font-weight: 780;
+      }
+
+      .solution-box {
+        border-color: rgba(15, 118, 110, 0.28);
+        background: var(--solution-soft);
+        padding: 8px 9px;
+        line-height: 1.38;
+      }
+
+      .solution-box.empty {
+        border-color: rgba(180, 35, 24, 0.28);
+        background: var(--empty-soft);
+      }
+
+      .solution-box.all {
+        border-color: rgba(109, 40, 217, 0.28);
+        background: var(--zero-soft);
+      }
+
+      .solution-box p {
+        margin: 0;
+      }
+
+      .solution-text {
+        font-size: 17px;
+        font-weight: 820;
+      }
+
+      .math-inline {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.22em;
+        white-space: nowrap;
+        vertical-align: middle;
+      }
+
+      .math-frac {
+        display: inline-grid;
+        grid-template-rows: auto auto;
+        justify-items: center;
+        min-width: 1.2em;
+        margin: 0 0.05em;
+        line-height: 1;
+        vertical-align: middle;
+      }
+
+      .math-frac .math-num,
+      .math-frac .math-den {
+        display: block;
+        padding: 0 0.08em;
+      }
+
+      .math-frac .math-num {
+        border-bottom: 1.4px solid currentColor;
+        padding-bottom: 0.08em;
+      }
+
+      .math-frac .math-den {
+        padding-top: 0.08em;
+      }
+
+      .summary-list {
+        display: grid;
+        gap: 7px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        font-size: 13px;
+        line-height: 1.38;
+      }
+
+      .summary-list li {
+        padding: 7px 8px;
+      }
+
+      .summary-list b {
+        color: #0f4f49;
+      }
+
+      @media (max-height: 650px) {
+        .summary-section {
+          display: none;
+        }
+
+        .readout {
+          min-height: 46px;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .workspace {
+          grid-template-columns: 1fr;
+        }
+
+        .board,
+        .panel {
+          height: auto;
+          max-height: none;
+        }
+
+        .board {
+          min-height: 560px;
+        }
+
+        .panel-inner {
+          overflow: visible;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .topbar {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .stepbar {
+          justify-content: flex-start;
+        }
+
+        .equation-grid,
+        .readout-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="applet" aria-label="参数不等式解集数轴实验室">
+      <header class="topbar">
+        <div>
+          <p class="lesson">必修第一册 2.2.1 一元一次不等式</p>
+          <h1>参数不等式解集数轴实验室</h1>
+        </div>
+        <nav class="stepbar" aria-label="分步揭示">
+          <button class="tool-button" id="prev-step" type="button">上一步</button>
+          <button class="tool-button" id="next-step" type="button">下一步</button>
+          <button class="tool-button" id="reset-button" type="button">重置</button>
+        </nav>
+      </header>
+
+      <section class="workspace">
+        <section class="board" aria-label="不等式和数轴解集">
+          <div class="equation-grid">
+            <div class="equation-card">
+              <p class="label">当前不等式</p>
+              <p class="formula-main" id="inequality-readout" data-testid="inequality-readout">2x − 4 ≤ 0</p>
+              <p class="formula-sub">
+                临界点公式：
+                <span class="math-inline">x = <span class="math-frac" aria-label="a分之负b"><span class="math-num">−b</span><span class="math-den">a</span></span></span>
+              </p>
+            </div>
+            <div class="classification-card" id="classification-card">
+              <strong id="classification-title">a &gt; 0：方向不变</strong>
+              <span id="classification-text">先按原不等号读 x 的范围。</span>
+            </div>
+          </div>
+
+          <svg id="number-line" viewBox="0 0 820 260" role="img" aria-label="数轴上的解集阴影"></svg>
+          <div class="stage-note" id="stage-note" data-testid="stage-note"></div>
+        </section>
+
+        <aside class="panel" aria-label="参数控制和同步读数">
+          <div class="panel-inner">
+            <section class="panel-section">
+              <p class="label">参数</p>
+              <label class="slider-wrap">
+                <span class="slider-label"><span>系数 a</span><strong id="a-value">2</strong></span>
+                <input id="a-slider" type="range" min="-4" max="4" step="0.5" value="2" />
+              </label>
+              <label class="slider-wrap">
+                <span class="slider-label"><span>常数 b</span><strong id="b-value">−4</strong></span>
+                <input id="b-slider" type="range" min="-8" max="8" step="0.5" value="-4" />
+              </label>
+            </section>
+
+            <section class="panel-section">
+              <p class="label">不等号</p>
+              <div class="button-row" aria-label="不等号选择">
+                <button class="choice-button relation-button" type="button" data-relation="lt">&lt;</button>
+                <button class="choice-button relation-button" type="button" data-relation="le" aria-pressed="true">≤</button>
+                <button class="choice-button relation-button" type="button" data-relation="gt">&gt;</button>
+                <button class="choice-button relation-button" type="button" data-relation="ge">≥</button>
+              </div>
+            </section>
+
+            <section class="panel-section">
+              <p class="label">典型状态</p>
+              <div class="button-row" aria-label="典型状态">
+                <button class="choice-button preset-button" type="button" data-preset="positive">正系数</button>
+                <button class="choice-button preset-button" type="button" data-preset="negative">负系数</button>
+                <button class="choice-button preset-button" type="button" data-preset="all">全集</button>
+                <button class="choice-button preset-button" type="button" data-preset="empty">空集</button>
+              </div>
+            </section>
+
+            <section class="panel-section">
+              <p class="label">同步读数</p>
+              <div class="readout-grid">
+                <div class="readout"><strong>参数符号</strong><span id="sign-readout">a &gt; 0</span></div>
+                <div class="readout"><strong>方向</strong><span id="direction-readout">向左取值</span></div>
+                <div class="readout"><strong>端点</strong><span id="endpoint-readout">实心端点</span></div>
+                <div class="readout"><strong>临界点</strong><span id="critical-readout">x = 2</span></div>
+              </div>
+            </section>
+
+            <section class="panel-section">
+              <p class="label">解集表达</p>
+              <div class="solution-box" id="solution-box">
+                <p class="solution-text" id="solution-text" data-testid="solution-text">x ≤ 2</p>
+                <p id="solution-explain">数轴从临界点向左染色，端点取到。</p>
+              </div>
+            </section>
+
+            <section class="panel-section summary-section">
+              <p class="label">分类提示</p>
+              <ul class="summary-list">
+                <li><b>a &gt; 0：</b>方向不变，直接读原不等号。</li>
+                <li><b>a &lt; 0：</b>方向改变，数轴阴影会翻到另一侧。</li>
+                <li><b>a = 0：</b>没有临界点，只判断常数与 0 的大小关系。</li>
+                <li><b>开闭：</b>严格不等号空心端点，不严格不等号实心端点。</li>
+              </ul>
+            </section>
+          </div>
+        </aside>
+      </section>
+    </main>
+
+    <script>
+      const RESOURCE_ID = "SH-HS-MATH-HJ-B1-C02-L04-A01";
+      const svg = document.querySelector("#number-line");
+      const inequalityReadout = document.querySelector("#inequality-readout");
+      const classificationCard = document.querySelector("#classification-card");
+      const classificationTitle = document.querySelector("#classification-title");
+      const classificationText = document.querySelector("#classification-text");
+      const stageNote = document.querySelector("#stage-note");
+      const aSlider = document.querySelector("#a-slider");
+      const bSlider = document.querySelector("#b-slider");
+      const aValue = document.querySelector("#a-value");
+      const bValue = document.querySelector("#b-value");
+      const relationButtons = Array.from(document.querySelectorAll(".relation-button"));
+      const presetButtons = Array.from(document.querySelectorAll(".preset-button"));
+      const signReadout = document.querySelector("#sign-readout");
+      const directionReadout = document.querySelector("#direction-readout");
+      const endpointReadout = document.querySelector("#endpoint-readout");
+      const criticalReadout = document.querySelector("#critical-readout");
+      const solutionBox = document.querySelector("#solution-box");
+      const solutionText = document.querySelector("#solution-text");
+      const solutionExplain = document.querySelector("#solution-explain");
+      const prevStepButton = document.querySelector("#prev-step");
+      const nextStepButton = document.querySelector("#next-step");
+      const resetButton = document.querySelector("#reset-button");
+
+      const relationSymbols = { lt: "<", le: "≤", gt: ">", ge: "≥" };
+      const relationNames = { lt: "小于", le: "小于等于", gt: "大于", ge: "大于等于" };
+      const presets = {
+        positive: { a: 2, b: -4, relation: "le" },
+        negative: { a: -2, b: 4, relation: "lt" },
+        all: { a: 0, b: -2, relation: "le" },
+        empty: { a: 0, b: 2, relation: "lt" }
+      };
+      const stages = [
+        "<strong>第 1 步：</strong>先看参数 a 的符号。a 为正时方向不变，a 为负时方向改变，a 为 0 时要单独讨论。",
+        "<strong>第 2 步：</strong>观察临界点。改变 b 会移动分界点；改变 a 的大小也会让分界点重新定位。",
+        "<strong>第 3 步：</strong>读数轴。阴影向左或向右表示 x 的取值方向，端点空心或实心表示是否取到临界点。",
+        "<strong>第 4 步：</strong>归纳分类。a 不为 0 时是射线解集；a 为 0 时没有分界点，只可能是全集或空集。"
+      ];
+      const state = { a: 2, b: -4, relation: "le", step: 1 };
+      const view = { width: 820, height: 260, min: -10, max: 10, axisY: 132, left: 58, right: 762 };
+
+      function flipRelation(relation) {
+        return { lt: "gt", le: "ge", gt: "lt", ge: "le" }[relation];
+      }
+
+      function compareWithZero(value, relation) {
+        if (relation === "lt") return value < 0;
+        if (relation === "le") return value <= 0;
+        if (relation === "gt") return value > 0;
+        if (relation === "ge") return value >= 0;
+        return false;
+      }
+
+      function solveInequality(a, b, relation) {
+        if (Math.abs(a) < 1e-9) {
+          return { kind: compareWithZero(b, relation) ? "all" : "empty" };
+        }
+        const critical = -b / a;
+        const solvedRelation = a > 0 ? relation : flipRelation(relation);
+        const roundedCritical = Math.abs(critical) < 1e-10 ? 0 : Math.round(critical * 1000) / 1000;
+        const direction = solvedRelation === "lt" || solvedRelation === "le" ? "left" : "right";
+        const endpoint = solvedRelation === "lt" || solvedRelation === "gt" ? "open" : "closed";
+        return { kind: "ray", critical: roundedCritical, solvedRelation, direction, endpoint, zeroCoefficient: false };
+      }
+
+      function createSvg(tag, attrs = {}) {
+        const node = document.createElementNS("http://www.w3.org/2000/svg", tag);
+        Object.entries(attrs).forEach(([key, value]) => node.setAttribute(key, String(value)));
+        return node;
+      }
+
+      function fmt(value) {
+        if (Math.abs(value) < 0.0001) return "0";
+        const rounded = Math.round(value * 100) / 100;
+        const text = Math.abs(rounded - Math.round(rounded)) < 0.0001 ? String(Math.round(rounded)) : String(rounded);
+        return text.replace("-", "−");
+      }
+
+      function fmtCoefficient(value) {
+        if (value === 1) return "";
+        if (value === -1) return "−";
+        return fmt(value);
+      }
+
+      function fmtSignedTerm(value) {
+        if (Math.abs(value) < 0.0001) return "+ 0";
+        return value > 0 ? `+ ${fmt(value)}` : `− ${fmt(Math.abs(value))}`;
+      }
+
+      function numberToX(value) {
+        const clamped = Math.max(view.min, Math.min(view.max, value));
+        return view.left + ((clamped - view.min) / (view.max - view.min)) * (view.right - view.left);
+      }
+
+      function fractionHtml(numerator, denominator, ariaLabel) {
+        return `<span class="math-frac" aria-label="${ariaLabel}"><span class="math-num">${numerator}</span><span class="math-den">${denominator}</span></span>`;
+      }
+
+      function criticalFormulaHtml(value) {
+        return `<span class="math-inline">x = ${fractionHtml("−b", "a", "a分之负b")} = ${fmt(value)}</span>`;
+      }
+
+      function solvedRelationHtml(solution) {
+        if (solution.kind === "all") return "全集";
+        if (solution.kind === "empty") return "空集";
+        return `x ${relationSymbols[solution.solvedRelation]} ${fmt(solution.critical)}`;
+      }
+
+      function solutionExplanation(solution) {
+        if (solution.kind === "all") return "a = 0 后得到恒成立判断，所以所有实数都满足。";
+        if (solution.kind === "empty") return "a = 0 后得到恒假判断，所以没有实数满足。";
+        const direction = solution.direction === "left" ? "向左" : "向右";
+        const endpoint = solution.endpoint === "closed" ? "端点取到" : "端点不取";
+        return `数轴从临界点${direction}染色，${endpoint}。`;
+      }
+
+      function drawText(parent, text, x, y, className, anchor = "middle") {
+        const node = createSvg("text", { x, y, class: className, "text-anchor": anchor });
+        node.textContent = text;
+        parent.appendChild(node);
+      }
+
+      function drawNumberLine(solution) {
+        svg.innerHTML = "";
+        svg.appendChild(createSvg("line", { x1: view.left, y1: view.axisY, x2: view.right, y2: view.axisY, class: "axis-line" }));
+        for (let tick = view.min; tick <= view.max; tick += 2) {
+          const x = numberToX(tick);
+          svg.appendChild(createSvg("line", { x1: x, y1: view.axisY - 10, x2: x, y2: view.axisY + 10, class: "tick-line" }));
+          drawText(svg, fmt(tick), x, view.axisY + 32, "tick-label");
+        }
+        if (solution.kind === "all") {
+          svg.appendChild(createSvg("line", { x1: view.left + 18, y1: view.axisY, x2: view.right - 18, y2: view.axisY, class: "solution-ray all" }));
+          drawText(svg, "所有实数", view.width / 2, view.axisY - 34, "solution-label");
+          return;
+        }
+        if (solution.kind === "empty") {
+          drawText(svg, "空集：数轴上没有被染色的部分", view.width / 2, view.axisY - 34, "empty-label");
+          return;
+        }
+        const pointX = numberToX(solution.critical);
+        const rayStart = solution.direction === "left" ? view.left + 20 : pointX;
+        const rayEnd = solution.direction === "left" ? pointX : view.right - 20;
+        svg.appendChild(createSvg("line", { x1: rayStart, y1: view.axisY, x2: rayEnd, y2: view.axisY, class: "solution-ray" }));
+        svg.appendChild(createSvg("line", { x1: pointX, y1: view.axisY - 60, x2: pointX, y2: view.axisY + 54, class: "critical-guide" }));
+        svg.appendChild(createSvg("circle", { cx: pointX, cy: view.axisY, r: 13, class: `critical-point ${solution.endpoint}` }));
+        drawText(svg, `临界点 ${fmt(solution.critical)}`, pointX, view.axisY - 76, "critical-label");
+        const labelX = solution.direction === "left" ? Math.max(view.left + 96, pointX - 148) : Math.min(view.right - 96, pointX + 148);
+        drawText(svg, solution.direction === "left" ? "向左取值" : "向右取值", labelX, view.axisY - 30, "solution-label");
+      }
+
+      function updateControls() {
+        aSlider.value = state.a;
+        bSlider.value = state.b;
+        aValue.textContent = fmt(state.a);
+        bValue.textContent = fmt(state.b);
+        relationButtons.forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.relation === state.relation)));
+        presetButtons.forEach((button) => {
+          const preset = presets[button.dataset.preset];
+          button.setAttribute("aria-pressed", String(preset.a === state.a && preset.b === state.b && preset.relation === state.relation));
+        });
+      }
+
+      function updateReadouts(solution) {
+        inequalityReadout.innerHTML = `<span>${fmtCoefficient(state.a)}</span>x ${fmtSignedTerm(state.b)} ${relationSymbols[state.relation]} 0`;
+        if (state.a > 0) {
+          classificationCard.className = "classification-card";
+          classificationTitle.textContent = "a > 0：方向不变";
+          classificationText.textContent = "先按原不等号读 x 的范围。";
+          signReadout.textContent = "a > 0";
+        } else if (state.a < 0) {
+          classificationCard.className = "classification-card flip";
+          classificationTitle.textContent = "a < 0：方向改变";
+          classificationText.textContent = "除以负数，不等号方向改变。";
+          signReadout.textContent = "a < 0";
+        } else {
+          classificationCard.className = `classification-card ${solution.kind === "all" ? "zero" : "empty"}`;
+          classificationTitle.textContent = solution.kind === "all" ? "a = 0：全集" : "a = 0：空集";
+          classificationText.textContent = solution.kind === "all" ? "不含 x，当前判断对所有实数成立。" : "不含 x，当前判断没有实数能满足。";
+          signReadout.textContent = "a = 0";
+        }
+        if (solution.kind === "ray") {
+          directionReadout.textContent = solution.direction === "left" ? "向左取值" : "向右取值";
+          endpointReadout.textContent = solution.endpoint === "closed" ? "实心端点" : "空心端点";
+          criticalReadout.innerHTML = criticalFormulaHtml(solution.critical);
+        } else {
+          directionReadout.textContent = solution.kind === "all" ? "整条数轴" : "没有阴影";
+          endpointReadout.textContent = "没有端点";
+          criticalReadout.textContent = "没有临界点";
+        }
+        solutionBox.className = `solution-box ${solution.kind === "empty" ? "empty" : solution.kind === "all" ? "all" : ""}`;
+        solutionText.innerHTML = solvedRelationHtml(solution);
+        solutionExplain.textContent = solutionExplanation(solution);
+        stageNote.innerHTML = stages[state.step - 1];
+      }
+
+      function currentPayload(solution = solveInequality(state.a, state.b, state.relation)) {
+        return {
+          coefficient_a: state.a,
+          constant_b: state.b,
+          relation: state.relation,
+          relation_name: relationNames[state.relation],
+          critical_point: solution.kind === "ray" ? solution.critical : null,
+          solution_kind: solution.kind,
+          solved_relation: solution.kind === "ray" ? solution.solvedRelation : null,
+          endpoint: solution.kind === "ray" ? solution.endpoint : null,
+          direction: solution.kind === "ray" ? solution.direction : null,
+          reveal_step: state.step
+        };
+      }
+
+      function emit(name, solution) {
+        if (window.parent === window) return;
+        window.parent.postMessage({ type: `applet:${name}`, resourceId: RESOURCE_ID, payload: currentPayload(solution) }, "*");
+      }
+
+      function render({ announce = false } = {}) {
+        const solution = solveInequality(state.a, state.b, state.relation);
+        updateControls();
+        updateReadouts(solution);
+        drawNumberLine(solution);
+        if (announce) emit("state_changed", solution);
+      }
+
+      function setState(patch, options = {}) {
+        if (typeof patch.a === "number") state.a = patch.a;
+        if (typeof patch.b === "number") state.b = patch.b;
+        if (typeof patch.relation === "string" && relationSymbols[patch.relation]) state.relation = patch.relation;
+        if (typeof patch.step === "number") state.step = Math.max(1, Math.min(4, Math.round(patch.step)));
+        render({ announce: options.announce ?? true });
+      }
+
+      aSlider.addEventListener("input", () => setState({ a: Number(aSlider.value) }));
+      bSlider.addEventListener("input", () => setState({ b: Number(bSlider.value) }));
+      relationButtons.forEach((button) => button.addEventListener("click", () => setState({ relation: button.dataset.relation })));
+      presetButtons.forEach((button) => button.addEventListener("click", () => setState(presets[button.dataset.preset])));
+      prevStepButton.addEventListener("click", () => setState({ step: state.step === 1 ? 4 : state.step - 1 }));
+      nextStepButton.addEventListener("click", () => setState({ step: state.step === 4 ? 1 : state.step + 1 }));
+      resetButton.addEventListener("click", () => setState({ ...presets.positive, step: 1 }));
+
+      window.addEventListener("message", (event) => {
+        const message = event.data;
+        if (!message || typeof message !== "object") return;
+        if (message.resourceId && message.resourceId !== RESOURCE_ID) return;
+        const payload = message.payload ?? {};
+        if (message.type === "player:init") {
+          const initialState = payload.initialState ?? {};
+          setState({
+            a: Number.isFinite(initialState.coefficient_a) ? initialState.coefficient_a : state.a,
+            b: Number.isFinite(initialState.constant_b) ? initialState.constant_b : state.b,
+            relation: initialState.relation ?? state.relation,
+            step: initialState.reveal_step ?? state.step
+          }, { announce: false });
+          emit("ready", solveInequality(state.a, state.b, state.relation));
+        }
+        if (message.type === "player:setState") {
+          const nextState = payload.state ?? {};
+          setState({
+            a: Number.isFinite(nextState.coefficient_a) ? nextState.coefficient_a : state.a,
+            b: Number.isFinite(nextState.constant_b) ? nextState.constant_b : state.b,
+            relation: nextState.relation ?? state.relation,
+            step: nextState.reveal_step ?? state.step
+          });
+        }
+        if (message.type === "player:requestState") emit("state_changed", solveInequality(state.a, state.b, state.relation));
+      });
+
+      render();
+      emit("ready", solveInequality(state.a, state.b, state.relation));
+    </script>
+  </body>
+</html>
