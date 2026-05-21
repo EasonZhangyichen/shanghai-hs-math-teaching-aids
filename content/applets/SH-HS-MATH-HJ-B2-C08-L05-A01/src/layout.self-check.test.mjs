@@ -3,8 +3,9 @@ import { readFile } from "node:fs/promises";
 import test from "node:test";
 
 const source = await readFile(new URL("./index.html", import.meta.url), "utf8");
+const visibleIndexMarkup = source.replace(/<script\b[\s\S]*?<\/script>/gi, "");
 const visibleResourceFiles = [
-  ["src/index.html", source],
+  ["src/index.html", visibleIndexMarkup],
   ["teacher-script.md", await readFile(new URL("../teacher-script.md", import.meta.url), "utf8")],
   ["student-task.md", await readFile(new URL("../student-task.md", import.meta.url), "utf8")],
   ["review.md", await readFile(new URL("../review.md", import.meta.url), "utf8")]
@@ -107,4 +108,17 @@ test("typical radian labels are normalized through one stacked-math formatter", 
   assert.ok(angleFormatter, "Expected to find angleExactHtml");
   assert.match(angleFormatter[1], /exactRadianLabels\.get\(rounded\)/, "angle readout should use the shared normalizer");
   assert.doesNotMatch(angleFormatter[1], /new Map/, "angle readout should not keep a private duplicate fraction table");
+});
+
+test("fraction aria fallbacks use Chinese-readable math text instead of English over wording", () => {
+  assert.doesNotMatch(source, /pi over/i, "fraction aria-labels should not read pi fractions in English");
+  assert.doesNotMatch(source, /\bover\b/, "fraction aria fallback should avoid English 'over' wording");
+  assert.match(source, /aria-label="三分之π"/, "static π/3 label should expose a Chinese-readable aria fallback");
+  assert.match(source, /aria-label="二分之π"/, "static π/2 labels should expose a Chinese-readable aria fallback");
+});
+
+test("visible classroom resources avoid ASCII arrow notation", () => {
+  for (const [filename, text] of visibleResourceFiles) {
+    assert.doesNotMatch(text, /->/, `${filename} should use ⇒, →, or Chinese wording instead of visible ASCII arrows`);
+  }
 });
